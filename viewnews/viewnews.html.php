@@ -63,6 +63,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
 				
 				<?php endforeach; ?>
+				<p><?php echo $delAndUpd; ?></p>
+				<p><?php echo $premoderation; ?></p>
 			</div>
         </div>
 		<div class="m-content like-place">
@@ -70,22 +72,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php echo $votePanel; ?>
             </div>
 			<?php echo $addFavourites;?>
-		</div>
-</article>
 
-
-	<div class = "maincont_for_view">
-	
-		<div class = "post">	  
-			<div  align="justify">
-					<p><a name="bottom"></a></p> 
-					<p><?php echo $delAndUpd; ?></p>
-					<p><?php echo $premoderation; ?></p>
-					<p><strong><a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
-						<img width = "5%" height = "5%" src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz">Подписывайтесь на наш Дзен-канал!</a></strong>
-					</p>
-			</div>	   	
+			<div class = "zen-ch">
+                <a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
+                <img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"><span class="zen-ch-title">Подписывайтесь на наш Дзен-канал!</span></a>
+            </div>
 		</div>
+
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- ForPosts -->
 		<ins class="adsbygoogle"
@@ -97,42 +90,61 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<script>
 			 (adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
-		<div>
-		 <h4>Случайные новости рубрики</h4>
+
+		<div class = "main-headers">
+            <div class = "headers-places"> 
+                <div class = "main-headers-txtplace">Случайные статьи рубрики</div>
+            </div>
+            <div class = "main-headers-line"></div>
+        </div>
+
+		<div class = "newsblock m-content">
+			<?php if (empty($similarNews))
+			{
+				echo '<p align = "center">Новости отсутствуют</p>';
+			}
 			
-		<div class="<?php echo $columns;?>">
-		<?php if (empty($similarNews))
-		 {
-			 echo '<p align = "center">Новости отсутствуют</p>';
-		 }
-		 
-		 else
-			 
-		 foreach ($similarNews as $news_1): ?> 
-		<div class="columns__panel">
-         <div class="columns__panel-content">
-			<div class = "post_for_columns" style = "background: url(../images/<?php echo $news_1['imghead']; ?>); background-size: cover; ">
-				<strong><a href="../viewnews/?id=<?php htmlecho ($news_1['id']); ?>" rel = "nofollow">.</a></strong> 
-			</div>
-			<strong><a href="../viewnews/?id=<?php htmlecho ($news_1['id']); ?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news_1['newstitle'])), 0, 7)))); ?>...</a></strong> 
-		  </div>	 
-		</div>	 
-		 <?php endforeach; ?>
-	   </div>
-		
-	  <div>		
-		<h4 align = "center">Новости партнёров</h4>
-	 	 <div id="unit_95706"><a href="http://mirtesen.ru/" >Новости МирТесен</a></div>
-		<script type="text/javascript" charset="utf-8">
-		  (function() {
-			var sc = document.createElement('script'); sc.type = 'text/javascript'; sc.async = true;
-			sc.src = '//news.mirtesen.ru/data/js/95706.js'; sc.charset = 'utf-8';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
-		  }());
-		</script>
-	 </div>
+			else
+				
+			foreach ($similarNews as $news_1): ?>
 			
-		 <h4 align="center">Комментарии (<?php echo $countPosts; ?>)</h4>
+			<a href = "../viewnews/?id=<?php htmlecho ($news_1['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php echo $news_1['imghead']; ?>)">
+                <div class = "post-top-1">05/07/2020</div>
+                <div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news_1['newstitle'])), 0, 7)))); ?>...</div>
+            </a> 
+			<?php endforeach; ?>
+		</div>
+
+		<div class = "main-headers">
+            <div class = "headers-places"> 
+                <div class = "main-headers-txtplace">Новости наших партнёров</div>
+            </div>
+            <div class = "main-headers-line"></div>
+        </div>
+
+        <div class="gallery-place">		
+			<div id="unit_95706"><a href="http://mirtesen.ru/" >Новости МирТесен</a></div>
+			<script type="text/javascript" charset="utf-8">
+			(function() {
+				var sc = document.createElement('script'); sc.type = 'text/javascript'; sc.async = true;
+				sc.src = '//news.mirtesen.ru/data/js/95706.js'; sc.charset = 'utf-8';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
+			}());
+			</script>
+		</div>
+
+		<div class = "main-headers">
+            <div class = "headers-places"> 
+                <div class = "main-headers-txtplace">Комментарии (<?php echo $countPosts; ?>)</div>
+            </div>
+            <div class = "main-headers-line"></div>
+        </div>
+
+</article>
+
+
+	<div class = "maincont_for_view">
+				
 			<p align="center"><?php echo $addComment; ?></p>
 		<div>
 		<?php if (empty ($comments))
