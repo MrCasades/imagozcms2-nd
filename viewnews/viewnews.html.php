@@ -79,7 +79,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<div class = "post">	  
 			<div  align="justify">
 					<p><a name="bottom"></a></p> 
-					<p align="center"><?php echo $addFavourites;?></p>
 					<p><?php echo $delAndUpd; ?></p>
 					<p><?php echo $premoderation; ?></p>
 					<p><strong><a href="https://zen.yandex.ru/imagoz" rel = "nofollow">

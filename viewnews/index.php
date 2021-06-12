@@ -130,7 +130,7 @@ if (isset ($_GET['id']))
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idNews.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
-								<button id = "btn_fav_2" title="Убрать из избранного" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i>Избранное</button>  
+								<button id = "btn_fav" title="Убрать из избранного" class = btn_fav_2><i class="fa fa-check-square" aria-hidden="true"></i>Избранное</button>  
 							 </form>
 							 <strong><p id = "result_form_fav"></p></strong>';
 		}
@@ -141,7 +141,7 @@ if (isset ($_GET['id']))
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idNews.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
-								<button id = "btn_fav_1" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i>Избранное</button> 
+								<button id = "btn_fav" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i>Избранное</button> 
 							 </form>
 							 <strong><p id = "result_form_fav"></p></strong>';
 		}
