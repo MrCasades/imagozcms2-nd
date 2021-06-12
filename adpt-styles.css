@@ -1,0 +1,44 @@
+/*Адаптивность*/
+@media (max-width: 1366px){
+    
+    /*Главное меню*/
+
+    .main-headers-place{
+        font-size: 1rem;
+    }
+
+    .main-headers-subplace{
+        width: 20%;
+        font-size: 1rem;
+    }
+
+    .main-headers-txtplace{
+        font-size: 1rem;
+    }
+
+    header  nav{
+        margin: 3% 2% 0 0%;
+    }
+
+    header .navigation-line{
+        width: 58%;
+    }
+
+    header nav a{ 
+        height: 2rem;
+        font-size: 1.5rem;
+    }
+
+    header .authorization-form{
+        margin-left: 35%;
+    }
+
+    main .post-place-1{
+        margin: 1% 17px;
+        width: 25%;
+    }
+
+    .post-place-1 .post-bottom-1{
+        font-size: 1.3rem;
+    }
+}
