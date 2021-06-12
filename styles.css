@@ -571,6 +571,10 @@ article .a-content{
     font-size: 2rem;
 }
 
+article .a-video{
+    margin-left: 10%;
+}
+
 article .like-place{
     margin-top: 1%;
     font-size: 2rem;
@@ -615,6 +619,22 @@ article .tags-place .tgs:hover{
 
 article .recomm-place{
     margin-left: 70%;
+}
+
+article .btn_fav_1{
+    background:#FFFFFF;
+    color: #1e90ff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+article .btn_fav_2{
+    background:red;
+    color: #1e90ff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
 }
 
 .comment{

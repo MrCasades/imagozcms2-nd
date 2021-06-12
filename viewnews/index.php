@@ -130,7 +130,7 @@ if (isset ($_GET['id']))
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idNews.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
-								<input type="image" src="like_2.gif" alt="Убрать из избранного" title="Убрать из избранного" id = "btn_fav">  
+								<button id = "btn_fav_2" title="Убрать из избранного" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i>Избранное</button>  
 							 </form>
 							 <strong><p id = "result_form_fav"></p></strong>';
 		}
@@ -141,7 +141,7 @@ if (isset ($_GET['id']))
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idNews.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
-								<input type="image" src="like_1.gif" alt="Добавить в избранное" title="Добавить в избранное" id = "btn_fav"> 
+								<button id = "btn_fav_1" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i>Избранное</button> 
 							 </form>
 							 <strong><p id = "result_form_fav"></p></strong>';
 		}
@@ -273,17 +273,16 @@ if (isset ($_GET['id']))
 	elseif ((isset($_SESSION['loggIn'])) && ($votedAuthor != $selectedAuthor))
 	{
 		$votePanel = '<form action=" " metod "post" id = "confirmlike">
-					  
-					  Оцените статью: 
-						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idNews.'">
-						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
-						<input type = "submit" name = "vote" id = "btn_vot_5" value = "5" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_4" value = "4" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_3" value = "3" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_2" value = "2" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_1" value = "1" class="btn btn-primary btn-sm"> 
-					  </form>
-					  <strong><p id = "result_form_vot"></p></strong>';
+							<i class="fa fa-thumbs-up" aria-hidden="true" title="Оценить"></i>
+							<input type = "hidden" name = "id" id = "idarticle" value = "">
+							<input type = "hidden" name = "idauthor" id = "idauthor" value = "">
+							<input type = "submit" name = "vote" id = "btn_vot_5" class = "btn_vot" value = "5" class="btn btn-primary btn-sm"> 
+							<input type = "submit" name = "vote" id = "btn_vot_4" class = "btn_vot" value = "4" class="btn btn-primary btn-sm"> 
+							<input type = "submit" name = "vote" id = "btn_vot_3" class = "btn_vot" value = "3" class="btn btn-primary btn-sm"> 
+							<input type = "submit" name = "vote" id = "btn_vot_2" class = "btn_vot" value = "2" class="btn btn-primary btn-sm"> 
+							<input type = "submit" name = "vote" id = "btn_vot_1" class = "btn_vot" value = "1" class="btn btn-primary btn-sm"> 
+						</form>
+						<strong><p id = "result_form_vot"></p></strong>';
 	}
 	
 	/*Вывод кнопок "Обновить" | "Удалить"*/

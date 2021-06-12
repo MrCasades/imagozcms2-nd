@@ -5,77 +5,79 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
+<article>
+    <div class = "article-head m-content" style="background-image: url(../images/<?php echo $imgHead; ?>)">
+        <div class = "article-head-top"> 
+            <div class ="article-info">
+                <p><?php echo $date;?> | Автор: <a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a></p>
+                <p>Рубрика: <span class="post-rubrics"><a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
+            </div>
+        <div class="article-rating">
+                <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($viewCount); ?>  
+				<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho (round($averageNumber, 2, PHP_ROUND_HALF_DOWN)); ?>
+				<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
+        </div>
+    </div>
+    <h1><?php htmlecho ($headMain); ?></h1>
+    </div>
+
+	<!-- Yandex.RTB R-A-448222-9 -->
+	<div id="yandex_rtb_R-A-448222-9"></div>
+        <script type="text/javascript">
+            (function(w, d, n, s, t) {
+                      w[n] = w[n] || [];
+                      w[n].push(function() {
+                      Ya.Context.AdvManager.render({
+                            blockId: "R-A-448222-9",
+                            renderTo: "yandex_rtb_R-A-448222-9",
+                            async: true
+                        });
+                        });
+                     t = d.getElementsByTagName("script")[0];
+                     s = d.createElement("script");
+                     s.type = "text/javascript";
+                     s.src = "//an.yandex.ru/system/context.js";
+                     s.async = true;
+                     t.parentNode.insertBefore(s, t);
+            })(this, this.document, "yandexContextAsyncCallbacks");
+        </script>
+
+		<div class="a-content m-content">
+			<?php echomarkdown_pub ($articleText); ?>
+			<p class="a-video"><?php echo $video; ?></p>
+			<div class = "recomm-place">                       
+                <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+                <script src="//yastatic.net/share2/share.js"></script>
+                <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>      
+            </div>
+			<div class="tags-place-m"> 
+				<?php if (empty($metas))
+				{
+					echo '';
+				}
+				
+				else
+				
+				foreach ($metas as $meta): ?> 
+			
+					<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
+				
+				<?php endforeach; ?>
+			</div>
+        </div>
+		<div class="m-content like-place">
+			<div>
+				<?php echo $votePanel; ?>
+            </div>
+			<?php echo $addFavourites;?>
+		</div>
+</article>
+
 
 	<div class = "maincont_for_view">
-		<div align="center">
-		 <table>
-		 <tr>
-		  <td valign="top"><label for = "meta"> Теги:</label></td>
-			   <?php if (empty($metas))
-			  {
-				 echo '';
-		      }
-		 
-		      else
-				  
-			  foreach ($metas as $meta): ?>	  
-				<td><div>	 
-					<a href="../viewmetanews/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>	 
-				</div></td> 	
-				<?php endforeach; ?>
-		  </tr>
-		 </table>
-		</div>
-		
+	
 		<div class = "post">	  
 			<div  align="justify">
-				<div class = "posttitle">
-				  <?php echo ($date.' | Автор: <a href="../account/?id='.$authorId.'" style="color: white" >'.$nameAuthor).'</a>';?>
-				  <p>Рубрика: <a href="../viewcategory/?id=<?php echo $categoryId; ?>" style="color: white"><?php echo $categoryName;?></a></p>
-				</div>
-				  <p><script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-				  <script src="//yastatic.net/share2/share.js"></script>
-				  <div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div></p>
-				   <hr>
-				  <!-- Yandex.RTB R-A-448222-9 -->
-                    <div id="yandex_rtb_R-A-448222-9"></div>
-                    <script type="text/javascript">
-                        (function(w, d, n, s, t) {
-                            w[n] = w[n] || [];
-                            w[n].push(function() {
-                                Ya.Context.AdvManager.render({
-                                    blockId: "R-A-448222-9",
-                                    renderTo: "yandex_rtb_R-A-448222-9",
-                                    async: true
-                                });
-                            });
-                            t = d.getElementsByTagName("script")[0];
-                            s = d.createElement("script");
-                            s.type = "text/javascript";
-                            s.src = "//an.yandex.ru/system/context.js";
-                            s.async = true;
-                            t.parentNode.insertBefore(s, t);
-                        })(this, this.document, "yandexContextAsyncCallbacks");
-                    </script>
-				  <hr>
-				   <p class="like"> 
-				    <img width = "5%" height = "5%" src="./view.jpg" alt="Число просмотров материала" title="Просмотры"> <?php htmlecho ($viewCount); ?> 
-				    <img width = "3%" height = "3%" src="./like.jpg" alt="Оценка материала" title="Оценка"> <?php htmlecho (round($averageNumber, 2, PHP_ROUND_HALF_DOWN)); ?>
-					<img width = "3%" height = "3%" src="./favourite.jpg" alt="Добавили в избранное" title="Добавили в избранное"> <?php htmlecho ($favouritesCount); ?>   
-				   </p>
-				<?php if ($imgHead == '')
-					{
-						$img = '';//если картинка в заголовке отсутствует
-						echo $img;
-					}
-						else 
-					{
-						$img = '<p align="center"><img width = "80%" height = "80%" src="../images/'.$imgHead.'"'. ' alt="'.$imgAlt.'"'.'></p>';//если картинка присутствует
-					}?>
-					<p><?php echo $img;?></p>
-					<p><?php echomarkdown_pub ($articleText); ?></p>
-					<p align="center"><?php echo $video; ?></p>
-					<p><?php echo $votePanel; ?></p>
 					<p><a name="bottom"></a></p> 
 					<p align="center"><?php echo $addFavourites;?></p>
 					<p><?php echo $delAndUpd; ?></p>
