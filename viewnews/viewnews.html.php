@@ -63,8 +63,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
 				
 				<?php endforeach; ?>
-				<p><?php echo $delAndUpd; ?></p>
-				<p><?php echo $premoderation; ?></p>
+
 			</div>
         </div>
 		<div class="m-content like-place">
@@ -77,6 +76,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
                 <a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
                 <img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"><span class="zen-ch-title">Подписывайтесь на наш Дзен-канал!</span></a>
             </div>
+		</div>
+
+		<div class = "m-content">
+			<p><?php echo $delAndUpd; ?></p>
+			<p><?php echo $premoderation; ?></p>
 		</div>
 
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -109,7 +113,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			foreach ($similarNews as $news_1): ?>
 			
 			<a href = "../viewnews/?id=<?php htmlecho ($news_1['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php echo $news_1['imghead']; ?>)">
-                <div class = "post-top-1">05/07/2020</div>
                 <div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news_1['newstitle'])), 0, 7)))); ?>...</div>
             </a> 
 			<?php endforeach; ?>

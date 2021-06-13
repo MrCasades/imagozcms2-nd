@@ -627,6 +627,8 @@ article .btn_fav_1{
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    width: 6rem;
+    height: 2rem;
 }
 
 article .btn_fav_2{
@@ -635,6 +637,8 @@ article .btn_fav_2{
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    width: 6rem;
+    height: 2rem;
 }
 
 .comment{
