@@ -665,6 +665,11 @@ article .btn_fav_2{
     font-weight: bold;
 }
 
+.comment-auth{
+    margin-top: 1rem;
+    margin-left: 10%;
+}
+
 .comment-line{
     margin-top: 1rem;
     width: 90%;

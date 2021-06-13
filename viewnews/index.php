@@ -378,24 +378,21 @@ if (isset ($_GET['id']))
 	{
 		$action = 'addform';
 		$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-		$addComment = '<form action = "?'.$action.'" method = "post" align="center">
-						 <div>
-						    <input type = "hidden" name = "idarticle" value = "'.$idNews.'">
-							<textarea class = "descr" id = "comment" name = "comment" data-provide="markdown" rows="10" placeholder = "Напишите свой комментарий!"></textarea>	
-						 </div>
-						  <div>
-							<input type = "submit" value = "Добавить комментарий" class="btn btn-info btn-sm">
-						  </div>	  
-						</form>
-						<hr/>';	
+		$addComment = '<form class="m-content comment-form" action = "?" method = "post" id=addcomment>               
+								<input type = "hidden" name = "idarticle" value = "'.$idNews.'">
+								<textarea class = "comment-textarea" rows="10" id = "comment" name = "comment" data-provide="markdown" placeholder = "Напишите свой комментарий!"></textarea>	
+								<button class = "btn_1">Добавить коммнтарий</button>  
+						</form>';
 	}
 	
 	else
 	{
 		$authorName = '';
 		$_SESSION['email'] = '';
-		$addComment = '<a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
-						 <a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить комментарий!';//Вывод сообщения в случае невхода в систему
+		$addComment = '<div class="m-content comment-auth">
+						 <a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
+						 <a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить комментарий!
+					   </div>';//Вывод сообщения в случае невхода в систему
 		
 		$action = '';	
 	}

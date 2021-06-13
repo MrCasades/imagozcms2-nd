@@ -143,12 +143,63 @@ include_once MAIN_FILE . '/header.inc.php';?>
             <div class = "main-headers-line"></div>
         </div>
 
+		<?php echo $addComment; ?>
+
+		<?php if (empty ($comments))
+			{
+				echo '<br/><p align="center">Комментарии отсутствуют!</p>';
+			}
+				
+			else
+				
+			foreach ($comments as $comment): ?> 
+
+			<div class="comment m-content">
+                <div class="comment-person-pl">
+                    <div>
+                        <img src="../avatars/<?php echo $comment['avatar'];?>" alt="ava"/>
+                    </div> 
+                    <div>
+						<?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?><br>
+						<?php echo $comment['date']; ?>
+                    </div> 
+                </div>
+                <div class="comment-text">
+					<p><?php 
+				   
+				   //Вывод панели обновления - удаления комментария!
+					if (($authorName == $comment['authorname']) || (userRole('Администратор')))
+					{
+						$updAnddel = '<form action = "?" method = "post">
+						   <div>
+							   <input type = "hidden" name = "id" value = "'.$comment ['id'].'">
+							   <input type = "hidden" name = "idarticle" value = "'.$comment ['idarticle'].'">
+							   <input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Редактировать">
+							   <input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Del">
+						   </div>
+					   </form>';		 
+					}	
+					else
+					{
+						$updAnddel = '';
+					}							 
+					   
+					echo $updAnddel;?></p>
+
+					<?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 50))); ?> [...]
+                </div>
+				
+			</div> 
+			<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1">Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
+            <div class = "m-content comment-line"></div> 
+
+		<?php endforeach; ?>
+
 </article>
 
 
 	<div class = "maincont_for_view">
-				
-			<p align="center"><?php echo $addComment; ?></p>
+
 		<div>
 		<?php if (empty ($comments))
 				{
