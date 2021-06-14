@@ -190,7 +190,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
                 </div>
 				
 			</div> 
-			<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1">Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
+			<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
             <div class = "m-content comment-line"></div> 
 
 		<?php endforeach; ?>
