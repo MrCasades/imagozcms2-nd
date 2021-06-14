@@ -195,57 +195,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 		<?php endforeach; ?>
 
-</article>
-
-
-	<div class = "maincont_for_view">
-
-		<div>
-		<?php if (empty ($comments))
-				{
-					echo '<br/><p align="center">Комментарии отсутствуют!</p>';
-				}
-				
-			  else
-				
-				foreach ($comments as $comment): ?> 	   		
-				<div class = "post">
-				 <div class = "posttitle">
-				    Дата комментария: <?php echo ($comment['date']. ' | Автор: <a href="../account/?id='.$comment['idauthor'].'" style="color: white" >'.$comment['authorname']).'</a>';?>
-				  </div>		
-					<p><?php 
-				   
-						//Вывод панели обновления - удаления комментария!
-						 if (($authorName == $comment['authorname']) || (userRole('Администратор')))
-						 {
-							 $updAnddel = '<form action = "?" method = "post">
-								<div>
-									<input type = "hidden" name = "id" value = "'.$comment ['id'].'">
-									<input type = "hidden" name = "idarticle" value = "'.$comment ['idarticle'].'">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Редактировать">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Del">
-								</div>
-							</form>';		 
-						 }	
-						 else
-						 {
-							 $updAnddel = '';
-						 }							 
-							
-						 echo $updAnddel;?></p>
-				  <p>
-					<table cellpadding = "3 %">
-						<td><img width = "90 px" height = "90 px" src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"></td>
-						<td ><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 50))); ?> [...]</td>
-					</table>	
-				  </p>
-				  <p><img width = "3%" height = "3%" src="<?php echo '//'. MAIN_URL;?>/answers.jpg" alt="Ответы на комментарий" title="Количество ответов"> 
-					  <strong>[<?php echo $comment['subcommentcount']; ?>]</strong></p>
-				  <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>" class="btn btn-primary btn-sm">Открыть</a>
-				</div>	  		   
-				<?php endforeach; ?> 
-				
-				<div align = "center">
+		<div align = "center">
 				 <?php
 				 /*Постраничный вывод информации*/
 				 for ($i = 1; $i <= $pagesCount; $i++) 
@@ -260,9 +210,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						 echo "<a href='./viewnews/?id=".$idNews."&page=$i' class='btn btn-primary btn-sm'>$i</a> ";
 					 }
 				 }?>
-				 </div>				
-		</div>		
-	</div>		
+		</div>	
+
+</article>
 
 <?php 
 /*Загрузка footer*/
