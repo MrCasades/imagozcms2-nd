@@ -195,22 +195,22 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 		<?php endforeach; ?>
 
-		<div align = "center">
-				 <?php
-				 /*Постраничный вывод информации*/
-				 for ($i = 1; $i <= $pagesCount; $i++) 
-				 {
-					 // если текущая старница
-					 if($i == $page)
-					 {
-						 echo "<a href='./viewnews/?id=".$idNews."&page=$i' class='btn btn-info'>$i</a> ";
-					 } 
-					 else 
-					 {
-						 echo "<a href='./viewnews/?id=".$idNews."&page=$i' class='btn btn-primary btn-sm'>$i</a> ";
-					 }
-				 }?>
-		</div>	
+		<div class="page-output">	
+		 <?php
+			/*Постраничный вывод информации*/
+			for ($i = 1; $i <= $pagesCount; $i++) 
+			{
+				// если текущая старница
+				if($i == $page)
+				{
+					echo "<a href='./viewnews/?id=".$idNews."&page=$i'><button class='btn_2'>$i</button></a> ";
+				} 
+				else 
+				{
+					echo "<a href='./viewnews/?id=".$idNews."&page=$i'><button class='btn_1'>$i</button></a> ";
+				}
+			}?>
+</div>
 
 </article>
 
