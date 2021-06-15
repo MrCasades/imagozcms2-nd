@@ -598,6 +598,10 @@ article .like-place .btn_vot:hover{
     color:#FFFFFF;
 }
 
+article .like-place .fav-and-recomm{  
+    display: flex;
+}
+
 article .tags-place{
     display: flex;
     padding-bottom: 1rem;
@@ -639,6 +643,17 @@ article .btn_fav_2{
     border-radius: 5px;
     width: 6rem;
     height: 2rem;
+}
+
+article .btn_recomm{
+    background:red;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width: 12rem;
+    height: 2rem;
+    margin-left: 1rem;
 }
 
 .comment{

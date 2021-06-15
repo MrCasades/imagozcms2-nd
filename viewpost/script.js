@@ -56,17 +56,17 @@ if (removeContest)
 $( document ).ready(function() {
     $("#btn_fav").click(
 		function(){
-			$("#btn_fav").attr('src', ' ');
+			$("#btn_fav").attr('class', ' ');
 			sendAjaxForm('result_form_fav', 'ajax_form_fav', 'favourites.inc.php');
-			console.log('OK1');
 			
 			if ($("#val_fav").attr('value') === 'delfav'){
 				$("#val_fav").attr('value', 'addfav');
-				$("#btn_fav").attr('src', 'like_1.gif');
+				$("#btn_fav").attr('class', 'btn_fav_1');
+				console.log('OK11');
 				
 			} else {
 				$("#val_fav").attr('value', 'delfav');
-				$("#btn_fav").attr('src', 'like_2.gif');
+				$("#btn_fav").attr('class', 'btn_fav_2');
 			}
 			
 			return false; 

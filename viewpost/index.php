@@ -129,9 +129,9 @@ if (isset ($_GET['id']))
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idPost.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
-								<input type="image" src="like_2.gif" alt="Убрать из избранного" title="Убрать из избранного" id = "btn_fav">  
-							 </form>
-							 <strong><p id = "result_form_fav"></p></strong>';
+								<button id = "btn_fav" title="Убрать из избранного" class = btn_fav_2><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button>  
+							</form>
+							<strong><p id = "result_form_fav"></p></strong>';
 		}
 
 		else
@@ -140,9 +140,9 @@ if (isset ($_GET['id']))
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idPost.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
-								<input type="image" src="like_1.gif" alt="Добавить в избранное" title="Добавить в избранное" id = "btn_fav"> 
-							 </form>
-							 <strong><p id = "result_form_fav"></p></strong>';
+								<button id = "btn_fav" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button> 
+							</form>
+							<strong><p id = "result_form_fav"></p></strong>';
 		}
 	}
 	
@@ -270,17 +270,16 @@ if (isset ($_GET['id']))
 	elseif ((isset($_SESSION['loggIn'])) && ($votedAuthor != $selectedAuthor))
 	{
 		$votePanel = '<form action=" " metod "post" id = "confirmlike">
-					  
-					  Оцените статью: 
+						<i class="fa fa-thumbs-up" aria-hidden="true" title="Оценить"></i>
 						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
 						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
-						<input type = "submit" name = "vote" id = "btn_vot_5" value = "5" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_4" value = "4" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_3" value = "3" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_2" value = "2" class="btn btn-primary btn-sm"> 
-						<input type = "submit" name = "vote" id = "btn_vot_1" value = "1" class="btn btn-primary btn-sm"> 
-					  </form>
-					  <strong><p id = "result_form_vot"></p></strong>';
+						<input type = "submit" name = "vote" id = "btn_vot_5" class = "btn_vot" value = "5"> 
+						<input type = "submit" name = "vote" id = "btn_vot_4" class = "btn_vot" value = "4"> 
+						<input type = "submit" name = "vote" id = "btn_vot_3" class = "btn_vot" value = "3"> 
+						<input type = "submit" name = "vote" id = "btn_vot_2" class = "btn_vot" value = "2"> 
+						<input type = "submit" name = "vote" id = "btn_vot_1" class = "btn_vot" value = "1"> 
+					</form>
+					<strong><p id = "result_form_vot"></p></strong>';
 	}
 	
 	/*Вывод кнопок "Обновить" | "Удалить" | "Снять с публикации"(Возможно убрать эту кнопку для всех, кромке админа и редактора)"*/
@@ -337,7 +336,7 @@ if (isset ($_GET['id']))
 						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
 						<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
 						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
-						<input type = "submit" id = "btn_recomm" name = "action" value = "Рекомендовать статью" class="btn btn-primary btn-sm">
+						<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-check-square" aria-hidden="true"></i> Рекомендовать статью</button>
 					  </form>
 					  <strong><p id = "result_form_recomm"></p></strong>';
 	}
@@ -349,8 +348,8 @@ if (isset ($_GET['id']))
 	
 	elseif (!isset($_SESSION['loggIn']))
 	{
-		$recommendation = '<strong>Вы можете <a href="../admin/registration/?log">авторизироваться</a> в системе или 
-						 <a href="../admin/registration/?reg">зарегестрироваться</a> для того, чтобы рекомендовать статью на главной странице!</strong>';
+		$recommendation = 'Вы можете <a href="../admin/registration/?log">авторизироваться</a> в системе или 
+						 <a href="../admin/registration/?reg">зарегестрироваться</a> для того, чтобы рекомендовать статью на главной странице!';
 	}
 	
 	/*Вывод похожих материалов*/
@@ -420,24 +419,21 @@ if (isset ($_GET['id']))
 	{
 		$action = 'addform';
 		$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-		$addComment = '<form action = "?'.$action.'" method = "post" align="center">
-						 <div>
-						 	<input type = "hidden" name = "idarticle" value = "'.$idPost.'">
-							<textarea class = "descr" id = "comment" name = "comment" data-provide="markdown" rows="10" placeholder = "Напишите свой комментарий!"></textarea>	
-						 </div>
-						  <div>
-							<input type = "submit" value = "Добавить комментарий" class="btn btn-info btn-sm">
-						  </div>	  
-						</form>
-						<hr/>';	
+		$addComment = '<form class="m-content comment-form" action = "?'.$action.'" method = "post" id=addcomment>               
+								<input type = "hidden" name = "idarticle" value = "'.$idPost.'">
+								<textarea class = "comment-textarea" rows="10" id = "comment" name = "comment" data-provide="markdown" placeholder = "Напишите свой комментарий!"></textarea>	
+								<button class = "btn_1">Добавить коммнтарий</button>  
+						</form>';	
 	}
 	
 	else
 	{
 		$authorName = '';
 		$_SESSION['email'] = '';
-		$addComment = '<a href="/admin/registration/?log">Авторизируйтесь</a> в системе или 
-						 <a href="/admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить комментарий!';//Вывод сообщения в случае невхода в систему
+		$addComment = '<div class="m-content comment-auth">
+							<a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
+							<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить комментарий!
+						</div>';//Вывод сообщения в случае невхода в систему
 		
 		$action = '';	
 	}
