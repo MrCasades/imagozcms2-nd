@@ -115,7 +115,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				
 			foreach ($similarPosts as $post_1): ?>
 			
-			<a href = "../viewnews/?id=<?php htmlecho ($post_1['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php echo $post_1['imghead']; ?>)">
+			<a href = "../viewpost/?id=<?php htmlecho ($post_1['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php echo $post_1['imghead']; ?>)">
                 <div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post_1['posttitle'])), 0, 7)))); ?>...</div>
             </a> 
 			<?php endforeach; ?>
@@ -206,11 +206,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				// если текущая старница
 				if($i == $page)
 				{
-					echo "<a href='./viewnews/?id=".$idPost."&page=$i'><button class='btn_2'>$i</button></a> ";
+					echo "<a href='./viewpost/?id=".$idPost."&page=$i'><button class='btn_2'>$i</button></a> ";
 				} 
 				else 
 				{
-					echo "<a href='./viewnews/?id=".$idPost."&page=$i'><button class='btn_1'>$i</button></a> ";
+					echo "<a href='./viewpost/?id=".$idPost."&page=$i'><button class='btn_1'>$i</button></a> ";
 				}
 			}?>
 </div>

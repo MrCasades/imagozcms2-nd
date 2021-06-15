@@ -333,12 +333,12 @@ if (isset ($_GET['id']))
 		$recommendationPrice = $row['promotionprice'];
 	
 		$recommendation = '<form action = "" method = "post" id = "ajax_form_recomm">
-						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
-						<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
-						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
-						<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-check-square" aria-hidden="true"></i> Рекомендовать статью</button>
-					  </form>
-					  <strong><p id = "result_form_recomm"></p></strong>';
+							<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
+							<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
+							<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
+							<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-bell" aria-hidden="true"></i> Рекомендовать статью</button>
+						</form>
+						<strong><p id = "result_form_recomm"></p></strong>';
 	}
 	
 	elseif (isset($_SESSION['loggIn']) && ((!userRole('Администратор')) || (!userRole('Автор')) || (!userRole('Рекламодатель'))))

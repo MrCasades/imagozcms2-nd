@@ -646,12 +646,12 @@ article .btn_fav_2{
 }
 
 article .btn_recomm{
-    background:red;
+    background:green;
     color: #FFFFFF;
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    width: 12rem;
+    width: 11rem;
     height: 2rem;
     margin-left: 1rem;
 }
