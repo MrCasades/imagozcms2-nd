@@ -1,4 +1,4 @@
-<?
+<?php
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
@@ -64,6 +64,5 @@ if (isset($_GET['vote']))
 	/*Добавление конкурсных очков автору*/
 		
 		if (($contestOn == 'YES') && (!userRole('Автор')) && (!userRole('Администратор'))) delOrAddContestScore('add', 'votingpoints');//если конкурс включен
-}
-
+	}
 ?>
