@@ -31,7 +31,7 @@ if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor'])
 		$imgAlt = $row['imgalt'];
 		$idAuthorPost = $row['idauthor'];
 		$idCategory = $row['idcategory'];
-		$url = '<a href="//'.MAIN_URL.'/viewpost/?id='.$row['id'].'" class="btn btn-primary">Далее</a>';
+		$url = '//'.MAIN_URL.'/viewpost/?id='.$row['id'];
 
 			
 		$sql = $SELECTCONTEST;

@@ -72,7 +72,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 foreach ($favourites as $favourite): ?>
 
 	
-            <a href = "../viewnews/index.html" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($favourite['imghead']);?>)">
+            <a href = "//<?php echo $favourite['url']; ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($favourite['imghead']);?>)">
                 <div class = "post-top-1"><?php htmlecho ($favourite['date']);?></div>
                 <div class = "post-bottom-1"> <?php htmlecho ($favourite['title']); ?></div>
             </a>
@@ -82,55 +82,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 </main>
 	<div class = "maincont_for_view"> 
-		
-		
-			<?php 
-			if (!empty ($favourites))
-			{
-				echo '<h3 align = "center">Избранные материалы пользователя</h3>';
-			}
-			
-			if (empty ($favourites)) 
-				{
-					echo '<div align = "center" class = "post">Здесь отображаются материалы добавленные пользователем в избранное</div>';
-					$favourites = '';
-				}
-		 	
-			else
-		 
-		 foreach ($favourites as $favourite): ?> 
-		  
-			<div>
-				
-				<div class = "post">
-				  <div class = "posttitle">
-				    <?php echo ($favourite['date']. ' | Автор: <a href="../account/?id='.$favourite['idauthorpost'].'" style="color: white" >'.$favourite['authorname']).'</a>';?>
-					<p>Рубрика: <a href="../viewcategory/?id=<?php echo $favourite['idcategory']; ?>" style="color: white"><?php echo $favourite['categoryname'];?></a></p> 
-				  </div>
-				  	 
-				   <div class = "newstext">
-				    <h3 align = "center"><?php htmlecho ($favourite['title']); ?></h3>
-				    <div class = "newsimg">
-					   <?php if ($favourite['imghead'] == '')
-						{
-							$img = '';//если картинка в заголовке отсутствует
-							echo $img;
-						}
-						 else 
-						{
-							$img = '<img width = "90%" height = "90%" src="../images/'.$favourite['imghead'].'"'. ' alt="'.$favourite['imgalt'].'"'.'>';//если картинка присутствует
-						}?>
-					  <p><?php echo $img;?></p>
-				     </div>
-					<p align = "justify"><?php echomarkdown ($favourite['post']); ?> [...]</p>
-					<?php echo $favourite['url']; ?> 
-				   </div>	
-				 </div>
-			<?php endforeach; ?>
-		</div>	
-			
-			<?php if (!empty ($favourites)) {echo '<div class="for_allposts_link"><p align = "center"><a href="./viewallfavourites/?id='.$idAuthor.'" style="color: white">Всё избранное автора</a></p></div>';}?>
-		 
+				 
 		 <div>
 		  <?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор'))//если пользователю присвоен определённый статус, то выводятся написанные им материалы
 				{
