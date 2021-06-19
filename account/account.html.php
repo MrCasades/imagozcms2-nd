@@ -48,46 +48,42 @@ include_once MAIN_FILE . '/header.inc.php';?>
         </div>   
 	</div> 
 
+	<?php if (!empty ($favourites)): ?>
+
+	<div class = "main-headers">
+        <div class = "headers-places"> 
+            <div class = "main-headers-place"><a href = "./viewallfavourites/?id=<?php echo $idAuthor;?>">Избранное</a></div>
+        </div>
+        <div class = "main-headers-line"></div>
+    </div>
 	
+	<?php endif; ?>
+	
+	<div class = "newsblock m-content">
+	<?php
+		if (empty ($favourites)) 
+				{
+					echo '<div class = "m-content">Здесь отображаются материалы добавленные пользователем в избранное</div>';
+					$favourites = '';
+				}
+		 	
+			else
+		 
+		 foreach ($favourites as $favourite): ?>
+
+	
+            <a href = "../viewnews/index.html" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($favourite['imghead']);?>)">
+                <div class = "post-top-1"><?php htmlecho ($favourite['date']);?></div>
+                <div class = "post-bottom-1"> <?php htmlecho ($favourite['title']); ?></div>
+            </a>
+	
+	<?php endforeach; ?>
+
+	</div>
 </main>
 	<div class = "maincont_for_view"> 
 		
-		<p align="center"><script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-		<script src="//yastatic.net/share2/share.js"></script>
-		<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div></p>	
-	
-		<div>
-		<p><?php echo $mainMessagesForm; ?></p>
-		<p><?php echo $setAccount; ?></p>
 		
-		   <p><img width = "150 px" height = "150 px" src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>"></p>
-		   <p><?php if (($authorRole === 'Автор') || ($authorRole === 'Администратор'))//если пользователю присвоен определённый статус, то выводятся его ранг
-				
-				{
-					echo ('<strong> Авторский ранг: '.$rangView.' </strong>'.$score.
-						  '<p><strong> Рейтинг: '.$rating.'</strong></p>');
-					echo $prices;
-					echo $ewallet;
-				}?></p>
-			
-			<p><?php echo $addRole; ?></p>
-			<p><?php echo $addBonus; ?></p>
-			<p><?php echo $addRoleAdvertiser; ?></p>
-			<div>
-				    <strong>Сайт:</strong> <?php if ($www !== '')//если автор приложил ссылку
-						{
-							echo '<a href="//';
-							htmlecho ($www);
-							echo '" rel = "nofollow">';
-							htmlecho ($www);
-							echo '</a>';
-						}?> 
-				<br/>
-				<br/>
-				<h4>Дополнительная информация:</h4>
-				<p align="justify"><?php echomarkdown ($accountInfo);?></p>	
-			</div>			
-		<div>
 			<?php 
 			if (!empty ($favourites))
 			{

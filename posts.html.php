@@ -144,7 +144,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class="tags-place-m m-content"> 
 			<?php if (empty($metas_1))
 			{
-				echo '<p align = "center">Нет тегов</p>';
+				echo '<p>Нет тегов</p>';
 			}
 			
 			else
