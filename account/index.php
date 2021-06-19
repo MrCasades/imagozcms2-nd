@@ -102,7 +102,7 @@ if (isset ($_GET['id']))
 	
 	if ($selectedAuthor == $idAuthor)
 	{
-		$setAccount = '<a href = "./setaccount" class="btn btn-primary btn-sm">Настройки учётной записи</a>';//запуск обновления информации профиля
+		$setAccount = '<a href = "./setaccount"><button class="btn_1">Настройки аккаунта</button></a>';//запуск обновления информации профиля
 		
 		/*Присвоить роль рекламодателя*/
 		if ((!userRole('Администратор')) && (!userRole('Автор')) && (!userRole('Рекламодатель')))
@@ -111,7 +111,7 @@ if (isset ($_GET['id']))
 			$addRoleAdvertiser = '<form action = "?" method = "post">
 									<div>
 										<input type = "hidden" name = "id" value = "'.$selectedAuthor.'">
-										<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Стать рекламодателем">
+										<button name = "action" class="btn_1" value = "Стать рекламодателем">Стать рекламодателем</button>
 									</div>
 								</form>';//вывод кнопки "Стать рекламодателем"
 		}
@@ -121,7 +121,7 @@ if (isset ($_GET['id']))
 			$addRoleAdvertiser = '<form action = "?" method = "post">
 									<div>
 										<input type = "hidden" name = "id" value = "'.$selectedAuthor.'">
-										<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Отказаться от роли рекламодателя">
+										<button name = "action" class="btn_1" value = "Отказаться от роли рекламодателя">Отказаться от роли рекламодателя</button>
 									</div>
 								</form>';//вывод кнопки "Стать рекламодателем"
 		}
@@ -150,7 +150,7 @@ if (isset ($_GET['id']))
 
 		$row = $s -> fetch();
 	
-		$score = '<strong> | Мой счёт '.round($row['score'], 2, PHP_ROUND_HALF_DOWN).'</strong>';	//вывод счёта
+		$score = '<br><strong>Мой счёт '.round($row['score'], 2, PHP_ROUND_HALF_DOWN).'</strong>';	//вывод счёта
 		
 		/*Команда SELECT, Вывод платёжной системы и кошелька*/
 		try
@@ -190,7 +190,7 @@ if (isset ($_GET['id']))
 		$mainMessagesForm = '<form action = "../mainmessages/addupdmainmessage/#bottom" method = "post">
 								<div>
 									<input type = "hidden" name = "idto" value = "'.$idAuthor.'">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Написать сообщение">
+									<button name = "action" class="btn_1" value="Написать сообщение">Написать сообщение</button>
 								</div>
 							</form>';// написать сообщение!
 	}
@@ -319,12 +319,12 @@ if (isset ($_GET['id']))
 								  'rating' => $row['rating']);
 		}	
 		
-		$rangView = (string) $row['rangname'];//Если присвоен соответствующий статус, то выводиться ранг
-		$rating = (string) $row['rating'];//Если присвоен соответствующий статус, то выводиться рейтинг
+		$rangView = '<strong> Авторский ранг: '. (string) $row['rangname']. '</strong>';//Если присвоен соответствующий статус, то выводиться ранг
+		$rating = '<br><strong> Рейтинг: '.(string) $row['rating'].'</strong>';//Если присвоен соответствующий статус, то выводиться рейтинг
 		
 		if ($selectedAuthor == $idAuthor)
 		{
-			$prices = '<p><strong> Цена новости: '.$row['pricenews'].' за 1000 зн. | Цена статьи: '.$row['pricepost'].' за 1000 зн. </strong></p>';
+			$prices = '<p><strong> Цена новости: '.$row['pricenews'].' за 1000 зн. <br> Цена статьи: '.$row['pricepost'].' за 1000 зн. </strong></p>';
 		}
 		
 		else
@@ -353,12 +353,12 @@ if (isset ($_GET['id']))
 		{		
 			$addRole = '<form action=" " metod "post">
 							<input type = "hidden" name = "id" value = "'.$idAuthor.'">
-							<input type = "submit" name = "delrang" value = "Удалить ранг Автор" class="btn btn-primary btn-sm"> 
+							<button name = "delrang" value = "Удалить ранг Автор" class="btn_1">Удалить ранг Автор</button> 
 					 	 </form>';
 			
 			$addBonus = '<form action = "../admin/payment/" method = "post">
 									<input type = "hidden" name = "id" value = "'.$idAuthor.'">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Назначить премию или бонус">
+									<button name = "action" class="btn_1" value = "Назначить премию или бонус">Назначить премию или бонус</button>
 							</form>';//если у автора статус "Автор", то ему можно назначить премию или бонус
 		}
 		
@@ -366,7 +366,7 @@ if (isset ($_GET['id']))
 		{		
 			$addRole = '<form action=" " metod "post">
 							<input type = "hidden" name = "id" value = "'.$idAuthor.'">
-							<input type = "submit" name = "addrang" value = "Присвоить ранг Автор" class="btn btn-primary btn-sm"> 
+							<button name = "addrang" value = "Присвоить ранг Автор" class="btn_1">Присвоить ранг Автор</button> 
 					 	 </form>';
 			
 			$addBonus = '';//кнопка не отображается

@@ -12,6 +12,43 @@ include_once MAIN_FILE . '/header.inc.php';?>
         </div>
         <div class = "main-headers-line"></div>   
     </div>
+
+	<div class="acc-m m-content">
+        <div class="ava-pl">
+			<?php echo $addRole; ?>
+			<?php echo $addBonus; ?>
+			<?php echo $addRoleAdvertiser; ?>
+			<br/>
+			<img src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
+			<?php echo $setAccount; ?>
+			<?php echo $mainMessagesForm; ?>
+			<p><?php if (($authorRole === 'Автор') || ($authorRole === 'Администратор'))//если пользователю присвоен определённый статус, то выводятся его ранг
+				
+				{
+					echo $rangView.$score.$rating;
+					echo $prices;
+					echo $ewallet;
+				}?></p>
+		</div> 
+		<div class="acc-info-pl">
+                <h3>Инфо</h3>
+                <div>
+					<?php echomarkdown ($accountInfo);?>
+                </div>
+                <p>
+					Сайт: <?php if ($www !== '')//если автор приложил ссылку
+							{
+								echo '<a href="//';
+								htmlecho ($www);
+								echo '" rel = "nofollow">';
+								htmlecho ($www);
+								echo '</a>';
+							}?> 
+				</p>     
+        </div>   
+	</div> 
+
+	
 </main>
 	<div class = "maincont_for_view"> 
 		
