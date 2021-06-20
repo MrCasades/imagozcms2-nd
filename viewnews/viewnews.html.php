@@ -146,6 +146,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 		<?php echo $addComment; ?>
 
+		<div class = "m-content comment-line"></div> 
+
 		<?php if (empty ($comments))
 			{
 				echo '<br/><p align="center">Комментарии отсутствуют!</p>';

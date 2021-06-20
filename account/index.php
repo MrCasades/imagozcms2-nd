@@ -445,7 +445,7 @@ if (isset ($_GET['id']))
 
 	try
 	{
-		$sql = 'SELECT comments.id, author.id AS idauthor, comment, imghead, imgalt, subcommentcount, commentdate, authorname FROM comments 
+		$sql = 'SELECT comments.id, author.id AS idauthor, comment, imghead, imgalt, subcommentcount, commentdate, authorname, avatar FROM comments 
 		INNER JOIN author 
 		ON idauthor = author.id 
 		WHERE idaccount = '.$idAuthor.' 
@@ -468,7 +468,7 @@ if (isset ($_GET['id']))
 	foreach ($result as $row)
 	{
 		$comments[] =  array ('id' => $row['id'], 'idauthor' => $row['idauthor'], 'text' => $row['comment'], 'date' => $row['commentdate'], 'authorname' => $row['authorname'],
-								'subcommentcount' => $row['subcommentcount'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt']);
+								'subcommentcount' => $row['subcommentcount'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt'], 'avatar' => $row['avatar']);
 	}
 	
 	/*Форма добавления комментария / Получение имени автора для вывода меню редактирования или удаления комментария*/

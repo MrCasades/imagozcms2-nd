@@ -96,6 +96,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	
 	<?php echo $addComment; ?>
 
+	<div class = "m-content comment-line"></div> 
+
 	<?php if (empty ($comments))
 			{
 				echo'<p align="center">Записи на стене отсутствуют!</p>';
@@ -105,10 +107,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				
 			foreach ($comments as $comment): ?> 
 
-<div class="comment m-content">
+	<div class="comment m-content">
             <div class="comment-person-pl">
                 <div>
-                    <img src="../avatars/<?php echo $comment['imghead'];?>" alt="<?php echo $comment['imgalt'];?>"/>
+                    <img src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"/>
                 </div> 
                 <div>
 					<?php echo '<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname'].'</a>';?><br>
@@ -116,7 +118,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
                 </div> 
             </div>
             <div class="comment-text">
-			<p><?php 
+			<?php 
 				   
 				   /*Вывод меню редактирования и удаления комментария для автора*/
 					if (isset($_SESSION['loggIn']))
@@ -160,37 +162,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					 // если текущая старница
 					 if($i == $page)
 					 {
-						 echo "<a href='../account/?id=".$idAuthor."&page=$i' class='btn_2'>$i</a> ";
+						 echo "<a href='../account/?id=".$idAuthor."&page=$i'><button class='btn_2'>$i</button></a> ";
 					 } 
 					 else 
 					 {
-						 echo "<a href='../account/?id=".$idAuthor."&page=$i' class='btn_1'>$i</a> ";
+						 echo "<a href='../account/?id=".$idAuthor."&page=$i'><button class='btn_1'>$i</button></a> ";
 					 }
 				 }?>
 		</div>	
 </main>
-	<div class = "maincont_for_view"> 
-				 	
-				<div align = "center">
-				 <?php
-				 /*Постраничный вывод информации*/
-				 for ($i = 1; $i <= $pagesCount; $i++) 
-				 {
-					 // если текущая старница
-					 if($i == $page)
-					 {
-						 echo "<a href='../account/?id=".$idAuthor."&page=$i' class='btn btn-info'>$i</a> ";
-					 } 
-					 else 
-					 {
-						 echo "<a href='../account/?id=".$idAuthor."&page=$i' class='btn btn-primary btn-sm'>$i</a> ";
-					 }
-				 }?>
-				 </div>				
-	
-	
-		</div>
-	</div>		
 	
 <?php 
 /*Загрузка footer*/
