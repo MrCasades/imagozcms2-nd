@@ -86,71 +86,91 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		{
 			include MAIN_FILE . '/account/postandnews.inc.html.php';
 		}?>
+
+	<div class = "main-headers">
+        <div class = "headers-places"> 
+            <div class = "main-headers-txtplace">Стена (<?php echo $countPosts; ?>)</div>
+        </div>
+        <div class = "main-headers-line"></div>
+    </div>
 	
+	<?php echo $addComment; ?>
+
+	<?php if (empty ($comments))
+			{
+				echo'<p align="center">Записи на стене отсутствуют!</p>';
+			}
+				
+			else
+				
+			foreach ($comments as $comment): ?> 
+
+<div class="comment m-content">
+            <div class="comment-person-pl">
+                <div>
+                    <img src="../avatars/<?php echo $comment['imghead'];?>" alt="<?php echo $comment['imgalt'];?>"/>
+                </div> 
+                <div>
+					<?php echo '<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname'].'</a>';?><br>
+                    <?php echo $comment['date'];?>
+                </div> 
+            </div>
+            <div class="comment-text">
+			<p><?php 
+				   
+				   /*Вывод меню редактирования и удаления комментария для автора*/
+					if (isset($_SESSION['loggIn']))
+					{
+					   $authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
+					}
+					else
+					{
+						$authorName = '';
+					}
+					if ($authorName == $comment['authorname'])
+					{
+						$updAnddel = '<form action = "../account/addupdwallpost/" method = "post">
+						   <div>
+							   <input type = "hidden" name = "id" value = "'.$comment ['id'].'">
+							   <input type = "hidden" name = "idaut" value = "'.$comment['idauthor'].'">
+							   <input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Редактировать">
+							   <input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Del">
+						   </div>
+					   </form>';		 
+					}	
+					else
+					{
+						$updAnddel = '';
+					}							 
+					echo $updAnddel;?></p>
+				<img src="../images/<?php echo $comment['imghead'];?>" alt="<?php echo $comment['imgalt'];?>"/>
+                <?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 50))); ?> [...]
+            </div>    
+        </div> 
+        <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
+        <div class = "m-content comment-line"></div> 
+
+		<?php endforeach; ?> 
+
+		<div  class="page-output">
+				 <?php
+				 /*Постраничный вывод информации*/
+				 for ($i = 1; $i <= $pagesCount; $i++) 
+				 {
+					 // если текущая старница
+					 if($i == $page)
+					 {
+						 echo "<a href='../account/?id=".$idAuthor."&page=$i' class='btn_2'>$i</a> ";
+					 } 
+					 else 
+					 {
+						 echo "<a href='../account/?id=".$idAuthor."&page=$i' class='btn_1'>$i</a> ";
+					 }
+				 }?>
+		</div>	
 </main>
 	<div class = "maincont_for_view"> 
-				 
-		
-		 <h4 align="center">Стена (<?php echo $countPosts; ?>)</h4>
-		 <p align="center"><?php echo $addComment; ?></p>
-		<div>
-		<?php if (empty ($comments))
-				{
-					echo'<p align="center">Записи на стене отсутствуют!</p>';
-				}
-				
-			  else
-				
-				foreach ($comments as $comment): ?> 	   		
-				<div class = "post">
-				 <div class = "posttitle">
-				    Дата записи: <?php echo ($comment['date']. ' | Автор: <a href="../account/?id='.$comment['idauthor'].'" style="color: white" >'.$comment['authorname']).'</a>';?>
-				  </div>
-				  <p><?php 
-				   
-						/*Вывод меню редактирования и удаления комментария для автора*/
-						 if (isset($_SESSION['loggIn']))
-						 {
-							$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-						 }
-						 else
-						 {
-							 $authorName = '';
-						 }
-						 if ($authorName == $comment['authorname'])
-						 {
-							 $updAnddel = '<form action = "../account/addupdwallpost/" method = "post">
-								<div>
-									<input type = "hidden" name = "id" value = "'.$comment ['id'].'">
-									<input type = "hidden" name = "idaut" value = "'.$comment['idauthor'].'">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Редактировать">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Del">
-								</div>
-							</form>';		 
-						 }	
-						 else
-						 {
-							 $updAnddel = '';
-						 }							 
-							
-						 echo $updAnddel;?></p>
-						<?php if ($comment['imghead'] == '')
-						{
-							$img = '';//если картинка в заголовке отсутствует
-							echo $img;
-						}
-							else 
-						{
-							$img = '<p align="center"><img width = "40%" height = "20%" src="../images/'.$comment['imghead'].'"'. ' alt="'.$comment['imgalt'].'"'.'></p>';//если картинка присутствует
-						}?>
-					<p><?php echo $img;?></p>
-				  <p><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 50))); ?> [...]</p>
-				  <p><img width = "5%" height = "5%" src="<?php echo '//'.MAIN_URL;?>/answers.jpg" alt="Ответы на комментарий" title="Количество ответов"> 
-					  <strong>[<?php echo $comment['subcommentcount']; ?>]</strong></p>
-				  <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>" class="btn btn-primary btn-sm">Открыть</a>   
-				</div>	  		   
-				<?php endforeach; ?> 
-				
+				 	
 				<div align = "center">
 				 <?php
 				 /*Постраничный вывод информации*/

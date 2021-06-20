@@ -48,7 +48,7 @@
 
 		 foreach ($posts as $post): ?>
 
-		<a href = "../viewnews/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($post['imghead']); ?>)">
+		<a href = "../viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($post['imghead']); ?>)">
 			<div class = "post-top-1"><?php htmlecho ($post['postdate']); ?></div>
 				<div class = "post-bottom-1"><?php htmlecho ($post['posttitle']); ?></div>
 		</a>
