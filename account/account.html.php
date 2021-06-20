@@ -80,6 +80,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<?php endforeach; ?>
 
 	</div>
+
+	
+	<?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор'))//если пользователю присвоен определённый статус, то выводятся написанные им материалы
+		{
+			include MAIN_FILE . '/account/postandnews.inc.html.php';
+		}?>
+	
 </main>
 	<div class = "maincont_for_view"> 
 				 

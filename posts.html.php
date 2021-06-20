@@ -23,7 +23,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class = "newsblock m-content last-news">
 	<?php if (empty ($newsIn))
 		 {
-			 echo '<p align = "center">Новости отсутствуют</p>';
+			 echo '<p>Новости отсутствуют</p>';
 		 }
 		 
 		else
@@ -45,7 +45,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class = "newsblock m-content rating-n">
 	<?php if (empty ($newsInTOP))
 		 {
-			 echo '<p align = "center">Пусто</p>';
+			 echo '<p>Пусто</p>';
 		 }
 		 
 		else
@@ -117,7 +117,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class = "main-post m-content">
 	<?php if (empty($lastRecommPosts))
 		 {
-			 echo '<p align = "center">Рекомендации отсутствуют</p>';
+			 echo '<p>Рекомендации отсутствуют</p>';
 		 }
 		 
 		 else
@@ -171,7 +171,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
         <div class="owl-carousel owl-theme">
 			<?php if (empty ($postsIMG))
 			{
-				echo '<p align = "center">Статьи отсутствуют</p>';
+				echo '<p>Статьи отсутствуют</p>';
 			}
 			
 			else
@@ -211,7 +211,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class = "main-post m-content last-pr">
 	<?php if (empty($promotions))
 		 {
-			 echo '<p align = "center">Статьи отсутствуют</p>';
+			 echo '<p>Статьи отсутствуют</p>';
 		 }
 		 
 		 else
@@ -231,7 +231,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class = "newsblock m-content rating-pr">
 	<?php if (empty ($promotionsTOP))
 		 {
-			 echo '<p align = "center">Пусто</p>';
+			 echo '<p>Пусто</p>';
 		 }
 		 
 		else
@@ -288,7 +288,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class = "main-post m-content last-art">
 	<?php if (empty($posts))
 		 {
-			 echo '<p align = "center">Статьи отсутствуют</p>';
+			 echo '<p>Статьи отсутствуют</p>';
 		 }
 		 
 		 else
@@ -308,7 +308,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 	<div class = "newsblock m-content rating-art">
 	<?php if (empty ($postsTOP))
 		 {
-			 echo '<p align = "center">Пусто</p>';
+			 echo '<p>Пусто</p>';
 		 }
 		 
 		else
@@ -341,7 +341,7 @@ include_once __DIR__ . '/admin/adminnews.inc.html.php';
 		
 			<?php if (empty ($authorsTOP))
 			{
-				echo '<p align = "center">Нет авторов</p>';
+				echo '<p>Нет авторов</p>';
 			}
 			
 			else
