@@ -1,9 +1,13 @@
+<?php if (!empty ($newsIn)): ?>
+
 <div class = "main-headers">
     <div class = "headers-places"> 
             <div class = "main-headers-place"><a href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>">Новости автора</a></div>
     </div>
     <div class = "main-headers-line"></div>
 </div>
+
+<?php endif; ?>
 
 <div class = "newsblock m-content">
 	<?php  if (empty ($newsIn))
@@ -23,6 +27,8 @@
 	<?php endforeach; ?>
 </div>
 
+<?php if (!empty ($posts)): ?>
+
 <div class = "main-headers">
     <div class = "headers-places"> 
             <div class = "main-headers-place"><a href = "../account/allauthorpost/?id=<?php htmlecho ($idAuthor); ?>">Статьи автора</a></div>
@@ -30,10 +36,12 @@
     <div class = "main-headers-line"></div>
 </div>
 
+<?php endif; ?>
+
 <div class = "newsblock m-content">
 	<?php  if (empty ($posts))
 		 {
-			 echo '<p>Автор не написал ни одной новости</p>';
+			 echo '<p>Автор не написал ни одной статьи</p>';
 		 }
 		 
 		 else
@@ -47,51 +55,3 @@
 
 	<?php endforeach; ?>
 </div>
-	
-	
-	<div>
-	  <div>
-	   <table>
-		<tr>
-		    <td><a href="../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>">Новости автора</a></td>
-		    <td><a href="../account/allauthorpost/?id=<?php htmlecho ($idAuthor); ?>">Статьи автора</a></td>
-		</tr> 
-		<tr>
-		<?php if (!isset($newsIn))
-		 {
-			 $noPosts = '<td><p align = "center">Автор не написал ни одной новости</p></td>';
-			 echo $noPosts;
-			 $newsIn = null;
-		 }
-		 
-		 else
-			 
-		 echo '<td>'; 
-		 foreach ($newsIn as $news): ?> 
-		  <ul>
-			<li><a href="../viewnews/?id=<?php htmlecho ($news['id']); ?>"><?php htmlecho ($news['newstitle']); ?></a></li> 
-		  </ul>				
-		 <?php endforeach; ?></td>
-		 
-	  </div>
-      <div>	  
-		 
-		<?php if (!isset($posts))
-		 {
-			 $noPosts = '<td><p align = "center">Автор не написал ни одной новости</p></td>';
-			 echo $noPosts;
-			 $posts = null;
-		 }
-		 
-		 else
-			
-		 echo '<td>';
-		 foreach ($posts as $post): ?> 
-		  <ul>
-			<li><a href="../viewpost/?id=<?php htmlecho ($post['id']); ?>"><?php htmlecho ($post['posttitle']); ?></a></li>
-		  </ul>			
-		 <?php endforeach; ?></td>
-		 </tr>
-	    </table>	 
-	  </div>	 
-	</div>

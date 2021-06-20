@@ -90,13 +90,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </main>
 	<div class = "maincont_for_view"> 
 				 
-		 <div>
-		  <?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор'))//если пользователю присвоен определённый статус, то выводятся написанные им материалы
-				{
-					include MAIN_FILE . '/account/postandnews.inc.html.php';
-				}?>
-		</div>
-	
+		
 		 <h4 align="center">Стена (<?php echo $countPosts; ?>)</h4>
 		 <p align="center"><?php echo $addComment; ?></p>
 		<div>

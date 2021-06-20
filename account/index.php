@@ -232,7 +232,7 @@ if (isset ($_GET['id']))
 		/*Выбор новостей автора*/
 		try
 		{
-			$sql = 'SELECT newsblock.id AS newsid, newstitle FROM author
+			$sql = 'SELECT newsblock.id AS newsid, newstitle, newsdate, imghead FROM author
 					INNER JOIN newsblock ON author.id = idauthor 
 					WHERE premoderation = "YES" AND author.id = '.$idAuthor.' ORDER BY newsblock.id DESC LIMIT 3';
 			$result = $pdo->query($sql);
@@ -252,19 +252,20 @@ if (isset ($_GET['id']))
 		/*Вывод результата в шаблон*/
 		foreach ($result as $row)
 		{
-			$newsIn[] =  array ('id' => $row['newsid'], 'newstitle' => $row['newstitle']);
+			$newsIn[] =  array ('id' => $row['newsid'], 'newstitle' => $row['newstitle'], 'newsdate' => $row['newsdate'],
+								'imghead' => $row['imghead']);
 		}	
 		
 		/*Если массив пустой для избежания ошибки "Warning: Invalid argument supplied for foreach()"*/
-		if (!isset ($newsIn))
-		{
-			$newsIn[] =  array ('id' => 'Нет значения', 'newstitle' => '');
-		}
+		// if (!isset ($newsIn))
+		// {
+		// 	$newsIn[] =  array ('id' => 'Нет значения', 'newstitle' => '');
+		// }
 		
 		/*Выбор статей автора*/
 		try
 		{
-			$sql = 'SELECT posts.id AS postid, posttitle FROM author
+			$sql = 'SELECT posts.id AS postid, posttitle, postdate, imghead FROM author
 					INNER JOIN posts ON author.id = idauthor 
 					WHERE premoderation = "YES" AND author.id = '.$idAuthor.' ORDER BY posts.id DESC LIMIT 3';
 			$result = $pdo->query($sql);
@@ -284,14 +285,15 @@ if (isset ($_GET['id']))
 		/*Вывод результата в шаблон*/
 		foreach ($result as $row)
 		{
-			$posts[] =  array ('id' => $row['postid'], 'posttitle' => $row['posttitle']);
+			$posts[] =  array ('id' => $row['postid'], 'posttitle' => $row['posttitle'], 'postdate' => $row['postdate'],
+			'imghead' => $row['imghead']);
 		}	
 		
 		/*Если массив пустой для избежания ошибки "Warning: Invalid argument supplied for foreach()"*/
-		if (!isset ($posts))
-		{
-			$posts[] =  array ('id' => 'Нет значения', 'posttitle' => '');
-		}
+		// if (!isset ($posts))
+		// {
+		// 	$posts[] =  array ('id' => 'Нет значения', 'posttitle' => '');
+		// }
 		
 		/*Вывод ранга автора*/
 		try
