@@ -48,6 +48,20 @@ input{
     max-width: 75%; 
 }
 
+.error-pl{
+    margin-top: 1rem;
+    margin-left: 15%;
+    max-width: 70%;
+    text-align: left;
+    font-weight: bold;
+    padding: 1rem;
+    border: 2px solid #1e90ff;
+}
+
+.error-pl .btn_2{
+    margin-left: 45%;
+}
+
 .page-output{
     margin-left: 30%;
     max-width: 50%;
