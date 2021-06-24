@@ -22,7 +22,7 @@ if (isset ($_GET['id']))
 	
 	$_SESSION['idcomment'] = $idComment;
 	
-	$select = 'SELECT comments.id, author.id AS idauthor, comment, commentdate, imghead, imgalt, authorname FROM comments 
+	$select = 'SELECT comments.id, author.id AS idauthor, comment, commentdate, imghead, imgalt, avatar, authorname FROM comments 
 				INNER JOIN author 
 				ON idauthor = author.id 
 				WHERE comments.id = ';
@@ -33,7 +33,8 @@ if (isset ($_GET['id']))
 	try
 	{
 		$sql = $select.$idComment;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
@@ -47,12 +48,26 @@ if (isset ($_GET['id']))
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
+	$row = $s -> fetch();
+		
+	$articleId = $row['id'];
+	$authorId = $row['idauthor'];
+	$articleText = $row['comment'];
+	$imgHead = $row['imghead'];
+	$imgAlt = $row['imgalt'];
+	$date = $row['commentdate'];
+	// $viewCount = $row['viewcount'];
+	// $averageNumber = $row['averagenumber'];
+	$nameAuthor = $row['authorname'];
+	$avatar = $row['avatar'];
+	// $favouritesCount = $row['favouritescount'];
+
+	/*Если страница отсутствует. Ошибка 404*/
+	if (!$row)
 	{
-		$comments[] =  array ('id' => $row['id'], 'idauthor' => $row['idauthor'], 'text' => $row['comment'], 'date' => $row['commentdate'], 
-							  'authorname' => $row['authorname'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt']);
-	}	
+		header ('Location: ../page-not-found/');//перенаправление обратно в контроллер index.php
+		exit();	
+	}
 	
 	$title = 'Запись пользователя '. $row['authorname'].' от '.$row['commentdate'].' | imagoz.ru';//Данные тега <title>
 	$headMain = 'Запись пользователя '. $row['authorname'].' от '.$row['commentdate'];

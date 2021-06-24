@@ -100,7 +100,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<?php if (empty ($comments))
 			{
-				echo'<p align="center">Записи на стене отсутствуют!</p>';
+				echo'<p class = "m-content">Записи на стене отсутствуют!</p>';
 			}
 				
 			else
@@ -118,7 +118,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
                 </div> 
             </div>
             <div class="comment-text">
-			<?php 
+			<p><?php 
 				   
 				   /*Вывод меню редактирования и удаления комментария для автора*/
 					if (isset($_SESSION['loggIn']))

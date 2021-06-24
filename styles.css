@@ -39,13 +39,13 @@ input{
 
 .btn_1:hover{
     background:#1e90ff;
-    color: #1e90ff;
+    color: #FFFFFF;
     font-weight: bold;
 }
 
 .btn_2:hover{
     background:#FFFFFF;
-    color: #FFFFFF;
+    color: #1e90ff;
     font-weight: bold;
 }
 
@@ -715,6 +715,16 @@ article .btn_recomm{
     flex-shrink: 0;
     flex-grow: 0;
     transform: rotate(180deg);
+}
+
+.sub-comment{
+    margin-top: 1rem;
+}
+
+.sub-comment-info{
+    border: 1px solid rgba(30, 144, 255, 1);
+    padding: 0.3%;
+    border-radius: 5px;
 }
 
 article .zen-ch a{
