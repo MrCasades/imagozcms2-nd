@@ -27,7 +27,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <?php if (empty ($subcomments))
 		{
-			echo '<p align="center">Ответы отсутствуют!</p>';
+			echo '<p class = "m-content">Ответы отсутствуют!</p>';
 		}
 				
 	  else
@@ -88,28 +88,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		}
 	}?>
 </div>	
-
-		
-				
-				<div align = "center">
-				 <?php
-				 /*Постраничный вывод информации*/
-				 for ($i = 1; $i <= $pagesCount; $i++) 
-				 {
-					 // если текущая старница
-					 if($i == $page)
-					 {
-						 echo "<a href='../viewnews/?id=".$idComment."&page=$i' class='btn btn-info'>$i</a> ";
-					 } 
-					 else 
-					 {
-						 echo "<a href='../viewnews/?id=".$idComment."&page=$i' class='btn btn-primary btn-sm'>$i</a> ";
-					 }
-				 }?>
-				 </div>				
-		</div>		
-		</div>
-	</div>		
 
 <?php 
 /*Загрузка footer*/
