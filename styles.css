@@ -39,6 +39,12 @@ input{
 
 .btn_1:hover{
     background:#1e90ff;
+    color: #1e90ff;
+    font-weight: bold;
+}
+
+.btn_2:hover{
+    background:#FFFFFF;
     color: #FFFFFF;
     font-weight: bold;
 }
