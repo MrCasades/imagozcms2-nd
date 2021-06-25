@@ -758,6 +758,7 @@ main .ava-pl{
 main .ava-pl img{
     height: 40%;
     width: 40%;
+    border-radius: 10px;
     
 }
 
@@ -772,4 +773,13 @@ main .acc-info-pl{
     margin-left: -27%;
     margin-top: -1.5%;
     font-size: 1.5rem;
+}
+
+.set-acc-ava-pl h4{
+    margin-left: 5%;
+}
+
+.set-acc-ava-pl img{
+    width: 15rem;
+    height: 15rem;
 }
