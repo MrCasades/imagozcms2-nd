@@ -4,24 +4,27 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
-	
-	<div class = "maincont">
-	 <div class = "post">
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class = "error-pl">
+	<p>
 		<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
-		 <table>
-		  <tr>	
-			<td><label for = "upload">Загрузите файл</label><input type = "file" name = "upload" id = "upload"></td>
-			<td><input type = "hidden" name = "action" value = "upload"></td>
-		  </tr>	
-		  <tr>
-			<td><input type = "hidden" name = "id" value = "<?php htmlecho($idAuthor); ?>"></td>
-			<td><input type = "submit" value = "<?php htmlecho($button); ?>" class="btn btn-primary btn-sm"></td>
-		  </tr>	
-		 </table>	
-		</form>		
-	 </div>
-	</div>
+			<p class = "for-info-txt">Загрузите файл <input type = "file" name = "upload" id = "upload"></p>
+			<input type = "hidden" name = "action" value = "upload">
+			<input type = "hidden" name = "id" value = "<?php htmlecho($idAuthor); ?>">
+			<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2">
+			<a href="#" onclick="history.back();"><button type="button" class="btn_1">Назад</button></a>
+		</form>	
+	</p>
+</div>
 	
+
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>		

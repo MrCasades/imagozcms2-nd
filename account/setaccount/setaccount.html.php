@@ -69,7 +69,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div class="m-content">
 		<p>Обновите платёжные реквизиты, чтобы получить возможность создавать заявки на вывод средств.</p>
 		<form action = "../../admin/payment/" method = "post">
-			<input type = "hidden" name = "id" value = "'.$idAuthor.'">
+			<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>">
 			<input type = "submit" name = "action" class="btn_2" value = "Вывести средства">
 			<input type = "submit" name = "action" class="btn_1" value = "Обновить платёжные реквизиты">
 		</form>

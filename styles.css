@@ -64,6 +64,10 @@ input{
     border: 2px solid #1e90ff;
 }
 
+.for-info-txt{
+    text-align: center;
+}
+
 .error-pl .btn_2{
     margin-left: 45%;
 }
