@@ -5,33 +5,22 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont_for_view">
-	<div class = "post">
+<div class="m-content form-pl">
 	<form action = "?<?php htmlecho ($action); ?>" method = "post">
-	  <table>	
-		<tr>
-			<th>Имя автора: </th><td><?php htmlecho($authorname);?></td>	
-		</tr> 
-		<tr>
-			<th>E-mail: </th><td><?php htmlecho($email);?></td>	
-		</tr>
-		<tr>
-			<th>WWW: </th><td><input type = "text" name = "www" id = "www" value = "<?php htmlecho($www);?>"></td>	
-		</tr>
-	  </table>	
-	  <br>
+		<p><strong>Имя автора:</strong> <?php htmlecho($authorname);?></p>	
+		<p><strong>E-mail:</strong> <?php htmlecho($email);?></p>		
+		<p><strong>WWW:</strong> <input type = "text" name = "www" id = "www" value = "<?php htmlecho($www);?>"></p>	
 		<div>
-			<strong><label for = "post">Дополнительная информация:</label></strong>
+			<h3>Дополнительная информация:</h3>
 			<textarea class = "descr" id = "accountinfo" name = "accountinfo" data-provide="markdown" rows="10"><?php htmlecho($accountinfo);?></textarea>	
 		</div>		 
-     <br>
-		<div>
+		<p>
 			<input type = "hidden" name = "id" value = "<?php htmlecho($idauthor);?>">
-			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn btn-primary btn-sm">
-		</div>
+			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2">
+			<a href="#" onclick="history.back();"><button type="button" class="btn_1">Назад</button></a>
+		</p>
 	</form>
-	</div>	
-	</div>
+</div>
 
 <?php 
 /*Загрузка footer*/
