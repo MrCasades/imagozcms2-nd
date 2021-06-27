@@ -81,6 +81,11 @@ input{
     border: 2px solid #1e90ff;
     padding: 1%;
     font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.fopm-margin{
+    margin-left: 30%;
 }
 
 .page-output .btn_1{
