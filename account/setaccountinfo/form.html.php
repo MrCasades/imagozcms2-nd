@@ -22,8 +22,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</div>		 
 		<p>
 			<input type = "hidden" name = "id" value = "<?php htmlecho($idauthor);?>">
-			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2">
-			<a href="#" onclick="history.back();"><button type="button" class="btn_1">Назад</button></a>
+			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2 addit-btn">
+			<a href="#" onclick="history.back();"><button type="button" class="btn_1 addit-btn">Назад</button></a>
 		</p>
 	</form>
 </div>

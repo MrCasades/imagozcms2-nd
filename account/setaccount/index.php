@@ -59,7 +59,7 @@ $avatar = $row['avatar'];
 $authorName = $row['authorname'];
 
 /*Если установлен аватар по умолчанию, то его нельзя удалить*/
-$delAva = $avatar === "ava-def.jpg" ? '' : '<input type = "submit" name = "action" class="btn_1" value = "Удалить аватар">';
+$delAva = $avatar === "ava-def.jpg" ? '' : '<input type = "submit" name = "action" class="btn_1 addit-btn" value = "Удалить аватар">';
 
 //Старый вывод формы платежей
 // if ((userRole('Администратор')) || (userRole('Автор')) || (userRole('Рекламодатель')))

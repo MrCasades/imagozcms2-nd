@@ -92,13 +92,15 @@ if (isset ($_GET['changepass']))
 		include MAIN_FILE . '/includes/db.inc.php';
 	
 		$password = md5($_POST['password'] . 'fgtn');
+
+		$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора 
 		
 		try
 		{
 			$sql = 'UPDATE author SET password = :password WHERE id = :id';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> bindValue(':password', $password);//отправка значения
-			$s -> bindValue(':id', $_SESSION['idAuthor']);//отправка значения
+			$s -> bindValue(':id', $selectedAuthor);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		}
 		
@@ -117,7 +119,7 @@ if (isset ($_GET['changepass']))
 		{
 			$sql = 'SELECT password FROM author WHERE id = :id';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> bindValue(':id', $_SESSION['idAuthor']);//отправка значения
+			$s -> bindValue(':id', $selectedAuthor);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		}
 		

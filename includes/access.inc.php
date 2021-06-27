@@ -137,7 +137,7 @@ function authorLogin ($email, $password)
 	
 	try
 	{
-		$sql = 'SELECT id, authorname FROM author
+		$sql = 'SELECT authorname FROM author
 				WHERE email = :email AND password = :password';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':email', $email);//отправка значения
@@ -151,13 +151,12 @@ function authorLogin ($email, $password)
 		include 'error.html.php';
 		exit();
 	}
+
+	$row = $s-> fetch();
+
+	$authorName = $row['authorname'];
 	
-	foreach ($s as $row)
-	{
-		$authorLog[] = array('id' => $row['id'], 'authorname' => $row['authorname']);
-	}
-	
-	return $row['authorname'];
+	return $authorName;
 }
 
 /*Функция возвращающая id Автора*/

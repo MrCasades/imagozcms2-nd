@@ -23,7 +23,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<p><img src="../../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>"></p>
 	<form action = "../../account/setavatar/" method = "post">
 		<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
-		<input type = "submit" name = "action" class="btn_2" value = "Обновить аватар">
+		<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить аватар">
 		<?php echo $delAva;?>
 	</form>
 </div>
@@ -39,7 +39,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<p>Добавьте любую информацию о себе. Она будет выведена на главной странице профиля!</p>
 	<form action = "../../account/setaccountinfo/" method = "post">
 		<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
-		<input type = "submit" name = "action" class="btn_2" value = "Обновить информацию профиля">
+		<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить информацию профиля">
 	</form>
 </div>
 
@@ -53,7 +53,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content">
 	<p>Для безопасности своей учётной записи периодически меняйте пароль!</p>
 	<form action = "../../account/changepass/" method = "post">
-		<input type = "submit" name = "action" class="btn_2" value = "Изменить пароль">
+		<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Изменить пароль">
 	</form>
 </div>
 
@@ -70,8 +70,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<p>Обновите платёжные реквизиты, чтобы получить возможность создавать заявки на вывод средств.</p>
 		<form action = "../../admin/payment/" method = "post">
 			<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>">
-			<input type = "submit" name = "action" class="btn_2" value = "Вывести средства">
-			<input type = "submit" name = "action" class="btn_1" value = "Обновить платёжные реквизиты">
+			<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Вывести средства">
+			<input type = "submit" name = "action" class="btn_1 addit-btn" value = "Обновить платёжные реквизиты">
 		</form>
 	</div>
 	

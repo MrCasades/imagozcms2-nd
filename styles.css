@@ -37,6 +37,11 @@ input{
     border-radius: 5px;
 }
 
+.addit-btn{
+    height: 2rem;
+    font-weight: bold;
+}
+
 .btn_1:hover{
     background:#1e90ff;
     color: #FFFFFF;

@@ -17,8 +17,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<p>
 		<form action = "?<?php htmlecho($action); ?> " method = "post">
 			<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-			<input type = "submit" name = "delete" class="btn_2" value = "<?php htmlecho($button); ?>">
-			<a href="#" onclick="history.back();"><button type="button" class="btn_1">Назад</button></a>
+			<input type = "submit" name = "delete" class="btn_2 addit-btn" value = "<?php htmlecho($button); ?>">
+			<a href="#" onclick="history.back();"><button type="button" class="btn_1 addit-btn">Назад</button></a>
 		</form>
 	</p>
 </div>
