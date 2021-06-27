@@ -144,7 +144,7 @@ if (isset ($_GET['changepass']))
 		$descr = 'Сообщение об успешной смене пароля';
 		$loggood = 'Вы успешно сменили пароль!';
 	
-		include MAIN_FILE.'/admin/accessgood.html.php';
+		include MAIN_FILE.'/account/changepass/changesucc.html.php';
 		exit();
 	}
 }
