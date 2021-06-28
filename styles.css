@@ -69,6 +69,12 @@ input{
     border: 2px solid #1e90ff;
 }
 
+.error-log{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+
 .for-info-txt{
     text-align: center;
 }

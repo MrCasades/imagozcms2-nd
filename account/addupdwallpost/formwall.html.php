@@ -9,12 +9,19 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont">
-	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content form-pl">
+<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
 	 <table>	
 	 <div>
 	  <tr>
-		<td><label for = "upload">Загрузите файл</label></td>
+		<td><strong>Загрузите файл</strong></td>
 	  </tr>	
 	  <tr>	 
 		<td><input type = "file" name = "upload" id = "upload"></td>
@@ -23,22 +30,23 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 	<div>
 	  <tr>
-		<td><label for = "imgalt">Введите alt-текст для изображения</label></td>
+		<td><strong>Введите alt-текст для изображения</strong></td>
 	  </tr>
 	  <tr>	
 		<td><input type = "imgalt" name = "imgalt" id = "imgalt" value = "<?php htmlecho($imgalt);?>"></td>
 	  </tr>	
 	</div>
 	</table>	
-		<label for = "comment">Введите текст записи</label><br>
+		<strong>Введите текст записи</strong><br>
 		<textarea class = "descr" id = "comment" name = "comment" data-provide="markdown" rows="10"><?php htmlecho($text);?></textarea>	
 	  <div>
 		<input type = "hidden" name = "idautin" value = "<?php htmlecho($idAutIn); ?>">  
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn btn-primary">
+		<p><input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2 addit-btn">
+		<a href="#" onclick="history.back();"><button type="button" class="btn_1 addit-btn">Назад</button></a></p>
 	  </div>	  
 	</form>	
-	</div>
+</div>
 	
 <?php 
 /*Загрузка footer*/

@@ -135,8 +135,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						   <div>
 							   <input type = "hidden" name = "id" value = "'.$comment ['id'].'">
 							   <input type = "hidden" name = "idaut" value = "'.$comment['idauthor'].'">
-							   <input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Редактировать">
-							   <input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Del">
+							   <input type = "submit" name = "action" class="btn_2" value = "Редактировать">
+							   <input type = "submit" name = "action" class="btn_1" value = "Del">
 						   </div>
 					   </form>';		 
 					}	

@@ -53,7 +53,7 @@
 			/*Загрузка главного меню*/
 			include_once MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
 		
-		<div class="authorization-form">
+		<!-- <div class="authorization-form">
                 <div class=close-btn>x</div>
                 <form>  
                     <div class="send">
@@ -66,7 +66,7 @@
                         <a href="#article">Забыли пароль</a>
                     </div>  
                 </form>
-        </div> 
+        </div>  -->
                    
     </header>
     <!-- <div class="subheader"></div> -->

@@ -12,7 +12,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content form-pl">
-	<p><?php htmlecho($errLog);?></p>
+	<p class="error-log"><?php htmlecho($errLog);?></p>
 	<form action = "?<?php htmlecho ($action); ?>" method = "post" class="fopm-margin">
 		  <table style="text-align: left;">
 		   <tr>
