@@ -95,6 +95,39 @@ input{
     margin-top: 1rem;
 }
 
+.messeger-pl{
+    border: 2px solid #1e90ff;
+    margin-top: 1rem;
+    margin-left: 25%;
+    max-width: 50%; 
+}
+
+.for-unr-mess{
+    display: flex;
+    width: 25rem;
+    height: 4rem;
+    font-size: 1.2rem;
+    border: 2px solid #1E90FF;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.for-unr-mess a{
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.for-unr-mess img{
+    width: 3rem;
+    height: 3rem;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+.unr-mess-txt{
+    padding-top: 4%;
+}
+
 .fopm-margin{
     margin-left: 30%;
 }
