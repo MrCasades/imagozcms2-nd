@@ -52,7 +52,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							$idAuthorUnr = $unreadMessage['idfrom'];
 							$authorNameUnr = $unreadMessage['authorfrom'];
 							$avatarUnr = '<img src="../avatars/'.$unreadMessage['avafr'].'" alt="'.$authorNameUnr.'">';
-							$dialogLinkUnr = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthorUnr.'#bottom">'.$authorNameUnr.'</a>';
+							$dialogLinkUnr = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthorUnr.'#bottom"><i class="fa fa-envelope-open" aria-hidden="true"></i> '.$authorNameUnr.'</a>';
 							$messageDateUnr = $unreadMessage['mainmessagedate'];
 							$unrMessages = '';
 
@@ -74,14 +74,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</div>
 		<div class = "comment-line"></div>
 	</div>
-</div>
-	
-	<div class = "messenger"> 
-		
-		  
-	<h5 align = "center">Список всех диалогов</h5>	 
-		  
-		 <?php 
+    
+	<div class="mess-dialogs">
+
+	<?php 
 		  //var_dump($dialogs);
 		  
 		 if (empty ($dialogs))
@@ -96,42 +92,51 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  <?php 
 		  
 		  
-					if (($dialog['idfrom'] != $selectedAuthor) && ($dialog['firstmessage'] == "YES"))
-					{
+			if (($dialog['idfrom'] != $selectedAuthor) && ($dialog['firstmessage'] == "YES"))
+			{
 						
-							$idAuthor = $dialog['idfrom'];
-							$authorName = $dialog['authorfrom'];
-							$avatar = '<img width = "40 px" height = "40 px" src="../avatars/'.$dialog['avafr'].'" alt="'.$authorName.'">';
-							$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom">'.$authorName.'</a>';
-					}
+				$idAuthor = $dialog['idfrom'];
+				$authorName = $dialog['authorfrom'];
+				$avatar = '<img src="../avatars/'.$dialog['avafr'].'" alt="'.$authorName.'">';
+				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom">'.$authorName.'</a>';
+
+				echo '<div class = "for-dialogs-mess">';
+				echo $avatar.'&nbsp';
+				echo '<span class="unr-mess-txt">'.$dialogLink.'</span>';
+				echo '</div>';
+			}
 					
-					elseif (($dialog['idto'] != $selectedAuthor) && ($dialog['firstmessage'] == "YES"))
-					{
-						
-							$idAuthor = $dialog['idto'];
-							$authorName = $dialog['authorto'];
-							$avatar = '<img width = "40 px" height = "40 px" src="../avatars/'.$dialog['avato'].'" alt="'.$authorName.'">';
-							$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom">'.$authorName.'</a>';
-					}
+			elseif (($dialog['idto'] != $selectedAuthor) && ($dialog['firstmessage'] == "YES"))
+			{
+				
+					
+				$idAuthor = $dialog['idto'];
+				$authorName = $dialog['authorto'];
+				$avatar = '<img src="../avatars/'.$dialog['avato'].'" alt="'.$authorName.'">';
+				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom">'.$authorName.'</a>';
+
+				echo '<div class = "for-dialogs-mess">';
+				echo $avatar.'&nbsp';
+				echo '<span class="unr-mess-txt">'.$dialogLink.'</span>';
+				echo '</div>';
+			}
 		  
-				   else
-					{
-						$idAuthor = '';
-							$authorName = '';
-							$avatar = '';
-							$dialogLink = '';
-				    }
+			 else
+			{
+				$idAuthor = '';
+				$authorName = '';
+				$avatar = '';
+				$dialogLink = '';
+			}
 				?>
-		  <table>	  
-		 	<td width = "70 px"><?php echo $avatar;?></td>
-			<td width = "70 px"><?php echo $dialogLink;?></td>
-		  </table>	  
-		 <?php endforeach; ?>
-		 
+	  
+				<?php endforeach; ?>
+				
 		</div>   
-		
+				
 		<p><a name="bottom"></a></p>
-		
+	</div>	
+	
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>
