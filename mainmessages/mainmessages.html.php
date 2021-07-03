@@ -51,16 +51,17 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						
 							$idAuthorUnr = $unreadMessage['idfrom'];
 							$authorNameUnr = $unreadMessage['authorfrom'];
-							$avatarUnr = '<img src="../avatars/'.$unreadMessage['avafr'].'" alt="'.$authorNameUnr.'">';
-							$dialogLinkUnr = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthorUnr.'#bottom"><i class="fa fa-envelope-open" aria-hidden="true"></i> '.$authorNameUnr.'</a>';
+							$avatarUnr = '<img src="../avatars/'.$unreadMessage['avafr'].'" alt="'.$authorNameUnr.'"/>';
+							$dialogLinkUnr = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthorUnr.'#bottom">';
 							$messageDateUnr = $unreadMessage['mainmessagedate'];
 							$unrMessages = '';
 
+							echo $dialogLinkUnr;
 							echo '<div class = "for-unr-mess">'; 
 							echo $avatarUnr.'&nbsp';
-							echo '<span class="unr-mess-txt">'.$dialogLinkUnr.'&nbsp';
+							echo '<span class="unr-mess-txt"><i class="fa fa-envelope-open" aria-hidden="true"></i> '.$authorNameUnr.'&nbsp';
 							echo $messageDateUnr.'</span>';
-							echo '</div>';	  
+							echo '</div></a>';	  
 					}
 				?>
 					  
