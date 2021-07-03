@@ -52,7 +52,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							$idAuthorUnr = $unreadMessage['idfrom'];
 							$authorNameUnr = $unreadMessage['authorfrom'];
 							$avatarUnr = '<img src="../avatars/'.$unreadMessage['avafr'].'" alt="'.$authorNameUnr.'"/>';
-							$dialogLinkUnr = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthorUnr.'#bottom">';
+							$dialogLinkUnr = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthorUnr.'#bottom" class="unr-mess-a">';
 							$messageDateUnr = $unreadMessage['mainmessagedate'];
 							$unrMessages = '';
 
@@ -99,12 +99,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				$idAuthor = $dialog['idfrom'];
 				$authorName = $dialog['authorfrom'];
 				$avatar = '<img src="../avatars/'.$dialog['avafr'].'" alt="'.$authorName.'">';
-				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom">'.$authorName.'</a>';
+				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom" class="dialog-mess-a">';
 
+				echo $dialogLink;
 				echo '<div class = "for-dialogs-mess">';
 				echo $avatar.'&nbsp';
-				echo '<span class="unr-mess-txt">'.$dialogLink.'</span>';
-				echo '</div>';
+				echo '<span class="unr-mess-txt">'.$authorName.'</span>';
+				echo '</div></a>';
 			}
 					
 			elseif (($dialog['idto'] != $selectedAuthor) && ($dialog['firstmessage'] == "YES"))
@@ -114,12 +115,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				$idAuthor = $dialog['idto'];
 				$authorName = $dialog['authorto'];
 				$avatar = '<img src="../avatars/'.$dialog['avato'].'" alt="'.$authorName.'">';
-				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom">'.$authorName.'</a>';
+				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom" class="dialog-mess-a">';
 
+				echo $dialogLink;
 				echo '<div class = "for-dialogs-mess">';
 				echo $avatar.'&nbsp';
-				echo '<span class="unr-mess-txt">'.$dialogLink.'</span>';
-				echo '</div>';
+				echo '<span class="unr-mess-txt">'.$authorName.'</span>';
+				echo '</div></a>';
 			}
 		  
 			 else

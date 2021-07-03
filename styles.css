@@ -102,6 +102,11 @@ input{
     max-width: 50%; 
 }
 
+.unr-mess-a{
+    text-decoration: none;
+    color: #1e90ff;
+}
+
 .for-unr-mess{
     display: flex;
     width: 30rem;
@@ -114,12 +119,6 @@ input{
     margin-bottom: 2rem;
     margin-top: 1rem;
     border-radius: 15px;
-    text-decoration: none;
-}
-
-.for-unr-mess a{
-    color: #1e90ff;
-    text-decoration: none;
 }
 
 .for-unr-mess img{
@@ -160,9 +159,39 @@ input{
     border-radius: 10px;
 }
 
-.for-dialogs-mess a{
-    color: #ffff;
+.dialog-mess-a{
     text-decoration: none;
+    color: #1e90ff;
+}
+
+.mess-pl-style-to{
+    padding: 1rem;
+    margin-top: 1rem;
+    background: #ffff;
+    color: #1e90ff;
+    border-radius: 10px;
+}
+
+.mess-pl-style-to a{
+    color: #1e90ff;
+}
+
+.mess-pl-style-fr{
+    padding: 1rem;
+    margin-top: 1rem;
+    background: #1e90ff;
+    color: #ffff;
+    margin-left: 2rem;
+    border-radius: 10px;
+}
+
+.mess-text a{
+    width: 60%;
+    height: 40%;
+} 
+
+.del-mess{
+    margin-left: 98%;
 }
 
 .fopm-margin{
