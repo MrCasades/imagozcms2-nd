@@ -83,7 +83,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  
 		 if (empty ($dialogs))
 		 {
-			 echo 'Список диалогов пуст';
+			 echo '<p class="for-info-txt">Список диалогов пуст</p>';
 		 }
 			
 		 else

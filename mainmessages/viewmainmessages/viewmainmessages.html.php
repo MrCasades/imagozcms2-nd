@@ -63,9 +63,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				?>
 						
 				<div class = "<?php echo $messagePlStyle;?>">
-				  <div class = "messHeader">
+				  <span class = "mess-header">
 				    <?php echo $typeMessage.$messDate.$accountLink;?>
-				  </div>
+				  </span>
 					<?php echo $deleteForm;?>
 				   <div class = "mess-text">
 					<?php if ($mainmessage['imghead'] == '')

@@ -80,7 +80,7 @@ input{
 }
 
 .error-pl .btn_2{
-    margin-left: 50%;
+    margin-left: 45%;
 }
 
 .page-output{
@@ -94,6 +94,8 @@ input{
     font-size: 1rem;
     margin-top: 1rem;
 }
+
+/*Мессенжер*/
 
 .messeger-pl{
     border: 2px solid #1e90ff;
@@ -173,7 +175,21 @@ input{
 }
 
 .mess-pl-style-to a{
+    color: #ffff;
+}
+
+.mess-pl-style-to .mess-header{
+    color: #ffff;
+    background: #1e90ff;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.mess-pl-style-fr .mess-header{
     color: #1e90ff;
+    background: #ffff;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 .mess-pl-style-fr{
@@ -193,6 +209,8 @@ input{
 .del-mess{
     margin-left: 98%;
 }
+
+/*--Конец стилей мессенжера--*/
 
 .fopm-margin{
     margin-left: 30%;

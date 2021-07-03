@@ -208,7 +208,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'X')
 		$headMain = 'Ошибка удаления сообщения';
 		$robots = 'noindex, nofollow';
 		$descr = '';
-		$error = 'Нельзя удалить первое сообщение в диалоге!';// вывод сообщения об ошибке в переменой $e
+		$error = '<p class="for-info-txt">Нельзя удалить первое сообщение в диалоге!</p>';// вывод сообщения об ошибке в переменой $e
 		include 'error.html.php';
 		exit();
 	}
