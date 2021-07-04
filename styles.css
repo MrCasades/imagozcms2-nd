@@ -201,9 +201,13 @@ input{
     border-radius: 10px;
 }
 
-.mess-text a{
+.mess-text img{
     width: 60%;
     height: 40%;
+} 
+
+.mess-text{
+    width: auto;
 } 
 
 .del-mess{
@@ -211,6 +215,27 @@ input{
 }
 
 /*--Конец стилей мессенжера--*/
+
+/*Поиск*/
+
+.search-form{
+    margin-top: 1rem;
+}
+
+.search-text{
+    height: 1.5rem;
+    width: 30%;
+}
+
+.search-select{
+    height: 1.5rem;
+}
+
+.search-form .btn_2{
+    height: 1.5rem;
+}
+
+/*Конец стилей поиска*/
 
 .fopm-margin{
     margin-left: 30%;
