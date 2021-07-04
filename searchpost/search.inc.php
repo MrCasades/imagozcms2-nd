@@ -4,14 +4,38 @@
 	
 /*Подключение к базе данных*/
 include MAIN_FILE . '/includes/db.inc.php';
-		
-/*Переменные для выражения SELECT*/
-$select = 'SELECT posts.id AS postid, post, posttitle, imghead, imgalt, postdate, authorname, author.id AS authorid, category.id AS categoryid, categoryname';
-$from = ' FROM posts 
-			INNER JOIN author ON idauthor = author.id 
-			INNER JOIN category ON idcategory = category.id';
-$where = ' WHERE TRUE AND premoderation = "YES" AND zenpost = "NO"';
-		
+
+if ($_GET['article_type'] == 'posts')
+{
+	/*Переменные для выражения SELECT*/
+	$select = 'SELECT posts.id AS postid, post, posttitle, imghead, imgalt, postdate, authorname, author.id AS authorid, category.id AS categoryid, categoryname';
+	$from = ' FROM posts 
+				INNER JOIN author ON idauthor = author.id 
+				INNER JOIN category ON idcategory = category.id';
+	$where = ' WHERE TRUE AND premoderation = "YES" AND zenpost = "NO"';
+}
+
+elseif ($_GET['article_type'] == 'promotions')
+{
+	/*Переменные для выражения SELECT*/
+	$select = 'SELECT promotion.id AS promotionid, promotion, promotiontitle, imghead, imgalt, promotion.www, promotiondate, author.id AS authorid, authorname, category.id AS categoryid, categoryname';
+	$from = ' FROM promotion 
+			  INNER JOIN author ON idauthor = author.id 
+			  INNER JOIN category ON idcategory = category.id';
+	$where = ' WHERE TRUE AND premoderation = "YES"';
+}
+
+elseif ($_GET['article_type'] == 'news')
+{
+	/*Переменные для выражения SELECT*/
+	$select = 'SELECT newsblock.id AS newsid, news, newstitle, imghead, imgalt, newsdate, authorname, author.id AS authorid, category.id AS categoryid, categoryname';
+	$from = ' FROM newsblock 
+			  INNER JOIN author ON idauthor = author.id 
+			  INNER JOIN category ON idcategory = category.id';
+	$where = ' WHERE TRUE AND premoderation = "YES"';
+
+}
+	
 $forSearch = array();//массив заполнения запроса
 		
 /*Выбор автора*/
