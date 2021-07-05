@@ -1,4 +1,6 @@
 <?php
+/*Загрузка главного пути*/
+include_once '../includes/path.inc.php';
 
 /*Формирование запроса SELECT*/
 	
@@ -91,14 +93,32 @@ catch (PDOException $e)
 	include 'error.html.php';
 	exit();
 }
-		
+
 foreach ($s as $row)
 {
+	if ($_GET['article_type'] == 'posts')
+	{
 		$posts[] =  array ('id' => $row['postid'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
 					'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 'idauthor' =>  $row['authorid'],
 					'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+		
+	}
+
+	elseif ($_GET['article_type'] == 'promotions')
+	{
+		$promotions[] =  array ('id' => $row['promotionid'], 'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+						'promotiondate' =>  $row['promotiondate'], 'authorname' =>  $row['authorname'], 'www' =>  $row['www'], 'idauthor' =>  $row['authorid'],
+						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
+
+	elseif ($_GET['article_type'] == 'news')
+	{
+		$newsIn[] = array('id' => $row['newsid'], 'textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+						'newsdate' =>  $row['newsdate'], 'authorname' =>  $row['authorname'], 'idauthor' =>  $row['authorid'],
+						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
 }
-	
+			
 include 'searchpost.html.php';
 exit();
 

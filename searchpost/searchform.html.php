@@ -23,7 +23,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php endforeach; ?> 
 			</select>
 			<input type = "hidden" name = "action" value = "search"/>
-			<input type = "submit" value = "Найти" class="btn_2"/>
+			<input type = "submit" value = "Найти" class="btn_2" id="search-btn"/>
 			<p>
 				<input name="article_type" type="radio" value="posts" checked>Статья
 				<input name="article_type" type="radio" value="promotions">Промоушен

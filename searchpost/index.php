@@ -8,6 +8,7 @@ $title = 'Поиск публикаций | imagoz.ru';
 $headMain = 'Поиск публикаций';
 $robots = 'noindex, follow';
 $descr = 'В данном разделе осуществляется поиск информации';
+$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
