@@ -7,6 +7,8 @@ include_once '../includes/path.inc.php';
 /*Подключение к базе данных*/
 include MAIN_FILE . '/includes/db.inc.php';
 
+$forSearch = array();//массив заполнения запроса
+
 if ($_GET['article_type'] == 'posts')
 {
 	/*Переменные для выражения SELECT*/
@@ -15,6 +17,14 @@ if ($_GET['article_type'] == 'posts')
 				INNER JOIN author ON idauthor = author.id 
 				INNER JOIN category ON idcategory = category.id';
 	$where = ' WHERE TRUE AND premoderation = "YES" AND zenpost = "NO"';
+
+	/*Поле строки*/
+	if ($_GET['text'] != '')//Если выбрана какая-то строка
+	{
+		$where .= " AND post LIKE :post OR posttitle LIKE :posttitle";
+		$forSearch[':post'] = '%'. $_GET['text']. '%';	
+		$forSearch[':posttitle'] = '%'. $_GET['text']. '%';
+	}
 }
 
 elseif ($_GET['article_type'] == 'promotions')
@@ -25,6 +35,14 @@ elseif ($_GET['article_type'] == 'promotions')
 			  INNER JOIN author ON idauthor = author.id 
 			  INNER JOIN category ON idcategory = category.id';
 	$where = ' WHERE TRUE AND premoderation = "YES"';
+	
+	/*Поле строки*/
+	if ($_GET['text'] != '')//Если выбрана какая-то строка
+	{
+		$where .= " AND promotion LIKE :promotion OR promotiontitle LIKE :promotiontitle";
+		$forSearch[':promotion'] = '%'. $_GET['text']. '%';	
+		$forSearch[':promotiontitle'] = '%'. $_GET['text']. '%';
+	}
 }
 
 elseif ($_GET['article_type'] == 'news')
@@ -36,10 +54,16 @@ elseif ($_GET['article_type'] == 'news')
 			  INNER JOIN category ON idcategory = category.id';
 	$where = ' WHERE TRUE AND premoderation = "YES"';
 
+	/*Поле строки*/
+	if ($_GET['text'] != '')//Если выбрана какая-то строка
+	{
+		$where .= " AND news LIKE :news OR newstitle LIKE :newstitle";
+		$forSearch[':news'] = '%'. $_GET['text']. '%';	
+		$forSearch[':newstitle'] = '%'. $_GET['text']. '%';
+	}
+
 }
 	
-$forSearch = array();//массив заполнения запроса
-		
 /*Выбор автора*/
 /*
 if ($_GET['author'] != '')//Если выбран автор
@@ -65,15 +89,7 @@ if ($_GET['meta'] != '')//Если выбрана тематика
 	$forSearch[':idmeta'] = $_GET['meta'];
 }
 */
-		
-/*Поле строки*/
-if ($_GET['text'] != '')//Если выбрана какая-то строка
-{
-	$where .= " AND post LIKE :post OR posttitle LIKE :posttitle";
-	$forSearch[':post'] = '%'. $_GET['text']. '%';	
-    $forSearch[':posttitle'] = '%'. $_GET['text']. '%';
-}
-		
+			
 /*Объеденение переменных в запрос*/
 try
 {
