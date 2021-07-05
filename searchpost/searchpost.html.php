@@ -4,7 +4,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 
 <?php if (empty($posts) && empty($newsIn) && empty($promotions)): ?>
 
-	<p>Поиск не дал результата</p>
+	<p class = "for-info-txt">Поиск не дал результата</p>
 
 <?php endif;?>
 
