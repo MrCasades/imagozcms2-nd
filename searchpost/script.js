@@ -9,9 +9,16 @@ $( document ).ready(function() {
        const text = $('#text[name="text"]').val();
        const articleType = $('input[name="article_type"]:checked').val();
         console.log("search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
-       $( "#search-result" ).load( "search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
 
-       e.preventDefault()
+       if (text.length < 3){
+          $( "#search-result" ).html('<p class="for-info-txt">Нужно ввести от 3-х знаков для поиска!</p>')
+          e.preventDefault()
+       } else {
+          $( "#search-result" ).load( "search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
+          $('#search-result').delay(1000).fadeIn('slow')
+          
+          e.preventDefault()
+       }
   })
 })
        

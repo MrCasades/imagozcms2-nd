@@ -21,6 +21,10 @@ input{
     margin: 0 auto;
 }
 
+.hidden{
+    display: none;
+}
+
 .btn_1 {
     background:#FFFFFF;
     color: #1e90ff;

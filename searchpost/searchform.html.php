@@ -31,7 +31,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			</p>
 		</form>
 	</div>
-
+	
 	<div id = "search-result"></div>				
 
 </div>

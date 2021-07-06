@@ -20,7 +20,10 @@
             <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/cooperation/">Сотрудничество</a></li>
             <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/promotion/">Промоушен</a></li>
             <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/adminmail/?addmessage#bottom"><i class="fa fa-envelope" aria-hidden="true"></i> обратная связь</a></li>
-            <li class="menu-item"><a id="auth" href="#" ><i class="fa fa-home" aria-hidden="true"></i></a></li>
+
+            <?php if (!isset($_SESSION['loggIn'])):?>
+                <li class="menu-item"><a id="auth" href="#" ><i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <?php endif;?>
         </ul>
     </div>
 </div>
