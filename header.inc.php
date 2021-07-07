@@ -60,6 +60,7 @@
                         <input type="text" placeholder="e-mail" name = "email" id = "email">
                         <input type="password" placeholder="password" name = "password" id = "password">
 						<input type = "hidden" name = "action" value = "login">
+						<input type = "hidden" name = "action_form" value = "login_form">
                         <button class="btn_1">Вход</button>
                     </div>
                     <div class="reg-group">
