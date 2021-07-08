@@ -53,7 +53,7 @@
 			/*Загрузка главного меню*/
 			include_once MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
 		
-		<div class="authorization-form">
+		<!-- <div class="authorization-form">
                 <div class=close-btn>x</div>
                 <form action = " " method = "post">   
                     <div class="send">
@@ -64,11 +64,11 @@
                         <button class="btn_1">Вход</button>
                     </div>
                     <div class="reg-group">
-						<a href="//<?php echo MAIN_URL;?>/admin/registration/?reg#bottom">Регистрация</a> 
-                        <a href="//<?php echo MAIN_URL;?>/admin/recoverpassword/?send">Забыли пароль?</a>
+						<a href="//admin/registration/?reg#bottom">Регистрация</a> 
+                        <a href="//admin/recoverpassword/?send">Забыли пароль?</a>
                     </div>  
                 </form>
-        </div> 
+        </div>  -->
                    
     </header>
     <!-- <div class="subheader"></div> -->

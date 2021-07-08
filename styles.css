@@ -381,6 +381,7 @@ header .navigation-line{
     transform: rotate(180deg);
 }
 
+/*
 header .authorization-form{
     display: none;
     position: fixed;
@@ -388,7 +389,7 @@ header .authorization-form{
     top: 20%;
     left: 1%;
     /* background: #1e90ff; */
-    width: 17rem;
+   /* width: 17rem;
     height: 12rem;
     padding: 10px;
     margin-left: 50%;
@@ -439,7 +440,67 @@ header .authorization-form .reg-group {
 header .authorization-form .reg-group a {
     color: #ffff;
     cursor: pointer;
+} */
+
+/*Форма авторизации по ссылке*/
+
+.authorization-form{
+    
+    font-family: Arial;
+    /* background: #1e90ff; */
+    width: 17rem;
+    height: 12rem;
+    padding: 10px;
+    margin-left: 50%;
+    background: #1e90ff;
+    border-radius: 10px 10px 10px 10px;
+    z-index: 15;
+}
+
+.authorization-form form{
+    display: flex;
+    flex-direction: column;
+}
+
+.authorization-form .close-btn{
+    color:#fefcea;
+    cursor: pointer;
+    margin-left: 95%;
+    font-size: 1.5rem;
+}
+
+.authorization-form .close-btn:hover{
+    color: red;  
+}
+
+.authorization-form .send{
+    display: flex;
+    flex-direction: column;
+    background: #1e90ff;
+    margin-top: 0.2rem;
+    height: 1.8rem; 
+    border-radius: 5px;
+}
+
+.authorization-form .btn_1{
+    margin-top: 1rem;
+}
+
+.authorization-form input{
+   text-align: center; 
+   margin-bottom: 5px;
+}
+
+.authorization-form .reg-group {
+    margin-top: 4rem;
 } 
+
+.authorization-form .reg-group a {
+    color: #ffff;
+    cursor: pointer;
+} 
+
+/*Конец формы авторизации*/
 
 /*Главная страница*/
 
