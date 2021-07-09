@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content form-pl">
 	<p class="error-log"><?php htmlecho($errLog);?></p>
 	<form action = "?<?php htmlecho ($action); ?>" method = "post" class="fopm-margin">	 
-		<table>
+		<table style="text-align: left;">
 		  <tr>
 		   <th>Пароль: </th><td><input type = "password" name = "password" id = "password" value = "<?php htmlecho($password);?>"></td> 
 		  </tr>

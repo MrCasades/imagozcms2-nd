@@ -109,8 +109,8 @@ if (isset ($_GET['sendmessage']))
 	
 	$mailSucc = 'По указанному адресу отправлено письмо с дальнейшими инструкциями. Оно действительно 10 часов. Если сообщение не пришло, проверьте в папке "Спам"';
 	
-	include 'test.html.php';
-	//include 'mailsucc.html.php';
+	//include 'test.html.php';
+	include 'mailsucc.html.php';
 	exit();	
 }
 
