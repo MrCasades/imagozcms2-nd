@@ -5,13 +5,18 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont">
-	 <div class = "post">
-	  <p align="center"><?php echo $mailSucc; ?></p>    
-	  <div align="center"><a href="<?php echo '//'.MAIN_URL;?>" class="btn btn-danger btn-sm">Главная страница</a> </div>
-	 </div>
-	</div>			
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
 
+<div class = "error-pl">
+	<p style="text-align: center;"><?php echo $mailSucc; ?></p>
+	<p><a href="//<?php echo MAIN_URL;?>"><button class="btn_2 addit-btn">На главную страницу</button></a></p>
+</div>
+		
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>

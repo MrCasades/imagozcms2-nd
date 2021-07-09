@@ -5,15 +5,20 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont">
-	 <div class = "post" align = "center">
-	 <?php htmlecho($errLog);?>
-		<form action = "?<?php htmlecho ($action); ?>" method = "post">
-			<label for = "email">Введите E-mail, который Вы использовали для регистрации: <input type = "text" name = "email" id = "email" value = "<?php htmlecho($email);?>"></label>	
-			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn btn-primary btn-sm">
-		</form>	
-	 </div>	
-	</div>
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+</div>
+
+<div class="m-content form-pl">
+	<p class="error-log"><?php htmlecho($errLog);?></p>
+	<form action = "?<?php htmlecho ($action); ?>" method = "post" class="fopm-margin">
+	<strong>Введите E-mail, который Вы использовали для регистрации:</strong><input type = "text" name = "email" id = "email" value = "<?php htmlecho($email);?>">
+			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2">
+		<a href="#" onclick="history.back();"><button type="button" class="btn_1">Назад</button></a>
+	</form>		
+</div>
 		
 <?php 
 /*Загрузка footer*/
