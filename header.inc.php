@@ -78,13 +78,13 @@
 	<div>	   
 		<?php 
 		/*Загрузка меню авторизации*/
-		include_once MAIN_FILE . '/admin/logpanel.html.inc.php';?>
+		include_once MAIN_FILE . '/admin/logpanel/logpanel.inc.php';?>
 		
 		<?php 
 		/*Загрузка кнопки добавления статьи*/
 		include_once MAIN_FILE . '/admin/addpost.html.inc.php';
 		    
-		    echo '<div align = "center"><p>'.$logPanel.'</p></div>';
+		   // echo '<div align = "center"><p>'.$logPanel.'</p></div>';
 			echo '<div align = "center"><p>'.$superUser.'</p></div>';
 			echo'<p  align = "center">'.$addPost.'</p>';
 			echo'<p  align = "center"> <strong>'.$scoreTitle.'</strong>'.$payForms.'</p>';

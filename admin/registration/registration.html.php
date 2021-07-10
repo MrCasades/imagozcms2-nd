@@ -4,10 +4,17 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
-	<p><a name="bottom"></a></p>  
-	<div class = "maincont_for_view">
-	<div class = "post_reg_log">
-	  <div  align="justify">
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<p><a name="bottom"></a></p>
+<div class="m-content">
+	<div>
 		<p>Пройдите процедуру регистрации в системе, для того, чтобы получить возможность оценивать материалы наших авторов, оставлять комментарии и отвечать на них. 
 		   У Вас будет свой профиль, где сможете вести персональный блог на стенеи и общаться с другими пользователями.</p>
 
@@ -18,31 +25,27 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			  <li>VKontakte: <a href="https://vk.com/id213646416" rel="nofollow">Арсений Поляков</a></li>
 			</ul>
 		  </p>
-	  </div>	  
-	<div  align="center">
-	<strong><p id = "incorr" style="color: red"><?php htmlecho($errLog);?></p></strong>
-	<form action = "?<?php htmlecho ($action); ?>" method = "post">
-	 <table>
-		 <tr>
-			<th>Имя автора:* </th><td><input type = "text" name = "authorname" id = "authorname" value = "<?php htmlecho($authorname);?>"></td>
-		 </tr>			 
-		 <tr>
-			<th>E-mail:* </th><td><input type = "text" name = "email" id = "email" value = "<?php htmlecho($email);?>"></td> 	
-		 </tr>			
-		 <tr>
-			<th>Пароль:* </th><td><input type = "password" name = "password" id = "password" value = "<?php htmlecho($password);?>"></td> 		
-		 </tr>			
-		 <tr>
-			<th>Повторить пароль:* </th><td><input type = "password" name = "password2" id = "password2" value = "<?php htmlecho($password2);?>"></td> 	
-		 </tr>		
-	 </table>
-	 <br>	 
-			<p><div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div></p>
-			<p><input type = "submit" value = "<?php htmlecho($button); ?>" class="btn btn-primary" id = "confirm"></p>
-	</form>
-	</div>
-	</div>
-	</div>
+	</div>	
+	<div class="authorization-form reg-form">
+	<?php if (isset($errLogin)): ?>
+		<p id = "incorr" style="color: red"><strong><?php htmlecho($errLog); ?></strong></p>
+	  <?php endif; ?>
+	    <form action = "?<?php htmlecho ($action); ?>" method = "post">   
+				<div class="send">
+					Имя автора:*
+					<input type = "text" name = "authorname" id = "authorname" value = "<?php htmlecho($authorname);?>">
+					E-mail:*
+					<input type = "text" name = "email" id = "email" value = "<?php htmlecho($email);?>">
+					Пароль:*
+					<input type = "password" name = "password" id = "password" value = "<?php htmlecho($password);?>">
+					Повторить пароль:*
+					<input type = "password" name = "password2" id = "password2" value = "<?php htmlecho($password2);?>">
+					<div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div>
+					<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_1" id = "confirm">
+				</div>
+		</form>
+	</div> 
+</div>
 		
 <?php 
 /*Загрузка footer*/

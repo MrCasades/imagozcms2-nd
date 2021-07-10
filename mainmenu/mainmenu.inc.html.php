@@ -27,7 +27,7 @@
                 <form action = " " method = "post">
 					<input type = "hidden" name = "action" value = "logout">
 					<input type = "hidden" name = "goto" value = "//<?php echo MAIN_URL;?>">
-					<input class="btn_2" type="submit" value="Exit">
+                    <button class="exit-btn">Exit</button>
 			     </form>    
             <?php endif;?>
         </ul>
