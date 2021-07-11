@@ -305,7 +305,7 @@ elseif (userRole('Администратор') || userRole('Автор') || user
 		
 		$row = $s -> fetch();
 		
-		$promotionDraft = $row['promotiondraft'];// статьи в черновике
+		$allDraft = $row['promotiondraft'];// статьи в черновике
 	}
 
 	catch (PDOException $e)
