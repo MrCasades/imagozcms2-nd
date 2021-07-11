@@ -109,6 +109,25 @@ input{
     margin-top: 1rem;
 }
 
+.logpanel{
+    margin-left: 30%;
+    font-size: 1.7rem;
+}
+
+.addupd-post{
+    margin-top: 1rem;
+}
+
+.logpanel .btn_1{
+    height: 2rem;
+    font-size: 1rem;
+}
+
+.logpanel .btn_2{
+    height: 2rem;
+    font-size: 1rem;
+}
+
 /*Мессенжер*/
 
 .messeger-pl{
@@ -828,6 +847,14 @@ article .article-rating{
 .fa-thumbs-up{
     color: white;
     text-shadow: 1px 1px 2px black, 0 0 3px black;
+}
+
+.fa-money{
+    color: green;
+}
+
+.fa-user-circle{
+    color: red;
 }
 
 article .article-rating i{

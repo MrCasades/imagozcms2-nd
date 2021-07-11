@@ -64,14 +64,13 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$scoreLp = '<i class="fa fa-money" aria-hidden="true" title="Размер счёта"></i>: '.$row['score'];//размер счёта автора
 
-		$payForms = '<div>
+		$payForms = '<br/>
 						<form action = "//'.MAIN_URL.'/admin/payment/" method = "post">
-							<strong>'.$scoreLp.'</strong>
+							<strong>'.$scoreLp.' | </strong>
 							<input type = "hidden" name = "id" value = "'.$selectedAuthor.'">
-							<input type = "submit" name = "action" class="btn_2" value = "Вывести средства">
-							<input type = "submit" name = "action" class="btn_2" value = "Пополнить счёт">
-						</form>
-					</div>';
+							<button name = "action" class="btn_2" value = "Вывести средства"><strong><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Вывести</strong></button> |
+							<button name = "action" class="btn_2" value = "Пополнить счёт"><strong><i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Пополнить</strong></button>
+						</form>';
 	}
 
 	else

@@ -22,13 +22,7 @@
             <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/adminmail/?addmessage#bottom"><i class="fa fa-envelope" aria-hidden="true"></i> обратная связь</a></li>
 
             <?php if (!isset($_SESSION['loggIn'])):?>
-                <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-home" aria-hidden="true"></i> авторизация</a></li>
-            <?php else:?>
-                <form action = " " method = "post">
-					<input type = "hidden" name = "action" value = "logout">
-					<input type = "hidden" name = "goto" value = "//<?php echo MAIN_URL;?>">
-                    <button class="exit-btn">Exit</button>
-			     </form>    
+                <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-home" aria-hidden="true"></i> авторизация</a></li>   
             <?php endif;?>
         </ul>
     </div>
