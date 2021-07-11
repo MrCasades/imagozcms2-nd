@@ -58,16 +58,6 @@ input{
     font-weight: bold;
 }
 
-.exit-btn{
-  padding: 0;
-  border: none;
-
-  background-color: transparent;
-  /* отображаем курсор в виде руки при наведении; некоторые
-  считают, что необходимо оставлять стрелочный вид для кнопок */
-  cursor: pointer;
-}
-
 .m-content{
     margin-left: 10%;
     max-width: 75%; 

@@ -118,7 +118,7 @@ if (userRole('Администратор'))
 	}
 }
 
-elseif (userRole('Администратор') || userRole('Автор'))
+elseif (userRole('Администратор') && userRole('Автор'))
 {
 	/*Счётчики*/
 

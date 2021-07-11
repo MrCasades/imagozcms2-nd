@@ -12,5 +12,6 @@
 				<button class="btn_1"><strong><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</strong></button>
 		</form> 
 		<?php echo $payForms;?>
+		<?php echo $$allPosts.$allRefused;?>
 	</div>
 <?php endif;?>

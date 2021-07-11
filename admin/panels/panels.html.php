@@ -22,7 +22,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
         
     <?php endif;?>
 
-    <a href="//<?php echo MAIN_URL;?>/admin/viewalldraft/#bottom" class='btn btn-success btn-sm'><strong>ЧЕРНОВИК ("<?php echo $allDraft;?>")</strong></a>
 </div>
 
 

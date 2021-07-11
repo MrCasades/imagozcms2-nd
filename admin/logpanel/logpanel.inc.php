@@ -97,6 +97,142 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 	{
 		$panel='';
 	}
+
+	/*Подсчёт количества отклонённых материалов и материалов в премодерации*/
+	if (userRole('Автор') || userRole('Администратор'))
+	{
+		try
+		{
+			$pdo->beginTransaction();//инициация транзакции
+			
+			$sql = "SELECT count(*) AS mypremodpost FROM posts WHERE premoderation = 'NO' AND refused = 'NO' AND draft = 'NO' AND idauthor = ".$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+			
+			$row = $s -> fetch();
+			
+			$premodPosts = $row['mypremodpost'];//статьи в премодерации
+			
+			$sql = "SELECT count(*) AS mypremodnews FROM newsblock WHERE premoderation = 'NO' AND refused = 'NO' AND draft = 'NO' AND idauthor = ".$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+			
+			$row = $s -> fetch();
+			
+			$premodNews = $row['mypremodnews'];//новости в премодерации
+			
+			$pdo->commit();//подтверждение транзакции
+		}
+
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+			
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+			
+		$allPosts = $premodPosts + $premodNews;//общее количество
+		$allPosts ='<i class="fa fa-copyright" aria-hidden="true"></i>: '.$allPosts;
+
+		try
+		{
+			$pdo->beginTransaction();//инициация транзакции
+			
+			$sql = "SELECT count(*) AS myrefusedpost FROM posts WHERE refused = 'YES' AND idauthor = ".$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+			
+			$row = $s -> fetch();
+			
+			$refusedPosts = $row['myrefusedpost'];//отклонённые статьи
+			
+			$sql = "SELECT count(*) AS myrefusednews FROM newsblock WHERE refused = 'YES' AND idauthor = ".$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+			
+			$row = $s -> fetch();
+			
+			$refusedNews = $row['myrefusednews'];//отклонённые новости
+			
+			$pdo->commit();//подтверждение транзакции
+		}
+
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+			
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+			
+		$allRefused = '<i class="fa fa-thumbs-down" aria-hidden="true"></i>: '.($refusedPosts + $refusedNews);//общее количество
+
+
+	}
+
+	elseif(userRole('Рекламодатель'))
+	{
+		try
+		{
+			$sql = "SELECT count(*) AS mypremodpromotions FROM promotion WHERE premoderation = 'NO' AND refused = 'NO' AND draft = 'NO' AND idauthor = ".$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+
+		catch (PDOException $e)
+		{
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+			
+		$row = $s -> fetch();
+			
+		$allPosts = '<i class="fa fa-thumbs-down" aria-hidden="true"></i>: '.$row['mypremodpromotions'];//статьи в премодерации
+
+		try
+		{
+			$sql = "SELECT count(*) AS myrefusedpromotions FROM promotion WHERE refused = 'YES' AND idauthor = ".$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+
+		catch (PDOException $e)
+		{
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+			
+		$row = $s -> fetch();
+			
+		$allRefused = '<i class="fa fa-thumbs-down" aria-hidden="true"></i>: '.$row['myrefusedpromotions'];//статьи в премодерации
+	}
+
+	else
+	{
+		$allPosts = '';
+		$allRefused = '';
+	}
 }
 
 else
