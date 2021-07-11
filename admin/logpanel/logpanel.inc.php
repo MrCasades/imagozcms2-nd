@@ -18,8 +18,9 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 	
 	try
 	{
-		$sql = 'SELECT count(unread) AS unreadcount FROM mainmessages WHERE unread = "YES" AND idto = '.$selectedAuthor;
+		$sql = 'SELECT count(unread) AS unreadcount FROM mainmessages WHERE unread = "YES" AND idto = :idto';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idto', $selectedAuthor);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
@@ -37,13 +38,66 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 	$row = $s -> fetch();
 		
 	$unreadCount = $row['unreadcount'];//счётчик непрочитанных сообщений
+
+	if(userRole('Автор') || userRole('Рекламодатель') || userRole('Администратор'))
+	{
+		try
+		{
+			$sql = 'SELECT score FROM author WHERE id = :id';
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':id', $selectedAuthor);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+
+		catch (PDOException $e)
+		{
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка подсчёта сообщений ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+
+		$row = $s -> fetch();
+			
+		$scoreLp = '<i class="fa fa-money" aria-hidden="true" title="Размер счёта"></i>: '.$row['score'];//размер счёта автора
+
+		$payForms = '<div>
+						<form action = "//'.MAIN_URL.'/admin/payment/" method = "post">
+							<strong>'.$scoreLp.'</strong>
+							<input type = "hidden" name = "id" value = "'.$selectedAuthor.'">
+							<input type = "submit" name = "action" class="btn_2" value = "Вывести средства">
+							<input type = "submit" name = "action" class="btn_2" value = "Пополнить счёт">
+						</form>
+					</div>';
+	}
+
+	else
+	{
+		$scoreLp= '';
+		$payForms = '';
+	}
+
+	/*Вывод ссылки на рабочую панель*/
 	
-	// $logPanel = '<form action = " " method = "post">
-	// 				<strong>Профиль:</strong> <a href="//'.MAIN_URL.'/account/?id='.$selectedAuthor.'"><strong>'.$_POST['author'].'</strong></a> | <a href="//'.MAIN_URL.'/mainmessages/#bottom" class="btn btn-info btn-sm"><strong>СООБЩЕНИЯ <span id = "countcolor">'.$unreadCount.'</span></strong></a>
-	// 				<input type = "hidden" name = "action" value = "logout">
-	// 				<input type = "hidden" name = "goto" value = "//'.MAIN_URL.'">
-	// 				<input class="btn btn-primary btn-sm" type="submit" value="Exit">
-	// 		     </form>';
+	if (userRole('Автор'))
+	{
+		$panel = '| <a href="//'.MAIN_URL.'/admin/panels"><button type="button" class="btn_2"><strong><i class="fa fa-cog" aria-hidden="true"></i> Панель автора</strong></button></a> ';
+	}
+	elseif(userRole('Рекламодатель'))
+	{
+		$panel = '| <a href="//'.MAIN_URL.'/admin/panels"><button type="button" class="btn_2"><strong><i class="fa fa-cog" aria-hidden="true"></i> Панель рекламодателя</strong></button></a> ';
+	}
+	elseif(userRole('Администратор'))
+	{
+		$panel = '| <a href="//'.MAIN_URL.'/admin/panels"><button type="button" class="btn_2"><strong><i class="fa fa-cog" aria-hidden="true"></i> Панель Администратора</strong></button></a> ';
+	}
+	else
+	{
+		$panel='';
+	}
 }
 
 else

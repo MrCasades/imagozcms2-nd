@@ -28,7 +28,7 @@ if (isset($_GET['log']))
 		exit();
 	}	
 	
-	elseif ($_SESSION['loggIn'] = TRUE)
+	elseif ($_SESSION['loggIn'])
 	{
 		$loggood = 'Вы успешно вошли в систему!';
 		include MAIN_FILE.'/admin/accessgood.html.php';
