@@ -137,8 +137,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			exit();
 		}
 			
-		$allPosts = $premodPosts + $premodNews;//общее количество
-		$allPosts ='<i class="fa fa-copyright" aria-hidden="true"></i>: '.$allPosts;
+		$allPosts ='<i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.($premodPosts + $premodNews);
 
 		try
 		{
@@ -176,7 +175,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			exit();
 		}
 			
-		$allRefused = '<i class="fa fa-thumbs-down" aria-hidden="true"></i>: '.($refusedPosts + $refusedNews);//общее количество
+		$allRefused = '<a href="//'.MAIN_URL.'/admin/refused/#bottom"><i class="fa fa-thumbs-down" aria-hidden="true" title="Отклонённые материалы"></i>: '.($refusedPosts + $refusedNews);//общее количество
 
 
 	}
@@ -203,7 +202,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$row = $s -> fetch();
 			
-		$allPosts = '<i class="fa fa-thumbs-down" aria-hidden="true"></i>: '.$row['mypremodpromotions'];//статьи в премодерации
+		$allPosts = '<i class="fa fa-thumbs-down" aria-hidden="true" title="Материалы в премодерации"></i>: '.$row['mypremodpromotions'];//статьи в премодерации
 
 		try
 		{
@@ -225,7 +224,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$row = $s -> fetch();
 			
-		$allRefused = '<i class="fa fa-thumbs-down" aria-hidden="true"></i>: '.$row['myrefusedpromotions'];//статьи в премодерации
+		$allRefused = '<i class="fa fa-thumbs-down" aria-hidden="true" title="Отклонённые материалы"></i>: '.$row['myrefusedpromotions'];//статьи в премодерации
 	}
 
 	else

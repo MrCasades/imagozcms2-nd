@@ -118,6 +118,11 @@ input{
     font-size: 1rem;
 }
 
+.logpanel a{
+    color: red;
+    text-decoration: none;
+}
+
 /*Мессенжер*/
 
 .messeger-pl{
@@ -845,6 +850,10 @@ article .article-rating{
 
 .fa-user-circle{
     color: red;
+}
+
+.fa-copyright{
+    color: gray;
 }
 
 article .article-rating i{
