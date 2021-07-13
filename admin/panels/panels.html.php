@@ -23,6 +23,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
             <a href="//<?php echo MAIN_URL;?>/admin/addupdpost/?add" class='btn btn-primary btn-sm'>Добавить статью</a>
             <a href="//<?php echo MAIN_URL;?>/admin/addupdnews/?add" class='btn btn-primary btn-sm'>Добавить новость</a> 
         <?php endif;?>
+    <?php elseif (userRole('Администратор')):?>
+        <a href="//<?php echo MAIN_URL;?>/admin/addupdpost/?add" class='btn btn-primary btn-sm'>Добавить статью</a>
+        <a href="//<?php echo MAIN_URL;?>/admin/addupdnews/?add" class='btn btn-primary btn-sm'>Добавить новость</a>
+        <a href="//<?php echo MAIN_URL;?>/admin/addtask/?add" class='btn btn-primary btn-sm'>Добавить задание</a>
+        <a href="//<?php echo MAIN_URL;?>/admin/viewalltask/" class='btn btn-primary btn-sm'>Получить задание</a>
+        <a href="//<?php echo MAIN_URL;?>/admin/" class='btn btn-primary btn-sm'>Редактирование списков</a>
     <?php endif;?>
 </div>
 
