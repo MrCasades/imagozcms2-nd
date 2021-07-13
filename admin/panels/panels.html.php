@@ -19,11 +19,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
     <?php if (userRole('Автор')):?>
         <a href="//<?php echo MAIN_URL;?>/admin/viewallauthortask/#bottom" class='btn btn-primary btn-sm'><strong>МОИ ЗАДАНИЯ ("<?php echo $myTasks;?>")</strong></a>
         <a href="//<?php echo MAIN_URL;?>/admin/viewalltask/#bottom" class='btn btn-info btn-sm'><strong>ПОЛУЧИТЬ ЗАДАНИЕ</strong></a>
-    <?php elseif (userRole('Автор') && userRole('Супер-автор')):?>
-        <a href="//<?php echo MAIN_URL;?>/admin/addupdpost/?add" class='btn btn-primary btn-sm'>Добавить статью</a>
-        <a href="//<?php echo MAIN_URL;?>/admin/addupdnews/?add" class='btn btn-primary btn-sm'>Добавить новость</a>
+        <?php if (userRole('Супер-автор')):?>
+            <a href="//<?php echo MAIN_URL;?>/admin/addupdpost/?add" class='btn btn-primary btn-sm'>Добавить статью</a>
+            <a href="//<?php echo MAIN_URL;?>/admin/addupdnews/?add" class='btn btn-primary btn-sm'>Добавить новость</a> 
+        <?php endif;?>
     <?php endif;?>
-
 </div>
 
 
