@@ -1,5 +1,30 @@
 /*Адаптивность*/
+@media (max-width: 1600px){
+
+    .m-content{
+        margin-left: 5%;
+        max-width: 85%; 
+    }
+
+    .main-headers{
+        max-width: 100%;
+        margin: 1% 0 0 1%;
+        margin-left: 5%;
+    }
+
+    .logpanel{
+        margin-left: 20%;
+        font-size: 1.5rem;
+    }
+}
+
+
 @media (max-width: 1366px){
+
+    .m-content{
+        margin-left: 5%;
+        max-width: 85%; 
+    }
     
     /*Главное меню*/
 

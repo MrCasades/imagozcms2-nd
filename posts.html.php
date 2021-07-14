@@ -7,7 +7,7 @@ include_once __DIR__ . '/includes/func.inc.php';
 include_once __DIR__ . '/header.inc.php';
 
 /*Загрузка adminnews*/
-include_once __DIR__ . '/admin/adminnews.inc.html.php';
+//include_once __DIR__ . '/admin/adminnews.inc.html.php';
 
 ?>
 

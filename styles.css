@@ -104,10 +104,6 @@ input{
     font-size: 1.7rem;
 }
 
-.addupd-post{
-    margin-top: 1rem;
-}
-
 .logpanel .btn_1{
     height: 2rem;
     font-size: 1rem;
@@ -121,6 +117,26 @@ input{
 .logpanel a{
     color: red;
     text-decoration: none;
+}
+
+.addupd-post{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.addupd-post .btn_2{
+    margin-left: 5%;
+    width: 20rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.addupd-post .btn_1{
+    margin-left: 5%;
+    width: 20rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 /*Мессенжер*/
@@ -405,6 +421,9 @@ header .navigation-line{
     transform: rotate(180deg);
 }
 
+footer{
+    text-align: center;
+}
 /*
 header .authorization-form{
     display: none;
@@ -778,12 +797,13 @@ main .tags-place-m a:hover{
 
 article{
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1rem;
 }
 
 article .article-head{
     height: 700px;
     color: white;
-    text-shadow: 1px 1px 2px black, 0 0 3px black;
+    text-shadow: 10px 5px 5px black, 10px 10px 5px black;
     background-repeat: no-repeat;
     background-size: 100% 100%;    
     border-radius: 10px;
@@ -976,6 +996,10 @@ article .btn_recomm{
 
 .comment-textarea{
     width: 90%;
+}
+
+.comment-text{
+    margin-left: 3%;
 }
 
 .comment-person-pl img{

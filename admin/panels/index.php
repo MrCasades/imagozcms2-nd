@@ -116,15 +116,67 @@ if (userRole('Администратор'))
 		include 'error.html.php';
 		exit();
 	}
+	
+	$allDraft = '';
+	$allRefusedMP = '';
+	$myrefusedPromotions = '';
+	
 }
 
-elseif (userRole('Администратор') && userRole('Автор'))
+elseif (userRole('Автор'))
 {
-	/*Счётчики*/
-
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
+	/*Режим супер-автора*/
+	try
+	{
+		$sql = 'SELECT pubtime FROM superuserpubtime WHERE idauthor = '.$selectedAuthor;
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+
+	catch (PDOException $e)
+	{
+		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+		$headMain = 'Ошибка данных!';
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Ошибка выбора информации о задании: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+		
+	$row = $s -> fetch();
+
+	$pubtTime = $row['pubtime'];
+
+	if ($pubtTime != '')
+	{
+		$timer = ($row['pubtime'] + 60 * 60 * 24 * 2) - time();//остаток до завершения 
+		
+		if ($timer <= 0)
+		{
+			$viewTimer = '<h3>Вы можете совершить публикацию!</h3>';
+		}
+		
+		else
+		{
+			/*Конвертируем секунды в часы и минуты*/
+			$hour = floor($timer/3600);
+			$min  = floor(($timer/3600 - $hour) * 60);
+			
+			$viewTimer = '<h3>Вы сможете совершить следующую публикацию через '.$hour.' часов '.$min.' мин!</h3>';
+		}
+	}
+
+	else
+	{
+		$viewTimer = '<h3>Вы можете совершить публикацию!</h3>';
+	}
+
+	/*Счётчики*/
+
 	/*Подсчёт количества заданий*/
 	try
 	{
@@ -184,8 +236,6 @@ elseif (userRole('Администратор') && userRole('Автор'))
 		include 'error.html.php';
 		exit();
 	}
-		
-	$allPosts = $premodPosts + $premodNews;//общее количество
 
 	/*Подсчёт количества материалов в черновике*/
 	try
@@ -262,40 +312,16 @@ elseif (userRole('Администратор') && userRole('Автор'))
 		exit();
 	}
 		
-	$allRefused = $refusedPosts + $refusedNews;//общее количество
+	$allRefusedMP = $refusedPosts + $refusedNews;//общее количество
 }
 
-elseif (userRole('Администратор') || userRole('Автор') || userRole('Рекламодатель'))
+elseif (userRole('Рекламодатель'))
 {
 	/*Счётчики*/
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	
-	/*Подсчёт количества материалов в премодерации*/
-	try
-	{
-		$sql = "SELECT count(*) AS mypremodpromotions FROM promotion WHERE premoderation = 'NO' AND refused = 'NO' AND draft = 'NO' AND idauthor = ".$selectedAuthor;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-		
-	$row = $s -> fetch();
-		
-	$mypremodPromotions = $row['mypremodpromotions'];//статьи в премодерации
-
 	/*Подсчёт количества материалов в черновике*/
 	try
 	{
@@ -340,7 +366,7 @@ elseif (userRole('Администратор') || userRole('Автор') || user
 		
 	$row = $s -> fetch();
 		
-	$myrefusedPromotions = $row['myrefusedpromotions'];//статьи в премодерации
+	$allRefusedMP = $row['myrefusedpromotions'];//статьи в премодерации
 }
 
 include 'panels.html.php';

@@ -82,13 +82,13 @@
 		
 		<?php 
 		/*Загрузка кнопки добавления статьи*/
-		include_once MAIN_FILE . '/admin/addpost.html.inc.php';
+		//include_once MAIN_FILE . '/admin/addpost.html.inc.php';
 		    
 		   // echo '<div align = "center"><p>'.$logPanel.'</p></div>';
-			echo '<div align = "center"><p>'.$superUser.'</p></div>';
-			echo'<p  align = "center">'.$addPost.'</p>';
-			echo'<p  align = "center"> <strong>'.$scoreTitle.'</strong>'.$payForms.'</p>';
-			echo'<p  align = "center">'.$forAuthors.'</p>';?>	
+			//echo '<div align = "center"><p>'.$superUser.'</p></div>';
+			//echo'<p  align = "center">'.$addPost.'</p>';
+			//echo'<p  align = "center"> <strong>'.$scoreTitle.'</strong>'.$payForms.'</p>';
+			//echo'<p  align = "center">'.$forAuthors.'</p>';?>	
 	</div>
 
 	<div>
@@ -113,8 +113,6 @@
 			})(this, this.document, "yandexContextAsyncCallbacks");
 		</script>
 	</div> 
-			
-	<!-- <h1><?php htmlecho ($headMain); ?> </h1> -->
   
 	
 	

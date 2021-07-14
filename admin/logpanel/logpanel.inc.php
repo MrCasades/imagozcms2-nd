@@ -99,7 +99,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 	}
 
 	/*Подсчёт количества отклонённых материалов и материалов в премодерации*/
-	if (userRole('Автор') || userRole('Администратор'))
+	if (userRole('Автор'))
 	{
 		try
 		{
@@ -137,7 +137,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			exit();
 		}
 			
-		$allPosts ='<i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.($premodPosts + $premodNews);
+		$allPosts ='<br/><i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.($premodPosts + $premodNews).' | ';
 
 		try
 		{
@@ -175,7 +175,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			exit();
 		}
 			
-		$allRefused = '<a href="//'.MAIN_URL.'/admin/refused/#bottom"><i class="fa fa-thumbs-down" aria-hidden="true" title="Отклонённые материалы"></i>: '.($refusedPosts + $refusedNews);//общее количество
+		$allRefused = '<a href="//'.MAIN_URL.'/admin/refused/#bottom"><i class="fa fa-thumbs-down" aria-hidden="true" title="Отклонённые материалы"></i>: '.($refusedPosts + $refusedNews).'</a>';//общее количество
 
 
 	}
@@ -202,7 +202,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$row = $s -> fetch();
 			
-		$allPosts = '<i class="fa fa-thumbs-down" aria-hidden="true" title="Материалы в премодерации"></i>: '.$row['mypremodpromotions'];//статьи в премодерации
+		$allPosts = '<br/><i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.$row['mypremodpromotions'].' | ';//статьи в премодерации
 
 		try
 		{
@@ -224,7 +224,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$row = $s -> fetch();
 			
-		$allRefused = '<i class="fa fa-thumbs-down" aria-hidden="true" title="Отклонённые материалы"></i>: '.$row['myrefusedpromotions'];//статьи в премодерации
+		$allRefused = '<a href="//'.MAIN_URL.'/admin/refused/#bottom"><i class="fa fa-thumbs-down" aria-hidden="true" title="Отклонённые материалы"></i>: '.$row['myrefusedpromotions'].'</a>';//статьи в премодерации
 	}
 
 	else
