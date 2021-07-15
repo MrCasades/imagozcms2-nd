@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.carousel.min.css';?>">
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.theme.default.min.css';?>">
     <link rel="stylesheet"  href="<?php echo '//'.MAIN_URL.'/font-awesome-4.7.0/css/font-awesome.css ';?>" type="text/css">
+	<link rel="stylesheet"  href="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/ui/trumbowyg.min.css ';?>" type="text/css">
+	
 	
 	<link href="<?php echo '//'.MAIN_URL.'/favicon.ico';?>" rel="icon" type="image/x-icon">
 
