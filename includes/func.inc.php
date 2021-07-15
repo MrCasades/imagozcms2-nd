@@ -244,7 +244,7 @@ function searchPagesNum($page, $count, $pages_count, $show_link)
 /*Функции возвращают длину текста без пробела*/
 function lengthText($text)
 {
-	$textNonSpace=str_replace(array(" "), '', $text); //В переменной заменяем пробелы на пустоту и возвращаем в переменную $textNonSpace
+	$textNonSpace=str_replace(array(" ", "<p>", "</p>", "<strong>", "</strong>", "text-align:", "justify", "<hr>"), '', $text); //В переменной заменяем пробелы на пустоту и возвращаем в переменную $textNonSpace
     return mb_strlen($textNonSpace, 'utf-8');
 }
 

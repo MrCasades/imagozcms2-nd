@@ -96,7 +96,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <hr/>	
 	 <div>
 		<label for = "news">Введите текст новости <span style = "color: red"> *</span></label><br>
-		<textarea class = "descr" id = "text" name = "textnews" data-provide="markdown" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
+		<textarea class = "descr mark-textarea" id = "text" name = "textnews" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	
 	  <div>

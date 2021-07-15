@@ -120,10 +120,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$id = '';
 	$button = 'Добавить новость';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	if (isset($_POST['id']))
 	{
@@ -239,10 +236,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	$id = $row['id'];
 	$button = 'Обновить информацию о новости';
 	$errorForm = '';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	@session_start();//Открытие сессии для сохранения названия файла изображения
 	
