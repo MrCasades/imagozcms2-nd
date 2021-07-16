@@ -81,7 +81,7 @@ $(document).ready(function() {
     $('.mark-textarea').trumbowyg({
         btns: [
             ['viewHTML'],
-            ['strong', 'em', 'h2', 'h3', 'details'],
+            ['strong', 'em', 'h2', 'h3'],
             ['link'],
             ['insertImage'],
             ['unorderedList', 'orderedList'],

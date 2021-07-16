@@ -252,7 +252,10 @@ function lengthText($text)
 									"<li>", "</li>", "<a href=", "</a>", "<h2>", "</h2>",
 									"<h3>", "</h3>", "<details>", "</details>", "<summary>", "</summary>",
 									"<br>", "<img", "src=", "alt=", "<iframe", "</iframe>", "width=", "height=",
-									 "title=", "YouTube video player", "frameborder=", "allow=", "clipboard-write;"), '', $text); //В переменной заменяем пробелы на пустоту и возвращаем в переменную $textNonSpace
+									 "title=", "YouTube video player", "frameborder=", "allow=", "clipboard-write;",
+									"style=", "autoplay;", "clipboard-write;", "encrypted-media;", "gyroscope;",
+									"picture-in-picture", "allowfullscreen", "https://www.youtube.com/embed",
+									"font-family:", "font-weight:", "Arial", "Helvetica", "font-size:", "sans-serif"), '', $text); //В переменной заменяем пробелы на пустоту и возвращаем в переменную $textNonSpace
     return mb_strlen($textNonSpace, 'utf-8');
 }
 
