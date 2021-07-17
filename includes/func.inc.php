@@ -255,7 +255,11 @@ function lengthText($text)
 									 "title=", "YouTube video player", "frameborder=", "allow=", "clipboard-write;",
 									"style=", "autoplay;", "clipboard-write;", "encrypted-media;", "gyroscope;",
 									"picture-in-picture", "allowfullscreen", "https://www.youtube.com/embed",
-									"font-family:", "font-weight:", "Arial", "Helvetica", "font-size:", "sans-serif"), '', $text); //В переменной заменяем пробелы на пустоту и возвращаем в переменную $textNonSpace
+									"font-family:", "font-weight:", "Arial", "Helvetica", "font-size:", "sans-serif",
+									"<span", "</span>", "white-space:pre", "margin:", "text-align:", "justify;",
+									"background-color:", "rel=", "nofollow", "text-decoration-line:", "text-decoration-thickness:",
+									"letter-spacing:","color:", "rgb", "font-variant-caps:", "font-variant-ligatures:",
+									"text-decoration-style:", "bold;", "box-sizing:", "border-box;", "white-space:", "initial;"), '', $text); //В переменной заменяем пробелы на пустоту и возвращаем в переменную $textNonSpace
     return mb_strlen($textNonSpace, 'utf-8');
 }
 
