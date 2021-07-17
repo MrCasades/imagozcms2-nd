@@ -4,7 +4,10 @@
 
 function html($text)
 {
-	return htmlspecialchars ($text, ENT_QUOTES, 'UTF-8');
+	$turned = array( '&lt;pre&gt;', '&lt;/pre&gt;', '&lt;b&gt;', '&lt;/b&gt;', '&lt;em&gt;', '&lt;/em&gt;', '&lt;u&gt;', '&lt;/u&gt;', '&lt;ul&gt;', '&lt;/ul&gt;', '&lt;li&gt;', '&lt;/li&gt;', '&lt;ol&gt;', '&lt;/ol&gt;', '&lt;strong&gt;', '&lt;/strong&gt;' ); 
+	$turn_back = array( '<pre>', '</pre>', '<b>', '</b>', '<em>', '</em>', '<u>', '</u>', '<ul>', '</ul>', '<li>', '</li>', '<ol>', '</ol>', '<strong>', '</strong>'); 
+	$text = str_replace( $turned, $turn_back, $text);
+	return $text;
 }
 
 function htmlecho($text)

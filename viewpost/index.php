@@ -79,10 +79,7 @@ if (isset ($_GET['id']))
 	$descr = $row['description'];
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
-	$scriptJScode = '<script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Микроразметка*/
 	
@@ -421,7 +418,7 @@ if (isset ($_GET['id']))
 		$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
 		$addComment = '<form class="m-content comment-form" action = "?'.$action.'" method = "post" id=addcomment>               
 								<input type = "hidden" name = "idarticle" value = "'.$idPost.'">
-								<textarea class = "comment-textarea" rows="10" id = "comment" name = "comment" data-provide="markdown" placeholder = "Напишите свой комментарий!"></textarea>	
+								<textarea class = "comment-textarea mark-textarea" rows="10" id = "comment" name = "comment" placeholder = "Напишите свой комментарий!"></textarea>	
 								<button class = "btn_1">Добавить коммнтарий</button>  
 						</form>';	
 	}
