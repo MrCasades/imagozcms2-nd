@@ -586,10 +586,7 @@ function updCommentData($id, $idArticle)
 	$GLOBALS ['id'] = $row['id'];
 	$GLOBALS ['idArticle'] = $idArticle;
 	$GLOBALS ['button'] = 'Обновить комментарий';
-	$GLOBALS ['scriptJScode'] = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$GLOBALS ['scriptJScode'] = '<script src="script.js"></script>';//добавить код JS
 }
 
 /*Обновление комментариев*/

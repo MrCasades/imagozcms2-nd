@@ -97,7 +97,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</table>	
 	 <div>
 		<label for = "promotion">Введите текст сообщения</label><br>
-		<textarea class = "descr" id = "text" name = "text" data-provide="markdown" rows="10"><?php htmlecho($text);?></textarea>	
+		<textarea class = "descr mark-textarea" id = "text" name = "text" rows="10"><?php htmlecho($text);?></textarea>	
 	 </div>
 	  <div>
 		<input type = "hidden" name = "idto" value = "<?php echo $toDialog; ?>">

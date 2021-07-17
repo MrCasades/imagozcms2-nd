@@ -38,10 +38,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Написать сообщ
 	$button = 'Отправить';
 	$errorForm = '';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
 
 	include 'addupdform.html.php';
@@ -81,10 +78,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$button = 'Отправить';
 		$errorForm = '';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-		$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 		
 		@session_start();//Открытие сессии для сохранения id автора
 	

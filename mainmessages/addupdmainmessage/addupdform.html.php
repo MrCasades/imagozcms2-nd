@@ -29,7 +29,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	  </tr>		 
 	</table>	
 		<p><strong>Введите текст сообщения</strong></p>
-		<textarea class = "descr" id = "text" name = "text" data-provide="markdown" rows="10"><?php htmlecho($text);?></textarea>	 
+		<textarea class = "descr mark-textarea" id = "text" name = "text" rows="10"><?php htmlecho($text);?></textarea>	 
 		<input type = "hidden" name = "idto" value = "<?php htmlecho($idto); ?>">
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
 		<p><input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2 addit-btn">

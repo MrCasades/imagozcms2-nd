@@ -32,10 +32,7 @@ $selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//i
 $padgeTitle = 'Новая категория';// Переменные для формы "Категория"
 $action = 'addform';
 $button = 'Ответить';
-$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 /*Имя и текст для формы*/
 $authorPost = authorLogin($_SESSION['email'], $_SESSION['password']);

@@ -101,12 +101,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <hr/>	
 	 <div>
 		<label for = "post">Введите текст статьи <span style = "color: red"> *</span></label><br>
-		<textarea class = "descr" id = "text" name = "text" data-provide="markdown" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
+		<textarea class = "descr mark-textarea" id = "text" name = "text" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn btn-primary btn-sm" id = "confirm">
+		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id = "confirm">
 	  </div>	  
 	</form>	
 	</div>

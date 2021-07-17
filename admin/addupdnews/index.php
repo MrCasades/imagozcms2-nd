@@ -362,10 +362,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$button = 'Добавить новость';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$errorForm = 'Один или несколько атрибутов не указаны. Выбирете все!';
-		$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 		
 		@session_start();//Открытие сессии для сохранения данных форм
 	
@@ -692,10 +689,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	$headMain = 'Материал сохранён в черновике';
 	$robots = 'noindex, nofollow';
 	$descr = '';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	unset($_SESSION['idtask']);//закрытие сессии
 	
@@ -947,10 +941,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	$headMain = 'Материал сохранён в черновике';
 	$robots = 'noindex, nofollow';
 	$descr = '';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	unset($_SESSION['idtask']);//закрытие сессии
 	

@@ -189,7 +189,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					   
 					echo $updAnddel;?></p>
 
-					<?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 50))); ?> [...]
+					<?php echomarkdown ($comment['text']); ?>
                 </div>
 				
 			</div> 

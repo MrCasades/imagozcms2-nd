@@ -21,7 +21,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <div>
 		<label for = "comment">Введите текст комментария</label><br>
 		<input type = "hidden" name = "idarticle" value = "<?php htmlecho($idArticle); ?>">
-		<textarea class = "descr" id = "comment" name = "comment" data-provide="markdown" rows="10"><?php htmlecho($text);?></textarea>	
+		<textarea class = "descr mark-textarea" id = "comment" name = "comment" rows="10"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	
 	  <div>

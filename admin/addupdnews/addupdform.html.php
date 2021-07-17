@@ -101,7 +101,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <hr/>	
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn btn-primary btn-sm" id = "confirm">
+		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id = "confirm">
 	  </div>	  
 	</form>	
 	</div>
