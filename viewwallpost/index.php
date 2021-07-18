@@ -138,10 +138,7 @@ if (isset ($_GET['addcomment']))
 	$idauthor = '';
 	$id = '';
 	$button = 'Добавить ответ';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="../js/jquery-1.min.js"></script>
-					 <script src="../js/bootstrap-markdown.js"></script>
-					 <script src="../js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	if (isset($_SESSION['loggIn']))
 	{
@@ -201,10 +198,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 	$text = $row['subcomment'];
 	$id = $row['id'];
 	$button = 'Обновить ответ';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="../js/jquery-1.min.js"></script>
-					 <script src="../js/bootstrap-markdown.js"></script>
-					 <script src="../js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	include 'subcommentform.html.php';
 	exit();

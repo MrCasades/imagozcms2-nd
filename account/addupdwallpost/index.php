@@ -112,10 +112,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 	$idAutIn = $_POST['idaut'];
 	$id = $row['id'];
 	$button = 'Обновить запись';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	$_GLOBALS['imghead'] = $row['imghead'];//сохранить файл изображения
 	

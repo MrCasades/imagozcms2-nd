@@ -4,12 +4,18 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
-	
-	<div class = "maincont">
-	<div class = "post" align = "center">
-		<p align = "justify">Пополнение счёта на сайте <strong>IMAGOZ.RU</strong> осуществляется при помощи сервиса <strong>Яндекс.Деньги</strong>. Ваш счёт баллов будет пополнен мгновенно после совершения операции. 
-		В случае возникновения проблем с платежом, если счёт не был пополнен и т. п. пишите в <a href='/admin/adminmail/?addmessage'>форму</a> обратной связи в меню сайта. Пополнить можно на любую сумму. По-умолчанию
-		предлагается цена 1-й публикации рекламной статьи на сайте.</p>
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class = "error-pl">
+	<p>Пополнение счёта на сайте IMAGOZ.RU осуществляется при помощи сервиса Яндекс.Деньги. Ваш счёт баллов будет пополнен мгновенно после совершения операции. 
+	В случае возникновения проблем с платежом, если счёт не был пополнен и т. п. пишите в <a href='/admin/adminmail/?addmessage'>форму</a> обратной связи в меню сайта. Пополнить можно на любую сумму. По-умолчанию
+	предлагается цена 1-й публикации рекламной статьи на сайте.</p>
 	
 	<form method="POST" action="https://money.yandex.ru/quickpay/confirm.xml">
 	 <table>
@@ -38,11 +44,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type="hidden" name="need-phone" value="false">
 		<input type="hidden" name="need-address" value="false">
 			
-	<div><input type="submit" name="submit-button" value="Перевести" class="btn btn-primary"></div>
-</form>
-	</div>
-	</div>
-
+		<input type="submit" name="submit-button" value="Перевести" class="btn_2 addit-btn">
+		<a href="#" onclick="history.back();"><button type="button" class="btn_1 addit-btn">Назад</button></a>
+	</form>
+</div>
+	
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>	

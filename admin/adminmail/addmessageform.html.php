@@ -19,11 +19,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<br/><input type = "messagetitle" name = "messagetitle" id = "messagetitle" value = "<?php htmlecho($messagetitle);?>">
 		<br/>
 		<br/><label for = "message"><strong>Введите текст сообщения:</strong></label><br>
-		<textarea class = "descr mark-textarea" id = "message" name = "message" rows="10"><?php htmlecho($text);?></textarea>	
-	 <hr/>	
+		<textarea class = "descr mark-textarea" id = "message" name = "message" rows="10"><?php htmlecho($text);?></textarea>		
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2">
+		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2 addit-btn">
 	  </div>	  
 	</form>
 	<p><a name="bottom"></a></p>

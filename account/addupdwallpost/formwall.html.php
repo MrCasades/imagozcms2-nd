@@ -17,7 +17,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content form-pl">
-<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
+	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
 	 <table>	
 	 <div>
 	  <tr>
@@ -38,7 +38,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 	</table>	
 		<strong>Введите текст записи</strong><br>
-		<textarea class = "descr" id = "comment" name = "comment" data-provide="markdown" rows="10"><?php htmlecho($text);?></textarea>	
+		<textarea class = "descr mark-textarea" id = "comment" name = "comment" rows="10"><?php htmlecho($text);?></textarea>	
 	  <div>
 		<input type = "hidden" name = "idautin" value = "<?php htmlecho($idAutIn); ?>">  
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">

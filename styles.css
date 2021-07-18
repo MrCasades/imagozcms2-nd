@@ -139,6 +139,12 @@ input{
     margin-bottom: 0.5rem;
 }
 
+.for-404-logo{
+    margin-left: 30%;
+    width: 5%;
+    height: 5%;
+}
+
 /*Мессенжер*/
 
 .messeger-pl{

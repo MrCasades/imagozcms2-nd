@@ -144,7 +144,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					}							 
 					echo $updAnddel;?></p>
 				<img src="../images/<?php echo $comment['imghead'];?>" alt="<?php echo $comment['imgalt'];?>"/>
-                <?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 50))); ?> [...]
+                <?php echomarkdown ($comment['text']); ?>
             </div>    
         </div> 
         <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
