@@ -15,14 +15,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content form-pl">
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>	
 	<form action = "?<?php htmlecho($action); ?> " method = "post">
-		<label for = "messagetitle">Введите заголовок </label>
-		<input type = "messagetitle" name = "messagetitle" id = "messagetitle" value = "<?php htmlecho($messagetitle);?>">
-		<label for = "message"><strong>Введите текст сообщения:</strong></label><br>
+		<label for = "messagetitle"><strong>Введите заголовок </strong></label>
+		<br/><input type = "messagetitle" name = "messagetitle" id = "messagetitle" value = "<?php htmlecho($messagetitle);?>">
+		<br/>
+		<br/><label for = "message"><strong>Введите текст сообщения:</strong></label><br>
 		<textarea class = "descr mark-textarea" id = "message" name = "message" rows="10"><?php htmlecho($text);?></textarea>	
 	 <hr/>	
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn btn-primary btn-sm">
+		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2">
 	  </div>	  
 	</form>
 	<p><a name="bottom"></a></p>
