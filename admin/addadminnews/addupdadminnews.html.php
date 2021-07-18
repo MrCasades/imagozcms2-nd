@@ -29,11 +29,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 </table>
 	 <div>
 		<label for = "message"><strong>Введите текст сообщения:</strong></label><br>
-		<textarea class = "descr" id = "message" name = "message" rows = "3" cols = "40"><?php htmlecho($text);?></textarea>	
+		<textarea class = "descr mark-textarea" id = "message" name = "message" rows = "3" cols = "40"><?php htmlecho($text);?></textarea>	
 	 </div>
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn btn-primary btn-sm">
+		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2">
 	  </div>	  
 	</form>	
 	</div>
