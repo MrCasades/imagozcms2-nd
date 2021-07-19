@@ -139,10 +139,17 @@ input{
     margin-bottom: 0.5rem;
 }
 
-.for-404-logo{
-    margin-left: 30%;
-    width: 5%;
-    height: 5%;
+.for-info-logo{
+    margin-left: 40%;
+}
+
+.for-info-logo img{
+    width: 30%;
+    height: 30%;
+}
+
+.for-info-font{
+    font-size: 2rem;
 }
 
 /*Мессенжер*/

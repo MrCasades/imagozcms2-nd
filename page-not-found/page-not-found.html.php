@@ -13,7 +13,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class = "error-pl">
-		<p class="for-404-logo"><img src="<?php echo '//'.MAIN_URL;?>/logomain.png" alt="Ошибка 404!"></p>
+		<p class="for-info-logo"><img src="<?php echo '//'.MAIN_URL;?>/logomain.png" alt="Ошибка 404!"></p>
 		<h3 class="for-info-txt"><?php echo $pageNotFound; ?></h3>
 		<p<a href="#" onclick="history.back();"><button class="btn_2">Назад</button></a></p>
 </div>
