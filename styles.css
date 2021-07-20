@@ -79,6 +79,13 @@ input{
     color: red;
 }
 
+.adm-news-pl{
+    padding: 1rem;
+    border: 2px solid #1e90ff;
+    margin-top: 1rem;
+    margin-left: 12%;
+}
+
 .for-info-txt{
     text-align: center;
 }
