@@ -84,8 +84,8 @@ if (userRole('Администратор'))
 
 	$delAndUpdNews = '<form action = "../../../admin/addadminnews/" method = "post">
 							<input type = "hidden" name = "id" value = "'.$row['adminmailid'].'">
-							<input type = "submit" name = "action" value = "Del" class="btn btn-danger btn-sm">
-							<input type = "submit" name = "action" value = "Upd" class="btn btn-info btn-sm">
+							<input type = "submit" name = "action" value = "Del" class="btn_2">
+							<input type = "submit" name = "action" value = "Upd" class="btn_1">
 						</form>';
 }
 

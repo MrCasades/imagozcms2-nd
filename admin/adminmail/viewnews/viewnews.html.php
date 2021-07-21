@@ -16,7 +16,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div class="adm-news-pl m-content">
 	<?php echo $delAndUpdNews; ?>
 		<h3 class="for-info-txt"><?php htmlecho($message['messagedate']); ?>
-			<p><a href="../../../admin/adminmail/viewadminnews/" class="btn btn-info btn-sm">Все новости</a></p>
+			<p><a href="../../../admin/adminmail/viewadminnews/"><button class="btn_2">Все новости</button></a></p>
 		</h3>
 		<p><?php echomarkdown ($message['text']); ?></p>
 	</div>			
