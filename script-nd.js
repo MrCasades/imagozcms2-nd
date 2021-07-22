@@ -29,7 +29,7 @@ $(document).ready(function() {
     "use strict";
     $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
     $('.menu > ul > li > ul:not(:has(ul))').addClass('normal-sub');
-    $(".menu > ul").before("<span class=\"menu-mobile\">МЕНЮ:</span>");
+    $(".menu > ul").before("<span class=\"menu-mobile\"></span>");
     $(".menu > ul > li").hover(function(e) {
         if ($(window).width() > 768) {
             $(this).children("ul").stop(true, false).fadeToggle(150);

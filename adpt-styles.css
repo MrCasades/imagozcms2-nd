@@ -30,6 +30,16 @@
         margin-left: 20%;
         font-size: 1rem;
     }
+
+    .logpanel .btn_2{
+        height: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .logpanel .btn_1{
+        height: 1.5rem;
+        font-size: 1rem;
+    }
  
     /*Главное меню*/
 
@@ -53,7 +63,7 @@
 
     header nav a{ 
         height: 2rem;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     header .authorization-form{
@@ -99,8 +109,22 @@
     }
 
     main .footer-prev{
-        margin-left: 2%;
         margin-left: 9%;
+    }
+
+    main .social-links{
+        margin-top: -3rem;
+        margin-left: 1rem;
+    }
+
+    main .about-proj{
+        margin-left: 1rem;
+    }
+
+
+    main .zen-c-m img{
+        width: 10rem;
+        height: 10rem;
     }
 }
 
@@ -112,16 +136,20 @@
     }
 
     .logpanel{
-        margin-left: 10%;
+        margin-left: 2%;
         font-size: 0.8rem;
     }
  
     /*Главное меню*/
 
+    .main-headers{
+        margin-left: 5%;
+    }
+
     .main-headers-place{
-        width: 25%;
-        height: 10%;
-        font-size: 0.7rem; 
+        width: 22%;
+        height: 7%;
+        font-size: 0.5rem; 
     }
 
     .main-headers-txtplace{
@@ -172,4 +200,79 @@
     main .footer-prev{
         margin-left: 2%;
     }
+    
+}
+
+@media (max-width: 768px){
+
+    .m-content{
+        margin-left: 1%;
+        max-width: 99%; 
+    }
+
+    /*Главное меню*/
+    .main-headers{
+        margin-left: 2%;
+    }
+
+    .main-headers-place{
+        height: 10%;
+        font-size: 0.5rem; 
+    }
+
+    .main-headers-txtplace{
+        font-size: 0.5rem;
+    }
+
+    header  nav{
+        margin: 3% 2% 0 0%;
+    }
+
+    header .navigation-line{
+        width: 58%;
+    }
+
+    header nav a{ 
+        height: 2rem;
+        font-size: 1.5rem;
+    }
+
+    header .authorization-form{
+        margin-left: 35%;
+    }
+
+    main .post-place-1{
+        margin: 1% 5px;
+        width: 90%;
+    }
+
+    .post-place-1 .post-bottom-1{
+        font-size: 1.3rem;
+    }
+
+    main .post-place-2{
+        margin: 1% 5px;
+        width: 90%;
+    }
+
+    main .tags-place-m{
+        font-size: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    main .tags-place-m{
+        font-size: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    main .footer-prev{
+        margin-left: 2%;
+        flex-direction: column;
+    }
+
+    main .social-links{
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+    
 }

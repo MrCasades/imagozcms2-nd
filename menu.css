@@ -149,9 +149,17 @@
     border: 0;
     padding: 10px;
 }
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 1200px) {
     .menu-container {
-        width: 25%;
+        width: 100%;
+        margin: 20px 0;
+        /* background: #337AB7; */
+    }
+}
+@media only screen and (max-width: 960px) {
+    .menu-container {
+        width: 90%;
     }
     .menu-mobile {
         display: block;
@@ -203,5 +211,12 @@
     }
     .menu .show-on-mobile {
         display: block;
+    }
+}    
+
+
+@media only screen and (max-width: 768px) {
+    .menu-container {
+        width: 80%;
     }
 }    
