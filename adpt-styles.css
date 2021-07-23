@@ -21,10 +21,19 @@
 
 @media (max-width: 1366px){
     .authorization-form{   
-        width: 50%;
-        height: 30%;
+        width: 70%;
+        height: 80%;
         margin-left: 10%;
     }
+
+    .reg-form{
+        height: 21rem;
+    }
+
+    .authorization-form .send input{
+        margin-bottom: 3px;
+        height: 1rem;
+     }
 
     .m-content{
         margin-left: 5%;
@@ -134,6 +143,11 @@
 }
 
 @media (max-width: 960px){
+
+    .error-pl{
+        margin-left: 1%;
+        max-width: 98%;    
+    }
 
     /* .authorization-form{   
         width: 50%;
