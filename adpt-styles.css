@@ -20,6 +20,11 @@
 
 
 @media (max-width: 1366px){
+    .authorization-form{   
+        width: 50%;
+        height: 30%;
+        margin-left: 10%;
+    }
 
     .m-content{
         margin-left: 5%;
@@ -130,6 +135,13 @@
 
 @media (max-width: 960px){
 
+    /* .authorization-form{   
+        width: 50%;
+        height: 30%;
+        padding: 10px;
+        margin-left: 10%;
+    } */
+
     .m-content{
         margin-left: 3%;
         max-width: 95%; 
@@ -147,13 +159,13 @@
     }
 
     .main-headers-place{
-        width: 22%;
+        width: 30%;
         height: 7%;
-        font-size: 0.5rem; 
+        font-size: 0.9rem; 
     }
 
     .main-headers-txtplace{
-        font-size: 0.7rem;
+        font-size: 0.5rem;
     }
 
     header  nav{
@@ -187,6 +199,11 @@
         width: 48%;
     }
 
+    main .shop-comp img{
+        width: 11rem;
+        height: 11rem;
+    }
+
     main .tags-place-m{
         font-size: 0.5rem;
         margin-top: 1rem;
@@ -217,11 +234,11 @@
 
     .main-headers-place{
         height: 10%;
-        font-size: 0.5rem; 
+        width: 45%;
     }
 
-    .main-headers-txtplace{
-        font-size: 0.5rem;
+    .adpt-title {
+        display: none;
     }
 
     header  nav{
@@ -255,6 +272,17 @@
         width: 90%;
     }
 
+    main .goods-place{
+        width: 40%;
+        margin-left: 0.5rem;  
+        font-size: 1rem;   
+    }
+
+    main .shop-comp img{
+        width: 11rem;
+        height: 11rem;
+    }
+
     main .tags-place-m{
         font-size: 0.5rem;
         margin-top: 1rem;
@@ -273,6 +301,12 @@
     main .social-links{
         margin-top: 1rem;
         margin-left: 1rem;
+    }
+
+    main .about-proj{
+        height: 90%;
+        margin-left: 0.3rem;
+        font-size: 0.6rem;
     }
     
 }

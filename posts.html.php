@@ -15,7 +15,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
             <div class = "headers-places"> 
                 <div class = "main-headers-place posts-op-n"><a href = "./viewallnews/">Новостная лента</a></div>
                 <div class = "main-headers-place ratings-op-n"><a href = "./viewfullnewstop/">Рейтинг новостей</a></div>
-                <div class = "main-headers-txtplace">Новости игровой индустрии, высоких технологий и популярной науки</div>
+                <div class = "adpt-title main-headers-txtplace">Новости игровой индустрии, высоких технологий и популярной науки</div>
             </div>
             <div class = "main-headers-line"></div>
     </div>
@@ -109,7 +109,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	<div class = "main-headers">
         <div class = "headers-places"> 
             <div class = "main-headers-place"><a href="./viewallrecommpost/">Пользователи рекомендуют</a></div>
-            <div class = "main-headers-txtplace">Статьи, которые порекомендовали для главной страицы!</div>
+            <div class = "adpt-title main-headers-txtplace">Статьи, которые порекомендовали для главной страицы!</div>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -163,7 +163,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	<div class = "main-headers">
         <div class = "headers-places"> 
             <div class = "main-headers-place">Отражение дня</div>
-            <div class = "main-headers-txtplace">Что-то забавное, занимательное, любопытное</div>
+            <div class = "adpt-title main-headers-txtplace">Что-то забавное, занимательное, любопытное</div>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -203,7 +203,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
         <div class = "headers-places"> 
             <div class = "main-headers-place posts-op-pr"><a href="./viewallpromotion/">Промоушен</a></div>
             <div class = "main-headers-place ratings-op-pr"><a href="./viewfullpromotiontop/">Рейтинг промоушена</a></div>
-            <div class = "main-headers-txtplace">Материалы от наших уважаемых рекламодателей</div>
+            <div class = "adpt-title main-headers-txtplace">Материалы от наших уважаемых рекламодателей</div>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -280,7 +280,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
         <div class = "headers-places"> 
             <div class = "main-headers-place posts-op-art"><a href="./viewallposts/">Статьи</a></div>
             <div class = "main-headers-place ratings-op-art"><a href="./viewfullposttop/">Рейтинг статей</a></div>
-            <div class = "main-headers-txtplace">Масштабные публикации, рейтинги, заметки</div>
+            <div class = "adpt-title main-headers-txtplace">Масштабные публикации, рейтинги, заметки</div>
         </div>
         <div class = "main-headers-line"></div>
     </div>
