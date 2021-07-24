@@ -973,6 +973,11 @@ article .recomm-place{
     margin-left: 70%;
 }
 
+article .fav-and-recomm{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
 article .btn_fav_1{
     background:#FFFFFF;
     color: #1e90ff;
@@ -1020,6 +1025,12 @@ article .btn_recomm{
 
 .comment-text{
     margin-left: 3%;
+    width: 90%;
+}
+
+.comment-text img{
+   width: auto;
+    height: auto;
 }
 
 .comment-person-pl img{

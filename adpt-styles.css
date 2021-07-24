@@ -16,10 +16,20 @@
         margin-left: 20%;
         font-size: 1.5rem;
     }
+
+    article h1{
+        font-size: 4rem;
+        margin-top: 14%;
+        margin-left: 14%;
+    }
 }
 
 
 @media (max-width: 1366px){
+    body{ 
+        overflow-x:hidden; 
+    }
+
     .authorization-form{   
         width: 70%;
         height: 80%;
@@ -53,6 +63,13 @@
     .logpanel .btn_1{
         height: 1.5rem;
         font-size: 1rem;
+    }
+
+    /*Мессенжер*/
+
+    .messeger-pl{
+        margin-left: 20%;
+        max-width: 70%; 
     }
  
     /*Главное меню*/
@@ -140,9 +157,56 @@
         width: 10rem;
         height: 10rem;
     }
+
+    main .acc-info-pl{
+        height: 50%;
+        width: 80%;
+        margin-left: -18%;
+        margin-top: -1.5%;
+        font-size: 1.5rem;
+    }
+
+    .comment-text img{
+        width: 90%;
+         height: auto;
+    }
+
+    article h1{
+        font-size: 4rem;
+        margin-top: 12%;
+        margin-left: 12%;
+    }
+
+     article .zen-ch img{
+        width: 5%;
+        height: 5%;
+    }
+    
+    article .zen-ch .zen-ch-title{
+        font-size: 1.5rem;
+        vertical-align: 60%; 
+    }
+
 }
 
 @media (max-width: 960px){
+
+    main .acc-m{
+        flex-direction: column;
+    }
+
+    main .ava-pl img{
+        height: 50%;
+        width: 50%;      
+    }
+
+    
+    main .acc-info-pl{
+        width: 80%;
+        margin-left: 1%;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+    }
 
     .error-pl{
         margin-left: 1%;
@@ -155,6 +219,21 @@
         padding: 10px;
         margin-left: 10%;
     } */
+
+    /*Мессенжер*/
+
+    .messeger-pl{
+        margin-left: 10%;
+        max-width: 80%; 
+    }
+
+    .for-unr-mess{
+        width: 25rem;
+    }
+
+    .for-dialogs-mess{
+        width: 25rem;
+    }
 
     .m-content{
         margin-left: 3%;
@@ -231,10 +310,60 @@
     main .footer-prev{
         margin-left: 2%;
     }
+
+    main .ava-pl img{
+        height: 70%;
+        width: 70%;      
+    }
+
+    article h1{
+        font-size: 3rem;
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+
+    article .zen-ch .zen-ch-title{
+        vertical-align: 50%; 
+    }
+
+    article .recomm-nolog-txt{
+        font-size: 1.5rem;
+    }
     
 }
 
 @media (max-width: 768px){
+
+     /*Мессенжер*/
+
+     .messeger-pl{
+        margin-left: 5%;
+        max-width: 85%; 
+    }
+
+    .for-unr-mess{
+        width: 17rem;
+        height: 3rem;
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+    
+    .for-unr-mess img{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .for-dialogs-mess{
+        width: 17rem;
+        height: 3rem;
+        font-size: 1rem;
+        margin-left: 1rem;
+    }
+
+    .for-dialogs-mess img{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 
     .m-content{
         margin-left: 1%;
@@ -251,6 +380,10 @@
         width: 45%;
     }
 
+    .main-headers-txtplace{
+        font-size: 1rem;
+    }
+
     .adpt-title {
         display: none;
     }
@@ -259,9 +392,6 @@
         margin: 3% 2% 0 0%;
     }
 
-    header .navigation-line{
-        width: 58%;
-    }
 
     header nav a{ 
         height: 2rem;
@@ -288,8 +418,8 @@
 
     main .goods-place{
         width: 40%;
-        margin-left: 0.5rem;  
-        font-size: 1rem;   
+        margin-left: 0.2rem;  
+        font-size: 0.7rem;   
     }
 
     main .shop-comp img{
@@ -320,7 +450,12 @@
     main .about-proj{
         height: 90%;
         margin-left: 0.3rem;
-        font-size: 0.6rem;
+        font-size: 1rem;
+    }
+
+    main .ava-pl button{
+        margin-top: 0.5rem;
+        width: 70%;
     }
     
 }
