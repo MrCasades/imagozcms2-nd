@@ -1132,5 +1132,7 @@ main .acc-info-pl{
 }
 
 .counts{
+    display: flex;
     margin-top: 1rem;
+    margin-left: 40%;
 }

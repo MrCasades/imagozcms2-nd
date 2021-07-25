@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "error-pl">
 		<p><?php echo $error; ?></p>
-		<p<a href="#" onclick="history.back();"><button class="btn_2">Назад</button></a></p>
+		<p><a href="#" onclick="history.back();"><button class="btn_2">Назад</button></a></p>
 </div>
 
 <?php 
