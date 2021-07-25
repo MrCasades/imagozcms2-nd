@@ -179,8 +179,8 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			foreach ($postsIMG as $postIMG): ?>
 			<a href="./viewpost/?id=<?php htmlecho ($postIMG['id']); ?>">
             <div class = "day-reflection" style="background-image: url(images/<?php htmlecho ($postIMG['imghead']); ?>)">
-                <div class = "post-top-1">05/07/2020</div>
-                <div class = "post-bottom-1"> Заголовок, состоящий из нескольких слов</div>
+                <div class = "post-top-1"><?php htmlecho ($postIMG['postdate']); ?></div>
+                <div class = "post-bottom-1"><?php htmlecho ($postIMG['posttitle']); ?></div>
             </div>
 			</a>
 		<?php endforeach; ?>

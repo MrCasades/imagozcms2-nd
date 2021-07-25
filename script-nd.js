@@ -100,7 +100,11 @@ $(document).ready(function() {
         loop:true,
         margin:20,
         responsive:{
-            900:{
+            600:{
+                items:1
+            },
+
+            400:{
                 items:1
             }
         }
