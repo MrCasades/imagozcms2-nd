@@ -278,6 +278,15 @@
         margin-left: 35%;
     }
 
+    header{
+        height: 7rem;
+    }
+
+    header a img{
+        width: 100px;
+        height: 100px;
+    }
+
     main .post-place-1{
         margin: 1% 5px;
         width: 30%;
@@ -458,15 +467,55 @@
         width: 70%;
     }
 
+    article .article-head{
+        height: 600px;
+        width: 95%;
+        margin-left: 2%;
+    }
+
+    article h1{
+        font-size: 2.5rem;
+        margin-left: 5%;
+    }
+
     article .article-info{
         font-size: 0.8rem;
-        width: 40%;
+        width: 50%;
      }
       
      article .article-rating{
-         margin-left: 35%;
+         margin-left: 20%;
          height: 2rem;
          font-size: 0.8rem;
      }
-    
+
+     article .a-content{
+        margin-left: 2%;
+        width: 95%;
+        font-size: 1.7rem;
+    }
+
+    article .tags-place{
+        padding-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    article .zen-ch .zen-ch-title{
+        font-size: 1.1rem;
+        vertical-align: 50%; 
+    }
+
+    article .recomm-place{
+        margin-left: 52%;
+    }
+
+    article .like-place .btn_vot{
+        height: 30px;
+        width: 40px;
+        font-size: 1.5rem;
+    }
+
+    .comment-ans{
+        margin-left: 70%;
+    }
 }

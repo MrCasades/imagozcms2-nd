@@ -613,7 +613,7 @@ function dataMarkup ($title = '' , $description = '', $imghead = '', $imgalt = '
 					"name": "IMAGOZ",
 					"logo": {
 						"@type": "ImageObject",
-						"url": "https://'.$_SERVER['SERVER_NAME'].'/logomain.jpg",
+						"url": "https://'.$_SERVER['SERVER_NAME'].'/logomain.png",
 						"width": 500,
 						"height": 500
 						}

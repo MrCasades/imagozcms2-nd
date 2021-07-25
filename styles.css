@@ -624,7 +624,7 @@ main .post-place-1:hover {
 
 .post-place-1 .post-bottom-1{
     margin: 4rem auto auto 1rem;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 main .rating-n{/*Скрытый рейтинг новостей*/
@@ -676,7 +676,7 @@ main .post-place-2:hover {
 
 .post-place-2 .post-bottom-1{
     margin: 7rem auto auto 1rem;
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 main .shop-comp{
@@ -823,7 +823,7 @@ article{
 article .article-head{
     height: 700px;
     color: white;
-    text-shadow: 10px 5px 5px black, 10px 10px 5px black;
+    text-shadow: -2px -1px 8px rgba(0,0,0,1);
     background-repeat: no-repeat;
     background-size: 100% 100%;    
     border-radius: 10px;
