@@ -9,6 +9,8 @@
 		</p>
 		<p>Copyright © 2019 MrCasades. All rights reserved.</p>
 	</div>
+	<div class="counts">
+	</div>
   </footer>	
 			
 	<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>

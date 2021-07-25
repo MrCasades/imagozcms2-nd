@@ -1126,3 +1126,11 @@ main .acc-info-pl{
     width: 15rem;
     height: 15rem;
 }
+
+.footer a{
+    color: #1e90ff;
+}
+
+.counts{
+    margin-top: 1rem;
+}
