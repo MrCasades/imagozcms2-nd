@@ -22,6 +22,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
     <h1><?php htmlecho ($headMain); ?></h1>
     </div>
 
+	<div class="m-content">
 	<!-- Yandex.RTB R-A-448222-9 -->
 	<div id="yandex_rtb_R-A-448222-9"></div>
         <script type="text/javascript">
@@ -42,6 +43,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
                      t.parentNode.insertBefore(s, t);
             })(this, this.document, "yandexContextAsyncCallbacks");
         </script>
+		</div>
 
 		<div class="a-content m-content">
 			<?php echomarkdown_pub ($articleText); ?>
@@ -86,6 +88,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<p><?php echo $premoderation; ?></p>
 		</div>
 
+		<div class="m-content">
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- ForPosts -->
 		<ins class="adsbygoogle"
@@ -97,6 +100,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<script>
 			 (adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
+		</div>
 
 		<div class = "main-headers">
             <div class = "headers-places"> 

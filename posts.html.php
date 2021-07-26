@@ -67,6 +67,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 	</div>
 
+	<div class="m-content">
 	<!-- Yandex.RTB R-A-448222-13 -->
 	<div id="yandex_rtb_R-A-448222-13"></div>
 	<script type="text/javascript">
@@ -87,6 +88,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			t.parentNode.insertBefore(s, t);
 		})(this, this.document, "yandexContextAsyncCallbacks");
 	</script>
+	</div>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
@@ -187,6 +189,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div>
     </div>
 
+	<div class="m-content">
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<!-- for_main_page_new -->
 	<ins class="adsbygoogle"
@@ -198,6 +201,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	</script>
+	</div>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
@@ -253,7 +257,8 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 	</div>
 
-	<div class="for_mainpage_direct">
+	
+	<div class="m-content">
 		 <!-- Yandex.RTB R-A-448222-8 -->
 		<div id="yandex_rtb_R-A-448222-8"></div>
 		<script type="text/javascript">

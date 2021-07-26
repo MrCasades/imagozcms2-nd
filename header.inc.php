@@ -40,7 +40,7 @@
 
 	
     <link href="<?php echo '//'.MAIN_URL.'/menu.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles-nd.css';?>" rel= "stylesheet" type="text/css">
     <link href="<?php echo '//'.MAIN_URL.'/adpt-styles.css';?>" rel= "stylesheet" type="text/css">
     
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.carousel.min.css';?>">
@@ -114,7 +114,7 @@
 			//echo'<p  align = "center">'.$forAuthors.'</p>';?>	
 	</div>
 
-	<div>
+	<div class="m-content">
 		<!-- Yandex.RTB R-A-448222-6 -->
 		<div id="yandex_rtb_R-A-448222-6"></div>
 		<script type="text/javascript">

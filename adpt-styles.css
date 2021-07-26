@@ -338,6 +338,10 @@
     article .recomm-nolog-txt{
         font-size: 1.5rem;
     }
+
+    .counts{
+        margin-left: 25%;
+    }
     
 }
 
