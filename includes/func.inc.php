@@ -248,7 +248,7 @@ function searchPagesNum($page, $count, $pages_count, $show_link)
 function lengthText($text)
 {
 	$textNonSpace=str_replace(array(" ", "<p>", "</p>", "<strong>", "</strong>", 
-									"<hr>", "&nbsp", "<ul>", "</ul>", 
+									"<hr>", "&nbsp", "<ul>", "</ul>", "<em>", "</em>",
 									"<li>", "</li>", "<a href=", "</a>", "<h2>", "</h2>",
 									"<h3>", "</h3>", "<details>", "</details>", "<summary>", "</summary>",
 									"<br>", "<img", "src=", "alt=", "<iframe", "</iframe>", "width=", "height=",

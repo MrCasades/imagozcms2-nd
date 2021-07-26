@@ -127,54 +127,57 @@ elseif (userRole('Автор'))
 {
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
-	
-	/*Режим супер-автора*/
-	try
-	{
-		$sql = 'SELECT pubtime FROM superuserpubtime WHERE idauthor = '.$selectedAuthor;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
 
-	catch (PDOException $e)
+	if (userRole('Супер-автор'))
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о задании: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-		
-	$row = $s -> fetch();
+		/*Режим супер-автора*/
+		try
+		{
+			$sql = 'SELECT pubtime FROM superuserpubtime WHERE idauthor = '.$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
 
-	$pubtTime = $row['pubtime'];
+		catch (PDOException $e)
+		{
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка выбора информации о задании: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+			
+		$row = $s -> fetch();
 
-	if ($pubtTime != '')
-	{
-		$timer = ($row['pubtime'] + 60 * 60 * 24 * 2) - time();//остаток до завершения 
-		
-		if ($timer <= 0)
+		$pubtTime = $row['pubtime'];
+
+		if ($pubtTime != '')
+		{
+			$timer = ($row['pubtime'] + 60 * 60 * 24 * 2) - time();//остаток до завершения 
+			
+			if ($timer <= 0)
+			{
+				$viewTimer = '<h3>Вы можете совершить публикацию!</h3>';
+			}
+			
+			else
+			{
+				/*Конвертируем секунды в часы и минуты*/
+				$hour = floor($timer/3600);
+				$min  = floor(($timer/3600 - $hour) * 60);
+				
+				$viewTimer = '<h3>Вы сможете совершить следующую публикацию через '.$hour.' часов '.$min.' мин!</h3>';
+			}
+		}
+
+		else
 		{
 			$viewTimer = '<h3>Вы можете совершить публикацию!</h3>';
 		}
-		
-		else
-		{
-			/*Конвертируем секунды в часы и минуты*/
-			$hour = floor($timer/3600);
-			$min  = floor(($timer/3600 - $hour) * 60);
-			
-			$viewTimer = '<h3>Вы сможете совершить следующую публикацию через '.$hour.' часов '.$min.' мин!</h3>';
-		}
 	}
-
-	else
-	{
-		$viewTimer = '<h3>Вы можете совершить публикацию!</h3>';
-	}
-
+	
 	/*Счётчики*/
 
 	/*Подсчёт количества заданий*/

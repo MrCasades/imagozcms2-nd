@@ -63,6 +63,12 @@ input{
     max-width: 75%; 
 }
 
+.add-main-form{
+    margin-top: 1rem;
+    padding: 2%;
+    border: 2px solid #1e90ff;
+}
+
 .error-pl{
     margin-top: 1rem;
     margin-left: 15%;
