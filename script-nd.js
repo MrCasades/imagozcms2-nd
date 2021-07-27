@@ -90,7 +90,11 @@ $(document).ready(function() {
             ['fullscreen']
         ],
         autogrow: true,
-        lang: 'ru'
+        lang: 'ru',
+        removeformatPasted: true,
+        resetCss: true,
+        minimalLinks: true,
+        defaultLinkTarget: '_blank'
     });
     //owl-carousel
  

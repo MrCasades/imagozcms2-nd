@@ -16,6 +16,11 @@ input{
     border: none;
 }
 
+textarea{
+    display: block;/*Текстовое поле для добавления description*/
+	width: 95%;
+}
+
 .container{
     /*max-width: 1 814px;*/
     margin: 0 auto;

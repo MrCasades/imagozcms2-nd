@@ -77,7 +77,7 @@ if (isset ($_GET['id']))
 		$performTask = '<form action = "../../../admin/addupdnews/?add" method = "post">
 								<div>
 									<input type = "hidden" name = "id" value = "'.$idTask.'">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Выполнить задание">
+									<input type = "submit" name = "action" class="btn_2" value = "Выполнить задание">
 								</div>
 							</form>';
 	}
@@ -87,7 +87,7 @@ if (isset ($_GET['id']))
 		$performTask = '<form action = "../../../admin/addupdpost/?add" method = "post">
 								<div>
 									<input type = "hidden" name = "id" value = "'.$idTask.'">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Выполнить задание">
+									<input type = "submit" name = "action" class="btn_2" value = "Выполнить задание">
 								</div>
 							</form>';
 	}
@@ -96,7 +96,7 @@ if (isset ($_GET['id']))
 	$refuse = '<form action = "../../../admin/viewalltask/taskstatus/" method = "post">
 								<div>
 									<input type = "hidden" name = "id" value = "'.$idTask.'">
-									<input type = "submit" name = "action" class="btn btn-danger btn-sm" value = "Отказаться">
+									<input type = "submit" name = "action" class="btn_1" value = "Отказаться">
 								</div>
 							</form>';
 	

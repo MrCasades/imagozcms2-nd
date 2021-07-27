@@ -5,31 +5,33 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont_for_view">
-		<div>
-			<h3 align = "center">Промоушен</h3>
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content">
+<div>
+	<h3>Промоушен</h3>
 		  
-		  <?php if (empty ($promotions))
-		 { 
-			 echo '<p align = "center">Отклонённые материалы отсутствуют</p>';
-		 }
+	<?php if (empty ($promotions))
+	{ 
+		echo '<p>Материалы отсутствуют</p>';
+	}
 		 
-		 else
+	else
 		  
-		 foreach ($promotions as $promotion): ?> 
-		  <div class = "post">
-			  <div class = "posttitle">
-				  <?php echo ($promotion['promotiondate']. ' | Автор: <a href="../../account/?id='.$promotion['idauthor'].'" style="color: white" >'.$promotion['authorname']).'</a>';?>
-			  </div>
-			  <div>
-				  <h3 align = "center"><?php echo $promotion['promotiontitle'];?></h3>		  	
-			  </div> 
-		  </div>			
-		 <?php endforeach; ?> 
-	   </div>	
-		<p><a name="bottom"></a></p>
-		</div>	
-			
+	foreach ($promotions as $promotion): ?> 
+		<div>		
+			<h3><?php echo $promotion['promotiondate']. '</a>';?> | <?php echo $promotion['promotiontitle'];?></h3>		  	
+		</div>			
+	<?php endforeach; ?> 
+	</div>	
+	<p><a name="bottom"></a></p>
+</div>
+		
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>		
