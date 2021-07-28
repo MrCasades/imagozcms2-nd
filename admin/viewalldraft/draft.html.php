@@ -5,13 +5,21 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-		<div class = "maincont_for_view">
-		<div>
-			<h3 align = "center">Статьи</h3>
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content">
+<div>
+		<h3>Статьи</h3>
 		  
 		  <?php if (empty ($posts))
 		 { 
-			 echo '<p align = "center">Материалы отсутствуют</p>';
+			 echo '<p>Материалы отсутствуют</p>';
 		 }
 		 
 		 else
@@ -24,7 +32,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				  </div>
 				  	 
 				   <div class = "newstext">
-				    <h3 align = "center"><?php htmlecho ($post['posttitle']); ?></h3>
+				    <h3 class = "for-info-txt"><?php htmlecho ($post['posttitle']); ?></h3>
 					   <div class = "newsimg">
 					   <?php if ($post['imghead'] == '')
 						{
@@ -37,8 +45,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						}?>
 					  <p><?php echo $img;?></p>
 				     </div>
-					<p align = "justify"><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($post['text'])), 0, 50))); ?> [...]</p>
-					<a href="./viewdraftpost/?id=<?php htmlecho ($post['id']); ?>" class="btn btn-primary">Далее</a>
+					<p><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($post['text'])), 0, 50))); ?> [...]</p>
+					<a href="./viewdraftpost/?id=<?php htmlecho ($post['id']); ?>"><button class="btn_2">Далее</button></a>
 				   </div>	
 				</div>			
 		 <?php endforeach; ?> 
@@ -46,11 +54,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		
 		<hr/>
 		<div>
-			<h3 align = "center">Новости</h3>
+			<h3>Новости</h3>
 		  
 		  <?php if (empty ($newsIn))
 		 { 
-			 echo '<p align = "center">Материалы отсутствуют</p>';
+			 echo '<p>Материалы отсутствуют</p>';
 		 }
 		 
 		 else
@@ -62,7 +70,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p>Рубрика: <a href="../../viewcategory/?id=<?php echo $news['categoryid']; ?>" style="color: white"><?php echo $news['categoryname'];?></a></p>
 				  </div>	  
 				  <div class = "newstext">
-					<h3 align = "center"><?php htmlecho ($news['newstitle']); ?></h3>
+					<h3 class = "for-info-txt"><?php htmlecho ($news['newstitle']); ?></h3>
 					  <div class = "newsimg">
 					   <?php if ($news['imghead'] == '')
 						{
@@ -76,7 +84,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php echo $img;?></p>
 				  </div>
 					<p><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($news['textnews'])), 0, 50))); ?> [...]</p>
-					<p><a href="./viewdraftnews/?id=<?php htmlecho ($news['id']); ?>" class="btn btn-primary">Далее</a></p>
+					<p><a href="./viewdraftnews/?id=<?php htmlecho ($news['id']); ?>"><button class="btn_2">Далее</button></a></p>
 				  </div>
 				 </div> 
 			</div>			
@@ -85,11 +93,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		
 		<hr/>
 	<div>
-			<h3 align = "center">Промоушен</h3>
+			<h3>Промоушен</h3>
 		  
 		  <?php if (empty ($promotions))
 		 { 
-			 echo '<p align = "center">Материалы отсутствуют</p>';
+			 echo '<p>Материалы отсутствуют</p>';
 		 }
 		 
 		 else
@@ -106,7 +114,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						}?></p>
 				  </div>
 				   <div class = "newstext"> 
-				    <h3 align = "center"><?php htmlecho ($promotion['promotiontitle']); ?></h3>
+				    <h3 class = "for-info-txt"><?php htmlecho ($promotion['promotiontitle']); ?></h3>
 						<div class = "newsimg">
 						   <?php if ($promotion['imghead'] == '')
 							{
@@ -119,17 +127,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							}?>
 						  <p><?php echo $img;?></p>
 						 </div>
-					<p align = "justify"><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($promotion['text'])), 0, 50))); ?> [...]</p>
-					<a href="./viewdraftpromotion/?id=<?php htmlecho ($promotion['id']); ?>" class="btn btn-primary">Далее</a>
+					<p><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($promotion['text'])), 0, 50))); ?> [...]</p>
+					<a href="./viewdraftpromotion/?id=<?php htmlecho ($promotion['id']); ?>"><button class="btn_2">Далее</button></a>
 				   </div>	
 				 </div>			
 		 <?php endforeach; ?> 
 	</div>	
-		<p><a name="bottom"></a></p>
-	</div>
-
-			
-		
+	<p><a name="bottom"></a></p>
+</div>
+	
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>		

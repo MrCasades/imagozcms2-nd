@@ -17,7 +17,7 @@
 	<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>
     <script src="<?php echo '//'.MAIN_URL.'/anime.min.js';?>"></script>
     <script src="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/owl.carousel.min.js';?>"></script>
-	<script src="<?php echo '//'.MAIN_URL.'/script-nd.js';?>"></script>	
+	<script src="<?php echo '//'.MAIN_URL.'/script-nd2.js';?>"></script>	
 	<script src="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/trumbowyg.min.js';?>"></script>
 
 	<?php 

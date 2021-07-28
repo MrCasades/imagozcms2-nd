@@ -250,7 +250,7 @@ function lengthText($text)
 	$textNonSpace=str_replace(array(" ", "<p>", "</p>", "<strong>", "</strong>", "target=",
 									"<hr>", "&nbsp", "<ul>", "</ul>", "<em>", "</em>", "_blank",
 									"<li>", "</li>", "<a href=", "</a>", "<h2>", "</h2>",
-									"<h3>", "</h3>", "<details>", "</details>", "<summary>", "</summary>",
+									"<h3>", "</h3>", "<summary>", "</summary>",
 									"<br>", "<img", "src=", "alt=", "<iframe", "</iframe>", "width=", "height=",
 									 "title=", "YouTube video player", "frameborder=", "allow=", "clipboard-write;",
 									"style=", "autoplay;", "clipboard-write;", "encrypted-media;", "gyroscope;",
