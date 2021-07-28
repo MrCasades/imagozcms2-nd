@@ -125,8 +125,8 @@ if (isset ($_GET['id']))
 			
 					Действия с материалом:
 					<input type = 'hidden' name = 'id' value = '".$idNews."'>
-					<input type = 'submit' name = 'action' value = 'ОБНОВИТЬ' class='btn btn-primary btn-sm'>
-					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn btn-danger btn-sm'>
+					<input type = 'submit' name = 'action' value = 'ОБНОВИТЬ' class='btn_2'>
+					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn_1'>
 				</form>";
 
 	include 'viewdraftnews.html.php';

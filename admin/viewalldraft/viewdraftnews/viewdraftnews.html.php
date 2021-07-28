@@ -6,8 +6,15 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont_for_view">
-		<div align="center">
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content">
+	<div align="center">
 		 <table>
 		 <tr>
 		  <td valign="top"><label for = "meta"> Теги:</label></td>
@@ -49,7 +56,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><a name="bottom"></a></p> 
 					<p><?php echo $pubAndUpd; ?></p>
 			</div>	   	
-		</div>
+</div>
+
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>
