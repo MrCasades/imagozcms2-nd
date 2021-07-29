@@ -108,8 +108,8 @@ if (isset ($_GET['id']))
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idtask']."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn btn-primary btn-sm'>
-						<input type = 'submit' name = 'action' value = 'Del' class='btn btn-primary btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
+						<input type = 'submit' name = 'action' value = 'Del' class='btn_1'>
 					  </form>";
 	}	
 	
@@ -124,8 +124,8 @@ if (isset ($_GET['id']))
 		{
 			$changeTaskStatus = "<form action = '../../../admin/viewalltask/taskstatus/' method = 'post'>
 									<input type = 'hidden' name = 'id' value = '".$_SESSION['idtask']."'>
-									<input type = 'submit' name = 'action' value = 'Взять задание' class='btn btn-danger btn-sm'>
-									<a href='#' onclick='history.back();' class='btn btn-primary btn-sm'>Назад</a>
+									<input type = 'submit' name = 'action' value = 'Взять задание' class='btn_1'>
+									<a href='#' onclick='history.back();'><button type='button' class='btn_2'>Назад</button></a>
 								 </form>";	
 		}
 		

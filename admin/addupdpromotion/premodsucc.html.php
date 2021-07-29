@@ -4,13 +4,20 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
 	
 	<div class = "maincont_for_view"> 
 	 <div class = "post" align="center">
 	 	<p>Материал сохранён в черновике! Если хотите отправить его сразу на проверку редактору, нажмите на кнопку ниже.</p>
 		 <form action = "../../admin/addupdpromotion/" method = "post" id = "confirmok">
 			<input type = "hidden" name = "id" value = "<?php echo $idpost_ind; ?>">
-			<input type = "submit" name = "action" value = "ОПУБЛИКОВАТЬ" class= "btn btn-danger btn-sm">
+			<input type = "submit" name = "action" value = "ОПУБЛИКОВАТЬ" class= "btn_2">
 		</form>
 	 </div>	
 		<h2>Предварительный просмотр</h2>

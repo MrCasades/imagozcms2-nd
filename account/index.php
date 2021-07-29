@@ -484,8 +484,10 @@ if (isset ($_GET['id']))
 	{
 		$authorName = '';
 		$_SESSION['email'] = '';
-		$addComment = '<a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
-						 <a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить запись!';//Вывод сообщения в случае невхода в систему
+		$addComment = '<div class = "m-content for-blocks-m-top">
+						 <a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
+						 <a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить запись!
+						</div>';//Вывод сообщения в случае невхода в систему
 		
 		$action = '';	
 	}

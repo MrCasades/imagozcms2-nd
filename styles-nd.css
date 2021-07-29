@@ -101,6 +101,10 @@ textarea{
     text-align: center;
 }
 
+.for-blocks-m-top{
+    margin-top: 1rem;
+}
+
 .error-pl .btn_2{
     margin-left: 45%;
 }
@@ -1040,7 +1044,7 @@ article .btn_recomm{
 }
 
 .comment-text img{
-   width: auto;
+   width: 90%;
     height: auto;
 }
 

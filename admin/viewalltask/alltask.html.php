@@ -32,7 +32,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				   <div class = "newstext">
 				    <h5 align = "center"><?php htmlecho ($task['tasktitle']); ?></h5>
 					<p align = "justify"><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($task['text'])), 0, 50))); ?> [...]</p>
-					<a href="../../admin/viewalltask/viewtask/?id=<?php htmlecho ($task['id']); ?>" class="btn btn-primary">Далее</a>
+					<a href="../../admin/viewalltask/viewtask/?id=<?php htmlecho ($task['id']); ?>"><button class="btn_2">Далее</button></a>
 				   </div>	
 				 </div>
 			</div>			

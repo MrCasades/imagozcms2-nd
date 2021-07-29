@@ -682,7 +682,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 			
 						Редактировать материал:
 						<input type = 'hidden' name = 'id' value = '".$idpost_ind."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn btn-primary btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
 					  </form>";
 	
 	$title = 'Материал сохранён в черновике';//Данные тега <title>
@@ -934,7 +934,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 			
 						Редактировать материал:
 						<input type = 'hidden' name = 'id' value = '".$idpost_ind."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn btn-primary btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
 					  </form>";
 	
 	$title = 'Материал сохранён в черновике';//Данные тега <title>

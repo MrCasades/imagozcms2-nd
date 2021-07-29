@@ -9,9 +9,15 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont_for_view">
-		
-		<div class = "post">
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content">
+<div class = "post">
 		 <?php foreach ($tasks as $task): ?> 	  
 			<div  align="justify">
 			
@@ -24,9 +30,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php echo $changeTaskStatus; ?></p>
 			</div>			
 		 <?php endforeach; ?>
-		</div>	
-	  </div>				
-
+		</div>
+</div>
+			
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>
