@@ -25,6 +25,8 @@
 //   }
 // }
 
+//Txt-place
+
 $(document).ready(function() {
     "use strict";
     $('.menu > ul > li:has( > ul)').addClass('menu-dropdown-icon');
@@ -80,7 +82,6 @@ $(document).ready(function() {
     
     $('.mark-textarea').trumbowyg({
         btns: [
-            ['viewHTML'],
             ['strong', 'em', 'h2', 'h3'],
             ['link'],
             ['insertImage'],

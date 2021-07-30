@@ -40,8 +40,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php echomarkdown ($post['reasonrefusal']);?></p>
 					<form action = "../../admin/addupdpost/" method = "post">
 							<input type = "hidden" name = "id" value = "<?php echo $post['id'];?>">
-							<input type = "submit" name = "action" value = "Переделать" class="btn_1">
-							<input type = "submit" name = "action" value = "Del" class="btn_2">
+							<input type = "submit" name = "action" value = "Переделать" class="btn_2">
+							<input type = "submit" name = "action" value = "Del" class="btn_3">
 						</form>
 				</div>
 			</div>			
@@ -75,8 +75,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php echomarkdown ($news['reasonrefusal']);?></p>
 					<form action = "../../admin/addupdnews/" method = "post">
 							<input type = "hidden" name = "id" value = "<?php echo $news['id'];?>">
-							<input type = "submit" name = "action" value = "Переделать" class="btn_1">
-							<input type = "submit" name = "action" value = "Del" class="btn_2">
+							<input type = "submit" name = "action" value = "Переделать" class="btn_2">
+							<input type = "submit" name = "action" value = "Del" class="btn_3">
 						</form>
 				</div>
 			</div>			
@@ -109,8 +109,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php echomarkdown ($promotion['reasonrefusal']);?></p>
 					<form action = "../../admin/addupdpromotion/" method = "post">
 							<input type = "hidden" name = "id" value = "<?php echo $promotion['id'];?>">
-							<input type = "submit" name = "action" value = "Переделать" class="btn_1">
-							<input type = "submit" name = "action" value = "Del" class="btn_2">
+							<input type = "submit" name = "action" value = "Переделать" class="btn_2">
+							<input type = "submit" name = "action" value = "Del" class="btn_3">
 						</form>
 				</div>
 			</div>			

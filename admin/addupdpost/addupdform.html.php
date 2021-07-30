@@ -96,9 +96,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			 <li><strong>Для вставки видео c Youtube:</strong> нажмите <strong>"Поделиться"</strong> под видео и скопируйте код из вкладки <strong>"Встроить"</strong> в нужное Вам место.</li>
 		 </ul>	
 	 <hr/>	
+
+	 <?php $txtPlaceStyle = userRole('Администратор') ? 'mark-textarea-adm' : 'mark-textarea';?>
 	 <div>
 		<label for = "post">Введите текст статьи <span style = "color: red"> *</span></label><br>
-		<textarea class = "mark-textarea" id = "text" name = "text" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
+		<textarea class = "<?php htmlecho($txtPlaceStyle); ?>" id = "text" name = "text" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	
 	  <div>

@@ -38,7 +38,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<form action = "../../admin/addupdpromotion/" method = "post">
 							<input type = "hidden" name = "id" value = "<?php echo $promotion['id'];?>">
 							<input type = "submit" name = "action" value = "Переделать" class="btn_2">
-							<input type = "submit" name = "action" value = "Del" class="btn_1">
+							<input type = "submit" name = "action" value = "Del" class="btn_3">
 						</form>
 				</div>
 			</div>			

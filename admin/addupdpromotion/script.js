@@ -67,3 +67,26 @@ title.addEventListener('input', (event) => {
             countTitleLen.style.color = ('black')
         }
 })
+
+//Txt-place
+
+$(document).ready(function() {
+    $('.mark-textarea-adm').trumbowyg({
+        btns: [
+            ['viewHTML'],
+            ['strong', 'em', 'h2', 'h3'],
+            ['link'],
+            ['insertImage'],
+            ['unorderedList', 'orderedList'],
+            ['horizontalRule'],
+            ['removeformat'],
+            ['fullscreen']
+        ],
+        autogrow: true,
+        lang: 'ru',
+        removeformatPasted: true,
+        resetCss: true,
+        minimalLinks: true,
+        defaultLinkTarget: '_blank'
+    });
+})

@@ -46,6 +46,22 @@ textarea{
     border-radius: 5px;
 }
 
+.btn_3 {
+    background:red;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid rgb(237, 240, 243);
+    border-radius: 5px;
+}
+
+.btn_4 {
+    background:green;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid rgb(237, 240, 243);
+    border-radius: 5px;
+}
+
 .addit-btn{
     height: 2rem;
     font-weight: bold;
@@ -60,6 +76,18 @@ textarea{
 .btn_2:hover{
     background:#FFFFFF;
     color: #1e90ff;
+    font-weight: bold;
+}
+
+.btn_3:hover{
+    background:#FFFFFF;
+    color: red;
+    font-weight: bold;
+}
+
+.btn_4:hover{
+    background:#FFFFFF;
+    color: green;
     font-weight: bold;
 }
 
@@ -836,7 +864,7 @@ article{
 }
 
 article .article-head{
-    height: 700px;
+    height: 40%;
     color: white;
     text-shadow: -2px -1px 8px rgba(0,0,0,1);
     background-repeat: no-repeat;
@@ -932,6 +960,11 @@ article h1{
 article .a-content{
     margin-top: 2%;
     font-size: 2rem;
+}
+
+article .a-content img{
+    width: 90%;
+    height: auto;
 }
 
 article .a-video{
