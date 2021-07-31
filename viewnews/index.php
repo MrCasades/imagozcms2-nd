@@ -375,7 +375,8 @@ if (isset ($_GET['id']))
 	{
 		$action = 'addform';
 		$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-		$addComment = '<form class="m-content comment-form" action = "?'.$action.'" method = "post" id=addcomment>               
+		$addComment = '<textarea class = "m-content fls-textarea">Напишите свой комментарий!</textarea>
+					   <form class="m-content comment-form hidden" action = "?'.$action.'" method = "post" id=addcomment>               
 								<input type = "hidden" name = "idarticle" value = "'.$idNews.'">
 								<textarea class = "comment-textarea mark-textarea" rows="10" id = "comment" name = "comment" placeholder = "Напишите свой комментарий!"></textarea>	
 								<button class = "btn_1">Добавить коммнтарий</button>  

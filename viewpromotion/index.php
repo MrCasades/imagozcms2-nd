@@ -377,7 +377,8 @@ if (isset ($_GET['id']))
 	{
 		$authorName = '';
 		$_SESSION['email'] = '';
-		$addComment = '<div class="m-content comment-auth">
+		$addComment = '<textarea class = "m-content fls-textarea">Напишите свой комментарий!</textarea>
+					   <div class="m-content comment-auth hidden">
 							<a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
 							<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить комментарий!
 						</div>';//Вывод сообщения в случае невхода в систему

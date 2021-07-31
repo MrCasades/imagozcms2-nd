@@ -471,10 +471,13 @@ if (isset ($_GET['id']))
 	/*Форма добавления комментария / Получение имени автора для вывода меню редактирования или удаления комментария*/
 	if (isset($_SESSION['loggIn']))
 	{
-		$addComment = ' <form class="m-content comment-form" action = "../account/addupdwallpost/?addform" method = "post" enctype="multipart/form-data">               
+		$addComment = '
+		<textarea class = "m-content fls-textarea">Напишите свой комментарий!</textarea>
+		<form class="m-content comment-form hidden" action = "../account/addupdwallpost/?addform" method = "post" enctype="multipart/form-data">               
 								<input type = "file" name = "upload" id = "upload">
 								<input type = "hidden" name = "action" value = "upload">
 								<input type = "hidden" name = "idauthin" value = "'.$idAuthor.'">
+								
 								<textarea class = "comment-textarea mark-textarea" rows="10" id = "comment" name = "comment" placeholder = "Напишите свой комментарий!"></textarea>	
 								<button class = "btn_1">Добавить коммнтарий</button>  
 						</form>';	

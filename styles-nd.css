@@ -1067,6 +1067,12 @@ article .btn_recomm{
     margin-left: 15%;
 }
 
+.fls-textarea{
+    margin-top: 1rem;
+    margin-left: 15%;
+    width: 90%;
+}
+
 .comment-textarea{
     width: 90%;
 }

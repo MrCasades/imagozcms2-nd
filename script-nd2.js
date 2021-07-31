@@ -116,6 +116,12 @@ $(document).ready(function() {
         }
     });
 
+    $('.fls-textarea').click(function(){
+        console.log('klick ');
+        $('.fls-textarea').hide();
+        $('.comment-form').show();
+    })
+
     //Открыть рейтинг
 
     ratingOpCl(".ratings-op-n", ".posts-op-n", ".last-news", ".rating-n");
