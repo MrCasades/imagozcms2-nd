@@ -122,6 +122,15 @@ $(document).ready(function() {
         $('.comment-form').show();
     })
 
+    $(document).mouseup(function (e){ // событие клика по веб-документу
+		const div = $(".comment-form"); // тут указываем ID элемента
+		if (!div.is(e.target) // если клик был не по нашему блоку
+		    && div.has(e.target).length === 0) { // и не по его дочерним элементам
+			div.hide(); // скрываем его
+            $('.fls-textarea').show();
+		}
+	});
+
     //Открыть рейтинг
 
     ratingOpCl(".ratings-op-n", ".posts-op-n", ".last-news", ".rating-n");
