@@ -78,6 +78,7 @@ $(document).ready(function() {
             ['link'],
             ['insertImage'],
             ['unorderedList', 'orderedList'],
+            ['emoji'],
             ['horizontalRule'],
             ['removeformat'],
             ['fullscreen']

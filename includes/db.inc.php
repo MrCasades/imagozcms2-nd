@@ -5,7 +5,7 @@ try
 {
 	$pdo = new PDO('mysql:host=localhost; dbname=imagozcms2', 'root', '');//подключение к базе данных
 	$pdo -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//поведение объекта PDO при генерации ошибок
-	$pdo -> exec ('SET NAMES "utf8"');// метод задающий кодировку UTF8
+	$pdo -> exec ('SET NAMES "utf8mb4"');// метод задающий кодировку UTF8
 }
 
 catch (PDOException $e)

@@ -82,6 +82,7 @@ $(document).ready(function() {
     
     $('.mark-textarea').trumbowyg({
         btns: [
+            ['emoji'],
             ['strong', 'em', 'h2', 'h3'],
             ['link'],
             ['insertImage'],
