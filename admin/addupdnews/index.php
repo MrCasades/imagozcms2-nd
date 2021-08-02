@@ -617,16 +617,17 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	/*Предварительенй просмотр*/
 	
-	$select = 'SELECT newsblock.id AS newsid, author.id AS idauthor, news, newstitle, imghead, description, imgalt, newsdate, authorname, category.id AS categoryid, categoryname FROM newsblock 
-			   INNER JOIN author ON idauthor = author.id 
-			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND newsblock.id = ';
+	$select = 'SELECT newsblock.id AS newsid, author.id AS idauthor, news, newstitle, imghead, imgalt, videoyoutube, newsdate, authorname, category.id AS categoryid, categoryname FROM newsblock 
+				INNER JOIN author ON idauthor = author.id 
+				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND newsblock.id = ';
 
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	try
 	{
 		$sql = $select.$idpost_ind ;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -640,12 +641,27 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
+	$row = $s -> fetch();
+		
+	$articleId = $row['newsid'];
+	$authorId = $row['idauthor'];
+	$articleText = $row['news'];
+	$imgHead = $row['imghead'];
+	$imgAlt = $row['imgalt'];
+	$date = $row['newsdate'];
+	$nameAuthor = $row['authorname'];
+	$categoryName = $row['categoryname'];
+	$categoryId = $row['categoryid'];
+
+	/*Вывод видео в статью*/
+	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
 	{
-		$newsIn[] =  array ('id' => $row['newsid'], 'idauthor' => $row['idauthor'],  'textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'description' => $row['description'], 'newsdate' => $row['newsdate'], 
-							'authorname' => $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+		$video = '<iframe width="85%" height="320px" src="'.$row['videoyoutube'].'" frameborder="0" allowfullscreen></iframe>';
+	}
+		
+	else
+	{
+		$video = '';
 	}	
 	
 	/*Вывод тематик(тегов)*/
@@ -869,7 +885,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	/*Предварительенй просмотр*/
 	
-	$select = 'SELECT newsblock.id AS newsid, author.id AS idauthor, news, newstitle, imghead, viewcount, averagenumber, description, imgalt, newsdate, authorname, category.id AS categoryid, categoryname FROM newsblock 
+	$select = 'SELECT newsblock.id AS newsid, author.id AS idauthor, news, newstitle, imghead, imgalt, videoyoutube, newsdate, authorname, category.id AS categoryid, categoryname FROM newsblock 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND newsblock.id = ';
 
@@ -878,7 +894,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	try
 	{
 		$sql = $select.$idpost_ind ;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -892,13 +909,28 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
+	$row = $s -> fetch();
+		
+	$articleId = $row['newsid'];
+	$authorId = $row['idauthor'];
+	$articleText = $row['news'];
+	$imgHead = $row['imghead'];
+	$imgAlt = $row['imgalt'];
+	$date = $row['newsdate'];
+	$nameAuthor = $row['authorname'];
+	$categoryName = $row['categoryname'];
+	$categoryId = $row['categoryid'];
+
+	/*Вывод видео в статью*/
+	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
 	{
-		$newsIn[] =  array ('id' => $row['newsid'], 'idauthor' => $row['idauthor'],  'textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'description' => $row['description'], 'newsdate' => $row['newsdate'], 
-							'authorname' => $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
-	}	
+		$video = '<iframe width="85%" height="320px" src="'.$row['videoyoutube'].'" frameborder="0" allowfullscreen></iframe>';
+	}
+		
+	else
+	{
+		$video = '';
+	}
 	
 	/*Вывод тематик(тегов)*/
 	

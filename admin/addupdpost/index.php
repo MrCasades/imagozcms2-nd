@@ -620,16 +620,17 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 /*Предварительенй просмотр*/
 	
-	$select = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, description, imgalt, postdate, authorname, category.id AS categoryid, categoryname FROM posts 
-			   INNER JOIN author ON idauthor = author.id 
-			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND posts.id = ';
+	$select = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, imgalt, videoyoutube, postdate, authorname, category.id AS categoryid, categoryname FROM posts 
+				INNER JOIN author ON idauthor = author.id 
+				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND posts.id = ';
 
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	try
 	{
 		$sql = $select.$idpost_ind ;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -643,13 +644,28 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
+	$row = $s -> fetch();
+		
+	$articleId = $row['postid'];
+	$authorId = $row['idauthor'];
+	$articleText = $row['post'];
+	$imgHead = $row['imghead'];
+	$imgAlt = $row['imgalt'];
+	$date = $row['postdate'];
+	$nameAuthor = $row['authorname'];
+	$categoryName = $row['categoryname'];
+	$categoryId = $row['categoryid'];
+	
+	/*Вывод видео в статью*/
+	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
 	{
-		$posts[] =  array ('id' => $row['postid'], 'idauthor' => $row['idauthor'],  'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'description' => $row['description'], 'postdate' => $row['postdate'], 
-						    'authorname' => $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
-	}	
+		$video = '<iframe width="85%" height="320px" src="'.$row['videoyoutube'].'" frameborder="0" allowfullscreen></iframe>';
+	}
+			
+	else
+	{
+		$video = '';
+	}
 	
 	/*Вывод тематик(тегов)*/
 	
@@ -872,7 +888,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 /*Предварительенй просмотр*/
 	
-	$select = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, description, imgalt, postdate, authorname, category.id AS categoryid, categoryname FROM posts 
+	$select = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, imgalt, videoyoutube, postdate, authorname, category.id AS categoryid, categoryname FROM posts 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND posts.id = ';
 
@@ -895,13 +911,28 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
+	$row = $s -> fetch();
+		
+	$articleId = $row['postid'];
+	$authorId = $row['idauthor'];
+	$articleText = $row['post'];
+	$imgHead = $row['imghead'];
+	$imgAlt = $row['imgalt'];
+	$date = $row['postdate'];
+	$nameAuthor = $row['authorname'];
+	$categoryName = $row['categoryname'];
+	$categoryId = $row['categoryid'];
+	
+	/*Вывод видео в статью*/
+	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
 	{
-		$posts[] =  array ('id' => $row['postid'], 'idauthor' => $row['idauthor'],  'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'description' => $row['description'], 'postdate' => $row['postdate'], 
-						    'authorname' => $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
-	}	
+		$video = '<iframe width="85%" height="320px" src="'.$row['videoyoutube'].'" frameborder="0" allowfullscreen></iframe>';
+	}
+			
+	else
+	{
+		$video = '';
+	}
 	
 	/*Вывод тематик(тегов)*/
 	
