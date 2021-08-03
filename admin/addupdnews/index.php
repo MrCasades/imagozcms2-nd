@@ -652,6 +652,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
+	$posttitle = $row['newstitle'];
 
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
@@ -920,6 +921,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
+	$posttitle = $row['newstitle'];
 
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))

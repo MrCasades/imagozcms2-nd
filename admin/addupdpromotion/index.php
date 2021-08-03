@@ -536,7 +536,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 /*Предварительенй просмотр*/
 	
-	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, description, imgalt, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
+	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, imgalt, videoyoutube, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
 
@@ -545,7 +545,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	try
 	{
 		$sql = $select.$idpost_ind ;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -559,13 +560,18 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$promotions[] =  array ('id' => $row['promotionid'], 'idauthor' => $row['idauthor'],  'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'description' => $row['description'], 'promotiondate' => $row['promotiondate'], 
-						    'authorname' => $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
-	}	
+	$row = $s -> fetch();
+		
+	$articleId = $row['promotionid'];
+	$authorId = $row['idauthor'];
+	$articleText = $row['promotion'];
+	$imgHead = $row['imghead'];
+	$imgAlt = $row['imgalt'];
+	$date = $row['promotiondate'];
+	$nameAuthor = $row['authorname'];
+	$categoryName = $row['categoryname'];
+	$categoryId = $row['categoryid'];
+	$posttitle = $row['promotiontitle'];	
 	
 	/*Вывод тематик(тегов)*/
 	
@@ -762,7 +768,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 /*Предварительенй просмотр*/
 	
-	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, description, imgalt, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
+	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, imgalt, videoyoutube, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
 
@@ -771,7 +777,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	try
 	{
 		$sql = $select.$idpost_ind ;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -785,13 +792,18 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$promotions[] =  array ('id' => $row['promotionid'], 'idauthor' => $row['idauthor'],  'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'description' => $row['description'], 'promotiondate' => $row['promotiondate'], 
-						    'authorname' => $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
-	}	
+	$row = $s -> fetch();
+		
+	$articleId = $row['promotionid'];
+	$authorId = $row['idauthor'];
+	$articleText = $row['promotion'];
+	$imgHead = $row['imghead'];
+	$imgAlt = $row['imgalt'];
+	$date = $row['promotiondate'];
+	$nameAuthor = $row['authorname'];
+	$categoryName = $row['categoryname'];
+	$categoryId = $row['categoryid'];
+	$posttitle = $row['promotiontitle'];	
 	
 	/*Вывод тематик(тегов)*/
 	
@@ -949,7 +961,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'delete';
-	$promotiontitle = $row['promotiontitle'];
+	$posttitle = $row['promotiontitle'];
 	$id = $row['id'];
 	$button = 'Удалить';
 	

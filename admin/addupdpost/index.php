@@ -655,6 +655,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
+	$posttitle = $row['posttitle'];
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
@@ -897,7 +898,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	try
 	{
 		$sql = $select.$idpost_ind ;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -922,6 +924,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
+	$posttitle = $row['posttitle'];
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))

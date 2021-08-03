@@ -35,6 +35,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> 0
         </div>
     </div>
+	<h1><?php echo $posttitle; ?></h1>
     </div>
 
 	<div class="m-content">
