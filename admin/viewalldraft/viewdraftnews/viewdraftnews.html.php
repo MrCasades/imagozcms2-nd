@@ -8,55 +8,48 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
     <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+        <div class = "main-headers-txtplace"><h1><a href="#" onclick="history.back();">Назад</a></h1></div>
     </div>
     <div class = "main-headers-line"></div>
 </div>
 
-<div class="m-content">
-	<div align="center">
-		 <table>
-		 <tr>
-		  <td valign="top"><label for = "meta"> Теги:</label></td>
-			   <?php if (empty($metas))
-			  {
-				 echo '';
-		      }
-		 
-		      else
-				  
-			  foreach ($metas as $meta): ?>	  
-				<td><div>	 
-					<a href="../viewmetanews/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>	 
-				</div></td> 	
-				<?php endforeach; ?>
-		  </tr>
-		 </table>
-		</div>
-		
-		<div class = "post">	  
-			<div  align="justify">
-				<div class = "posttitle">
-				  <?php echo ($date.' | Автор: <a href="../../../account/?id='.$authorId.'" style="color: white" >'.$nameAuthor).'</a>';?>
-				  <p>Рубрика: <a href="../../../viewcategory/?id=<?php echo $categoryId; ?>" style="color: white"><?php echo $categoryName;?></a></p>
-				</div>
+<article>
+    <div class = "article-head m-content" style="background-image: url(../../../images/<?php echo $imgHead; ?>)">
+        <div class = "article-head-top"> 
+            <div class ="article-info">
+                <p><?php echo $date;?> | Автор: <a href="../../../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a></p>
+                <p>Рубрика: <span class="post-rubrics"><a href="../../../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
+            </div>
+        <div class="article-rating">
+                <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> 0  
+				<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> 0
+				<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> 0
+        </div>
+    </div>
+    <h1><?php htmlecho ($headMain); ?></h1>
+    </div>
+
+		<div class="a-content m-content">
+			<?php echomarkdown_pub ($articleText); ?>
+			<p class="a-video"><?php echo $video; ?></p>
+			<div class="tags-place-m"> 
+				<?php if (empty($metas))
+				{
+					echo '';
+				}
 				
-				<?php if ($imgHead == '')
-					{
-						$img = '';//если картинка в заголовке отсутствует
-						echo $img;
-					}
-						else 
-					{
-						$img = '<p align="center"><img width = "80%" height = "80%" src="../../../images/'.$imgHead.'"'. ' alt="'.$imgAlt.'"'.'></p>';//если картинка присутствует
-					}?>
-					<p><?php echo $img;?></p>
-					<p><?php echomarkdown_pub ($articleText); ?></p>
-					<p align="center"><?php echo $video; ?></p>
-					<p><a name="bottom"></a></p> 
-					<p><?php echo $pubAndUpd; ?></p>
-			</div>	   	
-</div>
+				else
+				
+				foreach ($metas as $meta): ?> 
+			
+					<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
+				
+				<?php endforeach; ?>
+
+			</div>
+			<p><?php echo $pubAndUpd; ?></p>
+        </div>
+</article>
 
 <?php 
 /*Загрузка footer*/

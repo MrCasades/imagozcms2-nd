@@ -18,7 +18,7 @@ if (isset ($_GET['id']))
 {
 	$idPromotion = $_GET['id'];
 	
-	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, videoyoutube, viewcount, votecount, averagenumber, description, imgalt, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
+	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, videoyoutube, imgalt, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND draft = "YES" AND promotion.id = ';
 	
@@ -51,8 +51,6 @@ if (isset ($_GET['id']))
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
 	$date = $row['promotiondate'];
-	$viewCount = $row['viewcount'];
-	$averageNumber = $row['averagenumber'];
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
@@ -71,11 +69,7 @@ if (isset ($_GET['id']))
 	$robots = 'noindex, nofollow';
 	$descr = $row['description'];
 	$authorComment = '';
-	$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
@@ -124,8 +118,8 @@ if (isset ($_GET['id']))
 			
 					Действия с материалом:
 					<input type = 'hidden' name = 'id' value = '".$idPromotion."'>
-					<input type = 'submit' name = 'action' value = 'ОБНОВИТЬ' class='btn_2'>
-					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn_1'>
+					<input type = 'submit' name = 'action' value = 'ОБНОВИТЬ' class='btn_2 addit-btn'>
+					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn_1 addit-btn'>
 				</form>";
 
 	include 'viewdraftpromotion.html.php';

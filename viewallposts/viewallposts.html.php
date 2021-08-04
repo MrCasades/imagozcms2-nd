@@ -15,7 +15,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div class = "main-post m-content">
 		<?php if (empty($posts))
 		{
-			echo '<p align = "center">Статьи отсутствуют</p>';
+			echo '<p>Статьи отсутствуют</p>';
 		}
 			
 		else
