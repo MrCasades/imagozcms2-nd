@@ -1,6 +1,6 @@
 <?php 
 /*Загрузка функций в шаблон*/
-include_once MAIN_FILE . '/includes/func_promotion.inc.php';
+include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>

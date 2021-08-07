@@ -785,3 +785,122 @@ function viewVideoInArticle ($text)
 
 	return $text;
 }
+
+/*Предварительенй просмотр*/
+
+function preview($type, $idArticle)//$type - newsblock, posts, promotion
+{
+	if ($type == 'newsblock')
+	{
+		$select = 'SELECT newsblock.id AS articleid, author.id AS idauthor, news AS articledata, newstitle AS title, imghead, imgalt, videoyoutube, newsdate AS articledate, authorname, category.id AS categoryid, categoryname FROM newsblock 
+				INNER JOIN author ON idauthor = author.id 
+				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND newsblock.id = ';
+	}
+	
+	elseif ($type == 'posts')
+	{
+		$select = 'SELECT posts.id AS articleid, author.id AS idauthor, post AS articledata, posttitle AS title, imghead, imgalt, videoyoutube, postdate AS articledate, authorname, category.id AS categoryid, categoryname FROM posts 
+			   INNER JOIN author ON idauthor = author.id 
+			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND posts.id = ';
+	}
+
+	elseif ($type == 'promotion')
+	{
+		$select = 'SELECT promotion.id AS articleid, author.id AS idauthor, promotion AS articledata, promotiontitle AS title, imghead, imgalt, videoyoutube, promotiondate AS articledate, authorname, category.id AS categoryid, categoryname FROM promotion 
+			   INNER JOIN author ON idauthor = author.id 
+			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
+	}
+
+	include MAIN_FILE . '/includes/db.inc.php';
+ 
+	try
+	{
+		$sql = $select.$idArticle ;
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+
+	catch (PDOException $e)
+	{
+		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+		$headMain = 'Ошибка данных!';
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Error select news ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+
+	$row = $s -> fetch();
+
+	$GLOBALS['articleId'] = $row['articleid'];
+	$GLOBALS['authorId'] = $row['idauthor'];
+	$GLOBALS['articleText'] = $row['articledata'];
+	$GLOBALS['imgHead'] = $row['imghead'];
+	$GLOBALS['imgAlt'] = $row['imgalt'];
+	$GLOBALS['date'] = $row['articledate'];
+	$GLOBALS['nameAuthor'] = $row['authorname'];
+	$GLOBALS['categoryName'] = $row['categoryname'];
+	$GLOBALS['categoryId'] = $row['categoryid'];
+	$GLOBALS['posttitle'] = $row['title'];
+
+
+	/*Вывод видео в статью*/
+	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
+	{
+		$GLOBALS['video'] = '<iframe width="85%" height="320px" src="'.$row['videoyoutube'].'" frameborder="0" allowfullscreen></iframe>';
+	}
+
+	else
+	{
+		$GLOBALS['video'] = '';
+	}
+
+	$GLOBALS['delAndUpd'] = "<form action = '../../admin/addupdnews/' method = 'post'>
+
+								Редактировать материал:
+								<input type = 'hidden' name = 'id' value = '".$idArticle."'>
+								<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
+							</form>";
+
+	$GLOBALS['title'] = 'Материал сохранён в черновике';//Данные тега <title>
+	$GLOBALS['headMain'] = 'Материал сохранён в черновике';
+	$GLOBALS['robots'] = 'noindex, nofollow';
+	$GLOBALS['descr'] = '';
+	$GLOBALS['scriptJScode'] = '<script src="script.js"></script>';//добавить код JS					
+}
+
+/*Вывод тематик(тегов) для превью*/
+	
+function previewMetas($type, $typeId, $idArticle)//$type - newsblock, posts, promotion; $typeId - idnews, idpost, idpromotion
+{
+	include MAIN_FILE . '/includes/db.inc.php';
+
+	try
+	{
+		$sql = 'SELECT meta.id, metaname FROM '.$type.' 
+			INNER JOIN metapost ON '.$type.'.id = '.$typeId.' 
+			INNER JOIN meta ON meta.id = idmeta 
+			WHERE '.$type.'.id = '.$idArticle;//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+		$headMain = 'Ошибка данных!';
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Ошибка выбора тега ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$metas[] =  array ('id' => $row['id'], 'metaname' => $row['metaname']);
+	}
+
+	return $metas;
+}

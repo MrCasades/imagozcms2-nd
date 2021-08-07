@@ -535,43 +535,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	}
 	
 /*Предварительенй просмотр*/
-	
-	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, imgalt, videoyoutube, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
-			   INNER JOIN author ON idauthor = author.id 
-			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
 
-	include MAIN_FILE . '/includes/db.inc.php';
-	
-	try
-	{
-		$sql = $select.$idpost_ind ;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-	
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select news ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-
-	$row = $s -> fetch();
-		
-	$articleId = $row['promotionid'];
-	$authorId = $row['idauthor'];
-	$articleText = $row['promotion'];
-	$imgHead = $row['imghead'];
-	$imgAlt = $row['imgalt'];
-	$date = $row['promotiondate'];
-	$nameAuthor = $row['authorname'];
-	$categoryName = $row['categoryname'];
-	$categoryId = $row['categoryid'];
-	$posttitle = $row['promotiontitle'];	
+	preview('promotion', $idpost_ind);
 	
 	/*Вывод тематик(тегов)*/
 	
@@ -602,19 +567,6 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	{
 		$metas[] =  array ('id' => $row['id'], 'metaname' => $row['metaname']);
 	}
-	
-	$delAndUpd = "<form action = '../../admin/addupdpromotion/' method = 'post'>
-			
-						Редактировать материал:
-						<input type = 'hidden' name = 'id' value = '".$idpost_ind."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
-					  </form>";
-	
-	$title = 'Материал сохранён в черновике';//Данные тега <title>
-	$headMain = 'Материал сохранён в черновике';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	unset($_SESSION['promotionprice']);//закрытие сессии
 	
@@ -768,42 +720,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 /*Предварительенй просмотр*/
 	
-	$select = 'SELECT promotion.id AS promotionid, author.id AS idauthor, promotion, promotiontitle, imghead, imgalt, videoyoutube, promotiondate, authorname, category.id AS categoryid, categoryname FROM promotion 
-			   INNER JOIN author ON idauthor = author.id 
-			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
-
-	include MAIN_FILE . '/includes/db.inc.php';
-	
-	try
-	{
-		$sql = $select.$idpost_ind ;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-	
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select news ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-
-	$row = $s -> fetch();
-		
-	$articleId = $row['promotionid'];
-	$authorId = $row['idauthor'];
-	$articleText = $row['promotion'];
-	$imgHead = $row['imghead'];
-	$imgAlt = $row['imgalt'];
-	$date = $row['promotiondate'];
-	$nameAuthor = $row['authorname'];
-	$categoryName = $row['categoryname'];
-	$categoryId = $row['categoryid'];
-	$posttitle = $row['promotiontitle'];	
+	preview('promotion', $idpost_ind);
 	
 	/*Вывод тематик(тегов)*/
 	
@@ -834,19 +751,6 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	{
 		$metas[] =  array ('id' => $row['id'], 'metaname' => $row['metaname']);
 	}
-	
-	$delAndUpd = "<form action = '../../admin/addupdpromotion/' method = 'post'>
-			
-						Редактировать материал:
-						<input type = 'hidden' name = 'id' value = '".$idpost_ind."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
-					  </form>";
-	
-	$title = 'Материал сохранён в черновике';//Данные тега <title>
-	$headMain = 'Материал сохранён в черновике';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	unset($_SESSION['promotionprice']);//закрытие сессии
 	
