@@ -795,6 +795,8 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 		$select = 'SELECT newsblock.id AS articleid, author.id AS idauthor, news AS articledata, newstitle AS title, imghead, imgalt, videoyoutube, newsdate AS articledate, authorname, category.id AS categoryid, categoryname FROM newsblock 
 				INNER JOIN author ON idauthor = author.id 
 				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND newsblock.id = ';
+
+		$forDelUpd = 'addupdnews';
 	}
 	
 	elseif ($type == 'posts')
@@ -802,6 +804,8 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 		$select = 'SELECT posts.id AS articleid, author.id AS idauthor, post AS articledata, posttitle AS title, imghead, imgalt, videoyoutube, postdate AS articledate, authorname, category.id AS categoryid, categoryname FROM posts 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND posts.id = ';
+
+		$forDelUpd = 'addupdpost';
 	}
 
 	elseif ($type == 'promotion')
@@ -809,6 +813,8 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 		$select = 'SELECT promotion.id AS articleid, author.id AS idauthor, promotion AS articledata, promotiontitle AS title, imghead, imgalt, videoyoutube, promotiondate AS articledate, authorname, category.id AS categoryid, categoryname FROM promotion 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
+
+		$forDelUpd = 'addupdpromotion';
 	}
 
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -856,7 +862,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 		$GLOBALS['video'] = '';
 	}
 
-	$GLOBALS['delAndUpd'] = "<form action = '../../admin/addupdnews/' method = 'post'>
+	$GLOBALS['delAndUpd'] = "<form action = '../../admin/".$forDelUpd."/' method = 'post'>
 
 								Редактировать материал:
 								<input type = 'hidden' name = 'id' value = '".$idArticle."'>

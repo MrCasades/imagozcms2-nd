@@ -61,7 +61,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 		<div class = "m-content">
 			<p><?php echo $delAndUpd; ?></p>
-			<p><?php echo $premoderation; ?></p>
 		</div>
 
 </div>

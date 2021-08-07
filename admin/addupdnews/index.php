@@ -620,34 +620,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	preview('newsblock', $idpost_ind);
 	
 	/*Вывод тематик(тегов)*/
-	
-	/*Команда SELECT*/
-	
-	try
-	{
-		$sql = 'SELECT meta.id, metaname FROM newsblock 
-				INNER JOIN metapost ON newsblock.id = idnews 
-				INNER JOIN meta ON meta.id = idmeta 
-				WHERE newsblock.id = '.$idpost_ind;//Вверху самое последнее значение
-		$result = $pdo->query($sql);
-	}
-	
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора тега ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$metas[] =  array ('id' => $row['id'], 'metaname' => $row['metaname']);
-	}
+
+	$metas = previewMetas('newsblock', 'idnews', $idpost_ind);
 		
 	unset($_SESSION['idtask']);//закрытие сессии
 	
@@ -831,33 +805,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	/*Вывод тематик(тегов)*/
 	
-	/*Команда SELECT*/
-	
-	try
-	{
-		$sql = 'SELECT meta.id, metaname FROM newsblock 
-				INNER JOIN metapost ON newsblock.id = idnews 
-				INNER JOIN meta ON meta.id = idmeta 
-				WHERE newsblock.id = '.$idpost_ind;//Вверху самое последнее значение
-		$result = $pdo->query($sql);
-	}
-	
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора тега ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$metas[] =  array ('id' => $row['id'], 'metaname' => $row['metaname']);
-	}
+	$metas = previewMetas('newsblock', 'idnews', $idpost_ind);
 	
 	unset($_SESSION['idtask']);//закрытие сессии
 	
