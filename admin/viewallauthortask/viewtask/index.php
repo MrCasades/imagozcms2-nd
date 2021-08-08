@@ -45,7 +45,8 @@ if (isset ($_GET['id']))
 	try
 	{
 		$sql = $select.$idTask;
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -59,13 +60,16 @@ if (isset ($_GET['id']))
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$tasks[] =  array ('id' => $row['taskid'], 'idauthor' => $row['authorid'], 'text' => $row['description'], 'tasktitle' =>  $row['tasktitle'],
-							'taskdate' =>  $row['taskdate'], 'authorname' =>  $row['authorname'], 
-							'tasktypename' =>  $row['tasktypename'], 'tasktypeid' => $row['tasktypeid']);
-	}	
+	$row = $s -> fetch();
+		
+	$taskId = $row['taskid'];
+	$authorId = $row['authorid'];
+	$text = $row['description'];
+	$date = $row['taskdate'];
+	$nameAuthor = $row['authorname'];
+	$taskTitle = $row['tasktitle'];
+	$tasktypeName = $row['tasktypename'];
+	$tasktypeId = $row['tasktypeid'];
 
 	$title = 'Техническое задание #'.$row['taskid'].' "'.$row['tasktitle'].'"' ;//Данные тега <title>
 	$headMain = 'Техническое задание #'.$row['taskid'].' "'.$row['tasktitle'].'"' ;	

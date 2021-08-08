@@ -366,6 +366,25 @@ textarea{
     margin-top: 1%;
 }
 
+.task-pl{
+    margin-top: 1rem;
+    border: 2px solid #1e90ff;
+}
+
+.task-pl-header{
+    background: #1e90ff;
+    padding: 0.5%;
+    color: #ffff;
+}
+
+.task-pl-header a{
+    color: #ffff;
+}
+
+.task-txt{
+    padding: 0.5%;
+}
+
 .main-headers{
     max-width: 100%;
     margin: 1% 0 0 1%;

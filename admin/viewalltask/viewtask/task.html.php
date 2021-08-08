@@ -17,22 +17,20 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content">
-<div class = "post">
-		 <?php foreach ($tasks as $task): ?> 	  
-			<div  align="justify">
-			
-				<div class = "posttitle">
-				  <?php echo ('Дата выдачи: '.$task['taskdate']. ' | Задание выдал: <a href="../../../account/?id='.$task['idauthor'].'" style="color: white" >'.$task['authorname']).'</a>';?>
-					<p>Тип: <?php echo $task['tasktypename'];?> | Для ранга не ниже: <?php echo $task['rangname'];?></p>
-				</div>	
-					<p><?php echomarkdown ($task['text']); ?></p>
-					<p><?php echo $delAndUpd; ?></p>
-					<p><?php echo $changeTaskStatus; ?></p>
-			</div>			
-		 <?php endforeach; ?>
+	<div class="task-pl">
+		<div class="task-pl-header">
+			<?php echo ('Дата выдачи: '.$date. ' | Задание выдал: <a href="../../../account/?id='.$authorId.'">'.$nameAuthor).'</a>';?>
+			<p>Тип: <?php echo $tasktypeName;?> | Для ранга не ниже: <?php echo $taskRangName;?></p>				 
 		</div>
+		<div class="task-txt">
+			<h5 class="for-info-txt"><?php htmlecho ($taskTitle); ?></h5>
+			<p><?php echomarkdown ($text); ?></p>
+			<p><?php echo $delAndUpd; ?></p>
+			<p><?php echo $changeTaskStatus; ?></p>
+		</div>
+	</div>
 </div>
-			
+
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>

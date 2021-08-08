@@ -15,28 +15,24 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content">
 	<?php if (empty ($tasks))
 		 {
-			 echo '<h4 align = "center">Задания пока отсутствуют!</h4>';
+			 echo '<h4 class="for-info-txt">Задания пока отсутствуют!</h4>';
 		 }
 		 
 		 else
 			 
 		 foreach ($tasks as $task): ?> 
-		  
-			<div>
-				
-				<div class = "post">
-				  <div class = "posttitle">
-				    <?php echo ('Дата выдачи: '. $task['taskdate']. ' | Задание выдал: <a href="../../account/?id='.$task['idcreator'].'" style="color: white" >'.$creator).'</a> | '.
-						'Получено: '.$task['takingdate'];?>
-					<p>Тип: <?php echo $task['tasktypename'];?></p>
-				  </div>
-				   <div class = "newstext">
-				    <h5 align = "center"><?php htmlecho ($task['tasktitle']); ?></h5>
-					<p align = "justify"><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($task['text'])), 0, 50))); ?> [...]</p>
-					<a href="../../admin/viewallauthortask/viewtask/?id=<?php htmlecho ($task['id']); ?>"><button class="btn_2">Далее</button></a>
-				   </div>	
-				 </div>
-			</div>			
+
+		<div class="task-pl">
+			 <div class="task-pl-header">
+			 	<?php echo ('Дата выдачи: '.$task['taskdate']. ' | Задание выдал: <a href="../../account/?id='.$task['idauthor'].'">'.$task['authorname']).'</a>';?>
+			 	<p>Тип: <?php echo $task['tasktypename'];?></p>				 
+			 </div>
+			 <div class="task-txt">
+			 	<h5 class="for-info-txt"><?php htmlecho ($task['tasktitle']); ?></h5>
+				<p><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($task['text'])), 0, 50))); ?> [...]</p>
+				<a href="../../admin/viewallauthortask/viewtask/?id=<?php htmlecho ($task['id']); ?>"><button class="btn_2">Далее</button></a>
+		 	 </div>
+		 </div>		
 		 <?php endforeach; ?>
 </div>
 		
