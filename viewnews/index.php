@@ -290,15 +290,15 @@ if (isset ($_GET['id']))
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$idNews."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn btn-primary btn-sm'>
-						<input type = 'submit' name = 'action' value = 'Del' class='btn btn-primary btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
+						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
 					  </form>";
 					  
 		$premoderation = "<form action = '../admin/premoderation/newspremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
 						<input type = 'hidden' name = 'id' value = '".$idNews."'>
-						<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn btn-primary btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn_3'>
 					  </form>";					  
 	}
 	
