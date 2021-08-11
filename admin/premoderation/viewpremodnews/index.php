@@ -163,21 +163,21 @@ if (isset ($_GET['news']))
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idnews']."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn btn-primary btn-sm'>
-						<input type = 'submit' name = 'action' value = 'Del' class='btn btn-primary btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
+						<input type = 'submit' name = 'action' value = 'Del' class='btn_3'>
 					  </form>";
 		$premoderation = "<form action = '../../../admin/premoderation/newspremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idnews']."'>
-						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn btn-primary btn-sm'>
-						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn btn-danger btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn_1'>
+						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn_2'>
 					  </form>";	
 		$convertData = "<form action = ' ' method = 'post'>
 			
 						Конвертировать в статью:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idnews']."'>
-						<input type = 'submit' name = 'action' value = 'Конвертировать в статью' class='btn btn-info btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Конвертировать в статью' class='btn_4'>
 					  </form>";
 	}
 	

@@ -115,15 +115,15 @@ if (isset ($_GET['promotion']))
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idpost']."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn btn-primary btn-sm'>
-						<input type = 'submit' name = 'action' value = 'Del' class='btn btn-primary btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
+						<input type = 'submit' name = 'action' value = 'Del' class='btn_3'>
 					  </form>";
 		$premoderation = "<form action = '../../../admin/premoderation/promotionpremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idpost']."'>
-						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn btn-primary btn-sm'>
-						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn btn-danger btn-sm'>
+						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn_1'>
+						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn_2'>
 					  </form>";			  
 	}
 	
