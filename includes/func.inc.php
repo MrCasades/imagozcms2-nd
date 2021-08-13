@@ -247,9 +247,9 @@ function searchPagesNum($page, $count, $pages_count, $show_link)
 /*Функции возвращают длину текста без пробела*/
 function lengthText($text)
 {
-	$textNonSpace=str_replace(array(" ", "<p>", "</p>", "<strong>", "</strong>", "target=",
-									"<hr>", "&nbsp", "<ul>", "</ul>", "<em>", "</em>", "_blank",
-									"<li>", "</li>", "<a href=", "</a>", "<h2>", "</h2>",
+	$textNonSpace=str_replace(array(" ", "<p>", "</p>", "<strong>", "</strong>", "target=", "/picsforposts", "pc-",
+									"<hr>", "&nbsp", "<ul>", "</ul>", "<em>", "</em>", "_blank", "www.imagoz.ru",
+									"<li>", "</li>", "<a href=", "</a>", "<h2>", "</h2>", ".gif", ".jpg", ".png",
 									"<h3>", "</h3>", "<summary>", "</summary>", '<details>', '</details>',
 									"<br>", "<img", "src=", "alt=", "<iframe", "</iframe>", "width=", "height=",
 									 "title=", "YouTube video player", "frameborder=", "allow=", "clipboard-write;",

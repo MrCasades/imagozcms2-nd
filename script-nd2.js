@@ -81,16 +81,31 @@ $(document).ready(function() {
     })
     
     $('.mark-textarea').trumbowyg({
+        btnsDef: {
+            image: {
+                dropdown: ['upload'],
+                ico: 'insertImage'
+            }
+        },
+
         btns: [
             ['emoji'],
             ['strong', 'em', 'h2', 'h3'],
             ['link'],
-            ['insertImage'],
+            ['image'],
             ['unorderedList', 'orderedList'],
             ['horizontalRule'],
             ['removeformat'],
             ['fullscreen']
         ],
+        plugins: {
+            // Add imagur parameters to upload plugin for demo purposes
+            upload: {
+                    serverPath: '//' + window.location.hostname + '/upload.inc.php',
+                    statusPropertyName: 'message',
+                    urlPropertyName: 'file'
+                }
+            },
         autogrow: true,
         lang: 'ru',
         removeformatPasted: true,
@@ -122,14 +137,14 @@ $(document).ready(function() {
         $('.comment-form').show();
     })
 
-    $(document).mouseup(function (e){ // событие клика по веб-документу
-		const div = $(".comment-form"); // тут указываем ID элемента
-		if (!div.is(e.target) // если клик был не по нашему блоку
-		    && div.has(e.target).length === 0) { // и не по его дочерним элементам
-			div.hide(); // скрываем его
-            $('.fls-textarea').show();
-		}
-	});
+    // $(document).mouseup(function (e){ // событие клика по веб-документу
+	// 	const div = $(".comment-form"); // тут указываем ID элемента
+	// 	if (!div.is(e.target) // если клик был не по нашему блоку
+	// 	    && div.has(e.target).length === 0) { // и не по его дочерним элементам
+	// 		div.hide(); // скрываем его
+    //         $('.fls-textarea').show();
+	// 	}
+	// });
 
     //Открыть рейтинг
 
