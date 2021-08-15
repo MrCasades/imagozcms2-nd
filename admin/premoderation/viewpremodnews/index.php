@@ -65,7 +65,6 @@ if (isset ($_GET['news']))
 	$date = $row['newsdate'];
 	$articleTitle = $row['newstitle'];
 	$idTask = $row['idtask'];
-	$taskData = '<strong>Материал админа или супер-автора.</strong>';
 	
 	$title = $row['newstitle'];//Данные тега <title>
 	$headMain = $row['newstitle'];	
@@ -112,18 +111,6 @@ if (isset ($_GET['news']))
 		$taskTitle = $row['tasktitle'];
 		$taskDescription = $row['taskdescription'];
 		$taskDate = $row['taskdate'];
-	
-	
-		$taskData = '<div class = "post"> 	
-						<div  align="justify">
-			
-							<div class = "posttitle">
-				 			 Дата выдачи: '.$taskDate.
-						'</div>
-						<h3 align="center">Техническое задание #'.$taskId.' "'.$taskTitle.'"</h3>
-						<p>'.markdown2html ($taskDescription).'</p>
-			</div>			
-		</div>';
 	}
 	
 	/*Вывод тематик(тегов)*/
@@ -163,21 +150,21 @@ if (isset ($_GET['news']))
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idnews']."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
-						<input type = 'submit' name = 'action' value = 'Del' class='btn_3'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2 addit-btn'>
+						<input type = 'submit' name = 'action' value = 'Del' class='btn_3 addit-btn'>
 					  </form>";
 		$premoderation = "<form action = '../../../admin/premoderation/newspremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idnews']."'>
-						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn_1'>
-						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn_2'>
+						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn_1 addit-btn'>
+						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn_2 addit-btn'>
 					  </form>";	
 		$convertData = "<form action = ' ' method = 'post'>
 			
 						Конвертировать в статью:
 						<input type = 'hidden' name = 'id' value = '".$_SESSION['idnews']."'>
-						<input type = 'submit' name = 'action' value = 'Конвертировать в статью' class='btn_4'>
+						<input type = 'submit' name = 'action' value = 'Конвертировать в статью' class='btn_4 addit-btn'>
 					  </form>";
 	}
 	

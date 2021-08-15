@@ -9,51 +9,70 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont">
-		<div>
-		 <table>
-		 <tr>
-		  <td valign="top"><label for = "meta"> Теги:</label></td> 
-		  <?php if (empty($metas))
-			  {
-				 echo 'Теги отсутствуют';
-		      }
-		 
-		      else
-		  
-			  foreach ($metas as $meta): ?>	  
-				<td><div>	 
-					<a href="../../../viewmeta/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>	 
-				</div></td> 	
-				<?php endforeach; ?>
-		  </tr>
-		 </table>
-		</div>
-		
-		<div> 
-			<div  align="justify">
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><a href="#" onclick="history.back();">Назад</a></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<article>
+    <div class = "article-head m-content" style="background-image: url(../../../images/<?php echo $imgHead; ?>)">
+        <div class = "article-head-top"> 
+            <div class ="article-info">
+                <p><?php echo $date;?> | Автор:</p>
+                <p>Рубрика:</p>
+            </div>
+        <div class="article-rating">
+                <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> 0  
+				<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> 0
+				<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> 0
+        </div>
+    </div>
+    <h1><?php htmlecho ($headMain); ?></h1>
+    </div>
+
+		<div class="a-content m-content">
+			<?php echomarkdown_pub ($articleText); ?>
+			<p class="a-video"><?php echo $video; ?></p>
+			<div class="tags-place-m"> 
+				<?php if (empty($metas))
+				{
+					echo '';
+				}
+				
+				else
+				
+				foreach ($metas as $meta): ?> 
 			
-				<h3><?php echo ($articleTitle. 'Post #'.$articleId); ?></h3>
-					<?php if ($imgHead == '')
-					{
-						$img = '';//если картинка в заголовке отсутствует
-						echo $img;
-					}
-						else 
-					{
-						$img = '<img width = "60%" height = "40%" src="../../../images/'.$imgHead.'"'. ' alt="'.$imgAlt.'"'.'>';//если картинка присутствует
-					}?>
-					<p><?php echo $img;?></p>
-					<p><?php echomarkdown ($articleText); ?></p>
-					<p align="center"><?php echo $video; ?></p>
-					<p><?php echo $delAndUpd; ?></p>
-					<p align="center"><?php echo $premoderation; ?></p>
-					<p align="center"><?php echo $convertData; ?></p>
-			</div>	
+					<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
+				
+				<?php endforeach; ?>
+
+			</div>
+			<p><?php echo $delAndUpd; ?></p>
+			<p><?php echo $premoderation; ?></p>
+			<p><?php echo $convertData; ?></p>
+        </div>
+</article>
+
+<?php if ($idTask != 0):?>
+	<div class="m-content">
+		<div class="task-pl">
+			<div class="task-pl-header">
+				<?php echo ('Дата выдачи: '.$taskDate);?>				 
+			</div>
+			<div class="task-txt">
+				<h5 class="for-info-txt">Техническое задание #<?php echo $taskId;?> "<?php echo $taskTitle;?>"</h5>
+				<p><?php echomarkdown ($taskDescription); ?></p>
+			</div>
 		</div>
-		<?php echo $taskData; ?>
-	</div>		
-					
+	</div>
+
+<?php else:?>
+	<p class = "for-info-txt"><strong>Материал админа или супер-автора.</strong></p>
+<?php endif;?>
+				
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>
