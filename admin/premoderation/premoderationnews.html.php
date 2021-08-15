@@ -5,9 +5,15 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont">
-		<div>
-		<table align = "center" border = "1">
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class = "m-content">
+<table class = "for-tables-premod">
 		  <tr>
 				<th>#id</th>
 				<th>Дата публикации</th>
@@ -18,7 +24,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  
 		   <?php if (empty ($newsIn))
 		 {
-			 echo '<p align = "center">Материалы для премодерации отсутствуют</p>';
+			 echo '<p class = "for-info-txt">Материалы для премодерации отсутствуют</p>';
 		 }
 		 
 		 else
@@ -33,8 +39,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  </tr> 				
 		 <?php endforeach; ?> 
 		</table>
-		</div>	
-	</div>
+</div>
 		
 <?php 
 /*Загрузка footer*/

@@ -129,6 +129,18 @@ textarea{
     text-align: center;
 }
 
+.for-tables-premod{
+    margin-top: 1rem;
+    margin-left: 30%;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.for-tables-premod th, .for-tables-premod td{
+    text-align: center;
+    border: 2px solid black;
+}
+
 .for-blocks-m-top{
     margin-top: 1rem;
 }
