@@ -109,18 +109,6 @@ if (isset ($_GET['post']))
 		$taskTitle = $row['tasktitle'];
 		$taskDescription = $row['taskdescription'];
 		$taskDate = $row['taskdate'];
-	
-	
-		$taskData = '<div class = "post"> 	
-						<div  align="justify">
-			
-							<div class = "posttitle">
-				 			 Дата выдачи: '.$taskDate.
-						'</div>
-						<h3 align="center">Техническое задание #'.$taskId.' "'.$taskTitle.'"</h3>
-						<p>'.markdown2html ($taskDescription).'</p>
-			</div>			
-		</div>';
 	}
 	
 	/*Вывод тематик(тегов)*/
