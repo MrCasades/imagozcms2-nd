@@ -42,9 +42,6 @@
 	
 	<link href="<?php echo '//'.MAIN_URL.'/favicon.ico';?>" rel="icon" type="image/x-icon">
 
-	<link href="<?php echo '//'.MAIN_URL.'/styles-old.css';?>" rel= "stylesheet" type="text/css">
-	
-    
     <title><?php echo $title; ?> </title>
 
 	<?php 
