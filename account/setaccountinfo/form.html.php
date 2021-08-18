@@ -18,7 +18,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<p><strong>WWW:</strong> <input type = "text" name = "www" id = "www" value = "<?php htmlecho($www);?>"></p>	
 		<div>
 			<h3>Дополнительная информация:</h3>
-			<textarea class = "descr" id = "accountinfo" name = "accountinfo" data-provide="markdown" rows="10"><?php htmlecho($accountinfo);?></textarea>	
+			<textarea class = "mark-textarea" id = "accountinfo" name = "accountinfo" rows="10"><?php htmlecho($accountinfo);?></textarea>	
 		</div>		 
 		<p>
 			<input type = "hidden" name = "id" value = "<?php htmlecho($idauthor);?>">

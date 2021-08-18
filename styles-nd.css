@@ -21,6 +21,10 @@ textarea{
 	width: 95%;
 }
 
+details{
+    color:red;
+}
+
 /*Old styles begin*/
 .maincont {
 	width: 80%;
