@@ -53,10 +53,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить инфо�
 	$accountinfo = $row['accountinfo'];
 	$idauthor = $row['id'];
 	$button = 'Обновить информацию об авторе';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	include 'form.html.php';
 	exit();
