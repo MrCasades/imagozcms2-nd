@@ -43,10 +43,7 @@ if (isset ($_GET['addmessage']))
 	$id = '';
 	$button = 'Добавить сообщение';
 	$errorForm = '';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 		
 	$authorMessage = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		
@@ -90,10 +87,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 	$id = $row['id'];
 	$button = 'Обновить новость';
 	$errorForm = '';
-	$scriptJScode = '<script src="script.js"></script>
-					 <script src="//'.MAIN_URL.'/js/jquery-1.min.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap-markdown.js"></script>
-					 <script src="//'.MAIN_URL.'/js/bootstrap.min.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	$authorMessage = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 	
@@ -157,7 +151,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		exit();
 	}	
 		
-	header ('Location: /account/?id='.$selectedAuthor);//перенаправление обратно в контроллер index.php
+	header ('Location: //'.MAIN_URL.'/admin/adminmail/viewadminnews/');//перенаправление обратно в контроллер index.php
 	exit();		
 }
 

@@ -4,14 +4,18 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
-	
-	<div class = "maincont">
-	<div class = "post">
-	
-	<p align = "center"><strong><?php htmlecho($errorForm); ?></strong></p>
-	
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content add-main-form">
+<p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>	
 	<form action = "?<?php htmlecho($action); ?> " method = "post">
-	<table>
+	<table style="text-align: left;">
 	 <div>
 	  <tr>
 		<th><label for = "author"> Автор:</label></th>
@@ -36,9 +40,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2">
 	  </div>	  
 	</form>	
-	</div>
-	</div>
-
+</div>
+	
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>	
