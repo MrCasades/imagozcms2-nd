@@ -5,10 +5,16 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	
-	<div class = "maincont"> 	
-		<h3 align = "center">Внесённые платежи</h3>
-		<table align = "center" border = "1">
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class = "m-content">
+<h3 class = "for-info-txt">Внесённые платежи</h3>
+		<table class = "for-tables-premod">
 		  <tr>
 				<th width = "70 px">#id</th>
 				<th width = "300 px">id в системе Яндекс.Деньги</th>
@@ -19,7 +25,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  
 		  <?php if (empty ($deposits))
 		 {
-			 echo '<p align = "center">Операции отсутствуют</p>';
+			 echo '<p class = "for-info-txt">Операции отсутствуют</p>';
 		 }
 		 
 		 else
@@ -34,7 +40,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  </tr> 				
 		 <?php endforeach; ?> 
 		</table> 
-	</div>	
+</div>
+
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>

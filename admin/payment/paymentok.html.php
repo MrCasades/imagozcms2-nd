@@ -13,7 +13,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class = "error-pl">
-	<p style="text-align: center;">Заявка на вывод денежных средств создана</p>
+	<p class = "for-info-txt">Заявка на вывод денежных средств создана</p>
 	<p><a href="//<?php echo MAIN_URL;?>"><button class="btn_2 addit-btn">На главную страницу</button></a></p>
 </div>
 	 
