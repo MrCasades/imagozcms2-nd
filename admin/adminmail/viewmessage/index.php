@@ -57,7 +57,8 @@ if (isset ($_GET['id']))
 		$sql = 'SELECT adminmail.id AS adminmailid, author.id AS idauthor, message, messagetitle, messagedate, email, authorname FROM adminmail 
 				INNER JOIN author ON idauthor = author.id 
 				WHERE adminmail.id = '.$idMessage;//Вверху самое последнее значение
-		$result = $pdo->query($sql);
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
@@ -71,13 +72,14 @@ if (isset ($_GET['id']))
 		exit();
 	}
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$messages[] =  array ('id' => $row['adminmailid'], 'idauthor' => $row['idauthor'], 'text' => $row['message'], 'messagetitle' =>  $row['messagetitle'], 
-							  'messagedate' =>  $row['messagedate'], 'authorname' =>  $row['authorname'], 'email' =>  $row['email']);
-	}
-	
+	$row = $s -> fetch();
+		
+	$authorId = $row['idauthor'];
+	$text = $row['message'];
+	$date = $row['messagedate'];
+	$nameAuthor = $row['authorname'];
+	$email = $row['email'];
+
 	$title = 'Сообщение для администрации';//Данные тега <title>
 	$headMain = $row['messagetitle'];
 	$robots = 'noindex, nofollow';

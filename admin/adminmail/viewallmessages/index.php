@@ -29,7 +29,7 @@ if ((!userRole('Администратор')) && (!userRole('Автор')))
 
 /*Удаление из таблицы adminmail*/
 
-if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
+if (isset ($_POST['action']) && ($_POST['action'] == 'X'))
 {
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
