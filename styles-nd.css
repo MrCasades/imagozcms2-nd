@@ -1044,6 +1044,7 @@ article h1{
     font-size: 5rem;
     margin-top: 15%;
     margin-left: 15%;
+    text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
 }
 
 article .a-content{
