@@ -7,7 +7,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
     <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
     </div>
     <div class = "main-headers-line"></div>
 </div>
@@ -41,7 +41,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			    <td><?php echo $payment['payment'];?></td>
 			    <td><?php echo $payment['paysystemname'];?></td>
 				<td><?php echo $payment['ewallet'];?></td>
-				<td><a href="../../../admin/payment/viewpayment/?id=<?php echo $payment['id'];?>">Просмотр</a></td>
+				<td><a href="../../../admin/payment/viewpayment/?id=<?php echo $payment['id'];?>"><button class="btn_2">Просмотр</button></a></td>
 		  </tr> 				
 		 <?php endforeach; ?> 
 	</table>

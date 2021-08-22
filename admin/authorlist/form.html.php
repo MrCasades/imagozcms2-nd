@@ -5,9 +5,15 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont">
-	<div class = "post">
-	<form action = "?<?php htmlecho ($action); ?>" method = "post">
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content add-main-form">
+<form action = "?<?php htmlecho ($action); ?>" method = "post">
 	  <table>	
 		<tr>
 			<th>Имя автора: </th><td><input type = "text" name = "authorname" id = "authorname" value = "<?php htmlecho($authorname);?>"></td>	
@@ -23,7 +29,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	  <br>
 		<div>
 			<strong><label for = "post">Дополнительная информация:</label></strong>
-			<textarea class = "descr" id = "accountinfo" name = "accountinfo" rows = "3" cols = "40"><?php htmlecho($accountinfo);?></textarea>	
+			<textarea class = "mark-textarea" id = "accountinfo" name = "accountinfo" rows = "3" cols = "40"><?php htmlecho($accountinfo);?></textarea>	
 		</div>		 
      <br>
 		<fieldset>
@@ -45,11 +51,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</fieldset>
 		<div>
 			<input type = "hidden" name = "id" value = "<?php htmlecho($idauthor);?>">
-			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn btn-primary btn-sm">
+			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2">
 		</div>
 	</form>
-	</div>	
-	</div>
+</div>
 
 <?php 
 /*Загрузка footer*/
