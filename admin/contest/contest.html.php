@@ -5,28 +5,25 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-	<div class = "maincont">
-	<form action = "?<?php htmlecho ($action); ?>" method = "post">
-		<div>
-		  <label for = "contest">Название конкурса: <input type = "text" name = "contestname" id = "contestname" value = "<?php htmlecho($contestname);?>"> </label>	
-		</div> 
-		<div>
-		  <label for = "votingpoints">Очки за голосование: <input type = "text" name = "votingpoints" id = "votingpoints" value = "<?php htmlecho($votingpoints);?>"> </label>	
-		</div>
-		<div>
-		<div>
-		  <label for = "commentpoints">Очки за комментарий: <input type = "text" name = "commentpoints" id = "commentpoints" value = "<?php htmlecho($commentpoints);?>"> </label>	
-		 </div>
-		 <div>
-		  <label for = "favouritespoints">Очки за доб. в избранное: <input type = "text" name = "favouritespoints" id = "favouritespoints" value = "<?php htmlecho($favouritespoints);?>"> </label>	
-		 </div>
-		<div>
-		  <input type = "hidden" name = "idcontest" value = "<?php htmlecho($idcontest);?>">
-		  <input type = "submit" value = "<?php htmlecho($button);?>" class="btn btn-primary btn-sm">
-		</div>
-	</form>	
-			
-		<table>
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content add-main-form">
+	<p>
+		<form action = "?<?php htmlecho ($action); ?>" method = "post">
+			<label for = "contest">Название конкурса: <input type = "text" name = "contestname" id = "contestname" value = "<?php htmlecho($contestname);?>"> </label>	
+			<br><label for = "votingpoints">Очки за голосование: <input type = "text" name = "votingpoints" id = "votingpoints" value = "<?php htmlecho($votingpoints);?>"> </label>	
+			<br><label for = "commentpoints">Очки за комментарий: <input type = "text" name = "commentpoints" id = "commentpoints" value = "<?php htmlecho($commentpoints);?>"> </label>	
+			<br><label for = "favouritespoints">Очки за доб. в избранное: <input type = "text" name = "favouritespoints" id = "favouritespoints" value = "<?php htmlecho($favouritespoints);?>"> </label>	
+			<br><input type = "hidden" name = "idcontest" value = "<?php htmlecho($idcontest);?>">
+			<br><input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2">
+		</form>	
+	</p>	
+	<table>
 		<tr>
 			<th>Название</th>
 			<th>За голос</th>
@@ -46,25 +43,25 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<?php if ($contest['conteston'] == 'NO')
 					{
 						$contestOn = 'ON';
-						$buttonClass_1 = 'btn-primary';
+						$buttonClass_1 = 'btn_4';
 					}
 					
 					else
 					{
 						$contestOn = 'OFF';
-						$buttonClass_1 = 'btn-danger';
+						$buttonClass_1 = 'btn_3';
 					}
 			
 				  if ($contest['contestpanel'] == 'NO')
 				    {
 					 	$contestPanel = 'CP_ON'; 
-					  	$buttonClass_2 = 'btn-primary';
+					  	$buttonClass_2 = 'btn_4';
 				    }
 			
 					else
 					{
 						$contestPanel = 'CP_OFF'; 
-						$buttonClass_2 = 'btn-danger';
+						$buttonClass_2 = 'btn_3';
 					}?>
 			
 			<tr>
@@ -76,21 +73,23 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<td><?php htmlecho($contest['favouritespoints']);?></td>
 				<td>
 				<input type = "hidden" name = "idcontest" value = "<?php echo $contest['id']; ?>">
-				<input type = "submit" name = "action" value = "Upd" class="btn btn-primary btn-sm">
-				<input type = "submit" name = "action" value = "Del" id = "delobject"  class="btn btn-primary btn-sm">
-				<input type = "submit" name = "action" value = "<?php echo $contestOn; ?>" class="btn <?php echo $buttonClass_1; ?> btn-sm">
-				<input type = "submit" name = "action" value = "<?php echo $contestPanel; ?>" class="btn <?php echo $buttonClass_2; ?> btn-sm">
+				<input type = "submit" name = "action" value = "Upd" class="btn_1">
+				<input type = "submit" name = "action" value = "Del" id = "delobject"  class="btn_2">
+				<input type = "submit" name = "action" value = "<?php echo $contestOn; ?>" class="<?php echo $buttonClass_1; ?>">
+				<input type = "submit" name = "action" value = "<?php echo $contestPanel; ?>" class="<?php echo $buttonClass_2; ?>">
 				</td>
 			   </div>
 		      </form>
 			</tr>
 		 <?php endforeach; ?>	
-		</table>
-	</div>
-		<hr/>
+	</table>
+	<p>
 		<form action = " " method = "post">
-				<input type = "submit" name = "action" value = "Обнулить баллы" id = "resetcontest" class="btn btn-primary btn-sm">
+			<input type = "submit" name = "action" value = "Обнулить баллы" id = "resetcontest" class="btn_2">
 		</form>	
+	</p>
+</div>
+
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>
