@@ -4,86 +4,90 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
-	
-	<div class = "maincont_for_view"> 
-			<div align = "center"><script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-			<script src="//yastatic.net/share2/share.js"></script>
-			<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div></div>
-		<hr/>
-		<p align = "center"> <a href="<?php echo '//'.MAIN_URL.'/admin/commentnewslist/';?>" class="btn btn-info">Комментарии новостей</a> | 
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<p class = "for-info-txt"> <a href="<?php echo '//'.MAIN_URL.'/admin/commentnewslist/';?>" class="btn btn-info">Комментарии новостей</a> | 
 		<a href="<?php echo '//'.MAIN_URL.'/admin/commentpostlist/';?>" class="btn btn-primary btn-sm">Комментарии статей</a> |
 		<a href="<?php echo '//'.MAIN_URL.'/admin/commentpromotionlist/';?>" class="btn btn-primary btn-sm">Комментарии промоушен статей</a></p>
-		
-		<div>
-		<?php if (empty ($newsComments))
-				{
-					echo '<p align="center">Комментарии отсутствуют!</p>';
-				}
+
+	<?php if (empty ($newsComments))
+			{
+				echo '<p class = "for-info-txt">Комментарии отсутствуют!</p>';
+			}
 				
-			  else
+			else
 				
-				foreach ($newsComments as $newsComment): ?> 	   		
-				<div class = "post">
-				 <div class = "posttitle">
-				    Дата комментария: <?php echo ($newsComment['date']. ' | Автор: <a href="../account/?id='.$newsComment['idauthor'].'" style="color: white" >'.$newsComment['authorname']).'</a>';?>
-				  </div>	
-					<p><?php 
+			foreach ($newsComments as $newsComment): ?> 
+
+	<div class="comment m-content">
+                <div class="comment-person-pl">
+                    <div>
+                        <img src="../../avatars/<?php echo $newsComment['avatar'];?>" alt="ava"/>
+                    </div> 
+                    <div>
+						<?php echo ('<a href="../../account/?id='.$newsComment['idauthor'].'">'.$newsComment['authorname']).'</a>';?><br>
+						<?php echo $newsComment['date']; ?>
+                    </div> 
+                </div>
+                <div class="comment-text">
+				<p><?php 
 				   
-						/*Вывод меню редактирования и удаления комментария для автора*/
-						 if (isset($_SESSION['loggIn']))
-						 {
-							$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-						 }
-						 else
-						 {
-							 $authorName = '';
-						 }
-						 if (($authorName == $newsComment['authorname']) || (userRole('Администратор')))
-						 {
-							 $updAnddel = '<form action = "../../viewnews/" method = "post">
-								<div>
-									<input type = "hidden" name = "id" value = "'.$newsComment ['id'].'">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Редактировать">
-									<input type = "submit" name = "action" class="btn btn-primary btn-sm" value = "Del">
-								</div>
-							</form>';		 
-						 }	
-						 else
-						 {
-							 $updAnddel = '';
-						 }							 
-							
-						 echo $updAnddel;?></p>
-				  <p>
-					<table cellpadding = "3 %">
-						<td><img width = "90 px" height = "90 px" src="../../avatars/<?php echo $newsComment['avatar'];?>" alt="<?php echo $newsComment['authorname'];?>"></td>
-						<td ><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($newsComment['text'])), 0, 50))); ?> [...]</td>
-					</table>	
-				  </p>
-				  <p><img width = "3%" height = "3%" src="<?php echo '//'.MAIN_URL;?>/answers.jpg" alt="Ответы на комментарий" title="Количество ответов"> 
-					  <strong>[<?php echo $newsComment['subcommentcount']; ?>]</strong></p>
-				  <a href="../../viewwallpost/?id=<?php echo $newsComment['id']; ?>" class="btn btn-primary btn-sm">Открыть</a>
-				  <div><strong>К материалу:</strong> <a href="../../viewnews/?id=<?php htmlecho ($newsComment['idnews']); ?>"><?php htmlecho ($newsComment['newstitle']); ?></a></div>	
-				</div>	  		   
-				<?php endforeach; ?> 
+				   /*Вывод меню редактирования и удаления комментария для автора*/
+					if (isset($_SESSION['loggIn']))
+					{
+					   $authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
+					}
+					else
+					{
+						$authorName = '';
+					}
+					if (($authorName == $newsComment['authorname']) || (userRole('Администратор')))
+					{
+						$updAnddel = '<form action = "../../viewnews/" method = "post">
+							   <input type = "hidden" name = "id" value = "'.$newsComment ['id'].'">
+							   <input type = "submit" name = "action" class="btn_1" value = "Редактировать">
+							   <input type = "submit" name = "action" class="btn_2" value = "Del">				   
+					   </form>';		 
+					}	
+					else
+					{
+						$updAnddel = '';
+					}							 
+					   
+					echo $updAnddel;?></p>
+
+					<?php echomarkdown ($newsComment['text']); ?>
+                </div>
 				
-				<div align = "center">
-				 <?php
-				 /*Постраничный вывод информации*/
-				 for ($i = 1; $i <= $pagesCount; $i++) 
-				 {
-					 // если текущая старница
-					 if($i == $page)
-					 {
-						echo "<a href='index.php?page=$i' class='btn btn-info'>$i</a> ";
-					 } 
-					 else 
-					 {
-						echo "<a href='index.php?page=$i' class='btn btn-primary btn-sm'>$i</a> ";
-					 }
-				 }?>
-				 </div>	
-		</div>				
+			</div> 
+			<a href="../../viewwallpost/?id=<?php echo $newsComment['id']; ?>"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $newsComment['subcommentcount']; ?>)</button></a>
+			<p class = "for-info-txt"><strong>К материалу:</strong> <a href="../../viewnews/?id=<?php htmlecho ($newsComment['idnews']); ?>"><?php htmlecho ($newsComment['newstitle']); ?></a></P>
+            <div class = "m-content comment-line"></div> 
+
+			<?php endforeach; ?>
+
+			<div class="page-output">	
+			<?php
+				/*Постраничный вывод информации*/
+				for ($i = 1; $i <= $pagesCount; $i++) 
+				{
+					// если текущая старница
+					if($i == $page)
+					{
+						echo "<a href='index.php?page=$i'><button class='btn_2'>$i</button></a> ";
+					} 
+					else 
+					{
+						echo "<a href='index.php?page=$i'><button class='btn_1'>$i</button></a> ";
+					}
+				}?>	
+			</div>
 
 <?php 
 /*Загрузка footer*/
