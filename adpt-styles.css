@@ -400,6 +400,18 @@
     .adpt-title {
         display: none;
     }
+  
+    .addupd-post .btn_2{
+        margin-left: 10%;
+    }
+
+    .addupd-post .btn_1{
+        margin-left: 10%;
+    }
+
+    .addupd-post .btn_4{
+        margin-left: 10%;
+    }
 
     header  nav{
         margin: 3% 2% 0 0%;
@@ -521,6 +533,10 @@
 
     .comment-ans{
         margin-left: 70%;
+    }
+
+    .comment-auth{
+        margin-left: 11%;
     }
 
     .counts{

@@ -32,7 +32,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
         <a href="//<?php echo MAIN_URL;?>/admin/addupdnews/?add"><button class="btn_2">Добавить новость</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/addtask/?add"><button class="btn_2">Добавить задание</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/viewalltask/"><button class="btn_2">Получить задание</button></a>
-        <a href="//<?php echo MAIN_URL;?>/admin/"><button class="btn_1">Редактирование списков</button></a>
+        <a href="//<?php echo MAIN_URL;?>/admin/"><button class="btn_4">Редактирование списков</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?posts"><button class="btn_2">Премодерация статей ("<?php echo $premodPosts;?>")</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?news"><button class="btn_2">Премодерация новостей ("<?php echo $premodNews;?>")</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?promotion"><button class="btn_2">Премодерация промоушена ("<?php echo $premodPromotion;?>")</button></a>
