@@ -860,6 +860,16 @@ main .zen-c-m img{
     height: 12rem;
 }
 
+main .f-zen {
+    margin-top: 1rem;
+    margin-left: 15%;
+}
+
+main .f-zen img{
+    width: 95%;
+    height: 30%;
+}
+
 main .vk-m{
     margin-top: 2rem;
 }

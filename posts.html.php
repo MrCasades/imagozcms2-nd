@@ -335,6 +335,17 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 	</div>
 
+	<div class = "main-headers">
+			<div class = "headers-places"> 
+				<div class = "main-headers-txtplace">Проект FULL-ZEN</div>
+			</div>
+			<div class = "main-headers-line"></div>
+    </div>
+
+	<div class = "m-content for-blocks-m-top f-zen">
+		<a href="https://full-zen.imagoz.ru/" ><img src="./full-zen.jpg" alt="Каталог FULL-ZEN" title="Каталог FULL-ZEN"/></a>
+	</div>
+
 	<div class = "footer-prev m-content">
 		<div class="auth-top">
 			<div class = "main-headers">
@@ -369,7 +380,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					<div class = "main-headers-line"></div>
 				</div>
 				<div class="zen-link-m">
-					<a href="https://zen.yandex.ru/imagoz" rel = "nofollow"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
+					<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
 				</div>
 			</div>
 			<div class="vk-m">

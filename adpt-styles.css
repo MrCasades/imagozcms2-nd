@@ -17,11 +17,24 @@
         font-size: 1.5rem;
     }
 
+    main .f-zen {
+        margin-left: 7%;
+    }
+
+    main .footer-prev{
+        margin-left: 10%;
+    }
+
+    main .social-links{
+        margin-left: 1rem;
+    }
+
     article h1{
         font-size: 4rem;
         margin-top: 14%;
         margin-left: 14%;
     }
+    
 }
 
 
@@ -147,6 +160,7 @@
         margin-top: -3rem;
         margin-left: 1rem;
     }
+    
 
     main .about-proj{
         margin-left: 1rem;
@@ -462,6 +476,10 @@
         margin-top: 1rem;
     }
 
+    main .f-zen {
+        margin-left: 5%;
+    }
+
     main .footer-prev{
         margin-left: 2%;
         flex-direction: column;
@@ -469,6 +487,10 @@
 
     main .social-links{
         margin-top: 1rem;
+        margin-left: 1rem;
+    }
+
+    main .auth-top{
         margin-left: 1rem;
     }
 

@@ -121,6 +121,9 @@ $(document).ready(function() {
         loop:true,
         margin:20,
         responsive:{
+            1024:{
+                items:3
+            },
             600:{
                 items:1
             },
