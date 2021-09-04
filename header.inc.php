@@ -29,9 +29,9 @@
 
 
 	
-    <link href="<?php echo '//'.MAIN_URL.'/menu.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles-nd.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/adpt-styles.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/menu.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/styles-nd.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles.css';?>" rel= "stylesheet" type="text/css">
     
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.carousel.min.css';?>">
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.theme.default.min.css';?>">
