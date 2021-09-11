@@ -23,13 +23,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 </div>
 	<hr/>
 	<div>
-		<label for = "posttitle">Введите заголовок <span style = "color: red"> *</span> </label><br>
+		<h3>Введите заголовок <span style = "color: red"> *</span> </h3>
 		<textarea id = "posttitle" name = "posttitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($posttitle);?></textarea>
 		<p><span id="counttitlelen">0</span> / 200	</p>
 	</div>
 	<hr/>	
 	 <div>
-		<label for = "category"> Рубрика:<span style = "color: red"> *</span></label>
+	 	<h3> Рубрика:<span style = "color: red"> *</span></h3>
 		<select name = "category" id = "category">
 		  <option value = "">Выбрать</option>
 			<?php foreach ($categorys_1 as $category): ?>
@@ -43,8 +43,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</select>
 		 <?php echo $addCatigorys;?>	
 	 </div>	
-	 <fieldset>
-		<legend>Тематика <?php echo $addMetas;?></legend>
+	 <br>
+	 <h3>Теги публикации</h3>
+	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
+	 <br><fieldset id="tags_list" style="display: none">
+		<legend>Список <?php echo $addMetas;?></legend>
 		 <?php if (empty ($metas_1))
 		 { 
 			 echo '<p>Теги не добавлены</p>';
@@ -67,23 +70,23 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<?php endforeach; ?>
 	 </fieldset>
 	<hr/>	
-	 <div>
-		<label for = "upload">Загрузите файл изображения для шапки</label><input type = "file" name = "upload" id = "upload">
+	<div>
+	    <strong>Загрузите файл изображения для шапки</strong><input type = "file" name = "upload" id = "upload">
 		<input type = "hidden" name = "action" value = "upload">
 	</div>
 	<hr/>		
 	<div>
-		<label for = "imgalt">Введите alt-текст для изображения:</label>
+		<strong>Введите alt-текст для изображения:</strong>
 		<input type = "imgalt" name = "imgalt" id = "imgalt" value = "<?php htmlecho($imgalt);?>">
 	</div>
 	<hr/>		
 	<div>
-		<label for = "videoyoutube">Ссылка на видео Youtube: </label>
+		<strong>Ссылка на видео Youtube: </strong>
 		<input type = "videoyoutube" name = "videoyoutube" id = "videoyoutube" value = "<?php htmlecho($videoyoutube);?>">
 	</div>
 	<hr/>		
 	<div>
-		<label for = "description">Краткое описание</label><br>
+		<strong>Краткое описание</strong><br>
 		<textarea id = "description" name = "description" rows = "3" cols = "40" placeholder = "Опишите в паре предложений суть материала"><?php htmlecho($description);?></textarea>	
 	 </div>
 		<h5>Подсказка по разметке текста</h5>
@@ -99,7 +102,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	 <?php $txtPlaceStyle = userRole('Администратор') ? 'mark-textarea-adm' : 'mark-textarea';?>
 	 <div>
-		<label for = "post">Введите текст статьи <span style = "color: red"> *</span></label><br>
+		<h3>Введите текст новости <span style = "color: red"> *</span></h3>
 		<textarea class = "<?php htmlecho($txtPlaceStyle); ?>" id = "text" name = "text" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	

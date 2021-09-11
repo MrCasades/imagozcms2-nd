@@ -70,6 +70,7 @@ title.addEventListener('input', (event) => {
 //Txt-place
 
 $(document).ready(function() {
+    //Txt-place
     $('.mark-textarea-adm').trumbowyg({
         btnsDef: {
             image: {
@@ -104,4 +105,18 @@ $(document).ready(function() {
         minimalLinks: true,
         defaultLinkTarget: '_blank'
     });
+
+    //Hide show tags
+
+    $('#hide_show_tags').click(function(e) {
+        if ($('#tags_list').css('display') == 'none') {
+            $('#tags_list').show();
+            $('#hide_show_tags').html('Скрыть теги');
+            e.preventDefault();
+        } else {
+            $('#tags_list').hide();
+            $('#hide_show_tags').html('Вывести теги');
+            e.preventDefault();
+        }
+    })
 })
