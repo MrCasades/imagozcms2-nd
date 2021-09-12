@@ -7,13 +7,13 @@ body{
     padding: 0;/*параметры рамки*/
     max-width: 100%;
     background: #fefcea;
+    background-image: url(../fone_1.jpg);
     font-family: Arial;
     /* background: linear-gradient(to top left, #1e90ff, #fefcea); */
 }
 
 input{
     border-radius: 10px;
-    border: none;
 }
 
 textarea{
@@ -98,6 +98,7 @@ details{
 .m-content{
     margin-left: 10%;
     max-width: 75%; 
+    background-color: #FFFFFF;
 }
 
 .add-main-form{
@@ -114,6 +115,7 @@ details{
     font-weight: bold;
     padding: 1rem;
     border: 2px solid #1e90ff;
+    background-color: #FFFFFF;
 }
 
 .error-log{
