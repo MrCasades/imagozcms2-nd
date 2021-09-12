@@ -44,7 +44,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 <?php echo $addCatigorys;?>	
 	 </div>	
 	 <br>
-	 <h3>Теги публикации</h3>
+	 <h3>Теги публикации:</h3>
+	 <p style="color: red">Для добавления тегов нажмите "Вывести теги"</p>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
 	 <br><fieldset id="tags_list" style="display: none">
 		<legend>Список <?php echo $addMetas;?></legend>
