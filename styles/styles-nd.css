@@ -492,6 +492,16 @@ details{
     transform: rotate(180deg);
 }
 
+.tags-plase-prew{
+    margin-left: 1%; 
+    background: #1e90ff; 
+    color: #FFFFFF; 
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0 5px 0 5px;
+    text-decoration: none;
+}
+
 /*Главное меню*/
 /* .subheader{
     height: 10rem;

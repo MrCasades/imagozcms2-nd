@@ -119,4 +119,32 @@ $(document).ready(function() {
             e.preventDefault();
         }
     })
+
+    //hide show tags list
+    let checked =[];
+
+    $('#tags_list input:checkbox:checked').each(function() {
+            checked.push('<span class="tags-plase-prew">' + $(this).attr('title') + '</span> ');
+            console.log(checked);
+        });
+
+    $('#checked-tags').html(checked)
+
+    $('#tags_list input:checkbox').click(function(e) {
+        if ($(this).is(':checked')){
+            checked.push('<span class="tags-plase-prew">' + $(this).attr('title') + '</span> ');
+            console.log(checked);
+        } else {
+            // Array.prototype.remove = function(el) {
+            //     return this.splice(this.indexOf(el), 1);
+            // }
+            console.log($(this).attr('title'));
+            let index = checked.indexOf('<span class="tags-plase-prew">' + $(this).attr('title') + '</span> ');
+            console.log(index);
+            checked.splice(index, 1);
+            console.log(checked);
+        }
+
+        $('#checked-tags').html(checked)
+    })
 })

@@ -45,6 +45,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 </div>	
 	 <br>
 	 <h3>Теги публикации:</h3>
+	 <div id="checked-tags"></div>
 	 <p style="color: red">Для добавления тегов нажмите "Вывести теги"</p>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
 	 <br><fieldset id="tags_list" style="display: none">
@@ -65,7 +66,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		   {
 			   echo ' checked';
 		   }
-		   ?>><?php htmlecho ($meta['metaname']);?>
+		   ?> title="<?php htmlecho ($meta['metaname']);?>"><?php htmlecho ($meta['metaname']);?>
 		  </label>
 		 </div>
 		<?php endforeach; ?>
