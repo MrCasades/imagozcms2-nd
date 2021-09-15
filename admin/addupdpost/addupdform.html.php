@@ -15,7 +15,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content add-main-form">
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
-	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
+	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data" id="ajax_form">
 	 <div>
 		<label for = "author"> Автор:</label>
 		 <?php echo $authorPost;?>
@@ -46,6 +46,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <br>
 	 <h3>Теги публикации:</h3>
 	 <div id="checked-tags"></div>
+	 
+	 	<input type = "text" name = "tags" id = "addtags_form">
+		 <button id = "tags_to_base">Добавить</button>
+	 
 	 <p style="color: red">Для добавления тегов нажмите "Вывести теги"</p>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
 	 <br><fieldset id="tags_list" style="display: none">
@@ -70,6 +74,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  </label>
 		 </div>
 		<?php endforeach; ?>
+		<div id="result_form"></div> 
 	 </fieldset>
 	<hr/>	
 	<div>
