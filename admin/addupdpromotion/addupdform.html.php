@@ -44,8 +44,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 <?php echo $addCatigorys;?>	
 	 </div>	
 	 <h3>Теги публикации:</h3>
+	 <p style="color: red">
+	 	В данной форме можно добавить свои теги публикаций. <strong>ОБЯЗАТЕЛЬНО!</strong> Прежде чем добавлять свои теги, сначала сверьтесь со списком имеющихся нажав ссылку "Вывести теги"
+	</p>
 	 <div id="checked-tags"></div>
-	 <p style="color: red">Для добавления тегов нажмите "Вывести теги"</p>
+	 <div id="checked-tags-add"></div><br>
+	 	<input type = "text" name = "tags" id = "addtags_form">
+		 <button id = "tags_to_base" class="btn_4">Добавить</button>
+	 <br><br>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
 	 <br><fieldset id="tags_list" style="display: none">
 		<legend>Список <?php echo $addMetas;?></legend>
@@ -69,6 +75,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  </label>
 		 </div>
 		<?php endforeach; ?>
+		<div id="result_form"></div> 
 	 </fieldset>
 	<hr/>	
 	<div>

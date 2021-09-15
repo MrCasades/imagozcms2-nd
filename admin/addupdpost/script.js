@@ -164,10 +164,13 @@ function sendAjaxForm(res_form, ajax_form, url) {
         data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
         success: function(response) { //Данные отправлены успешно
         	result = $.parseJSON(response);
-        	$('#result_form').html('<label for = "meta'+result.id+'"><input type = "checkbox" name = "metas[]" id = "meta'+result.id+'" value = "'+result.id+'" checked title="'+result.name+'">'+result.name+'</label>');
+        	$('#result_form').append('<div><label for = "meta'+result.id+'"><input type = "checkbox" name = "metas[]" id = "meta'+result.id+'" value = "'+result.id+'" checked title="'+result.name+'">'+result.name+'</label></div>');
+            $('#checked-tags-add').append('<span class="tags-plase-prew">'+result.name+'</span>')
+            $('#addtags_form').val('');
     	},
     	error: function(response) { // Данные не отправлены
             $('#result_form').html('Ошибка. Данные не отправлены.');
+            
     	}
  	});
 }
