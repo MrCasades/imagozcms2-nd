@@ -149,10 +149,17 @@ $(document).ready(function() {
     })
 
     $("#tags_to_base").on('click',
-		function(){
-			sendAjaxForm('result_form', 'addtags_form', '../metalist/addtag.inc.php');
-			return false; 
-		}
+        function(e){
+            if ($('#addtags_form').val() === ''){
+                $('#addtags_form').html('');
+                $('#addtags_form').attr("placeholder", "Введите значение!");
+                console.log('kl!')
+                e.preventDefault();
+            } else {
+                sendAjaxForm('result_form', 'addtags_form', '../metalist/addtag.inc.php');               
+                return false; 
+            }		
+        }
 	);
 })
 
@@ -167,6 +174,7 @@ function sendAjaxForm(res_form, ajax_form, url) {
         	$('#result_form').append('<div><label for = "meta'+result.id+'"><input type = "checkbox" name = "metas[]" id = "meta'+result.id+'" value = "'+result.id+'" checked title="'+result.name+'">'+result.name+'</label></div>');
             $('#checked-tags-add').append('<span class="tags-plase-prew">'+result.name+'</span>')
             $('#addtags_form').val('');
+            $('#addtags_form').attr("placeholder", "");
     	},
     	error: function(response) { // Данные не отправлены
             $('#result_form').html('Ошибка. Данные не отправлены.');
