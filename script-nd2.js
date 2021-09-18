@@ -171,3 +171,41 @@ $(document).ready(function() {
         });
     }
   });
+
+  //Функция добавления
+  function addComment (res_form, ajax_form, url) {
+    $.ajax({
+        url:     url, //url страницы (action_ajax_form.php)
+        type:     "POST", //метод отправки
+        dataType: "html", //формат данных
+        data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
+        success: function(response) { //Данные отправлены успешно
+        	result = $.parseJSON(response);
+        	$('#result_form').prepend('<div class="comment m-content"><div class="comment-person-pl"><div><img src="../avatars/'+result.avatar+'" alt="ava"/></div><div><a href="../account/?id='+result.idauthor+'">'+result.authorname+'</a><br>Только что</div></div><div class="comment-text"><p><form action = "?" method = "post"><div><input type = "hidden" name = "id" value = "'+result.id+'"><input type = "hidden" name = "idarticle" value = "'+result.idarticle+'"><input type = "submit" name = "action" class="btn_2" value = "Редактировать"><input type = "submit" name = "action" class="btn_1" value = "Del"></div></form></p>'+result.text+'</div></div><a href="../viewwallpost/?id='+result.id+'"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы ('+result.subcommentcount+')</button></a><div class = "m-content comment-line"></div>');
+            
+			let countComm = document.getElementById('comm_count');//счётчик комментариев
+			countComm.innerHTML = Number(countComm.innerHTML) + 1;
+
+			let notComment = document.getElementById('not_comment');
+
+			if (notComment)//Убираем надпись "Комментарии отсутствуют"
+			{
+				notComment.innerHTML = '';
+			}
+
+            $('#addcomment').hide();
+            $('.fls-textarea').show();
+            $('.trumbowyg-editor').html('');
+
+            // let commentPlace = document.getElementById('comment');
+            // commentPlace.innerHTML = '';
+			
+			//$('#checked-tags-add').append('<span class="tags-plase-prew">'+result.name+'</span>')
+           // $('#addtags_form').val('');
+    	},
+    	error: function(response) { // Данные не отправлены
+            $('#result_form').html('Ошибка. Данные не отправлены.');
+            
+    	}
+ 	});
+}

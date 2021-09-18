@@ -146,6 +146,19 @@ $( document ).ready(function() {
 				}
 			}
 		);
+
+		$("#push_comment").on('click',
+		function(e){
+			if ($('.trumbowyg-editor').text() === ''){
+				$('.trumbowyg-editor').html('');
+				$('.trumbowyg-editor').attr("placeholder", "Поле комментария не может быть пустым");
+				e.preventDefault();
+			} else {
+				addComment('result_form', 'addcomment', '../addcomment/addcomment.inc.php');
+				return false; 
+			}		
+		}
+	);
 });
 
 //Функция AJAX

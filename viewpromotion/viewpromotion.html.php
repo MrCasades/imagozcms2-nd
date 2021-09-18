@@ -140,7 +140,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 		<div class = "main-headers">
             <div class = "headers-places"> 
-                <div class = "main-headers-txtplace">Комментарии (<?php echo $countPosts; ?>)</div>
+                <div class = "main-headers-txtplace">Комментарии (<span id="comm_count"><?php echo $countPosts; ?></span>)</div>
             </div>
             <div class = "main-headers-line"></div>
         </div>
@@ -149,9 +149,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 		<div class = "m-content comment-line"></div> 
 		<p><a name="bottom"></a></p>
+		<div id="result_form"></div>
 		<?php if (empty ($comments))
 			{
-				echo '<br/><p align="center">Комментарии отсутствуют!</p>';
+				echo '<br/><p align="center" id="not_comment">Комментарии отсутствуют!</p>';
 			}
 				
 			else
@@ -197,7 +198,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
             <div class = "m-content comment-line"></div> 
 
-		<?php endforeach; ?>
+		<?php endforeach; ?>y
 
 		<div class="page-output">	
 		 <?php
