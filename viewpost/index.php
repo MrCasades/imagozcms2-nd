@@ -475,76 +475,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 	exit();
 }
 	
-/*команда INSERT  - добавление комментария в базу данных*/
-if (isset($_GET['addform']))//Если есть переменная addform выводится форма
-{
-	/*Если поле комментария пустое*/
-	if ($_POST['comment'] == '')
-	{
-		$title = 'Напишите текст комментария!';//Данные тега <title>
-		$headMain = 'Напишите текст комментария!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Поле комментария не может быть пустым!';
-		include 'error.html.php';
-		exit();
-	}
-	
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
-		
-	/*Загрузка функций для формы входа*/
-	require_once MAIN_FILE . '/includes/access.inc.php';
-		
-	/*Возврат id автора*/
-	
-	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
-	
-	$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
-		
-	try
-	{
-		$pdo->beginTransaction();//инициация транзакции
-		
-		$sql = 'INSERT INTO comments SET 
-			comment = :comment,	
-			commentdate = SYSDATE(),
-			idauthor = '.$selectedAuthor.','.
-			'idpost = '.$_POST['idarticle'];
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':comment', $_POST['comment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		
-		$sql = $SELECTCONTEST;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-			
-		$row = $s -> fetch();
-		
-		$contestOn = $row['conteston'];//проверка на включение конкурса
-		
-		$pdo->commit();//подтверждение транзакции
-	}
-	
-	catch (PDOException $e)
-	{
-		$pdo->rollBack();//отмена транзакции
-		
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	/*Если конкурс включён, происходит изменение конкурсного счёта*/	
-	if (($contestOn == 'YES') && (!userRole('Автор')) && (!userRole('Администратор'))) delOrAddContestScore('add', 'commentpoints');//если конкурс включен
-	
-	header ('Location: ../viewpost/?id='.$_POST['idarticle'].'#bottom');//перенаправление обратно в контроллер index.php
-	exit();	
-}
+/*команда INSERT  - добавление комментария в базу данных перенесено в addcomment*/
 	
 /*UPDATE - обновление текста комментария*/
 
