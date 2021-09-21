@@ -30,6 +30,11 @@ if (isset($_POST["idarticle"]))
 	{
 		$idType = 'idpromotion = ';
 	}
+
+	elseif ($_POST["articletype"] === 'account')
+	{
+		$idType = 'idaccount = ';
+	}
 		
 	try
 	{

@@ -89,7 +89,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <div class = "main-headers-txtplace">Стена (<?php echo $countPosts; ?>)</div>
+            <div class = "main-headers-txtplace">Стена (<span id="comm_count"><?php echo $countPosts; ?></span>)</div>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -97,7 +97,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<?php echo $addComment; ?>
 
 	<div class = "m-content comment-line"></div> 
-
+	<div id="result_form"></div>	
 	<?php if (empty ($comments))
 			{
 				echo'<p class = "m-content">Записи на стене отсутствуют!</p>';

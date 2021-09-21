@@ -473,13 +473,14 @@ if (isset ($_GET['id']))
 	{
 		$addComment = '
 		<textarea class = "m-content fls-textarea">Напишите свой комментарий!</textarea>
-		<form class="m-content comment-form hidden" action = "../account/addupdwallpost/?addform" method = "post" enctype="multipart/form-data">               
-								<input type = "file" name = "upload" id = "upload">
-								<input type = "hidden" name = "action" value = "upload">
-								<input type = "hidden" name = "idauthin" value = "'.$idAuthor.'">
+		<form class="m-content comment-form hidden" id=addcomment method = "post" enctype="multipart/form-data">               
 								
+								
+								<input type = "hidden" name = "idauthart" value = "'.$idAuthor.'"> 
+								<input type = "hidden" name = "idarticle" value = "'.$selectedAuthor.'">
+								<input type = "hidden" name = "articletype" value = "account">
 								<textarea class = "comment-textarea mark-textarea" rows="10" id = "comment" name = "comment" placeholder = "Напишите свой комментарий!"></textarea>	
-								<button class = "btn_1">Добавить коммнтарий</button>  
+								<button class = "btn_1" id="push_comment">Добавить коммнтарий</button>  
 						</form>';	
 	}
 	
