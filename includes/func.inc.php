@@ -776,14 +776,27 @@ function toEmbedInVideo($video)
 /*Корректное отображение видео в статьях*/
 function viewVideoInArticle ($text)
 {
-	$element_1 = 'iframe width="560"'; //искомый элемент
-	$replace_1 = 'iframe width="85%"'; //на что меняем
+	// $element_1 = 'iframe width="560"'; //искомый элемент
+	// $replace_1 = 'iframe width="85%"'; //на что меняем
 	
-	$findSt = strpos ($text, $element_1);
+	// $findSt = strpos ($text, $element_1);
 	
-	$text = $findSt != '' ? str_replace($element_1, $replace_1, $text) : $text;
+	// $text = $findSt != '' ? str_replace($element_1, $replace_1, $text) : $text;
+
+	// return $text;
+
+	
+	$element_1 = "/http(s)?:\/\/youtu\.be\/([^\40\t\r\n\<]+)/i"; //искомый элемент
+	$element_2 = "#(https?)://www\.youtube\.com\/watch\?v=([-_a-z0-9]{11})#i"; //искомый элемент
+	$replace_1 = '<iframe width="85%" height="400" src="https://www.youtube.com/embed/${2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; //на что меняем
+	
+	//$findSt = strpos ($text, $element_1);
+	
+	$text = preg_replace($element_1, $replace_1, $text);
+	$text = preg_replace($element_2, $replace_1, $text);
 
 	return $text;
+	
 }
 
 /*Предварительенй просмотр*/
