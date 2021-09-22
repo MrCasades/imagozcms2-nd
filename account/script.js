@@ -65,6 +65,7 @@ if (removeContest)
 }
 
 $(document).ready(function() {
+	//Добавление записи на стену
 	$("#push_comment").on('click',
 			function(e){
 				if ($('.trumbowyg-editor').text() === ''){

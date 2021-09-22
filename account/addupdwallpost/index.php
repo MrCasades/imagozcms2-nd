@@ -13,66 +13,66 @@ if (loggedIn())
 	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
 }
 
-/*команда INSERT  - добавление комментария в базу данных*/
-if (isset($_GET['addform']))//Если есть переменная addform выводится форма
-{
-	/*Если поле комментария пустое*/
-	if ($_POST['comment'] == '')
-	{
-		$title = 'Напишите текст комментария!';//Данные тега <title>
-		$headMain = 'Напишите текст комментария!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Поле комментария не может быть пустым!';
-		include 'error.html.php';
-		exit();
-	}
+// /*команда INSERT  - добавление комментария в базу данных*/
+// if (isset($_GET['addform']))//Если есть переменная addform выводится форма
+// {
+// 	/*Если поле комментария пустое*/
+// 	if ($_POST['comment'] == '')
+// 	{
+// 		$title = 'Напишите текст комментария!';//Данные тега <title>
+// 		$headMain = 'Напишите текст комментария!';
+// 		$robots = 'noindex, nofollow';
+// 		$descr = '';
+// 		$error = 'Поле комментария не может быть пустым!';
+// 		include 'error.html.php';
+// 		exit();
+// 	}
 	
-	/*Загрузка изображения на стену*/
+// 	/*Загрузка изображения на стену*/
 	
-	$fileNameScript = 'comm-'. time();//имя файла новости/статьи
-	$filePathScript = '/images/';//папка с изображениями для новости/статьи
+// 	$fileNameScript = 'comm-'. time();//имя файла новости/статьи
+// 	$filePathScript = '/images/';//папка с изображениями для новости/статьи
 	
-	/*Загрузка скрипта добавления файла*/
-	include MAIN_FILE . '/includes/uploadfile.inc.php';
+// 	/*Загрузка скрипта добавления файла*/
+// 	include MAIN_FILE . '/includes/uploadfile.inc.php';
 	
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
+// 	/*Подключение к базе данных*/
+// 	include MAIN_FILE . '/includes/db.inc.php';
 		
-	/*Возвращение id автора*/
+// 	/*Возвращение id автора*/
 		
-	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
+// 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 		
-	try
-	{
-		$sql = 'INSERT INTO comments SET 
-			comment = :comment,	
-			commentdate = SYSDATE(),
-			imgalt = :imgalt,
-			imghead = '.'"'.$fileName.'"'.', '.
-			'idauthor = '.$selectedAuthor.','.
-			'idaccount = :idauthin';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':comment', $_POST['comment']);//отправка значения
-		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
-		$s -> bindValue(':idauthin', $_POST['idauthin']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+// 	try
+// 	{
+// 		$sql = 'INSERT INTO comments SET 
+// 			comment = :comment,	
+// 			commentdate = SYSDATE(),
+// 			imgalt = :imgalt,
+// 			imghead = '.'"'.$fileName.'"'.', '.
+// 			'idauthor = '.$selectedAuthor.','.
+// 			'idaccount = :idauthin';
+// 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+// 		$s -> bindValue(':comment', $_POST['comment']);//отправка значения
+// 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
+// 		$s -> bindValue(':idauthin', $_POST['idauthin']);//отправка значения
+// 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+// 	}
 	
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
+// 	catch (PDOException $e)
+// 	{
+// 		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+// 		$headMain = 'Ошибка данных!';
+// 		$robots = 'noindex, nofollow';
+// 		$descr = '';
+// 		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+// 		include 'error.html.php';
+// 		exit();
+// 	}
 	
-	header ('Location: ../../account/?id='.$_POST['idauthin']);//перенаправление обратно в контроллер index.php
-	exit();	
-}
+// 	header ('Location: ../../account/?id='.$_POST['idauthin']);//перенаправление обратно в контроллер index.php
+// 	exit();	
+// }
 
 /*Обновление комментария*/
 if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать')
