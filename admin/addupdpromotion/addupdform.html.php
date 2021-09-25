@@ -77,31 +77,34 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<?php endforeach; ?>
 		<div id="result_form"></div> 
 	 </fieldset>
-	<hr/>	
+	<hr/>
+	<?php if (userRole('Администратор')):?>			
 	<div>
-	    <strong>Загрузите файл изображения для шапки</strong><input type = "file" name = "upload" id = "upload">
-		<input type = "hidden" name = "action" value = "upload">
-	</div>
-	<hr/>		
-	<div>
-		<strong>Введите alt-текст для изображения:</strong>
+		<h3>Введите alt-текст для изображения:</h3>
 		<input type = "imgalt" name = "imgalt" id = "imgalt" value = "<?php htmlecho($imgalt);?>">
 	</div>
-	<hr/>	
+	<hr/>
+	<?php endif;?>		
 	<div>
-		<strong>Введите ссылку на сайт (при необходимости). </strong>
+		<h3>Введите ссылку на сайт (при необходимости). </h3>
 		<input type = "www" name = "www" id = "www" value = "<?php htmlecho($www);?>" placeholder = "Без http://">
 	</div>
 	<hr/>	
 	<div>
-		<strong>Ссылка на видео Youtube: </strong>
+		<h3>Ссылка на видео Youtube </h3>
 		<input type = "videoyoutube" name = "videoyoutube" id = "videoyoutube" value = "<?php htmlecho($videoyoutube);?>">
+	</div>
+	<hr/>
+	<div>
+	    <h3>Выберете файл изображения для шапки</h3>
+		<input type = "file" name = "upload" id = "upload">
+		<input type = "hidden" name = "action" value = "upload">
 	</div>
 	<hr/>	
 	<div>
-		<strong>Краткое описание</strong><br>
+		<h3>Краткое описание</h3>
 		<textarea id = "description" name = "description" rows = "3" cols = "40" placeholder = "Опишите в паре предложений суть материала"><?php htmlecho($description);?></textarea>	
-	 </div>
+	</div>
 		<h5>Подсказка по разметке текста</h5>
 		<ul>
 		 	<li>Для вставки ссылки используйте кнопку <strong>Insert Link</strong></li>
@@ -109,7 +112,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<strong>jpg</strong>, <strong>png</strong> или <strong>gif</strong> на своём жёстком диске.</p>
 				<p>ВАЖНО! На картинках не должно быть водяных знаков сторонних ресурсов. Само изображение желательно минимально обработать, если оно неоригинальное.
 				   (Хотябы немного обрезать, отзеркалить и т.п.)</p></li>
-			<li><strong>Для вставки видео c Youtube:</strong> просто скопируйте ссылку на видео вида <strong>https://www.youtube.com/watch?v=IdVideo</strong> или <strong>https://youtu.be/IdVideo</strong> в нужное место в текстовом поле</li>
+			 <li><strong>Для вставки видео c Youtube:</strong> просто скопируйте ссылку на видео вида <strong>https://www.youtube.com/watch?v=IdVideo</strong> или <strong>https://youtu.be/IdVideo</strong> в нужное место в текстовом поле</li>
 		 </ul>	
 	 <hr/>	
 

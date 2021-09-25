@@ -78,26 +78,29 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<?php endforeach; ?>
 		<div id="result_form"></div> 
 	 </fieldset>
-	<hr/>	
+	<hr/>
+	<?php if (userRole('Администратор')):?>				
 	<div>
-	    <strong>Загрузите файл изображения для шапки</strong><input type = "file" name = "upload" id = "upload">
+		<h3>Введите alt-текст для изображения:</h3>
+		<input type = "imgalt" name = "imgalt" id = "imgalt" value = "<?php htmlecho($imgalt);?>">
+	</div>
+	<hr/>
+	<?php endif;?>		
+	<div>
+		<h3>Ссылка на видео Youtube</h3>
+		<input type = "videoyoutube" name = "videoyoutube" id = "videoyoutube" value = "<?php htmlecho($videoyoutube);?>">
+	</div>
+	<hr/>
+	<div>
+	    <h3>Выберете файл изображения для шапки</h3>
+		<input type = "file" name = "upload" id = "upload">
 		<input type = "hidden" name = "action" value = "upload">
 	</div>
 	<hr/>		
 	<div>
-		<strong>Введите alt-текст для изображения:</strong>
-		<input type = "imgalt" name = "imgalt" id = "imgalt" value = "<?php htmlecho($imgalt);?>">
-	</div>
-	<hr/>		
-	<div>
-		<strong>Ссылка на видео Youtube: </strong>
-		<input type = "videoyoutube" name = "videoyoutube" id = "videoyoutube" value = "<?php htmlecho($videoyoutube);?>">
-	</div>
-	<hr/>		
-	<div>
-		<strong>Краткое описание</strong><br>
+		<h3>Краткое описание</h3>
 		<textarea id = "description" name = "description" rows = "3" cols = "40" placeholder = "Опишите в паре предложений суть материала"><?php htmlecho($description);?></textarea>	
-	 </div>
+	</div>
 		<h5>Подсказка по разметке текста</h5>
 		<ul>
 		 	<li>Для вставки ссылки используйте кнопку <strong>Insert Link</strong></li>
