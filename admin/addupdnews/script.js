@@ -161,6 +161,17 @@ $(document).ready(function() {
             }		
         }
 	);
+    
+    //hide show hints list
+    $('#hide_show_hints').click(function(e) {
+        if ($('#hint_list').css('display') == 'none') {
+            $('#hint_list').show();            
+            e.preventDefault();
+        } else {
+            $('#hint_list').hide();
+            e.preventDefault();
+        }
+    })
 })
 
 function sendAjaxForm(res_form, ajax_form, url) {

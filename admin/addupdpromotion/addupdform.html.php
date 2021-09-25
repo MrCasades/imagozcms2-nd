@@ -105,8 +105,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<h3>Краткое описание</h3>
 		<textarea id = "description" name = "description" rows = "3" cols = "40" placeholder = "Опишите в паре предложений суть материала"><?php htmlecho($description);?></textarea>	
 	</div>
-		<h5>Подсказка по разметке текста</h5>
-		<ul>
+		<h4><a href = "#" id="hide_show_hints">Подсказка по разметке текста</a></h4>
+		 <ul id="hint_list" style="display: none">
 		 	<li>Для вставки ссылки используйте кнопку <strong>Insert Link</strong></li>
 			<li><p><strong>Для вставки изображения</strong> в текст кликните по соответствующей иконке (<strong>Image</strong>) на панели и выберете файл изображения в формате 
 				<strong>jpg</strong>, <strong>png</strong> или <strong>gif</strong> на своём жёстком диске.</p>
