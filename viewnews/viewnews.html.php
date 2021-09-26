@@ -147,7 +147,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
             </div>
             <div class = "main-headers-line"></div>
         </div>
-
+		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>	
 		<?php echo $addComment; ?>
 
 		<div class = "m-content comment-line"></div> 
@@ -198,8 +198,22 @@ include_once MAIN_FILE . '/header.inc.php';?>
                 </div>
 				
 			</div> 
-			<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
-            <div class = "m-content comment-line"></div> 
+			<a href="#"><button class="comment-ans btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
+            <div class = "m-content comment-line"></div>
+			<div class="m-content form-pl hidden">
+				<form action = "?<?php htmlecho($action); ?> " method = "post">
+					<label for = "comment">Введите текст комментария</label><br>
+					<textarea class = "descr mark-textarea" id = "subcomment" name = "subcomment" rows="10"></textarea>	
+					<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
+					<input type = "submit" value = "Ответить" class="btn_2 addit-btn">  
+				</form>	
+			</div> 
+			<div id="subcomments_<?php echo $comment['id']; ?>"></div>
+			<div class="m-content" id="hide_open_pl_<?php echo $comment['id']; ?>" style="display: none;"><a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a> <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>">Все ответы</a></div>
+
+			<?php 
+			/*Загрузка скрипта получения субкомментов в шаблон*/
+			include MAIN_FILE . '/includes/subcommentloadscript.inc.php';?>
 
 		<?php endforeach; ?>
 
