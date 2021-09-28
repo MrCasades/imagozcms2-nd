@@ -40,8 +40,9 @@ if (isset($_POST["idcomment"]))
 	{
 		$sql = 'UPDATE comments SET 
 			subcommentcount = subcommentcount + 1
-			WHERE id=(SELECT max(id) FROM subcomments)';
+			WHERE id=:idcomment';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 		

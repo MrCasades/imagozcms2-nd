@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function() {
         $('#load_<?php echo $comment['id'];?>').click(function(e) {  
-            $('#subcomments_<?php echo $comment['id'];?>').load("../viewwallpost/gessubcomment.inc.php/?id=<?php echo $comment['id'];?>");
+            $('#subcomments_<?php echo $comment['id'];?>').load("../viewwallpost/gessubcomment.inc.php/?id=<?php echo $comment['id'];?>&selauthid=<?php echo $selectedAuthor;?>");
             $('#hide_open_pl_<?php echo $comment['id']; ?>').show();
             e.preventDefault();
         })

@@ -55,6 +55,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		{
 			$updAnddel = '<form action = "?" method = "post">
 							<div>
+								<input type = "hidden" name = "idcomment" value = "'.$idComment.'">
 								<input type = "hidden" name = "id" value = "'.$subcomment ['subid'].'">
 								<input type = "submit" name = "action" class="btn_2" value = "Редактировать">
 								<input type = "submit" name = "action" class="btn_1" value = "Del">

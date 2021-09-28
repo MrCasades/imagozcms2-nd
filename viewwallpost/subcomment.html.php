@@ -19,20 +19,14 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 	<p><?php 
 				   
 	/*Вывод меню редактирования и удаления комментария для автора*/
-	if (isset($_SESSION['loggIn']))
-		{
-			$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-		}
-	else
-		{
-			$authorName = '';
-		}
 
-	if ($authorName == $subcomment['subauthorname'])
+
+	if ($selectedAuthor == $subcomment['subidauthor'])
 		{
-			$updAnddel = '<form action = "?" method = "post">
+			$updAnddel = '<form action = "../viewwallpost/index.php" method = "post">
 							<div>
 								<input type = "hidden" name = "id" value = "'.$subcomment ['subid'].'">
+								<input type = "hidden" name = "idcomment" value = "'.$idComment.'">
 								<input type = "submit" name = "action" class="btn_2" value = "Редактировать">
 								<input type = "submit" name = "action" class="btn_1" value = "Del">
 							</div>

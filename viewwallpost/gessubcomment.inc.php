@@ -15,6 +15,8 @@ if (isset ($_GET['id']))
     include MAIN_FILE . '/includes/db.inc.php';
 
 	$idComment = $_GET['id'];
+
+	$selectedAuthor = $_GET['selauthid'];
 	
 	/*Вывод ответов*/
 	

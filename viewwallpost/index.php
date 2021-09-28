@@ -196,6 +196,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 	$descr = 'Форма редактирования ответа';
 	$action = 'editform';	
 	$text = $row['subcomment'];
+	$idComment = $_POST['idcomment'];
 	$id = $row['id'];
 	$button = 'Обновить ответ';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
@@ -285,7 +286,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		exit();
 	}
 	
-	header ('Location: ../viewwallpost/?id='.$_SESSION['idcomment']);//перенаправление обратно в контроллер index.php
+	header ('Location: ../viewwallpost/?id='.$_POST['idcomment']);//перенаправление обратно в контроллер index.php
 	exit();	
 }
 	
