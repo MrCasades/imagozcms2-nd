@@ -87,6 +87,7 @@ if (isset($_POST["idcomment"]))
         'date' => $row['subcommentdate'],
         'idauthor' => $row['subidauthor'],
         'authorname' => $row['subauthorname'],
+		'idcomment' => $_POST['idcomment'],
       //  'subcommentcount' => $row['subcommentcount']
     ); 
 

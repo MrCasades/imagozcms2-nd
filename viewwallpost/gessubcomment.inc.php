@@ -25,7 +25,7 @@ if (isset ($_GET['id']))
 		$sql = 'SELECT subcomments.id AS subid, author.id AS subidauthor, subcomment, subcommentdate, authorname AS subauthorname FROM subcomments 
 		INNER JOIN author 
 		ON idauthor = author.id 
-		WHERE idcomment = '.$idComment.' LIMIT 10';//Внизу самое последнее значение
+		WHERE idcomment = '.$idComment.' ORDER BY subcommentdate DESC LIMIT 10';//Внизу самое последнее значение
 		$result = $pdo->query($sql);
 	}
 

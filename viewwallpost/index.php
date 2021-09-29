@@ -87,7 +87,7 @@ if (isset ($_GET['id']))
 		$sql = 'SELECT subcomments.id AS subid, author.id AS subidauthor, subcomment, subcommentdate, authorname AS subauthorname FROM subcomments 
 		INNER JOIN author 
 		ON idauthor = author.id 
-		WHERE idcomment = '.$idComment.' LIMIT '.$shift.' ,'.$onPage;//Внизу самое последнее значение
+		WHERE idcomment = '.$idComment.' ORDER BY subcommentdate DESC LIMIT '.$shift.' ,'.$onPage;//Внизу самое последнее значение
 		$result = $pdo->query($sql);
 	}
 
@@ -318,7 +318,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		include 'error.html.php';
 		exit();
 	}
-	header ('Location: ../viewwallpost/?id='.$_SESSION['idcomment']);//перенаправление обратно в контроллер index.php
+	header ('Location: ../viewwallpost/?id='.$_POST['idcomment']);//перенаправление обратно в контроллер index.php
 	exit();
 }
 
@@ -358,6 +358,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	$action = 'delete';
 	$posttitle = 'Ответ';
 	$id = $row['id'];
+	$idComment = $_POST['idcomment'];
 	$button = 'Удалить';
 	
 	include 'delete.html.php';
@@ -392,10 +393,9 @@ if (isset ($_GET['delete']))
 	{
 		$sql = 'UPDATE comments SET 
 			subcommentcount = subcommentcount - 1
-			WHERE id = '.$_SESSION['idcomment'];
+			WHERE id = :idcomment';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idcomment', $_POST['id']);//отправка значения
-		$s -> bindValue(':comment', $_POST['comment']);//отправка значения
+		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 		
@@ -410,6 +410,6 @@ if (isset ($_GET['delete']))
 		exit();
 	}
 	
-	header ('Location: ../viewwallpost/?id='.$_SESSION['idcomment']);//перенаправление обратно в контроллер index.php
+	header ('Location: ../viewwallpost/?id='.$_POST['idcomment']);//перенаправление обратно в контроллер index.php
 	exit();
 }	
