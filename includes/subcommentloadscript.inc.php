@@ -8,6 +8,7 @@
         })
 
         $('#subcomment_hide_<?php echo $comment['id'];?>').click(function(e){
+            $('#result_form_<?php echo $comment['id']; ?>').empty();
             $('#subcomments_<?php echo $comment['id'];?>').empty();
             $('#hide_open_pl_<?php echo $comment['id'];?>').hide();
             e.preventDefault();
