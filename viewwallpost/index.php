@@ -6,7 +6,7 @@ include_once '../includes/path.inc.php';
 include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка функций для формы входа*/
-require_once MAIN_FILE . '/includes/access.inc.php';
+include_once MAIN_FILE . '/includes/access.inc.php';
 
 if (loggedIn())
 {
@@ -18,9 +18,14 @@ if (isset ($_GET['id']))
 {
 	$idComment = $_GET['id'];
 	
-	@session_start();//Открытие сессии для сохранения id статьи
+	if (isset($_SESSION['loggIn']))
+	{
+		$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
+	}
 	
-	$_SESSION['idcomment'] = $idComment;
+	// @session_start();//Открытие сессии для сохранения id статьи
+	
+	// $_SESSION['idcomment'] = $idComment;
 	
 	$select = 'SELECT comments.id, author.id AS idauthor, comment, commentdate, imghead, imgalt, avatar, authorname FROM comments 
 				INNER JOIN author 
@@ -73,6 +78,7 @@ if (isset ($_GET['id']))
 	$headMain = 'Запись пользователя '. $row['authorname'].' от '.$row['commentdate'];
 	$robots = 'noindex, follow';;
 	$descr = '';
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Вывод ответов*/
 	
@@ -210,35 +216,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 {
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
-	
-	$selectComment = 'SELECT id FROM author WHERE authorname = ';//запрос, возвращающий id
-	$authorComment = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-		
+			
 	/*Возвращение id автора*/
-	try
-	{
-		$sql = $selectComment.'"'.$authorComment.'"';
-		$result = $pdo->query($sql);
-	}
-
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора id ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-		
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$authorID[] =  array ('idauthor' => $row['id']);
-	}	
-		
-	$selectedAuthor = (int)$row['id'];//id автора комментария
+	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));;//id автора
 		
 	try
 	{
