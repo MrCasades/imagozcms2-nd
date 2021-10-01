@@ -177,7 +177,7 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT * FROM meta';
+	$sql = 'SELECT * FROM meta ORDER BY metaname';
 	$result = $pdo->query($sql);
 }
 

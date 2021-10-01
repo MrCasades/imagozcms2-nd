@@ -27,11 +27,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class="m-content form-pl" id = "subcomm_form" style="display: none;">
 	<?php if (isset($_SESSION['loggIn'])):?>
-			<form id="subcomm_form" method = "post">
+			<form id="subcomm_form" method = "post" id="addsubcomm">
 				<textarea class = "descr mark-textarea" id = "subcomment" name = "subcomment" rows="10"></textarea>	
 				<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor; ?>">
 				<input type = "hidden" name = "idcomment" value = "<?php echo $idComment; ?>">
-			<input type = "submit" value = "Ответить" class="btn_2 addit-btn" id="add_subcomm">  
+			<input type = "submit" value = "Ответить" class="btn_2 addit-btn" id="push_subcomm">  
 		</form>	
 	<?php else:?>
 		<div class="for-info-txt">
@@ -40,7 +40,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</div>
 	<?php endif;?>
 </div>
-
+<div id="result_form_subcomm"></div>
 <?php if (empty ($subcomments))
 		{
 			echo '<p class = "m-content">Ответы отсутствуют!</p>';

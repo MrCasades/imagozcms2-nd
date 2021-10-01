@@ -209,3 +209,39 @@ $(document).ready(function() {
     	}
  	});
 }
+
+
+function addSubComment (res_form, ajax_form, url) {
+    $.ajax({
+        url:     url, //url страницы (action_ajax_form.php)
+        type:     "POST", //метод отправки
+        dataType: "html", //формат данных
+        data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
+        success: function(response) { //Данные отправлены успешно
+        	result = $.parseJSON(response);
+        	$('#result_form_subcomm').prepend('<div class="sub-comment m-content"><span class="sub-comment-info">Ответил <a href="../account/?id='+result.idauthor+'">'+result.authorname+'</a> | '+result.date+'</span><p>'+result.text+'</p><p><form action = "../viewwallpost/index.php" method = "post"><div><input type = "hidden" name = "idcomment" value = "'+result.idcomment+'"><input type = "hidden" name = "id" value = "'+result.id+'"><input type = "submit" name = "action" class="btn_2" value = "Редактировать"><input type = "submit" name = "action" class="btn_1" value = "Del"></div></form></p></div>');
+            
+			// let countComm = document.getElementById('comm_count');//счётчик комментариев
+			// countComm.innerHTML = Number(countComm.innerHTML) + 1;
+
+			// let notComment = document.getElementById('not_comment');
+
+			// if (notComment)//Убираем надпись "Комментарии отсутствуют"
+			// {
+			// 	notComment.innerHTML = '';
+			// }
+
+            $('.trumbowyg-editor').html('');
+
+            // let commentPlace = document.getElementById('comment');
+            // commentPlace.innerHTML = '';
+			
+			//$('#checked-tags-add').append('<span class="tags-plase-prew">'+result.name+'</span>')
+           // $('#addtags_form').val('');
+    	},
+    	error: function(response) { // Данные не отправлены
+            $('#result_form_subcomm').html('Ошибка. Данные не отправлены.');
+            
+    	}
+ 	});
+}

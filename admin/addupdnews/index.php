@@ -167,7 +167,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	/*Список тематик*/
 	try
 	{
-		$result = $pdo -> query ('SELECT id, metaname FROM meta');
+		$result = $pdo -> query ('SELECT id, metaname FROM meta ORDER BY metaname');
 	}
 	catch (PDOException $e)
 	{
@@ -310,7 +310,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	/*Список тематик*/
 	try
 	{
-		$result = $pdo -> query ('SELECT id, metaname FROM meta');
+		$result = $pdo -> query ('SELECT id, metaname FROM meta ORDER BY metaname');
 	}
 	catch (PDOException $e)
 	{
