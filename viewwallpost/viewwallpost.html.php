@@ -27,7 +27,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class="m-content form-pl" id = "subcomm_form" style="display: none;">
 	<?php if (isset($_SESSION['loggIn'])):?>
-			<form id="subcomm_form" method = "post" id="addsubcomm">
+			<form method = "post" id="addsubcomm">
 				<textarea class = "descr mark-textarea" id = "subcomment" name = "subcomment" rows="10"></textarea>	
 				<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor; ?>">
 				<input type = "hidden" name = "idcomment" value = "<?php echo $idComment; ?>">
