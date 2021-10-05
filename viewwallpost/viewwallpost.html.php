@@ -20,7 +20,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
     <div class = "headers-places"> 
-        <div class = "main-headers-txtplace">Ответы (<?php echo $countPosts; ?>) | <a href="#" id = "open_form"><button class="btn_2">Ответить</button></a></div>
+        <div class = "main-headers-txtplace">Ответы (<span id="comm_count"><?php echo $countPosts; ?></span>) | <a href="#" id = "open_form"><button class="btn_2">Ответить</button></a></div>
     </div>
     <div class = "main-headers-line"></div>
 </div>
@@ -43,7 +43,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div id="result_form_subcomm"></div>
 <?php if (empty ($subcomments))
 		{
-			echo '<p class = "m-content">Ответы отсутствуют!</p>';
+			echo '<p class = "m-content" id="not_comment">Ответы отсутствуют!</p>';
 		}
 				
 	  else

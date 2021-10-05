@@ -221,15 +221,15 @@ function addSubComment (res_form, ajax_form, url) {
         	result = $.parseJSON(response);
         	$('#result_form_subcomm').prepend('<div class="sub-comment m-content"><span class="sub-comment-info">Ответил <a href="../account/?id='+result.idauthor+'">'+result.authorname+'</a> | '+result.date+'</span><p>'+result.text+'</p><p><form action = "../viewwallpost/index.php" method = "post"><div><input type = "hidden" name = "idcomment" value = "'+result.idcomment+'"><input type = "hidden" name = "id" value = "'+result.id+'"><input type = "submit" name = "action" class="btn_2" value = "Редактировать"><input type = "submit" name = "action" class="btn_1" value = "Del"></div></form></p></div>');
             
-			// let countComm = document.getElementById('comm_count');//счётчик комментариев
-			// countComm.innerHTML = Number(countComm.innerHTML) + 1;
+			let countComm = document.getElementById('comm_count');//счётчик комментариев
+			countComm.innerHTML = Number(countComm.innerHTML) + 1;
 
-			// let notComment = document.getElementById('not_comment');
+			let notComment = document.getElementById('not_comment');
 
-			// if (notComment)//Убираем надпись "Комментарии отсутствуют"
-			// {
-			// 	notComment.innerHTML = '';
-			// }
+			if (notComment)//Убираем надпись "Комментарии отсутствуют"
+			{
+			    notComment.innerHTML = '';
+			}
 
             $('.trumbowyg-editor').html('');
 
