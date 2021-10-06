@@ -93,7 +93,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
         </div>
         <div class = "main-headers-line"></div>
     </div>
-	
+	<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>
 	<?php echo $addComment; ?>
 
 	<div class = "m-content comment-line"></div> 
@@ -147,8 +147,33 @@ include_once MAIN_FILE . '/header.inc.php';?>
                 <?php echomarkdown ($comment['text']); ?>
             </div>    
         </div> 
-        <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<?php echo $comment['subcommentcount']; ?>)</button></a>
-        <div class = "m-content comment-line"></div> 
+        <div class="comment-ans">
+			<a href="#"><button class="btn_2" id = "op_form_<?php echo $comment['id'];?>"><i class="fa fa-share" aria-hidden="true"></i> Ответить</button></a> 
+			<a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a>
+		</div>
+        <div class = "m-content comment-line"></div>
+		<div class="m-content form-pl" id = "answ_<?php echo $comment['id'];?>" style="display: none;">
+			<?php if (isset($_SESSION['loggIn'])):?>
+				<form id="subcomm_form_<?php echo $comment['id'];?>" method = "post">
+					<textarea class = "descr mark-textarea" id = "subcomment" name = "subcomment" rows="10"></textarea>	
+					<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor; ?>">
+					<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id']; ?>">
+					<input type = "submit" value = "Ответить" class="btn_2 addit-btn" id="add_subcomm_<?php echo $comment['id']; ?>">  
+				</form>	
+			<?php else:?>
+				<div class="for-info-txt">
+					<a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
+					<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы ответиь на комментарий!
+				</div>
+			<?php endif;?>
+			</div> 
+			<div class="m-content" id="hide_open_pl_<?php echo $comment['id']; ?>" style="display: none;"><a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a> <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>">Все ответы</a></div>
+			<div id="result_form_<?php echo $comment['id']; ?>"></div>
+			<div id="subcomments_<?php echo $comment['id']; ?>"></div>
+			
+			<?php 
+			/*Загрузка скрипта получения субкомментов в шаблон*/
+			include MAIN_FILE . '/includes/subcommentloadscript.inc.php';?> 
 
 		<?php endforeach; ?> 
 
