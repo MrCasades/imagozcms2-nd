@@ -476,8 +476,8 @@ if (isset ($_GET['id']))
 		<form class="m-content comment-form hidden" id=addcomment method = "post" enctype="multipart/form-data">               
 								
 								
-								<input type = "hidden" name = "idauthart" value = "'.$idAuthor.'"> 
-								<input type = "hidden" name = "idarticle" value = "'.$selectedAuthor.'">
+								<input type = "hidden" name = "idauthart" value = "'.$selectedAuthor.'"> 
+								<input type = "hidden" name = "idarticle" value = "'.$idAuthor.'">
 								<input type = "hidden" name = "articletype" value = "account">
 								<textarea class = "comment-textarea mark-textarea" rows="10" id = "comment" name = "comment" placeholder = "Напишите свой комментарий!"></textarea>	
 								<button class = "btn_1" id="push_comment">Добавить коммнтарий</button>  
