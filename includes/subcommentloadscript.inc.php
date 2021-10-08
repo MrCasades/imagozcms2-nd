@@ -1,5 +1,6 @@
 <script>
     $(document).ready(function() {
+        //Получение ответов
         $('#load_<?php echo $comment['id'];?>').click(function(e) {  
             $('#result_form_<?php echo $comment['id']; ?>').empty();
             $('#subcomments_<?php echo $comment['id'];?>').load("../viewwallpost/gessubcomment.inc.php/?id=<?php echo $comment['id'];?>&selauthid=<?php echo $selectedAuthor;?>");
@@ -7,6 +8,7 @@
             e.preventDefault();
         })
 
+        //Скрытие ответов
         $('#subcomment_hide_<?php echo $comment['id'];?>').click(function(e){
             $('#result_form_<?php echo $comment['id']; ?>').empty();
             $('#subcomments_<?php echo $comment['id'];?>').empty();
@@ -14,12 +16,14 @@
             e.preventDefault();
         })
 
+        //Показать форму ответа
         $('#op_form_<?php echo $comment['id'];?>').click(function(e) {  
             console.log("Klick");
             $('#answ_<?php echo $comment['id'];?>').show();
             e.preventDefault();
         })
 
+        //Добавить новый ответ динамически
         $('#add_subcomm_<?php echo $comment['id']; ?>').click(function(e) {  
             $.ajax({
                 url:     '../addsubcomment/addsubcomment.inc.php', //url страницы (action_ajax_form.php)
@@ -33,12 +37,12 @@
                     let countSubComm = document.getElementById('subcomm_count_<?php echo $comment['id']; ?>');//счётчик комментариев
                     countSubComm.innerHTML = Number(countSubComm.innerHTML) + 1;
 
-                    //let notComment = document.getElementById('not_comment');
+                    let notComment = document.getElementById('not_comment_sub');
 
-                    // if (notComment)//Убираем надпись "Комментарии отсутствуют"
-                    // {
-                    //     notComment.innerHTML = '';
-                    // }
+                    if (notComment)//Убираем надпись "Комментарии отсутствуют"
+                    {
+                        notComment.innerHTML = '';
+                    }
 
                     $('#answ_<?php echo $comment['id'];?>').hide();
                     $('.trumbowyg-editor').html('');
