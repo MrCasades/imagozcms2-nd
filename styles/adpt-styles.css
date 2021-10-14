@@ -455,15 +455,19 @@
         width: 90%;
     }
 
+    main .shop-comp{
+        width: 85%;
+        margin-left: 5%;
+    }
+
     main .goods-place{
         width: 35%;
-        margin-left: -0.5rem;  
         font-size: 0.7rem;   
     }
 
     main .shop-comp img{
-        width: 11rem;
-        height: 11rem;
+        width: 10rem;
+        height: 10rem;
     }
 
     main .tags-place-m{
