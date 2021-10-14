@@ -17,11 +17,34 @@ if (loggedIn())
 if (isset ($_GET['id']))
 {
 	$idComment = $_GET['id'];
-	
+
 	if (isset($_SESSION['loggIn']))
 	{
 		$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 	}
+
+	/*Формируем URL для возврата */
+	if (!empty($_GET['idart']) && $_GET['idart'] !== '')
+	{
+		if ($_GET['typeart'] === 'news' )
+		{
+			$URL = '//'.MAIN_URL.'/viewnews/?id='.$_GET['idart'];
+			$linkText = 'К новости';
+		}
+
+		else
+		{
+			$URL = '#';
+			$linkText = 'Не определено';
+		}
+	}
+
+	else
+	{
+		$URL = '#';
+		$linkText = 'Не определено';
+	}
+	
 	
 	// @session_start();//Открытие сессии для сохранения id статьи
 	
