@@ -254,7 +254,7 @@ function lengthText($text)
 									"<br>", "<img", "src=", "alt=", "<iframe", "</iframe>", "width=", "height=",
 									 "title=", "YouTube video player", "frameborder=", "allow=", "clipboard-write;",
 									"style=", "autoplay;", "clipboard-write;", "encrypted-media;", "gyroscope;",
-									"picture-in-picture", "allowfullscreen", "https://www.youtube.com/embed",
+									"picture-in-picture", "allowfullscreen", "https://www.youtube.com/embed", "https://store.steampowered.com/widget/",
 									"font-family:", "font-weight:", "Arial", "Helvetica", "font-size:", "sans-serif",
 									"<span", "</span>", "white-space:pre", "margin:", "text-align:", "justify;",
 									"background-color:", "rel=", "nofollow", "text-decoration-line:", "text-decoration-thickness:",
@@ -788,12 +788,16 @@ function viewVideoInArticle ($text)
 	
 	$element_1 = "/http(s)?:\/\/youtu\.be\/([^\40\t\r\n\<]+)/i"; //искомый элемент
 	$element_2 = "#(https?)://www\.youtube\.com\/watch\?v=([-_a-z0-9]{11})#i"; //искомый элемент
+	$element_3 = 'width="646"';//для виджета Steam
+
 	$replace_1 = '<iframe width="85%" height="400" src="https://www.youtube.com/embed/${2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; //на что меняем
+	$replace_2 = 'width="85%"';
 	
 	//$findSt = strpos ($text, $element_1);
 	
 	$text = preg_replace($element_1, $replace_1, $text);
 	$text = preg_replace($element_2, $replace_1, $text);
+	$text = str_replace($element_3, $replace_2, $text);
 
 	return $text;
 	
