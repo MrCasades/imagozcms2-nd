@@ -32,6 +32,24 @@ if (isset ($_GET['id']))
 			$linkText = 'К новости';
 		}
 
+		elseif ($_GET['typeart'] === 'post' )
+		{
+			$URL = '//'.MAIN_URL.'/viewpost/?id='.$_GET['idart'];
+			$linkText = 'К статье';
+		} 
+
+		elseif ($_GET['typeart'] === 'prom' )
+		{
+			$URL = '//'.MAIN_URL.'/viewpromotion/?id='.$_GET['idart'];
+			$linkText = 'К статье';
+		} 
+
+		elseif ($_GET['typeart'] === 'acc' )
+		{
+			$URL = '//'.MAIN_URL.'/account/?id='.$_GET['idart'];
+			$linkText = 'К профилю';
+		} 
+
 		else
 		{
 			$URL = '#';
