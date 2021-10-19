@@ -339,6 +339,11 @@
         width: 70%;      
     }
 
+    main .about-proj{
+        margin-left: 0.5rem;
+        width: 95%;
+    }
+
     article h1{
         font-size: 3rem;
         margin-top: 10%;
