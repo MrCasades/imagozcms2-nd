@@ -16,6 +16,7 @@
                      <?php endforeach; ?>	
                 </ul>
             </li>
+            <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallposts/">Статьи</a></li>
             <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/searchpost/">Поиск</a></li>
             <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/adminmail/?addmessage#bottom"><i class="fa fa-envelope" aria-hidden="true"></i> Обратная связь</a></li>
 
