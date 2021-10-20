@@ -89,55 +89,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 else
 			 
 		 foreach ($dialogs as $dialog): ?> 
-		  
-		  <?php 
-		  
-		  
-			if (($dialog['idfrom'] != $selectedAuthor) && ($dialog['firstmessage'] == "YES"))
-			{
-						
-				$idAuthor = $dialog['idfrom'];
-				$authorName = $dialog['authorfrom'];
-				$avatar = '<img src="../avatars/'.$dialog['avafr'].'" alt="'.$authorName.'">';
-				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom" class="dialog-mess-a">';
-
-				echo $dialogLink;
-				echo '<div class = "for-dialogs-mess">';
-				echo $avatar.'&nbsp';
-				echo '<span class="unr-mess-txt">'.$authorName.'</span>';
-				echo '</div></a>';
-			}
-					
-			elseif (($dialog['idto'] != $selectedAuthor) && ($dialog['firstmessage'] == "YES"))
-			{
+		   <a href="../mainmessages/viewmainmessages/?id=<?php echo $dialog['idauth'];?>#bottom" class="dialog-mess-a">
+		  	<div class = "for-dialogs-mess">
+			  <img src="../avatars/<?php echo $dialog['ava'];?>" alt="<?php echo $dialog['authorname'];?>">&nbsp;<span class="unr-mess-txt"><?php echo $dialog['authorname'];?></span>
+			</div></a>	
+		 <?php endforeach; ?>
 				
-					
-				$idAuthor = $dialog['idto'];
-				$authorName = $dialog['authorto'];
-				$avatar = '<img src="../avatars/'.$dialog['avato'].'" alt="'.$authorName.'">';
-				$dialogLink = '<a href="../mainmessages/viewmainmessages/?id='.$idAuthor.'#bottom" class="dialog-mess-a">';
-
-				echo $dialogLink;
-				echo '<div class = "for-dialogs-mess">';
-				echo $avatar.'&nbsp';
-				echo '<span class="unr-mess-txt">'.$authorName.'</span>';
-				echo '</div></a>';
-			}
-		  
-			 else
-			{
-				$idAuthor = '';
-				$authorName = '';
-				$avatar = '';
-				$dialogLink = '';
-			}
-				?>
-	  
-				<?php endforeach; ?>
+	</div>   
 				
-		</div>   
-				
-		<p><a name="bottom"></a></p>
+	<p><a name="bottom"></a></p>
 	</div>	
 	
 <?php 
