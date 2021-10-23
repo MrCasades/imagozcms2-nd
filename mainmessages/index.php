@@ -75,14 +75,25 @@ foreach ($result as $row)
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT
-				mmess.id AS mainmessageid, 
+	$sql = 'SELECT 
+				mainmessageid, 
+				unr,
 				auth.authorname AS authorname, 
-				auth.id AS idauth,  
-				auth.avatar AS ava 
-			FROM mainmessages mmess 
-			INNER JOIN author auth ON (mmess.idfrom = auth.id AND mmess.idfrom <> '.$selectedAuthor.') OR (mmess.idto = auth.id AND mmess.idto <> '.$selectedAuthor.')		
-			WHERE (idfrom = '.$selectedAuthor.' OR idto = '.$selectedAuthor.') AND firstmessage = "YES" ORDER BY mainmessagedate';
+				auth.id AS idauth, 
+				auth.avatar AS ava,
+				idto 
+			FROM author auth 
+			INNER JOIN 
+				(SELECT 
+					max(id) AS mainmessageid,
+					count(CASE WHEN unread = "YES" AND idto = '.$selectedAuthor.' THEN 1 END) AS unr, 
+					idfrom, 
+					idto 
+				FROM mainmessages 
+				GROUP BY CASE WHEN idfrom > idto THEN idfrom ELSE idto END) mmess 
+			ON (mmess.idfrom = auth.id AND mmess.idfrom <> '.$selectedAuthor.') OR (mmess.idto = auth.id AND mmess.idto <> '.$selectedAuthor.') 
+			WHERE idfrom = '.$selectedAuthor.' OR idto = '.$selectedAuthor.' 
+			ORDER BY mainmessageid DESC';
 	$result = $pdo->query($sql);
 }
 
@@ -99,7 +110,7 @@ catch (PDOException $e)
 /*Вывод результата в шаблон*/
 foreach ($result as $row)
 {
-	$dialogs[] =  array ('idmess' => $row['mainmessageid'], 'authorname' => $row['authorname'], 'idauth' => $row['idauth'], 'ava' => $row['ava']);
+	$dialogs[] =  array ('idmess' => $row['mainmessageid'], 'authorname' => $row['authorname'], 'idauth' => $row['idauth'], 'ava' => $row['ava'], 'unr' => $row['unr'], 'idto' => $row['idto']);
 }
 			
 include 'mainmessages.html.php';

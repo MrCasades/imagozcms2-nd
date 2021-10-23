@@ -92,6 +92,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		   <a href="../mainmessages/viewmainmessages/?id=<?php echo $dialog['idauth'];?>#bottom" class="dialog-mess-a">
 		  	<div class = "for-dialogs-mess">
 			  <img src="../avatars/<?php echo $dialog['ava'];?>" alt="<?php echo $dialog['authorname'];?>">&nbsp;<span class="unr-mess-txt"><?php echo $dialog['authorname'];?></span>
+			  	<?php if ($dialog['unr'] > 0):?>
+					<?php echo $dialog['unr'];?>
+				<?php endif;?>	
 			</div></a>	
 		 <?php endforeach; ?>
 				
