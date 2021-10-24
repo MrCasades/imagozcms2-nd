@@ -80,8 +80,7 @@ try
 				unr,
 				auth.authorname AS authorname, 
 				auth.id AS idauth, 
-				auth.avatar AS ava,
-				idto 
+				auth.avatar AS ava
 			FROM author auth 
 			INNER JOIN 
 				(SELECT 
@@ -110,7 +109,7 @@ catch (PDOException $e)
 /*Вывод результата в шаблон*/
 foreach ($result as $row)
 {
-	$dialogs[] =  array ('idmess' => $row['mainmessageid'], 'authorname' => $row['authorname'], 'idauth' => $row['idauth'], 'ava' => $row['ava'], 'unr' => $row['unr'], 'idto' => $row['idto']);
+	$dialogs[] =  array ('idmess' => $row['mainmessageid'], 'authorname' => $row['authorname'], 'idauth' => $row['idauth'], 'ava' => $row['ava'], 'unr' => $row['unr']);
 }
 			
 include 'mainmessages.html.php';
