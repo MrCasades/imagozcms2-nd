@@ -98,29 +98,31 @@ foreach ($result as $row)
 try
 {
 	$sql = 'SELECT 
-	mainmessageid, 
-	unr,			
-	auth.authorname AS authorname, 
-	auth.id AS idauth, 
-	auth.avatar AS ava,
-	count(*) AS cnt
-FROM author auth 
-INNER JOIN 
-	(SELECT 
-		max(id) AS mainmessageid,					
-		idfrom, 
-		idto 
-	FROM mainmessages 
-	GROUP BY idfrom, idto) mmess 
-ON (mmess.idfrom = auth.id AND mmess.idfrom <> '.$selectedAuthor.') OR (mmess.idto = auth.id AND mmess.idto <> '.$selectedAuthor.') 
-LEFT JOIN (SELECT 
-			   count(CASE WHEN unread = "YES" THEN 1 END) AS unr, 
-			   idfrom AS idfromunr
-		  FROM mainmessages WHERE idto = '.$selectedAuthor.' GROUP BY idfromunr) mmess2 ON mmess2.idfromunr = auth.id
-WHERE idfrom = '.$selectedAuthor.' OR idto = '.$selectedAuthor.'
-GROUP BY authorname
-HAVING cnt > 0  
-ORDER BY mainmessageid DESC';
+				mainmessageid, 
+				unr,			
+				auth.authorname AS authorname, 
+				auth.id AS idauth, 
+				auth.avatar AS ava,
+				count(*) AS cnt
+			FROM author auth 
+			INNER JOIN 
+				(SELECT 
+					max(id) AS mainmessageid,					
+					idfrom, 
+					idto 
+				FROM mainmessages 
+				GROUP BY idfrom, idto) mmess 
+			ON (mmess.idfrom = auth.id AND mmess.idfrom <> '.$selectedAuthor.') OR (mmess.idto = auth.id AND mmess.idto <> '.$selectedAuthor.') 
+			LEFT JOIN 
+				(SELECT 
+					count(CASE WHEN unread = "YES" THEN 1 END) AS unr, 
+					idfrom AS idfromunr
+				FROM mainmessages WHERE idto = '.$selectedAuthor.' 
+				GROUP BY idfromunr) mmess2 ON mmess2.idfromunr = auth.id
+			WHERE idfrom = '.$selectedAuthor.' OR idto = '.$selectedAuthor.'
+			GROUP BY authorname
+			HAVING cnt > 0  
+			ORDER BY mainmessageid DESC';
 	$result = $pdo->query($sql);
 }
 
