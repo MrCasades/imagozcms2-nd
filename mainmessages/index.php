@@ -70,29 +70,57 @@ foreach ($result as $row)
 								  'avafr' => $row['avafr'], 'avato' => $row['avato'], 'unread' => $row['unread'], 'mainmessagedate' => $row['mainmessagedate']);
 }
 
+try
+{
+	$sql = 'SELECT id from mainmessages where idto = '.$selectedAuthor.' and unread = "YES"';
+	$result = $pdo->query($sql);
+}
+
+catch (PDOException $e)
+{
+	$robots = 'noindex, nofollow';
+	$descr = '';
+	$error = 'Ошибка выбора сообщений: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+	include 'error.html.php';
+	exit();
+}
+
+/*Вывод результата в шаблон*/
+foreach ($result as $row)
+{
+
+	$unreadMessages2[] =  array ('id' => $row['id']);
+}
+
 
 /*Вывод имён пользователей, с которыми ведётся диалог*/
 /*Команда SELECT*/
 try
 {
 	$sql = 'SELECT 
-				mainmessageid, 
-				unr,
-				auth.authorname AS authorname, 
-				auth.id AS idauth, 
-				auth.avatar AS ava
-			FROM author auth 
-			INNER JOIN 
-				(SELECT 
-					max(id) AS mainmessageid,
-					count(CASE WHEN unread = "YES" AND idto = '.$selectedAuthor.' THEN 1 END) AS unr, 
-					idfrom, 
-					idto 
-				FROM mainmessages 
-				GROUP BY CASE WHEN idfrom > idto THEN idfrom ELSE idto END) mmess 
-			ON (mmess.idfrom = auth.id AND mmess.idfrom <> '.$selectedAuthor.') OR (mmess.idto = auth.id AND mmess.idto <> '.$selectedAuthor.') 
-			WHERE idfrom = '.$selectedAuthor.' OR idto = '.$selectedAuthor.' 
-			ORDER BY mainmessageid DESC';
+	mainmessageid, 
+	unr,			
+	auth.authorname AS authorname, 
+	auth.id AS idauth, 
+	auth.avatar AS ava,
+	count(*) AS cnt
+FROM author auth 
+INNER JOIN 
+	(SELECT 
+		max(id) AS mainmessageid,					
+		idfrom, 
+		idto 
+	FROM mainmessages 
+	GROUP BY idfrom, idto) mmess 
+ON (mmess.idfrom = auth.id AND mmess.idfrom <> '.$selectedAuthor.') OR (mmess.idto = auth.id AND mmess.idto <> '.$selectedAuthor.') 
+LEFT JOIN (SELECT 
+			   count(CASE WHEN unread = "YES" THEN 1 END) AS unr, 
+			   idfrom AS idfromunr
+		  FROM mainmessages WHERE idto = '.$selectedAuthor.' GROUP BY idfromunr) mmess2 ON mmess2.idfromunr = auth.id
+WHERE idfrom = '.$selectedAuthor.' OR idto = '.$selectedAuthor.'
+GROUP BY authorname
+HAVING cnt > 0  
+ORDER BY mainmessageid DESC';
 	$result = $pdo->query($sql);
 }
 
