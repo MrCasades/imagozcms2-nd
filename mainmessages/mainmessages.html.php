@@ -45,9 +45,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 <?php endforeach; ?>
 				
 	</div>   
-				
-	<p><a name="bottom"></a></p>
-	</div>	
+</div>	
 	
 <?php 
 /*Загрузка footer*/
