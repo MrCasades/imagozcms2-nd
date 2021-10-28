@@ -39,60 +39,6 @@ $selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//i
 /*Подключение к базе данных*/
 include MAIN_FILE . '/includes/db.inc.php';
 
-/*Вывод имён пользователей с непрочитанными сообщениями*/
-/*Команда SELECT*/
-try
-{
-	$sql = 'SELECT mmess.id AS mainmessageid, mmess.firstmessage, mmess.mainmessagedate, mmess.unread, authorfrom.authorname AS afr, authorfrom.id AS idfr, 
-			authorto.id AS idt, authorto.authorname AS ato, authorfrom.avatar AS avafr, authorto.avatar AS avato 
-												FROM mainmessages AS mmess 
-												INNER JOIN author AS authorfrom ON mmess.idfrom = authorfrom.id 
-												INNER JOIN author AS authorto ON mmess.idto = authorto.id 		
-	WHERE (idfrom = '.$selectedAuthor.' OR idto = '.$selectedAuthor.') AND unread = "YES" ORDER BY mainmessageid';
-	$result = $pdo->query($sql);
-}
-
-catch (PDOException $e)
-{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора сообщений: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
-}
-
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-
-	$unreadMessages[] =  array ('idmess' => $row['mainmessageid'], 'firstmessage' => $row['firstmessage'],
-								  'authorfrom' => $row['afr'], 'authorto' => $row['ato'], 'idfrom' => $row['idfr'], 'idto' => $row['idt'],
-								  'avafr' => $row['avafr'], 'avato' => $row['avato'], 'unread' => $row['unread'], 'mainmessagedate' => $row['mainmessagedate']);
-}
-
-try
-{
-	$sql = 'SELECT id from mainmessages where idto = '.$selectedAuthor.' and unread = "YES"';
-	$result = $pdo->query($sql);
-}
-
-catch (PDOException $e)
-{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора сообщений: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
-}
-
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-
-	$unreadMessages2[] =  array ('id' => $row['id']);
-}
-
-
 /*Вывод имён пользователей, с которыми ведётся диалог*/
 /*Команда SELECT*/
 try
