@@ -8,8 +8,8 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-$title = 'Все сообщения | imagoz.ru';
-$headMain = 'Все сообщения';
+$title = 'Все диалоги | imagoz.ru';
+$headMain = 'Все диалоги';
 $robots = 'noindex, follow';
 $descr = 'В данном разделе отображаются сообщения пользователей';
 	

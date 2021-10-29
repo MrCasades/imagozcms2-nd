@@ -7,7 +7,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
     <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="http://localhost/imagozcms2-nd/mainmessages/">Назад</a></h1></div>
     </div>
 	<div class = "main-headers-line"></div>
 </div>
@@ -101,7 +101,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 </div>
 	  <div>
 		<input type = "hidden" name = "idto" value = "<?php echo $toDialog; ?>">
-		<input type = "submit" name = "addform" value = "<?php htmlecho($button); ?>" class="btn_2">
+		<input type = "submit" name = "addform" value = "<?php htmlecho($button); ?>" class="btn_2 send-mess-dtn">
 	  </div>	
 	</form>		
 </div>

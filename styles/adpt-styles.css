@@ -397,6 +397,10 @@
         height: 2.5rem;
     }
 
+    .del-mess-btn{
+        height: 3rem;
+    }
+
     .m-content{
         margin-left: 1%;
         max-width: 99%; 
