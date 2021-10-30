@@ -41,6 +41,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<button class="del-mess-btn btn_2" id="dd_<?php echo $dialog['idauth'];?>">X</button>
 			</form>
 		 </div>	
+
+		 <?php 
+			/*Загрузка скриптов работы с диалогами*/
+			include MAIN_FILE . '/includes/mmesscripts.inc.php';?>
+
 		 <?php endforeach; ?>
 				
 	</div>   
