@@ -7,7 +7,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
     <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="http://localhost/imagozcms2-nd/mainmessages/">Назад</a></h1></div>
+        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="//<?php echo MAIN_URL;?>/mainmessages/">Назад</a></h1></div>
     </div>
 	<div class = "main-headers-line"></div>
 </div>
