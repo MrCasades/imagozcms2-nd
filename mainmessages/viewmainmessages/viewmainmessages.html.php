@@ -83,10 +83,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				 </div>	
 			</div>		
 		 <?php endforeach; ?>	
-		
+		 <div id="result_form"></div>
 		<p><a name="bottom"></a></p>
 		
-  <form class="m-content comment-form" action = "?<?php htmlecho ($action); ?>" method = "post" enctype="multipart/form-data" autocomplete="on">
+  <form class="m-content comment-form" action = "?<?php htmlecho ($action); ?>" method = "post" enctype="multipart/form-data" autocomplete="on" id="mess-form">
 	<table> 
 	 <div>
 	  <tr>
@@ -100,8 +100,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<textarea class = "descr mark-textarea" id = "text" name = "text" rows="10"><?php htmlecho($text);?></textarea>	
 	 </div>
 	  <div>
+	  	<input type = "hidden" name = "idfr" value = "<?php echo $selectedAuthor; ?>">
 		<input type = "hidden" name = "idto" value = "<?php echo $toDialog; ?>">
-		<input type = "submit" name = "addform" value = "<?php htmlecho($button); ?>" class="btn_2 send-mess-dtn">
+		<input type = "submit" name = "addform" value = "<?php htmlecho($button); ?>" class="btn_2 send-mess-dtn" id="send-mess">
 	  </div>	
 	</form>		
 </div>

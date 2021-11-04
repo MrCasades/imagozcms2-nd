@@ -12,6 +12,7 @@ $title = 'Диалог';//Данные тега <title>
 $headMain = 'Диалог';
 $robots = 'noindex, nofollow';
 $descr = '';
+$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
 /*Загрузка формы входа*/
 if (loggedIn())
