@@ -2,14 +2,11 @@
 /*Загрузка главного пути*/
 include_once '../../includes/path.inc.php';
 
-if (isset($_POST["idarticle"])) 
+if (isset($_POST["idfr"])) 
 { 
     /*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
-		
-	/*Загрузка функций для формы входа*/
-	require_once MAIN_FILE . '/includes/access.inc.php';
-				
+					
 	try
 	{		
 		$sql = 'INSERT INTO mainmessages SET 
@@ -40,13 +37,10 @@ if (isset($_POST["idarticle"]))
     /*Команда SELECT*/
 	try
 	{
-	    $sql = $sql = 'SELECT mmess.mainmessage AS messtext, mmess.id AS messid, mmess.mainmessagedate AS messdate, mmess.imghead, auth.authorname AS authorname, auth.id AS idauthor
+	    $sql = $sql = 'SELECT mmess.mainmessage AS messtext, mmess.id AS messid, mmess.mainmessagedate AS messdate, mmess.imghead
                         FROM mainmessages AS mmess 
-                        INNER JOIN author AS auth ON mmess.idfrom = :idfr AND mmess.idto = :idto	
                         WHERE mmess.id=:id';
 	    $s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	    $s -> bindValue(':idfr', $_POST['idfr']);//отправка значения
-        $s -> bindValue(':idto', $_POST['idto']);//отправка значения
         $s -> bindValue(':id', $idmessage_ind);//отправка значения
 	    $s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -66,9 +60,7 @@ if (isset($_POST["idarticle"]))
     $result = array(
     	'id' => $row['messid'],
     	'text' => $row['messtext'],
-        'date' => $row['messdate'],
-        'idauthor' => $row['idauthor'],
-        'authorname' => $row['authorname']
+        'date' => $row['messdate']
     ); 
 
     // Переводим массив в JSON
