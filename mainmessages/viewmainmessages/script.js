@@ -7,7 +7,7 @@ $('#send-mess').click(function(e) {
         data: $("#mess-form").serialize(),  // Сеарилизуем объект
         success: function(response) { //Данные отправлены успешно
             result = $.parseJSON(response);
-            $('#result_form').append('<div class = "mess-pl-style-fr"><span class = "mess-header">Вы ответили Только что</span><div class="del-mess"><form action = "..\..\mainmessages\addupdmainmessage\ " method = "post"><input type = "hidden" name = "idmessage" value = "'+ result.id +'"><input type = "submit" name = "action" value = "X" class="btn_1"></form></div><div class = "mess-text"><p>'+result.text+'</p></div>');
+            $('#result_form').append('<div class = "mess-pl-style-fr"><span class = "mess-header"><strong>Вы ответили</strong> Только что</span><div class="del-mess"><form action = "../../mainmessages/addupdmainmessage/" method = "post"><input type = "hidden" name = "idmessage" value = "'+ result.id +'"><input type = "submit" name = "action" value = "X" class="btn_1"></form></div><div class = "mess-text"><p>'+result.text+'</p></div>');
              
             //$('#answ_').hide();
             $('.trumbowyg-editor').html('');

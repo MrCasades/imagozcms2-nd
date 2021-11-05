@@ -86,15 +86,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 <div id="result_form"></div>
 		<p><a name="bottom"></a></p>
 		
-  <form class="m-content comment-form" action = "?<?php htmlecho ($action); ?>" method = "post" enctype="multipart/form-data" autocomplete="on" id="mess-form">
-	<table> 
-	 <div>
-	  <tr>
-		<td><label for = "upload">Загрузите файл изображения</label><input type = "file" name = "upload" id = "upload"></td>
-		<td><input type = "hidden" name = "action" value = "upload"></td>
-	  </tr>		 
-	</div>
-	</table>	
+  <form class="m-content comment-form" action = "?<?php htmlecho ($action); ?>" method = "post" autocomplete="on" id="mess-form">	
 	 <div>
 		<label for = "promotion">Введите текст сообщения</label><br>
 		<textarea class = "descr mark-textarea" id = "text" name = "text" rows="10"><?php htmlecho($text);?></textarea>	
