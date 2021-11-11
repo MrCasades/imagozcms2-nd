@@ -335,16 +335,16 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 	</div>
 
-	<div class = "main-headers">
+	<!-- <div class = "main-headers">
 			<div class = "headers-places"> 
 				<div class = "main-headers-txtplace">Проект FULL-ZEN</div>
 			</div>
 			<div class = "main-headers-line"></div>
-    </div>
+    </div> -->
 
-	<div class = "m-content for-blocks-m-top f-zen">
+	<!-- <div class = "m-content for-blocks-m-top f-zen">
 		<a href="https://full-zen.imagoz.ru/" ><img src="./full-zen.jpg" alt="Каталог FULL-ZEN" title="Каталог FULL-ZEN"/></a>
-	</div>
+	</div> -->
 
 	<div class = "footer-prev m-content">
 		<div class="auth-top">
