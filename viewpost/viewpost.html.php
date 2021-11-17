@@ -46,6 +46,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</div>
 
 		<div class="a-content m-content">
+			<div class="gallery hidden"></div> <!--Тестовый код-->
+			<div class="one-pic hidden"></div> <!--Тестовый код-->
 			<?php echomarkdown_pub ($articleText); ?>
 			<p class="a-video"><?php echo $video; ?></p>
 			<div class = "recomm-place">                       

@@ -151,6 +151,14 @@ $( document ).ready(function() {
 
 //Рекомендация статьи
 $( document ).ready(function() {
+
+	//Тест галлереи
+	const images = $("img");
+	images.clone().appendTo($(".gallery"));
+
+	console.log(images);
+	//**********************************/
+
     $("#btn_recomm").click(
 		function(event){
 			confRecomm = confirm('Вы уверены, что хотите рекомендовать данную статью? С Вашего счёта будут списаны средства в размере '+ $("#recommprice").attr('value') + ' баллов!')
