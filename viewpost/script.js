@@ -157,6 +157,15 @@ $( document ).ready(function() {
 	images.clone().appendTo($(".gallery"));
 
 	console.log(images);
+
+	//Вывод 1-го изображения
+	$("img").click(
+		function(e){
+			$(".one-pic").empty();
+			$(this).clone().appendTo($(".one-pic"));
+			$(".one-pic").removeClass('hidden');
+		}
+	);
 	//**********************************/
 
     $("#btn_recomm").click(
