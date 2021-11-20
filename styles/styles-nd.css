@@ -1300,3 +1300,32 @@ main .acc-info-pl{
     margin-top: 1rem;
     margin-left: 40%;
 }
+
+/*Галерея*/
+.wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0;
+  }
+
+.one-pic{
+    position: absolute;
+    display: block;
+    
+    width: 90%;
+    height: 90%;
+    left: 10%;
+    top: 10%;
+    
+}
+
+.one-pic img{
+    border: 1px solid #aaa;
+    border-radius: 10px;
+}
+
+.close-pic{
+    margin-left: 89%;
+    margin-top: 5%;
+}

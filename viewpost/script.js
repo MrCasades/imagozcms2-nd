@@ -163,7 +163,7 @@ $( document ).ready(function() {
 		function(e){
 			$(".one-pic").empty();
 			$(this).clone().appendTo($(".one-pic"));
-			$(".one-pic").removeClass('hidden');
+			$(".wrap").removeClass('hidden');
 		}
 	);
 	//**********************************/
