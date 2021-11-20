@@ -166,6 +166,20 @@ $( document ).ready(function() {
 			$(".wrap").removeClass('hidden');
 		}
 	);
+
+	//Закрытие изображения
+	$(".close-pic").click(function (e){
+		closePic();
+	})
+
+	document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !$(".wrap").hasClass("hidden")) closePic()})
+
+	function closePic(){
+		$(".one-pic").empty();
+		$(".wrap").addClass('hidden');
+	}
+	
 	//**********************************/
 
     $("#btn_recomm").click(
