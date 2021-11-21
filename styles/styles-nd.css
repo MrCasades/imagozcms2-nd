@@ -1307,6 +1307,8 @@ main .acc-info-pl{
     height: 100%;
     position: fixed;
     left: 0; top: 0; right: 0; bottom: 0;
+    backdrop-filter: blur(8px);
+    
   }
 
 .one-pic{
@@ -1323,9 +1325,15 @@ main .acc-info-pl{
 .one-pic img{
     border: 1px solid #aaa;
     border-radius: 10px;
+    opacity: 100;
+    z-index: 10;
 }
 
 .close-pic{
     margin-left: 89%;
     margin-top: 5%;
+}
+
+.pic-for-gallery{
+    cursor: pointer;
 }

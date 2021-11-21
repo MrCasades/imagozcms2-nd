@@ -87,9 +87,34 @@ function markdown2html_pub ($text)
 	
 }
 
+/*Добавление класса галереи к изображениям публикации*/
+function imgForGallery($text)
+{
+	$element_1 = 'img '; //искомый элемент
+	$replace_1 = 'img class = "pic-for-gallery"'; //на что меняем
+		
+	
+	$findSt = strpos ($text, $element_1);
+	
+	if ($findSt != '')
+	{
+		$text = str_replace($element_1, $replace_1, $text);
+	}
+		
+	else
+	{
+		$text = $text;
+	}
+	
+	//$video = $findSt != '' ? str_replace($element, $replace, $video) : $video;
+	
+	return $text;
+}
+
+
 function echomarkdown_pub ($text)
 {
-	echo markdown2html_pub ($text);
+	echo markdown2html_pub (imgForGallery($text));
 }
 
 /*markdown2html для использования в шаблоне*/

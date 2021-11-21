@@ -153,13 +153,13 @@ $( document ).ready(function() {
 $( document ).ready(function() {
 
 	//Тест галлереи
-	const images = $("img");
+	const images = $(".pic-for-gallery");
 	images.clone().appendTo($(".gallery"));
 
 	console.log(images);
 
 	//Вывод 1-го изображения
-	$("img").click(
+	$(".pic-for-gallery").click(
 		function(e){
 			$(".one-pic").empty();
 			$(this).clone().appendTo($(".one-pic"));
