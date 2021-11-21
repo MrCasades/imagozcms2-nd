@@ -172,6 +172,29 @@ $(document).ready(function() {
     }
   });
 
+  //Вывод 1-го изображения
+	$(".pic-for-gallery").click(
+		function(e){
+			$(".one-pic").empty();
+			$(this).clone().appendTo($(".one-pic"));
+			$(".wrap").removeClass('hidden');
+		}
+	);
+
+	//Закрытие изображения
+	$(".close-pic").click(function (e){
+		closePic();
+	})
+
+	document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !$(".wrap").hasClass("hidden")) closePic()})
+
+    //Функция закрытия изображения    
+	function closePic(){
+		$(".one-pic").empty();
+		$(".wrap").addClass('hidden');
+	}
+
   //Функция добавления
   function addComment (res_form, ajax_form, url) {
     $.ajax({

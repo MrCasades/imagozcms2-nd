@@ -77,16 +77,6 @@ function markdown2html ($text)
 	return Markdown($text);
 }
 
-/*markdown2html в одобренных публикациях*/
-function markdown2html_pub ($text)
-{
-	/*Загрузка библиотеки Markdown*/
-	include_once 'markdown.php';
-	
-	return Markdown($text);
-	
-}
-
 /*Добавление класса галереи к изображениям публикации*/
 function imgForGallery($text)
 {
@@ -111,10 +101,19 @@ function imgForGallery($text)
 	return $text;
 }
 
+/*markdown2html в одобренных публикациях*/
+function markdown2html_pub ($text)
+{
+	/*Загрузка библиотеки Markdown*/
+	include_once 'markdown.php';
+	
+	return imgForGallery(Markdown($text));
+	
+}
 
 function echomarkdown_pub ($text)
 {
-	echo markdown2html_pub (imgForGallery($text));
+	echo markdown2html_pub ($text);
 }
 
 /*markdown2html для использования в шаблоне*/

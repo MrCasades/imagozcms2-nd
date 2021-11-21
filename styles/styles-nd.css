@@ -1326,7 +1326,7 @@ main .acc-info-pl{
     border: 1px solid #aaa;
     border-radius: 10px;
     opacity: 100;
-    z-index: 10;
+    z-index: 100;
 }
 
 .close-pic{
