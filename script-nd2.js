@@ -186,6 +186,10 @@ $(document).ready(function() {
 		closePic();
 	})
 
+    $(".wrap").click(function (e){
+		closePic();
+	})
+
 	document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !$(".wrap").hasClass("hidden")) closePic()})
 
