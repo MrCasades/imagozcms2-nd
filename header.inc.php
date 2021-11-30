@@ -100,7 +100,7 @@
     <!-- <div class="subheader"></div> -->
 
 	<main>
-	
+
 	<div>	   
 		<?php 
 		/*Загрузка меню авторизации*/
@@ -140,5 +140,11 @@
 		</script>
 	</div> 
   
+	<div class="m-content">
+		<div class="gallery hidden"></div> <!--Тестовый код-->
+		<div class="wrap hidden">
+			<button class="close-pic btn_3">X</button><div class="one-pic"></div> <!--Тестовый код-->
+		</div>
+	</div>	
 	
 	

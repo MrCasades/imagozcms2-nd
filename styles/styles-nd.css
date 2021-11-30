@@ -1311,27 +1311,22 @@ main .acc-info-pl{
     
   }
 
-.one-pic{
-    position: absolute;
-    display: block;
-    
-    width: 90%;
-    height: 90%;
-    left: 10%;
-    top: 10%;
-    
-}
-
 .one-pic img{
+    position: absolute;
+    display: block; 
     border: 1px solid #aaa;
     border-radius: 10px;
     opacity: 100;
-    z-index: 100;
+    z-index: 100;      
+    width: 85%;
+    height: 85%;
+    left: 5%;
+    top: 10%;
 }
 
 .close-pic{
-    margin-left: 89%;
-    margin-top: 5%;
+    margin-left: 93%;
+    margin-top: 2%;
 }
 
 .pic-for-gallery{
