@@ -37,7 +37,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Написать сообщ
 	$id = '';
 	$button = 'Отправить';
 	$errorForm = '';
-	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
 
@@ -47,16 +46,10 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Написать сообщ
 
 /*команда INSERT  - добавление в базу данных*/
 if (isset($_GET['addform']))//Если есть переменная addform выводится форма
-{
-	$fileNameScript = 'formess-'. time();//имя файла новости/статьи
-	$filePathScript = '/formessages/';//папка с изображениями для новости/статьи
-	
+{	
 	/*Загрузка функций для формы входа*/
 	require_once MAIN_FILE . '/includes/access.inc.php';
-	
-	/*Загрузка скрипта добавления файла*/
-	include MAIN_FILE . '/includes/uploadfile.inc.php';
-		
+			
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
@@ -77,14 +70,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$id = '';
 		$button = 'Отправить';
 		$errorForm = '';
-		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
-		
-		@session_start();//Открытие сессии для сохранения id автора
-	
-		$_SESSION['text'] = $_POST['text'];
-		
-		$text = $_SESSION['text'];
 	
 		include 'addupdform.html.php';
 		exit();
@@ -98,21 +84,22 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		
 		$sql = 'INSERT INTO mainmessages SET 
 			mainmessage = :mainmessage,
-			mainmessagedate = SYSDATE(),
-			imghead = '.'"'.$fileName.'"'.', '.
-			'idfrom = '.$selectedAuthor.','.
-			'idto = :idto';
+			mainmessagedate = SYSDATE(),		
+			idfrom = :idfrom,
+			idto = :idto';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':mainmessage', $_POST['text']);//отправка значения
+		$s -> bindValue(':idfrom', $selectedAuthor);//отправка значения
 		$s -> bindValue(':idto', $_POST['idto']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
 		$idmessage_ind = $pdo->lastInsertId();//метод возвращает число, которое MySQL назначил последней автомнкрементной записи (INSERT INTO mainmessages - в данном случае)
 		
 		$sql = 'SELECT count(idfrom) AS idfrom_count, count(idto) AS idto_count FROM mainmessages 
-																				WHERE (idfrom = '.$selectedAuthor.' AND idto = :idto) OR 
-																				(idto = '.$selectedAuthor.' AND idfrom = :idto)';
+																				WHERE (idfrom = :idfrom AND idto = :idto) OR 
+																				(idto = :idfrom AND idfrom = :idto)';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idfrom', $selectedAuthor);//отправка значения
 		$s -> bindValue(':idto', $_POST['idto']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
@@ -141,8 +128,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	{
 		try
 		{
-			$sql = 'UPDATE mainmessages SET firstmessage  = "YES" WHERE id = '.$idmessage_ind;
+			$sql = 'UPDATE mainmessages SET firstmessage  = "YES" WHERE id = :id';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':id', $idmessage_ind);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		}
 
@@ -239,12 +227,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'X')
 }
 
 if (isset ($_GET['delete']))
-{
-	/*Удаление изображения заголовка*/
-	$fileName = $_SESSION['imghead'];
-	$delFile = MAIN_FILE . '/formessages/'.$fileName;//путь к файлу для удаления
-	unlink($delFile);//удаление файла
-		
+{		
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 
