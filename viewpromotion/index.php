@@ -327,91 +327,9 @@ if (isset ($_GET['id']))
 	$columns = count ($similarPosts) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
 	
 	/*Вывод комментариев*/
-	/*Постраничный вывод информации*/
-		
-	$page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;// помещаем номер страницы из массива GET в переменую $page
-	$onPage = 10;// количество статей на страницу
-	$shift = ($page - 1) * $onPage;// (номер страницы - 1) * статей на страницу
+	include_once MAIN_FILE . '/includes/showcomments.inc.php';
 
-	try
-	{
-		$sql = 'SELECT comments.id, comment, commentdate, subcommentcount, avatar, authorname, author.id AS idauthor, idpromotion FROM comments 
-		INNER JOIN author 
-		ON idauthor = author.id 
-		WHERE idpromotion = '.$idPromotion.' 
-		ORDER BY comments.id DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
-		$result = $pdo->query($sql);
-	}
-
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода комментариев ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$comments[] =  array ('id' => $row['id'], 'text' => $row['comment'], 'date' => $row['commentdate'], 'idauthor' => $row['idauthor'],
-							  'authorname' => $row['authorname'], 'subcommentcount' => $row['subcommentcount'], 'avatar' => $row['avatar'], 'idarticle' => $row['idpromotion']);
-	}
-	
-	/*Форма добавления комментария / Получение имени автора для вывода меню редактирования или удаления комментария*/
-	if (isset($_SESSION['loggIn']))
-	{
-		$action = 'addform';
-		$authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-		$addComment = '<textarea class = "m-content fls-textarea">Напишите свой комментарий!</textarea>
-						<form class="m-content comment-form hidden" method = "post" id=addcomment>
-								<input type = "hidden" name = "idauthart" value = "'.$selectedAuthor.'">               
-								<input type = "hidden" name = "idarticle" value = "'.$idPromotion.'">
-								<input type = "hidden" name = "articletype" value = "promotion">
-								<textarea class = "comment-textarea mark-textarea" rows="10" id = "comment" name = "comment" placeholder = "Напишите свой комментарий!"></textarea>	
-								<button class = "btn_1" id="push_comment">Добавить коммнтарий</button>  
-						</form>';
-	}
-	
-	else
-	{
-		$authorName = '';
-		$_SESSION['email'] = '';
-		$addComment = '<textarea class = "m-content fls-textarea">Напишите свой комментарий!</textarea>
-					   <div class="m-content comment-auth hidden">
-							<a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
-							<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы оставить комментарий!
-						</div>';//Вывод сообщения в случае невхода в систему
-		
-		$action = '';	
-	}
-	
-	/*Определение количества статей*/
-	try
-	{
-		$sql = "SELECT count(idpromotion) AS all_articles FROM comments WHERE idpromotion = ".$idPromotion;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-	
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта комментариев ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	$row = $s -> fetch();
-	
-	$countPosts = $row["all_articles"];
-	$pagesCount = ceil($countPosts / $onPage);
+	showComments('promotion', 'idpromotion', $idPromotion);
 	
 	include 'viewpromotion.html.php';
 	exit();		

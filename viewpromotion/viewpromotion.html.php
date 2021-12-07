@@ -174,6 +174,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php 
 				   
 				   //Вывод панели обновления - удаления комментария!
+				   $authorName = isset($_SESSION['loggIn']) ? $authorName = authorLogin ($_SESSION['email'], $_SESSION['password']) : ''; //Имя автора вошедшего в систему.
+				   
 					if (($authorName == $comment['authorname']) || (userRole('Администратор')))
 					{
 						$updAnddel = '<form action = "?" method = "post">

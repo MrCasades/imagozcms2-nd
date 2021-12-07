@@ -121,14 +121,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<p><?php 
 				   
 				   /*Вывод меню редактирования и удаления комментария для автора*/
-					if (isset($_SESSION['loggIn']))
-					{
-					   $authorName = authorLogin ($_SESSION['email'], $_SESSION['password']);//имя автора вошедшего в систему
-					}
-					else
-					{
-						$authorName = '';
-					}
+
+					$authorName = isset($_SESSION['loggIn']) ? $authorName = authorLogin ($_SESSION['email'], $_SESSION['password']) : ''; //Имя автора вошедшего в систему.
+					
 					if ($authorName == $comment['authorname'])
 					{
 						$updAnddel = '<form action = "../account/addupdwallpost/" method = "post">

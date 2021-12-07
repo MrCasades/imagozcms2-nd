@@ -17,26 +17,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content form-pl">
-	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
-	 <table>	
-	 <div>
-	  <tr>
-		<td><strong>Загрузите файл</strong></td>
-	  </tr>	
-	  <tr>	 
-		<td><input type = "file" name = "upload" id = "upload"></td>
-		<td><input type = "hidden" name = "action" value = "upload"></td>
-	  </tr>	
-	</div>
-	<div>
-	  <tr>
-		<td><strong>Введите alt-текст для изображения</strong></td>
-	  </tr>
-	  <tr>	
-		<td><input type = "imgalt" name = "imgalt" id = "imgalt" value = "<?php htmlecho($imgalt);?>"></td>
-	  </tr>	
-	</div>
-	</table>	
+	<form action = "?<?php htmlecho($action); ?> " method = "post">	
 		<strong>Введите текст записи</strong><br>
 		<textarea class = "descr mark-textarea" id = "comment" name = "comment" rows="10"><?php htmlecho($text);?></textarea>	
 	  <div>
