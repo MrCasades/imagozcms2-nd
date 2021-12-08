@@ -381,7 +381,10 @@ if (isset ($_GET['id']))
 
 	showComments('post', 'idpost', $idPost);
 	
-	include 'viewpost.html.php';
+	if($categoryName === 'Изображение дня')
+		include 'viewimageday.html.php';//Шаблон для изображения дня
+	else
+		include 'viewpost.html.php';//Шаблон для статьи
 	exit();		
 }
 	
