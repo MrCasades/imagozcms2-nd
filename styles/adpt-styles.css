@@ -577,4 +577,8 @@
     .counts{
         margin-left: 10%;
     }
+
+    .bread-crumbs{
+        display: none;
+    }
 }
