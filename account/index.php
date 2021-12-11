@@ -61,8 +61,8 @@ if (isset ($_GET['id']))
 	$headMain = $authorName;
 	$robots = 'all';
 	$descr = 'Вся информация о пользователе '.$authorName. ' портала imagoz.ru';
-	$mainPage = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$aricleCategory = '<a href="//'.MAIN_URL.'/account/?id='.$idAuthor.'">Профиль пользователя</a> ';//Для хлебных крошек
+	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/account/?id='.$idAuthor.'">Профиль пользователя</a> ';//Для хлебных крошек
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Вывод избранного*/

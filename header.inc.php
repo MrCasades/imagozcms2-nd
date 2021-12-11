@@ -147,7 +147,7 @@
 		</div>
 		
 		<div class="bread-crumbs">
-			<?php echo $mainPage = $mainPage ?? ''; ?><?php echo $aricleCategory = $aricleCategory ?? ''; ?><?php echo $aricleTitle = $aricleTitle ?? ''; ?>
+			<?php echo $breadPart1 = $breadPart1 ?? ''; ?><?php echo $breadPart2 = $breadPart2 ?? ''; ?><?php echo $breadPart3 = $breadPart3 ?? ''; ?>
 		</div>
 	</div>	
 	
