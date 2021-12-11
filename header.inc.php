@@ -145,6 +145,10 @@
 		<div class="wrap hidden">
 			<button class="close-pic btn_3">X</button><div class="one-pic"></div> <!--Тестовый код-->
 		</div>
+		
+		<div class="bread-crumbs">
+			<?php echo $mainPage = $mainPage ?? ''; ?><?php echo $aricleCategory = $aricleCategory ?? ''; ?><?php echo $aricleTitle = $aricleTitle ?? ''; ?>
+		</div>
 	</div>	
 	
 	
