@@ -197,13 +197,19 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					   
 					echo $updAnddel;?></p>
 
-					<?php echomarkdown ($comment['text']); ?>
+					<?php echomarkdown ($comment['text']); ?>		
                 </div>
 				
 			</div>
-			<div class="comment-ans">
-				<a href="#"><button class="btn_2" id = "op_form_<?php echo $comment['id'];?>"><i class="fa fa-share" aria-hidden="true"></i> Ответить</button></a> 
-				<a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a>
+			<div class="comment-bottom">
+				<div class="comment-like">
+					<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0
+					<i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 0
+				</div>
+				<div class="comment-ans">
+					<a href="#"><button class="btn_2" id = "op_form_<?php echo $comment['id'];?>"><i class="fa fa-share" aria-hidden="true"></i> Ответить</button></a> 
+					<a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a>
+				</div>
 			</div>
             <div class = "m-content comment-line"></div>
 			<div class="m-content form-pl" id = "answ_<?php echo $comment['id'];?>" style="display: none;">

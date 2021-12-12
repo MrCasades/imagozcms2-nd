@@ -1202,8 +1202,18 @@ article .btn_recomm{
     height: 90px;
 }
 
+.comment-bottom{
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-like{
+    margin-left: 65%;
+    font-weight: bold;
+}
+
 .comment-ans{
-    margin-left: 75%;
+    margin-left: 5%;/*75% старое значение*/
     font-weight: bold;
 }
 
