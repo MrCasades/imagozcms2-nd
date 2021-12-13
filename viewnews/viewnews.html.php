@@ -202,10 +202,16 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				
 			</div>
 			<div class="comment-bottom">
-				<div class="comment-like">
-					<i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0
-					<i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 0
-				</div>
+				<?php
+					echo $likePanel =  isset($_SESSION['loggIn']) ? 
+						'<form class="comment-like" id = "like_form_'.$comment ['id'].'">
+							<input type = "hidden" name = "idauthor" value = "'.$selectedAuthor.'">
+							<button id="is_like_'.$comment ['id'].'" class="comment-like-btn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0</button>
+							<button id="is_dislike_'.$comment ['id'].'" class="comment-like-btn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 0</button>					
+						</form>' : '<div class="comment-like"></div>';
+				
+				?>
+
 				<div class="comment-ans">
 					<a href="#"><button class="btn_2" id = "op_form_<?php echo $comment['id'];?>"><i class="fa fa-share" aria-hidden="true"></i> Ответить</button></a> 
 					<a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a>

@@ -1212,6 +1212,14 @@ article .btn_recomm{
     font-weight: bold;
 }
 
+.comment-like-btn{
+    color: #1e90ff;
+}
+
+.comment-like-btn:hover{
+    cursor: pointer;
+}
+
 .comment-ans{
     margin-left: 5%;/*75% старое значение*/
     font-weight: bold;
