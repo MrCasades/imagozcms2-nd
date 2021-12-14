@@ -1214,6 +1214,8 @@ article .btn_recomm{
 
 .comment-like-btn{
     color: #1e90ff;
+    border: none;
+    background: none;
 }
 
 .comment-like-btn:hover{
