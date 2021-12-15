@@ -204,8 +204,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div class="comment-bottom">
 				<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
 					<input type = "hidden" name = "idauthor" value = "<?php echo $$selectedAuthor;?>">
-					<button id="is_like_<?php echo $comment['id'];?>" class="comment-like-btn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0</button>
-					<button id="is_dislike_<?php echo $comment['id'];?>" class="comment-like-btn"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 0</button>					
+					<button id="is_like_<?php echo $comment['id'];?>" class="comment-like-btn" name="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 0</button>
+					<button id="is_dislike_<?php echo $comment['id'];?>" class="comment-like-btn" name="dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> 0</button>					
 				</form>
 
 				<div class="comment-ans">
