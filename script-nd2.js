@@ -272,3 +272,21 @@ function addSubComment (res_form, ajax_form, url) {
     	}
  	});
 }
+
+//Фиксация панели редактирования текста
+function fixTxtArea() {
+    const $cache = $('.trumbowyg-button-pane');
+    if ($(window).scrollTop() > $('.trumbowyg-box').position().top && !$('.trumbowyg-box').hasClass('trumbowyg-fullscreen'))
+      $cache.css({
+        'position': 'fixed',
+        'top': '0px',
+        'width': '85%'
+      });
+    else
+      $cache.css({
+        'position': 'relative',
+        'width': '100%'
+      });
+  }
+  $(window).scroll(fixTxtArea);
+  fixTxtArea();
