@@ -276,7 +276,7 @@ function addSubComment (res_form, ajax_form, url) {
 //Фиксация панели редактирования текста
 function fixTxtArea() {
     const $cache = $('.trumbowyg-button-pane');
-    if ($(window).scrollTop() > $('.trumbowyg-box').position().top && !$('.trumbowyg-box').hasClass('trumbowyg-fullscreen'))
+    if ($(window).scrollTop() > $('.trumbowyg-box').position().top && !$('.trumbowyg-box').hasClass('trumbowyg-fullscreen') && $('.txt-area-block').hasClass('fixed-txt-area'))
       $cache.css({
         'position': 'fixed',
         'top': '0px',

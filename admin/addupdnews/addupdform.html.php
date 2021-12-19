@@ -113,9 +113,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <hr/>	
 
 	 <?php $txtPlaceStyle = userRole('Администратор') ? 'mark-textarea-adm' : 'mark-textarea';?>
-	 <div>
+	 <div class="txt-area-block fixed-txt-area">
 		<h3>Введите текст новости <span style = "color: red"> *</span></h3>
-		<textarea class = "<?php htmlecho($txtPlaceStyle); ?>" id = "text" name = "textnews" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
+		<textarea class = "<?php htmlecho($txtPlaceStyle); ?> fixed-txt-area" id = "text" name = "textnews" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	
 	  <div>

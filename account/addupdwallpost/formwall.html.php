@@ -16,7 +16,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
     <div class = "main-headers-line"></div>
 </div>
 
-<div class="m-content form-pl">
+<div class="m-content form-pl txt-area-block fixed-txt-area">
 	<form action = "?<?php htmlecho($action); ?> " method = "post">	
 		<strong>Введите текст записи</strong><br>
 		<textarea class = "descr mark-textarea" id = "comment" name = "comment" rows="10"><?php htmlecho($text);?></textarea>	
