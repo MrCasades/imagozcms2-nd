@@ -25,7 +25,7 @@ function showComments($type, $typeId, $idArticle/*id автора для про�
 
 	try
 	{
-		$sql = 'SELECT comments.id, author.id AS idauthor, comment, imghead, imgalt, subcommentcount, commentdate, authorname, avatar, '.$typeId.' AS idarticle FROM comments 
+		$sql = 'SELECT comments.id, author.id AS idauthor, comment, imghead, imgalt, subcommentcount, commentdate, authorname, likescount, dislikescount, avatar, '.$typeId.' AS idarticle FROM comments 
 		INNER JOIN author 
 		ON idauthor = author.id 
 		WHERE '.$typeId.' = '.$idArticle.' 
@@ -48,7 +48,8 @@ function showComments($type, $typeId, $idArticle/*id автора для про�
 	foreach ($result as $row)
 	{
 		$GLOBALS['comments'][] =  array ('id' => $row['id'], 'idauthor' => $row['idauthor'], 'text' => $row['comment'], 'date' => $row['commentdate'], 'authorname' => $row['authorname'],
-								'subcommentcount' => $row['subcommentcount'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt'], 'avatar' => $row['avatar'], 'idarticle' => $row['idarticle']);
+								'subcommentcount' => $row['subcommentcount'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt'], 'avatar' => $row['avatar'],
+								'idarticle' => $row['idarticle'], 'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount']);
 	}
 	
 	/*Форма добавления комментария / Получение имени автора для вывода меню редактирования или удаления комментария*/

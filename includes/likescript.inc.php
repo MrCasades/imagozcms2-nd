@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function() {
         //Добавить новый ответ динамически
-        $('#add_subcomm_<?php echo $comment['id']; ?>').click(function(e) {  
+        $('.push-data-<?php echo $comment['id']; ?>').click(function(e) {  
             $.ajax({
                 url:     '../addlike/addlike.inc.php', //url страницы (action_ajax_form.php)
                 type:     "POST", //метод отправки
