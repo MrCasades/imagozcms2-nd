@@ -1,278 +1,36 @@
 <?php
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
-
-/*Подключение к базе данных*/
-include MAIN_FILE . '/includes/db.inc.php';
-		
+	
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-/*Выбор лайков-дислайков*/
-try
-{			
-	$sql = 'SELECT isdislike, islike FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
-	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
-	$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-}
-	
-catch (PDOException $e)
+if (empty($_POST['idauthor']))
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	// Формируем массив для JSON ответа
+    $result = array('res' => 'Только для зарегестрированных пользователей!'); 
+
+    // Переводим массив в JSON
+    echo json_encode($result); 
 }
 
-$row = $s -> fetch();
-
-$isLike = $row['islike'],
-$isDisLike = $row['isdislike'],
-
-if(isset($_POST['like']) && $isLike = '')
-{
-	try
-	{	
-		$pdo->beginTransaction();//инициация транзакции
-
-		$sql = 'INSERT INTO commentlikes SET 
-			isdislike = 0,	
-			islike = 1,
-			idauthor = :idauthor,
-			idcomment = :idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$sql = 'UPDATE comments SET 
-			likescount = likescount + 1
-			WHERE comments.id=:idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$pdo->commit();//подтверждение транзакции
-	}
-	
-	catch (PDOException $e)
-	{
-		$pdo->rollBack();//отмена транзакции
-
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-}
-
-elseif (isset($_POST['like']) && $isLike = 0)
-{
-	try
-	{	
-		$pdo->beginTransaction();//инициация транзакции
-
-		$sql = 'UPDATE commentlikes SET 
-			isdislike = 0,	
-			islike = 1
-			WHERE idauthor = :idauthor AND idcomment = :idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$sql = 'UPDATE comments SET 
-			likescount = likescount + 1,
-			dislikescount = dislikescount - 1
-			WHERE comments.id=:idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$pdo->commit();//подтверждение транзакции
-	}
-	
-	catch (PDOException $e)
-	{
-		$pdo->rollBack();//отмена транзакции
-
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-
-}
-
-elseif (isset($_POST['like']) && $isLike = 1)
-{
-	try
-	{	
-		$pdo->beginTransaction();//инициация транзакции
-
-		$sql = 'DELETE FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$sql = 'UPDATE comments SET 
-			likescount = likescount - 1,
-			WHERE comments.id=:idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$pdo->commit();//подтверждение транзакции
-	}
-	
-	catch (PDOException $e)
-	{
-		$pdo->rollBack();//отмена транзакции
-
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-}
-
-elseif (isset($_POST['dislike']) && $isDisLike = '')
-{
-	try
-	{	
-		$pdo->beginTransaction();//инициация транзакции
-
-		$sql = 'INSERT INTO commentlikes SET 
-			isdislike = 1,	
-			islike = 0,
-			idauthor = :idauthor,
-			idcomment = :idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$sql = 'UPDATE comments SET 
-			dislikescount = dislikescount + 1
-			WHERE comments.id=:idcomment';
-			
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-
-		$pdo->commit();//подтверждение транзакции
-	}
-	
-	catch (PDOException $e)
-	{
-		$pdo->rollBack();//отмена транзакции
-
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-}
-
-elseif (isset($_POST['dislike']) && $isDisLike = 0)
-{
-
-}
-
-elseif (isset($_POST['dislike']) && $isDisLike = 1)
-{
-
-}
-
-
-
-if (isset($_POST["idarticle"])) 
-{ 
-    /*Подключение к базе данных*/
+else
+{	
+	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
-		
-	/*Загрузка функций для формы входа*/
-	require_once MAIN_FILE . '/includes/access.inc.php';
-		
-	/*Возврат id автора*/
-	
-	//$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
-	
-	$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 
-	if ($_POST["articletype"] === 'post')
-	{
-		$idType = 'idpost = ';
-	}
-
-	elseif ($_POST["articletype"] === 'news')
-	{
-		$idType = 'idnews = ';
-	}
-
-	elseif ($_POST["articletype"] === 'promotion')
-	{
-		$idType = 'idpromotion = ';
-	}
-
-	elseif ($_POST["articletype"] === 'account')
-	{
-		$idType = 'idaccount = ';
-	}
-		
+	/*Выбор лайков-дислайков*/
 	try
-	{
-		$pdo->beginTransaction();//инициация транзакции
-		
-		$sql = 'INSERT INTO comments SET 
-			comment = :comment,	
-			commentdate = SYSDATE(),
-			idauthor = '.$_POST['idauthart'].','.
-			$idType.$_POST['idarticle'];
+	{			
+		$sql = 'SELECT isdislike, islike FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':comment', $_POST['comment']);//отправка значения
+		$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+		$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		
-		$sql = $SELECTCONTEST;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-			
-		//$row = $s -> fetch();
-		
-		//$contestOn = $row['conteston'];//проверка на включение конкурса
-		
-		$pdo->commit();//подтверждение транзакции
 	}
-	
+		
 	catch (PDOException $e)
 	{
-		$pdo->rollBack();//отмена транзакции
-		
 		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
 		$headMain = 'Ошибка данных!';
 		$robots = 'noindex, nofollow';
@@ -281,46 +39,266 @@ if (isset($_POST["idarticle"]))
 		include 'error.html.php';
 		exit();
 	}
-	
-	/*Если конкурс включён, происходит изменение конкурсного счёта*/	
-	//if (($contestOn == 'YES') && (!userRole('Автор')) && (!userRole('Администратор'))) delOrAddContestScore('add', 'commentpoints');//если конкурс включен
 
-    /*Команда SELECT*/
-	try
-	{
-	    $sql = 'SELECT comments.id, comment, commentdate, subcommentcount, authorname, avatar, author.id AS idauthor, idpost FROM comments 
-		INNER JOIN author 
-		ON idauthor = author.id 
-		WHERE comments.id=(SELECT max(id) FROM comments)';
-	    $s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	    //$s -> bindValue(':idmeta', $_POST['idmeta']);//отправка значения
-	    $s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-
-	catch (PDOException $e)
-	{
-	    $robots = 'noindex, nofollow';
-	    $descr = '';
-	    $error = 'Error select comment: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	    include 'error.html.php';
-	    exit();
-	}
-	
 	$row = $s -> fetch();
 
-    // Формируем массив для JSON ответа
-    $result = array(
-    	'id' => $row['id'],
-    	'text' => $row['comment'],
-        'date' => $row['commentdate'],
-        'idauthor' => $row['idauthor'],
-        'authorname' => $row['authorname'],
-        'subcommentcount' => $row['subcommentcount'],
-        'avatar' => $row['avatar'],
-        'idarticle' => $row['idpost']
-    ); 
+	if(is_array($row))
+	{
+		$isLike = $row['islike'];
+		$isDisLike = $row['isdislike'];
+	}
+
+	if(isset($_POST['like']) && !$isLike)
+	{
+		try
+		{	
+			$pdo->beginTransaction();//инициация транзакции
+
+			$sql = 'INSERT INTO commentlikes SET 
+				isdislike = 0,	
+				islike = 1,
+				idauthor = :idauthor,
+				idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'UPDATE comments SET 
+				likescount = likescount + 1
+				WHERE comments.id=:idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$pdo->commit();//подтверждение транзакции
+		}
+		
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+	}
+
+	elseif (isset($_POST['like']) && $isLike = 0)
+	{
+		try
+		{	
+			$pdo->beginTransaction();//инициация транзакции
+
+			$sql = 'UPDATE commentlikes SET 
+				isdislike = 0,	
+				islike = 1
+				WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'UPDATE comments SET 
+				likescount = likescount + 1,
+				dislikescount = dislikescount - 1
+				WHERE comments.id=:idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$pdo->commit();//подтверждение транзакции
+		}
+		
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+
+	}
+
+	elseif (isset($_POST['like']) && $isLike = 1)
+	{
+		try
+		{	
+			$pdo->beginTransaction();//инициация транзакции
+
+			$sql = 'DELETE FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'UPDATE comments SET 
+				likescount = likescount - 1,
+				WHERE comments.id=:idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$pdo->commit();//подтверждение транзакции
+		}
+		
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+	}
+
+	elseif (isset($_POST['dislike']) && !$isDisLike)
+	{
+		try
+		{	
+			$pdo->beginTransaction();//инициация транзакции
+
+			$sql = 'INSERT INTO commentlikes SET 
+				isdislike = 1,	
+				islike = 0,
+				idauthor = :idauthor,
+				idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'UPDATE comments SET 
+				dislikescount = dislikescount + 1
+				WHERE comments.id=:idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$pdo->commit();//подтверждение транзакции
+		}
+		
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+	}
+
+	elseif (isset($_POST['dislike']) && $isDisLike = 0)
+	{
+		try
+		{	
+			$pdo->beginTransaction();//инициация транзакции
+
+			$sql = 'UPDATE commentlikes SET 
+				isdislike = 1,	
+				islike = 0
+				WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'UPDATE comments SET 
+				likescount = likescount - 1,
+				dislikescount = dislikescount + 1
+				WHERE comments.id=:idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$pdo->commit();//подтверждение транзакции
+		}
+		
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+
+	}
+
+	elseif (isset($_POST['dislike']) && $isDisLike = 1)
+	{
+		try
+		{	
+			$pdo->beginTransaction();//инициация транзакции
+
+			$sql = 'DELETE FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'UPDATE comments SET 
+				dislikescount = dislikescount - 1,
+				WHERE comments.id=:idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$pdo->commit();//подтверждение транзакции
+		}
+		
+		catch (PDOException $e)
+		{
+			$pdo->rollBack();//отмена транзакции
+
+			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+			$headMain = 'Ошибка данных!';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.html.php';
+			exit();
+		}
+
+	}
+	// Формируем массив для JSON ответа
+    $result = array('res' => ''); 
 
     // Переводим массив в JSON
     echo json_encode($result); 
 }
+
 ?>
