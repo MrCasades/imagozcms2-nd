@@ -6,7 +6,7 @@
                 url:     '../addlike/addlike.inc.php', //url страницы (action_ajax_form.php)
                 type:     "POST", //метод отправки
                 dataType: "html", //формат данных
-                data: $("#subcomm_form_<?php echo $comment['id'];?>").serialize(),  // Сеарилизуем объект
+                data: $("#like_form_<?php echo $comment['id'];?>").serialize(),  // Сеарилизуем объект
                 success: function(response) { //Данные отправлены успешно
                     result = $.parseJSON(response);
                     $('#result_form_<?php echo $comment['id']; ?>').prepend(result.res);
