@@ -1,9 +1,6 @@
 <?php
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
-	
-/*Загрузка функций для формы входа*/
-require_once MAIN_FILE . '/includes/access.inc.php';
 
 if (empty($_POST['idauthor']))
 {
@@ -35,20 +32,26 @@ else
 		$headMain = 'Ошибка данных!';
 		$robots = 'noindex, nofollow';
 		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		$error = 'Ошибка выбора информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 		include 'error.html.php';
 		exit();
 	}
 
 	$row = $s -> fetch();
 
-	if(is_array($row))
+	if($row)
 	{
 		$isLike = $row['islike'];
 		$isDisLike = $row['isdislike'];
 	}
 
-	if(isset($_POST['like']) && !$isLike)
+	else
+	{
+		$isLike = '';
+		$isDisLike = '';
+	}
+
+	if($_POST['type-like'] === 'like' && $isLike == '')
 	{
 		try
 		{	
@@ -84,22 +87,30 @@ else
 			$headMain = 'Ошибка данных!';
 			$robots = 'noindex, nofollow';
 			$descr = '';
-			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			$error = 'Ошибка добавления лайка 1-1 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 			include 'error.html.php';
 			exit();
 		}
 	}
 
-	elseif (isset($_POST['like']) && $isLike = 0)
+	elseif ($_POST['type-like'] === 'like' && $isLike == 0)
 	{
 		try
 		{	
 			$pdo->beginTransaction();//инициация транзакции
 
-			$sql = 'UPDATE commentlikes SET 
+			$sql = 'DELETE FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', (int)$_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', (int)$_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'INSERT INTO commentlikes SET 
 				isdislike = 0,	
-				islike = 1
-				WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				islike = 1,
+				idauthor = :idauthor,
+				idcomment = :idcomment';
 				
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
@@ -126,14 +137,14 @@ else
 			$headMain = 'Ошибка данных!';
 			$robots = 'noindex, nofollow';
 			$descr = '';
-			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			$error = 'Ошибка добавления лайка 2-1 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 			include 'error.html.php';
 			exit();
 		}
 
 	}
 
-	elseif (isset($_POST['like']) && $isLike = 1)
+	elseif ($_POST['type-like'] === 'like' && $isLike == 1)
 	{
 		try
 		{	
@@ -142,12 +153,12 @@ else
 			$sql = 'DELETE FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
 				
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
-			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> bindValue(':idauthor', (int)$_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', (int)$_POST['idcomment']);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 
 			$sql = 'UPDATE comments SET 
-				likescount = likescount - 1,
+				likescount = likescount - 1
 				WHERE comments.id=:idcomment';
 				
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
@@ -165,13 +176,13 @@ else
 			$headMain = 'Ошибка данных!';
 			$robots = 'noindex, nofollow';
 			$descr = '';
-			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			$error = 'Ошибка добавления лайка 3-1 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 			include 'error.html.php';
 			exit();
 		}
 	}
 
-	elseif (isset($_POST['dislike']) && !$isDisLike)
+	elseif ($_POST['type-like'] === 'dislike' && $isDisLike === '')
 	{
 		try
 		{	
@@ -207,22 +218,30 @@ else
 			$headMain = 'Ошибка данных!';
 			$robots = 'noindex, nofollow';
 			$descr = '';
-			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			$error = 'Ошибка добавления лайка 1-2 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 			include 'error.html.php';
 			exit();
 		}
 	}
 
-	elseif (isset($_POST['dislike']) && $isDisLike = 0)
+	elseif ($_POST['type-like'] === 'dislike' && $isDisLike == 0)
 	{
 		try
 		{	
 			$pdo->beginTransaction();//инициация транзакции
 
-			$sql = 'UPDATE commentlikes SET 
+			$sql = 'DELETE FROM commentlikes WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
+			$s -> bindValue(':idcomment', $_POST['idcomment']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+
+			$sql = 'INSERT INTO commentlikes SET 
 				isdislike = 1,	
-				islike = 0
-				WHERE idauthor = :idauthor AND idcomment = :idcomment';
+				islike = 0,
+				idauthor = :idauthor,
+				idcomment = :idcomment';
 				
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> bindValue(':idauthor', $_POST['idauthor']);//отправка значения
@@ -249,14 +268,14 @@ else
 			$headMain = 'Ошибка данных!';
 			$robots = 'noindex, nofollow';
 			$descr = '';
-			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			$error = 'Ошибка добавления лайка 2-2 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 			include 'error.html.php';
 			exit();
 		}
 
 	}
 
-	elseif (isset($_POST['dislike']) && $isDisLike = 1)
+	elseif ($_POST['type-like'] === 'dislike' && $isDisLike == 1)
 	{
 		try
 		{	
@@ -270,7 +289,7 @@ else
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 
 			$sql = 'UPDATE comments SET 
-				dislikescount = dislikescount - 1,
+				dislikescount = dislikescount - 1
 				WHERE comments.id=:idcomment';
 				
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
@@ -288,7 +307,7 @@ else
 			$headMain = 'Ошибка данных!';
 			$robots = 'noindex, nofollow';
 			$descr = '';
-			$error = 'Ошибка добавления лайка '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			$error = 'Ошибка добавления лайка 3-2 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 			include 'error.html.php';
 			exit();
 		}
