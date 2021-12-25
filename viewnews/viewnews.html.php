@@ -176,10 +176,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
                 <div class="comment-text">
 					<p><?php 
 				   
-				   //Вывод панели обновления - удаления комментария!
-				   $authorName = isset($_SESSION['loggIn']) ? $authorName = authorLogin ($_SESSION['email'], $_SESSION['password']) : ''; //Имя автора вошедшего в систему.
+				   //Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!
+				   $authorID = isset($_SESSION['loggIn']) ?  (int)authorID($_SESSION['email'], $_SESSION['password']) : ''; //Имя автора вошедшего в систему.
 				   
-					if (($authorName == $comment['authorname']) || (userRole('Администратор')))
+					if (($authorID == $comment['idauthor']) || (userRole('Администратор')))
 					{
 						$updAnddel = '<form action = "?" method = "post">
 						   <div>
@@ -188,11 +188,40 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							   <input type = "submit" name = "action" class="btn_2" value = "Редактировать">
 							   <input type = "submit" name = "action" class="btn_1" value = "Del">
 						   </div>
-					   </form>';		 
+					   </form>';	
+					   
+					   if($comment['id'] === $comment['idcommentlk'] && $authorID == $comment['idauthorlk'])
+					   {
+							if ($comment['islike'] == 1)
+							{
+								$likeStyle = 'fa-thumbs-up';
+								$dislikeStyle = 'fa-thumbs-o-down';
+							}
+
+							elseif ($comment['isdislike'] == 1)
+							{
+								$likeStyle = 'fa-thumbs-o-up';
+								$dislikeStyle = 'fa-thumbs-down';
+							}
+							else
+							{
+								$likeStyle = 'fa-thumbs-o-up';
+								$dislikeStyle = 'fa-thumbs-o-down';
+							}
+							
+					   }
+
+					   else
+					   {
+							$likeStyle = 'fa-thumbs-o-up';
+							$dislikeStyle = 'fa-thumbs-o-down';
+					   }
 					}	
 					else
 					{
 						$updAnddel = '';
+						$likeStyle = 'fa-thumbs-o-up';
+						$dislikeStyle = 'fa-thumbs-o-down';
 					}							 
 					   
 					echo $updAnddel;?></p>
@@ -206,8 +235,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 					<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
 					<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
-					<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn" name = "like" type="submit"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span id="likecount"><?php echo $comment['likescount'];?></span></button>
-					<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn" name ="dislike" type="submit"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span id="dislikecount"><?php echo $comment['dislikescount'];?></span></button>					
+					<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
+					<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
 				</form>
 
 				<?php 

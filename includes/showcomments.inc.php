@@ -25,9 +25,12 @@ function showComments($type, $typeId, $idArticle/*id автора для про�
 
 	try
 	{
-		$sql = 'SELECT comments.id, author.id AS idauthor, comment, imghead, imgalt, subcommentcount, commentdate, authorname, likescount, dislikescount, avatar, '.$typeId.' AS idarticle FROM comments 
+		$sql = 'SELECT comments.id, author.id AS idauthor, comment, cl.idauthor AS idauthorlk,  idcomment AS idcommentlk, islike, isdislike, imghead, imgalt, subcommentcount, commentdate, authorname, likescount, dislikescount, avatar, '.$typeId.' AS idarticle 
+		FROM comments 
 		INNER JOIN author 
 		ON idauthor = author.id 
+		LEFT JOIN commentlikes cl
+		ON cl.idauthor = author.id AND comments.id = cl.idcomment
 		WHERE '.$typeId.' = '.$idArticle.' 
 		ORDER BY comments.id DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
@@ -49,7 +52,8 @@ function showComments($type, $typeId, $idArticle/*id автора для про�
 	{
 		$GLOBALS['comments'][] =  array ('id' => $row['id'], 'idauthor' => $row['idauthor'], 'text' => $row['comment'], 'date' => $row['commentdate'], 'authorname' => $row['authorname'],
 								'subcommentcount' => $row['subcommentcount'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt'], 'avatar' => $row['avatar'],
-								'idarticle' => $row['idarticle'], 'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount']);
+								'idarticle' => $row['idarticle'], 'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'islike' => $row['islike'], 
+								'isdislike' => $row['isdislike'], 'idcommentlk' => $row['idcommentlk'], 'idauthorlk' => $row['idauthorlk']);
 	}
 	
 	/*Форма добавления комментария / Получение имени автора для вывода меню редактирования или удаления комментария*/
