@@ -5,7 +5,7 @@ include_once '../includes/path.inc.php';
 if (empty($_POST['idauthor']))
 {
 	// Формируем массив для JSON ответа
-    $result = array('res' => 'Только для зарегестрированных пользователей!'); 
+    $result = array('res' => '<div class="m-content">Только для зарегестрированных пользователей!</div>'); 
 
     // Переводим массив в JSON
     echo json_encode($result); 

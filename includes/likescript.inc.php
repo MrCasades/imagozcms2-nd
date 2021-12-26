@@ -75,7 +75,7 @@
                 } else if ($('#dlk_sign_<?php echo $comment['id']; ?>').hasClass('fa-thumbs-down')) {
                     $('#dlk_sign_<?php echo $comment['id']; ?>').removeClass('fa-thumbs-down');
                     $('#dlk_sign_<?php echo $comment['id']; ?>').addClass('fa-thumbs-o-down');
-                    $('#dislikecount_<?php echo $comment['id']; ?>').html(parseInt($('#likecount_<?php echo $comment['id']; ?>').html()) - 1);
+                    $('#dislikecount_<?php echo $comment['id']; ?>').html(parseInt($('#dislikecount_<?php echo $comment['id']; ?>').html()) - 1);
                 } 
             }
         }   

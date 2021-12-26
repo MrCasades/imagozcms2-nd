@@ -149,9 +149,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
             <div class = "main-headers-line"></div>
         </div>
 		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>
-		<?php
-		/*Загрузка функций для лайков / дизлайков */
-		include MAIN_FILE . '/includes/likedislikefuncjs.inc.php';	?>
 
 		<?php echo $addComment; ?>
 
