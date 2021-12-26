@@ -148,7 +148,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
             </div>
             <div class = "main-headers-line"></div>
         </div>
-		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>	
+		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>
+		<?php
+		/*Загрузка функций для лайков / дизлайков */
+		include MAIN_FILE . '/includes/likedislikefuncjs.inc.php';	?>
+
 		<?php echo $addComment; ?>
 
 		<div class = "m-content comment-line"></div> 
@@ -240,7 +244,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</form>
 
 				<?php 
-			/*Загрузка скрипта получения субкомментов в шаблон*/
+			/*Загрузка скрипта добавления лайков/дизлайков*/
 			include MAIN_FILE . '/includes/likescript.inc.php';?>
 
 				<div class="comment-ans">
