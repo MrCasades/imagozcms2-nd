@@ -13,7 +13,7 @@ function showComments($type, $typeId, $idArticle/*id автора для про�
     /*Загрузка функций для формы входа*/
     require_once MAIN_FILE . '/includes/access.inc.php';
 
-    $selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : '';//id автора
+    $selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 
     /*Постраничный вывод информации*/
 		
@@ -25,14 +25,32 @@ function showComments($type, $typeId, $idArticle/*id автора для про�
 
 	try
 	{
-		$sql = 'SELECT comments.id, author.id AS idauthor, comment, cl.idauthor AS idauthorlk,  idcomment AS idcommentlk, islike, isdislike, imghead, imgalt, subcommentcount, commentdate, authorname, likescount, dislikescount, avatar, '.$typeId.' AS idarticle 
-		FROM comments 
-		INNER JOIN author 
-		ON idauthor = author.id 
-		LEFT JOIN commentlikes cl
-		ON cl.idauthor = author.id AND comments.id = cl.idcomment
-		WHERE '.$typeId.' = '.$idArticle.' 
-		ORDER BY comments.id DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
+		$sql = 'SELECT 
+			cm.id, 
+			a.id AS idauthor, 
+			cm.comment, 
+			cml.idauthorlk,  
+			cml.idcomment AS idcommentlk, 
+			cml.islike, 
+			cml.isdislike, 
+			cm.imghead, 
+			cm.imgalt, 
+			cm.subcommentcount, 
+			cm.commentdate, 
+			a.authorname, 
+			cm.likescount, 
+			cm.dislikescount, 
+			a.avatar, 
+			cm.'.$typeId.' AS idarticle 
+		FROM comments cm
+		INNER JOIN author a 
+		ON cm.idauthor = a.id 
+		LEFT JOIN 
+			(SELECT idauthor AS idauthorlk, idcomment, islike, isdislike
+			FROM commentlikes WHERE idauthor = '.$selectedAuthor.') cml
+		ON cm.id = cml.idcomment
+		WHERE cm.'.$typeId.' = '.$idArticle.' 
+		ORDER BY cm.id DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 
