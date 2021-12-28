@@ -361,6 +361,14 @@
     .counts{
         margin-left: 20%;
     }
+
+    /* .comment-ans{
+        margin-left: 3%;
+    } */
+
+    .comment-like{
+        margin-left: 50%;
+    }
     
 }
 
@@ -567,11 +575,15 @@
     }
 
     .comment-ans{
-        margin-left: 70%;
+        margin-left: 3%;
     }
 
     .comment-auth{
         margin-left: 11%;
+    }
+
+    .comment-like{
+        margin-left: 25%;
     }
 
     .counts{

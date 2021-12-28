@@ -178,8 +178,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php 
 				   
 				   //Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!
-				   $authorID = isset($_SESSION['loggIn']) ?  (int)authorID($_SESSION['email'], $_SESSION['password']) : ''; //Имя автора вошедшего в систему.
-
+				  
 					if ($comment['islike'] == 1)
 					{
 						$likeStyle = 'fa-thumbs-up';
@@ -197,7 +196,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						$dislikeStyle = 'fa-thumbs-o-down';
 					}
 
-					if (($authorID == $comment['idauthor']) || (userRole('Администратор')))
+					if (($selectedAuthor  == $comment['idauthor']) || (userRole('Администратор')))
 					{
 						$updAnddel = '<form action = "?" method = "post">
 						   <div>
