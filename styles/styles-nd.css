@@ -767,6 +767,31 @@ main .post-place-1:hover {
     font-size: 1.5rem;
 }
 
+
+/*Grid Главной страницы и переопределение некоторых стилей*/
+.main-row{
+    display: grid;
+    grid-template-columns: 80% 15%;
+    grid-template-areas: 
+    "left-side right-side";
+}
+
+.left-side .m-content{    
+    margin-left: 0;
+    max-width: 100%; 
+}
+
+.left-side .main-headers{
+    margin-left: 3%;
+}
+
+.left-side .gallery-place{
+    margin-left: 3%;
+    max-width: 95%;
+}
+/***********************************/
+
+
 main .rating-n{/*Скрытый рейтинг новостей*/
     display: none;
 }
