@@ -336,7 +336,74 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 		</div>
 	</div>
-	<div class="right-side">			
+	<div class="right-side">
+		<div class="last-comments-pl">
+			<?php if (empty ($comments))
+			{
+				echo '<p>Пусто</p>';
+			}
+			
+			else
+				
+			foreach ($comments as $comment): ?> 
+
+			<?php
+			/*Комментарии к типам статей */
+				if ($comment['newstitle'] != '')
+				{
+					$title = $comment['newstitle'];
+					$articleType = 'viewnews';
+					$articleId = $comment['idnews'];
+				}					
+				elseif ($comment['posttitle'] != '')
+				{
+					$title = $comment['posttitle'];
+					$articleType = 'viewpost';
+					$articleId = $comment['idpost'];
+				}			
+				elseif ($comment['promotiontitle'] != '')
+				{
+					$title = $comment['promotiontitle'];
+					$articleType = 'viewpromotion';
+					$articleId = $comment['idpromotion'];
+				}	
+			/*Стили кнопок лайков дизлайков*/
+				if ($comment['islike'] == 1)
+				{
+					$likeStyle = 'fa-thumbs-up';
+					$dislikeStyle = 'fa-thumbs-o-down';
+				}
+
+				elseif ($comment['isdislike'] == 1)
+				{
+					$likeStyle = 'fa-thumbs-o-up';
+					$dislikeStyle = 'fa-thumbs-down';
+				}
+				else
+				{
+					$likeStyle = 'fa-thumbs-o-up';
+					$dislikeStyle = 'fa-thumbs-o-down';
+				}
+			?>
+			
+			<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
+			<div class="comment-mp">
+				<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...
+				<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
+					<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
+					<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
+					<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
+					<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
+					<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
+				</form>
+			</div>
+			
+			<?php 
+			/*Загрузка скрипта добавления лайков/дизлайков*/
+			include MAIN_FILE . '/includes/likescript.inc.php';?>
+
+			<?php endforeach; ?>
+		</div>			
 		<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 					<div class = "main-headers-txtplace">Проект FULL-ZEN</div>

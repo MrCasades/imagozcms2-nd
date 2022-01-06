@@ -17,6 +17,8 @@ if (loggedIn())
 	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
 }
 
+$selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
+
 /*Подключение к базе данных*/
 include MAIN_FILE . '/includes/db.inc.php';
 
@@ -425,6 +427,75 @@ foreach ($result as $row)
 						'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
 						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 }
+
+/*Вывод комментариев для главной страницы*/
+
+try
+{
+	$sql = 'SELECT 
+		cm.id, 
+		a.id AS idauthor, 
+		cm.comment, 
+		cml.idauthorlk,  
+		cml.idcomment AS idcommentlk, 
+		cml.islike, 
+		cml.isdislike, 
+		cm.imghead, 
+		cm.imgalt, 
+		cm.subcommentcount, 
+		cm.commentdate, 
+		a.authorname, 
+		cm.likescount, 
+		cm.dislikescount, 
+		a.avatar,
+		cm.idpost,
+		cm.idnews,
+		cm.idpromotion,
+		pos.posttitle,
+		n.newstitle,
+		pr.promotiontitle
+	FROM comments cm
+	INNER JOIN author a 
+	ON cm.idauthor = a.id 
+	LEFT JOIN posts pos
+	ON pos.id = idpost
+	LEFT JOIN newsblock n
+	ON n.id = idnews
+	LEFT JOIN promotion pr
+	ON pr.id = idpromotion
+	LEFT JOIN posts p
+	ON p.id = idpost
+	LEFT JOIN 
+		(SELECT idauthor AS idauthorlk, idcomment, islike, isdislike
+		FROM commentlikes WHERE idauthor = '.$selectedAuthor.') cml
+	ON cm.id = cml.idcomment
+	WHERE cm.idpost IS NOT NULL OR cm.idnews IS NOT NULL OR cm.idpromotion IS NOT NULL
+	ORDER BY cm.id DESC LIMIT 10';//Вверху самое последнее значение
+	$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+		$headMain = 'Ошибка данных!';
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Error table in comment' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$comments[] =  array ('id' => $row['id'], 'idauthor' => $row['idauthor'], 'text' => $row['comment'], 'date' => $row['commentdate'], 'authorname' => $row['authorname'],
+								'subcommentcount' => $row['subcommentcount'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt'], 'avatar' => $row['avatar'],
+								'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'islike' => $row['islike'], 
+								'isdislike' => $row['isdislike'], 'idcommentlk' => $row['idcommentlk'], 'idauthorlk' => $row['idauthorlk'],
+								'idpost' => $row['idpost'], 'idnews' => $row['idnews'], 'idpromotion' => $row['idpromotion'],
+								'posttitle' => $row['posttitle'], 'newstitle' => $row['newstitle'], 'promotiontitle' => $row['promotiontitle'],
+							);
+	}
 
 include 'posts.html.php';
 exit();

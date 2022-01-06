@@ -789,6 +789,23 @@ main .post-place-1:hover {
     margin-left: 3%;
     max-width: 95%;
 }
+
+.comment-mp{
+    padding: 1rem;
+    background: #1e90ff;
+    color: #ffff;
+    border-radius: 10px;
+}
+
+.comment-like-btn-mp{
+    color: #ffff;
+    border: none;
+    background: none;
+}
+
+.comment-like-btn-mp:hover{
+    cursor: pointer;
+}
 /***********************************/
 
 

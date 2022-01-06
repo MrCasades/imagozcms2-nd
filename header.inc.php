@@ -95,7 +95,7 @@
                     </div>  
                 </form>
         </div>  -->
-                   
+        <script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>       
     </header>
     <!-- <div class="subheader"></div> -->
 
