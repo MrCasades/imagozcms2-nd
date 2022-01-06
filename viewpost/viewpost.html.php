@@ -152,7 +152,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
         </div>
 
 		<?php echo $addComment; ?>
-		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>	
+		
 		<div class = "m-content comment-line"></div> 
 		<p><a name="bottom"></a></p>
 		<div id="result_form"></div>

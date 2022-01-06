@@ -148,8 +148,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
             </div>
             <div class = "main-headers-line"></div>
         </div>
-		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>
-
+		
 		<?php echo $addComment; ?>
 
 		<div class = "m-content comment-line"></div> 
