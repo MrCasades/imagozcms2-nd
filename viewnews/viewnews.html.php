@@ -173,6 +173,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<?php echo $comment['date']; ?>
                     </div> 
                 </div>
+				<p><a name="comment-<?php echo $comment['id']; ?>"></a></p>
                 <div class="comment-text">
 					<p><?php 
 				   

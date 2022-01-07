@@ -170,6 +170,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<?php echo $comment['date']; ?>
                     </div> 
                 </div>
+				<p><a name="comment-<?php echo $comment['id']; ?>"></a></p>
                 <div class="comment-text">
 						<p><?php 
 					
@@ -249,7 +250,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						</div>
 					<?php endif;?>
 				</div> 
-				<div class="m-content" id="hide_open_pl_<?php echo $comment['id']; ?>" style="display: none;"><a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a> <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=news&idart=<?php echo $idNews; ?>">Все ответы</a></div>
+				<div class="m-content" id="hide_open_pl_<?php echo $comment['id']; ?>" style="display: none;"><a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a> <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=prom&idart=<?php echo $idPromotion; ?>">Все ответы</a></div>
 				<div id="result_form_<?php echo $comment['id']; ?>"></div>
 				<div id="subcomments_<?php echo $comment['id']; ?>"></div>
 			

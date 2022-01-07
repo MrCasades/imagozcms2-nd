@@ -354,18 +354,21 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					$title = $comment['newstitle'];
 					$articleType = 'viewnews';
 					$articleId = $comment['idnews'];
+					$backLinkType = 'news';
 				}					
 				elseif ($comment['posttitle'] != '')
 				{
 					$title = $comment['posttitle'];
 					$articleType = 'viewpost';
 					$articleId = $comment['idpost'];
+					$backLinkType = 'post';
 				}			
 				elseif ($comment['promotiontitle'] != '')
 				{
 					$title = $comment['promotiontitle'];
 					$articleType = 'viewpromotion';
 					$articleId = $comment['idpromotion'];
+					$backLinkType = 'prom';
 				}	
 			/*Стили кнопок лайков дизлайков*/
 				if ($comment['islike'] == 1)
@@ -386,16 +389,21 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				}
 			?>
 			
-			<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
+			<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>#comment-<?php echo $comment['id'];?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
 			<div class="comment-mp">
 				<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...
-				<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
-					<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
-					<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
-					<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
-					<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
-					<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
-				</form>
+				<div class="comment-bottom">
+					<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
+						<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
+						<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
+						<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
+						<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
+						<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
+					</form>
+					<div class="comment-ans">
+						<a href="<?php echo '//'.MAIN_URL;?>/viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=<?php htmlecho($backLinkType);?>&idart=<?php htmlecho($articleId);?>"><button class="btn_2"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответить</button></a>
+					</div>
+				</div>
 			</div>
 			
 			<?php 
