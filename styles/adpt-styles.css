@@ -306,6 +306,19 @@
         width: 30%;
     }
 
+    /*Grid Главной страницы и переопределение некоторых стилей*/
+    .main-row{   
+        
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "left-side"
+        "right-side";
+    }
+
+    .last-comments-pl{
+        display: none;
+    }
+
     .post-place-1 .post-bottom-1{
         font-size: 1.3rem;
     }
@@ -482,9 +495,8 @@
         font-size: 0.7rem;   
     }
 
-    main .shop-comp img{
-        width: 10rem;
-        height: 10rem;
+    main .shop-comp{
+        display: none;
     }
 
     main .tags-place-m{
