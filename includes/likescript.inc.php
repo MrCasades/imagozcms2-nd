@@ -7,7 +7,7 @@
 
             $('#type_like_<?php echo $comment['id'];?>[name="type-like"]').val('like');
             pushLike();
-            if($("#like_form_<?php echo $comment['id'];?>").find('input[name="idauthor"]').val() != 0){
+            if($("#like_form_<?php echo $comment['id'];?>").find('input[name="idauthor"]').val() > 0){
                 changeClass('like');
             }       
             e.preventDefault(); 
@@ -17,7 +17,7 @@
         $('#dislike_<?php echo $comment['id']; ?>').click(function(e) {
             $('#type_like_<?php echo $comment['id'];?>[name="type-like"]').val('dislike');
             pushLike();    
-            if($("#like_form_<?php echo $comment['id'];?>").find('input[name="idauthor"]').val() != 0){
+            if($("#like_form_<?php echo $comment['id'];?>").find('input[name="idauthor"]').val() > 0){
                 changeClass('dislike');
             }             
             e.preventDefault(); 

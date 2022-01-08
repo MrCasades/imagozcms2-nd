@@ -2,7 +2,7 @@
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
-if (empty($_POST['idauthor']))
+if (empty($_POST['idauthor']) || $_POST['idauthor'] < 0)
 {
 	// Формируем массив для JSON ответа
     $result = array('res' => '<div class="m-content">Только для зарегестрированных пользователей!</div>'); 

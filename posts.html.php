@@ -338,7 +338,13 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	</div>
 	<div class="right-side">
 		<div class="last-comments-pl">
-			<?php if (empty ($comments))
+		<div class = "main-headers">
+				<div class = "headers-places"> 
+				<div class = "main-headers-txtplace">Последние комментарии</div>
+			</div>
+			<div class = "main-headers-line"></div>
+		</div>
+		<?php if (empty ($comments))
 			{
 				echo '<p>Пусто</p>';
 			}
@@ -389,18 +395,22 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				}
 			?>
 			
-			<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>#comment-<?php echo $comment['id'];?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
+			<div class="comment-header-mp">
+				<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>#comment-<?php echo $comment['id'];?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
+			</div>
 			<div class="comment-mp">
+				<div class="comment-auth-pl-mp">Написал: <?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?></div>
+				<br/>
 				<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...
-				<div class="comment-bottom">
-					<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
+				<div class="comment-bottom-mp">									
+					<form class="comment-like-mp" id = "like_form_<?php echo $comment['id'];?>">
 						<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 						<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
 						<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
 						<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
 						<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
 					</form>
-					<div class="comment-ans">
+					<div class="comment-ans-mp">
 						<a href="<?php echo '//'.MAIN_URL;?>/viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=<?php htmlecho($backLinkType);?>&idart=<?php htmlecho($articleId);?>"><button class="btn_2"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответить</button></a>
 					</div>
 				</div>
@@ -423,81 +433,88 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<a href="https://full-zen.imagoz.ru/" ><img src="./full-zen.jpg" alt="Каталог FULL-ZEN" title="Каталог FULL-ZEN"/></a>
 		</div> -->
 
-		<div class = "footer-prev-1">
-			<div class="auth-top-1">
+		<div class="auth-top-1">
+			<div class = "main-headers">
+				<div class = "headers-places"> 
+					<div class = "main-headers-txtplace">Наши авторы. Топ-7</div>
+				</div>
+			<div class = "main-headers-line"></div>
+			</div>
+			
+			<?php if (empty ($authorsTOP))
+			{
+				echo '<p>Нет авторов</p>';
+			}
+				
+			else
+				
+			foreach ($authorsTOP as $authorTOP): ?>
+				<div class = "for-top-auth">
+					<div class="for-top-auth-ava-pl"> 
+						<img src="./avatars/<?php echo $authorTOP['avatar'];?>" alt="<?php echo $authorTOP['authorname'];?>">&nbsp; 
+					</div>
+					<div class="for-top-auth-rate-name-pl">
+						<a href="./account/?id=<?php echo $authorTOP['id'];?>"><?php echo $authorTOP['authorname'];?></a> 
+						<br>
+						<i class="fa fa-pencil-square-o" aria-hidden="true" title="Опубликовано материалов"></i><?php htmlecho ($authorTOP['countposts']); ?>&nbsp;  
+						<i class="fa fa-diamond" aria-hidden="true" title="Рейтинг автора"></i> <?php htmlecho ($authorTOP['rating']); ?>
+					</div>
+				</div>	 
+			<?php endforeach; ?>
+		</div>
+			<div class="zen-c-m-1">
 				<div class = "main-headers">
 					<div class = "headers-places"> 
-						<div class = "main-headers-txtplace">Наши авторы. Топ-7</div>
+						<div class = "main-headers-txtplace">Наш Дзен-канал</div>
 					</div>
 					<div class = "main-headers-line"></div>
 				</div>
-			
-				<?php if (empty ($authorsTOP))
-				{
-					echo '<p>Нет авторов</p>';
-				}
-				
-				else
-				
-				foreach ($authorsTOP as $authorTOP): ?>
-					<div class = "for-top-auth"> 
-						<img src="./avatars/<?php echo $authorTOP['avatar'];?>" alt="<?php echo $authorTOP['authorname'];?>">&nbsp; 
-						<a href="./account/?id=<?php echo $authorTOP['id'];?>"><?php echo $authorTOP['authorname'];?></a>&nbsp; 
-						<i class="fa fa-pencil-square-o" aria-hidden="true" title="Опубликовано материалов"></i><?php htmlecho ($authorTOP['countposts']); ?>&nbsp;  
-						<i class="fa fa-diamond" aria-hidden="true" title="Рейтинг автора"></i> <?php htmlecho ($authorTOP['rating']); ?>
-					</div>	 
-				<?php endforeach; ?>
-			</div>
-			<div class = "social-links-1">
-				<div class="zen-c-m-1">
-					<div class = "main-headers">
-						<div class = "headers-places"> 
-							<div class = "main-headers-txtplace">Наш Дзен-канал</div>
-						</div>
-						<div class = "main-headers-line"></div>
-					</div>
-					<div class="zen-link-m">
-						<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
-					</div>
+				<div class="zen-link-m">
+					<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
 				</div>
-				<div class="vk-m-1">
-					<div class = "main-headers">
-						<div class = "headers-places"> 
-							<div class = "main-headers-txtplace">Мы ВКонтакте</div>
-						</div>
-						<div class = "main-headers-line"></div>
+			</div>
+			<div class="vk-m-1">
+				<div class = "main-headers">
+					<div class = "headers-places"> 
+						<div class = "main-headers-txtplace">Мы ВКонтакте</div>
 					</div>
-					<div class="scr-cont">
+					<div class = "main-headers-line"></div>
+				</div>
+				<div class="scr-cont">
+				<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+
+					<!-- VK Widget -->
+					<div id="vk_groups"></div>
+					<script type="text/javascript">
+					VK.Widgets.Group("vk_groups", {mode: 3, no_cover: 1}, 54027668);
+				</script>
 					
-					</div>
-				</div>
 			</div>
-			
 		</div>
 	</div>
 </div>
-<div class="about-proj-1">
-				<div class = "main-headers">
-					<div class = "headers-places"> 
-						<div class = "main-headers-txtplace">О проекте</div>
-					</div>
-					<div class = "main-headers-line"></div>
-				</div>
-				<p>Добро пожаловать на портал <strong>IMAGOZ</strong> (от лат. imago - отражение)! Здесь мы объеденили в общую картину мира тему высоких технологий (hi-tech), индустрию компьютерных игр, 
-				взгляд на самые необычные современные гаджеты, достижения науки и техники и насыщенную событиями жизнь интернета.</p>
+<div class="about-proj-1 m-content">
+	<div class = "main-headers">
+		<div class = "headers-places"> 
+			<div class = "main-headers-txtplace">О проекте</div>
+		</div>
+		<div class = "main-headers-line"></div>
+	</div>
+		<p>Добро пожаловать на портал <strong>IMAGOZ</strong> (от лат. imago - отражение)! Здесь мы объеденили в общую картину мира тему высоких технологий (hi-tech), индустрию компьютерных игр, 
+		взгляд на самые необычные современные гаджеты, достижения науки и техники и насыщенную событиями жизнь интернета.</p>
 				
-				<p>Такой подход является на первый взгляд несколько 
-				нестандартным, но мы считаем, что все эти тематики могут органично сочетаться, заинтересовав широкий круг разносторонне развитых читателей, которые хотят быть на острие 
-				прогресса!</p>
+		<p>Такой подход является на первый взгляд несколько 
+		нестандартным, но мы считаем, что все эти тематики могут органично сочетаться, заинтересовав широкий круг разносторонне развитых читателей, которые хотят быть на острие 
+		прогресса!</p>
 
-				<p>Создатели портала <strong>IMAGOZ</strong> собирают самые интересные и актуальные новости и подают их в оригинальном авторском отражении. Мы не стремимся полностью охватить этот необъятный
-				мир Hi-tech, науки, игр и прочего, но публикуем самые интересные материалы по этим темам.</p>
+		<p>Создатели портала <strong>IMAGOZ</strong> собирают самые интересные и актуальные новости и подают их в оригинальном авторском отражении. Мы не стремимся полностью охватить этот необъятный
+		мир Hi-tech, науки, игр и прочего, но публикуем самые интересные материалы по этим темам.</p>
 				
-				<p>Стоит также отметить, что портал <strong>IMAGOZ</strong> возрождает такой казалось бы мёртвый в нашей стране своеобразный  жанр в публицистике, как <strong>"игрожур"</strong>. Игровая журналистика со своим своеобразным, самобытным 
-				стилем изложения материала для многих связана с самыми тёплыми "ламповыми" воспоминаниями из 90-х, начала 2000 годов.</p> 
+		<p>Стоит также отметить, что портал <strong>IMAGOZ</strong> возрождает такой казалось бы мёртвый в нашей стране своеобразный  жанр в публицистике, как <strong>"игрожур"</strong>. Игровая журналистика со своим своеобразным, самобытным 
+		стилем изложения материала для многих связана с самыми тёплыми "ламповыми" воспоминаниями из 90-х, начала 2000 годов.</p> 
 				
-				<p><strong>IMAGOZ</strong> вбирает в себя лучшие черты этого условного жанра и порождает новое явление - <strong>Постигрожур</strong>. Постигрожур - публикации об играх и тому что интересно геймерам без "игрожура"!</p>
-			</div>
+		<p><strong>IMAGOZ</strong> вбирает в себя лучшие черты этого условного жанра и порождает новое явление - <strong>Постигрожур</strong>. Постигрожур - публикации об играх и тому что интересно геймерам без "игрожура"!</p>
+	</div>
 <?php 
 /*Загрузка footer*/
 include_once __DIR__ . '/footer.inc.php';?>
