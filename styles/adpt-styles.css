@@ -514,6 +514,10 @@
         display: none;
     }
 
+    .shop-comp-header{/*Временное решение сделать одним набором правил*/
+        display: none;
+    }
+
     main .tags-place-m{
         font-size: 0.5rem;
         margin-top: 1rem;

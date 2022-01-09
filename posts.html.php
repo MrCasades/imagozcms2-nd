@@ -486,7 +486,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					<!-- VK Widget -->
 				<div id="vk_groups"></div>
 				<script type="text/javascript">
-					VK.Widgets.Group("vk_groups", {mode: 3, width: 160, no_cover: 1}, 54027668);
+					VK.Widgets.Group("vk_groups", {mode: 3, width: 170, no_cover: 1}, 54027668);
 				</script>
 					
 			</div>
