@@ -217,6 +217,7 @@
     main .for-top-auth{
         width: 15rem;
         /* height: 4rem; */
+        grid-gap: 1%;
         margin-top: 0.5%;
         padding-top: 0.5%;
         padding-left: 2%;

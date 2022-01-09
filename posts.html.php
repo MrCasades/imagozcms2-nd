@@ -462,7 +462,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				</div>	 
 			<?php endforeach; ?>
 		</div>
-			<div class="zen-c-m-1">
+			<div class="zen-c-m">
 				<div class = "main-headers">
 					<div class = "headers-places"> 
 						<div class = "main-headers-txtplace">Наш Дзен-канал</div>
