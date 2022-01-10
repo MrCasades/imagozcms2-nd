@@ -175,7 +175,7 @@ foreach ($result as $row)
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT id, newstitle, viewcount, averagenumber, imghead, newsdate FROM newsblock WHERE premoderation = "YES" AND votecount > 1  ORDER BY averagenumber DESC LIMIT 9';//Вверху самое последнее значение
+	$sql = 'SELECT id, newstitle, viewcount, averagenumber, imghead, newsdate FROM newsblock WHERE premoderation = "YES" AND votecount > 1  ORDER BY averagenumber DESC LIMIT 3';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -398,7 +398,7 @@ foreach ($result as $row)
 						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 }
 
-/*Вывод стаей*/
+/*Вывод статей*/
 /*Команда SELECT*/
 try
 {
@@ -497,7 +497,7 @@ try
 							);
 	}
 
-include 'posts.html.php';
+include 'mainpage.html.php';
 exit();
 
 

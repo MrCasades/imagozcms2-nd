@@ -881,6 +881,42 @@ main .post-place-1:hover {
 .zen-link-m{
     margin-left: 2%;
 }
+
+.rating{
+    display: flex;
+    flex-direction: column;   
+}
+
+.post-place-grid{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0.5rem;
+    width: 100%;
+    height: 10rem;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 3px black;
+    border-radius: 10px;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;  
+}
+
+.post-place-grid:hover {
+    cursor: pointer;
+    /* width: 23.5%;
+    height: 15.5rem; */
+    box-shadow: 0 0 7px;
+    border: 3px solid black;
+}
+
+.post-place-grid .post-top-1{
+    margin: 10px;
+    font-size: 1.3rem;
+}
+
+.post-place-grid .post-bottom-1{
+    margin: 2rem auto auto 1rem;
+    font-size: 1rem;
+}
 /***********************************/
 
 

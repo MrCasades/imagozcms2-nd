@@ -14,8 +14,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	<div class="left-side">
 		<div class = "main-headers">
 				<div class = "headers-places"> 
-					<div class = "main-headers-place posts-op-n"><a href = "./viewallnews/">Новостная лента</a></div>
-					<div class = "main-headers-place ratings-op-n"><a href = "./viewfullnewstop/">Рейтинг новостей</a></div>
+					<div class = "main-headers-place posts-op-n"><a href = "./viewallnews/"><h3>Новостная лента</h3></a></div>
 					<div class = "adpt-title main-headers-txtplace">Новости игровой индустрии, высоких технологий и популярной науки</div>
 				</div>
 				<div class = "main-headers-line"></div>
@@ -40,32 +39,6 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</a>
 
 			<?php endforeach; ?>
-
-		</div>
-
-		<div class = "newsblock m-content rating-n">
-		<?php if (empty ($newsInTOP))
-			{
-				echo '<p>Пусто</p>';
-			}
-			
-			else
-				
-			foreach ($newsInTOP as $newsTOP): ?> 
-
-			<a href = "./viewnews/?id=<?php htmlecho ($newsTOP['id']); ?>" class = "post-place-1" style="background-image: url(images/<?php echo $newsTOP['imghead']; ?>)">
-				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($newsTOP['newsdate'])); ?></p>
-					<div class="article-rating">
-						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($newsTOP['viewcount']); ?> 
-						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho ($newsTOP['averagenumber']); ?>
-					</div>
-				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($newsTOP['newstitle'])), 0, 7)))); ?>...</div>
-			</a>
-
-			<?php endforeach; ?>
-
 		</div>
 
 		<div class="m-content">
@@ -432,6 +405,39 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		<!-- <div class = "m-content for-blocks-m-top f-zen">
 			<a href="https://full-zen.imagoz.ru/" ><img src="./full-zen.jpg" alt="Каталог FULL-ZEN" title="Каталог FULL-ZEN"/></a>
 		</div> -->
+		
+		<div class="article-top">
+			<div class = "main-headers">
+				<div class = "headers-places"> 
+					<div class = "main-headers-txtplace"><a href = "./viewfullnewstop/">Рейтинг новостей</a></div>
+				</div>
+			<div class = "main-headers-line"></div>
+			</div>
+			
+			<div class = "rating">
+				<?php if (empty ($newsInTOP))
+					{
+						echo '<p>Пусто</p>';
+					}
+					
+					else
+						
+					foreach ($newsInTOP as $newsTOP): ?> 
+
+					<a href = "./viewnews/?id=<?php htmlecho ($newsTOP['id']); ?>" class = "post-place-grid" style="background-image: url(images/<?php echo $newsTOP['imghead']; ?>)">
+						<div class = "post-top-1">
+							<div class="article-rating">
+								<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($newsTOP['viewcount']); ?> 
+								<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho ($newsTOP['averagenumber']); ?>
+							</div>
+						</div>
+						<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($newsTOP['newstitle'])), 0, 7)))); ?>...</div>
+					</a>
+
+					<?php endforeach; ?>
+
+			</div>
+		</div>
 
 		<div class="auth-top-1">
 			<div class = "main-headers">
