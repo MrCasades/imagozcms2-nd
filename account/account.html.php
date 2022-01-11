@@ -52,7 +52,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <div class = "main-headers-place"><a href = "./viewallfavourites/?id=<?php echo $idAuthor;?>">Избранное</a></div>
+            <a class = "main-headers-place" href = "./viewallfavourites/?id=<?php echo $idAuthor;?>"><h3>Избранное</h3></a>
         </div>
         <div class = "main-headers-line"></div>
     </div>

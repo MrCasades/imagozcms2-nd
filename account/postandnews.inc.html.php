@@ -2,7 +2,7 @@
 
 <div class = "main-headers">
     <div class = "headers-places"> 
-            <div class = "main-headers-place"><a href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>">Новости автора</a></div>
+            <a class = "main-headers-place" href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>"><h3>Новости автора</h3></a>
     </div>
     <div class = "main-headers-line"></div>
 </div>
@@ -31,7 +31,7 @@
 
 <div class = "main-headers">
     <div class = "headers-places"> 
-            <div class = "main-headers-place"><a href = "../account/allauthorpost/?id=<?php htmlecho ($idAuthor); ?>">Статьи автора</a></div>
+            <a class = "main-headers-place" href = "../account/allauthorpost/?id=<?php htmlecho ($idAuthor); ?>"><h3>Статьи автора</h3></a>
     </div>
     <div class = "main-headers-line"></div>
 </div>
