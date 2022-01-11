@@ -1,6 +1,6 @@
 <div class = "main-headers shop-comp-header">
     <div class = "headers-places"> 
-            <div class = "main-headers-place"><a href="https://playo.ru/?s=c4a1r15p" rel = "nofollow">Купить лицензионные ключи игр</a></div>
+            <a class = "main-headers-place" href="https://playo.ru/?s=c4a1r15p" rel = "nofollow"><h3>Купить лицензионные ключи игр</h3></a>
             <div class = "main-headers-txtplace"><i class="fa fa-reply" aria-hidden="true"></i> Больше игр здесь!</div>
     </div>
     <div class = "main-headers-line"></div>

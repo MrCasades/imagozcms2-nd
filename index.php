@@ -201,7 +201,7 @@ foreach ($result as $row)
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT id, posttitle, viewcount, averagenumber, imghead, postdate FROM posts WHERE premoderation = "YES" AND zenpost = "NO" AND votecount > 1 ORDER BY averagenumber DESC LIMIT 9';//Вверху самое последнее значение
+	$sql = 'SELECT id, posttitle, viewcount, averagenumber, imghead, postdate FROM posts WHERE premoderation = "YES" AND zenpost = "NO" AND votecount > 1 ORDER BY averagenumber DESC LIMIT 3';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -229,7 +229,7 @@ $columns_tp = count ($postsTOP) > 1 ? 'columns' : 'columns_f1';//подсчёт 
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT id, promotiontitle, viewcount, averagenumber, imghead, promotiondate FROM promotion WHERE premoderation = "YES" AND votecount > 1 ORDER BY averagenumber DESC LIMIT 9';//Вверху самое последнее значение
+	$sql = 'SELECT id, promotiontitle, viewcount, averagenumber, imghead, promotiondate FROM promotion WHERE premoderation = "YES" AND votecount > 1 ORDER BY averagenumber DESC LIMIT 3';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -470,7 +470,7 @@ try
 		FROM commentlikes WHERE idauthor = '.$selectedAuthor.') cml
 	ON cm.id = cml.idcomment
 	WHERE cm.idpost IS NOT NULL OR cm.idnews IS NOT NULL OR cm.idpromotion IS NOT NULL
-	ORDER BY cm.id DESC LIMIT 10';//Вверху самое последнее значение
+	ORDER BY cm.id DESC LIMIT 7';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 	}
 

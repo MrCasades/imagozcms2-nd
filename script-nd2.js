@@ -90,6 +90,7 @@ $(document).ready(function() {
 
         btns: [
             ['emoji'],
+            ['formatting'],
             ['strong', 'em', 'h2', 'h3'],
             ['link'],
             ['image'],
@@ -151,25 +152,25 @@ $(document).ready(function() {
 
     //Открыть рейтинг
 
-    ratingOpCl(".ratings-op-n", ".posts-op-n", ".last-news", ".rating-n");
-    ratingOpCl(".ratings-op-pr", ".posts-op-pr", ".last-pr", ".rating-pr");
-    ratingOpCl(".ratings-op-art", ".posts-op-art", ".last-art", ".rating-art")
+    // ratingOpCl(".ratings-op-n", ".posts-op-n", ".last-news", ".rating-n");
+    // ratingOpCl(".ratings-op-pr", ".posts-op-pr", ".last-pr", ".rating-pr");
+    // ratingOpCl(".ratings-op-art", ".posts-op-art", ".last-art", ".rating-art")
 
 
-    function ratingOpCl (titleR, titleP, postsClass, ratingClass){
-        //открытие рейтинга
-        $(titleR).mouseenter(function(){
-            console.log('Ok');   
-            $(postsClass).fadeOut(1000);
-            $(ratingClass).css({"display": "flex"});
-        }); 
-        //открытие последних постов
-        $(titleP).mouseenter(function(){
-            console.log('Ok');
-            $(ratingClass).hide();
-            $(postsClass).fadeIn(1000);
-        });
-    }
+    // function ratingOpCl (titleR, titleP, postsClass, ratingClass){
+    //     //открытие рейтинга
+    //     $(titleR).mouseenter(function(){
+    //         console.log('Ok');   
+    //         $(postsClass).fadeOut(1000);
+    //         $(ratingClass).css({"display": "flex"});
+    //     }); 
+    //     //открытие последних постов
+    //     $(titleP).mouseenter(function(){
+    //         console.log('Ok');
+    //         $(ratingClass).hide();
+    //         $(postsClass).fadeIn(1000);
+    //     });
+    // }
   });
 
   //Вывод 1-го изображения

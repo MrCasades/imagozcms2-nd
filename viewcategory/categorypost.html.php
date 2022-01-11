@@ -13,7 +13,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <div class = "main-headers-place"><a href="../viewallnewsincat/?id=<?php echo $idCategory;?>">Новости</a></div>
+            <a class = "main-headers-place" href="../viewallnewsincat/?id=<?php echo $idCategory;?>"><h3>Новости</h3></a>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -41,7 +41,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <div class = "main-headers-place"><a href="../viewallpromotionincat/?id=<?php echo $idCategory;?>">Промоушен</a></div>
+            <a class = "main-headers-place" href="../viewallpromotionincat/?id=<?php echo $idCategory;?>"><h3>Промоушен</h3></a>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -67,7 +67,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <div class = "main-headers-place"><a href="../viewallpostsincat/?id=<?php echo $idCategory;?>">Статьи</a></div>
+            <a class = "main-headers-place" href="../viewallpostsincat/?id=<?php echo $idCategory;?>"><h3>Статьи</h3></a>
         </div>
         <div class = "main-headers-line"></div>
     </div>

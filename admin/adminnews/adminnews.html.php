@@ -1,6 +1,6 @@
 <div class = "main-headers">
     <div class = "headers-places"> 
-        <div class = "main-headers-place"><a href="./admin/adminmail/viewadminnews/">Новости администрации</a></div>
+        <a class = "main-headers-place" href="./admin/adminmail/viewadminnews/"><h3>Новости администрации</h3></a>
     </div>
     <div class = "main-headers-line"></div>
 </div>

@@ -460,27 +460,32 @@ details{
 .main-headers-place{
     background: linear-gradient(to top, #1e90ff, #FFFFFF);
     border: 1px solid rgba(30, 144, 255, 1);
-    width: 20%;
-    height: 10%;
+    width: 40%;
+    
     padding-left: 1%;
     font-family: Arial;
     font-style: normal;
-    line-height: 39px;
+    
     font-size: 1.2rem;
     color: white;
     border-radius: 10px 10px 0px 0px;
     text-shadow: 1px 1px 2px black, 0 0 3px black;
     z-index: 9;
+    text-decoration: none;
+}
+
+.main-headers-place h3{
+    line-height: 0;
 }
 
 .main-headers-place:hover{
     background: linear-gradient(to top, #FFFFFF, #1e90ff);
 }
 
-.main-headers-place a{
+/* .main-headers-place a{
     color: white;
-    text-decoration: none;
-}
+    
+} */
 
 .main-headers-subplace{
     background: #FFFFFF;
@@ -511,6 +516,11 @@ details{
     line-height: 39px;
     font-size: 1.2rem;
     color: #1e90ff;
+}
+
+.main-headers-txtplace a{
+    color: #1e90ff;
+    text-decoration: none;
 }
 
 .main-headers-line{
@@ -920,17 +930,17 @@ main .post-place-1:hover {
 /***********************************/
 
 
-main .rating-n{/*Скрытый рейтинг новостей*/
+/* main .rating-n{
     display: none;
 }
 
-main .rating-pr{/*Скрытый рейтинг промоушена*/
+main .rating-pr{
     display: none;
 }
 
-main .rating-art{/*Скрытый рейтинг статей*/
+main .rating-art{
     display: none;
-}
+} */
 
 main .post-rubrics{
     background: red;

@@ -88,8 +88,7 @@
     /*Главное меню*/
 
     .main-headers-place{
-        width: 25%;
-        height: 10%;
+        width: 30%;
         font-size: 0.9rem; 
     }
 
@@ -281,8 +280,7 @@
     }
 
     .main-headers-place{
-        width: 30%;
-        height: 7%;
+        width: 40%;
         font-size: 0.9rem; 
     }
 
@@ -328,6 +326,10 @@
         grid-template-areas: 
         "left-side"
         "right-side";
+    }
+
+    .rating{
+        display: none;
     }
 
     .last-comments-pl{
@@ -448,7 +450,6 @@
     }
 
     .main-headers-place{
-        height: 10%;
         width: 45%;
     }
 
@@ -500,10 +501,10 @@
         width: 90%;
     }
 
-    main .shop-comp{
+    /* main .shop-comp{
         width: 85%;
         margin-left: 5%;
-    }
+    } */
 
     main .goods-place{
         width: 35%;

@@ -14,7 +14,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	<div class="left-side">
 		<div class = "main-headers">
 				<div class = "headers-places"> 
-					<div class = "main-headers-place posts-op-n"><a href = "./viewallnews/"><h3>Новостная лента</h3></a></div>
+					<a href = "./viewallnews/" class = "main-headers-place"><h3>Новостная лента</h3></a>
 					<div class = "adpt-title main-headers-txtplace">Новости игровой индустрии, высоких технологий и популярной науки</div>
 				</div>
 				<div class = "main-headers-line"></div>
@@ -84,7 +84,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 		<div class = "main-headers">
 			<div class = "headers-places"> 
-				<div class = "main-headers-place"><a href="./viewallrecommpost/">Пользователи рекомендуют</a></div>
+				<a class = "main-headers-place" href="./viewallrecommpost/"><h3>Пользователи рекомендуют</h3></a>
 				<div class = "adpt-title main-headers-txtplace">Статьи, которые порекомендовали для главной страицы!</div>
 			</div>
 			<div class = "main-headers-line"></div>
@@ -138,7 +138,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 		<div class = "main-headers">
 			<div class = "headers-places"> 
-				<div class = "main-headers-place">Отражение дня</div>
+				<div class = "main-headers-place"><h3>Отражение дня</h3></div>
 				<div class = "adpt-title main-headers-txtplace">Что-то забавное, занимательное, любопытное</div>
 			</div>
 			<div class = "main-headers-line"></div>
@@ -179,8 +179,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 		<div class = "main-headers">
 			<div class = "headers-places"> 
-				<div class = "main-headers-place posts-op-pr"><a href="./viewallpromotion/">Промоушен</a></div>
-				<div class = "main-headers-place ratings-op-pr"><a href="./viewfullpromotiontop/">Рейтинг промоушена</a></div>
+				<a class = "main-headers-place" href="./viewallpromotion/"><h3>Промоушен</h3></a>
 				<div class = "adpt-title main-headers-txtplace">Материалы от наших уважаемых рекламодателей</div>
 			</div>
 			<div class = "main-headers-line"></div>
@@ -205,32 +204,6 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			
 			<?php endforeach; ?>
 		</div>
-
-		<div class = "newsblock m-content rating-pr">
-		<?php if (empty ($promotionsTOP))
-			{
-				echo '<p>Пусто</p>';
-			}
-			
-			else
-				
-			foreach ($promotionsTOP as $promotionTOP): ?> 
-
-			<a href = "./viewpromotion/?id=<?php htmlecho ($promotionTOP['id']); ?>" class = "post-place-1" style="background-image: url(images/<?php echo $promotionTOP['imghead']; ?>)">
-				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($promotionTOP['promotiondate'])); ?></p>
-					<div class="article-rating">
-						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($promotionTOP['viewcount']); ?> 
-						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho ($promotionTOP['averagenumber']); ?>
-					</div>
-				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($promotionTOP['promotiontitle'])), 0, 7)))); ?>...</div>
-			</a>
-
-			<?php endforeach; ?>
-
-		</div>
-
 		
 		<div class="m-content">
 			<!-- Yandex.RTB R-A-448222-8 -->
@@ -257,8 +230,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 		<div class = "main-headers">
 			<div class = "headers-places"> 
-				<div class = "main-headers-place posts-op-art"><a href="./viewallposts/">Статьи</a></div>
-				<div class = "main-headers-place ratings-op-art"><a href="./viewfullposttop/">Рейтинг статей</a></div>
+				<a class = "main-headers-place posts-op-art" href="./viewallposts/"><h3>Статьи</h3></a>
 				<div class = "adpt-title main-headers-txtplace">Масштабные публикации, рейтинги, заметки</div>
 			</div>
 			<div class = "main-headers-line"></div>
@@ -282,31 +254,6 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</a>
 			
 			<?php endforeach; ?>
-		</div>
-
-		<div class = "newsblock m-content rating-art">
-		<?php if (empty ($postsTOP))
-			{
-				echo '<p>Пусто</p>';
-			}
-			
-			else
-				
-			foreach ($postsTOP as $postTOP): ?> 
-
-			<a href = "./viewpost/?id=<?php htmlecho ($postTOP['id']); ?>" class = "post-place-1" style="background-image: url(images/<?php echo $postTOP['imghead']; ?>)">
-				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($postTOP['postdate'])); ?></p>
-					<div class="article-rating">
-						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($postTOP['viewcount']); ?> 
-						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho ($postTOP['averagenumber']); ?>
-					</div>
-				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($postTOP['posttitle'])), 0, 7)))); ?>...</div>
-			</a>
-
-			<?php endforeach; ?>
-
 		</div>
 	</div>
 	<div class="right-side">
@@ -437,6 +384,68 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					<?php endforeach; ?>
 
 			</div>
+
+			<div class = "main-headers">
+				<div class = "headers-places"> 
+					<div class = "main-headers-txtplace"><a href = "./viewfullpromotiontop/">Рейтинг промоушена</a></div>
+				</div>
+			<div class = "main-headers-line"></div>
+			</div>
+
+			<div class = "rating">
+			<?php if (empty ($promotionsTOP))
+				{
+					echo '<p>Пусто</p>';
+				}
+				
+				else
+					
+				foreach ($promotionsTOP as $promotionTOP): ?> 
+
+				<a href = "./viewpromotion/?id=<?php htmlecho ($promotionTOP['id']); ?>" class = "post-place-grid" style="background-image: url(images/<?php echo $promotionTOP['imghead']; ?>)">
+					<div class = "post-top-1">						
+						<div class="article-rating">
+							<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($promotionTOP['viewcount']); ?> 
+							<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho ($promotionTOP['averagenumber']); ?>
+						</div>
+					</div>
+					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($promotionTOP['promotiontitle'])), 0, 7)))); ?>...</div>
+				</a>
+
+				<?php endforeach; ?>
+
+			</div>
+
+			<div class = "main-headers">
+				<div class = "headers-places"> 
+					<div class = "main-headers-txtplace"><a href = "./viewfullposttop/">Рейтинг статей</a></div>
+				</div>
+			<div class = "main-headers-line"></div>
+			</div>
+
+			<div class = "rating">
+			<?php if (empty ($postsTOP))
+				{
+					echo '<p>Пусто</p>';
+				}
+				
+				else
+					
+				foreach ($postsTOP as $postTOP): ?> 
+
+				<a href = "./viewpost/?id=<?php htmlecho ($postTOP['id']); ?>" class = "post-place-grid" style="background-image: url(images/<?php echo $postTOP['imghead']; ?>)">
+					<div class = "post-top-1">
+						<div class="article-rating">
+							<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($postTOP['viewcount']); ?> 
+							<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho ($postTOP['averagenumber']); ?>
+						</div>
+					</div>
+					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($postTOP['posttitle'])), 0, 7)))); ?>...</div>
+				</a>
+
+				<?php endforeach; ?>
+
+			</div>
 		</div>
 
 		<div class="auth-top-1">
@@ -502,7 +511,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 <div class = "main-headers">
 	<div class = "headers-places"> 
-		<div class = "main-headers-txtplace">О проекте</div>
+		<div class = "main-headers-txtplace"><h1>О проекте</h1></div>
 	</div>
 	<div class = "main-headers-line"></div>
 </div>
