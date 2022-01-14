@@ -332,6 +332,17 @@
         display: none;
     }
 
+    .similar-art{
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    main .post-place-grid{
+        margin: 1% 5px;
+        width: 30%;
+    }
+
     .last-comments-pl{
         display: none;
     }
@@ -492,6 +503,11 @@
         width: 90%;
     }
 
+    main .post-place-grid{
+        margin: 1% 5px;
+        width: 90%;
+    }
+
     .post-place-1 .post-bottom-1{
         font-size: 1.3rem;
     }
@@ -559,7 +575,7 @@
     }
 
     article .article-head{
-        height: 45%;
+        
         width: 95%;
         margin-left: 2%;
     }

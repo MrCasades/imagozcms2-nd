@@ -787,8 +787,8 @@ main .post-place-1:hover {
 }
 
 .left-side .m-content{    
-    margin-left: 0;
-    max-width: 100%; 
+    margin-left: 3%;
+    max-width: 95%; 
 }
 
 .left-side .main-headers{
@@ -893,6 +893,11 @@ main .post-place-1:hover {
 }
 
 .rating{
+    display: flex;
+    flex-direction: column;   
+}
+
+.similar-art{
     display: flex;
     flex-direction: column;   
 }
@@ -1136,7 +1141,7 @@ article{
 }
 
 article .article-head{
-    height: 40%;
+    /* height: 40%; */
     color: white;
     text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
     background-repeat: no-repeat;
