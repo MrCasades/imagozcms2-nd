@@ -75,10 +75,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<div>
 						<?php echo $votePanel; ?>
 					</div>
-					<div class = "zen-ch">
+					<!-- <div class = "zen-ch">
 						<a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
 						<img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"><span class="zen-ch-title">Подписывайтесь на наш Дзен-канал!</span></a>
-					</div>
+					</div> -->
 				</div>
 
 				<div class = "m-content">
@@ -122,6 +122,17 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post_1['promotiontitle'])), 0, 7)))); ?>...</div>
 					</a> 
 					<?php endforeach; ?>
+				</div>
+				<div class="zen-c-m">
+					<div class = "main-headers">
+						<div class = "headers-places"> 
+							<div class = "main-headers-txtplace">Наш Дзен-канал</div>
+						</div>
+						<div class = "main-headers-line"></div>
+					</div>
+					<div class="zen-link-m">
+						<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
+					</div>
 				</div>
 		</div>
 	</div>
