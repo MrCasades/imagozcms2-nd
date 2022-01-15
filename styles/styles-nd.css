@@ -778,8 +778,15 @@ main .post-place-1:hover {
 }
 
 
-/*Grid Главной страницы и переопределение некоторых стилей*/
+/*Grid Главной страницы, статей и переопределение некоторых стилей*/
 .main-row{
+    display: grid;
+    grid-template-columns: 84% 15%;
+    grid-template-areas: 
+    "left-side right-side";
+}
+
+.article-row{
     display: grid;
     grid-template-columns: 84% 15%;
     grid-template-areas: 

@@ -53,8 +53,6 @@ foreach ($result as $row)
 						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 }
 
-$columns_rec = count ($lastRecommPosts) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
-
 /*Вывод новостей*/
 /*Команда SELECT*/
 
@@ -84,8 +82,6 @@ foreach ($result as $row)
 	$newsIn[] =  array ('id' => $row['id'], 'textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'newsdate' =>  $row['newsdate'], 'categoryname' =>  $row['categoryname'],
 						'imghead' =>  $row['imghead']);
 }
-
-$columns_n = count ($newsIn) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
 
 /*Вывод списка случайных тегов для новостей и статей*/
 
@@ -222,8 +218,6 @@ foreach ($result as $row)
 	$postsTOP[] =  array ('id' => $row['id'], 'posttitle' => $row['posttitle'], 'viewcount' => $row['viewcount'], 'averagenumber' => $row['averagenumber'],
 						'imghead' => $row['imghead'], 'postdate' => $row['postdate']);
 }
-
-$columns_tp = count ($postsTOP) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
 
 /*Вывод ТОП-5 промоушен*/
 /*Команда SELECT*/

@@ -328,6 +328,14 @@
         "right-side";
     }
 
+    .article-row{   
+        
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "left-side"
+        "right-side";
+    }
+
     .rating{
         display: none;
     }

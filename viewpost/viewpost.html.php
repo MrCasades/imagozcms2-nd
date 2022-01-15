@@ -7,7 +7,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 <article>
-	<div class="main-row">
+	<div class="article-row">
 		<div class="left-side">
 			<div class = "article-head m-content" style="background-image: url(../images/<?php echo $imgHead; ?>)">
 				<div class = "article-head-top"> 
