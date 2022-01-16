@@ -340,6 +340,10 @@
         display: none;
     }
 
+    .newsblock-rs{
+        display: none;
+    }
+
     .similar-art{
         flex-direction: row; 
         flex-wrap: wrap;
@@ -469,7 +473,7 @@
     }
 
     .main-headers-place{
-        width: 45%;
+        width: 90%;
     }
 
     .main-headers-txtplace{
