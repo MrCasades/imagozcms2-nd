@@ -223,3 +223,106 @@ function toEmail_1($title, $message)
 	
 	mail($email, $title, $message, $headers);//отправка письма
 }
+
+function accessForWritingArticles()
+{
+	if (loggedIn())
+	{
+		/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
+	}
+
+	else
+	{
+		$title = 'Ошибка доступа';//Данные тега <title>
+		$headMain = 'Ошибка доступа';
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		include '../login.html.php';
+		exit();
+	}
+
+	/*Загрузка сообщения об ошибке входа*/
+	if ((!userRole('Администратор')) && (!userRole('Автор')))
+	{
+		$title = 'Ошибка доступа';//Данные тега <title>
+		$headMain = 'Ошибка доступа';
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Доступ запрещен';
+		include '../accessfail.html.php';
+		exit();
+	}
+
+	/*Ошибка доступа, если автор не взял задание  и он не супер-автор*/
+	if ((userRole('Автор')) && (!isset ($_POST['id'])))
+	{
+		if (!userRole('Супер-автор'))
+		{
+			$title = 'Ошибка доступа';//Данные тега <title>
+			$headMain = 'Ошибка доступа';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Сначала необходимо получить задание!';
+			include '../accessfail.html.php';
+			exit();
+		}
+		
+		else
+		{
+			/*С рангом Супер-автор происходит проверка времени публикации последнего задания*/
+			/*Подключение к базе данных*/
+			include MAIN_FILE . '/includes/db.inc.php';
+			
+			try
+			{
+				$sql = 'SELECT pubtime FROM superuserpubtime WHERE idauthor = '.(int)(authorID($_SESSION['email'], $_SESSION['password']));
+				$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+				$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+			}
+
+			catch (PDOException $e)
+			{
+				$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+				$headMain = 'Ошибка данных!';
+				$robots = 'noindex, nofollow';
+				$descr = '';
+				$error = 'Ошибка выбора времени последней публикации ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+				include 'error.html.php';
+				exit();
+			}
+		
+			$row = $s -> fetch();
+			
+			$lastPubTime = $row['pubtime'];	
+		}
+	}
+
+	if (empty ($lastPubTime)) $lastPubTime = '';//если переменная не объявлена
+
+	/*Суточный лимит публикаций в качестве Супер-автора*/
+	if ((userRole('Супер-автор')) && ($lastPubTime != '') && (time() < $lastPubTime + 2*60*60*24))
+	{
+			$title = 'Ошибка доступа';//Данные тега <title>
+			$headMain = 'Ошибка доступа';
+			$robots = 'noindex, nofollow';
+			$descr = '';
+			$error = 'Можно делать только 1 публикацию в течении 48 часов в качестве Супер-автора!';
+			include '../accessfail.html.php';
+			exit();
+	}
+
+	/*Вывод ссылок на разделы администрирования списков*/
+	if (userRole('Администратор'))
+	{
+		$addAuthor = '<a href="//'.MAIN_URL.'/admin/authorlist/">Редактировать список авторов</a>';
+		$addCatigorys = '<a href="//'.MAIN_URL.'/admin/categorylist/">Редактировать рубрики</a>';
+		$addMetas = '| <a href="//'.MAIN_URL.'/admin/metalist/" class="btn btn-primary-sm">Редактировать список тегов</a>';
+	}
+
+	else
+	{
+		$addAuthor = '';
+		$addCatigorys = '';
+		$addMetas = '';
+	}
+}
