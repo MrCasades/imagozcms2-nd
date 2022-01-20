@@ -13,7 +13,7 @@ if (loggedIn())
 /*Загрузка статей по тематике*/
 if (isset ($_GET['metaid']))
 {
-	$idCategory = $_GET['metaid'];
+	$idMeta = $_GET['metaid'];
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -124,6 +124,8 @@ if (isset ($_GET['metaid']))
 	$headMain = 'Материалы по тегу "'.$row['metaname'].'"';
 	$robots = 'noindex, follow';
 	$descr = 'В даном разделе отображаются все материалы, помеченные тегом '.$row['metaname'];
+	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallmetas/?metaid='.$idMeta.'">Материалы по тегу '.$row['metaname'].'</a>';//Для хлебных крошек
 		
 	include 'viewallmetas.html.php';
 	exit();		

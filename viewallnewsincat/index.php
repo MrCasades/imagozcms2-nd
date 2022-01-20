@@ -70,18 +70,22 @@ if (isset ($_GET['id']))
 
 	if (isset ($row['categoryname']))		//если статьи в рубрике есть!	
 	{
-		$title = $row['categoryname'].' | imagoz.ru';//Данные тега <title>
+		$title = $row['categoryname'].' | '.MAIN_URL;//Данные тега <title>
 		$headMain = 'Все новости рубрики '. '"'.$row['categoryname'].'"';
 		$robots = 'noindex, follow';
 		$descr = 'В данном разделе публикуются все новости рубрики '.$row['categoryname'];
+		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+		$breadPart2 = '<a href="//'.MAIN_URL.'/viewcategory/?id='.$row['categoryid'].'">Материалы рубрики '.$row['categoryname'].'</a>  >>';//Для хлебных крошек
+		$breadPart3 = '<a href="//'.MAIN_URL.'/viewallnewsincat/?id='.$row['categoryid'].'">Новости рубрики '.$row['categoryname'].'</a> ';//Для хлебных крошек
 	}
 	
 	else		//если статьи отсутствуют!
 	{
-		$title = 'Новости в рубрике отсутствуют | ImagozCMS';//Данные тега <title>
+		$title = 'Новости в рубрике отсутствуют | '.MAIN_URL;//Данные тега <title>
 		$headMain = 'Новости в рубрике отсутствуют';
 		$robots = 'noindex, follow';
 		$descr = '';
+		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	}	
 	
 	/*Определение количества статей*/

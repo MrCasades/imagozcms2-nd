@@ -2,10 +2,12 @@
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
-$title = 'Каталог статей | imagoz.ru';//Данные тега <title>
+$title = 'Каталог статей | '.MAIN_URL;//Данные тега <title>
 $headMain = 'Все статьи';
 $robots = 'noindex, follow';
 $descr = 'В данном разделе размещаются список всех статей портала';
+$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+$breadPart2 = '<a href="//'.MAIN_URL.'/viewfullposttop/">Полный топ статей</a>';//Для хлебных крошек
 
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';

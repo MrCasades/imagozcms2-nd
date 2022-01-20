@@ -2,10 +2,13 @@
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
-$title = 'Полный топ новостей | imagoz.ru';//Данные тега <title>
+$title = 'Полный топ новостей | '.MAIN_URL;//Данные тега <title>
 $headMain = 'Весь топ новостей';
 $robots = 'noindex, follow';
 $descr = 'В данном разделе отображаются весь топ новостей портала';
+$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+$breadPart2 = '<a href="//'.MAIN_URL.'/viewfullnewstop/">Полный топ новостей</a>';//Для хлебных крошек
+	
 
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';

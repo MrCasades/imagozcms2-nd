@@ -68,10 +68,13 @@ if (isset ($_GET['id']))
 	
 	if (isset ($row['categoryname']))		//если статьи в рубрике есть!	
 	{
-		$title = $row['categoryname'].' | imagoz.ru';//Данные тега <title>
+		$title = $row['categoryname'].' | '.MAIN_URL;//Данные тега <title>
 		$headMain = 'Все статьи рубрики '. '"'.$row['categoryname'].'"';
 		$robots = 'noindex, follow';
 		$descr = 'В данном разделе размещаются все статьи из рубрики '.$row['categoryname'];
+		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+		$breadPart2 = '<a href="//'.MAIN_URL.'/viewcategory/?id='.$row['categoryid'].'">Материалы рубрики '.$row['categoryname'].'</a>  >>';//Для хлебных крошек
+		$breadPart3 = '<a href="//'.MAIN_URL.'/viewallpostsincat/?id='.$row['categoryid'].'">Статьи рубрики '.$row['categoryname'].'</a> ';//Для хлебных крошек
 	}
 	
 	else		//если статьи отсутствуют!
@@ -80,6 +83,8 @@ if (isset ($_GET['id']))
 		$headMain = 'Статьи в рубрике отсутствуют';
 		$robots = 'noindex, follow';
 		$descr = '';
+		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+		
 	}
 	
 	/*Определение количества статей*/

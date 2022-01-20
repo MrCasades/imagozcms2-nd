@@ -127,10 +127,12 @@ if (isset ($_GET['id']))
 	if (isset ($row['categoryname']))
 	{		
 	
-		$title = $row['categoryname'].' | imagoz.ru';//Данные тега <title>
+		$title = $row['categoryname'].' | '.MAIN_URL;//Данные тега <title>
 		$headMain = 'Материалы рубрики '. '"'.$row['categoryname'].'"';
 		$robots = 'noindex, follow';
 		$descr = 'В даном разделе отображаются все статьи и новости рубрики '.$row['categoryname'];
+		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+		$breadPart2 = '<a href="//'.MAIN_URL.'/viewcategory/?id='.$row['categoryid'].'">Материалы рубрики '.$row['categoryname'].'</a> ';//Для хлебных крошек
 	}
 	
 	else
@@ -139,7 +141,10 @@ if (isset ($_GET['id']))
 		$headMain = 'В рубрике отсутствуют материалы';
 		$robots = 'noindex, follow';
 		$descr = '';
+		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	}
+
+	
 	
 	include 'categorypost.html.php';
 	exit();

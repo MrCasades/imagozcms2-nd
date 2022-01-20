@@ -13,7 +13,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <a class = "main-headers-place" href="../viewmetanews/?metaid=<?php echo $idCategory; ?>"><h3>Новости</h3></a>
+            <a class = "main-headers-place" href="../viewmetanews/?metaid=<?php echo $idMeta; ?>"><h3>Новости</h3></a>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -42,7 +42,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <a class = "main-headers-place" href="../viewmetapromotion/?metaid=<?php echo $idCategory; ?>"><h3>Промоушен</h3></a>
+            <a class = "main-headers-place" href="../viewmetapromotion/?metaid=<?php echo $idMeta; ?>"><h3>Промоушен</h3></a>
         </div>
         <div class = "main-headers-line"></div>
     </div>
@@ -69,7 +69,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
         <div class = "headers-places"> 
-            <a class = "main-headers-place" href="../viewmetapost/?metaid=<?php echo $idCategory; ?>"><h3>Статьи</h3></a>
+            <a class = "main-headers-place" href="../viewmetapost/?metaid=<?php echo $idMeta; ?>"><h3>Статьи</h3></a>
         </div>
         <div class = "main-headers-line"></div>
     </div>

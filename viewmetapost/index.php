@@ -77,6 +77,10 @@ if (isset ($_GET['metaid']))
 		$robots = 'noindex, follow';
 		$descr = ' ';
 	}
+
+	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallmetas/?metaid='.$idMeta.'">Материалы по тегу '.$row['metaname'].'</a> >> ';//Для хлебных крошек
+	$breadPart3 = '<a href="//'.MAIN_URL.'/viewmetapost/?metaid='.$idMeta.'">Статьи по тегу '.$row['metaname'].'</a>';//Для хлебных крошек
 	
 	/*Определение количества статей*/
 	try
