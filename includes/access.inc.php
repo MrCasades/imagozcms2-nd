@@ -314,15 +314,15 @@ function accessForWritingArticles()
 	/*Вывод ссылок на разделы администрирования списков*/
 	if (userRole('Администратор'))
 	{
-		$addAuthor = '<a href="//'.MAIN_URL.'/admin/authorlist/">Редактировать список авторов</a>';
-		$addCatigorys = '<a href="//'.MAIN_URL.'/admin/categorylist/">Редактировать рубрики</a>';
-		$addMetas = '| <a href="//'.MAIN_URL.'/admin/metalist/" class="btn btn-primary-sm">Редактировать список тегов</a>';
+		$GLOBALS['addAuthor'] = '<a href="//'.MAIN_URL.'/admin/authorlist/">Редактировать список авторов</a>';
+		$GLOBALS['addCatigorys'] = '<a href="//'.MAIN_URL.'/admin/categorylist/">Редактировать рубрики</a>';
+		$GLOBALS['addMetas'] = '| <a href="//'.MAIN_URL.'/admin/metalist/" class="btn btn-primary-sm">Редактировать список тегов</a>';
 	}
 
 	else
 	{
-		$addAuthor = '';
-		$addCatigorys = '';
-		$addMetas = '';
+		$GLOBALS['addAuthor'] = '';
+		$GLOBALS['addCatigorys'] = '';
+		$GLOBALS['addMetas'] = '';
 	}
 }

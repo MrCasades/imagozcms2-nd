@@ -5,6 +5,9 @@ include_once '../../includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
+/*Загрузка функций для формы входа*/
+include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
+
 /*Функция проверки на доступы*/
 accessForWritingArticles();
 
@@ -48,51 +51,11 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$_SESSION['authorname'] = $authorPost;
 	
 	/*Вывод информации для формы добавления*/
-
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
 	
-	/*Список рубрик*/
-	try
-	{
-		$result = $pdo -> query ('SELECT id, categoryname FROM category');
-	}
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода category '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	foreach ($result as $row)
-	{
-		$categorys_1[] = array('idcategory' => $row['id'], 'categoryname' => $row['categoryname']);
-	}
-	
-	/*Список тематик*/
-	try
-	{
-		$result = $pdo -> query ('SELECT id, metaname FROM meta ORDER BY metaname');
-	}
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода meta '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	foreach ($result as $row)
-	{
-		$metas_1[] = array('idmeta' => $row['id'], 'metaname' => $row['metaname'], 'selected' => FALSE);
-	}
+	addListsInForms();
 	
 	include 'addupdform.html.php';
 	exit();
-	
 }
 
 /*Обновление информации о статье*/
