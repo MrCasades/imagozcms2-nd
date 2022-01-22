@@ -374,48 +374,12 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$description = $_SESSION['description'];
 		$text = $_SESSION['text'];
 		
-	/*Список рубрик*/
-	try
-	{
-		$result = $pdo -> query ('SELECT id, categoryname FROM category');
-	}
-	
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода category '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	foreach ($result as $row)
-	{
-		$categorys_1[] = array('idcategory' => $row['id'], 'categoryname' => $row['categoryname']);
-	}
-	
-	/*Список тематик*/
-	try
-	{
-		$result = $pdo -> query ('SELECT id, metaname FROM meta');
-	}
+		/*Вывод информации для формы добавления*/
 		
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода meta '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
+		addListsInForms();
+		
+		include 'addupdform.html.php';
 		exit();
-	}
-	
-	foreach ($result as $row)
-	{
-		$metas_1[] = array('idmeta' => $row['id'], 'metaname' => $row['metaname'], 'selected' => FALSE);
-	}
-	
-	include 'addupdform.html.php';
-	exit();
 	}
 	
 	/*INSERT - добавление информации в базу данных и списание средств со счёта*/
