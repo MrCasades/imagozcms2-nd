@@ -73,10 +73,6 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	
 	$promotionPrice = $row['promotionprice'];
 	
-	@session_start();//Открытие сессии для сохранения id задания
-
-	$_SESSION['promotionprice'] = $promotionPrice;
-	
 	/*Возвращение id автора*/
 	
 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
@@ -110,8 +106,6 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 		$robots = 'noindex, nofollow';
 		$descr = '';
 		$error = 'Для написания рекламной статьи на Вашем счету должно быть сумма больше или равная '.$promotionPrice.'. Пополните счёт в своём профиле!';
-		
-		unset ($_SESSION['promotionprice']);
 			
 		include '../accessfail.html.php';
 		exit();
@@ -125,8 +119,6 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 		$descr = '';
 		$error = 'Вы ранее сформировали заявку на вывод средств. Пока она не будет подтверждена, Вы не сможете писать рекламные статьи!';
 		
-		unset ($_SESSION['promotionprice']);
-			
 		include '../accessfail.html.php';
 		exit();
 	}
@@ -154,23 +146,23 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
-		if (isset($_POST['id']))
-		{
-			@session_start();//Открытие сессии для сохранения id задания
+		// if (isset($_POST['id']))
+		// {
+		// 	@session_start();//Открытие сессии для сохранения id задания
 
-			$_SESSION['idtask'] = $_POST['id'];
-		}
+		// 	$_SESSION['idtask'] = $_POST['id'];
+		// }
 
-		else
-		{
-			@session_start();//Открытие сессии для сохранения id задания
+		// else
+		// {
+		// 	@session_start();//Открытие сессии для сохранения id задания
 
-			$_SESSION['idtask'] = 0;
-		}
+		// 	$_SESSION['idtask'] = 0;
+		// }
 
-		@session_start();//Открытие сессии для сохранения id автора
+		// @session_start();//Открытие сессии для сохранения id автора
 
-		$_SESSION['authorname'] = $authorPost;
+		// $_SESSION['authorname'] = $authorPost;
 
 		/*Вывод информации для формы добавления*/
 
@@ -408,14 +400,14 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':www', $_POST['www']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
-		$s -> bindValue(':pricetext', $_SESSION['promotionprice']);//отправка значения
+		$s -> bindValue(':pricetext', $_POST['promotionprice']);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
 		$idpost_ind = $pdo->lastInsertId();//метод возвращает число, которое MySQL назначил последней автомнкрементной записи (INSERT INTO post - в данном случае)
 		
-		$sql = 'UPDATE author SET score  = score - '.$_SESSION['promotionprice'].'
+		$sql = 'UPDATE author SET score  = score - '.$_POST['promotionprice'].'
 								  WHERE id = '.$selectedAuthor;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -472,8 +464,6 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	/*Вывод тематик(тегов)*/
 	
 	$metas = previewMetas('promotion', 'idpromotion', $idpost_ind);
-	
-	unset($_SESSION['promotionprice']);//закрытие сессии
 	
 	include 'premodsucc.html.php';
 	exit();
@@ -631,8 +621,6 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	/*Вывод тематик(тегов)*/
 	
 	$metas = previewMetas('promotion', 'idpromotion', $idpost_ind);
-	
-	unset($_SESSION['promotionprice']);//закрытие сессии
 	
 	include 'premodsucc.html.php';
 	exit();

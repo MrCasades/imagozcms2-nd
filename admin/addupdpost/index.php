@@ -32,23 +32,8 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
-	if (isset($_POST['id']))
-	{
-		@session_start();//Открытие сессии для сохранения id задания
-	
-		$_SESSION['idtask'] = $_POST['id'];
-	}
-	
-	else
-	{
-		@session_start();//Открытие сессии для сохранения id задания
-	
-		$_SESSION['idtask'] = 0;
-	}
-	
-	@session_start();//Открытие сессии для сохранения id автора
-	
-	$_SESSION['authorname'] = $authorPost;
+	/*id задания*/
+	$idTask = isset($_POST['id']) ? $_POST['id'] : 0;
 	
 	/*Вывод информации для формы добавления*/
 
@@ -261,7 +246,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	/*Обновление параметров задания*/
 	
-	if($_SESSION['idtask'] != 0)
+	if($_POST['idtask'] != 0)
 	{
 		try
 		{
@@ -269,7 +254,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 			$sql = 'UPDATE task SET readystatus  = "YES",
 									readydate = SYSDATE()
-								WHERE id = '.$_SESSION['idtask'];
+								WHERE id = '.$_POST['idtask'];
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 
@@ -297,7 +282,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	/*Если у автора роль "Супер-автор", то обновляется таблица*/
 	
-	if (userRole('Супер-автор') && ($_SESSION['idtask'] == 0))
+	if (userRole('Супер-автор') && ($_POST['idtask'] == 0))
 	{
 		/*Публиковался ли автор, как "Супер-автор"*/
 		try
@@ -385,7 +370,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
-		$s -> bindValue(':idtask', $_SESSION['idtask']);//отправка значения
+		$s -> bindValue(':idtask', $_POST['idtask']);//отправка значения
 		$s -> bindValue(':lengthtext', $lengthText);//отправка значения
 		$s -> bindValue(':priceTxt', $priceTxt);//отправка значения
 		$s -> bindValue(':bonus', $bonus);//отправка значения
@@ -439,8 +424,6 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	/*Вывод тематик(тегов)*/
 	
 	$metas = previewMetas('posts', 'idpost', $idpost_ind);
-		
-	unset($_SESSION['idtask']);//закрытие сессии
 	
 	include 'premodsucc.html.php';
 	exit();
@@ -599,8 +582,6 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	/*Вывод тематик(тегов)*/
 	
 	$metas = previewMetas('posts', 'idpost', $idpost_ind);
-	
-	unset($_SESSION['idtask']);//закрытие сессии
 	
 	include 'premodsucc.html.php';
 	exit();

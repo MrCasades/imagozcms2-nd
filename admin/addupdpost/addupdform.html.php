@@ -16,6 +16,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data" id="ajax_form">
+	 <input type = "hidden" name = "idtask" value = "<?php htmlecho($idTask); ?>"> 
 	 <div>
 		<label for = "author"> Автор:</label>
 		 <?php echo $authorPost;?>
