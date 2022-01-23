@@ -146,26 +146,6 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
-		// if (isset($_POST['id']))
-		// {
-		// 	@session_start();//Открытие сессии для сохранения id задания
-
-		// 	$_SESSION['idtask'] = $_POST['id'];
-		// }
-
-		// else
-		// {
-		// 	@session_start();//Открытие сессии для сохранения id задания
-
-		// 	$_SESSION['idtask'] = 0;
-		// }
-
-		// @session_start();//Открытие сессии для сохранения id автора
-
-		// $_SESSION['authorname'] = $authorPost;
-
-		/*Вывод информации для формы добавления*/
-
 		addListsInForms();
 		
 		include 'addupdform.html.php';
