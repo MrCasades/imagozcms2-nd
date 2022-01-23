@@ -389,17 +389,17 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$pdo->beginTransaction();//инициация транзакции
 		
 		$sql = 'INSERT INTO promotion SET 
-			promotion = :promotion,
-			promotiontitle = :promotiontitle,	
-			description = :description,
-			promotiondate = SYSDATE(),
-			imgalt = :imgalt,
-			videoyoutube = :videoyoutube,
-			www = :www,
-			pricetext = '.$_SESSION['promotionprice'].',
-			imghead = '.'"'.$fileName.'"'.', '.
-			'idauthor = '.$selectedAuthor.','.
-			'idcategory = :idcategory';
+					promotion = :promotion,
+					promotiontitle = :promotiontitle,	
+					description = :description,
+					promotiondate = SYSDATE(),
+					imgalt = :imgalt,
+					videoyoutube = :videoyoutube,
+					www = :www,
+					pricetext = :pricetext,
+					imghead = :imghead,
+					idauthor = :idauthor,
+					idcategory = :idcategory';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':promotion', viewVideoInArticle($_POST['text']));//отправка значения
 		$s -> bindValue(':promotiontitle', $_POST['promotiontitle']);//отправка значения
@@ -407,6 +407,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':www', $_POST['www']);//отправка значения
+		$s -> bindValue(':imghead', $fileName);//отправка значения
+		$s -> bindValue(':pricetext', $_SESSION['promotionprice']);//отправка значения
+		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
@@ -520,15 +523,15 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	try
 	{
 		$sql = 'UPDATE promotion SET 
-			promotion = :promotion,
-			promotiontitle = :promotiontitle,
-			description = :description,
-			imgalt = :imgalt,
-			videoyoutube = :videoyoutube,
-			www = :www,
-			imghead = '.'"'.$fileName.'"'.', '.
-			'idcategory = :idcategory
-			WHERE id = :idpromotion';
+					promotion = :promotion,
+					promotiontitle = :promotiontitle,
+					description = :description,
+					imgalt = :imgalt,
+					videoyoutube = :videoyoutube,
+					www = :www,
+					imghead = :imghead, 
+					idcategory = :idcategory
+				WHERE id = :idpromotion';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
 		$s -> bindValue(':promotion', viewVideoInArticle($_POST['text']));//отправка значения
@@ -537,6 +540,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':www', $_POST['www']);//отправка значения
+		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}

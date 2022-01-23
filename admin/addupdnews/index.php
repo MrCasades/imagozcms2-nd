@@ -255,36 +255,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	}
 	
 	/*Определение предворительной длины и цены текста*/
-	include_once MAIN_FILE . '/includes/func.inc.php';
-	
-	$text = $_POST['textnews'];
-	$lengthText = lengthText($text);//определение длины текста
-	
-	/*Выбор цены за 1000 знаков*/
-	try
-	{
-		$result = $pdo -> query ('SELECT pricenews, bonus FROM author INNER JOIN rang ON idrang = rang.id
-									WHERE author.id = '.$selectedAuthor);
-	}
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора цены новости '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	foreach ($result as $row)
-	{
-		$price[] =  array ('pricenews' => $row['pricenews'], 'bonus' => $row['bonus']);
-	}	
-	
-	$priceNews = $row['pricenews'];//цена за 1000 знаков
-	
-	$bonus = $row['bonus'];//выбор бонуса(множителя)
-	
-	$fullPrice = priceText($text, $priceNews, $bonus);//полная стоимость статьи
+		
+	setArticlePrice($_POST['textnews'], 'pricenews', $selectedAuthor, 'add');//полная стоимость статьи
 	
 	/*Обновление параметров задания*/
 	
@@ -388,20 +360,20 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	try
 	{
 		$sql = 'INSERT INTO newsblock SET 
-			news = :news,
-			newstitle = :newstitle,
-			description = :description,
-			imgalt = :imgalt,	
-			videoyoutube = :videoyoutube,
-			newsdate = SYSDATE(),
-			imghead = '.'"'.$fileName.'"'.', '.
-			'idauthor = '.$selectedAuthor.','.
-			'idcategory = :idcategory,
-			idtask = '.$_SESSION['idtask'].' ,
-			lengthtext = '.$lengthText.', 
-			pricenews = '.$priceNews.', 
-			authorbonus = '.$bonus.',
-			pricetext = '.$fullPrice;
+					news = :news,
+					newstitle = :newstitle,
+					description = :description,
+					imgalt = :imgalt,	
+					videoyoutube = :videoyoutube,
+					newsdate = SYSDATE(),
+					imghead = :imghead,
+					idauthor = :idauthor,
+					idcategory = :idcategory,
+					idtask = :idtask,
+					lengthtext = :lengthtext, 
+					pricenews = :priceTxt, 
+					authorbonus = :bonus,
+					pricetext = :fullprice';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':news', viewVideoInArticle($_POST['textnews']));//отправка значения
 		$s -> bindValue(':newstitle', $_POST['newstitle']);//отправка значения
@@ -409,6 +381,13 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
+		$s -> bindValue(':imghead', $fileName);//отправка значения
+		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
+		$s -> bindValue(':idtask', $_SESSION['idtask']);//отправка значения
+		$s -> bindValue(':lengthtext', $lengthText);//отправка значения
+		$s -> bindValue(':priceTxt', $priceTxt);//отправка значения
+		$s -> bindValue(':bonus', $bonus);//отправка значения
+		$s -> bindValue(':fullprice', $fullPrice);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
@@ -503,56 +482,32 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	}
 	
 	/*Определение предворительной длины и цены текста*/
-	include_once MAIN_FILE . '/includes/func.inc.php';
-	
-	$text = $_POST['textnews'];
-	$lengthText = lengthText($text);//определение длины текста
-	
-	/*Выбор цены за 1000 знаков*/
-	try
-	{
-		$sql = 'SELECT pricenews, authorbonus FROM newsblock WHERE id = :idnews';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idnews', $_POST['id']);
-		$s -> execute();
-	}
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора цены новости '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
-	
-	$row = $s -> fetch();
-	
-	$priceNews = $row['pricenews'];//цена за 1000 знаков
-	$bonus = $row['authorbonus'];
-	
-	$fullPrice = priceText($text, $priceNews, $bonus);//полная стоимость статьи
+	setArticlePrice($_POST['textnews'], 'pricenews', $_POST['id'], 'upd');//полная стоимость статьи
 	
 	try
 	{
 		$sql = 'UPDATE newsblock SET 
-			news = :news,
-			newstitle = :newstitle,	
-			description = :description,
-			imgalt = :imgalt,	
-			videoyoutube = :videoyoutube,
-			imghead = '.'"'.$fileName.'"'.', '.
-			'idcategory = :idcategory,
-			lengthtext = '.$lengthText.', 
-			pricetext = '.$fullPrice.'
-			WHERE id = :idnews';
+					news = :news,
+					newstitle = :newstitle,	
+					description = :description,
+					imgalt = :imgalt,	
+					videoyoutube = :videoyoutube,
+					imghead = :imghead,
+					idcategory = :idcategory,
+					lengthtext = :lengthtext, 
+					pricetext = :fullprice
+				WHERE id = :idnews';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idnews', $_POST['id']);//отправка значения
 		$s -> bindValue(':news', viewVideoInArticle($_POST['textnews']));//отправка значения
 		$s -> bindValue(':newstitle', $_POST['newstitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
+		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
+		$s -> bindValue(':lengthtext', $lengthText);//отправка значения
+		$s -> bindValue(':fullprice', $fullPrice);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
