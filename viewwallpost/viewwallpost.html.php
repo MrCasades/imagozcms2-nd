@@ -15,7 +15,40 @@ include_once MAIN_FILE . '/header.inc.php';?>
     <div class="comment-text">
 		<img src="../images/<?php echo $imgHead;?>" alt="<?php echo $imgAlt;?>"/>
         <?php echomarkdown ($articleText);?>
-    </div>    
+    </div>
+	<div class="comment-bottom">
+	
+	<?php 	
+		//Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!				
+		if ($isLike == 1)
+		{
+			$likeStyle = 'fa-thumbs-up';
+			$dislikeStyle = 'fa-thumbs-o-down';
+		}
+
+		elseif ($isDisLike == 1)
+		{
+			$likeStyle = 'fa-thumbs-o-up';
+			$dislikeStyle = 'fa-thumbs-down';
+		}
+		else
+		{
+			$likeStyle = 'fa-thumbs-o-up';
+			$dislikeStyle = 'fa-thumbs-o-down';
+		}
+		?>
+		<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
+			<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
+			<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
+			<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
+			<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
+			<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
+		</form> 
+		
+		<?php 
+			/*Загрузка скрипта добавления лайков/дизлайков*/
+			 include MAIN_FILE . '/includes/likescript.inc.php';?>
+	</div>
 </div>  
 
 <div class = "main-headers">

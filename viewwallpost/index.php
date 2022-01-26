@@ -17,11 +17,8 @@ if (loggedIn())
 if (isset ($_GET['id']))
 {
 	$idComment = $_GET['id'];
-
-	if (isset($_SESSION['loggIn']))
-	{
-		$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
-	}
+	
+	$selectedAuthor =  isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 
 	/*Формируем URL для возврата */
 	if (!empty($_GET['idart']) && $_GET['idart'] !== '')
@@ -68,10 +65,27 @@ if (isset ($_GET['id']))
 	
 	// $_SESSION['idcomment'] = $idComment;
 	
-	$select = 'SELECT comments.id, author.id AS idauthor, comment, commentdate, imghead, imgalt, avatar, authorname FROM comments 
-				INNER JOIN author 
-				ON idauthor = author.id 
-				WHERE comments.id = ';
+	$select = 'SELECT 
+		cm.id, 
+		a.id AS idauthor, 
+		cm.likescount,
+		cm.dislikescount, 
+		cm.comment, 
+		cm.commentdate, 
+		cm.imghead, 
+		cm.imgalt, 
+		cml.islike, 
+		cml.isdislike, 
+		a.avatar, 
+		a.authorname 
+	FROM comments cm
+	INNER JOIN author a
+	ON cm.idauthor = a.id 
+	LEFT JOIN 
+		(SELECT idauthor AS idauthorlk, idcomment, islike, isdislike
+		FROM commentlikes WHERE idauthor = '.$selectedAuthor.') cml
+	ON cm.id = cml.idcomment
+	WHERE cm.id = ';
 				
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -106,6 +120,11 @@ if (isset ($_GET['id']))
 	// $averageNumber = $row['averagenumber'];
 	$nameAuthor = $row['authorname'];
 	$avatar = $row['avatar'];
+	$isLike = $row['islike'];
+	$isDisLike = $row['isdislike'];
+	$comment['id'] = $idComment;//Для лайков
+	$comment['likescount'] = $row['likescount'];
+	$comment['dislikescount'] = $row['dislikescount'];
 	// $favouritesCount = $row['favouritescount'];
 
 	/*Если страница отсутствует. Ошибка 404*/
