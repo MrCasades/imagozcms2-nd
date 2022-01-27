@@ -1419,6 +1419,16 @@ article .btn_recomm{
     transform: rotate(180deg);
 }
 
+.one-comment-bottom{
+    display: flex;
+    flex-direction: row;
+}
+
+.one-comment-like{
+    margin-left: 80%;
+    font-weight: bold;
+}
+
 .sub-comment{
     margin-top: 1rem;
 }

@@ -11,12 +11,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
     </div>
 </div>
 
-<div class="comment m-content">
+<div class="m-content">
     <div class="comment-text">
 		<img src="../images/<?php echo $imgHead;?>" alt="<?php echo $imgAlt;?>"/>
         <?php echomarkdown ($articleText);?>
     </div>
-	<div class="comment-bottom">
+	<div class="one-comment-bottom">
 	
 	<?php 	
 		//Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!				
@@ -37,7 +37,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			$dislikeStyle = 'fa-thumbs-o-down';
 		}
 		?>
-		<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
+		<form class="one-comment-like" id = "like_form_<?php echo $comment['id'];?>">
 			<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 			<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
 			<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
