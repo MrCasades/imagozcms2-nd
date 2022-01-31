@@ -15,7 +15,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content add-main-form">
 	<form action = "?<?php htmlecho ($action); ?>" method = "post">
 		<div>
-			<label for = "categoryname">Название рубрики:</label> <input type = "text" name = "categoryname" id = "categoryname" value = "<?php htmlecho($categoryname);?>">	 		
+			<label for = "categoryname">Название категории: <input type = "text" name = "authcategoryname" id = "authcategoryname" value = "<?php htmlecho($categoryname);?>"></label>	
+			<label for = "categorybonus">Бонус: <input type = "text" name = "categorybonus" id = "categorybonus" value = "<?php htmlecho($bonus);?>"></label>	 		
 			<input type = "hidden" name = "idcategory" value = "<?php htmlecho($idcategory);?>">
 			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2">
 		</div>

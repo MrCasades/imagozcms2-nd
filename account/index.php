@@ -340,12 +340,14 @@ if (isset ($_GET['id']))
 	{	
 		$addRole = '';
 		$addBonus = '';
+		$addCategory = '';
 	}
 	
 	elseif (!userRole('Администратор'))//Если пользователь не Администратор
 	{
 		$addRole = '';
 		$addBonus = '';
+		$addCategory = '';
 	}
 		
 	else
@@ -361,6 +363,10 @@ if (isset ($_GET['id']))
 									<input type = "hidden" name = "id" value = "'.$idAuthor.'">
 									<button name = "action" class="btn_1 addit-btn" value = "Назначить премию или бонус">Назначить премию или бонус</button>
 							</form>';//если у автора статус "Автор", то ему можно назначить премию или бонус
+			$addCategory = '<form action="../admin/authorcategory/" metod "post">
+								<input type = "hidden" name = "id" value = "'.$idAuthor.'">
+								<button name = "addcat" value = "Назначить категорию" class="btn_1 addit-btn">Назначить категорию</button> 
+							</form>';//если у автора статус "Автор", то ему можно назначить категорию
 		}
 		
 		else
@@ -371,6 +377,7 @@ if (isset ($_GET['id']))
 					 	 </form>';
 			
 			$addBonus = '';//кнопка не отображается
+			$addCategory = '';//кнопка не отображается
 		}
 	}
 	

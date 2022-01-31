@@ -28,6 +28,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<a href='../admin/metalist/'><button class="btn_2">Управление списком тематик</button></a>
 	<a href='../admin/searchpost/'><button class="btn_2">Управление статьями</button></a>
 	<a href='../admin/ranglist/'><button class="btn_2">Управление рангами</button></a>
+	<a href='../admin/authorcategory/'><button class="btn_2">Управление категориями авторов</button></a>
 	<a href='../admin/paysystemlist/'><button class="btn_2">Управление списком платёжных систем</button></a>
 	<a href='../admin/tasktypelist/'><button class="btn_2">Управление типами задания</button></a>
 	<a href='../admin/promotionpricelist/'><button class="btn_2">Управление ценой промоушена</button></a>

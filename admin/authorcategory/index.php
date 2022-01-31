@@ -32,6 +32,7 @@ if (!userRole('Администратор'))
 $padgeTitle = 'Новая авторская категория';// Переменные для формы "Категория"
 $action = 'addform';
 $categoryname = '';
+$bonus = '';
 $idcategory = '';
 $button = 'Добавить категорию';
 
@@ -43,7 +44,7 @@ if (isset ($_GET['addform']))
 	try
 	{
 		$sql = 'INSERT INTO authorcategory 
-					SET authcategoryname = :authcategoryname.
+					SET authcategoryname = :authcategoryname,
 						categorybonus = :categorybonus';// псевдопеременная получающая значение из формы
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':authcategoryname', $_POST['authcategoryname']);//отправка значения
@@ -78,9 +79,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 					authcategoryname, 
 					categorybonus
 				FROM authorcategory 
-				WHERE id = :idauthcategory';
+				WHERE id = :idcategory';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idauthcategory', $_POST['idauthcategory']);//отправка значения
+		$s -> bindValue(':idcategory', $_POST['idcategory']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
@@ -117,9 +118,9 @@ if (isset ($_GET['editform']))
 		$sql = 'UPDATE authorcategory 
 					SET authcategoryname = :authcategoryname,
 						categorybonus = :categorybonus	 
-				WHERE id = :idauthcategory';// псевдопеременная получающая значение из формы
+				WHERE id = :idcategory';// псевдопеременная получающая значение из формы
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idauthcategory', $_POST['idauthcategory']);//отправка значения
+		$s -> bindValue(':idcategory', $_POST['idcategory']);//отправка значения
 		$s -> bindValue(':authcategoryname', $_POST['authcategoryname']);//отправка значения
 		$s -> bindValue(':categorybonus', $_POST['categorybonus']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -147,9 +148,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	try
 	
 	{
-		$sql = 'DELETE FROM authorcategory WHERE id = :idauthcategory';// - псевдопеременная получающая значение из формы
+		$sql = 'DELETE FROM authorcategory WHERE id = :idcategory';// - псевдопеременная получающая значение из формы
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idauthcategory', $_POST['idauthcategory']);//отправка значения
+		$s -> bindValue(':idcategory', $_POST['idcategory']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
@@ -163,7 +164,55 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
 	exit();
-}	
+}
+
+/*Назначение бонусов и премий*/
+if (isset ($_POST['action']) && $_POST['action'] == 'Назначить категорию')
+{
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+	
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+
+	/*Команда SELECT*/
+	try
+	{
+		$sql = 'SELECT * FROM authorcategory';
+		$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Ошибка выбора категории: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$categorys[] =  array ('id' => $row['id'], 
+							'authcategoryname' => $row['authcategoryname'],
+							'categorybonus' => $row['categorybonus'],
+							);
+	}
+	
+		
+	$title = 'Назначение бонусов и премий';//Данные тега <title>
+	$headMain = 'Назначение бонусов и премий';
+	$robots = 'noindex, nofollow';
+	$descr = '';
+	$action = 'addcat';
+	$idauthor = $_POST['id'];
+	$button = 'Назначить';
+	$errorForm ='';
+	
+	include 'addcategoryform.html.php';
+	exit();
+}
 
 /*Подключение к базе данных*/
 include MAIN_FILE . '/includes/db.inc.php';

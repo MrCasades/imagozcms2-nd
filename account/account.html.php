@@ -17,6 +17,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
         <div class="ava-pl">
 			<?php echo $addRole; ?>
 			<?php echo $addBonus; ?>
+			<?php echo $addCategory; ?>
 			<?php echo $addRoleAdvertiser; ?>
 			<br/>
 			<img src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">

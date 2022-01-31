@@ -15,14 +15,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content add-main-form">
 	<p>
 		<form action = "?<?php htmlecho ($action); ?>" method = "post">
-			<label for = "categoryname">Название рубрики: <input type = "text" name = "categoryname" id = "categoryname" value = "<?php htmlecho($categoryname);?>"> </label>	
+			<label for = "categoryname">Название категории: <input type = "text" name = "authcategoryname" id = "authcategoryname" value = "<?php htmlecho($categoryname);?>"></label>	
+			<label for = "categorybonus">Бонус: <input type = "text" name = "categorybonus" id = "categorybonus" value = "<?php htmlecho($bonus);?>"></label>
 			<input type = "hidden" name = "idcategory" value = "<?php htmlecho($idcategory);?>">
 			<input type = "submit" value = "<?php htmlecho($button);?>" class="btn_2">
 		</form>	
 	</p>
 
 	<table>
-		<tr><th>Название</th><th>Возможные действия</th></tr>
+		<tr><th>Название</th><th>Бонус</th><th>Возможные действия</th></tr>
 		<?php if (empty($categorys))
 		 {
 			 echo '<p class="for-info-txt">Категории не добавлены</p>';
@@ -34,7 +35,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<tr>
 			  <form action = " " method = "post">
 			   <div>
-				<td><?php htmlecho($category['categoryname']);?></td>
+				<td><?php htmlecho($category['authcategoryname']);?></td>
+				<td><?php htmlecho($category['categorybonus']);?></td>
 				<td>
 				<input type = "hidden" name = "idcategory" value = "<?php echo $category['id']; ?>">
 				<input type = "submit" name = "action" value = "Upd" class="btn_1">
