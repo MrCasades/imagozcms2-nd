@@ -167,11 +167,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 }
 
 /*Назначение бонусов и премий*/
-if (isset ($_POST['action']) && $_POST['action'] == 'Назначить категорию')
+if (isset ($_POST['addcat']) && $_POST['addcat'] == 'Назначить категорию')
 {
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
-	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 
@@ -199,18 +196,69 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Назначить кате
 							'categorybonus' => $row['categorybonus'],
 							);
 	}
+
+	/*Команда SELECT*/
+	try
+	{
+		$sql = 'SELECT idauthcategory FROM author WHERE author.id = :id';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':id', $_POST['id']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+
+	catch (PDOException $e)
+	{
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Ошибка выбора информации о бонусе : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+	
+	$row = $s -> fetch();
 	
 		
-	$title = 'Назначение бонусов и премий';//Данные тега <title>
-	$headMain = 'Назначение бонусов и премий';
+	$title = 'Выбрать категорию';//Данные тега <title>
+	$headMain = 'Выбрать категорию';
 	$robots = 'noindex, nofollow';
 	$descr = '';
-	$action = 'addcat';
+	$action = 'addauhcat';
+	$idcategory = $row['idauthcategory'];
 	$idauthor = $_POST['id'];
 	$button = 'Назначить';
 	$errorForm ='';
 	
 	include 'addcategoryform.html.php';
+	exit();
+}
+
+/*Обновить бонус или назначить премию*/
+if (isset($_GET['addauhcat']))//Если есть переменная editpayment выводится форма
+{
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+	
+	try
+	{
+		$sql = 'UPDATE author SET 
+			idauthcategory = :category
+			WHERE id = :id';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':category', $_POST['category']);//отправка значения
+		$s -> bindValue(':id', $_POST['id']);//отправка значения
+		
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+	catch (PDOException $e)
+	{
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Ошибка обновления информации о бонусе или счёте'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+	
+	header ('Location: //'.MAIN_URL.'/account/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
 	exit();
 }
 
