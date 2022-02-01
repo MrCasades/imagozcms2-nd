@@ -297,10 +297,21 @@ if (isset ($_GET['id']))
 		/*Вывод ранга автора*/
 		try
 		{
-			$sql = 'SELECT rangname, pricenews, pricepost, rating FROM author
-					INNER JOIN rang ON rang.id = idrang 
-					WHERE author.id = '.$idAuthor;
-			$result = $pdo->query($sql);
+			$sql = 'SELECT r.rangname, 
+						r.pricenews, 
+						r.pricepost, 
+						a.rating, 
+						ac.authcategoryname,
+						ac.categorybonus 
+					FROM author a
+					INNER JOIN rang r 
+					ON r.id = a.idrang 
+					LEFT JOIN authorcategory ac 
+					ON ac.id = a.idauthcategory
+					WHERE a.id = '.$idAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':id', $idAuthor);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		}
 	
 		catch (PDOException $e)
@@ -314,18 +325,22 @@ if (isset ($_GET['id']))
 			exit();
 		}
 		
-		foreach ($result as $row)
-		{
-			$rangName[] =  array ('rangname' => $row['rangname'], 'pricenews' => $row['pricenews'], 'pricepost' => $row['pricepost'],
-								  'rating' => $row['rating']);
-		}	
+		// foreach ($result as $row)
+		// {
+		// 	$rangName[] =  array ('rangname' => $row['rangname'], 'pricenews' => $row['pricenews'], 'pricepost' => $row['pricepost'],
+		// 						  'rating' => $row['rating']);
+		// }
+		
+		$row = $s -> fetch();
+
+		(int)$row['categorybonus'] = $row['categorybonus'] != '' ? $row['categorybonus'] : 0;
 		
 		$rangView = '<strong> Авторский ранг: '. (string) $row['rangname']. '</strong>';//Если присвоен соответствующий статус, то выводиться ранг
 		$rating = '<br><strong> Рейтинг: '.(string) $row['rating'].'</strong>';//Если присвоен соответствующий статус, то выводиться рейтинг
 		
 		if ($selectedAuthor == $idAuthor)
 		{
-			$prices = '<p><strong> Цена новости: '.$row['pricenews'].' за 1000 зн. <br> Цена статьи: '.$row['pricepost'].' за 1000 зн. </strong></p>';
+			$prices = '<p><strong> Цена новости: '.($row['pricenews'] + $row['categorybonus']).' за 1000 зн. <br> Цена статьи: '.($row['pricepost'] + $row['categorybonus']).' за 1000 зн. </strong></p>';
 		}
 		
 		else
