@@ -64,8 +64,15 @@ function setArticlePrice($text, $type, $id, $queryType) //Type = pricenews or pr
 	/*Тип запроса для insrt или update*/
 	if ($queryType === 'add')
 	{
-		$select = 'SELECT '.$type.' as price, bonus FROM author INNER JOIN rang ON idrang = rang.id
-					WHERE author.id = :id';
+		$select = 'SELECT r.'.$type.' as price,
+						 a.bonus,
+						 ac.categorybonus 
+						 FROM author a
+					INNER JOIN rang r				
+					ON a.idrang = r.id
+					LEFT JOIN authorcategory ac 
+					ON ac.id = a.idauthcategory
+					WHERE a.id = :id';
 	}
 
 	elseif ($queryType === 'upd')
@@ -95,9 +102,11 @@ function setArticlePrice($text, $type, $id, $queryType) //Type = pricenews or pr
 	
 	$row = $s -> fetch();
 
-	$GLOBALS['priceTxt'] = $row['price'];//цена за 1000 знаков
+	$catBonus = !empty($row['categorybonus']) ? $row['categorybonus'] : 0;
+
+	$GLOBALS['priceTxt'] = $row['price'] + $catBonus;//цена за 1000 знаков
 	$GLOBALS['bonus'] = $row['bonus'];//выбор бонуса(множителя)
 	
 	$GLOBALS['lengthText'] = lengthText($text);//определение длины текста
-	$GLOBALS['fullPrice'] = priceText($text, $row['price'], $row['bonus']);//полная стоимость статьи
+	$GLOBALS['fullPrice'] = priceText($text, $row['price'] + $catBonus, $row['bonus'], $catBonus);//полная стоимость статьи
 }
