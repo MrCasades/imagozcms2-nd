@@ -300,7 +300,7 @@ function accessForWritingArticles()
 	if (empty ($lastPubTime)) $lastPubTime = '';//если переменная не объявлена
 
 	/*Суточный лимит публикаций в качестве Супер-автора*/
-	if ((userRole('Супер-автор')) && ($lastPubTime != '') && (time() < $lastPubTime + 2*60*60*24))
+	if ((userRole('Супер-автор')) && ($lastPubTime != '') && (time() < $lastPubTime + 60*60*24))
 	{
 			$title = 'Ошибка доступа';//Данные тега <title>
 			$headMain = 'Ошибка доступа';
