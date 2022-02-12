@@ -515,7 +515,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	</div>
 	<div class = "main-headers-line"></div>
 </div>
-<div class = "m-content">
+<div class = "m-content about-project">
 	<p>Добро пожаловать на портал <strong>IMAGOZ</strong> (от лат. imago - отражение)! Здесь мы объеденили в общую картину мира тему высоких технологий (hi-tech), индустрию компьютерных игр, 
 	взгляд на самые необычные современные гаджеты, достижения науки и техники и насыщенную событиями жизнь интернета.</p>
 				

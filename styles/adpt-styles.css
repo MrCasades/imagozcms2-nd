@@ -467,6 +467,11 @@
         max-width: 99%; 
     }
 
+    .about-project{
+        margin-left: 4%;
+        max-width: 90%;
+    }
+
     /*Главное меню*/
     .main-headers{
         margin-left: 2%;
