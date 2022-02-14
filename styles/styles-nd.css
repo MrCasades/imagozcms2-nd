@@ -807,6 +807,23 @@ main .post-place-1:hover {
     max-width: 90%;
 }
 
+/*Grid Профиля*/
+
+.acc-row{
+    display: grid;
+    grid-template-columns: 25% 74%;
+    grid-template-areas: 
+    "acc-left-side acc-right-side";
+    margin-bottom: 2rem;
+}
+
+.acc-left-side img{
+    height: 50%;
+    width: 50%;
+    border-radius: 10px;
+    
+}
+
 .comment-mp{
     padding: 1rem;
     background: #1e90ff;
