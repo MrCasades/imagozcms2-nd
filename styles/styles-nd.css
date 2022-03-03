@@ -807,28 +807,6 @@ main .post-place-1:hover {
     max-width: 90%;
 }
 
-/*Grid Профиля*/
-
-.acc-row{
-    display: grid;
-    grid-template-columns: 24% 74%;
-    grid-row-gap: 1%;
-    grid-template-areas: 
-    "acc-left-side acc-right-side";
-    margin-top: 1rem;
-    margin-bottom: 4rem;
-}
-
-.acc-left-side img{
-    height: 55%;
-    width: 80%;
-    border-radius: 10px;    
-}
-
-/* .acc-left-side {
-    margin-left: 5%; 
-} */
-
 .comment-mp{
     padding: 1rem;
     background: #1e90ff;

@@ -326,7 +326,6 @@
         grid-template-areas: 
         "left-side"
         "right-side";
-        margin-top: 1rem;
     }
 
     .article-row{   
@@ -335,31 +334,6 @@
         grid-template-areas: 
         "left-side"
         "right-side";
-    }
-
-    /*Grid Профиля*/
-
-    .acc-row{
-        grid-template-columns: 100%;
-        grid-template-areas: 
-        "acc-left-side" 
-        "acc-right-side";
-        margin-bottom: 0rem;
-    }
-
-    .acc-left-side img{
-        height: 50%;
-        width: 70%;
-        border-radius: 10px;    
-    }
-
-    .acc-left-side{        
-        margin-bottom: -20%;
-        margin-left: 5%;
-    }
-
-    .acc-right-side{
-        margin-left: 5%;
     }
 
     .rating{

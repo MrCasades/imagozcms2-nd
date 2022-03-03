@@ -13,15 +13,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
         <div class = "main-headers-line"></div>   
     </div>
 
-	<div class="acc-row m-content">
-        <div class="acc-left-side">
+	<div class="acc-m m-content">
+        <div class="ava-pl">
 			<?php echo $addRole; ?>
 			<?php echo $addBonus; ?>
 			<?php echo $addCategory; ?>
 			<?php echo $addRoleAdvertiser; ?>
 			<br/>
 			<img src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
-			<br/>
 			<?php echo $setAccount; ?>
 			<?php echo $mainMessagesForm; ?>
 			<p><?php if (($authorRole === 'Автор') || ($authorRole === 'Администратор'))//если пользователю присвоен определённый статус, то выводятся его ранг
@@ -32,7 +31,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					echo $ewallet;
 				}?></p>
 		</div> 
-		<div class="acc-right-side">
+		<div class="acc-info-pl">
                 <h3>Инфо</h3>
                 <div>
 					<?php echomarkdown ($accountInfo);?>
