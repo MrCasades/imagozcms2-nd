@@ -150,10 +150,16 @@ if (isset ($_GET['id']))
 
 	try
 	{
-		$sql = 'SELECT subcomments.id AS subid, author.id AS subidauthor, subcomment, subcommentdate, authorname AS subauthorname FROM subcomments 
-		INNER JOIN author 
-		ON idauthor = author.id 
-		WHERE idcomment = '.$idComment.' ORDER BY subcommentdate DESC LIMIT '.$shift.' ,'.$onPage;//Внизу самое последнее значение
+		$sql = 'SELECT 
+					scm.id AS subid, 
+					a.id AS subidauthor, 
+					scm.subcomment, 
+					scm.subcommentdate, 
+					a.authorname AS subauthorname 
+				FROM subcomments scm
+		INNER JOIN author a 
+		ON scm.idauthor = a.id 
+		WHERE scm.idcomment = '.$idComment.' ORDER BY scm.subcommentdate DESC LIMIT '.$shift.' ,'.$onPage;//Внизу самое последнее значение
 		$result = $pdo->query($sql);
 	}
 
