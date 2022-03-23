@@ -151,14 +151,22 @@ if (isset ($_GET['id']))
 	try
 	{
 		$sql = 'SELECT 
-					scm.id AS subid, 
+					scm.id, 
 					a.id AS subidauthor, 
 					scm.subcomment, 
-					scm.subcommentdate, 
-					a.authorname AS subauthorname 
+					scm.subcommentdate,
+					scm.likescount,
+					scm.dislikescount, 
+					a.authorname AS subauthorname,
+					scml.islike, 
+					scml.isdislike 
 				FROM subcomments scm
 		INNER JOIN author a 
 		ON scm.idauthor = a.id 
+		LEFT JOIN 
+			(SELECT idauthor AS idauthorlk, idsubcomment, islike, isdislike
+			FROM subcommentlikes WHERE idauthor = '.$selectedAuthor.') scml
+		ON scm.id = scml.idsubcomment
 		WHERE scm.idcomment = '.$idComment.' ORDER BY scm.subcommentdate DESC LIMIT '.$shift.' ,'.$onPage;//Внизу самое последнее значение
 		$result = $pdo->query($sql);
 	}
@@ -169,7 +177,7 @@ if (isset ($_GET['id']))
 		$headMain = 'Ошибка данных!';
 		$robots = 'noindex, nofollow';
 		$descr = '';
-		$error = 'Error table in mainpage' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		$error = 'Error table subcomments ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 		include 'error.html.php';
 		exit();
 	}
@@ -177,8 +185,8 @@ if (isset ($_GET['id']))
 	/*Вывод результата в шаблон*/
 	foreach ($result as $row)
 	{
-		$subcomments[] =  array ('subid' => $row['subid'], 'text' => $row['subcomment'], 'date' => $row['subcommentdate'], 'subauthorname' => $row['subauthorname'],
-								'subidauthor' => $row['subidauthor']);
+		$subcomments[] =  array ('id' => $row['id'], 'text' => $row['subcomment'], 'date' => $row['subcommentdate'], 'subauthorname' => $row['subauthorname'],
+										'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'subidauthor' => $row['subidauthor']);
 	}
 	
 	/*Определение количества статей*/
