@@ -91,7 +91,7 @@
         
         $('#like_sc_<?php echo $subcomment['id']; ?>').click(function(e) {
 
-            $('#type_like_<?php echo $subcomment['id'];?>[name="type-like"]').val('like');
+            $('#type_like_sc_<?php echo $subcomment['id'];?>[name="type-like"]').val('like');
             pushLikeSc();
             if($("#like_form_sc_<?php echo $subcomment['id'];?>").find('input[name="idauthor"]').val() > 0){
                 changeClass('like');
