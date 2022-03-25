@@ -83,6 +83,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				
 	  foreach ($subcomments as $subcomment): ?> 
 
+<?php 
+			/*Загрузка скрипта добавления лайков/дизлайков*/
+			 include MAIN_FILE . '/includes/likescriptsc.inc.php';?>
+
 <div class="sub-comment m-content">
     <span class="sub-comment-info">
 		Ответил <a href="../account/?id=<?php echo $subcomment['subidauthor']; ?>"><?php echo $subcomment['subauthorname']; ?></a> | <?php echo $subcomment['date'];?>
@@ -127,6 +131,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							
 			echo $updAnddel;?></p>
 </div>
+<div id="result_form_sc_<?php echo $subcomment['id'];?>"></div>
 <div class = "m-content comment-line"></div>
 
 <?php endforeach; ?>
