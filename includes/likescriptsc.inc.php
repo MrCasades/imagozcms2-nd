@@ -51,7 +51,7 @@
                     $('#lk_sc_sign_<?php echo $subcomment['id']; ?>').removeClass('fa-thumbs-o-up');
                     $('#lk_sc_sign_<?php echo $subcomment['id']; ?>').addClass('fa-thumbs-up');
                     $('#likecount_sc_<?php echo $subcomment['id']; ?>').html(parseInt($('#likecount_sc_<?php echo $subcomment['id']; ?>').html()) + 1);
-                } else if ($('#lk_sign_<?php echo $subcomment['id']; ?>').hasClass('fa-thumbs-o-up') && $('#dlk_sc_sign_<?php echo $subcomment['id']; ?>').hasClass('fa-thumbs-down')){
+                } else if ($('#lk_sc_sign_<?php echo $subcomment['id']; ?>').hasClass('fa-thumbs-o-up') && $('#dlk_sc_sign_<?php echo $subcomment['id']; ?>').hasClass('fa-thumbs-down')){
                     $('#lk_sc_sign_<?php echo $subcomment['id']; ?>').removeClass('fa-thumbs-o-up');
                     $('#lk_sc_sign_<?php echo $subcomment['id']; ?>').addClass('fa-thumbs-up');
                     $('#dlk_sc_sign_<?php echo $subcomment['id']; ?>').removeClass('fa-thumbs-down');

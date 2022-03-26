@@ -41,17 +41,17 @@ else
 
 	if($row)
 	{
-		$isLike = $row['islike'];
-		$isDisLike = $row['isdislike'];
+		$isLikeSc = $row['islike'];
+		$isDisLikeSc = $row['isdislike'];
 	}
 
 	else
 	{
-		$isLike = '';
-		$isDisLike = '';
+		$isLikeSc = '';
+		$isDisLikeSc = '';
 	}
 
-	if($_POST['type-like'] === 'like' && $isLike == '')
+	if($_POST['type-like'] === 'like' && $isLikeSc == '')
 	{
 		try
 		{	
@@ -93,7 +93,7 @@ else
 		}
 	}
 
-	elseif ($_POST['type-like'] === 'like' && $isLike == 0)
+	elseif ($_POST['type-like'] === 'like' && $isLikeSc == 0)
 	{
 		try
 		{	
@@ -144,7 +144,7 @@ else
 
 	}
 
-	elseif ($_POST['type-like'] === 'like' && $isLike == 1)
+	elseif ($_POST['type-like'] === 'like' && $isLikeSc == 1)
 	{
 		try
 		{	
@@ -182,7 +182,7 @@ else
 		}
 	}
 
-	elseif ($_POST['type-like'] === 'dislike' && $isDisLike === '')
+	elseif ($_POST['type-like'] === 'dislike' && $isDisLikeSc === '')
 	{
 		try
 		{	
@@ -224,7 +224,7 @@ else
 		}
 	}
 
-	elseif ($_POST['type-like'] === 'dislike' && $isDisLike == 0)
+	elseif ($_POST['type-like'] === 'dislike' && $isDisLikeSc == 0)
 	{
 		try
 		{	
@@ -275,7 +275,7 @@ else
 
 	}
 
-	elseif ($_POST['type-like'] === 'dislike' && $isDisLike == 1)
+	elseif ($_POST['type-like'] === 'dislike' && $isDisLikeSc == 1)
 	{
 		try
 		{	

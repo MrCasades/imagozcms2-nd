@@ -186,7 +186,8 @@ if (isset ($_GET['id']))
 	foreach ($result as $row)
 	{
 		$subcomments[] =  array ('id' => $row['id'], 'text' => $row['subcomment'], 'date' => $row['subcommentdate'], 'subauthorname' => $row['subauthorname'],
-										'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'subidauthor' => $row['subidauthor']);
+										'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'subidauthor' => $row['subidauthor'],
+										'islike' => $row['islike'],	'isdislike' => $row['isdislike']);
 	}
 	
 	/*Определение количества статей*/

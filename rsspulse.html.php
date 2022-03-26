@@ -36,17 +36,31 @@ $content = '<?xml version="1.0" encoding="UTF-8"?>
 
 <pubDate>'.date("D, j M Y G:i:s", strtotime($newsMain_3['newsdate'])).' +0300</pubDate>
 
+<author>'.$newsMain_3['authorname'].'</author>
+
+<category>'.$newsMain_3['categoryname'].'</category>
+
 <enclosure url="https://imagoz.ru/images/'.$newsMain_3['imghead'].'" type= "image/jpeg"/>
 
 <description>
 
 <![CDATA['.
 
-markdown2html_pub(implode(' ', array_slice(explode(' ', strip_tags($newsMain_3['textnews'])), 0, 50))).' [...]
+markdown2html_pub($newsMain_3['description']).'
 
 ]]>
 
 </description>
+
+<content:encoded>
+
+        <![CDATA[
+
+        <p>'.markdown2html_pub($newsMain_3['textnews']).'</p>
+
+        ]]>
+
+</content:encoded>
 
 </item>';?>
 
@@ -62,17 +76,31 @@ markdown2html_pub(implode(' ', array_slice(explode(' ', strip_tags($newsMain_3['
 
 <pubDate>'.date("D, j M Y G:i:s", strtotime($post['postdate'])).' +0300</pubDate>
 
+<author>'.$post['authorname'].'</author>
+
+<category>'.$post['categoryname'].'</category>
+
 <enclosure url="https://imagoz.ru/images/'.$post['imghead'].'" type= "image/jpeg"/>
 
 <description>
 
 <![CDATA['.
 
-markdown2html_pub (implode(' ', array_slice(explode(' ', strip_tags($post['text'])), 0, 50))).' [...]
+markdown2html_pub ($post['description']).'
 
 ]]>
 
 </description>
+
+<content:encoded>
+
+        <![CDATA[
+
+        '.markdown2html_pub($post['text']).'
+
+        ]]>
+
+</content:encoded>
 
 </item>';?>
 

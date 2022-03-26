@@ -85,7 +85,27 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <?php 
 			/*Загрузка скрипта добавления лайков/дизлайков*/
-			 include MAIN_FILE . '/includes/likescriptsc.inc.php';?>
+			 include MAIN_FILE . '/includes/likescriptsc.inc.php';
+			 
+
+			 //Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!				
+			 if ($subcomment['islike'] == 1)
+			 {
+				$likeStyleSc = 'fa-thumbs-up';
+				$dislikeStyleSc = 'fa-thumbs-o-down';
+			 }
+
+			elseif ($subcomment['isdislike'] == 1)
+			{
+				$likeStyleSc = 'fa-thumbs-o-up';
+				$dislikeStyleSc = 'fa-thumbs-down';
+			}
+			else
+			{
+				$likeStyleSc = 'fa-thumbs-o-up';
+				$dislikeStyleSc = 'fa-thumbs-o-down';
+			}
+			?>
 
 <div class="sub-comment m-content">
     <span class="sub-comment-info">
@@ -97,8 +117,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 			<input type = "hidden" name = "idsubcomment" value = "<?php echo $subcomment['id'];?>">
 			<input type = "hidden" name = "type-like" id = "type_like_sc_<?php echo $subcomment['id'];?>">
-			<button id="like_sc_<?php echo $subcomment['id'];?>" class="comment-like-btn" name = "like_sc" type="submit"><i id="lk_sc_sign_<?php echo $subcomment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_sc_<?php echo $subcomment['id'];?>"><?php echo $subcomment['likescount'];?></span></button>
-			<button id="dislike_sc_<?php echo $subcomment['id'];?>" class="comment-like-btn" name ="dislike_sc" type="submit"><i id="dlk_sc_sign_<?php echo $subcomment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_sc_<?php echo $subcomment['id'];?>"><?php echo $subcomment['dislikescount'];?></span></button>
+			<button id="like_sc_<?php echo $subcomment['id'];?>" class="comment-like-btn" name = "like_sc" type="submit"><i id="lk_sc_sign_<?php echo $subcomment['id'];?>" class="fa <?php echo $likeStyleSc;?>" aria-hidden="true"></i> <span id="likecount_sc_<?php echo $subcomment['id'];?>"><?php echo $subcomment['likescount'];?></span></button>
+			<button id="dislike_sc_<?php echo $subcomment['id'];?>" class="comment-like-btn" name ="dislike_sc" type="submit"><i id="dlk_sc_sign_<?php echo $subcomment['id'];?>" class="fa <?php echo $dislikeStyleSc;?>" aria-hidden="true"></i> <span id="dislikecount_sc_<?php echo $subcomment['id'];?>"><?php echo $subcomment['dislikescount'];?></span></button>
 		</form> 
 	</p>
 	<p><?php 

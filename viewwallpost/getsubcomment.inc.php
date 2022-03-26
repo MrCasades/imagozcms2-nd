@@ -22,10 +22,24 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = 'SELECT subcomments.id AS subid, author.id AS subidauthor, subcomment, subcommentdate, authorname AS subauthorname FROM subcomments 
-		INNER JOIN author 
-		ON idauthor = author.id 
-		WHERE idcomment = '.$idComment.' ORDER BY subcommentdate DESC LIMIT 10';//Внизу самое последнее значение
+		$sql = 'SELECT 
+			scm.id, 
+			a.id AS subidauthor, 
+			scm.subcomment, 
+			scm.subcommentdate, 
+			scm.likescount,
+			scm.dislikescount, 
+			a.authorname AS subauthorname,
+			scml.islike, 
+			scml.isdislike 
+		FROM subcomments scm
+		INNER JOIN author a
+		ON scm.idauthor = a.id 
+		LEFT JOIN 
+			(SELECT idauthor AS idauthorlk, idsubcomment, islike, isdislike
+			FROM subcommentlikes WHERE idauthor = '.$selectedAuthor.') scml
+		ON scm.id = scml.idsubcomment
+		WHERE scm.idcomment = '.$idComment.' ORDER BY scm.subcommentdate DESC LIMIT 10';//Внизу самое последнее значение
 		$result = $pdo->query($sql);
 	}
 
@@ -43,8 +57,9 @@ if (isset ($_GET['id']))
 	/*Вывод результата в шаблон*/
 	foreach ($result as $row)
 	{
-		$subcomments[] =  array ('subid' => $row['subid'], 'text' => $row['subcomment'], 'date' => $row['subcommentdate'], 'subauthorname' => $row['subauthorname'],
-								'subidauthor' => $row['subidauthor']);
+		$subcomments[] =  array ('id' => $row['id'], 'text' => $row['subcomment'], 'date' => $row['subcommentdate'], 'subauthorname' => $row['subauthorname'],
+								'subidauthor' => $row['subidauthor'], 'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 
+								'islike' => $row['islike'],	'isdislike' => $row['isdislike']);
 	}
 	
 	include 'subcomment.html.php';
