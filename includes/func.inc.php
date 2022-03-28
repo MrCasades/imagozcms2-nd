@@ -101,6 +101,35 @@ function imgForGallery($text)
 	return $text;
 }
 
+/*Добавление тега Figure при необходимости*/
+function isertTagFigure($text)
+{
+	$element_1 = '/<img[^>]+>/i'; //искомый элемент
+	$element_2 = '/<iframe[^>]*src\s*=\s*"?https?:\/\/[^\s"\/]*youtube.com(?:\/[^\s"]*)?"?[^>]*>.*?<\/iframe>/i';//искомый элемент
+	//$element_3 = '<details>(.+?)</details>';//искомый элемент
+	
+	$replace_1 = '<figure>${0}</figure>'; //на что меняем
+	//$replace_2 = '<div data-pulse-component="gallery" data-pulse-component-name="pulse_gallery">${0}</div>'; //на что меняем
+			
+	$text = preg_replace($element_1, $replace_1, $text);
+	$text = preg_replace($element_2, $replace_1, $text);
+	//$text = preg_replace($element_3, $replace_2, $text);
+	//$text = preg_replace($element_3, $replace_1, $text);
+	
+	return $text;
+}
+
+/*Добавление галереи для psspulse TEST*/
+function delDetails($text)
+{
+	$element_1 = '|<details>(.+)</details>|isU';//искомый элемент
+	$replace_1 = '<div data-pulse-component="gallery" data-pulse-component-name="pulse_gallery">${1}</div>'; //на что меняем
+
+	$text = preg_replace($element_1, $replace_1, $text);
+			
+return $text;
+}
+
 /*markdown2html в одобренных публикациях*/
 function markdown2html_pub ($text)
 {

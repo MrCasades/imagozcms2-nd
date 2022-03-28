@@ -56,7 +56,7 @@ markdown2html_pub($newsMain_3['description']).'
 
         <![CDATA[
 
-        <p>'.markdown2html_pub($newsMain_3['textnews']).'</p>
+        <p>'.delDetails(isertTagFigure($newsMain_3['textnews'])).'</p>
 
         ]]>
 
@@ -96,7 +96,7 @@ markdown2html_pub ($post['description']).'
 
         <![CDATA[
 
-        '.markdown2html_pub($post['text']).'
+        '.isertTagFigure($post['text']).'
 
         ]]>
 
