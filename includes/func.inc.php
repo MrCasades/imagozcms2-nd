@@ -123,9 +123,13 @@ function isertTagFigure($text)
 function delDetails($text)
 {
 	$element_1 = '|<details>(.+)</details>|isU';//искомый элемент
+	$element_2 = '|<summary>(.+)</summary>|isU';//искомый элемент
+
 	$replace_1 = '<p>${1}</p>'; //на что меняем
+	$replace_2 = '<h4>${1}</h4>'; //на что меняем
 
 	$text = preg_replace($element_1, $replace_1, $text);
+	$text = preg_replace($element_2, $replace_2, $text);
 			
 return $text;
 }

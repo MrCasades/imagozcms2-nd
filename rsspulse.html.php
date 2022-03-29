@@ -24,13 +24,17 @@ $content = '<?xml version="1.0" encoding="UTF-8"?>
 <language>ru</language>'?>
 	
 	
+<?php foreach ($newsMain as $newsMain_3): ?>
 
-
-	<?php foreach ($newsMain as $newsMain_3): ?>
+<?php $video = $newsMain_3['videoyoutube'] != '' ? '<br><br><figure><iframe width="560" height="315" src="'.$newsMain_3['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : '';
+      $articleNews = markdown2html_pub($newsMain_3['textnews']);
+?>        
 	
 <?php $content .= '<item>
 
 <title>'. $newsMain_3['newstitle'].'</title>
+
+<guid isPermaLink="false">newsid='.$newsMain_3['id'].'</guid>
 
 <link>https://imagoz.ru/viewnews/?id='.$newsMain_3['id'].'</link>
 
@@ -56,7 +60,7 @@ markdown2html_pub($newsMain_3['description']).'
 
         <![CDATA[
 
-        <p>'.delDetails(isertTagFigure($newsMain_3['textnews'])).'</p>
+        '.delDetails(isertTagFigure($articleNews)).$video.'
 
         ]]>
 
@@ -68,9 +72,15 @@ markdown2html_pub($newsMain_3['description']).'
 
 <?php foreach ($posts as $post): ?>
 
+<?php $video = $post['videoyoutube'] != '' ? '<br><br><figure><iframe width="560" height="315" src="'.$post['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : ''; 
+      $articlePost = markdown2html_pub($post['text']);
+?> 
+
 <?php $content .= '<item>
 
 <title>'.$post['posttitle'].'</title>
+
+<guid isPermaLink="false">postid='.$post['id'].'</guid>
 
 <link>https://imagoz.ru/viewpost/?id='.$post['id'].'</link>
 
@@ -96,7 +106,7 @@ markdown2html_pub ($post['description']).'
 
         <![CDATA[
 
-        '.isertTagFigure($post['text']).'
+        '.delDetails(isertTagFigure($articlePost)).$video.'
 
         ]]>
 
