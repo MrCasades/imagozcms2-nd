@@ -16,16 +16,34 @@ if (loggedIn())
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
-	$idPost = $_GET['id'];
+	$idVideo = $_GET['id'];
 	
-	$select = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, videoyoutube, viewcount, votecount, averagenumber, favouritescount, description, imgalt, postdate, authorname, category.id AS categoryid, categoryname FROM posts 
-			   INNER JOIN author ON idauthor = author.id 
-			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "YES" AND zenpost = "NO" AND posts.id = ';
+	$select = 'SELECT 
+					v.id AS videoid, 
+					a.id AS idauthor, 
+					v.post, 
+					v.videotitle, 
+					v.imghead, 
+					v.videoyoutube, 
+					v.videofile, 
+					v.viewcount, 
+					v.votecount, 
+					v.averagenumber, 
+					v.favouritescount, 
+					v.description, 
+					v.imgalt, 
+					v.videodate, 
+					a.authorname, 
+					c.id AS categoryid, 
+					c.categoryname 
+			   FROM video v
+			   INNER JOIN author a ON v.idauthor = a.id 
+			   INNER JOIN category c ON v.idcategory = c.id WHERE premoderation = "YES" AND v.id = ';
 	
 	/*Канонический адрес*/
 	if(!empty($_GET['utm_referrer']) || !empty($_GET['page']))
 	{
-		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewpost/?id='.$idPost.'"/>';
+		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/video/?id='.$idVideo.'"/>';
 	}
 
 	/*Подключение к базе данных*/
@@ -33,7 +51,7 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = $select.$idPost;
+		$sql = $select.$idVideo;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -51,18 +69,20 @@ if (isset ($_GET['id']))
 	
 	$row = $s -> fetch();
 		
-	$articleId = $row['postid'];
+	$articleId = $row['videoid'];
 	$authorId = $row['idauthor'];
 	$articleText = $row['post'];
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
-	$date = $row['postdate'];
+	$date = $row['videodate'];
 	$viewCount = $row['viewcount'];
 	$averageNumber = $row['averagenumber'];
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
 	$favouritesCount = $row['favouritescount'];
+	$videoYoutube = $row['videoyoutube'];
+	$videoFile = $row['videofile'];
 	
 	/*Если страница отсутствует. Ошибка 404*/
 	if (!$row)
@@ -73,21 +93,21 @@ if (isset ($_GET['id']))
 	
 	$categoryID = $row['categoryid'];//Сохранение id сатегории
 	
-	$title = $row['posttitle'].' | imagoz.ru';//Данные тега <title>
-	$headMain = $row['posttitle'];
+	$title = $row['videotitle'].' | imagoz.ru';//Данные тега <title>
+	$headMain = $row['videotitle'];
 	$robots = 'all';
 	$descr = $row['description'];
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallposts/">Все статьи</a> >> ';//Для хлебных крошек
-	$breadPart3 = '<a href="//'.MAIN_URL.'/viewpost/?id='.$idPost.'">'.$row['posttitle'].'</a> ';//Для хлебных крошек
+	$breadPart3 = '<a href="//'.MAIN_URL.'/viewpost/?id='.$idVideo.'">'.$row['videotitle'].'</a> ';//Для хлебных крошек
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Микроразметка*/
 	
-	$dataMarkup = dataMarkup($row['posttitle'], $row['description'], $row['imghead'], $row['imgalt'], $row['postid'],
-							$row['postdate'], $row['authorname'], $row['averagenumber'], $row['votecount'], 'viewpost');
+	$dataMarkup = dataMarkup($row['videotitle'], $row['description'], $row['imghead'], $row['imgalt'], $row['videoid'],
+							$row['videodate'], $row['authorname'], $row['averagenumber'], $row['votecount'], 'video');
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
