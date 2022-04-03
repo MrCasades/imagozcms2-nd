@@ -156,49 +156,6 @@ function echomarkdown ($text)
 	echo markdown2html ($text);
 }
 
-/*Регулярные выражения для Промоушена*/
-
-function markdown2html_promotion ($text)
-{
-	$text = html ($text);// Преобр. форматирование на уровне обычн текста в HTML
-	
-	/*Загрузка библиотеки Markdown*/
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/markdown_for_promotion.php';
-	//include_once $_SERVER['DOCUMENT_ROOT'] . '/includes/MarkdownInterface.inc.php';
-
-	/*Полужирный текст*/
-	//$text = preg_replace ('/__(.+?)__/s', '<strong>$1</strong>', $text);
-	//$text = preg_replace ('/\*\*(.+?)\*\*/s', '<strong>$1</strong>', $text);
-	
-	/*Курсив*/
-	//$text = preg_replace ('/_([^_]+)_/', '<em>$1</em>', $text);
-	//$text = preg_replace ('/\*([^_]+)\*/', '<em>$1</em>', $text);
-	
-	/*Преобразование стиля Windows(\r\n) в Unix (\n)*/
-	//$text = preg_replace ('/\r\n/', "\n", $text);
-	
-	/*Преобразование стиля Mac(\r) в Unix (\n)*/
-	//$text = preg_replace ('/\r/', "\n", $text);
-	
-	/*Абзацы*/
-	//$text = '<p>' . str_replace ('/\n\n/', '</p><p>', $text) . '</p>';
-	
-	/*Разрыв строки*/
-	//$text = str_replace ('/\n/', '<br>', $text);
-	
-	/*Гиперссылка формат [текст ссылки](адрес)*/
-	//$text = preg_replace ('/\[([^\]]+)]\(([-a-z0-9._~:\/?#@!$&\'()*+,;=%]+)\)/i', '<a href="$2">$1</a>', $text);
-	
-	return Markdown_promotion($text);
-}
-
-/*markdown2html для использования в шаблоне*/
-	
-function echomarkdown_promotion ($text)
-{
-	echo markdown2html_promotion ($text);
-}
-
 function searchPagesNum($page, $count, $pages_count, $show_link)
 {
 	// $show_link - это количество отображаемых ссылок;
