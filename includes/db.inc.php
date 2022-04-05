@@ -10,7 +10,6 @@ try
 
 catch (PDOException $e)
 {
-	$error = 'No connection to Data_Base.'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'No connection to Data_Base Error: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+	include 'error.inc.php';
 }

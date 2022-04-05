@@ -112,8 +112,7 @@ function userRole($role)
 	catch (PDOException $e)
 	{
 		$error = 'Ошибка поиска роли автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		include 'error.inc.php';
 	}
 	
 	$row = $s-> fetch();
@@ -148,8 +147,7 @@ function authorLogin ($email, $password)
 	catch (PDOException $e)
 	{
 		$error = 'Ошибка поиска автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		include 'error.inc.php';
 	}
 
 	$row = $s-> fetch();
@@ -178,9 +176,8 @@ function authorID ($email, $password)
 	
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка поиска автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка поиска ID автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -206,11 +203,8 @@ function toEmail_1($title, $message)
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора email '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора email: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -282,13 +276,8 @@ function accessForWritingArticles()
 
 			catch (PDOException $e)
 			{
-				$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-				$headMain = 'Ошибка данных!';
-				$robots = 'noindex, nofollow';
-				$descr = '';
 				$error = 'Ошибка выбора времени последней публикации ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-				include 'error.html.php';
-				exit();
+				include 'error.inc.php';
 			}
 		
 			$row = $s -> fetch();

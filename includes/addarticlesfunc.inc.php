@@ -13,11 +13,8 @@ function addListsInForms()
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода category '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода category Error: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -32,11 +29,8 @@ function addListsInForms()
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода meta '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода meta Error: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -93,11 +87,8 @@ function setArticlePrice($text, $type, $id, $queryType) //Type = pricenews or pr
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора цены новости '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора цены новости meta Error: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	$row = $s -> fetch();
