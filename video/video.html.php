@@ -47,7 +47,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</script>
 				</div>
 
-				<div class="a-content m-content">
+				<div class="a-content m-content">$videoFile
+
+				<video controls width="710" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
+					<source src="../videos/<?php echo $videoFile; ?>" type="video/mp4">
+					<source src="../videos/<?php echo $videoFile; ?>" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+					<source src="../videos/<?php echo $videoFile; ?>" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+				</video>
 					
 					<?php echomarkdown_pub ($articleText); ?>
 					<p class="a-video"><?php echo $video; ?></p>
