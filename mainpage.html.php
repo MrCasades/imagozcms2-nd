@@ -352,6 +352,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		<!-- <div class = "m-content for-blocks-m-top f-zen">
 			<a href="https://full-zen.imagoz.ru/" ><img src="./full-zen.jpg" alt="Каталог FULL-ZEN" title="Каталог FULL-ZEN"/></a>
 		</div> -->
+
+		<div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
+		<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
 		
 		<div class="article-top">
 			<div class = "main-headers">

@@ -9,21 +9,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <article>
 	<div class="article-row">
 		<div class="left-side">
-			<div class = "article-head m-content" style="background-image: url(../images/<?php echo $imgHead; ?>)">
-				<div class = "article-head-top"> 
-					<div class ="article-info">
-						<p><?php echo $date;?> | Автор: <a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a></p>
-						<p>Рубрика: <span class="post-rubrics"><a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
-					</div>
-				<div class="article-rating">
-						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($viewCount); ?>  
-						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho (round($averageNumber, 2, PHP_ROUND_HALF_DOWN)); ?>
-						<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
-				</div>
-			</div>
-			<h1><?php htmlecho ($headMain); ?></h1>
-			</div>
-
 			<div class="m-content">
 			<!-- Yandex.RTB R-A-448222-9 -->
 			<div id="yandex_rtb_R-A-448222-9"></div>
@@ -46,15 +31,30 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					})(this, this.document, "yandexContextAsyncCallbacks");
 				</script>
 				</div>
+				<h2><?php htmlecho ($headMain); ?></h2>	
+				<div class="video-pl m-content">
+					<video controls width="710" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
+						<source src="../videos/<?php echo $videoFile; ?>" type="video/mp4">
+						<source src="../videos/<?php echo $videoFile; ?>" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+						<source src="../videos/<?php echo $videoFile; ?>" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+						<object data="../videos/<?php echo $videoFile; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+							<param name="movie" value="../videos/<?php echo $videoFile; ?>">
+						</object>
+					</video>
+				</div>	
 
-				<div class="a-content m-content">$videoFile
+				<div class ="article-info-video">
+					<p><?php echo $date;?> | Автор: <a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a></p>
+					<p>Рубрика: <span class="post-rubrics"><a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
+				</div>
 
-				<video controls width="710" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
-					<source src="../videos/<?php echo $videoFile; ?>" type="video/mp4">
-					<source src="../videos/<?php echo $videoFile; ?>" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-					<source src="../videos/<?php echo $videoFile; ?>" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
-				</video>
-					
+				<div class="article-rating">
+						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($viewCount); ?>  
+						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho (round($averageNumber, 2, PHP_ROUND_HALF_DOWN)); ?>
+						<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
+				</div>
+
+				<div class="a-content m-content">				
 					<?php echomarkdown_pub ($articleText); ?>
 					<p class="a-video"><?php echo $video; ?></p>
 					<div class = "recomm-place">                       
