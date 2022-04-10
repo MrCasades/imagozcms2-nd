@@ -74,8 +74,7 @@ function authorInDataBase ($email, $password)
 	catch (PDOException $e)
 	{
 		$error = 'Ошибка поиска автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		include 'error.inc.php';
 	}
 	
 	$row = $s-> fetch();

@@ -305,13 +305,8 @@ function convertToPostOrNews($inData, $idData)
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора характеристик материала ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора характеристик материала' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -350,13 +345,8 @@ function convertToPostOrNews($inData, $idData)
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора цены за 1000 знаков при конвертации ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора цены за 1000 знаков при конвертации' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.inc.php';
 		}
 		
 		$row = $s -> fetch();
@@ -398,13 +388,8 @@ function convertToPostOrNews($inData, $idData)
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора цены за 1000 знаков при конвертации ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора цены за 1000 знаков при конвертации' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.inc.php';
 		}
 		
 		$row = $s -> fetch();
@@ -439,11 +424,8 @@ function convertToPostOrNews($inData, $idData)
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации при конвертации'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации при конвертации' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 }
 
@@ -479,7 +461,7 @@ function delOrAddContestScore($type, $pointsName)//$type - add or del, $pointsNa
 	{
 		$updContestScore = 'UPDATE author SET contestscore = contestscore - ';
 	}
-		
+
 	/*Подключение к базе данных*/
 	include 'db.inc.php';
 		
@@ -499,13 +481,8 @@ function delOrAddContestScore($type, $pointsName)//$type - add or del, $pointsNa
 			
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора idauthor для contest '.$e -> getMessage();// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();		
+			$error = 'Ошибка выбора idauthor для contest' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+			include 'error.inc.php';		
 		}	
 			
 		$row = $s -> fetch();
@@ -542,13 +519,8 @@ function delOrAddContestScore($type, $pointsName)//$type - add or del, $pointsNa
 	{
 		$pdo->rollBack();//отмена транзакции
 
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error transaction при изменении конкурсного счёта '.$e -> getMessage();// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();		
+		$error = 'Error transaction при изменении конкурсного счёта' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';		
 	}	
 }
 
@@ -576,7 +548,7 @@ function defaultRegFormData()
 
 /*Добавление микроразметки*/
 function dataMarkup ($title = '' , $description = '', $imghead = '', $imgalt = '', $id = '', $date = '', 
-					 $author = '', $averagenumber = '', $votecount = '', $articleType) //$articleType - viewpost, viewnews, 																												viewpromotion
+					 $author = '', $averagenumber = '', $votecount = '', $articleType) //$articleType - viewpost, viewnews, video																												viewpromotion
 {
 	if ($votecount == 0) 
 	{
@@ -661,13 +633,8 @@ function updCommentData($id, $idArticle)
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора комментария для обновления ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора комментария для обновления' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	$row = $s -> fetch();	
@@ -703,13 +670,8 @@ function updComment($id, $comment, $idArticle, $type) //news, post, promotion
 		
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации comment'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации comment' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	header ('Location: ../view'.$type.'/?id='.$idArticle);//перенаправление обратно в контроллер index.php
 	exit();
@@ -732,13 +694,8 @@ function delCommentData($id, $idArticle)
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора id и заголовка newsblock : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора id комментария' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -859,13 +816,8 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select news ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка данных для превью' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 
 	$row = $s -> fetch();
@@ -909,7 +861,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 
 /*Вывод тематик(тегов) для превью*/
 	
-function previewMetas($type, $typeId, $idArticle)//$type - newsblock, posts, promotion; $typeId - idnews, idpost, idpromotion
+function previewMetas($type, $typeId, $idArticle)//$type - newsblock, posts, promotion, video; $typeId - idnews, idpost, idpromotion
 {
 	include MAIN_FILE . '/includes/db.inc.php';
 
@@ -924,13 +876,8 @@ function previewMetas($type, $typeId, $idArticle)//$type - newsblock, posts, pro
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора тега ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора тега' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
