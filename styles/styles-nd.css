@@ -1537,3 +1537,47 @@ main .acc-info-pl{
 .pic-for-gallery{
     cursor: pointer;
 }
+
+/*Стили раздела видео*/
+.video-header{
+    margin-left: 40%;
+}
+
+.article-info-video{
+    margin-left: 10%;
+}
+
+.video-pl{
+    margin-left: 20%;
+    max-width: 80%;
+}
+
+.video-pl video{
+    border-radius: 10px;
+}
+
+.like-place-video{
+    margin-top: 1%;
+    max-height: 25rem;
+}
+
+.like-place-video .btn_vot{
+    /* height: 40px;
+    width: 60px;
+    font-weight: bold;
+    font-size: 2rem; */
+    background:#FFFFFF;
+    color: #1e90ff;
+    cursor: pointer;
+    border: 0.5px solid rgba(30, 144, 255, 1);
+    border-radius: 5px;
+}
+
+.like-place-video .btn_vot:hover{  
+    background:#1e90ff;
+    color:#FFFFFF;
+}
+
+/* .like-place-video .btn_vot{
+
+} */

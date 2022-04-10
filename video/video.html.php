@@ -10,58 +10,51 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div class="article-row">
 		<div class="left-side">
 			<div class="m-content">
-			<!-- Yandex.RTB R-A-448222-9 -->
-			<div id="yandex_rtb_R-A-448222-9"></div>
-				<script type="text/javascript">
-					(function(w, d, n, s, t) {
-							w[n] = w[n] || [];
-							w[n].push(function() {
-							Ya.Context.AdvManager.render({
-									blockId: "R-A-448222-9",
-									renderTo: "yandex_rtb_R-A-448222-9",
-									async: true
-								});
-								});
-							t = d.getElementsByTagName("script")[0];
-							s = d.createElement("script");
-							s.type = "text/javascript";
-							s.src = "//an.yandex.ru/system/context.js";
-							s.async = true;
-							t.parentNode.insertBefore(s, t);
-					})(this, this.document, "yandexContextAsyncCallbacks");
-				</script>
+				<!-- Yandex.RTB R-A-448222-9 -->
+				<div id="yandex_rtb_R-A-448222-9"></div>
+					<script type="text/javascript">
+						(function(w, d, n, s, t) {
+								w[n] = w[n] || [];
+								w[n].push(function() {
+								Ya.Context.AdvManager.render({
+										blockId: "R-A-448222-9",
+										renderTo: "yandex_rtb_R-A-448222-9",
+										async: true
+									});
+									});
+								t = d.getElementsByTagName("script")[0];
+								s = d.createElement("script");
+								s.type = "text/javascript";
+								s.src = "//an.yandex.ru/system/context.js";
+								s.async = true;
+								t.parentNode.insertBefore(s, t);
+						})(this, this.document, "yandexContextAsyncCallbacks");
+					</script>
 				</div>
-				<h2><?php htmlecho ($headMain); ?></h2>	
-				<div class="video-pl m-content">
-					<video controls width="710" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
-						<source src="../videos/<?php echo $videoFile; ?>" type="video/mp4">
-						<source src="../videos/<?php echo $videoFile; ?>" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-						<source src="../videos/<?php echo $videoFile; ?>" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+				<h2 class="video-header"><?php htmlecho ($headMain); ?></h2>	
+				<div class="video-pl">
+					<video controls width="90%" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
+						<source src="../videos/<?php echo $videoFile; ?>.mp4" type="video/mp4">
+						<source src="../videos/<?php echo $videoFile; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+						<source src="../videos/<?php echo $videoFile; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
 						<object data="../videos/<?php echo $videoFile; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
-							<param name="movie" value="../videos/<?php echo $videoFile; ?>">
+							<param name="movie" value="../videos/<?php echo $videoFile; ?>.swf">
 						</object>
 					</video>
 				</div>	
 
-				<div class ="article-info-video">
-					<p><?php echo $date;?> | Автор: <a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a></p>
-					<p>Рубрика: <span class="post-rubrics"><a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
-				</div>
-
-				<div class="article-rating">
+				<div class ="article-info-video video-pl">
+					<p><?php echo $date;?> | Автор: <a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a> | Рубрика: <a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></p>
+					<p class="article-rating-video">
 						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($viewCount); ?>  
 						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho (round($averageNumber, 2, PHP_ROUND_HALF_DOWN)); ?>
 						<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
+					</p>
 				</div>
 
-				<div class="a-content m-content">				
+				<div class="video-pl">				
 					<?php echomarkdown_pub ($articleText); ?>
-					<p class="a-video"><?php echo $video; ?></p>
-					<div class = "recomm-place">                       
-						<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-						<script src="//yastatic.net/share2/share.js"></script>
-						<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>      
-					</div>
+					<p class="a-video"><?php echo $video; ?></p>					
 					<div class="tags-place-m"> 
 						<?php if (empty($metas))
 						{
@@ -78,7 +71,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 					</div>
 				</div>
-				<div class="m-content like-place">
+				<div class="video-pl like-place-video">
 					<div>
 						<?php echo $votePanel; ?>
 					</div>
@@ -90,6 +83,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
 						<img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"><span class="zen-ch-title">Подписывайтесь на наш Дзен-канал!</span></a>
 					</div> -->
+				</div>
+				<div class = "recomm-place">                       
+					<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+					<script src="//yastatic.net/share2/share.js"></script>
+					<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>      
 				</div>
 
 				<div class = "m-content">
@@ -288,8 +286,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					
 				foreach ($similarPosts as $post_1): ?>
 				
-				<a href = "../viewpost/?id=<?php htmlecho ($post_1['id']); ?>" class = "post-place-grid" style="background-image: url(../images/<?php echo $post_1['imghead']; ?>)">
-					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post_1['posttitle'])), 0, 7)))); ?>...</div>
+				<a href = "../video/?id=<?php htmlecho ($post_1['id']); ?>" class = "post-place-grid" style="background-image: url(../images/<?php echo $post_1['imghead']; ?>)">
+					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post_1['videotitle'])), 0, 7)))); ?>...</div>
 				</a> 
 				<?php endforeach; ?>
 			</div>
