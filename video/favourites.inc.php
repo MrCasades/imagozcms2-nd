@@ -9,7 +9,7 @@ include_once '../includes/path.inc.php';
 if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor']) && $_POST['val_fav'] == 'addfav')
 {
 	$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
-	$favData = 'SELECT id, post, posttitle, postdate, imghead, imgalt, idauthor, idcategory FROM posts WHERE id = '.$_POST['id'];//подготовка данных для избранного
+	$favData = 'SELECT id, post, videotitle, videodate, imghead, imgalt, idauthor, idcategory FROM posts WHERE id = '.$_POST['id'];//подготовка данных для избранного
 		
 	/*Выбор материала для избранного*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -48,14 +48,9 @@ if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor'])
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-			
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора данных для избранного ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка выбора данных для избранного';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вставка материала для избранного*/
@@ -79,19 +74,13 @@ if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor'])
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления избранного'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-
+		$error = 'Ошибка добавления избранного';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	/*Обновление значения счётчика избранного*/
 
-	$updateCount = 'UPDATE posts SET favouritescount = favouritescount + 1 WHERE id = ';
+	$updateCount = 'UPDATE video SET favouritescount = favouritescount + 1 WHERE id = ';
 
 	try
 	{
@@ -102,13 +91,8 @@ if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor'])
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка счётчика ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка счётчика';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	if (($contestOn == 'YES') && (!userRole('Автор')) && (!userRole('Администратор'))) delOrAddContestScore('add', 'favouritespoints');//если конкурс включен
@@ -120,7 +104,7 @@ elseif (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idautho
 	$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 	$delFav = 'DELETE FROM favourites WHERE 
 			   idauthor = '.$_POST['idauthor'].' AND
-			   idpost = '.$_POST['id'];
+			   idvideo = '.$_POST['id'];
 		
 	include MAIN_FILE . '/includes/db.inc.php';
 
@@ -146,15 +130,9 @@ elseif (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idautho
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-			
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления избранного'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
 
+		$error = 'Ошибка удаления избранного';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	/*Обновление значения счётчика избранного*/

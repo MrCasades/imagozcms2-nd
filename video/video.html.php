@@ -34,11 +34,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<h2 class="video-header"><?php htmlecho ($headMain); ?></h2>	
 				<div class="video-pl">
 					<video controls width="90%" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
-						<source src="../videos/<?php echo $videoFile; ?>.mp4" type="video/mp4">
-						<source src="../videos/<?php echo $videoFile; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-						<source src="../videos/<?php echo $videoFile; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
-						<object data="../videos/<?php echo $videoFile; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
-							<param name="movie" value="../videos/<?php echo $videoFile; ?>.swf">
+						<source src="../videofiles/<?php echo $videoFile; ?>.mp4" type="video/mp4">
+						<source src="../videofiles/<?php echo $videoFile; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+						<source src="../videofiles/<?php echo $videoFile; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+						<object data="../videofiles/<?php echo $videoFile; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+							<param name="movie" value="../videofiles/<?php echo $videoFile; ?>.swf">
 						</object>
 					</video>
 				</div>	
