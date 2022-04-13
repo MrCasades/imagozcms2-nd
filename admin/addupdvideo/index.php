@@ -427,57 +427,47 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	}
 	
 	/*Определение предворительной длины и цены текста*/
-	setArticlePrice($_POST['text'], 'pricepost', $_POST['id'], 'upd');//полная стоимость статьи
+	//setArticlePrice($_POST['text'], 'pricepost', $_POST['id'], 'upd');//полная стоимость статьи
 	
 	try
 	{
-		$sql = 'UPDATE posts SET 
+		$sql = 'UPDATE video SET 
 					post = :post,
-					posttitle = :posttitle,
+					videotitle = :videotitle,
 					description = :description,
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
 					imghead = :imghead,
-					idcategory = :idcategory,
-					lengthtext = :lengthtext, 
-					pricetext = :fullprice
-				WHERE id = :idpost';
+					idcategory = :idcategory
+				WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> bindValue(':post', viewVideoInArticle($_POST['text']));//отправка значения
-		$s -> bindValue(':posttitle', $_POST['posttitle']);//отправка значения
+		$s -> bindValue(':videotitle', $_POST['videotitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
-		$s -> bindValue(':lengthtext', $lengthText);//отправка значения
-		$s -> bindValue(':fullprice', $fullPrice);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации post'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации video';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
 	{
-		$sql = 'DELETE FROM metapost WHERE idpost = :idpost';
+		$sql = 'DELETE FROM metapost WHERE idvideo = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	if (isset ($_POST['metas']))
@@ -485,26 +475,24 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		try
 		{
 			$sql = 'INSERT INTO metapost SET 
-				idpost = :idpost, 
+				idvideo = :idvideo, 
 				idmeta = :idmeta,
 				idnews = 0,
+				idpost = 0,
 				idpromotion = 0';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 
 			foreach	($_POST['metas'] as $idmetas)
 			{		
-				$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+				$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 				$s -> bindValue(':idmeta', $idmetas);//отправка значения
 				$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 			}
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка обновления информации metapost'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка обновления информации metapost';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 	
@@ -514,22 +502,19 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		/*Вернуть материал в премодерацию*/
 		try
 		{
-			$sql = 'UPDATE posts SET 
+			$sql = 'UPDATE video SET 
 					refused = "NO",
 					draft = "YES" 
-					WHERE id = :idpost';
+					WHERE id = :idvideo';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+			$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка отклонения публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка отклонения публикации';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 	
@@ -537,11 +522,11 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 /*Предварительенй просмотр*/
 	
-	preview('posts', $idpost_ind);
+	preview('video', $idpost_ind);
 	
 	/*Вывод тематик(тегов)*/
 	
-	$metas = previewMetas('posts', 'idpost', $idpost_ind);
+	$metas = previewMetas('video', 'idvideo', $idpost_ind);
 	
 	include 'premodsucc.html.php';
 	exit();
@@ -557,19 +542,16 @@ if (isset ($_POST['action']) && $_POST['action'] == 'ОПУБЛИКОВАТЬ')
 	/*Отправка материала в премодерацию*/
 	try
 	{
-		$sql = 'SELECT posttitle, pricetext FROM posts WHERE id = :idpost';
+		$sql = 'SELECT posttitle FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка публикации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	$row = $s -> fetch();
@@ -579,8 +561,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'ОПУБЛИКОВАТЬ')
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'topremod';
-	$posttitle = $row['posttitle'];
-	$price = $row['pricetext'];
+	$posttitle = $row['videotitle'];	
 	$id = $_POST['id'];
 	$button = 'Опубликовать';
 
@@ -597,25 +578,22 @@ if (isset ($_GET['topremod']))
 	/*Отправка материала в премодерацию*/
 	try
 	{
-		$sql = 'UPDATE posts SET draft = "NO" WHERE id = :idpost';
+		$sql = 'UPDATE video SET draft = "NO" WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка публикации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Отправка сообщений (тест)*/
 	
-	$titleMessage = 'Ваш материал "'. $_POST['posttitle'].'" находится в премодерации.';
-	$mailMessage = 'Вами был отправлен в премодерацию материал "'. $_POST['posttitle'].'". После успешной проверки Вам будет начислен '.$_POST['price'].' балл';
+	$titleMessage = 'Ваш материал "'. $_POST['videotitle'].'" находится в премодерации.';
+	$mailMessage = 'Вами был отправлен в премодерацию материал "'. $_POST['videotitle'].'". После успешной проверки Вам будет начислен балл';
 
 	toEmail_1($titleMessage, $mailMessage);//отправка письма
 
@@ -633,29 +611,26 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, posttitle, imghead FROM posts WHERE id = :idpost';
+		$sql = 'SELECT id, videotitle, imghead FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора данных video';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
 	
-	$title = 'Удаление статьи';//Данные тега <title>
-	$headMain = 'Удаление статьи';
+	$title = 'Удаление видео';//Данные тега <title>
+	$headMain = 'Удаление видео';
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'delete';
-	$posttitle = $row['posttitle'];
+	$posttitle = $row['videotitle'];
 	$id = $row['id'];
 	$button = 'Удалить';
 	
@@ -678,66 +653,54 @@ if (isset ($_GET['delete']))
 	
 	try
 	{
-		$sql = 'DELETE FROM comments WHERE idpost = :idpost';
+		$sql = 'DELETE FROM comments WHERE idvideo = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации video comments';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	try
 	{
-		$sql = 'DELETE FROM metapost WHERE idpost = :idpost';
+		$sql = 'DELETE FROM metapost WHERE idvideo = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации video meta';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
 	{
-		$sql = 'DELETE FROM votedauthor WHERE idpost = :idpost';
+		$sql = 'DELETE FROM votedauthor WHERE idvideo = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации video voted';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
 	{
-		$sql = 'DELETE FROM posts WHERE id = :idpost';
+		$sql = 'DELETE FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации video';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 
