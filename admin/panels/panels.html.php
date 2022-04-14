@@ -28,6 +28,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
             <?php echo $viewTimer; ?> 
         <?php endif;?>
     <?php elseif (userRole('Администратор')):?>
+        <a href="//<?php echo MAIN_URL;?>/admin/addupdvideo/?add"><button class="btn_2">Добавить видео</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/addupdpost/?add"><button class="btn_2">Добавить статью</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/addupdnews/?add"><button class="btn_2">Добавить новость</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/addtask/?add"><button class="btn_2">Добавить задание</button></a>
