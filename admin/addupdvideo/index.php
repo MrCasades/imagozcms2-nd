@@ -176,12 +176,18 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 {
 	$fileNameScript = 'img-'. time();//имя файла новости/статьи
 	$filePathScript = '/images/';//папка с изображениями для новости/статьи
+
+	$fileNameVideoScript = 'video-'. time().rand(11, 99);//имя файла новости/статьи
+	$filePathVideoScript = '/videofiles/';//папка с изображениями для новости/статьи
 	
 	/*Загрузка функций для формы входа*/
 	require_once MAIN_FILE . '/includes/access.inc.php';
 	
 	/*Загрузка скрипта добавления файла*/
 	include MAIN_FILE . '/includes/uploadfile.inc.php';
+
+	/*Загрузка скрипта добавления видео*/
+	include MAIN_FILE . '/includes/uploadvideo.inc.php';
 		
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -190,7 +196,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 	
-	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['posttitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['videotitle'] == ''))
 	{
 		$title = 'Добавить новое видео';//Данные тега <title>
 		$headMain = 'Добавить новое видео';

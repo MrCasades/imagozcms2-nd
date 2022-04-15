@@ -25,7 +25,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<hr/>
 	<div>
 		<h3>Введите заголовок <span style = "color: red"> *</span> </h3>
-		<textarea id = "posttitle" name = "posttitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($posttitle);?></textarea>
+		<textarea id = "videotitle" name = "videotitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($posttitle);?></textarea>
 		<p><span id="counttitlelen">0</span> / 200	</p>
 	</div>
 	<hr/>	
@@ -97,6 +97,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "file" name = "upload" id = "upload">
 		<input type = "hidden" name = "action" value = "upload">
 	</div>
+	<hr/>	
+	<hr/>
+	<div>
+	    <h3>Выберете файл видео</h3>
+		<input type = "file" name = "uploadvideo" id = "uploadvideo">
+		<input type = "hidden" name = "action" value = "uploadvideo">
+	</div>
 	<hr/>		
 	<div>
 		<h3>Краткое описание</h3>
@@ -115,7 +122,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	 <?php $txtPlaceStyle = userRole('Администратор') ? 'mark-textarea-adm' : 'mark-textarea';?>
 	 <div class="txt-area-block fixed-txt-area">
-		<h3>Введите текст статьи <span style = "color: red"> *</span></h3>
+		<h3>Введите текст описания видео <span style = "color: red"> *</span></h3>
 		<textarea class = "<?php htmlecho($txtPlaceStyle); ?>" id = "text" name = "text" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	

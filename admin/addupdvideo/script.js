@@ -29,7 +29,7 @@ if (confirmDel)
 
 //Проверка заполнения обязательных полей
 
-const title = document.getElementById('posttitle')
+const title = document.getElementById('videotitle')
 const category = document.getElementById('category')
 const text = document.getElementById('text')
 
