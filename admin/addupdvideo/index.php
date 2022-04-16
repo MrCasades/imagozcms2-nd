@@ -341,7 +341,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
-		$s -> bindValue(':videofile', $VideoFileName);//отправка значения
+		$s -> bindValue(':videofile', $fileNameVideoScript);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения	
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения

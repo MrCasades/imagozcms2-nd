@@ -4,28 +4,28 @@
 	
 	/*Извлечение расширения файла*/
 	
-// if (preg_match ('/^image\/p?jpeg$/i', $_FILES['upload']['type']))
-// {
-// 	$ext = '.jpg';
-// }
+if (preg_match ("/\.(mp4|MP4)$/", $_FILES['upload']['type']))
+{
+	$ext = '.mp4';
+}
 	
-// elseif (preg_match ('/^image\/p?gif$/i', $_FILES['upload']['type']))
-// {
-// 	$ext = '.gif';
-// }
+elseif (preg_match ('/^video\/p?webm$/i', $_FILES['upload']['type']))
+{
+	$ext = '.webm';
+}
 	
-// elseif (preg_match ('/^image\/p?png$/i', $_FILES['upload']['type']))
-// {
-// 	$ext = '.png';
-// }
+elseif (preg_match ('/^video\/p?ogv$/i', $_FILES['upload']['type']))
+{
+	$ext = '.ogv';
+}
 	
-// else	
-// {
-// 	$ext = '.unk';
-// }
+else	
+{
+	$ext = '.unk';
+}
 		
-$VideoFileName = $fileNameVideoScript;//присвоение имени файла
-$videoFilePath = MAIN_FILE . $filePathVideoScript . $fileName;//путь загрузки
+$VideoFileName = $fileNameVideoScript.$ext;//присвоение имени файла
+$videoFilePath = MAIN_FILE . $filePathVideoScript . $VideoFileName;//путь загрузки
 		
 if (!is_uploaded_file($_FILES['uploadvideo']['tmp_name']) or !copy($_FILES['uploadvideo']['tmp_name'], $videoFilePath))
 {
