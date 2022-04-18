@@ -805,6 +805,15 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 		$forDelUpd = 'addupdpromotion';
 	}
 
+	elseif ($type == 'video')
+	{
+		$select = 'SELECT video.id AS articleid, author.id AS idauthor, post AS articledata, videotitle AS title, imghead, imgalt, videoyoutube, videofile, videodate AS articledate, authorname, category.id AS categoryid, categoryname FROM video 
+			   INNER JOIN author ON idauthor = author.id 
+			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND video.id = ';
+
+		$forDelUpd = 'addupdvideo';
+	}
+
 	include MAIN_FILE . '/includes/db.inc.php';
  
 	try
@@ -832,6 +841,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 	$GLOBALS['categoryName'] = $row['categoryname'];
 	$GLOBALS['categoryId'] = $row['categoryid'];
 	$GLOBALS['posttitle'] = $row['title'];
+	$GLOBALS['videoFile'] = (isset($row['videofile'])) && ($row['videofile'] != '') ? $row['videofile'] : '';
 
 
 	/*Вывод видео в статью*/
