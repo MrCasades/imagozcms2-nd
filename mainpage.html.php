@@ -109,6 +109,34 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			
 			<?php endforeach; ?>
 		</div>
+
+		<div class = "main-headers">
+			<div class = "headers-places"> 
+				<a class = "main-headers-place" href="./viewallvideos/"><h3>Наше видео</h3></a>
+				<div class = "adpt-title main-headers-txtplace">Видео-обзоры, прохождения игр от нашей команды</div>
+			</div>
+			<div class = "main-headers-line"></div>
+		</div>
+
+		<div class = "main-post m-content">
+		<?php if (empty($videos))
+			{
+				echo '<p>Рекомендации отсутствуют</p>';
+			}
+			
+			else
+				
+			foreach ($videos as $video): ?>
+			<a href="./video/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $video['imghead']; ?>)">
+				<div class = "post-top-1">
+					<p><?php echo date("Y.m.d H:i", strtotime($video['videodate'])); ?></p>
+					<span class="post-rubrics"><?php htmlecho ($video['categoryname']); ?></span>
+				</div>
+				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...</div>
+			</a>
+			
+			<?php endforeach; ?>
+		</div>
 		
 		<div class = "main-headers">
 			<div class = "headers-places"> 
