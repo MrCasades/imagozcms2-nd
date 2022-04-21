@@ -44,13 +44,8 @@ if (userRole('Автор') || userRole('Администратор'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода новостей на главной странице ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода новостей в черновике';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -74,13 +69,8 @@ if (userRole('Автор') || userRole('Администратор'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода статей на главной странице ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода статей в черновике';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -104,13 +94,8 @@ if (userRole('Автор') || userRole('Администратор'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода статей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода промоушена в черновике';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -120,6 +105,33 @@ if (userRole('Автор') || userRole('Администратор'))
 								'promotiondate' =>  $row['promotiondate'], 'authorname' =>  $row['authorname'], 'www' =>  $row['www'],
 								'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 	}
+
+
+	/*Вывод видео*/
+	/*Команда SELECT*/
+
+	try
+	{
+		$sql = 'SELECT v.id, v.videotitle, v.videodate, v.imghead, c.categoryname
+				FROM video v 
+				INNER JOIN category c ON v.idcategory = c.id  
+				WHERE premoderation = "NO" AND draft = "YES" AND idauthor = '.$selectedAuthor.' LIMIT 10';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода видео на главной странице';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$videos[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'videodate' =>  $row['videodate'], 'categoryname' =>  $row['categoryname'],
+							'imghead' =>  $row['imghead']);
+	}
+
 	
 	if (!isset($newsIn) && !isset($posts) && !isset($promotions))
 	{
@@ -164,13 +176,8 @@ if (userRole('Рекламодатель'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода статей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода промоушена в черновике';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/

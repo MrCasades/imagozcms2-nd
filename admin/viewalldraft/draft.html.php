@@ -92,6 +92,33 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			
 		<?php endforeach; ?>			
 </div>
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace">Видео</div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class = "main-post m-content">
+		<?php if (empty($videos))
+		{
+			echo '<p>Статьи отсутствуют</p>';
+		}
+				
+		else
+					
+		foreach ($videos as $video): ?>
+		<a href="./viewdraftvideo/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-2" style="background-image: url(../../images/<?php echo $video['imghead']; ?>)">
+			<div class = "post-top-1">
+				<p><?php echo date("Y.m.d H:i", strtotime($video['videodate'])); ?></p>
+				<span class="post-rubrics"><?php htmlecho ($video['categoryname']); ?></span>
+			</div>
+			<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...</div>
+		</a>
+			
+		<?php endforeach; ?>			
+</div>
 	
 <?php 
 /*Загрузка footer*/
