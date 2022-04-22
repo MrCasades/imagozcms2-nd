@@ -18,7 +18,7 @@ if (isset ($_GET['id']))
 {
 	$idVideo = $_GET['id'];
 	
-	$select = 'SELECT video.id AS videoid, author.id AS idauthor, post, videotitle, imghead, imgalt, videoyoutube, videofile, videodate, authorname, category.id AS categoryid, categoryname FROM video 
+	$select = 'SELECT video.id AS videoid, author.id AS idauthor, post, videotitle, description, imghead, imgalt, videoyoutube, videofile, videodate, authorname, category.id AS categoryid, categoryname FROM video 
 				INNER JOIN author ON idauthor = author.id 
 				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND video.id = ';
 	

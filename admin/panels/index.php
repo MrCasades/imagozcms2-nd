@@ -51,13 +51,8 @@ if (userRole('Администратор'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта новостей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка подсчёта сообщений';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -92,6 +87,14 @@ if (userRole('Администратор'))
 		$row = $s -> fetch();
 		
 		$premodPromotion = $row['mypremodpromotion'];//новости в премодерации
+
+		$sql = "SELECT count(*) AS mypremodvideo FROM video WHERE premoderation = 'NO' AND refused = 'NO' AND draft = 'NO'";
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		
+		$row = $s -> fetch();
+		
+		$premodVideo = $row['mypremodvideo'];//новости в премодерации
 		
 		$sql = "SELECT count(*) AS payments FROM payments WHERE paymentstatus = 'NO'";
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
@@ -107,14 +110,9 @@ if (userRole('Администратор'))
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-		
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка подсчёта материалов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$allDraft = '';
@@ -140,13 +138,8 @@ elseif (userRole('Автор'))
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации о задании: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора времени публикации для суперавтора';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 			
 		$row = $s -> fetch();
@@ -190,13 +183,8 @@ elseif (userRole('Автор'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта новостей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка подсчёта заданий';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -231,13 +219,8 @@ elseif (userRole('Автор'))
 	{
 		$pdo->rollBack();//отмена транзакции
 		
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка подсчёта материалов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Подсчёт количества материалов в черновике*/
@@ -266,14 +249,9 @@ elseif (userRole('Автор'))
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-		
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка подсчёта материалов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	$allDraft = $newsDraft + $postsDraft;
@@ -305,14 +283,9 @@ elseif (userRole('Автор'))
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-		
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка подсчёта материалов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	$allRefusedMP = $refusedPosts + $refusedNews;//общее количество
@@ -339,13 +312,8 @@ elseif (userRole('Рекламодатель'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка подсчёта материалов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Подсчёт количества отклонённых материалов*/
@@ -358,13 +326,8 @@ elseif (userRole('Рекламодатель'))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка подсчёта материалов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	$row = $s -> fetch();

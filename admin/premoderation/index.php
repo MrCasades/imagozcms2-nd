@@ -42,13 +42,8 @@ if (isset ($_GET['news']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода новостей на главной странице ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода новостей в премодерации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -80,13 +75,8 @@ if (isset ($_GET['posts']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода статей на главной странице ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода статей в премодерации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -116,13 +106,8 @@ if (isset ($_GET['promotion']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода статей на главной странице ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода промоушена в премодерации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -133,5 +118,36 @@ if (isset ($_GET['promotion']))
 	}
 
 	include 'premoderationpromotion.html.php';
+	exit();
+}
+
+if (isset ($_GET['video']))
+{
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+	
+	/*Вывод стаей*/
+	/*Команда SELECT*/
+	try
+	{
+		$sql = 'SELECT video.id, videotitle, videodate, authorname, email FROM video INNER JOIN author 
+		ON idauthor = author.id WHERE premoderation = "NO" AND refused = "NO" AND draft = "NO" LIMIT 20';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода видео в премодерации';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$videos[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'videodate' =>  $row['videodate'], 
+							'authorname' =>  $row['authorname'], 'email' =>  $row['email']);
+	}
+
+	include 'premoderationvideo.html.php';
 	exit();
 }

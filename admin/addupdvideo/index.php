@@ -548,7 +548,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'ОПУБЛИКОВАТЬ')
 	/*Отправка материала в премодерацию*/
 	try
 	{
-		$sql = 'SELECT posttitle FROM video WHERE id = :idvideo';
+		$sql = 'SELECT videotitle FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
