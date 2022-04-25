@@ -56,7 +56,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Опубликовать')
 	$descr = '';
 	$action = 'premodyes';
 	$premodYes = 'Опубликовать материал ';
-	$posttitle = $row['promotiontitle'];
+	$posttitle = $row['videotitle'];
 	$id = $row['id'];
 	$button = 'Опубликовать';
 	

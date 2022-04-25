@@ -59,6 +59,10 @@ if (isset ($_GET['video']))
 	$videoFile = $row['videofile'];
 	$date = $row['videodate'];
 	$articleTitle = $row['videotitle'];
+	$nameAuthor = $row['authorname'];
+	$categoryName = $row['categoryname'];
+	$authorId = $row['idauthor'];
+	$categoryId = $row['categoryid'];
 	
 	$title = $row['videotitle'];//Данные тега <title>
 	$headMain = $row['videotitle'];	
