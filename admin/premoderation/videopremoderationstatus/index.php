@@ -131,7 +131,7 @@ if (isset ($_GET['premodyes']))
 			
 			/*Обновить статус оплаты во избежании повторной оплаты*/
 			$sql = 'UPDATE video SET paymentstatus = "YES",
-						   videodate = SYSDATE() WHERE id = :idvideon';
+						   videodate = SYSDATE() WHERE id = :idvideo';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL

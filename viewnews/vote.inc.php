@@ -11,7 +11,7 @@ if (isset($_GET['vote']))
 	$updateVoteCount = 'UPDATE newsblock SET votecount = votecount + 1 WHERE id = '.$_POST['id'];//обновление числа проголосовавших
 	$updateTotalNumber = 'UPDATE newsblock SET totalnumber = totalnumber + '.$vote.' WHERE id = '.$_POST['id'];//обновление общего числа
 	$updateAverageNumber = 'UPDATE newsblock SET averagenumber = totalnumber/votecount WHERE id = '.$_POST['id'];//обновление среднего значения в БД
-	$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idpost = 0, idnews = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
+	$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idpost = 0, idvideo = 0, idnews = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
 	$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 							
 	/*Подключение к базе данных*/

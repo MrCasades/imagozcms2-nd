@@ -39,6 +39,32 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	</div>
 
+    <div class = "main-headers">
+        <div class = "headers-places"> 
+            <a class = "main-headers-place" href="../viewallvideosincat/?id=<?php echo $idCategory;?>"><h3>Видео</h3></a>
+        </div>
+        <div class = "main-headers-line"></div>
+    </div>
+
+	<div class = "main-post m-content">
+	<?php if (empty($videos))
+		 {
+			 echo '<p align = "center">Статьи отсутствуют</p>';
+		 }
+		 
+		 else
+			 
+		 foreach ($videos as $video): ?>
+        <a href="../video/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $video['imghead']; ?>)">
+            <div class = "post-top-1">
+                <p><?php echo date("Y.m.d H:i", strtotime($video['videodate'])); ?></p>
+            </div>
+            <div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...</div>
+		</a>
+		
+		<?php endforeach; ?>
+    </div>
+
 	<div class = "main-headers">
         <div class = "headers-places"> 
             <a class = "main-headers-place" href="../viewallpromotionincat/?id=<?php echo $idCategory;?>"><h3>Промоушен</h3></a>

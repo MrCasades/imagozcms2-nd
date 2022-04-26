@@ -396,7 +396,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 				idpost = :idpost, 
 				idmeta = :idmeta,
 				idnews = 0,
-				idpromotion = 0';
+				idpromotion = 0,
+				idvideo = 0';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 
 			foreach	($_POST['metas'] as $idmetas)
@@ -528,7 +529,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 				idpost = :idpost, 
 				idmeta = :idmeta,
 				idnews = 0,
-				idpromotion = 0';
+				idpromotion = 0,
+				idvideo = 0';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 
 			foreach	($_POST['metas'] as $idmetas)

@@ -37,6 +37,12 @@ if (isset ($_GET['id']))
 			INNER JOIN author
 			ON idauthor = author.id 
 			WHERE premoderation = "YES" AND idcategory = ';
+	$selectVideo = 'SELECT video.id AS videoid, author.id AS authorid,  videotitle, videodate, imghead, imgalt, idauthor, idcategory, category.id AS categoryid, categoryname, authorname FROM video
+			INNER JOIN category
+			ON idcategory = category.id
+			INNER JOIN author
+			ON idauthor = author.id 
+			WHERE premoderation = "YES" AND idcategory = ';
 	$limitNews = ' LIMIT 9';
 	$limitPost = ' LIMIT 6';
 			
@@ -51,13 +57,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора новостей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора новостей';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -75,13 +76,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора статей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора статей';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -100,13 +96,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора статей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора промоушена';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -114,6 +105,26 @@ if (isset ($_GET['id']))
 	{
 		$promotions[] =  array ('id' => $row['promotionid'], 'idauthor' => $row['authorid'], 'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'promotiondate' => $row['promotiondate'],
 						'categoryname' => $row['categoryname'], 'authorname' => $row['authorname'],'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'], 'www' =>  $row['www'],
+						'categoryid' => $row['categoryid']);
+	}
+
+	try
+	{
+		$sql = $selectVideo.$idCategory. ' ORDER BY video.id DESC '. $limitPost;
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка выбора видео';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$videos[] =  array ('id' => $row['videoid'], 'idauthor' => $row['authorid'], 'videotitle' =>  $row['videotitle'], 'videodate' => $row['videodate'],
+						'categoryname' => $row['categoryname'], 'authorname' => $row['authorname'],'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
 						'categoryid' => $row['categoryid']);
 	}
 	
@@ -144,8 +155,6 @@ if (isset ($_GET['id']))
 		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	}
 
-	
-	
 	include 'categorypost.html.php';
 	exit();
 }
