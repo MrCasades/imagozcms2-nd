@@ -33,13 +33,8 @@ if (isset ($_GET['metaid']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора тегов новостей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора новостей';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -67,13 +62,8 @@ if (isset ($_GET['metaid']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = ' ';
-		$error = 'Error table in mainpage' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора промоушена';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -101,13 +91,8 @@ if (isset ($_GET['metaid']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = ' ';
-		$error = 'Error table in mainpage' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора статей';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -115,6 +100,35 @@ if (isset ($_GET['metaid']))
 	{
 		$metas_post[] =  array ('id' => $row['postid'], 'idauthor' => $row['authorid'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
 							'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'],
+							'metaname' => $row['metaname']);
+	}
+
+	try
+	{
+		$sql = 'SELECT v.id AS videoid, v.videotitle, a.id AS authorid, v.imghead, v.imgalt, v.videodate, a.authorname, c.id AS categoryid, c.categoryname, m.metaname FROM meta m
+				INNER JOIN metapost mp ON m.id = mp.idmeta
+				INNER JOIN video v ON v.id = mp.idvideo
+				INNER JOIN author a ON a.id = v.idauthor 
+				INNER JOIN category c ON v.idcategory = c.id 
+				WHERE v.premoderation = "YES" AND m.id = :id ORDER BY v.videodate DESC LIMIT 6';//Вверху самое последнее значение
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':id', $_GET['metaid']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL. Т. к. массив $forSearch хранит значение всех псевдопеременных 
+								  // не нужно указывать их по отдельности с помощью bindValue	
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка выбора видео';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($s as $row)
+	{
+		$metas_video[] =  array ('id' => $row['videoid'], 'idauthor' => $row['authorid'], 'videotitle' =>  $row['videotitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'videodate' =>  $row['videodate'], 'authorname' =>  $row['authorname'],
 							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'],
 							'metaname' => $row['metaname']);
 	}

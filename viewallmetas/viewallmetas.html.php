@@ -40,6 +40,33 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	</div>
 
+    <div class = "main-headers">
+        <div class = "headers-places"> 
+            <a class = "main-headers-place" href="../viewmetavideo/?metaid=<?php echo $idMeta; ?>"><h3>Видео</h3></a>
+        </div>
+        <div class = "main-headers-line"></div>
+    </div>
+
+	<div class = "main-post m-content">
+	<?php if (empty($metas_video))
+		 {
+			 echo '<p align = "center">Видео отсутствуют</p>';
+		 }
+		 
+		 else
+			 
+		 foreach ($metas_video as $meta_1): ?>
+        <a href="../video/?id=<?php htmlecho ($meta_1['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $meta_1['imghead']; ?>)">
+            <div class = "post-top-1">
+                <p><?php echo date("Y.m.d H:i", strtotime($meta_1['videodate'])); ?></p>
+				<span class="post-rubrics"><?php htmlecho ($meta_1['categoryname']); ?></span>
+            </div>
+            <div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($meta_1['videotitle'])), 0, 7)))); ?>...</div>
+		</a>
+		
+		<?php endforeach; ?>
+    </div>
+
 	<div class = "main-headers">
         <div class = "headers-places"> 
             <a class = "main-headers-place" href="../viewmetapromotion/?metaid=<?php echo $idMeta; ?>"><h3>Промоушен</h3></a>
