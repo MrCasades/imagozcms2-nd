@@ -403,9 +403,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
-		/*Загрузка функций*/
-		require_once MAIN_FILE . '/includes/func.inc.php';
-		
+	/*Загрузка функций*/
+	require_once MAIN_FILE . '/includes/func.inc.php';
+
 	if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
 	{
 		$fileName = $_SESSION['imghead'];
