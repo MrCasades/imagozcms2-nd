@@ -60,7 +60,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, post, videotitle, idauthor, imghead, imgalt, videoyoutube, videofile, description, idcategory FROM video WHERE id = :idvideo';
+		$sql = 'SELECT id, post, videotitle, idauthor, imghead, imgalt, videoyoutube, videofile, videofileext, description, idcategory FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -93,6 +93,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	@session_start();//Открытие сессии для сохранения названия файла изображения
 	
 	$_SESSION['imghead'] = $row['imghead'];
+	$_SESSION['videofile'] = $row['videofile'];
+	$_SESSION['videofileext'] = $row['videofileext'];
 	
 	
 	/*Выбор автора статьи*/
@@ -331,6 +333,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
 					videofile = :videofile,
+					videofileext = :videofileext,
 					imghead = :imghead,
 					idauthor = :idauthor,
 					idcategory = :idcategory,
@@ -342,6 +345,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':videofile', $fileNameVideoScript);//отправка значения
+		$s -> bindValue(':videofileext', $videoExt);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения	
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
@@ -399,6 +403,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
+		/*Загрузка функций*/
+		require_once MAIN_FILE . '/includes/func.inc.php';
+		
 	if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
 	{
 		$fileName = $_SESSION['imghead'];
@@ -417,11 +424,31 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		/*Загрузка скрипта добавления файла*/
 		include MAIN_FILE . '/includes/uploadfile.inc.php';
 	}
+
+	/*Удаление/сохранения названия видео */
+	if (!is_uploaded_file($_FILES['uploadvideo']['tmp_name'])) //если файл не загружен, оставить старое имя
+	{
+		$fileNameVideoScript = $_SESSION['videofile'];
+		$videoExt = $_SESSION['videofileext'];
+	}
+	
+	else
+	{
+		$fileNameVideo = $_SESSION['videofile'].'.'.$_SESSION['videofileext'];	
+		$delVideo = MAIN_FILE . '/videofiles/'.$fileNameVideo;//путь к файлу для удаления
+		unlink($delVideo);//удаление файла
+
+		$fileNameVideoScript = 'video-'. time().rand(11, 99);//имя файла новости/статьи
+		$filePathVideoScript = '/videofiles/';//папка с изображениями для новости/статьи
+		
+		/*Загрузка скрипта добавления файла*/
+		include MAIN_FILE . '/includes/uploadvideo.inc.php';
+	}
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['posttitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['videotitle'] == ''))
 	{
 		$title = 'В форме есть незаполненные поля!';//Данные тега <title>
 		$headMain = 'В форме есть незаполненные поля!';
@@ -443,6 +470,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 					description = :description,
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
+					videofile = :videofile,
 					imghead = :imghead,
 					idcategory = :idcategory
 				WHERE id = :idvideo';
@@ -454,6 +482,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
+		$s -> bindValue(':videofile', $fileNameVideoScript);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -617,7 +646,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, videotitle, imghead FROM video WHERE id = :idvideo';
+		$sql = 'SELECT id, videotitle, imghead, videofile, videofileext FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -643,6 +672,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	@session_start();//Открытие сессии для сохранения названия файла изображения
 	
 	$_SESSION['imghead'] = $row['imghead'];
+	$_SESSION['videofile'] = $row['videofile'];
+	$_SESSION['videofileext'] = $row['videofileext'];
 	
 	include 'delete.html.php';
 }
@@ -652,7 +683,12 @@ if (isset ($_GET['delete']))
 	/*Удаление изображения заголовка*/
 	$fileName = $_SESSION['imghead'];
 	$delFile = MAIN_FILE . '/images/'.$fileName;//путь к файлу для удаления
+	
+	$fileNameVideo = $_SESSION['videofile'].'.'.$_SESSION['videofileext'];	
+	$delVideo = MAIN_FILE . '/videofiles/'.$fileNameVideo;//путь к файлу для удаления
+
 	unlink($delFile);//удаление файла
+	unlink($delVideo);//удаление файла
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -700,7 +736,7 @@ if (isset ($_GET['delete']))
 	{
 		$sql = 'DELETE FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)

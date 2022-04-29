@@ -4,9 +4,9 @@
 	
 	/*Извлечение расширения файла*/
 	
-$ext = pathinfo($_FILES['uploadvideo']['name'], PATHINFO_EXTENSION);
+$videoExt = pathinfo($_FILES['uploadvideo']['name'], PATHINFO_EXTENSION);
 
-if($ext  == 'mp4')
+if($videoExt  == 'mp4' || $videoExt  == 'webm' || $videoExt  == 'ogv')
 {
 
 	// if (preg_match ('/^.*\.(mp4)$/i', $_FILES['uploadvideo']['type']))
@@ -29,7 +29,7 @@ if($ext  == 'mp4')
 	// 	$ext = '.unk';
 	// }
 			
-	$VideoFileName = $fileNameVideoScript.'.'.$ext;//присвоение имени файла
+	$VideoFileName = $fileNameVideoScript.'.'.$videoExt;//присвоение имени файла
 	$videoFilePath = MAIN_FILE . $filePathVideoScript . $VideoFileName;//путь загрузки
 			
 	if (!is_uploaded_file($_FILES['uploadvideo']['tmp_name']) or !copy($_FILES['uploadvideo']['tmp_name'], $videoFilePath))
