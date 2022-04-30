@@ -996,6 +996,32 @@ main .post-place-2:hover {
     font-size: 1.7rem;
 }
 
+main .post-place-video{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 1% 17px;
+    width: 44%;
+    height: 22rem;
+    color: white;
+    text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
+    border-radius: 10px;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;  
+}
+
+.post-place-video .post-bottom-video{
+    margin-top: 0.5rem;
+    font-size: 1.7rem;
+}
+
+main .post-place-video:hover {
+    cursor: pointer;
+    /* width: 23.5%;
+    height: 15.5rem; */
+    box-shadow: 0 0 7px;
+    border: 3px solid black;
+}
+
 main .shop-comp{
     display: flex;
     /* flex-direction: column; */
