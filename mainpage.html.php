@@ -127,6 +127,16 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			else
 				
 			foreach ($videos as $video): ?>
+			<a href="./video/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-2">
+				<video controls width="100%" height="100%" poster="./images/<?php echo $video['imghead']; ?>" preload="none">
+					<source src="./videofiles/<?php echo $videoFile; ?>.mp4" type="video/mp4">
+					<source src="./videofiles/<?php echo $videoFile; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+					<source src="./videofiles/<?php echo $videoFile; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+					<object data="./videofiles/<?php echo $videoFile; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+						<param name="movie" value="./videofiles/<?php echo $videoFile; ?>.swf">
+					</object>
+				</video>
+			</a>
 			<a href="./video/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $video['imghead']; ?>)">
 				<div class = "post-top-1">
 					<p><?php echo date("Y.m.d H:i", strtotime($video['videodate'])); ?></p>
