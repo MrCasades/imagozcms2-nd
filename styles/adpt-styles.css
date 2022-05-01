@@ -368,6 +368,11 @@
         width: 48%;
     }
 
+    main .post-place-video{
+        margin: 1% 5px;
+        width: 48%;
+    }
+
     main .shop-comp img{
         width: 11rem;
         height: 11rem;
@@ -530,6 +535,11 @@
     }
 
     main .post-place-2{
+        margin: 1% 5px;
+        width: 90%;
+    }
+
+    main .post-place-video{
         margin: 1% 5px;
         width: 90%;
     }

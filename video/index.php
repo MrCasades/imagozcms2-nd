@@ -268,7 +268,7 @@ if (isset ($_GET['id']))
 	
 	if ((isset($_SESSION['loggIn'])) && (userRole('Администратор')))
 	{
-		$delAndUpd = "<form action = '../admin/addupdpost/' method = 'post'>
+		$delAndUpd = "<form action = '../admin/addupdvideo/' method = 'post'>
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$idVideo."'>
