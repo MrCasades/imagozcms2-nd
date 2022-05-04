@@ -128,12 +128,12 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				
 			foreach ($videos as $video): ?>
 			<a href="./video/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-video">
-				<video controls width="100%" height="85%" poster="./images/<?php echo $video['imghead']; ?>" preload="none">
-					<source src="./videofiles/<?php echo $videoFile; ?>.mp4" type="video/mp4">
-					<source src="./videofiles/<?php echo $videoFile; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-					<source src="./videofiles/<?php echo $videoFile; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
-					<object data="./videofiles/<?php echo $videoFile; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
-						<param name="movie" value="./videofiles/<?php echo $videoFile; ?>.swf">
+				<video controls width="100%" height="85%" poster="./images/<?php echo $video['imghead']; ?>" preload="none" class="prev-video" muted="muted">
+					<source src="./videofiles/<?php echo $video['videofile']; ?>.mp4" type="video/mp4">
+					<source src="./videofiles/<?php echo $video['videofile']; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+					<source src="./videofiles/<?php echo $video['videofile']; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+					<object data="./videofiles/<?php echo $video['videofile']; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+						<param name="movie" value="./videofiles/<?php echo $video['videofile']; ?>.swf">
 					</object>
 									
 				</video>

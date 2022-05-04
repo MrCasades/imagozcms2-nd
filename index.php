@@ -78,7 +78,7 @@ foreach ($result as $row)
 
 try
 {
-	$sql = 'SELECT v.id, v.videotitle, v.videodate, v.imghead, c.categoryname
+	$sql = 'SELECT v.id, v.videotitle, v.videodate, v.imghead, v.videofile, c.categoryname
 			FROM video v 
 			INNER JOIN category c ON v.idcategory = c.id  
 			WHERE premoderation = "YES" ORDER BY videodate DESC LIMIT 6';//Вверху самое последнее значение
@@ -95,7 +95,7 @@ catch (PDOException $e)
 foreach ($result as $row)
 {
 	$videos[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'videodate' =>  $row['videodate'], 'categoryname' =>  $row['categoryname'],
-						'imghead' =>  $row['imghead']);
+						'imghead' =>  $row['imghead'], 'videofile' =>  $row['videofile']);
 }
 
 /*Вывод списка случайных тегов для новостей и статей*/

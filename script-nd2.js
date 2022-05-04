@@ -171,6 +171,14 @@ $(document).ready(function() {
     //         $(postsClass).fadeIn(1000);
     //     });
     // }
+
+    //Запуск превью видео при наведении курсора.
+    $(".prev-video").on("mouseover" , function(){
+        this.play();
+      });
+      $(".prev-video").on("mouseleave",  function(){
+        this.load()
+      })	
   });
 
   //Вывод 1-го изображения
