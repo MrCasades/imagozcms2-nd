@@ -177,7 +177,7 @@ $(document).ready(function() {
         this.play();
       });
       $(".prev-video").on("mouseleave",  function(){
-        this.load()
+        setTimeout(() => this.load(), 1000);
       })	
   });
 

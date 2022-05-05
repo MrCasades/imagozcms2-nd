@@ -31,7 +31,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						})(this, this.document, "yandexContextAsyncCallbacks");
 					</script>
 				</div>
-				<h2 class="video-header"><?php htmlecho ($headMain); ?></h2>	
+					
 				<div class="video-pl">
 					<video controls width="90%" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
 						<source src="../videofiles/<?php echo $videoFile; ?>.mp4" type="video/mp4">
@@ -42,7 +42,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						</object>
 					</video>
 				</div>	
-
+				<h2 class="video-header"><?php htmlecho ($headMain); ?></h2>
 				<div class ="article-info-video video-pl">
 					<p><?php echo $date;?> | Автор: <a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a> | Рубрика: <a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></p>
 					<p class="article-rating-video">
