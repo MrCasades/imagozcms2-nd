@@ -284,18 +284,21 @@ function addSubComment (res_form, ajax_form, url) {
 
 //Фиксация панели редактирования текста
 function fixTxtArea() {
-    const $cache = $('.trumbowyg-button-pane');
-    if ($(window).scrollTop() > $('.trumbowyg-box').position().top && !$('.trumbowyg-box').hasClass('trumbowyg-fullscreen') && $('.txt-area-block').hasClass('fixed-txt-area'))
-      $cache.css({
-        'position': 'fixed',
-        'top': '0px',
-        'width': '85%'
-      });
-    else
-      $cache.css({
-        'position': 'relative',
-        'width': '100%'
-      });
+    if ($('div').hasClass('trumbowyg-button-pane')){
+        const $cache = $('.trumbowyg-button-pane');
+        if ($(window).scrollTop() > $('.trumbowyg-box').position().top && !$('.trumbowyg-box').hasClass('trumbowyg-fullscreen') && $('.txt-area-block').hasClass('fixed-txt-area'))
+        $cache.css({
+            'position': 'fixed',
+            'top': '0px',
+            'width': '85%'
+        });
+        else
+        $cache.css({
+            'position': 'relative',
+            'width': '100%'
+        });
+    }
+    
   }
   $(window).scroll(fixTxtArea);
   fixTxtArea();
