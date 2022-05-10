@@ -78,9 +78,10 @@ foreach ($result as $row)
 
 try
 {
-	$sql = 'SELECT v.id, v.videotitle, v.videodate, v.imghead, v.videofile, c.categoryname
+	$sql = 'SELECT v.id, v.videotitle, v.videodate, v.imghead, v.videofile, v.viewcount, c.categoryname, a.id AS idauthor, a.authorname
 			FROM video v 
 			INNER JOIN category c ON v.idcategory = c.id  
+			INNER JOIN author a ON v.idauthor = a.id 
 			WHERE premoderation = "YES" ORDER BY videodate DESC LIMIT 6';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
@@ -94,8 +95,8 @@ catch (PDOException $e)
 /*Вывод результата в шаблон*/
 foreach ($result as $row)
 {
-	$videos[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'videodate' =>  $row['videodate'], 'categoryname' =>  $row['categoryname'],
-						'imghead' =>  $row['imghead'], 'videofile' =>  $row['videofile']);
+	$videos[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'videodate' =>  $row['videodate'], 'viewcount' =>  $row['viewcount'], 'categoryname' =>  $row['categoryname'],
+						'imghead' =>  $row['imghead'], 'videofile' =>  $row['videofile'], 'idauthor' =>  $row['idauthor'], 'authorname' =>  $row['authorname']);
 }
 
 /*Вывод списка случайных тегов для новостей и статей*/

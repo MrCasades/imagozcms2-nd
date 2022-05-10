@@ -1000,9 +1000,7 @@ main .post-place-video{
     font-family: Arial, Helvetica, sans-serif;
     margin: 1% 17px;
     width: 44%;
-    height: 24rem;
-    color: white;
-    text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
+    height: 24rem;   
     border-radius: 10px;
     text-decoration: none;
 }
@@ -1010,9 +1008,20 @@ main .post-place-video{
 .post-place-video .post-bottom-video{
     margin-left: 0.5rem;
     font-size: 1.5rem;
+    color: white;
+    text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
 }
 
-main .post-place-video:hover {
+.post-place-video .post-bottom-video-2{   
+    color: gray;   
+    font-weight: bold; 
+}
+
+.post-place-video .post-bottom-video-2 a{   
+    color: gray;   
+}
+
+main .post-place-video video:hover {
     cursor: pointer;
     /* width: 23.5%;
     height: 15.5rem; */
