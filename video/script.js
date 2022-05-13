@@ -78,6 +78,26 @@ $( document ).ready(function() {
 //Оценка статьи
 
 $( document ).ready(function() {
+
+	//Счётчик просмотров видео
+	const video = document.querySelector('video');
+
+	let isPlay = true;
+	console.log('1. Play ' + isPlay);
+
+	video.addEventListener('play', (event) => {
+		console.log('The Boolean paused property is now false. Either the ' +
+		'play() method was called or the autoplay attribute was toggled.');
+	
+		console.log('2. Play ' + isPlay);
+
+		if (isPlay){
+			isPlay = false;
+			console.log('3. Play ' + isPlay);
+		}
+	});
+
+	//Голосование за видео
 		$("#btn_vot_5").click(
 			function(event){
 				confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
