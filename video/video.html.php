@@ -7,6 +7,10 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 <article>
+	<form id="view_count_form">
+		<input id = "for_view_count" type="hidden" value="<?php htmlecho ($idVideo);?>">
+	</form>
+	<div id="view_cnt_error"></div>
 	<div class="article-row">
 		<div class="left-side">
 			<div class="m-content">

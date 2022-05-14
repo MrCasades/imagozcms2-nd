@@ -163,20 +163,20 @@ if (isset ($_GET['id']))
 	
 	/*Обновление значения счётчика*/
 	
-	$updateCount = 'UPDATE video SET viewcount = viewcount + 1 WHERE id = ';
+	// $updateCount = 'UPDATE video SET viewcount = viewcount + 1 WHERE id = ';
 	
-	try
-	{
-		$sql = $updateCount.$idVideo;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// try
+	// {
+	// 	$sql = $updateCount.$idVideo;
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 	
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка счётчика ';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка счётчика ';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
 	/*Вывод тематик(тегов)*/
 	

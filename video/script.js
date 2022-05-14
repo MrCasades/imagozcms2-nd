@@ -94,6 +94,19 @@ $( document ).ready(function() {
 		if (isPlay){
 			isPlay = false;
 			console.log('3. Play ' + isPlay);
+
+			$.ajax({
+				url:    'viewcount.inc.php?id=' + $("#for_view_count").attr('value'),
+				type:     "POST", //метод отправки
+				data: $("#view_count_form").serialize(),  // Сеарилизуем объект
+				success: function(response) { //Данные отправлены успешно
+					console.log('OK');
+				},
+				error: function(response) { // Данные не отправлены
+					$('#view_cnt_error').html('Ошибка. Данные не отправлены.');
+					console.log('no');
+				}
+			 });
 		}
 	});
 
