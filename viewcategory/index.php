@@ -37,7 +37,7 @@ if (isset ($_GET['id']))
 			INNER JOIN author
 			ON idauthor = author.id 
 			WHERE premoderation = "YES" AND idcategory = ';
-	$selectVideo = 'SELECT video.id AS videoid, author.id AS authorid,  videotitle, videodate, imghead, imgalt, idauthor, idcategory, category.id AS categoryid, categoryname, authorname FROM video
+	$selectVideo = 'SELECT video.id AS videoid, author.id AS authorid,  videotitle, videodate, imghead, imgalt, videofile, viewcount, idauthor, idcategory, category.id AS categoryid, categoryname, authorname FROM video
 			INNER JOIN category
 			ON idcategory = category.id
 			INNER JOIN author
@@ -124,7 +124,7 @@ if (isset ($_GET['id']))
 	foreach ($result as $row)
 	{
 		$videos[] =  array ('id' => $row['videoid'], 'idauthor' => $row['authorid'], 'videotitle' =>  $row['videotitle'], 'videodate' => $row['videodate'],
-						'categoryname' => $row['categoryname'], 'authorname' => $row['authorname'],'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+						'categoryname' => $row['categoryname'], 'authorname' => $row['authorname'],'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'], 'viewcount' =>  $row['viewcount'], 'videofile' =>  $row['videofile'],
 						'categoryid' => $row['categoryid']);
 	}
 	

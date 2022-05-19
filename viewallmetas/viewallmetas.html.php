@@ -56,14 +56,26 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 else
 			 
 		 foreach ($metas_video as $meta_1): ?>
-        <a href="../video/?id=<?php htmlecho ($meta_1['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $meta_1['imghead']; ?>)">
-            <div class = "post-top-1">
-                <p><?php echo date("Y.m.d H:i", strtotime($meta_1['videodate'])); ?></p>
-				<span class="post-rubrics"><?php htmlecho ($meta_1['categoryname']); ?></span>
-            </div>
-            <div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($meta_1['videotitle'])), 0, 7)))); ?>...</div>
-		</a>
-		
+            <div class = "post-place-video">
+				<a href="./video/?id=<?php htmlecho ($meta_1['id']); ?>">
+					<video controls width="100%" height="80%" poster="../images/<?php echo $meta_1['imghead']; ?>" preload="none" class="prev-video" muted="muted">
+						<source src="../videofiles/<?php echo $meta_1['videofile']; ?>.mp4" type="video/mp4">
+						<source src="../videofiles/<?php echo $meta_1['videofile']; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+						<source src="../videofiles/<?php echo $meta_1['videofile']; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+						<object data="../videofiles/<?php echo $meta_1['videofile']; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+							<param name="movie" value="../videofiles/<?php echo $meta_1['videofile']; ?>.swf">
+						</object>
+										
+					</video>
+					<div class = "post-bottom-video">
+						<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($meta_1['videotitle'])), 0, 7)))); ?>...			
+					</div>
+				</a>
+				<p class = "post-bottom-video-2">
+					<a href="../account/?id=<?php echo $meta_1['idauthor'];?>"><?php echo $meta_1['authorname'];?></a>
+					<br><?php echo date("Y.m.d", strtotime($meta_1['videodate'])); ?> | <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php echo $meta_1['viewcount']; ?>
+				</p>
+			</div>	
 		<?php endforeach; ?>
     </div>
 

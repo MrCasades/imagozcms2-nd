@@ -1583,6 +1583,7 @@ main .acc-info-pl{
 .video-pl{
     margin-left: 20%;
     max-width: 80%;
+    background: #ffff;
 }
 
 .video-pl video{
@@ -1592,6 +1593,7 @@ main .acc-info-pl{
 .like-place-video{
     margin-top: 1%;
     max-height: 25rem;
+    background: #ffff;
 }
 
 .like-place-video .btn_vot{

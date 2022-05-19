@@ -147,13 +147,6 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					<br><?php echo date("Y.m.d", strtotime($video['videodate'])); ?> | <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php echo $video['viewcount']; ?>
 				</p>
 			</div>
-			<!-- <a href="./video/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $video['imghead']; ?>)">
-				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($video['videodate'])); ?></p>
-					<span class="post-rubrics"><?php htmlecho ($video['categoryname']); ?></span>
-				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...</div>
-			</a> -->
 			
 			<?php endforeach; ?>
 		</div>

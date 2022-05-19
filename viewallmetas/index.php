@@ -106,7 +106,7 @@ if (isset ($_GET['metaid']))
 
 	try
 	{
-		$sql = 'SELECT v.id AS videoid, v.videotitle, a.id AS authorid, v.imghead, v.imgalt, v.videodate, a.authorname, c.id AS categoryid, c.categoryname, m.metaname FROM meta m
+		$sql = 'SELECT v.id AS videoid, v.videotitle, a.id AS authorid, v.imghead, v.imgalt, v.videodate, v.videofile, v.viewcount, a.authorname, c.id AS categoryid, c.categoryname, m.metaname FROM meta m
 				INNER JOIN metapost mp ON m.id = mp.idmeta
 				INNER JOIN video v ON v.id = mp.idvideo
 				INNER JOIN author a ON a.id = v.idauthor 
@@ -128,7 +128,7 @@ if (isset ($_GET['metaid']))
 	foreach ($s as $row)
 	{
 		$metas_video[] =  array ('id' => $row['videoid'], 'idauthor' => $row['authorid'], 'videotitle' =>  $row['videotitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'videodate' =>  $row['videodate'], 'authorname' =>  $row['authorname'],
+							'videodate' =>  $row['videodate'], 'authorname' =>  $row['authorname'], 'viewcount' =>  $row['viewcount'], 'videofile' =>  $row['videofile'],
 							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'],
 							'metaname' => $row['metaname']);
 	}

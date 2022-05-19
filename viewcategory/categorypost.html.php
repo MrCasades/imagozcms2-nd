@@ -55,12 +55,26 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 else
 			 
 		 foreach ($videos as $video): ?>
-        <a href="../video/?id=<?php htmlecho ($video['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $video['imghead']; ?>)">
-            <div class = "post-top-1">
-                <p><?php echo date("Y.m.d H:i", strtotime($video['videodate'])); ?></p>
-            </div>
-            <div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...</div>
-		</a>
+            <div class = "post-place-video">
+				<a href="../video/?id=<?php htmlecho ($video['id']); ?>">
+					<video controls width="100%" height="80%" poster="../images/<?php echo $video['imghead']; ?>" preload="none" class="prev-video" muted="muted">
+						<source src="../videofiles/<?php echo $video['videofile']; ?>.mp4" type="video/mp4">
+						<source src="../videofiles/<?php echo $video['videofile']; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+						<source src="../videofiles/<?php echo $video['videofile']; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+						<object data="../videofiles/<?php echo $video['videofile']; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+							<param name="movie" value="../videofiles/<?php echo $video['videofile']; ?>.swf">
+						</object>
+										
+					</video>
+					<div class = "post-bottom-video">
+						<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...			
+					</div>
+				</a>
+				<p class = "post-bottom-video-2">
+					<a href="../account/?id=<?php echo $video['idauthor'];?>"><?php echo $video['authorname'];?></a>
+					<br><?php echo date("Y.m.d", strtotime($video['videodate'])); ?> | <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php echo $video['viewcount']; ?>
+				</p>
+			</div>
 		
 		<?php endforeach; ?>
     </div>
