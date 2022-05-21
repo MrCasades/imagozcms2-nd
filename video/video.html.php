@@ -259,11 +259,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					// если текущая старница
 					if($i == $page)
 					{
-						echo "<a href='./viewpost/?id=".$idPost."&page=$i'><button class='btn_2'>$i</button></a> ";
+						echo "<a href='./viewpost/?id=".$idVideo."&page=$i'><button class='btn_2'>$i</button></a> ";
 					} 
 					else 
 					{
-						echo "<a href='./viewpost/?id=".$idPost."&page=$i'><button class='btn_1'>$i</button></a> ";
+						echo "<a href='./viewpost/?id=".$idVideo."&page=$i'><button class='btn_1'>$i</button></a> ";
 					}
 				}?>
 			</div>
@@ -275,7 +275,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 			<div class = "main-headers">
 				<div class = "headers-places"> 
-					<div class = "main-headers-txtplace">Случайные статьи рубрики</div>
+					<div class = "main-headers-txtplace">Случайные видео рубрики</div>
 				</div>
 				<div class = "main-headers-line"></div>
 			</div>

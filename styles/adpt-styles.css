@@ -122,6 +122,11 @@
         font-size: 1.3rem;
     }
 
+    main .post-place-video{
+        margin: 1% 30px;
+        width: 90%;
+    }
+
     main .shop-comp img{
         width: 15rem;
         height: 15rem;

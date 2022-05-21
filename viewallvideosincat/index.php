@@ -19,7 +19,7 @@ if (isset ($_GET['id']))
 {
 		
 	$idCategory = $_GET['id'];
-	$selectPost = 'SELECT v.id AS videoid, a.id AS authorid, videotitle, videodate, imghead, imgalt, idauthor, idcategory, c.id AS categoryid, categoryname, authorname FROM video v
+	$selectPost = 'SELECT v.id AS videoid, a.id AS authorid, videotitle, videodate, imghead, imgalt, videofile, viewcount, idauthor, idcategory, c.id AS categoryid, categoryname, authorname FROM video v
 			INNER JOIN category c
 			ON v.idcategory = c.id
 			INNER JOIN author a
@@ -52,7 +52,7 @@ if (isset ($_GET['id']))
 	foreach ($result as $row)
 	{
 		$videos[] =  array ('id' => $row['videoid'], 'idauthor' => $row['authorid'], 'videotitle' =>  $row['videotitle'], 'videodate' => $row['videodate'],
-						'categoryname' => $row['categoryname'], 'authorname' => $row['authorname'],'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+						'categoryname' => $row['categoryname'], 'authorname' => $row['authorname'],'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'], 'viewcount' =>  $row['viewcount'], 'videofile' =>  $row['videofile'],
 						'categoryid' => $row['categoryid']);
 	}	
 	
