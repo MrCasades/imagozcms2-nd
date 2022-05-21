@@ -432,6 +432,11 @@
     .comment-like{
         margin-left: 50%;
     }
+
+    .video-pl{
+        margin-left: 5%;
+        max-width: 95%;
+    }
     
 }
 

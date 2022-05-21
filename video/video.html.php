@@ -37,7 +37,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</div>
 					
 				<div class="video-pl">
-					<video controls width="90%" height="538" poster="../images/<?php echo $imgHead; ?>" preload="none">
+					<video controls width="90%" height="90%" poster="../images/<?php echo $imgHead; ?>" preload="none">
 						<source src="../videofiles/<?php echo $videoFile; ?>.mp4" type="video/mp4">
 						<source src="../videofiles/<?php echo $videoFile; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
 						<source src="../videofiles/<?php echo $videoFile; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
