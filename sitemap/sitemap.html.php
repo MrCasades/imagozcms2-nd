@@ -60,6 +60,30 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
     <div class = "headers-places"> 
+        <div class = "main-headers-txtplace">Промоушен</div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content">
+
+	<?php if (empty($promotionsSM))
+	{
+		echo '<p>Статьи отсутствуют</p>';
+	}
+		 
+	else
+			 
+	foreach ($promotionsSM as $promotion): ?> 
+		  
+	<div>
+		<a href="../viewpromotion/?id=<?php htmlecho ($promotion['id']); ?>"><?php htmlecho ($promotion['promotiontitle']); ?></a>  
+	</div>			
+	<?php endforeach; ?>
+</div>
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
         <div class = "main-headers-txtplace">Статьи</div>
     </div>
     <div class = "main-headers-line"></div>
@@ -78,6 +102,30 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  
 	<div>
 		<a href="../viewpost/?id=<?php htmlecho ($post['id']); ?>"><?php htmlecho ($post['posttitle']); ?></a>  
+	</div>			
+	<?php endforeach; ?>
+</div>
+
+<div class = "main-headers">
+    <div class = "headers-places"> 
+        <div class = "main-headers-txtplace">Видео</div>
+    </div>
+    <div class = "main-headers-line"></div>
+</div>
+
+<div class="m-content">
+
+	<?php if (empty($videossSM))
+	{
+		echo '<p>Видео отсутствуют</p>';
+	}
+		 
+	else
+			 
+	foreach ($videossSM as $videos): ?> 
+		  
+	<div>
+		<a href="../video/?id=<?php htmlecho ($videos['id']); ?>"><?php htmlecho ($videos['videotitle']); ?></a>  
 	</div>			
 	<?php endforeach; ?>
 </div>

@@ -3771,10 +3771,6 @@
 	  <lastmod>2019-09-02</lastmod>
 	  <priority>0.8</priority>
    </url><url>
-      <loc>https://localhost/imagozcms2-nd/viewpost/?id=18</loc>
-	  <lastmod>2019-08-27</lastmod>
-	  <priority>0.8</priority>
-   </url><url>
       <loc>https://localhost/imagozcms2-nd/viewpost/?id=17</loc>
 	  <lastmod>2019-08-25</lastmod>
 	  <priority>0.8</priority>
@@ -3841,6 +3837,42 @@
    </url><url>
       <loc>https://localhost/imagozcms2-nd/viewpost/?id=1</loc>
 	  <lastmod>2019-04-21</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=19</loc>
+	  <lastmod>2022-05-04</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=18</loc>
+	  <lastmod>2022-04-30</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=10</loc>
+	  <lastmod>2022-04-26</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=16</loc>
+	  <lastmod>2022-04-17</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=15</loc>
+	  <lastmod>2022-04-17</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=5</loc>
+	  <lastmod>2022-04-16</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=4</loc>
+	  <lastmod>2022-04-16</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=3</loc>
+	  <lastmod>2022-04-16</lastmod>
+	  <priority>0.8</priority>
+   </url><url>
+      <loc>https://localhost/imagozcms2-nd/video/?id=1</loc>
+	  <lastmod>2022-04-02</lastmod>
 	  <priority>0.8</priority>
    </url><url>
       <loc>https://localhost/imagozcms2-nd/viewpromotion/?id=14</loc>

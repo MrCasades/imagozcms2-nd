@@ -67,6 +67,26 @@ foreach ($result as $row)
 	$promotions[] =  array ('id' => $row['id'], 'promotiondate' => $row['promotiondate']);
 }
 
+/*Вывод видео*/
+/*Команда SELECT*/
+try
+{
+	$sql = 'SELECT id, videodate FROM video WHERE premoderation = "YES" ORDER BY videodate DESC';//Вверху самое последнее значение
+	$result = $pdo->query($sql);
+}
+
+catch (PDOException $e)
+{
+	$error = 'Ошибка вывода промоушена sitemap';
+	include MAIN_FILE . '/includes/error.inc.php';
+}
+
+/*Вывод результата в шаблон*/
+foreach ($result as $row)
+{
+	$videos[] =  array ('id' => $row['id'], 'videodate' => $row['videodate']);
+}
+
 /*Вывод аккаунтов*/
 /*Команда SELECT*/
 try

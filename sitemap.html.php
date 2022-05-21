@@ -41,6 +41,16 @@ $content = '<?xml version="1.0" encoding="UTF-8"?>
 
 <?php endforeach; ?>
 
+<?php foreach ($videos as $video): ?>
+
+<?php $content .= '<url>
+      <loc>https://'.MAIN_URL.'/video/?id='.$video['id'].'</loc>
+	  <lastmod>'.date("Y-m-d", strtotime($video['videodate'])).'</lastmod>
+	  <priority>0.8</priority>
+   </url>';?>
+
+<?php endforeach; ?>
+
 <?php foreach ($promotions as $promotion): ?>
 
 <?php $content .= '<url>
