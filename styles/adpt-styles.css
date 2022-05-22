@@ -433,6 +433,11 @@
         margin-left: 50%;
     }
 
+    /*Стили раздела видео*/
+    .video-header{
+        margin-left: 5%;
+    }
+
     .video-pl{
         margin-left: 5%;
         max-width: 95%;
