@@ -29,7 +29,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			 </div>
 			 <div class="task-txt">
 			 	<h5 class="for-info-txt"><?php htmlecho ($task['tasktitle']); ?></h5>
-				<p><?php echomarkdown (implode(' ', array_slice(explode(' ', strip_tags($task['text'])), 0, 50))); ?> [...]</p>
+				<p><?php echomarkdown_pub ($task['text']); ?> [...]</p>
 				<a href="../../admin/viewalltask/viewtask/?id=<?php htmlecho ($task['id']); ?>"><button class="btn_2">Далее</button></a>
 		 	 </div>
 		 </div>
