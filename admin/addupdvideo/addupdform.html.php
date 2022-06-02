@@ -28,6 +28,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<textarea id = "videotitle" name = "videotitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($posttitle);?></textarea>
 		<p><span id="counttitlelen">0</span> / 200	</p>
 	</div>
+	<div>
+		<h3>Краткое описание</h3>
+		<textarea id = "description" name = "description" rows = "3" cols = "40" placeholder = "Опишите в паре предложений суть материала"><?php htmlecho($description);?></textarea>	
+	</div>
 	<hr/>	
 	 <div>
 	 	<h3> Рубрика:<span style = "color: red"> *</span></h3>
@@ -105,10 +109,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "hidden" name = "action" value = "uploadvideo">
 	</div>
 	<hr/>		
-	<div>
-		<h3>Краткое описание</h3>
-		<textarea id = "description" name = "description" rows = "3" cols = "40" placeholder = "Опишите в паре предложений суть материала"><?php htmlecho($description);?></textarea>	
-	</div>
 		<h4><a href = "#" id="hide_show_hints">Подсказка по разметке текста</a></h4>
 		 <ul id="hint_list" style="display: none">
 		 	<li>Для вставки ссылки используйте кнопку <strong>Insert Link</strong></li>

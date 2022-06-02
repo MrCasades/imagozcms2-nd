@@ -18,7 +18,7 @@ confirm.addEventListener('click', (event) => {
             event.preventDefault()
             break 
         
-        case  payment.value < 30:   
+        case  payment.value < 100:   
             incorr.innerHTML = 'Минимум к выводу 30 руб.'
             event.preventDefault()
             break 

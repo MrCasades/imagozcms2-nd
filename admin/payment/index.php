@@ -253,7 +253,7 @@ if (isset($_GET['editpayment']))//Если есть переменная editpay
 	
 	$score = $row['score'];
 	
-	if (($_POST['payment'] <= $score) && ($_POST['payment'] > 0) && $_POST['payment'] >= 30)
+	if (($_POST['payment'] <= $score) && ($_POST['payment'] > 0) && $_POST['payment'] >= 100)
 	{
 	
 		try
