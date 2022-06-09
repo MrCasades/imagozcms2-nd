@@ -34,13 +34,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода аккаунта ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода аккаунта';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -79,13 +74,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода избраного ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода избраного';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -140,11 +130,8 @@ if (isset ($_GET['id']))
 
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации о счёте автора : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации о счёте автора';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -163,11 +150,8 @@ if (isset ($_GET['id']))
 
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации о счёте автора : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации о платёжной системе автора';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 		$row = $s -> fetch();
@@ -213,11 +197,8 @@ if (isset ($_GET['id']))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о роли автора : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации о роли автора';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	$row = $s -> fetch();
@@ -239,13 +220,8 @@ if (isset ($_GET['id']))
 	
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка вывода статей автора ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка вывода новостей автора';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		/*Вывод результата в шаблон*/
@@ -272,13 +248,8 @@ if (isset ($_GET['id']))
 	
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка вывода статей автора ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка вывода статей автора';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		/*Вывод результата в шаблон*/
@@ -316,13 +287,8 @@ if (isset ($_GET['id']))
 	
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка вывода ранга ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка вывода ранга';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 		// foreach ($result as $row)
@@ -413,14 +379,8 @@ if (isset ($_GET['id']))
 		
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка обновления информации news'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
-			
+			$error = 'Ошибка присвоения статуса';
+			include MAIN_FILE . '/includes/error.inc.php';		
 		}
 		
 		header ('Location: ../account/?id='.$idAuthor);//перенаправление обратно в контроллер index.php
@@ -443,14 +403,8 @@ if (isset ($_GET['id']))
 		
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка обновления информации news'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
-			
+			$error = 'Ошибка удаления статуса автора';
+			include MAIN_FILE . '/includes/error.inc.php';	
 		}
 		
 		header ('Location: ../account/?id='.$idAuthor);//перенаправление обратно в контроллер index.php
@@ -484,11 +438,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Стать рекламод
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации аккаунта : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации аккаунта';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 
 	$row = $s -> fetch();
@@ -512,11 +463,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Стать рекламод
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора цены промоушена : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора цены промоушена';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 	
 	$row = $s -> fetch();
@@ -558,14 +506,8 @@ if (isset ($_GET['addrole']))
 		
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка обновления информации news'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
-			
+			$error = 'Ошибка присвоения статуса';
+			include MAIN_FILE . '/includes/error.inc.php';	
 		}
 		
 		header ('Location: ../account/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
@@ -589,11 +531,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отказаться от �
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации аккаунта : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации аккаунта';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 
 	$row = $s -> fetch();
@@ -629,14 +568,8 @@ if (isset ($_GET['delrole']))
 		
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации news'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-			
+		$error = 'Ошибка удаления роли';
+		include MAIN_FILE . '/includes/error.inc.php';	
 	}
 		
 	header ('Location: ../account/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
