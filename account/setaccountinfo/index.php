@@ -32,11 +32,8 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить инфо�
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации аккаунта : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации аккаунта';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 
 	$row = $s -> fetch();
@@ -78,11 +75,8 @@ if (isset ($_GET['updacc']))
 	
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error Update: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации аккаунта';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: ..'.'/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php

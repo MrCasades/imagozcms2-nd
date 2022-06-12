@@ -61,13 +61,8 @@ if (loggedIn())
 	
 // 	catch (PDOException $e)
 // 	{
-// 		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-// 		$headMain = 'Ошибка данных!';
-// 		$robots = 'noindex, nofollow';
-// 		$descr = '';
-// 		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-// 		include 'error.html.php';
-// 		exit();
+// 		$error = 'Ошибка добавления информации';
+// 		include MAIN_FILE . '/includes/error.inc.php';
 // 	}
 	
 // 	header ('Location: ../../account/?id='.$_POST['idauthin']);//перенаправление обратно в контроллер index.php
@@ -91,13 +86,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error table in mainpage' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора записи';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();	
@@ -162,13 +152,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации comment'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации comment';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	header ('Location: ../../account/?id='.$_POST['idautin']);//перенаправление обратно в контроллер index.php
 	exit();
@@ -192,13 +177,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора id и заголовка newsblock : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора id и заголовка';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -238,13 +218,8 @@ if (isset ($_GET['delete']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления комментария';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Удаление ответов*/
@@ -258,13 +233,8 @@ if (isset ($_GET['delete']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления ответов '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления ответов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: ../../account/?id='.$_POST['idautin']);//перенаправление обратно в контроллер index.php
