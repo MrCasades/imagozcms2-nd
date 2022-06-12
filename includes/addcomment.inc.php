@@ -68,14 +68,9 @@ if (isset($_POST["idarticle"]))
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-		
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка добавления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Если конкурс включён, происходит изменение конкурсного счёта*/	
@@ -95,11 +90,8 @@ if (isset($_POST["idarticle"]))
 
 	catch (PDOException $e)
 	{
-	    $robots = 'noindex, nofollow';
-	    $descr = '';
-	    $error = 'Error select comment: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	    include 'error.html.php';
-	    exit();
+		$error = 'Ошибка выбора добавленного комментария';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();

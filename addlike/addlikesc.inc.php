@@ -28,13 +28,8 @@ else
 		
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	$row = $s -> fetch();
@@ -83,13 +78,8 @@ else
 		{
 			$pdo->rollBack();//отмена транзакции
 
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления лайка 1-1 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления лайка 1-1';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 
@@ -133,13 +123,8 @@ else
 		{
 			$pdo->rollBack();//отмена транзакции
 
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления лайка 2-1 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления лайка 2-1';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 	}
@@ -172,13 +157,8 @@ else
 		{
 			$pdo->rollBack();//отмена транзакции
 
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления лайка 3-1 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления лайка 3-1';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 
@@ -214,13 +194,8 @@ else
 		{
 			$pdo->rollBack();//отмена транзакции
 
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления лайка 1-2 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления лайка 1-2';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 
@@ -264,13 +239,8 @@ else
 		{
 			$pdo->rollBack();//отмена транзакции
 
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления лайка 2-2 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления лайка 2-2';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 	}
@@ -303,13 +273,8 @@ else
 		{
 			$pdo->rollBack();//отмена транзакции
 
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления лайка 3-2 '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления лайка 3-2';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 	}

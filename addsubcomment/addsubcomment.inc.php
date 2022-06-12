@@ -26,13 +26,8 @@ if (isset($_POST["idcomment"]))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Обновление счётчика ответов*/
@@ -48,13 +43,8 @@ if (isset($_POST["idcomment"]))
 		
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации comment'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации comment';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
     /*Команда SELECT*/
@@ -71,11 +61,8 @@ if (isset($_POST["idcomment"]))
 
 	catch (PDOException $e)
 	{
-	    $robots = 'noindex, nofollow';
-	    $descr = '';
-	    $error = 'Error select comment: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	    include 'error.html.php';
-	    exit();
+		$error = 'Ошибка выбора добавленного ответа';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();

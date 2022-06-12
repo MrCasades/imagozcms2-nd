@@ -163,7 +163,7 @@ $( document ).ready(function() {
 				$('.trumbowyg-editor').attr("placeholder", "Поле комментария не может быть пустым");
 				e.preventDefault();
 			} else {
-				addComment('result_form', 'addcomment', '../addcomment/addcomment.inc.php');
+				addComment('result_form', 'addcomment', '../includes/addcomment.inc.php');
 				return false; 
 			}		
 		}
