@@ -26,7 +26,7 @@
         //Добавить новый ответ динамически
         $('#add_subcomm_<?php echo $comment['id']; ?>').click(function(e) {  
             $.ajax({
-                url:     '../addsubcomment/addsubcomment.inc.php', //url страницы (action_ajax_form.php)
+                url:     '../includes/addsubcomment.inc.php', //url страницы (action_ajax_form.php)
                 type:     "POST", //метод отправки
                 dataType: "html", //формат данных
                 data: $("#subcomm_form_<?php echo $comment['id'];?>").serialize(),  // Сеарилизуем объект

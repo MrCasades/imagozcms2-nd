@@ -1,7 +1,7 @@
 <script>
     $(document).ready(function() {
 
-        const url = '//<?php echo MAIN_URL;?>/addlike/addlikesc.inc.php'
+        const url = '//<?php echo MAIN_URL;?>/includes/addlikesc.inc.php'
          
        //Добавить лайк / дизлайк для ответа
         
