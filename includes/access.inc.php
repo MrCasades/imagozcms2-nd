@@ -211,12 +211,43 @@ function toEmail_1($title, $message)
 	$email = $row['email'];
 	
 	$headers = 'Content-type: text/html; charset=utf-8' . "\r\n".
-			   'From: Материал в премодерации<admin@imagoz.ru>' . "\r\n" .
+			   'From: Информация о публикации<admin@imagoz.ru>' . "\r\n" .
     		   'Reply-To: admin@imagoz.ru' . "\r\n" .
     		   'X-Mailer: PHP/' . phpversion();
 	
 	mail($email, $title, $message.'<br>Письмо сформировано автоматически, отвечать на него не нужно!', $headers);//отправка письма
 }
+
+/*Отправка сообщений обратной связи*/
+function toEmail_2($title, $message, $idAuthor)
+{
+	/*Подключение к базе данных*/
+	include 'db.inc.php';
+	
+	/*Возврат email автора*/
+	try
+	{
+		$s = $pdo -> query ('SELECT email FROM author WHERE id = '.$idAuthor);
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка выбора email: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
+	}
+	
+	$row = $s -> fetch();
+	
+	$email = $row['email'];
+	
+	$headers = 'Content-type: text/html; charset=utf-8' . "\r\n".
+			   'From: Информация о публикации<admin@imagoz.ru>' . "\r\n" .
+    		   'Reply-To: admin@imagoz.ru' . "\r\n" .
+    		   'X-Mailer: PHP/' . phpversion();
+	
+	mail($email, $title, $message.'<br>Письмо сформировано автоматически, отвечать на него не нужно!', $headers);//отправка письма
+}
+
 
 function accessForWritingArticles()
 {

@@ -254,7 +254,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, promotiontitle, imghead FROM promotion WHERE id = :idpromotion';
+		$sql = 'SELECT id, promotiontitle FROM promotion WHERE id = :idpromotion';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -345,12 +345,10 @@ if (isset ($_GET['refusedyes']))
 		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
-		$sql = 'UPDATE promotion SET refused = "YES" WHERE id = :idpromotion';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		
-		$sql = 'UPDATE promotion SET reasonrefusal = :reasonrefusal WHERE id = :idpromotion';
+		$sql = 'UPDATE promotion 
+				SET refused = "YES" 
+					,reasonrefusal = :reasonrefusal
+				WHERE id = :idpromotion';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
 		$s -> bindValue(':reasonrefusal', $_POST['reasonrefusal']);//отправка значения
@@ -368,6 +366,12 @@ if (isset ($_GET['refusedyes']))
 		include 'error.html.php';
 		exit();
 	}
+
+	$posttitle = $_POST['posttitle'];
+	$titleMessage = 'Ваш материал "'. $posttitle.'" отклонён.';
+	$mailMessage = 'Ваш материал "'. $posttitle.'" отклонён модератором по причине: <br>***'.$_POST['reasonrefusal'].'***';
+	
+	toEmail_2($titleMessage, $mailMessage, $idAuthor);//отправка письма
 		
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();

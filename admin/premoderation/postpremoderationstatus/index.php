@@ -451,7 +451,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, posttitle, imghead FROM posts WHERE id = :idpost';
+		$sql = 'SELECT id, posttitle, idauthor FROM posts WHERE id = :idpost';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -475,6 +475,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 	$action = 'refusedyes';
 	$premodYes = 'Отклонить материал ';
 	$posttitle = $row['posttitle'];
+	$idAuthor = $row['idauthor'];
 	$reasonrefusal = '';
 	$id = $row['id'];
 	$button = 'Отклонить';
@@ -491,31 +492,30 @@ if (isset ($_GET['refusedyes']))
 	
 	try
 	{
-		$pdo->beginTransaction();//инициация транзакции
-		
-		$sql = 'UPDATE posts SET refused = "YES" WHERE id = :idpost';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		
-		$sql = 'UPDATE posts SET reasonrefusal = :reasonrefusal WHERE id = :idpost';
+		$sql = 'UPDATE posts 
+				SET refused = "YES" 
+					,reasonrefusal = :reasonrefusal
+				WHERE id = :idpost';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
 		$s -> bindValue(':reasonrefusal', $_POST['reasonrefusal']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-				
-		$pdo->commit();//подтверждение транзакции	
 	}
 	catch (PDOException $e)
-	{
-		$pdo->rollBack();//отмена транзакции
-		
+	{		
 		$robots = 'noindex, nofollow';
 		$descr = '';
 		$error = 'Ошибка отклонения публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 		include 'error.html.php';
 		exit();
 	}
+
+	$posttitle = $_POST['posttitle'];
+	$titleMessage = 'Ваш материал "'. $posttitle.'" отклонён.';
+	$mailMessage = 'Ваш материал "'. $posttitle.'" отклонён модератором по причине: <br>***'.$_POST['reasonrefusal'].'***';
+	$idAuthor = $_POST['idauthor'];
+	
+	toEmail_2($titleMessage, $mailMessage, $idAuthor);//отправка письма
 		
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();

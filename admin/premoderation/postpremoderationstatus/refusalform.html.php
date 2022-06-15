@@ -19,6 +19,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<textarea class = "mark-textarea" id = "reasonrefusal" name = "reasonrefusal" rows="10"><?php htmlecho($reasonrefusal);?></textarea>	
 		<p>
 			<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
+			<input type = "hidden" name = "idauthor" value = "<?php htmlecho($idAuthor); ?>">
+			<input type = "hidden" name = "posttitle" value = "<?php htmlecho($posttitle); ?>">
 		  	<input type = "submit" name = "delete" class="btn_1 addit-btn" value = "<?php htmlecho($button); ?>">
 		  	<a href="#" onclick="history.back();"><button class="btn_2 addit-btn" type="button">Назад</button></a>
 		</p>

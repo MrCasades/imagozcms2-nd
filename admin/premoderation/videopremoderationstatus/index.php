@@ -233,7 +233,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, videotitle, imghead FROM video WHERE id = :idvideo';
+		$sql = 'SELECT id, videotitle, idauthor FROM video WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -254,6 +254,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 	$action = 'refusedyes';
 	$premodYes = 'Отклонить материал ';
 	$posttitle = $row['videotitle'];
+	$idAuthor = $row['idauthor'];
 	$reasonrefusal = '';
 	$id = $row['id'];
 	$button = 'Отклонить';
@@ -349,11 +350,11 @@ if (isset ($_GET['refusedyes']))
 	try
 	{
 		$sql = 'UPDATE video 
-				SET refused = "YES",
-					reasonrefusal = :reasonrefusal
-				WHERE id = :idpromotion';
+				SET refused = "YES"
+					,reasonrefusal = :reasonrefusal
+				WHERE id = :idvideo';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idvideo', $_POST['id']);//отправка значения
 		$s -> bindValue(':reasonrefusal', $_POST['reasonrefusal']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -363,6 +364,12 @@ if (isset ($_GET['refusedyes']))
 		$error = 'Ошибка изменения статуса отказа';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
+
+	$posttitle = $_POST['posttitle'];
+	$titleMessage = 'Ваш материал "'. $posttitle.'" отклонён.';
+	$mailMessage = 'Ваш материал "'. $posttitle.'" отклонён модератором по причине: <br>***'.$_POST['reasonrefusal'].'***';
+	
+	toEmail_2($titleMessage, $mailMessage, $idAuthor);//отправка письма
 		
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();
