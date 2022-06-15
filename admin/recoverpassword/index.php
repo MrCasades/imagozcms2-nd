@@ -93,11 +93,12 @@ if (isset ($_GET['sendmessage']))
 	
 	$title ='Смена пароля для сайта imagoz.ru';
 	
-	$message = 'Для того, чтобы изменить пароль, перейдите по ссылке //'.MAIN_URL.'/admin/recoverpassword/?tikey='.$tiKey.' и в форме введите код '.$reKey.
-				'. Cсылка действительна 10 часов';
+	$message = '<p>Для того, чтобы изменить пароль, перейдите по ссылке <a href="//'.MAIN_URL.'/admin/recoverpassword/?tikey='.$tiKey.'">//'.MAIN_URL.'/admin/recoverpassword/?tikey='.$tiKey.'</a> и в форме введите код '.$reKey.
+				'. Cсылка действительна 10 часов. <br>Письмо сформировано автоматически, отвечать на него не нужно!</p>';
 	
-	$headers = 'From: imagozman@gmail.com' . "\r\n" .
-    		   'Reply-To: imagozman@gmail.com' . "\r\n" .
+	$headers = 'Content-type: text/html; charset=utf-8' . "\r\n".
+			   'From: Служба восстановления пароля <admin@imagoz.ru>' . "\r\n" .
+    		   'Reply-To: admin@imagoz.ru' . "\r\n" .
     		   'X-Mailer: PHP/' . phpversion();
 	
 	mail($email, $title, $message, $headers);//отправка письма

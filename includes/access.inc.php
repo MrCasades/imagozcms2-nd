@@ -210,11 +210,12 @@ function toEmail_1($title, $message)
 	
 	$email = $row['email'];
 	
-	$headers = 'From: imagozman@gmail.com' . "\r\n" .
-    		   'Reply-To: imagozman@gmail.com' . "\r\n" .
+	$headers = 'Content-type: text/html; charset=utf-8' . "\r\n".
+			   'From: Материал в премодерации<admin@imagoz.ru>' . "\r\n" .
+    		   'Reply-To: admin@imagoz.ru' . "\r\n" .
     		   'X-Mailer: PHP/' . phpversion();
 	
-	mail($email, $title, $message, $headers);//отправка письма
+	mail($email, $title, $message.'<br>Письмо сформировано автоматически, отвечать на него не нужно!', $headers);//отправка письма
 }
 
 function accessForWritingArticles()
