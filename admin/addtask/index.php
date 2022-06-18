@@ -61,11 +61,8 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода tasktype '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода tasktype';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -80,11 +77,8 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода rang '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода rang';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -114,11 +108,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора задания: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора задания';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -145,11 +136,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода author '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода author';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -166,11 +154,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода tasktype '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода tasktype';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -185,11 +170,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода rang '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода rang';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -214,14 +196,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	if (($_POST['idtasktype'] == '') || ($_POST['description'] == '') || ($_POST['tasktitle'] == ''))
 	{
-		$title = 'В форме есть незаполненные поля!';//Данные тега <title>
-		$headMain = 'В форме есть незаполненные поля!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
 		$error = 'Введите недостающую информацию';
-		
-		include 'error.html.php';
-		exit();
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Подключение к базе данных*/
@@ -245,11 +221,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	
@@ -271,14 +244,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	if (($_POST['idtasktype'] == '') || ($_POST['description'] == '') || ($_POST['tasktitle'] == ''))
 	{
-		$title = 'В форме есть незаполненные поля!';//Данные тега <title>
-		$headMain = 'В форме есть незаполненные поля!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
 		$error = 'Введите недостающую информацию';
-		
-		include 'error.html.php';
-		exit();
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
@@ -299,11 +266,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации task'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации task';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
@@ -328,11 +292,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора id и заголовка task : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора id и заголовка task';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -363,11 +324,8 @@ if (isset ($_GET['delete']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации newsblock '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации task';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php

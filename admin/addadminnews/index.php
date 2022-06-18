@@ -68,11 +68,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора задания: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора сообщения обратной связи';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -120,13 +117,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$idpost_ind = $pdo->lastInsertId();//возврат последнего автоинкрементного ID
@@ -142,13 +134,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	}
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации news'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 		
 	header ('Location: //'.MAIN_URL.'/admin/adminmail/viewadminnews/');//перенаправление обратно в контроллер index.php
@@ -186,13 +173,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	}
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации adminmail'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации adminmail';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL.'/admin/adminmail/viewadminnews/');//перенаправление обратно в контроллер index.php
@@ -216,11 +198,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка удаления';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL.'/admin/adminmail/viewadminnews/');//перенаправление обратно в контроллер index.php
