@@ -67,11 +67,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора новости: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора новости';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -104,11 +101,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода author '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора автора';
+		include MAIN_FILE . '/includes/error.inc.php'; 
 	}
 	
 	foreach ($result as $row)
