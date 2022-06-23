@@ -15,7 +15,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class = "error-pl">
 	<p class = "for-info-txt">Материал сохранён в черновике! Если хотите отправить его сразу на проверку редактору, нажмите на кнопку ниже.</p>
 		
-	<p class = "for-info-txt">Число знаков в статье (без пробелов) <?php echo $lengthText;?> | Стоимость  <?php echo $fullPrice;?>, с учётом бонуса Х<?php echo $bonus;?></p>
+	<p class = "for-info-txt">Число знаков в статье (без пробелов) <?php echo $lengthText;?> | Стоимость  <?php echo $fullPrice.$bonusText;?></p>
 	<form action = "../../admin/addupdnews/" method = "post" id = "confirmok">
 		<input type = "hidden" name = "id" value = "<?php echo $idpost_ind; ?>">
 		<input type = "submit" name = "action" value = "ОПУБЛИКОВАТЬ" class= "btn_3">

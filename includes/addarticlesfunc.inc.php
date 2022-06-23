@@ -100,4 +100,7 @@ function setArticlePrice($text, $type, $id, $queryType) //Type = pricenews or pr
 	
 	$GLOBALS['lengthText'] = lengthText($text);//определение длины текста
 	$GLOBALS['fullPrice'] = priceText($text, $row['price'] + $catBonus, $row['bonus'], $catBonus);//полная стоимость статьи
+
+
+	$GLOBALS['bonusText'] = $row['bonus'] == 0 ? '.' : ', с учётом бонуса Х'.$row['bonus'];//Если есть бонус, то выводится информация о его наличие
 }
