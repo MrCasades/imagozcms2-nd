@@ -71,7 +71,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		foreach ($metas_1 as $meta): ?>
 		 <div>
 		  <label for = "meta<?php htmlecho ($meta['idmeta']);?>">
-		   <input type = "checkbox" name = "metas[]" id = "meta<?php htmlecho ($meta['idmeta']);?>"
+		   <input class = "all-tags" type = "checkbox" name = "metas[]" id = "meta<?php htmlecho ($meta['idmeta']);?>"
 		   value = "<?php htmlecho ($meta['idmeta']);?>"
 		   <?php if ($meta['selected'])
 		   {

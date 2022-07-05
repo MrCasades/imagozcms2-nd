@@ -149,17 +149,32 @@ $(document).ready(function() {
     })
 
     $("#tags_to_base").on('click',
-		function(e){
+        function(e){
+            const allTags = Array.from(document.querySelectorAll('.all-tags'), v=> v.getAttribute('title'));        
+
             if ($('#addtags_form').val() === ''){
-				$('#addtags_form').html('');
-				$('#addtags_form').attr("placeholder", "Введите значение!");
+                $('#addtags_form').html('');
+                $('#addtags_form').attr("placeholder", "Введите значение!");
                 console.log('kl!')
-				e.preventDefault();
-			} else {
-                sendAjaxForm('result_form', 'addtags_form', '../metalist/addtag.inc.php');               
-                return false; 
-            }		
-		}
+                e.preventDefault();
+            } else {
+                let inList = false;
+
+                for (let i = 0; i < allTags.length; i++) {                 
+                    if ($('#addtags_form').val() == allTags[i]){
+                        e.preventDefault();
+                        alert ('Тэг '+ $('#addtags_form').val() + ' уже есть в списке!');
+                        inList = true;                      
+                        break;                    
+                    } 
+                }
+                   
+                if (!inList){
+                    sendAjaxForm('result_form', 'addtags_form', '../metalist/addtag.inc.php');               
+                    return false;
+                }           
+            }                                                 		
+        }
 	);
 
     //hide show hints list
