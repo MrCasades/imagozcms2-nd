@@ -62,7 +62,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				}());
 			</script> 
 		</div>
-
+		
 		<div class = "main-headers">
 			<div class = "headers-places"> 
 				<a class = "main-headers-place" href="./viewallrecommpost/"><h3>Пользователи рекомендуют</h3></a>
@@ -89,6 +89,19 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</a>
 			
 			<?php endforeach; ?>
+		</div>
+
+		<div class = "main-headers">
+			<div class = "headers-places"> 
+				<div class = "main-headers-txtplace">Новости наших партнёров</div>
+			</div>
+			<div class = "main-headers-line"></div>
+		</div>
+
+		<div class="gallery-place">		
+			<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
+			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
+			<br>
 		</div>
 
 		<div class = "main-headers">
@@ -346,8 +359,8 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<a href="https://full-zen.imagoz.ru/" ><img src="./full-zen.jpg" alt="Каталог FULL-ZEN" title="Каталог FULL-ZEN"/></a>
 		</div> -->
 
-		<div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
-		<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
+		<!-- <div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
+		<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script> -->
 		
 		<div class="article-top">
 			<div class = "main-headers">

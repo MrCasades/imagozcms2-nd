@@ -228,14 +228,18 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					}
 				}?>
 			</div>
+			<div class="gallery-place">		
+				<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
+				<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
+			</div>
 		</div>
 		<div class="right-side">
 		<?php
 			/*Загрузка компонента последних новостей*/
 			include_once MAIN_FILE . '/newsblockinrightside/newsblockinrightside.inc.php';?>
 			
-			<div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
-			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
+			<!-- <div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
+			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script> -->
 
 			<div class = "main-headers">
 				<div class = "headers-places"> 
