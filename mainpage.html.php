@@ -41,28 +41,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<?php endforeach; ?>
 		</div>
 
-		<div class="m-content">
-		<!-- Yandex.RTB R-A-448222-13 -->
-		<div id="yandex_rtb_R-A-448222-13"></div>
-		<script type="text/javascript">
-			(function(w, d, n, s, t) {
-				w[n] = w[n] || [];
-				w[n].push(function() {
-					Ya.Context.AdvManager.render({
-						blockId: "R-A-448222-13",
-						renderTo: "yandex_rtb_R-A-448222-13",
-						async: true
-					});
-				});
-				t = d.getElementsByTagName("script")[0];
-				s = d.createElement("script");
-				s.type = "text/javascript";
-				s.src = "//an.yandex.ru/system/context.js";
-				s.async = true;
-				t.parentNode.insertBefore(s, t);
-			})(this, this.document, "yandexContextAsyncCallbacks");
-		</script>
-		</div>
+		<!-- <div class="m-content">
+				Место для рекламы
+		</div> -->
 
 		<div class = "main-headers">
 			<div class = "headers-places"> 
@@ -204,19 +185,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		</div>
 
-		<div class="m-content">
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- for_main_page_new -->
-		<ins class="adsbygoogle"
-			style="display:block"
-			data-ad-client="ca-pub-1348880364936413"
-			data-ad-slot="4608956908"
-			data-ad-format="auto"
-			data-full-width-responsive="true"></ins>
-		<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-		</div>
+		<!-- <div class="m-content">
+			Место для рекламы
+		</div> -->
 
 		<div class = "main-headers">
 			<div class = "headers-places"> 
@@ -246,28 +217,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<?php endforeach; ?>
 		</div>
 		
-		<div class="m-content">
-			<!-- Yandex.RTB R-A-448222-8 -->
-			<div id="yandex_rtb_R-A-448222-8"></div>
-			<script type="text/javascript">
-				(function(w, d, n, s, t) {
-					w[n] = w[n] || [];
-					w[n].push(function() {
-						Ya.Context.AdvManager.render({
-							blockId: "R-A-448222-8",
-							renderTo: "yandex_rtb_R-A-448222-8",
-							async: true
-						});
-					});
-					t = d.getElementsByTagName("script")[0];
-					s = d.createElement("script");
-					s.type = "text/javascript";
-					s.src = "//an.yandex.ru/system/context.js";
-					s.async = true;
-					t.parentNode.insertBefore(s, t);
-				})(this, this.document, "yandexContextAsyncCallbacks");
-			</script>
-		</div>
+		<!-- <div class="m-content">
+			Место для рекламы
+		</div> -->
 
 		<div class = "main-headers">
 			<div class = "headers-places"> 

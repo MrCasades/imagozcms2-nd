@@ -176,6 +176,17 @@ $(document).ready(function() {
             }                                                   		
         }
 	);
+
+    // $("#search_form").keyup(function(){
+    //     const allTags = Array.from(document.querySelectorAll('.all-tags'), v=> v.getAttribute('title'));
+    //     let searchText = $('#search_form').val();
+    //     for (let i = 0; i < allTags.length; i++) {                 
+    //             if (!searchText.includes (allTags[i])){
+    //                 allTags[i].style.display = "none"                            
+    //             } 
+    //         }
+    //     }
+    // )
     
     //hide show hints list
     $('#hide_show_hints').click(function(e) {

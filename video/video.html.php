@@ -13,28 +13,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div id="view_cnt_error"></div>
 	<div class="article-row">
 		<div class="left-side">
-			<div class="m-content">
-				<!-- Yandex.RTB R-A-448222-9 -->
-				<div id="yandex_rtb_R-A-448222-9"></div>
-					<script type="text/javascript">
-						(function(w, d, n, s, t) {
-								w[n] = w[n] || [];
-								w[n].push(function() {
-								Ya.Context.AdvManager.render({
-										blockId: "R-A-448222-9",
-										renderTo: "yandex_rtb_R-A-448222-9",
-										async: true
-									});
-									});
-								t = d.getElementsByTagName("script")[0];
-								s = d.createElement("script");
-								s.type = "text/javascript";
-								s.src = "//an.yandex.ru/system/context.js";
-								s.async = true;
-								t.parentNode.insertBefore(s, t);
-						})(this, this.document, "yandexContextAsyncCallbacks");
-					</script>
-				</div>
+			<!-- <div class="m-content">
+				Место для рекламы
+			</div> -->
 					
 				<div class="video-pl">
 					<video controls width="90%" height="90%" poster="../images/<?php echo $imgHead; ?>" preload="none">
@@ -99,19 +80,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<p><?php echo $premoderation; ?></p>
 				</div>
 
-			<div class="m-content">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- ForPosts -->
-				<ins class="adsbygoogle"
-					style="display:block"
-					data-ad-client="ca-pub-1348880364936413"
-					data-ad-slot="7237613613"
-					data-ad-format="auto"
-					data-full-width-responsive="true"></ins>
-				<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
+			<!-- <div class="m-content">
+				Место для рекламы
+			</div> -->
 
 			<div class = "main-headers">
 				<div class = "headers-places"> 

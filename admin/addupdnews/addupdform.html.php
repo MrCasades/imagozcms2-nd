@@ -55,6 +55,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</p>
 	 <div id="checked-tags"></div>
 	 <div id="checked-tags-add"></div><br>
+	 	<!-- <input type = "text" id = "search_form"><br> -->
 	 	<input type = "text" name = "tags" id = "addtags_form">
 		 <button id = "tags_to_base" class="btn_4">Добавить</button>
 	 <br><br>
