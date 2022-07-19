@@ -1,6 +1,6 @@
 .menu-container {
     width: 100%;
-    margin: 50px 5%;
+    margin: 50px 2%;
     /* background: #337AB7; */
     z-index: 90;
 }
@@ -10,7 +10,7 @@
     font-size: 38px;
     line-height: 38px;
     padding: 0;
-    color: #FFF;
+    color: #0F4780;
     float: right;
     position: relative;
     transform: translateY(-25%);
@@ -56,10 +56,10 @@
     text-decoration: none;
     padding: 20px 30px;
     display: block;
-    color: #FFF;
+    color: #0F4780;
     font-size: 1.5rem;
     line-height: 20px;
-    text-shadow: 1px 1px 2px black, 0 0 3px black;
+    /* text-shadow: 1px 1px 2px black, 0 0 3px black; */
     font-family: 'Roboto Condensed', sans-serif;
     transition: .2s ease-in-out;
 }
@@ -67,12 +67,13 @@
     display: none;
 }
 .menu > ul > li:hover {
-    background: #BFE2FF;
+    /* background: #BFE2FF; */
+    font-weight: bold;
 }
-.menu > ul > li:hover a {
-    color: #000;
+/* .menu > ul > li:hover a {
+    
     text-shadow: 1px 1px 2px white, 0 0 3px black;
-}
+} */
 .menu > ul > li > ul {
     display: none;
     width: 100%;
@@ -84,6 +85,8 @@
     margin: 0;
     list-style: none;
     box-sizing: border-box;
+    border-radius: 5%;
+    font-weight: normal;
 }
 .menu > ul > li > ul:before,
 .menu > ul > li > ul:after {
@@ -153,7 +156,7 @@
 
 @media only screen and (max-width: 1200px) {
     .menu-container {
-        width: 100%;
+        width: 90%;
         margin: 20px 0;
         /* background: #337AB7; */
     }

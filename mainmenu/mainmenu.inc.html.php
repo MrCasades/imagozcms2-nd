@@ -24,13 +24,8 @@
                     <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallpromotion/">Промоушен</a></li>
                     <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallrecommpost/">Рекомендации</a></li>
                 </ul>        
-            </li>
-            <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/searchpost/">Поиск</a></li>
-            <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/adminmail/?addmessage#bottom"><i class="fa fa-envelope" aria-hidden="true"></i> Обратная связь</a></li>
-
-            <?php if (!isset($_SESSION['loggIn'])):?>
-                <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-home" aria-hidden="true"></i> Авторизация</a></li>   
-            <?php endif;?>
+            </li>           
+            <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/adminmail/?addmessage#bottom"> Обратная связь</a></li>                                      
         </ul>
     </div>
 </div>

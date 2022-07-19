@@ -45,6 +45,9 @@ $(document).ready(function() {
     });
     $(".menu-mobile").click(function(e) {
         $(".menu > ul").toggleClass('show-on-mobile');
+        $(".login-logout-btn-pl").toggleClass('hidden');
+        $(".search-btn + a").toggleClass('hidden');
+        $(".header-line").toggleClass('hidden');
         e.preventDefault();
     });
 

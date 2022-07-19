@@ -34,6 +34,19 @@
         margin-top: 14%;
         margin-left: 14%;
     }
+
+    header .search-btn{
+        width: 25%;
+    }
+
+    header .header-social-net-pl{
+        width: 15%;
+        margin-right: 2%;
+    }
+    
+    header .login-logout-btn-pl{
+        width: 25%;
+    }
     
 }
 
@@ -107,6 +120,14 @@
     header nav a{ 
         height: 2rem;
         font-size: 1.2rem;
+    }
+
+    header .search-btn{
+        width: 35%;
+    }
+
+    header .login-logout-btn-pl{
+        width: 45%;
     }
 
     header .authorization-form{
@@ -311,17 +332,31 @@
     }
 
     header{
-        height: 7rem;
+        height: 5rem;
     }
 
     header a img{
-        width: 100px;
-        height: 100px;
+        margin-left: 25px;
+        margin-top: 5px;
+        height: 80px;
+    }
+
+    header .login-logout-btn-pl a{
+        margin-top: 15px;
+    }
+    
+    header .search-btn{
+        margin-top: 15px;
+        width: 30%;
     }
 
     main .post-place-1{
         margin: 1% 5px;
         width: 30%;
+    }
+
+    header .header-social-net-pl{
+        display: none;
     }
 
     /*Grid Главной страницы и переопределение некоторых стилей*/
@@ -533,6 +568,25 @@
 
     header .authorization-form{
         margin-left: 35%;
+    }
+
+    header{
+        height: 5rem;
+    }
+
+    header a img{
+        margin-left: 5px;
+        margin-top: 5px;
+        height: 60px;
+    }
+
+    header .login-logout-btn-pl a{
+        margin-top: 10px;
+    }
+    
+    header .search-btn{
+        margin-top: 10px;
+        width: 35%;
     }
 
     main .post-place-1{

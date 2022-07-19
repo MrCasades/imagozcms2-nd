@@ -74,11 +74,22 @@
 <html>
 <body>
     <header>
-        <a href = "<?php echo '//'.MAIN_URL;?>"><img src="<?php echo '//'.MAIN_URL.'/logomain.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении"/></a>
-		<?php 
-			/*Загрузка главного меню*/
-			include_once MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
-		
+		<div class = "header-logo-pl">
+			<a href = "<?php echo '//'.MAIN_URL;?>"><img src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>
+			<?php 
+				/*Загрузка главного меню*/
+				include_once MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
+			<a class="search-btn" href="<?php echo '//'.MAIN_URL;?>/searchpost/"><i class="fa fa-search" aria-hidden="true"></i> Поиск</a>
+			<div class="header-social-net-pl">
+				<a href = "https://vk.com/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/vк1.png';?>" alt="Наша группа VK" title="Наша группа VK"/></a>
+				<a href = "https://zen.yandex.ru/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/zen2.png';?>" alt="Наш Дзен-канал" title="Наш Дзен-канал"/></a>
+			</div>
+			<div class="login-logout-btn-pl">
+				<?php if (!isset($_SESSION['loggIn'])):?>
+					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-user" aria-hidden="true"></i> Вход</a> 
+				<?php endif;?>
+			</div>
+		</div>
 		<!-- <div class="authorization-form">
                 <div class=close-btn>x</div>
                 <form action = " " method = "post">   
@@ -96,7 +107,8 @@
                 </form>
         </div>  -->
         <script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>       
-    </header>
+		<div class="header-line"></div>
+	</header>
     <!-- <div class="subheader"></div> -->
 
 	<main>
