@@ -635,6 +635,10 @@ header .header-social-net-pl a img{
     height: 33.75px;
 }
 
+header .adpt-logo{
+    display: none;
+}
+
 header .header-line{
     border: 3px solid #0F4780;
     width: 100%;

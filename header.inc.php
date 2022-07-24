@@ -30,8 +30,8 @@
 
 	
     <link href="<?php echo '//'.MAIN_URL.'/styles/menu.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles/styles-nd.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/styles.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles-nd.css';?>" rel= "stylesheet" type="text/css">
     
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.carousel.min.css';?>">
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.theme.default.min.css';?>">
@@ -75,18 +75,18 @@
 <body>
     <header>
 		<div class = "header-logo-pl">
-			<a href = "<?php echo '//'.MAIN_URL;?>"><img src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>
+			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo2.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>
 			<?php 
 				/*Загрузка главного меню*/
 				include_once MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
-			<a class="search-btn" href="<?php echo '//'.MAIN_URL;?>/searchpost/"><i class="fa fa-search" aria-hidden="true"></i> Поиск</a>
+			<a class="search-btn" href="<?php echo '//'.MAIN_URL;?>/searchpost/"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></a>
 			<div class="header-social-net-pl">
 				<a href = "https://vk.com/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/vк1.png';?>" alt="Наша группа VK" title="Наша группа VK"/></a>
 				<a href = "https://zen.yandex.ru/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/zen2.png';?>" alt="Наш Дзен-канал" title="Наш Дзен-канал"/></a>
 			</div>
 			<div class="login-logout-btn-pl">
 				<?php if (!isset($_SESSION['loggIn'])):?>
-					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-user" aria-hidden="true"></i> Вход</a> 
+					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-user" aria-hidden="true"></i>   </a> 
 				<?php endif;?>
 			</div>
 		</div>

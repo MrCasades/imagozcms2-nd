@@ -54,7 +54,7 @@
 .menu > ul > li a,
 .menu-mobile {
     text-decoration: none;
-    padding: 20px 30px;
+    padding: 20px 10px;
     display: block;
     color: #0F4780;
     font-size: 1.5rem;
@@ -222,5 +222,6 @@
 @media only screen and (max-width: 768px) {
     .menu-container {
         width: 80%;
+        margin: 10px 2%;
     }
 }    

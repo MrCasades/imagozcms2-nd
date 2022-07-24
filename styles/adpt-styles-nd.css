@@ -335,10 +335,15 @@
         height: 5rem;
     }
 
+    header .hide-for-adpt-1{
+        display: none;
+    }
+
     header a img{
         margin-left: 25px;
         margin-top: 5px;
         height: 80px;
+        width: 80px;
     }
 
     header .login-logout-btn-pl a{
@@ -347,7 +352,7 @@
     
     header .search-btn{
         margin-top: 15px;
-        width: 30%;
+        width: 10%;
     }
 
     main .post-place-1{
@@ -357,6 +362,14 @@
 
     header .header-social-net-pl{
         display: none;
+    }
+
+    header .full-logo{
+        display: none;
+    }
+
+    header .adpt-logo{
+        display: block;
     }
 
     /*Grid Главной страницы и переопределение некоторых стилей*/
@@ -586,7 +599,10 @@
     
     header .search-btn{
         margin-top: 10px;
-        width: 35%;
+    }
+
+    header .hide-for-adpt-2{
+        display: none;
     }
 
     main .post-place-1{
