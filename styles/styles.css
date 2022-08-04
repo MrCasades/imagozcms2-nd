@@ -7,7 +7,7 @@ body{
     padding: 0;/*параметры рамки*/
     max-width: 100%;
     /* background: #ffff; */
-    background-image: url(../fone_1.jpg);
+    /* background-image: url(../fone_1.jpg); */
     font-family: Arial;
     /* background: linear-gradient(to top left, #1e90ff, #fefcea); */
 }
@@ -449,15 +449,18 @@ details{
 
 .main-headers{
     max-width: 100%;
-    margin: 1% 0 0 1%;
+    height: 5rem;
+    
     margin-left: 11%;
+    margin-bottom: 1.5rem;
+    display: flex;
 }
 
 .headers-places{
     display: flex;
 }
 
-.main-headers-place{
+/* .main-headers-place{
     background: linear-gradient(to top, #1e90ff, #FFFFFF);
     border: 1px solid rgba(30, 144, 255, 1);
     width: 40%;
@@ -472,10 +475,29 @@ details{
     text-shadow: 1px 1px 2px black, 0 0 3px black;
     z-index: 9;
     text-decoration: none;
+} */
+
+.main-headers-content{
+    color: #0F4780;
 }
 
-.main-headers-place h3{
-    line-height: 0;
+.main-headers-content h2{
+    line-height: 0%;
+    font-size: 2rem;
+}
+
+.main-headers-content a{
+    text-decoration: none;
+    color: #0F4780;
+}
+
+.main-headers-content .sub-header{
+    font-size: 1.5rem;
+}
+
+.main-headers-content .no-link-header{
+    font-size: 1.5rem;
+    line-height: 55%;
 }
 
 .main-headers-place:hover{
@@ -487,7 +509,7 @@ details{
     
 } */
 
-.main-headers-subplace{
+/* .main-headers-subplace{
     background: #FFFFFF;
     border: 1px solid rgba(30, 144, 255, 1);
     text-shadow: 1px 1px 2px gray, 0 0 3px gray;
@@ -521,10 +543,10 @@ details{
 .main-headers-txtplace a{
     color: #1e90ff;
     text-decoration: none;
-}
+} */
 
 .main-headers-line{
-    width: 90%;
+    width: 80%;
     height: 0;
     background: #1e90ff;
     border: 3px solid rgba(30, 144, 255, 1);
@@ -533,6 +555,18 @@ details{
     flex-shrink: 0;
     flex-grow: 0;
     transform: rotate(180deg);
+}
+
+.main-headers-circle{
+    margin-top: 2.55rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    background: #1e90ff;
+}
+
+.main-headers-content{
+    width: 100%;
 }
 
 .tags-plase-prew{

@@ -13,11 +13,12 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 <div class="main-row">
 	<div class="left-side">
 		<div class = "main-headers">
-				<div class = "headers-places"> 
-					<a href = "./viewallnews/" class = "main-headers-place"><h3>Новостная лента</h3></a>
-					<div class = "adpt-title main-headers-txtplace">Новости игровой индустрии, высоких технологий и популярной науки</div>
-				</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<a href = "./viewallnews/"><h2>Новостная лента</h2></a>
 				<div class = "main-headers-line"></div>
+				<div class = "sub-header">Новости игровой индустрии, высоких технологий и популярной науки</div>
+			</div>
 		</div>
 
 		<div class = "newsblock m-content last-news">
@@ -46,10 +47,11 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div> -->
 
 		<div class = "main-headers">
-			<div class = "headers-places"> 
-				<div class = "main-headers-txtplace">Новости наших партнёров</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<h2 class="no-link-header">Новости наших партнёров</h2>
+				<div class = "main-headers-line"></div>				
 			</div>
-			<div class = "main-headers-line"></div>
 		</div>
 		<div class="gallery-place">
 			<!-- Мир тесен -->
@@ -62,13 +64,14 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				}());
 			</script> 
 		</div>
-		
+
 		<div class = "main-headers">
-			<div class = "headers-places"> 
-				<a class = "main-headers-place" href="./viewallrecommpost/"><h3>Пользователи рекомендуют</h3></a>
-				<div class = "adpt-title main-headers-txtplace">Статьи, которые порекомендовали для главной страицы!</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Пользователи рекомендуют</h2></a>
+				<div class = "main-headers-line"></div>
+				<div class = "sub-header">Статьи, которые порекомендовали для главной страицы!</div>
 			</div>
-			<div class = "main-headers-line"></div>
 		</div>
 
 		<div class = "main-post m-content">
