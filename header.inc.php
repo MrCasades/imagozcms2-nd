@@ -86,7 +86,7 @@
 			</div>
 			<div class="login-logout-btn-pl">
 				<?php if (!isset($_SESSION['loggIn'])):?>
-					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-user" aria-hidden="true"></i>   </a> 
+					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-user" aria-hidden="true"></i> <span class="hide-for-adpt-2">Вход</span></a> 
 				<?php endif;?>
 			</div>
 		</div>

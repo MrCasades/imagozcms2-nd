@@ -484,6 +484,7 @@ details{
 .main-headers-content h2{
     line-height: 0%;
     font-size: 2rem;
+    margin-left: 0.5rem;
 }
 
 .main-headers-content a{
@@ -493,6 +494,7 @@ details{
 
 .main-headers-content .sub-header{
     font-size: 1.5rem;
+    margin-left: 0.5rem;
 }
 
 .main-headers-content .no-link-header{
