@@ -1,10 +1,18 @@
-<div class = "main-headers shop-comp-header">
+<div class = "main-headers">
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<h2 class="no-link-header">Купить лицензионные ключи игр</h2>
+		<div class = "main-headers-line"></div>				
+	</div>
+</div>
+
+<!-- <div class = "main-headers shop-comp-header">
     <div class = "headers-places"> 
             <a class = "main-headers-place" href="https://playo.ru/?s=c4a1r15p" rel = "nofollow"><h3>Купить лицензионные ключи игр</h3></a>
             <div class = "main-headers-txtplace"><i class="fa fa-reply" aria-hidden="true"></i> Больше игр здесь!</div>
     </div>
     <div class = "main-headers-line"></div>
-</div>
+</div> -->
 
 <div class = "m-content shop-comp">
 	<?php if (empty ($gamesView))

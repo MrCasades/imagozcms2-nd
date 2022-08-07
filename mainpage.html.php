@@ -95,10 +95,11 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div>
 
 		<div class = "main-headers">
-			<div class = "headers-places"> 
-				<div class = "main-headers-txtplace">Новости наших партнёров</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<h2 class="no-link-header">Новости наших партнёров</h2>
+				<div class = "main-headers-line"></div>				
 			</div>
-			<div class = "main-headers-line"></div>
 		</div>
 
 		<div class="gallery-place">		
@@ -108,11 +109,12 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div>
 
 		<div class = "main-headers">
-			<div class = "headers-places"> 
-				<a class = "main-headers-place" href="./viewallvideos/"><h3>Наше видео</h3></a>
-				<div class = "adpt-title main-headers-txtplace">Видео-обзоры, прохождения игр от нашей команды</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Наше видео</h2></a>
+				<div class = "main-headers-line"></div>
+				<div class = "sub-header">Видео-обзоры, прохождения игр от нашей команды</div>
 			</div>
-			<div class = "main-headers-line"></div>
 		</div>
 
 		<div class = "main-post m-content">
@@ -148,12 +150,12 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<?php endforeach; ?>
 		</div>
 		
-		<div class = "main-headers">
+		<!-- <div class = "main-headers">
 			<div class = "headers-places"> 
 				<div class = "main-headers-txtplace">Облако тегов</div>
 			</div>
 			<div class = "main-headers-line"></div>
-		</div>
+		</div> -->
 
 		<div class="tags-place-m m-content"> 
 				<?php if (empty($metas_1))
@@ -175,12 +177,14 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			include_once MAIN_FILE . '/shopcomponent/shopcomponent.inc.php';?>
 
 		<div class = "main-headers">
-			<div class = "headers-places"> 
-				<div class = "main-headers-place"><h3>Отражение дня</h3></div>
-				<div class = "adpt-title main-headers-txtplace">Что-то забавное, занимательное, любопытное</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Отражение дня</h2></a>
+				<div class = "main-headers-line"></div>
+				<div class = "sub-header">Что-то забавное, занимательное, любопытное</div>
 			</div>
-			<div class = "main-headers-line"></div>
-		</div>
+		</div>		
+
 		<div class="gallery-place">
 			<div class="owl-carousel owl-theme">
 				<?php if (empty ($postsIMG))
@@ -206,12 +210,13 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div> -->
 
 		<div class = "main-headers">
-			<div class = "headers-places"> 
-				<a class = "main-headers-place" href="./viewallpromotion/"><h3>Промоушен</h3></a>
-				<div class = "adpt-title main-headers-txtplace">Материалы от наших уважаемых рекламодателей</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Промоушен</h2></a>
+				<div class = "main-headers-line"></div>
+				<div class = "sub-header">Материалы от наших уважаемых рекламодателей</div>
 			</div>
-			<div class = "main-headers-line"></div>
-		</div>
+		</div>	
 
 		<div class = "main-post m-content last-pr">
 		<?php if (empty($promotions))
@@ -238,12 +243,13 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div> -->
 
 		<div class = "main-headers">
-			<div class = "headers-places"> 
-				<a class = "main-headers-place posts-op-art" href="./viewallposts/"><h3>Статьи</h3></a>
-				<div class = "adpt-title main-headers-txtplace">Масштабные публикации, рейтинги, заметки</div>
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Статьи</h2></a>
+				<div class = "main-headers-line"></div>
+				<div class = "sub-header">Масштабные публикации, рейтинги, заметки</div>
 			</div>
-			<div class = "main-headers-line"></div>
-		</div>
+		</div>	
 
 		<div class = "main-post m-content last-art">
 		<?php if (empty($posts))
@@ -522,11 +528,13 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 </div>
 
 <div class = "main-headers">
-	<div class = "headers-places"> 
-		<div class = "main-headers-txtplace"><h1>О проекте</h1></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<h2 class="no-link-header">О проекте</h2>
+		<div class = "main-headers-line"></div>				
 	</div>
-	<div class = "main-headers-line"></div>
 </div>
+
 <div class = "m-content about-project">
 	<p>Добро пожаловать на портал <strong>IMAGOZ</strong> (от лат. imago - отражение)! Здесь мы объеденили в общую картину мира тему высоких технологий (hi-tech), индустрию компьютерных игр, 
 	взгляд на самые необычные современные гаджеты, достижения науки и техники и насыщенную событиями жизнь интернета.</p>
