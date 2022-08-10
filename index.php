@@ -48,6 +48,34 @@ foreach ($result as $row)
 						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 }
 
+/*Вывод последней новости*/
+/*Команда SELECT*/
+
+// try
+// {
+// 	$sql = 'SELECT n.id, n.news, n.newstitle, n.newsdate, n.imghead, c.categoryname
+// 		FROM newsblock n 
+// 		INNER JOIN category c ON idcategory = c.id  
+// 		WHERE premoderation = "YES" ORDER BY newsdate DESC LIMIT 1';//Вверху самое последнее значение
+// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+// }
+
+// catch (PDOException $e)
+// {
+// 	$error = 'Ошибка вывода новостей на главной странице';
+// 	include MAIN_FILE . '/includes/error.inc.php';
+// }
+
+// $row = $s -> fetch();
+
+// $lastNewsId = $row['id'];
+// $lastNewsTxt = $row['news'];
+// $lastNewsTitle = $row['newstitle'];
+// $lastNewsDate = $row['newsdate'];
+// $lastNewsImghead = $row['imghead'];
+// $lastNewsCname = $row['categoryname'];
+
 /*Вывод новостей*/
 /*Команда SELECT*/
 
@@ -56,7 +84,7 @@ try
 	$sql = 'SELECT n.id, n.news, n.newstitle, n.newsdate, n.imghead, c.categoryname
 			FROM newsblock n 
 			INNER JOIN category c ON idcategory = c.id  
-			WHERE premoderation = "YES" ORDER BY newsdate DESC LIMIT 9';//Вверху самое последнее значение
+			WHERE premoderation = "YES" ORDER BY newsdate DESC LIMIT 8';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 

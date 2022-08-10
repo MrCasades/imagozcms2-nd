@@ -32,11 +32,13 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			foreach ($newsIn as $news): ?> 
 
 			<a href = "./viewnews/?id=<?php htmlecho ($news['id']); ?>" class = "post-place-1" style="background-image: url(images/<?php echo $news['imghead']; ?>)">
-				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($news['newsdate'])); ?></p>
+				<div class = "post-top-1">			
 					<span class="post-rubrics"><?php htmlecho ($news['categoryname']); ?></span>
 				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news['newstitle'])), 0, 7)))); ?>...</div>
+				<div class = "post-bottom-1"
+					><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news['newstitle'])), 0, 7)))); ?>...
+					<br><?php echo date("Y.m.d H:i", strtotime($news['newsdate'])); ?>
+				</div>
 			</a>
 
 			<?php endforeach; ?>
