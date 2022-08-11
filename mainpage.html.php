@@ -35,9 +35,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<div class = "post-top-1">			
 					<span class="post-rubrics"><?php htmlecho ($news['categoryname']); ?></span>
 				</div>
-				<div class = "post-bottom-1"
-					><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news['newstitle'])), 0, 7)))); ?>...
-					<br><?php echo date("Y.m.d H:i", strtotime($news['newsdate'])); ?>
+				<div class = "post-bottom-1">
+					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news['newstitle'])), 0, 7)))); ?>...</span>
+					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($news['newsdate'])); ?></span>
 				</div>
 			</a>
 

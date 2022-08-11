@@ -899,9 +899,27 @@ main .post-place-1:hover {
 
 
 .post-place-1 .post-bottom-1{
-    margin-top: 25%;
+    margin-top: 21%;
     margin-left: 2%;
     font-size: 1.5rem;
+}
+
+
+.newsblock .post-place-1:nth-child(1) .post-bottom-1{
+    margin-top: 30%; 
+}
+
+.newsblock .post-place-1:nth-child(1) .post-header-1:nth-child(1){
+    font-size: 2.5rem; 
+}
+
+.post-bottom-1 .post-header-1{
+    font-size: 1.5rem;
+}
+
+.post-bottom-1 .post-date-1{
+    font-size: 1rem;
+    font-weight: 100;
 }
 
 
