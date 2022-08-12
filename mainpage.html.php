@@ -274,13 +274,21 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div>
 	</div>
 	<div class="right-side">
-		<div class="last-comments-pl">
 		<div class = "main-headers">
+			<div class = "main-headers-content">
+				<h2 class="no-link-header">Последние комментарии</h2>
+				<div class = "main-headers-line"></div>				
+			</div>
+		</div>
+		<div class="last-comments-pl">
+		
+
+		<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 				<div class = "main-headers-txtplace">Последние комментарии</div>
 			</div>
 			<div class = "main-headers-line"></div>
-		</div>
+		</div> -->
 		<?php if (empty ($comments))
 			{
 				echo '<p>Пусто</p>';
