@@ -383,11 +383,18 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		
 		<div class="article-top">
 			<div class = "main-headers">
+				<div class = "main-headers-content">
+					<h2 class="no-link-header"><a href = "./viewfullnewstop/">Рейтинг новостей</a></h2>
+					<div class = "main-headers-line"></div>				
+				</div>
+			</div>
+
+			<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 					<div class = "main-headers-txtplace"><a href = "./viewfullnewstop/">Рейтинг новостей</a></div>
 				</div>
-			<div class = "main-headers-line"></div>
-			</div>
+				<div class = "main-headers-line"></div>
+			</div> -->
 			
 			<div class = "rating">
 				<?php if (empty ($newsInTOP))
@@ -414,11 +421,18 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 
 			<div class = "main-headers">
+				<div class = "main-headers-content">
+					<h2 class="no-link-header"><a href = "./viewfullpromotiontop/">Рейтинг промоушена</a></h2>
+					<div class = "main-headers-line"></div>				
+				</div>
+			</div>
+
+			<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 					<div class = "main-headers-txtplace"><a href = "./viewfullpromotiontop/">Рейтинг промоушена</a></div>
 				</div>
 			<div class = "main-headers-line"></div>
-			</div>
+			</div> -->
 
 			<div class = "rating">
 			<?php if (empty ($promotionsTOP))
@@ -445,11 +459,18 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 
 			<div class = "main-headers">
+				<div class = "main-headers-content">
+					<h2 class="no-link-header"><a href = "./viewfullposttop/">Рейтинг статей</a></h2>
+					<div class = "main-headers-line"></div>				
+				</div>
+			</div>
+
+			<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 					<div class = "main-headers-txtplace"><a href = "./viewfullposttop/">Рейтинг статей</a></div>
 				</div>
 			<div class = "main-headers-line"></div>
-			</div>
+			</div> -->
 
 			<div class = "rating">
 			<?php if (empty ($postsTOP))
@@ -478,11 +499,17 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 		<div class="auth-top-1">
 			<div class = "main-headers">
+				<div class = "main-headers-content">
+					<h2 class="no-link-header">Наши авторы. Топ-7</h2>
+					<div class = "main-headers-line"></div>				
+				</div>
+			</div>
+			<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 					<div class = "main-headers-txtplace">Наши авторы. Топ-7</div>
 				</div>
 			<div class = "main-headers-line"></div>
-			</div>
+			</div> -->
 			
 			<?php if (empty ($authorsTOP))
 			{
@@ -507,22 +534,34 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div>
 			<div class="zen-c-m">
 				<div class = "main-headers">
+					<div class = "main-headers-content">
+						<h2 class="no-link-header">Наш Дзен-канал</h2>
+						<div class = "main-headers-line"></div>				
+					</div>
+				</div>
+				<!-- <div class = "main-headers">
 					<div class = "headers-places"> 
 						<div class = "main-headers-txtplace">Наш Дзен-канал</div>
 					</div>
 					<div class = "main-headers-line"></div>
-				</div>
+				</div> -->
 				<div class="zen-link-m">
 					<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
 				</div>
 			</div>
 			<div class="vk-m">
 				<div class = "main-headers">
+					<div class = "main-headers-content">
+						<h2 class="no-link-header">Мы ВКонтакте</h2>
+						<div class = "main-headers-line"></div>				
+					</div>
+				</div>
+				<!-- <div class = "main-headers">
 					<div class = "headers-places"> 
 						<div class = "main-headers-txtplace">Мы ВКонтакте</div>
 					</div>
 					<div class = "main-headers-line"></div>
-				</div>
+				</div> -->
 				<div class="scr-cont">
 				<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
 
