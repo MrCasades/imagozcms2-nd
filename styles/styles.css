@@ -1130,8 +1130,8 @@ main .main-post{
 
 main .post-place-2{
     font-family: Arial, Helvetica, sans-serif;
-    margin: 1% 17px;
-    width: 44%;
+    margin: 2% 17px;
+    width: 45%;
     height: 20rem;
     color: white;
     text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
@@ -1143,10 +1143,10 @@ main .post-place-2{
 
 main .post-place-2:hover {
     cursor: pointer;
+    background-size: 120% 120%;
     /* width: 23.5%;
     height: 15.5rem; */
-    box-shadow: 0 0 7px;
-    border: 3px solid black;
+    
 }
 
 .post-place-2 .post-top-1{

@@ -85,12 +85,14 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			else
 				
 			foreach ($lastRecommPosts as $lastRecommPost): ?>
-			<a href="./viewpost/?id=<?php htmlecho ($lastRecommPost['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $lastRecommPost['imghead']; ?>)">
-				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($lastRecommPost['postdate'])); ?></p>
+			<a href = "./viewnews/?id=<?php htmlecho ($lastRecommPost['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $lastRecommPost['imghead']; ?>)">
+				<div class = "post-top-1">			
 					<span class="post-rubrics"><?php htmlecho ($lastRecommPost['categoryname']); ?></span>
 				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($lastRecommPost['posttitle'])), 0, 7)))); ?>...</div>
+				<div class = "post-bottom-1">
+					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($lastRecommPost['posttitle'])), 0, 7)))); ?>...</span>
+					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($lastRecommPost['postdate'])); ?></span>
+				</div>
 			</a>
 			
 			<?php endforeach; ?>
