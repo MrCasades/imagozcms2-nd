@@ -346,7 +346,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>#comment-<?php echo $comment['id'];?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
 			</div>
 			<div class="comment-mp">
-				<div class="comment-auth-pl-mp">Написал: <?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?></div>
+				<div class="comment-auth-pl-mp"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?></div>
 				<br/>
 				<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...
 				<div class="comment-bottom-mp">									

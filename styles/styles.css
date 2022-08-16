@@ -975,7 +975,7 @@ main .post-place-1:hover {
 
 .comment-mp{
     padding: 1rem;
-    background: #1e90ff;
+    background: #B1D8FF;
     color: #ffff;
     border-radius: 10px;
     width: 100%;
@@ -983,13 +983,17 @@ main .post-place-1:hover {
 
 .comment-auth-pl-mp{
     padding-left: 5px;
-    background: #ffff;
-    color: #1e90ff;
     border-radius: 10px;
 }
 
+.comment-auth-pl-mp .fa-user-circle-o{
+    color: #0F4780;
+    font-size: 2rem;
+}
+
 .comment-auth-pl-mp a{ 
-    color: #1e90ff;
+    color: #0F4780;
+    text-decoration: none;
 }
 
 .comment-like-btn-mp{
@@ -1002,8 +1006,10 @@ main .post-place-1:hover {
     cursor: pointer;
 }
 
-.comment-header-mp{
-    background: #ffff;
+
+.comment-header-mp a{
+    color: #0F4780;
+    text-decoration: none;
 }
 
 .comment-bottom-mp{
