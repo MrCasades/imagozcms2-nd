@@ -40,9 +40,9 @@ details{
 
 .btn_1 {
     background:#FFFFFF;
-    color: #1e90ff;
+    color: #0F4780;
     cursor: pointer;
-    border: none;
+    border: 1px solid #0F4780;
     border-radius: 5px;
 }
 
@@ -76,7 +76,7 @@ details{
 }
 
 .btn_1:hover{
-    background:#1e90ff;
+    background:#0F4780;
     color: #FFFFFF;
     font-weight: bold;
 }
@@ -982,6 +982,7 @@ main .post-place-1:hover {
 }
 
 .comment-auth-pl-mp{
+    display: flex;
     padding-left: 5px;
     border-radius: 10px;
 }
@@ -992,12 +993,22 @@ main .post-place-1:hover {
 }
 
 .comment-auth-pl-mp a{ 
+    margin-top: 3%;
+    margin-left: 5%;
     color: #0F4780;
     text-decoration: none;
 }
 
+.comment-txt-pl-mp{ 
+    color: #0F4780;
+    background: #ffff;
+    margin-top: 5%;
+    padding: 3%;
+    border-radius: 10px;
+}
+
 .comment-like-btn-mp{
-    color: #ffff;
+    color: #0F4780;
     border: none;
     background: none;
 }

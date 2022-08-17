@@ -346,9 +346,8 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>#comment-<?php echo $comment['id'];?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
 			</div>
 			<div class="comment-mp">
-				<div class="comment-auth-pl-mp"><i class="fa fa-user-circle-o" aria-hidden="true"></i> <?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?></div>
-				<br/>
-				<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...
+				<div class="comment-auth-pl-mp"><i class="fa fa-user-circle-o comment-ava-pl-mp" aria-hidden="true"></i> <?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?></div>
+				<div class="comment-txt-pl-mp"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...</div>
 				<div class="comment-bottom-mp">									
 					<form class="comment-like-mp" id = "like_form_<?php echo $comment['id'];?>">
 						<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
@@ -358,7 +357,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 						<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn-mp" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
 					</form>
 					<div class="comment-ans-mp">
-						<a href="<?php echo '//'.MAIN_URL;?>/viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=<?php htmlecho($backLinkType);?>&idart=<?php htmlecho($articleId);?>"><button class="btn_2"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответить</button></a>
+						<a href="<?php echo '//'.MAIN_URL;?>/viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=<?php htmlecho($backLinkType);?>&idart=<?php htmlecho($articleId);?>"><button class="btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответить</button></a>
 					</div>
 				</div>
 			</div>
