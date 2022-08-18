@@ -685,9 +685,13 @@ footer{
     text-align: center;
 }
 
+footer a{
+    color: #0F4780;
+}
+
 footer .menu-container{
     width: 60%;
-    margin-left: 20%;
+    margin-left: 35%;
 }
 /*
 header .authorization-form{
