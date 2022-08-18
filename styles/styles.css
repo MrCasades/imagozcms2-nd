@@ -684,6 +684,11 @@ header .header-line{
 footer{
     text-align: center;
 }
+
+footer .menu-container{
+    width: 60%;
+    margin-left: 20%;
+}
 /*
 header .authorization-form{
     display: none;

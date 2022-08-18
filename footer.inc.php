@@ -3,6 +3,11 @@
 
   <footer>
 	<div class="footer">
+
+		<?php 
+			/*Загрузка главного меню*/
+			include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
+
 		<p><a href="<?php echo '//'.MAIN_URL;?>/sitemap/">Карта сайта</a>
 			<a href="<?php echo '//'.MAIN_URL;?>/cooperation/">Сотрудничество</a>
 			<a href="<?php echo '//'.MAIN_URL;?>/promotion/">Промоушен</a>
