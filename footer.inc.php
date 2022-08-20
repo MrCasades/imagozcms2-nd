@@ -2,8 +2,9 @@
   </main>
 
   <footer>
+  	<div class="header-line"></div>
 	<div class="footer">
-
+		<div class="header-line"></div>
 		<?php 
 			/*Загрузка главного меню*/
 			include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>

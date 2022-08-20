@@ -102,7 +102,6 @@ details{
 .m-content{
     margin-left: 10%;
     max-width: 75%; 
-    background-color: #FFFFFF;
 }
 
 .add-main-form{
@@ -452,7 +451,7 @@ details{
     height: 5rem;
     
     margin-left: 11%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     display: flex;
 }
 
@@ -683,6 +682,12 @@ header .header-line{
 
 footer{
     text-align: center;
+}
+
+footer .header-line{
+    border: 1px solid #1e90ff;
+    width: 100%;
+    height: 0;
 }
 
 footer a{
@@ -1324,9 +1329,9 @@ main .zen-link-m{
     margin-left: 2rem;
 } */
 
-main .about-proj{
+/* main .about-proj{
     margin-left: 2rem;
-}
+} */
 
 /* main .descr-txt-place{
     margin-left: 2%;
@@ -1336,6 +1341,21 @@ main .about-proj{
 main .mp-description{
     font-size: 0.7rem;
 } */
+
+.about-project-pl{
+    width: 100%;
+}
+
+.about-project-pl .main-headers{
+    margin-left: 2%;
+    margin-bottom: 1rem;
+}
+
+.about-project{
+    font-size: 1.5rem;
+    margin-left: 5%;
+    max-width: 75%;
+}
 
 main .tags-place-m{
     display: flex;

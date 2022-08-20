@@ -76,7 +76,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		</div>
 
-		<div class = "main-post m-content">
+		<div class = "main-post m-content lastrecommblock">
 		<?php if (empty($lastRecommPosts))
 			{
 				echo '<p>Рекомендации отсутствуют</p>';
@@ -121,7 +121,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		</div>
 
-		<div class = "main-post m-content">
+		<div class = "main-post m-content videoblock">
 		<?php if (empty($videos))
 			{
 				echo '<p>Рекомендации отсутствуют</p>';
@@ -222,7 +222,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		</div>	
 
-		<div class = "main-post m-content last-pr">
+		<div class = "main-post m-content promotionblock">
 		<?php if (empty($promotions))
 			{
 				echo '<p>Статьи отсутствуют</p>';
@@ -233,10 +233,12 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			foreach ($promotions as $promotion): ?>
 			<a href="./viewpromotion/?id=<?php htmlecho ($promotion['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $promotion['imghead']; ?>)">
 				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($promotion['promotiondate'])); ?></p>
 					<span class="post-rubrics"><?php htmlecho ($promotion['categoryname']); ?></span>
 				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($promotion['promotiontitle'])), 0, 7)))); ?>...</div>
+				<div class = "post-bottom-1">
+					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($promotion['promotiontitle'])), 0, 7)))); ?>...</span>
+					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($promotion['promotiondate'])); ?></span>
+				</div>
 			</a>
 			
 			<?php endforeach; ?>
@@ -255,7 +257,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		</div>	
 
-		<div class = "main-post m-content last-art">
+		<div class = "main-post m-content artickleblock">
 		<?php if (empty($posts))
 			{
 				echo '<p>Статьи отсутствуют</p>';
@@ -266,10 +268,12 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			foreach ($posts as $post): ?>
 			<a href="./viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $post['imghead']; ?>)">
 				<div class = "post-top-1">
-					<p><?php echo date("Y.m.d H:i", strtotime($post['postdate'])); ?></p>
 					<span class="post-rubrics"><?php htmlecho ($post['categoryname']); ?></span>
 				</div>
-				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post['posttitle'])), 0, 7)))); ?>...</div>
+				<div class = "post-bottom-1">
+					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post['posttitle'])), 0, 7)))); ?>...</span>
+					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($post['postdate'])); ?></span>
+				</div>
 			</a>
 			
 			<?php endforeach; ?>
@@ -577,30 +581,31 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 	</div>
 </div>
 
-<div class = "main-headers">
-	<div class = "main-headers-circle"></div>
-	<div class = "main-headers-content">
-		<h2 class="no-link-header">О проекте</h2>
-		<div class = "main-headers-line"></div>				
+<div class = "about-project-pl">
+	<div class = "main-headers">
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<h2 class="no-link-header">О проекте</h2>
+			<div class = "main-headers-line"></div>				
+		</div>
 	</div>
+	<div class = "about-project">
+		<p>Добро пожаловать на портал <strong>IMAGOZ</strong> (от лат. imago - отражение)! Здесь мы объеденили в общую картину мира тему высоких технологий (hi-tech), индустрию компьютерных игр, 
+		взгляд на самые необычные современные гаджеты, достижения науки и техники и насыщенную событиями жизнь интернета.</p>
+					
+		<p>Такой подход является на первый взгляд несколько 
+		нестандартным, но мы считаем, что все эти тематики могут органично сочетаться, заинтересовав широкий круг разносторонне развитых читателей, которые хотят быть на острие 
+		прогресса!</p>
+
+		<p>Создатели портала <strong>IMAGOZ</strong> собирают самые интересные и актуальные новости и подают их в оригинальном авторском отражении. Мы не стремимся полностью охватить этот необъятный
+		мир Hi-tech, науки, игр и прочего, но публикуем самые интересные материалы по этим темам.</p>
+					
+		<p>Стоит также отметить, что портал <strong>IMAGOZ</strong> возрождает такой казалось бы мёртвый в нашей стране своеобразный  жанр в публицистике, как <strong>"игрожур"</strong>. Игровая журналистика со своим своеобразным, самобытным 
+		стилем изложения материала для многих связана с самыми тёплыми "ламповыми" воспоминаниями из 90-х, начала 2000 годов.</p> 
+					
+		<p><strong>IMAGOZ</strong> вбирает в себя лучшие черты этого условного жанра и порождает новое явление - <strong>Постигрожур</strong>. Постигрожур - публикации об играх и тому что интересно геймерам без "игрожура"!</p>
+	</div>	
 </div>
-
-<div class = "m-content about-project">
-	<p>Добро пожаловать на портал <strong>IMAGOZ</strong> (от лат. imago - отражение)! Здесь мы объеденили в общую картину мира тему высоких технологий (hi-tech), индустрию компьютерных игр, 
-	взгляд на самые необычные современные гаджеты, достижения науки и техники и насыщенную событиями жизнь интернета.</p>
-				
-	<p>Такой подход является на первый взгляд несколько 
-	нестандартным, но мы считаем, что все эти тематики могут органично сочетаться, заинтересовав широкий круг разносторонне развитых читателей, которые хотят быть на острие 
-	прогресса!</p>
-
-	<p>Создатели портала <strong>IMAGOZ</strong> собирают самые интересные и актуальные новости и подают их в оригинальном авторском отражении. Мы не стремимся полностью охватить этот необъятный
-	мир Hi-tech, науки, игр и прочего, но публикуем самые интересные материалы по этим темам.</p>
-				
-	<p>Стоит также отметить, что портал <strong>IMAGOZ</strong> возрождает такой казалось бы мёртвый в нашей стране своеобразный  жанр в публицистике, как <strong>"игрожур"</strong>. Игровая журналистика со своим своеобразным, самобытным 
-	стилем изложения материала для многих связана с самыми тёплыми "ламповыми" воспоминаниями из 90-х, начала 2000 годов.</p> 
-				
-	<p><strong>IMAGOZ</strong> вбирает в себя лучшие черты этого условного жанра и порождает новое явление - <strong>Постигрожур</strong>. Постигрожур - публикации об играх и тому что интересно геймерам без "игрожура"!</p>
-</div>	
 <?php 
 /*Загрузка footer*/
 include_once __DIR__ . '/footer.inc.php';?>
