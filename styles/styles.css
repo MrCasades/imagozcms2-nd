@@ -1001,6 +1001,12 @@ main .post-place-1:hover {
     border-radius: 10px;
 }
 
+.comment-auth-pl-mp img{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+}
+
 .comment-auth-pl-mp .fa-user-circle-o{
     color: #0F4780;
     font-size: 2rem;
@@ -1060,7 +1066,8 @@ main .post-place-1:hover {
     padding-top: 2%;
     padding-left: 2%;
     font-size: 1.2rem;
-    border: 2px solid #1E90FF;
+    border: 2px solid #0F4780;
+    border-radius: 30px;
     grid-gap: 3%;
     grid-template-columns: 20% 72%;
     grid-template-areas: 
@@ -1068,13 +1075,20 @@ main .post-place-1:hover {
 }
 
 .for-top-auth a{
-    color: #1e90ff;
+    color: #0F4780;
     text-decoration: none;
 }
 
 .for-top-auth img{
+    
     width: 3rem;
     height: 3rem;
+    border-radius: 20px;
+}
+
+.for-top-auth .fa-user-circle-o{
+    color: #0F4780;
+    font-size: 2.5rem;
 }
 
 .vk-m{

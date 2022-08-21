@@ -350,7 +350,20 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<h4><a href="./<?php htmlecho($articleType);?>/?id=<?php htmlecho($articleId);?>#comment-<?php echo $comment['id'];?>"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($title)), 0, 10)))); ?>...</a></h4>
 			</div>
 			<div class="comment-mp">
-				<div class="comment-auth-pl-mp"><i class="fa fa-user-circle-o comment-ava-pl-mp" aria-hidden="true"></i> <?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?></div>
+				<div class="comment-auth-pl-mp">
+					
+					<?php if ($comment['avatar'] !== 'ava-def.jpg'): ?>
+
+					<div> 
+						<img src="./avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 
+					</div>
+
+					<?php else: ?>
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+					<?php endif; ?>
+					
+					<?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?>
+				</div>
 				<div class="comment-txt-pl-mp"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...</div>
 				<div class="comment-bottom-mp">									
 					<form class="comment-like-mp" id = "like_form_<?php echo $comment['id'];?>">
@@ -525,9 +538,21 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				
 			foreach ($authorsTOP as $authorTOP): ?>
 				<div class = "for-top-auth">
+
+					<?php if ($authorTOP['avatar'] !== 'ava-def.jpg'): ?>
+
 					<div class="for-top-auth-ava-pl"> 
 						<img src="./avatars/<?php echo $authorTOP['avatar'];?>" alt="<?php echo $authorTOP['authorname'];?>">&nbsp; 
 					</div>
+
+					<?php else: ?>
+
+					<div class="for-top-auth-ava-pl"> 
+						<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+					</div>
+
+					<?php endif; ?>
+
 					<div class="for-top-auth-rate-name-pl">
 						<a href="./account/?id=<?php echo $authorTOP['id'];?>"><?php echo $authorTOP['authorname'];?></a> 
 						<br>
