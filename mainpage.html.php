@@ -231,7 +231,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			else
 				
 			foreach ($promotions as $promotion): ?>
-			<a href="./viewpromotion/?id=<?php htmlecho ($promotion['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $promotion['imghead']; ?>)">
+			<a href="./viewpromotion/?id=<?php htmlecho ($promotion['id']); ?>" class = "post-place-1" style="background-image: url(images/<?php echo $promotion['imghead']; ?>)">
 				<div class = "post-top-1">
 					<span class="post-rubrics"><?php htmlecho ($promotion['categoryname']); ?></span>
 				</div>
