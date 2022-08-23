@@ -5,14 +5,22 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
+
 <article>
 	<div class="article-row">
 		<div class="left-side">
+			<div class = "main-headers">
+				<div class = "main-headers-circle"></div>
+				<div class = "main-headers-content">
+					<a href = "../viewallnews/"><h2>Новостная лента</h2></a>
+					<div class = "main-headers-line"></div>
+					<div class = "sub-header">Новости игровой индустрии, высоких технологий и популярной науки</div>
+				</div>
+			</div>
 			<div class = "article-head m-content" style="background-image: url(../images/<?php echo $imgHead; ?>)">
 				<div class = "article-head-top"> 
 					<div class ="article-info">
-						<p><?php echo $date;?> | Автор: <a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a></p>
-						<p>Рубрика: <span class="post-rubrics"><a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
+						<p><span class="post-rubrics"><a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
 					</div>
 				<div class="article-rating">
 						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($viewCount); ?>  
@@ -20,7 +28,27 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
 				</div>
 			</div>
-			<h1><?php htmlecho ($headMain); ?></h1>
+			
+			</div>
+			<h1 class="m-content"><?php htmlecho ($headMain); ?></h1>
+			<div class="article-head-bottom m-content">
+				<a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a>
+				<br><?php echo $date;?>
+			</div>
+			<div class="tags-place-m m-content"> 
+				<?php if (empty($metas))
+				{
+					echo '';
+				}
+						
+				else
+						
+				foreach ($metas as $meta): ?> 
+					
+					<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
+						
+				<?php endforeach; ?>
+
 			</div>
 
 				<!-- <div class="m-content">
@@ -35,22 +63,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 						<script src="//yastatic.net/share2/share.js"></script>
 						<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>      
-					</div>
-					<div class="tags-place-m"> 
-						<?php if (empty($metas))
-						{
-							echo '';
-						}
-						
-						else
-						
-						foreach ($metas as $meta): ?> 
-					
-							<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
-						
-						<?php endforeach; ?>
-
-					</div>
+					</div>				
 				</div>
 				<div class="m-content like-place">
 					<div>
@@ -74,12 +87,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				Место для рекламы
 			</div> -->
 
-			<div class = "main-headers">
+			<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 					<div class = "main-headers-txtplace">Новости наших партнёров</div>
 				</div>
 				<div class = "main-headers-line"></div>
-			</div>
+			</div> -->
 
 			<div class="gallery-place">		
 				<div id="unit_95706"><a href="http://mirtesen.ru/" >Новости МирТесен</a></div>
@@ -93,10 +106,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			</div>
 
 			<div class = "main-headers">
-				<div class = "headers-places"> 
-					<div class = "main-headers-txtplace">Комментарии (<span id="comm_count"><?php echo $countPosts; ?></span>)</div>
+				<div class = "main-headers-content">
+					<h2 class="no-link-header">Комментарии (<span id="comm_count"><?php echo $countPosts; ?></span>)</h2>
+					<div class = "main-headers-line"></div>				
 				</div>
-				<div class = "main-headers-line"></div>
 			</div>
 			
 			<?php echo $addComment; ?>
@@ -242,10 +255,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script> -->
 
 			<div class = "main-headers">
-				<div class = "headers-places"> 
-					<div class = "main-headers-txtplace">Случайные новости рубрики</div>
+				<div class = "main-headers-content">
+					<h2 class="no-link-header">Случайные новости рубрики</h2>
+					<div class = "main-headers-line"></div>				
 				</div>
-				<div class = "main-headers-line"></div>
 			</div>
 
 			<div class = "similar-art">
@@ -265,10 +278,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			</div>
 			<div class="zen-c-m">
 				<div class = "main-headers">
-					<div class = "headers-places"> 
-						<div class = "main-headers-txtplace">Наш Дзен-канал</div>
+					<div class = "main-headers-content">
+						<h2 class="no-link-header">Наш Дзен-канал</h2>
+						<div class = "main-headers-line"></div>				
 					</div>
-					<div class = "main-headers-line"></div>
 				</div>
 				<div class="zen-link-m">
 					<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>

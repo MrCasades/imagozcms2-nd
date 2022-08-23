@@ -145,6 +145,17 @@ details{
     border: 2px solid black;
 }
 
+.bread-crumbs{
+    font-size: 1rem;
+    color: #0F4780;
+    margin-left: 2.5%;
+}
+
+.bread-crumbs a{
+    color: #0F4780;
+    text-decoration: none;
+}
+
 .for-tables-premod th, .for-tables-premod td{
     text-align: center;
     border: 2px solid black;
@@ -1387,7 +1398,7 @@ main .tags-place-m{
 }
 
 main .tags-place-m a{
-    margin-left: 1%; 
+    margin-right: 1%;  
     background: #1e90ff; 
     color: #FFFFFF; 
     border-radius: 10px;
@@ -1413,8 +1424,9 @@ article .article-head{
     color: white;
     text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
     background-repeat: no-repeat;
-    background-size: 100% 100%;    
+    background-size: cover;    
     border-radius: 10px;
+    height: 30rem;
 }
 
 article .article-head-top{
@@ -1497,10 +1509,18 @@ article .article-rating i{
 } */
 
 article h1{
-    font-size: 5rem;
-    margin-top: 15%;
-    margin-left: 15%;
-    text-shadow:-4px -4px 10px #000000,7px -3px 11px #000000,-4px 8px 12px #000000,10px 7px 10px #303632,-12px 4px 12px #1c1c1c;
+    font-size: 2.5rem;
+    color: #0F4780;   
+}
+
+article .article-head-bottom{
+    color: #232323; 
+    font-size: 1.5rem;  
+}
+
+article .article-head-bottom a{
+    color: #232323;
+    text-decoration: none;   
 }
 
 article .a-content{

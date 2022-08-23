@@ -138,10 +138,11 @@
 		<div class="wrap hidden">
 			<button class="close-pic btn_3">X</button><div class="one-pic"></div> <!--Тестовый код-->
 		</div>
-		<br/>
-		<div class="bread-crumbs">
-			<?php echo $breadPart1 = $breadPart1 ?? ''; ?><?php echo $breadPart2 = $breadPart2 ?? ''; ?><?php echo $breadPart3 = $breadPart3 ?? ''; ?>
-		</div>
+		<br/>	
 	</div>	
+
+	<div class="bread-crumbs">
+		<?php echo $breadPart1 = $breadPart1 ?? ''; ?><?php echo $breadPart2 = $breadPart2 ?? ''; ?><?php echo $breadPart3 = $breadPart3 ?? ''; ?>
+	</div>
 	
 	

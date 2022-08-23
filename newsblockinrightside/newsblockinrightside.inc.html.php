@@ -1,9 +1,9 @@
 <div class="newsblock-rs">	
 	<div class = "main-headers">
-		<div class = "headers-places"> 
-			<div class = "main-headers-txtplace">Последние новости</div>
+		<div class = "main-headers-content">
+			<h2 class="no-link-header">Последние новости</h2>
+			<div class = "main-headers-line"></div>				
 		</div>
-		<div class = "main-headers-line"></div>
 	</div>
 
 	<div class = "similar-art">
