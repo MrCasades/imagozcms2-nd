@@ -55,17 +55,19 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					Место для рекламы
 				</div> -->
 
-				<div class="a-content m-content">
-
-					<?php echomarkdown_pub ($articleText); ?>
-					<p class="a-video"><?php echo $video; ?></p>
+				<div class="pub-pl">
+					<div class="a-line"></div>
+					<div class="a-content">
+						<?php echomarkdown_pub ($articleText); ?>
+						<p class="a-video"><?php echo $video; ?></p>
+					</div>								
+				</div>
+				<div class="m-content like-place">
 					<div class = "recomm-place">                       
 						<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 						<script src="//yastatic.net/share2/share.js"></script>
 						<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>      
-					</div>				
-				</div>
-				<div class="m-content like-place">
+					</div>	
 					<div>
 						<?php echo $votePanel; ?>
 					</div>

@@ -1523,9 +1523,15 @@ article .article-head-bottom a{
     text-decoration: none;   
 }
 
-article .a-content{
+.pub-pl{
+    display: flex;
     margin-top: 2%;
-    font-size: 2rem;
+    margin-left: 7%;
+}
+
+article .a-content{
+    font-size: 1.5rem;
+    margin-left: 2%;
 }
 
 article .a-content img{
@@ -1535,6 +1541,12 @@ article .a-content img{
 
 article .a-video{
     margin-left: 10%;
+}
+
+article .a-line{
+    border: 3px solid #1e90ff;
+    width: 0;
+    max-height:100%;
 }
 
 article .like-place{
