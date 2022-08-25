@@ -1666,8 +1666,25 @@ article .btn_recomm{
 }
 
 .comment-person-pl img{
-    width: 90px;/*Параметры аватара*/
-    height: 90px;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+}
+
+.comment-person-pl a{
+    text-decoration: none;
+    color: #0F4780;
+    font-size: 1rem;
+}
+
+.comment-person-pl .fa-user-circle-o{
+    color: #0F4780;
+    font-size: 2rem;
+}
+
+.comment-person-pl .comment-date{
+    color: rgba(35, 35, 35, 0.7);
+    font-size: 0.7rem;
 }
 
 .comment-bottom{

@@ -1,9 +1,11 @@
 <script>
     $(document).ready(function() {
+        $('#subcomments_<?php echo $comment['id'];?>').load("../viewwallpost/getsubcomment.inc.php/?id=<?php echo $comment['id'];?>&selauthid=<?php echo $selectedAuthor;?>");
+       
         //Получение ответов
         $('#load_<?php echo $comment['id'];?>').click(function(e) {  
             $('#result_form_<?php echo $comment['id']; ?>').empty();
-            $('#subcomments_<?php echo $comment['id'];?>').load("../viewwallpost/getsubcomment.inc.php/?id=<?php echo $comment['id'];?>&selauthid=<?php echo $selectedAuthor;?>");
+            // $('#subcomments_<?php echo $comment['id'];?>').load("../viewwallpost/getsubcomment.inc.php/?id=<?php echo $comment['id'];?>&selauthid=<?php echo $selectedAuthor;?>");
             $('#hide_open_pl_<?php echo $comment['id']; ?>').show();
             e.preventDefault();
         })

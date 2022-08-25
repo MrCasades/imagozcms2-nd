@@ -130,12 +130,18 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 				<div class="comment m-content">
 					<div class="comment-person-pl">
-						<div>
-							<img src="../avatars/<?php echo $comment['avatar'];?>" alt="ava"/>
-						</div> 
+						<?php if ($comment['avatar'] !== 'ava-def.jpg'): ?>
+
+						<div> 
+							<img src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 
+						</div>
+
+						<?php else: ?>
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+						<?php endif; ?>
 						<div>
 							<?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?><br>
-							<?php echo $comment['date']; ?>
+							<span class="comment-date"><?php echo $comment['date']; ?></span>
 						</div> 
 					</div>
 					<p><a name="comment-<?php echo $comment['id']; ?>"></a></p>
