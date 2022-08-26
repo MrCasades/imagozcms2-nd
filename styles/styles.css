@@ -1719,14 +1719,13 @@ article .btn_recomm{
 
 .comment-line{
     margin-top: 1rem;
-    width: 90%;
+    width: 84%;
+    margin-left: 11%;
     height: 0;
     border: 1px solid rgba(30, 144, 255, 1);
     
     /* margin-left: auto; */
-    flex-shrink: 0;
-    flex-grow: 0;
-    transform: rotate(180deg);
+    
 }
 
 .one-comment-bottom{
@@ -1737,6 +1736,10 @@ article .btn_recomm{
 .one-comment-like{
     margin-left: 80%;
     font-weight: bold;
+}
+
+.all-sub-comments{
+    margin-left: 20%;
 }
 
 .sub-comment{

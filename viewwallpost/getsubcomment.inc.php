@@ -30,6 +30,7 @@ if (isset ($_GET['id']))
 			scm.likescount,
 			scm.dislikescount, 
 			a.authorname AS subauthorname,
+			a.avatar AS subavatar,
 			scml.islike, 
 			scml.isdislike 
 		FROM subcomments scm
@@ -58,7 +59,7 @@ if (isset ($_GET['id']))
 	foreach ($result as $row)
 	{
 		$subcomments[] =  array ('id' => $row['id'], 'text' => $row['subcomment'], 'date' => $row['subcommentdate'], 'subauthorname' => $row['subauthorname'],
-								'subidauthor' => $row['subidauthor'], 'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 
+								'subavatar' => $row['subavatar'], 'subidauthor' => $row['subidauthor'], 'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 
 								'islike' => $row['islike'],	'isdislike' => $row['isdislike']);
 	}
 	

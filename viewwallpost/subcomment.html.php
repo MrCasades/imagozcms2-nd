@@ -36,9 +36,24 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 			?>
 
 <div class="sub-comment m-content">
-    <span class="sub-comment-info">
+	<div class="comment-person-pl">
+		<?php if ($subcomment['subavatar'] !== 'ava-def.jpg'): ?>
+
+		<div> 
+			<img src="../avatars/<?php echo $subcomment['subavatar'];?>" alt="<?php echo $subcomment['subauthorname'];?>"> 
+		</div>
+
+		<?php else: ?>
+			<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+		<?php endif; ?>
+		<div>
+			<?php echo ('<a href="../account/?id='.$subcomment['subidauthor'].'">'.$subcomment['subauthorname']).'</a>';?><br>
+			<span class="comment-date"><?php echo $subcomment['date']; ?></span>
+		</div> 
+	</div>
+    <!-- <span class="sub-comment-info">
 		Ответил <a href="../account/?id=<?php echo $subcomment['subidauthor']; ?>"><?php echo $subcomment['subauthorname']; ?></a> | <?php echo $subcomment['date'];?>
-	  </span>
+	  </span> -->
 	<p><?php echomarkdown ($subcomment['text']); ?></p>
 	<p>
 		<form class="one-comment-like" id = "like_form_sc_<?php echo $subcomment['id'];?>">
@@ -72,6 +87,6 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 							
 			echo $updAnddel;?></p>
 </div>
-<div class = "m-content comment-line"></div>
+<div class = "comment-line"></div>
 
 <?php endforeach; ?>
