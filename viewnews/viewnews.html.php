@@ -286,7 +286,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</a> 
 				<?php endforeach; ?>
 			</div>
-			<div class="zen-c-m">
+			<!-- <div class="zen-c-m">
 				<div class = "main-headers">
 					<div class = "main-headers-content">
 						<h2 class="no-link-header">Наш Дзен-канал</h2>
@@ -296,7 +296,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<div class="zen-link-m">
 					<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </article>
