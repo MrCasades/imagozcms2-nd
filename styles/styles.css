@@ -1665,6 +1665,10 @@ article .btn_recomm{
     height: auto;
 }
 
+.comment-person-pl {
+    display: flex;
+}
+
 .comment-person-pl img{
     width: 2.5rem;
     height: 2.5rem;
@@ -1687,13 +1691,17 @@ article .btn_recomm{
     font-size: 0.7rem;
 }
 
+.comment-person-pl .comment-person-name{
+    margin-left: 5%;
+}
+
 .comment-bottom{
     display: flex;
     flex-direction: row;
 }
 
 .comment-like{
-    margin-left: 65%;
+    margin-left: 2%;
     font-weight: bold;
 }
 
@@ -1708,19 +1716,24 @@ article .btn_recomm{
 }
 
 .comment-ans{
-    margin-left: 5%;/*75% старое значение*/
+    margin-left: 75%;
     font-weight: bold;
 }
 
 .comment-auth{
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     margin-left: 10%;
+    color: #0F4780;
+}
+
+.comment-auth a{
+    color: #0F4780;
 }
 
 .comment-line{
     margin-top: 1rem;
-    width: 84%;
-    margin-left: 11%;
+    width: 79%;
+    margin-left: 16%;
     height: 0;
     border: 1px solid rgba(30, 144, 255, 1);
     
@@ -1734,7 +1747,7 @@ article .btn_recomm{
 }
 
 .one-comment-like{
-    margin-left: 80%;
+    margin-left: 76.5%;
     font-weight: bold;
 }
 
@@ -1750,6 +1763,15 @@ article .btn_recomm{
     border: 1px solid rgba(30, 144, 255, 1);
     padding: 0.3%;
     border-radius: 5px;
+}
+
+.sub-comment-open{
+    margin-top: 0.2%;
+    margin-left: 90%;
+}
+
+.sub-comment-open a{
+    color: #1E90FF;
 }
 
 article .zen-ch a{

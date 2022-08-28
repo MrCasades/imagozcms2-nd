@@ -11,7 +11,7 @@ $(document).ready(function() {
 				$('.trumbowyg-editor').attr("placeholder", "Поле комментария не может быть пустым");
 				e.preventDefault();
 			} else {
-				addSubComment('result_form_subcomm', 'addsubcomm', '../includes/addsubcomment.inc.php');
+				('result_form_subcomm', 'addsubcomm', '../includes/addsubcomment.inc.php');
 				return false; 
 			}		
 		}

@@ -62,14 +62,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<p class="a-video"><?php echo $video; ?></p>
 					</div>								
 				</div>
-				<div class="m-content like-place">
-					<div class = "recomm-place">                       
-						<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-						<script src="//yastatic.net/share2/share.js"></script>
-						<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>      
-					</div>	
+				<div class="m-content like-place">	
 					<div>
 						<?php echo $votePanel; ?>
+						<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+						<script src="//yastatic.net/share2/share.js"></script>
+						<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>
 					</div>
 					<div class="fav-and-recomm">
 						<div><?php echo $addFavourites;?></div>
@@ -138,7 +136,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<?php else: ?>
 							<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
 						<?php endif; ?>
-						<div>
+						<div class="comment-person-name">
 							<?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?><br>
 							<span class="comment-date"><?php echo $comment['date']; ?></span>
 						</div> 
@@ -189,6 +187,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					
 				</div>
 				<div class="comment-bottom">
+					<div class="comment-ans">
+						<a href="#"><button class="btn_1" id = "op_form_<?php echo $comment['id'];?>">Ответить</button></a> 
+						<!-- <a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a> -->
+					</div>
 					<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
 						<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 						<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
@@ -201,10 +203,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				/*Загрузка скрипта добавления лайков/дизлайков*/
 				include MAIN_FILE . '/includes/likescript.inc.php';?>
 
-					<div class="comment-ans">
-						<a href="#"><button class="btn_2" id = "op_form_<?php echo $comment['id'];?>"><i class="fa fa-share" aria-hidden="true"></i> Ответить</button></a> 
-						<!-- <a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a> -->
-					</div>
 				</div>
 				<div class = "comment-line"></div>
 				<div class="m-content form-pl" id = "answ_<?php echo $comment['id'];?>" style="display: none;">
@@ -224,7 +222,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</div> 				
 				<div id="result_form_<?php echo $comment['id']; ?>"></div>
 				<div id="subcomments_<?php echo $comment['id']; ?>" class="all-sub-comments"></div>
-				<div class="m-content" id="hide_open_pl_<?php echo $comment['id']; ?>">
+				<div class="sub-comment-open" id="hide_open_pl_<?php echo $comment['id']; ?>">
 					<!-- <a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a>  -->
 					<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=news&idart=<?php echo $idNews; ?>">Все ответы</a>
 				</div>

@@ -220,7 +220,9 @@ $(document).ready(function() {
         data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
         success: function(response) { //Данные отправлены успешно
         	result = $.parseJSON(response);
-        	$('#result_form').prepend('<div class="comment m-content"><div class="comment-person-pl"><div><img src="../avatars/'+result.avatar+'" alt="ava"/></div><div><a href="../account/?id='+result.idauthor+'">'+result.authorname+'</a><br>Только что</div></div><div class="comment-text"><p><form action = "?" method = "post"><div><input type = "hidden" name = "id" value = "'+result.id+'"><input type = "hidden" name = "idarticle" value = "'+result.idarticle+'"><input type = "submit" name = "action" class="btn_2" value = "Редактировать"><input type = "submit" name = "action" class="btn_1" value = "Del"></div></form></p>'+result.text+'</div></div><a href="../viewwallpost/?id='+result.id+'"><button class="comment-ans btn_1"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы ('+result.subcommentcount+')</button></a><div class = "m-content comment-line"></div>');
+
+            let avatar = result.avatar !== 'ava-def.jpg' ? '<div><img src="../avatars/'+result.avatar+'" alt="ava"/></div>' : '<i class="fa fa-user-circle-o" aria-hidden="true"></i>'
+        	$('#result_form').prepend('<div class="comment m-content"><div class="comment-person-pl">'+avatar+'<div class="comment-person-name"><a href="../account/?id='+result.idauthor+'">'+result.authorname+'</a><br><span class="comment-date">Только что</span></div></div><div class="comment-text"><p><form action = "?" method = "post"><div><input type = "hidden" name = "id" value = "'+result.id+'"><input type = "hidden" name = "idarticle" value = "'+result.idarticle+'"><input type = "submit" name = "action" class="btn_2" value = "Редактировать"><input type = "submit" name = "action" class="btn_1" value = "Del"></div></form></p>'+result.text+'</div></div><div class = "comment-line"></div>');
             
 			let countComm = document.getElementById('comm_count');//счётчик комментариев
 			countComm.innerHTML = Number(countComm.innerHTML) + 1;

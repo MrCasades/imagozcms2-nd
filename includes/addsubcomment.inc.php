@@ -50,7 +50,7 @@ if (isset($_POST["idcomment"]))
     /*Команда SELECT*/
 	try
 	{
-	    $sql = 'SELECT subcomments.id AS subid, author.id AS subidauthor, subcomment, subcommentdate, authorname AS subauthorname FROM subcomments 
+	    $sql = 'SELECT subcomments.id AS subid, author.id AS subidauthor, subcomment, subcommentdate, authorname AS subauthorname, avatar AS subavatar FROM subcomments 
 		INNER JOIN author 
 		ON idauthor = author.id 
 		WHERE subcomments.id =(SELECT max(id) FROM subcomments)';
@@ -74,6 +74,7 @@ if (isset($_POST["idcomment"]))
         'date' => $row['subcommentdate'],
         'idauthor' => $row['subidauthor'],
         'authorname' => $row['subauthorname'],
+		'avatar' => $row['subavatar'],
 		'idcomment' => $_POST['idcomment'],
       //  'subcommentcount' => $row['subcommentcount']
     ); 

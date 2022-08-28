@@ -22,7 +22,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 				<?php else: ?>
 					<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
 				<?php endif; ?>
-				<div>
+				<div class="comment-person-name">
 					<?php echo ('<a href="../account/?id='.$subcomment['subidauthor'].'">'.$subcomment['subauthorname']).'</a>';?><br>
 					<span class="comment-date"><?php echo $subcomment['date']; ?></span>
 				</div> 
@@ -72,6 +72,10 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 			
 		</div>
 		<div class="comment-bottom">
+			<!-- <div class="comment-ans">
+				<a href="#"><button class="btn_1" id = "op_form_<?php echo $comment['id'];?>">Ответить</button></a> 
+				
+			</div> -->
 			<form class="one-comment-like" id = "like_form_sc_<?php echo $subcomment['id'];?>">
 				<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 				<input type = "hidden" name = "idsubcomment" value = "<?php echo $subcomment['id'];?>">
@@ -83,11 +87,6 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 			<?php 
 		/*Загрузка скрипта добавления лайков/дизлайков*/
 		include MAIN_FILE . '/includes/likescriptsc.inc.php';?>
-
-			<div class="comment-ans">
-				<a href="#"><button class="btn_2" id = "op_form_<?php echo $comment['id'];?>"><i class="fa fa-share" aria-hidden="true"></i> Ответить</button></a> 
-				<!-- <a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a> -->
-			</div>
 		</div>
 <div class = "comment-line"></div>
 
