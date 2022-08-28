@@ -40,7 +40,7 @@ if (isset ($_GET['id']))
 			(SELECT idauthor AS idauthorlk, idsubcomment, islike, isdislike
 			FROM subcommentlikes WHERE idauthor = '.$selectedAuthor.') scml
 		ON scm.id = scml.idsubcomment
-		WHERE scm.idcomment = '.$idComment.' ORDER BY scm.subcommentdate DESC LIMIT 10';//Внизу самое последнее значение
+		WHERE scm.idcomment = '.$idComment.' ORDER BY scm.subcommentdate DESC LIMIT 5';//Внизу самое последнее значение
 		$result = $pdo->query($sql);
 	}
 
