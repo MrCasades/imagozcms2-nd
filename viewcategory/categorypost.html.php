@@ -6,17 +6,19 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class = "main-headers">
-        <div class = "headers-places"> 
-            <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
-        </div>
-    </div>
+		<div class = "main-headers-content">
+			<h2><?php htmlecho ($headMain); ?></h2>
+		</div>
+	</div>
 
 	<div class = "main-headers">
-        <div class = "headers-places"> 
-            <a class = "main-headers-place" href="../viewallnewsincat/?id=<?php echo $idCategory;?>"><h3>Новости</h3></a>
-        </div>
-        <div class = "main-headers-line"></div>
-    </div>
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<a class = "main-headers-place" href="../viewallnewsincat/?id=<?php echo $idCategory;?>"><h2>Новости</h2></a>
+			<div class = "main-headers-line"></div>
+			<div class = "sub-header"><?php htmlecho ($subHeaderNews); ?></div>
+		</div>
+	</div>
 
 	<div class = "newsblock m-content">
 	<?php if (empty ($newsIn))
@@ -39,12 +41,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	</div>
 
-    <div class = "main-headers">
-        <div class = "headers-places"> 
-            <a class = "main-headers-place" href="../viewallvideosincat/?id=<?php echo $idCategory;?>"><h3>Видео</h3></a>
-        </div>
-        <div class = "main-headers-line"></div>
-    </div>
+	<div class = "main-headers">
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<a class = "main-headers-place" href="../viewallvideosincat/?id=<?php echo $idCategory;?>"><h2>Видео</h2></a>
+			<div class = "main-headers-line"></div>
+			<div class = "sub-header"><?php htmlecho ($subHeaderVideo); ?></div>
+		</div>
+	</div>
 
 	<div class = "main-post m-content">
 	<?php if (empty($videos))
@@ -80,11 +84,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
     </div>
 
 	<div class = "main-headers">
-        <div class = "headers-places"> 
-            <a class = "main-headers-place" href="../viewallpromotionincat/?id=<?php echo $idCategory;?>"><h3>Промоушен</h3></a>
-        </div>
-        <div class = "main-headers-line"></div>
-    </div>
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<a class = "main-headers-place" href="../viewallpromotionincat/?id=<?php echo $idCategory;?>"><h2>Промоушен</h2></a>
+			<div class = "main-headers-line"></div>
+			<div class = "sub-header"><?php htmlecho ($subHeaderPromotion); ?></div>
+		</div>
+	</div>
 
 	<div class = "main-post m-content">
 	<?php if (empty($promotions))
@@ -106,11 +112,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
     </div>
 
 	<div class = "main-headers">
-        <div class = "headers-places"> 
-            <a class = "main-headers-place" href="../viewallpostsincat/?id=<?php echo $idCategory;?>"><h3>Статьи</h3></a>
-        </div>
-        <div class = "main-headers-line"></div>
-    </div>
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<a class = "main-headers-place" href="../viewallpostsincat/?id=<?php echo $idCategory;?>"><h2>Статьи</h2></a>
+			<div class = "main-headers-line"></div>
+			<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
+		</div>
+	</div>
 
 	<div class = "main-post m-content">
 	<?php if (empty($posts))

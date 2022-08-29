@@ -10,7 +10,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<div class = "main-headers-content">
 			<a class = "main-headers-place" href="./viewallrecommpost/"><h2><?php htmlecho ($headMain); ?></h2></a>
 			<div class = "main-headers-line"></div>
-			<div class = "sub-header"><?php htmlecho ($subHeaderVideo); ?></div>
+			<div class = "sub-header"><?php htmlecho ($subHeaderNews); ?></div>
 		</div>
 	</div>
 
