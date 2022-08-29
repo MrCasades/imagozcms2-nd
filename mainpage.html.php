@@ -17,7 +17,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<div class = "main-headers-content">
 				<a href = "./viewallnews/"><h2>Новостная лента</h2></a>
 				<div class = "main-headers-line"></div>
-				<div class = "sub-header">Новости игровой индустрии, высоких технологий и популярной науки</div>
+				<div class = "sub-header"><?php htmlecho ($subHeaderNews); ?></div>
 			</div>
 		</div>
 
@@ -72,7 +72,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<div class = "main-headers-content">
 				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Пользователи рекомендуют</h2></a>
 				<div class = "main-headers-line"></div>
-				<div class = "sub-header">Статьи, которые порекомендовали для главной страицы!</div>
+				<div class = "sub-header"><?php htmlecho ($subHeaderRecomm); ?></div>
 			</div>
 		</div>
 
@@ -85,7 +85,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			else
 				
 			foreach ($lastRecommPosts as $lastRecommPost): ?>
-			<a href = "./viewnews/?id=<?php htmlecho ($lastRecommPost['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $lastRecommPost['imghead']; ?>)">
+			<a href = "./viewpost/?id=<?php htmlecho ($lastRecommPost['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $lastRecommPost['imghead']; ?>)">
 				<div class = "post-top-1">			
 					<span class="post-rubrics"><?php htmlecho ($lastRecommPost['categoryname']); ?></span>
 				</div>
@@ -115,9 +115,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Наше видео</h2></a>
+				<a class = "main-headers-place" href="./viewallvideos/"><h2>Наше видео</h2></a>
 				<div class = "main-headers-line"></div>
-				<div class = "sub-header">Видео-обзоры, прохождения игр от нашей команды</div>
+				<div class = "sub-header"><?php htmlecho ($subHeaderVideo); ?></div>
 			</div>
 		</div>
 
@@ -185,7 +185,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<div class = "main-headers-content">
 				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Отражение дня</h2></a>
 				<div class = "main-headers-line"></div>
-				<div class = "sub-header">Что-то забавное, занимательное, любопытное</div>
+				<div class = "sub-header"><?php htmlecho ($subRefDay); ?></div>
 			</div>
 		</div>		
 
@@ -216,9 +216,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Промоушен</h2></a>
+				<a class = "main-headers-place" href="./viewallpromotion/"><h2>Промоушен</h2></a>
 				<div class = "main-headers-line"></div>
-				<div class = "sub-header">Материалы от наших уважаемых рекламодателей</div>
+				<div class = "sub-header"><?php htmlecho ($subHeaderPromotion); ?></div>
 			</div>
 		</div>	
 
@@ -251,9 +251,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Статьи</h2></a>
+				<a class = "main-headers-place" href="./viewallposts/"><h2>Статьи</h2></a>
 				<div class = "main-headers-line"></div>
-				<div class = "sub-header">Масштабные публикации, рейтинги, заметки</div>
+				<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
 			</div>
 		</div>	
 

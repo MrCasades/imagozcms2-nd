@@ -6,6 +6,9 @@ include_once __DIR__ . '/includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
+/*Загрузка общих переменных*/
+include_once MAIN_FILE . '/includes/commonvar.inc.php';
+
 $title = 'Hi-Tech новости, игры, наука, интернет в отражении на imagoz.ru';//Данные тега <title>
 $headMain = '';
 $robots = 'all';

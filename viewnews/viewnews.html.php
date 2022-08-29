@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<div class = "main-headers-content">
 					<a href = "../viewallnews/"><h2>Новостная лента</h2></a>
 					<div class = "main-headers-line"></div>
-					<div class = "sub-header">Новости игровой индустрии, высоких технологий и популярной науки</div>
+					<div class = "sub-header"><?php htmlecho ($subHeaderNews); ?></div>
 				</div>
 			</div>
 			<div class = "article-head m-content" style="background-image: url(../images/<?php echo $imgHead; ?>)">

@@ -2,10 +2,15 @@
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
+/*Загрузка общих переменных*/
+include_once MAIN_FILE . '/includes/commonvar.inc.php';
+
 $title = 'Каталог статей | imagoz.ru';//Данные тега <title>
 $headMain = 'Все рекомендованные статьи';
 $robots = 'noindex, follow';
 $descr = 'В данном разделе размещаются список всех статей портала';
+$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+$breadPart2 = '<a href="//'.MAIN_URL.'/viewallrecommpost/">Все рекомендации</a> ';//Для хлебных крошек
 
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';

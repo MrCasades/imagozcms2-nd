@@ -2,6 +2,9 @@
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
+/*Загрузка общих переменных*/
+include_once MAIN_FILE . '/includes/commonvar.inc.php';
+
 $title = 'Каталог статей | imagoz.ru';//Данные тега <title>
 $headMain = 'Все статьи';
 $robots = 'noindex, follow';

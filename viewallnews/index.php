@@ -2,6 +2,9 @@
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
+/*Загрузка общих переменных*/
+include_once MAIN_FILE . '/includes/commonvar.inc.php';
+
 $title = 'Каталог новостей | imagoz.ru';//Данные тега <title>
 $headMain = 'Все новости';
 $robots = 'noindex, follow';
@@ -17,9 +20,6 @@ if (loggedIn())
 {
 	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
 }
-
-/*Подключение к базе данных*/
-include MAIN_FILE . '/includes/db.inc.php';
 
 /*Постраничный вывод информации*/
 		
