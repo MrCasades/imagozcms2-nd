@@ -2,6 +2,9 @@
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
+/*Загрузка общих переменных*/
+include_once MAIN_FILE . '/includes/commonvar.inc.php';
+
 $title = 'Каталог промоушен-статей | '.MAIN_URL;//Данные тега <title>
 $headMain = 'Все промоушен-статьи';
 $robots = 'noindex, follow';
