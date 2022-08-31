@@ -20,7 +20,7 @@ if (isset ($_GET['id']))
 	
 	/*Возвращение id автора для вызова функции изменения пароля*/
 
-	$selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : '';//id автора
+	$selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : 0;//id автора
 	
 	include MAIN_FILE . '/includes/db.inc.php';
 	

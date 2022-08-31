@@ -50,7 +50,7 @@ if (isset ($_GET['id']))
 		$headMain = 'Ошибка данных!';
 		$robots = 'noindex, nofollow';
 		$descr = '';
-		$error = 'Error table in mainpage' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		$error = 'Error table in subcomments' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 		include 'error.html.php';
 		exit();
 	}

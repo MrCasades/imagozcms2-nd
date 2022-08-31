@@ -241,11 +241,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					// если текущая старница
 					if($i == $page)
 					{
-						echo "<a href='./viewnews/?id=".$idNews."&page=$i'><button class='btn_2'>$i</button></a> ";
+						echo "<a href='../viewnews/?id=".$idNews."&page=$i'><button class='btn_2'>$i</button></a> ";
 					} 
 					else 
 					{
-						echo "<a href='./viewnews/?id=".$idNews."&page=$i'><button class='btn_1'>$i</button></a> ";
+						echo "<a href='../viewnews/?id=".$idNews."&page=$i'><button class='btn_1'>$i</button></a> ";
 					}
 				}?>
 			</div>

@@ -1,10 +1,11 @@
 <?php if (!empty ($newsIn)): ?>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-            <a class = "main-headers-place" href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>"><h3>Новости автора</h3></a>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+	<a class = "main-headers-place" href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>"><h2>Новости автора</h2></a>
+		<div class = "main-headers-line"></div>
+	</div>
 </div>
 
 <?php endif; ?>
@@ -30,10 +31,11 @@
 <?php if (!empty ($posts)): ?>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-            <a class = "main-headers-place" href = "../account/allauthorpost/?id=<?php htmlecho ($idAuthor); ?>"><h3>Статьи автора</h3></a>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<a class = "main-headers-place" href = "../account/allauthorpost/?id=<?php htmlecho ($idAuthor); ?>"><h2>Статьи автора</h2></a>
+		<div class = "main-headers-line"></div>
+	</div>
 </div>
 
 <?php endif; ?>

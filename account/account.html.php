@@ -6,12 +6,13 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 <main>
-    <div class = "main-headers">
-        <div class = "headers-places"> 
-            <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
-        </div>
-        <div class = "main-headers-line"></div>   
-    </div>
+	<div class = "main-headers">
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<h2><?php htmlecho ($headMain); ?></h2>
+			<div class = "main-headers-line"></div>
+		</div>
+	</div>
 
 	<div class="acc-m m-content">
         <div class="ava-pl">
@@ -52,12 +53,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<?php if (!empty ($favourites)): ?>
 
 	<div class = "main-headers">
-        <div class = "headers-places"> 
-            <a class = "main-headers-place" href = "./viewallfavourites/?id=<?php echo $idAuthor;?>"><h3>Избранное</h3></a>
-        </div>
-        <div class = "main-headers-line"></div>
-    </div>
-	
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+		<a class = "main-headers-place" href = "./viewallfavourites/?id=<?php echo $idAuthor;?>"><h2>Избранное</h2></a>
+			<div class = "main-headers-line"></div>
+		</div>
+	</div>
+
 	<?php endif; ?>
 	
 	<div class = "newsblock m-content">
@@ -87,42 +89,49 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		{
 			include MAIN_FILE . '/account/postandnews.inc.html.php';
 		}?>
-
+	
 	<div class = "main-headers">
-        <div class = "headers-places"> 
-            <div class = "main-headers-txtplace">Стена (<span id="comm_count"><?php echo $countPosts; ?></span>)</div>
-        </div>
-        <div class = "main-headers-line"></div>
-    </div>
+		<div class = "main-headers-content">
+				<h2 class="no-link-header">Стена (<span id="comm_count"><?php echo $countPosts; ?></span>)</h2>
+			<div class = "main-headers-line"></div>				
+		</div>
+	</div>
 	
 	<?php echo $addComment; ?>
 
 	<div class = "m-content comment-line"></div> 
 	<div id="result_form"></div>	
 	<?php if (empty ($comments))
-			{
-				echo'<p class = "m-content" id="not_comment">Записи на стене отсутствуют!</p>';
-			}
-				
-			else
-				
-			foreach ($comments as $comment): ?> 
+				{
+					echo '<br/><p align="center" id="not_comment">Комментарии отсутствуют!</p>';
+				}
+					
+				else
+					
+				foreach ($comments as $comment): ?> 
 
-	<div class="comment m-content">
-            <div class="comment-person-pl">
-                <div>
-                    <img src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"/>
-                </div> 
-                <div>
-					<?php echo '<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname'].'</a>';?><br>
-                    <?php echo $comment['date'];?>
-                </div> 
-            </div>
-            <div class="comment-text">
+				<div class="comment m-content">
+					<div class="comment-person-pl">
+						<?php if ($comment['avatar'] !== 'ava-def.jpg'): ?>
+
+						<div> 
+							<img src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 
+						</div>
+
+						<?php else: ?>
+							<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+						<?php endif; ?>
+						<div class="comment-person-name">
+							<?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?><br>
+							<span class="comment-date"><?php echo $comment['date']; ?></span>
+						</div> 
+					</div>
+					<p><a name="comment-<?php echo $comment['id']; ?>"></a></p>
+					<div class="comment-text">
 						<p><?php 
 					
-						//Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!
-						
+					//Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!
+					
 						if ($comment['islike'] == 1)
 						{
 							$likeStyle = 'fa-thumbs-up';
@@ -139,15 +148,17 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							$likeStyle = 'fa-thumbs-o-up';
 							$dislikeStyle = 'fa-thumbs-o-down';
 						}
-					
-						if (($selectedAuthor == $comment['idauthor']) || (userRole('Администратор')))
+
+						if (($selectedAuthor  == $comment['idauthor']) || (userRole('Администратор')))
 						{
-							$updAnddel = '<form action = "../account/addupdwallpost/" method = "post">
-							   <input type = "hidden" name = "id" value = "'.$comment ['id'].'">
-							   <input type = "hidden" name = "idaut" value = "'.$comment['idauthor'].'">
-							   <input type = "submit" name = "action" class="btn_2" value = "Редактировать">
-							   <input type = "submit" name = "action" class="btn_1" value = "Del">
-					   		</form>';				
+							$updAnddel = '<form action = "?" method = "post">
+							<div>
+								<input type = "hidden" name = "id" value = "'.$comment ['id'].'">
+								<input type = "hidden" name = "idarticle" value = "'.$comment ['idarticle'].'">
+								<input type = "submit" name = "action" class="btn_2" value = "Редактировать">
+								<input type = "submit" name = "action" class="btn_1" value = "Del">
+							</div>
+						</form>';						 
 						}	
 						else
 						{
@@ -155,12 +166,16 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						}							 
 						
 						echo $updAnddel;?></p>
-						<img src="../images/<?php echo $comment['imghead'];?>" alt="<?php echo $comment['imgalt'];?>"/>
+
 						<?php echomarkdown ($comment['text']); ?>		
 					</div>
 					
 				</div>
 				<div class="comment-bottom">
+					<div class="comment-ans">
+						<a href="#"><button class="btn_1" id = "op_form_<?php echo $comment['id'];?>">Ответить</button></a> 
+						<!-- <a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a> -->
+					</div>
 					<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
 						<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 						<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
@@ -173,12 +188,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				/*Загрузка скрипта добавления лайков/дизлайков*/
 				include MAIN_FILE . '/includes/likescript.inc.php';?>
 
-					<div class="comment-ans">
-						<a href="#"><button class="btn_2" id = "op_form_<?php echo $comment['id'];?>"><i class="fa fa-share" aria-hidden="true"></i> Ответить</button></a> 
-						<a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a>
-					</div>
 				</div>
-				<div class = "m-content comment-line"></div>
+				<div class = "comment-line"></div>
 				<div class="m-content form-pl" id = "answ_<?php echo $comment['id'];?>" style="display: none;">
 					<?php if (isset($_SESSION['loggIn'])):?>
 						<form id="subcomm_form_<?php echo $comment['id'];?>" method = "post">
@@ -193,16 +204,19 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы ответиь на комментарий!
 						</div>
 					<?php endif;?>
-				</div> 
-				<div class="m-content" id="hide_open_pl_<?php echo $comment['id']; ?>" style="display: none;"><a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a> <a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=news&idart=<?php echo $idNews; ?>">Все ответы</a></div>
+				</div> 				
 				<div id="result_form_<?php echo $comment['id']; ?>"></div>
-				<div id="subcomments_<?php echo $comment['id']; ?>"></div>
-			
-			<?php 
-			/*Загрузка скрипта получения субкомментов в шаблон*/
-			include MAIN_FILE . '/includes/subcommentloadscript.inc.php';?> 
+				<div id="subcomments_<?php echo $comment['id']; ?>" class="all-sub-comments"></div>
+				<div class="sub-comment-open" id="hide_open_pl_<?php echo $comment['id']; ?>">
+					<!-- <a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a>  -->
+					<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=acc&idart=<?php echo $idAuthor; ?>">Все ответы</a>
+				</div>
+				
+				<?php 
+				/*Загрузка скрипта получения субкомментов в шаблон*/
+				include MAIN_FILE . '/includes/subcommentloadscript.inc.php';?>
 
-		<?php endforeach; ?> 
+			<?php endforeach; ?> 
 
 		<div  class="page-output">
 				 <?php
