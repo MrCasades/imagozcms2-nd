@@ -146,7 +146,7 @@ if (isset ($_GET['id']))
 		$robots = 'noindex, follow';
 		$descr = 'В даном разделе отображаются все статьи и новости рубрики '.$row['categoryname'];
 		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-		$breadPart2 = '<a href="//'.MAIN_URL.'/viewcategory/?id='.$row['categoryid'].'">Материалы рубрики '.$row['categoryname'].'</a> ';//Для хлебных крошек
+		$breadPart2 = '<a href="//'.MAIN_URL.'/viewcategory/?id='.$idCategory.'">Материалы рубрики '.$row['categoryname'].'</a> ';//Для хлебных крошек
 	}
 	
 	else
