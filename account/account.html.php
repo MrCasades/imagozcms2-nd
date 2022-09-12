@@ -6,12 +6,13 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 <main>
-    <div class = "main-headers">
-        <div class = "headers-places"> 
-            <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?></h1></div>
-        </div>
-        <div class = "main-headers-line"></div>   
-    </div>
+	<div class = "main-headers">
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+				<h2><?php htmlecho ($headMain); ?></h2>
+			<div class = "main-headers-line"></div>
+		</div>
+	</div>
 
 	<div class="acc-m m-content">
         <div class="ava-pl">
