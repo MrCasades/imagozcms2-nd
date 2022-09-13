@@ -362,7 +362,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 						<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
 					<?php endif; ?>
 					
-					<?php echo ('<a href="../account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?>
+					<?php echo ('<a href="./account/?id='.$comment['idauthor'].'">'.$comment['authorname']).'</a>';?>
 				</div>
 				<div class="comment-txt-pl-mp"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($comment['text'])), 0, 70)))); ?>...</div>
 				<div class="comment-bottom-mp">									
