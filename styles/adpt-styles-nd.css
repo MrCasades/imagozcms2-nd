@@ -659,6 +659,27 @@
         font-size: 1.3rem;
     }
 
+    .newsblock .post-place-1:nth-child(1) .post-bottom-1{
+        margin-top: 21%; 
+    }
+    
+    .newsblock .post-place-1:nth-child(2) .post-bottom-1{
+        margin-top: 21%;
+    }
+
+    .newsblock .post-place-1:nth-child(1) .post-header-1:nth-child(1){
+        font-size: 1.3rem; 
+    }
+    
+    .newsblock .post-place-1:nth-child(2) .post-header-1:nth-child(1){
+        font-size: 1.3rem; 
+    }
+
+    .promotionblock .post-place-1:nth-child(1){ 
+        width: 90%; 
+        height: 15rem;
+    }
+    
     main .post-place-grid{
         margin: 1% 5px;
         width: 90%;
