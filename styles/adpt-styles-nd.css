@@ -318,6 +318,10 @@
         font-size: 0.5rem;
     }
 
+    .sub-header{
+        display: none;
+    }
+
     header  nav{
         margin: 3% 2% 0 0%;
     }
