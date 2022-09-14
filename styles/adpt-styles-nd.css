@@ -412,7 +412,11 @@
         width: 30%;
     }
 
-    .last-comments-pl{
+    .right-side{
+        display: none;
+    }
+
+    .foot-menu{
         display: none;
     }
 
@@ -612,6 +616,43 @@
     main .post-place-1{
         margin: 1% 5px;
         width: 90%;
+    }
+
+    .newsblock .post-place-1:nth-child(1){ 
+        margin: 1% 5px;
+        width: 90%;
+        height: 15rem;
+    }
+
+    .newsblock .post-place-1:nth-child(1) .post-rubrics{ 
+        background: #1E90FF;
+        padding: 5px;
+        border-radius: 15px;
+        text-shadow: none;
+    
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+    }
+    
+    .newsblock .post-place-1:nth-child(1) .post-bottom-1{ 
+        margin-top: 26%;
+        margin-left: 2%;
+        font-size: 1.3rem;
+    }
+
+    .newsblock .post-place-1:nth-child(2){
+        margin: 1% 5px;
+        width: 90%; 
+        height: 15rem;
+    }
+
+    .newsblock .post-place-1:nth-child(2) .post-bottom-1{ 
+        margin-top: 26%;
+        margin-left: 2%;
+        font-size: 1.3rem;
     }
 
     main .post-place-grid{

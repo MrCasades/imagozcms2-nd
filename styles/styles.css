@@ -1832,10 +1832,6 @@ main .acc-info-pl{
     height: 15rem;
 }
 
-.footer a{
-    color: #1e90ff;
-}
-
 .counts{
     display: flex;
     margin-top: 1rem;

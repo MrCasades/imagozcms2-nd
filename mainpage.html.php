@@ -280,13 +280,13 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div>
 	</div>
 	<div class="right-side">
+		<div class="last-comments-pl">
 		<div class = "main-headers">
 			<div class = "main-headers-content">
 				<h2 class="no-link-header">Последние комментарии</h2>
 				<div class = "main-headers-line"></div>				
 			</div>
 		</div>
-		<div class="last-comments-pl">
 		
 
 		<!-- <div class = "main-headers">
