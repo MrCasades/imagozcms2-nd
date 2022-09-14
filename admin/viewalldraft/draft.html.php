@@ -5,18 +5,19 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
-    </div>
+	<div class = "main-headers-content">
+    	<h2><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h2>
+	</div>
 </div>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace">Статьи</div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<h2>Статьи</h2>
+			<div class = "main-headers-line"></div>
+		<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
+	</div>
 </div>
 
 <div class = "main-post m-content">
@@ -40,10 +41,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace">Новости</div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<h2>Новости</h2>
+			<div class = "main-headers-line"></div>
+		<div class = "sub-header"><?php htmlecho ($subHeaderNews); ?></div>
+	</div>
 </div>
 
 <div class = "main-post m-content">
@@ -67,10 +70,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace">Промоушен</div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<h2>Промоушен</h2>
+			<div class = "main-headers-line"></div>
+		<div class = "sub-header"><?php htmlecho ($subHeaderPromotion); ?></div>
+	</div>
 </div>
 
 <div class = "main-post m-content">
@@ -94,10 +99,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace">Видео</div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<h2>Видео</h2>
+			<div class = "main-headers-line"></div>
+		<div class = "sub-header"><?php htmlecho ($subHeaderVideo); ?></div>
+	</div>
 </div>
 
 <div class = "main-post m-content">

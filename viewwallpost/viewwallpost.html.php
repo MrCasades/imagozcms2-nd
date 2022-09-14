@@ -6,9 +6,11 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="<?php htmlecho ($URL); ?>"><?php htmlecho ($linkText); ?></a></h1></div>
-    </div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<h2><?php htmlecho ($headMain); ?> | <a href="<?php htmlecho ($URL); ?>"><?php htmlecho ($linkText); ?></a></h2>
+		<div class = "main-headers-line"></div>
+	</div>
 </div>
 
 <div class="m-content">
@@ -49,13 +51,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			/*Загрузка скрипта добавления лайков/дизлайков*/
 			 include MAIN_FILE . '/includes/likescript.inc.php';?>
 	</div>
-</div>  
+</div> 
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace">Ответы (<span id="comm_count"><?php echo $countPosts; ?></span>) | <a href="#" id = "open_form"><button class="btn_2">Ответить</button></a></div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-content">
+		<h2 class="no-link-header">Ответы (<span id="comm_count"><?php echo $countPosts; ?></span>) | <a href="#" id = "open_form"><button class="btn_2">Ответить</button></a></h2>
+		<div class = "main-headers-line"></div>				
+	</div>
 </div>
 
 <div class="m-content form-pl" id = "subcomm_form" style="display: none;">

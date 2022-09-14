@@ -1,8 +1,9 @@
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <a class = "main-headers-place" href="./admin/adminmail/viewadminnews/"><h3>Новости администрации</h3></a>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+    <a class = "main-headers-place" href="./admin/adminmail/viewadminnews/"><h2>Новости администрации</h2></a>
+		<div class = "main-headers-line"></div>
+	</div>
 </div>
 
 <div class="adm-news-pl m-content">

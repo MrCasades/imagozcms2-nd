@@ -118,7 +118,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div id="result_form"></div>
 			<?php if (empty ($comments))
 				{
-					echo '<br/><p id="not_comment">Комментарии отсутствуют!</p>';
+					echo '<br/><p class="m-content" id="not_comment">Комментарии отсутствуют!</p>';
 				}
 					
 				else
