@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content">
-	<p class="for-info-logo"><img src="<?php echo '//'.MAIN_URL;?>/logomain.png" alt="imagoz.ru | Сотрудничество"></p>
+	<p class="for-info-logo"><img src="<?php echo '//'.MAIN_URL;?>/decoration/logo2.png" alt="imagoz.ru | Сотрудничество"></p>
 	<div class="for-info-font">
 		<?php echo $forPromotions; ?>
 	</div>
