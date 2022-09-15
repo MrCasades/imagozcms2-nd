@@ -47,6 +47,12 @@ if (isset ($_GET['id']))
 			$linkText = 'К профилю';
 		} 
 
+		elseif ($_GET['typeart'] === 'video' )
+		{
+			$URL = '//'.MAIN_URL.'/video/?id='.$_GET['idart'];
+			$linkText = 'К видео';
+		} 
+
 		else
 		{
 			$URL = '#';

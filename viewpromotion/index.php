@@ -8,6 +8,9 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
+/*Загрузка общих переменных*/
+include_once MAIN_FILE . '/includes/commonvar.inc.php';
+
 if (loggedIn())
 {
 	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/

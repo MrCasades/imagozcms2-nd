@@ -4,7 +4,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 
 <?php if (empty ($subcomments))
 		{
-			echo '<p class = "m-content" id="not_comment_sub">Ответы отсутствуют!</p>';
+			echo '';
 		}
 				
 	  else

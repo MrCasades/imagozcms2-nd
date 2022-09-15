@@ -823,4 +823,19 @@
     .bread-crumbs{
         display: none;
     }
+
+    .main-headers-content h2{
+        line-height: 0%;
+        font-size: 1.5rem;
+        margin-left: 0.5rem;
+    }
+
+    .main-headers-content .no-link-header{
+        line-height: 0%;
+    }
+
+    .main-headers-circle{
+        margin-top: 1.8rem;
+    }
+    
 }
