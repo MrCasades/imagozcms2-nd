@@ -837,5 +837,9 @@
     .main-headers-circle{
         margin-top: 1.8rem;
     }
+
+    .a-line{
+        display: none;
+    }
     
 }
