@@ -64,8 +64,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$scoreLp = '<i class="fa fa-money" aria-hidden="true" title="Размер счёта"></i>: '.$row['score'];//размер счёта автора
 
-		$payForms = '<br/>
-						<form action = "//'.MAIN_URL.'/admin/payment/" method = "post">
+		$payForms = '<form action = "//'.MAIN_URL.'/admin/payment/" method = "post">
 							<strong>'.$scoreLp.' | </strong>
 							<input type = "hidden" name = "id" value = "'.$selectedAuthor.'">
 							<button name = "action" class="btn_2" value = "Вывести средства"><strong><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Вывести</strong></button> |
