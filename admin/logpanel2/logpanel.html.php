@@ -4,15 +4,16 @@
 	<div class = "profile-panel">
 		<div class="profile-btn">
 			<i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i>
+			<span class="profile-name"><?php echo $authorInSystem;?></span>
 		</div>
 		 
 		<div class="profile-menu">
-			<a href="//<?php echo MAIN_URL;?>/account/?id=<?php echo $selectedAuthor;?>">Профиль</a>
-			<a href="//<?php echo MAIN_URL;?>/mainmessages/"><strong><i class="fa fa-envelope" aria-hidden="true" class="env-main"></i><span id = "countcolor"><?php echo $unreadCount;?></span></strong></a>
-			<form action = " " method = "post">
+			<a href="//<?php echo MAIN_URL;?>/account/?id=<?php echo $selectedAuthor;?>"><i class="fa fa-user-circle" aria-hidden="true"></i> Профиль</a>
+			<a href="//<?php echo MAIN_URL;?>/mainmessages/"><i class="fa fa-envelope" aria-hidden="true" class="env-main"></i><span id = "countcolor"><?php echo $unreadCount;?></span> Сообщения</a>
+			<form action = " " method = "post" class="logout-form">
 				<input type = "hidden" name = "action" value = "logout">
 				<input type = "hidden" name = "goto" value = "//<?php echo MAIN_URL;?>">  
-				<button class="btn_1"><strong><i class="fa fa-sign-out" aria-hidden="true"></i></strong></button>
+				<button class="btn_1"><strong><i class="fa fa-sign-out" aria-hidden="true"></i>Выход</strong></button>
 			</form>
 		</div>
 	</div>

@@ -772,24 +772,41 @@ header .authorization-form .reg-group a {
 } */
 
 /*Форма авторизации по ссылке*/
-.profile-menu{
+.login-logout-btn-pl .profile-menu{
     right: 10%;
     border-radius: 10px;
     display: none;
     position: absolute;
     background: #BFE2FF;
     z-index: 15;
-    width: 20%;
+    width: 15%;
 }
 
-.profile-menu a{
+.login-logout-btn-pl .profile-menu a{
     color: #0F4780;
+    margin-top: 3px;
+    padding: 5px 10px;
+}
+
+.profile-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 6%;
+    margin-left: 10%;
+    color: #ffff;
 }
 
 .profile-btn .fa-user-circle{
-    font-size: 3rem;
+    font-size: 5.5rem;
     cursor: pointer;
     color: #ffff;
+    margin-bottom: 5%;
+}
+
+.profile-menu .logout-form{
+    margin-left: 3%;
+    padding-bottom: 2%;
 }
 
 .authorization-form{
