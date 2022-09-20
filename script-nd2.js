@@ -184,6 +184,17 @@ $(document).ready(function() {
       })	
   });
 
+  //Вывод меню профиля
+  $('.profile-btn').click(function(e) {
+        if ($('.profile-menu').css('display') == 'none') {
+            $('.profile-menu').show();            
+            e.preventDefault();
+        } else {
+            $('.profile-menu').hide();
+            e.preventDefault();
+        }
+    })
+
   //Вывод 1-го изображения
 	$(".pic-for-gallery").click(
 		function(e){

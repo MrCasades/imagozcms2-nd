@@ -1,15 +1,19 @@
 <?php if (!isset($_SESSION['loggIn'])): ?>
 	
 <?php else:?>
-	<div class = "auth-panel">
-	<strong><a href="//<?php echo MAIN_URL;?>/account/?id=<?php echo $selectedAuthor;?>"><i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i></a></strong>  	
-		<form action = " " method = "post">
+	<div class = "profile-panel">
+		<div class="profile-btn">
+			<i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i>
+		</div>
+		 
+		<div class="profile-menu">
+			<a href="//<?php echo MAIN_URL;?>/account/?id=<?php echo $selectedAuthor;?>">Профиль</a>
+			<a href="//<?php echo MAIN_URL;?>/mainmessages/"><strong><i class="fa fa-envelope" aria-hidden="true" class="env-main"></i><span id = "countcolor"><?php echo $unreadCount;?></span></strong></a>
+			<form action = " " method = "post">
 				<input type = "hidden" name = "action" value = "logout">
 				<input type = "hidden" name = "goto" value = "//<?php echo MAIN_URL;?>">  
 				<button class="btn_1"><strong><i class="fa fa-sign-out" aria-hidden="true"></i></strong></button>
-		</form> 
-		<div class="auth-menu">
-		<a href="//<?php echo MAIN_URL;?>/mainmessages/"><strong><i class="fa fa-envelope" aria-hidden="true" class="env-main"></i><span id = "countcolor"><?php echo $unreadCount;?></span></strong></a>
+			</form>
 		</div>
 	</div>
 	

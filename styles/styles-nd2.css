@@ -772,6 +772,25 @@ header .authorization-form .reg-group a {
 } */
 
 /*Форма авторизации по ссылке*/
+.profile-menu{
+    right: 10%;
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    background: #BFE2FF;
+    z-index: 15;
+    width: 20%;
+}
+
+.profile-menu a{
+    color: #0F4780;
+}
+
+.profile-btn .fa-user-circle{
+    font-size: 3rem;
+    cursor: pointer;
+    color: #ffff;
+}
 
 .authorization-form{
     
