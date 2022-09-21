@@ -2,7 +2,7 @@
 	
 <?php else:?>
 	<div class = "logpanel">   
-		<?php echo $payForms.$panel;?>
+		<?php echo $payForms;?>
 		<?php echo $allPosts.$allRefused;?>
 	</div>
 	

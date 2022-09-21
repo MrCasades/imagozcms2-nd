@@ -779,13 +779,14 @@ header .authorization-form .reg-group a {
     position: absolute;
     background: #BFE2FF;
     z-index: 15;
-    width: 15%;
+    width: auto;
 }
 
 .login-logout-btn-pl .profile-menu a{
     color: #0F4780;
     margin-top: 3px;
     padding: 5px 10px;
+    font-size: 1.2rem;
 }
 
 .profile-btn {
@@ -801,6 +802,14 @@ header .authorization-form .reg-group a {
     font-size: 5.5rem;
     cursor: pointer;
     color: #ffff;
+    margin-bottom: 5%;
+}
+
+.profile-panel img{
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+    border-radius: 10px;
     margin-bottom: 5%;
 }
 
