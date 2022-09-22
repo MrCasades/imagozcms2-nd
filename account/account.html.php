@@ -209,7 +209,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php if ($comment['subcommentcount'] != 0):?>
 					<div class="sub-comment-open" id="hide_open_pl_<?php echo $comment['id']; ?>">
 						<!-- <a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a>  -->
-						<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=promotion&idart=<?php echo $idNews; ?>">Все ответы</a>
+						<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=acc&idart=<?php echo $idAuthor; ?>">Все ответы</a>
 					</div>
 				<?php endif;?>
 				
