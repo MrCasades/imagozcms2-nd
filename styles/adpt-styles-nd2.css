@@ -617,6 +617,20 @@
         display: none;
     }
 
+    .login-logout-btn-pl .profile-menu a{
+        font-size: 0.9rem;
+    }
+
+    .profile-btn .fa-user-circle{
+        font-size: 4rem;
+        margin-bottom: 5%;
+    }
+    
+    .profile-panel img{
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
     main .post-place-1{
         margin: 1% 5px;
         width: 90%;
