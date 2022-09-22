@@ -195,6 +195,16 @@ $(document).ready(function() {
         }
     })
 
+    //Закрытие меню профиля кликом по свободному месту
+    $(document).click(function (e) {
+        if ($(e.target).closest(".profile-menu").length || $(e.target).closest(".profile-btn").length) {
+            // клик внутри элемента
+            return;
+        }
+        // клик снаружи элемента
+        $(".profile-menu").fadeOut();
+    });
+
   //Вывод 1-го изображения
 	$(".pic-for-gallery").click(
 		function(e){
@@ -219,7 +229,7 @@ $(document).ready(function() {
     //Функция закрытия изображения    
 	function closePic(){
 		$(".one-pic").empty();
-		$(".wrap").addClass('hidden');
+		$(". ").addClass('hidden');
 	}
 
   //Функция добавления
