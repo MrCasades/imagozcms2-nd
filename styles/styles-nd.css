@@ -186,6 +186,7 @@ details{
 }
 
 .logpanel{
+    margin-top: 1rem;
     margin-left: 30%;
     font-size: 1.7rem;
 }
@@ -787,6 +788,25 @@ header .authorization-form .reg-group a {
     margin-top: 3px;
     padding: 5px 10px;
     font-size: 1.2rem;
+}
+
+.login-logout-btn-pl .profile-menu .profile-menu-payform{
+    color: #0F4780;
+    margin-top: 3px;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border: 1px solid #0F4780;
+}
+
+.login-logout-btn-pl .profile-menu .profile-menu-payform button{
+    border: none; 
+    outline: none; 
+    background: none;
+    cursor: pointer;
+    color: #0F4780;
+    font-size: 1.2rem;
+    margin-top: 3px;
+    padding: 5px 10px;
 }
 
 .profile-btn {

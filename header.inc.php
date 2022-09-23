@@ -30,8 +30,8 @@
 
 	
     <link href="<?php echo '//'.MAIN_URL.'/styles/menu-nd2.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles/styles-nd2.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles-nd2.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/styles-nd.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles-nd.css';?>" rel= "stylesheet" type="text/css">
     
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.carousel.min.css';?>">
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.theme.default.min.css';?>">
@@ -90,7 +90,7 @@
 				<?php else:?>
 					<?php 
 						/*Загрузка меню авторизации*/
-						include_once MAIN_FILE . '/admin/logpanel2/logpanel.inc.php';?>
+						include_once MAIN_FILE . '/admin/logpanel/logpanel.inc.php';?>
 				<?php endif;?>
 			</div>
 		</div>
@@ -116,22 +116,6 @@
     <!-- <div class="subheader"></div> -->
 
 	<main>
-
-	<div>	   
-		<?php 
-		/*Загрузка меню авторизации*/
-		include_once MAIN_FILE . '/admin/logpanel/logpanel.inc.php';?>
-		
-		<?php 
-		/*Загрузка кнопки добавления статьи*/
-		//include_once MAIN_FILE . '/admin/addpost.html.inc.php';
-		    
-		   // echo '<div align = "center"><p>'.$logPanel.'</p></div>';
-			//echo '<div align = "center"><p>'.$superUser.'</p></div>';
-			//echo'<p  align = "center">'.$addPost.'</p>';
-			//echo'<p  align = "center"> <strong>'.$scoreTitle.'</strong>'.$payForms.'</p>';
-			//echo'<p  align = "center">'.$forAuthors.'</p>';?>	
-	</div>
 
 	<!-- <div class="m-content">
 				Место для рекламы

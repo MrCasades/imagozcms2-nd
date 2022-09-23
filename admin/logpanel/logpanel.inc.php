@@ -39,6 +39,29 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 		
 	$unreadCount = $row['unreadcount'];//счётчик непрочитанных сообщений
 
+	try
+	{
+		$sql = 'SELECT avatar FROM author WHERE id = :id';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':id', $selectedAuthor);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+
+	catch (PDOException $e)
+	{
+		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+		$headMain = 'Ошибка данных!';
+		$robots = 'noindex, nofollow';
+		$descr = '';
+		$error = 'Ошибка подсчёта сообщений ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.html.php';
+		exit();
+	}
+
+	$row = $s -> fetch();
+		
+	$avatar = $row['avatar'];//счётчик непрочитанных сообщений
+
 	if(userRole('Автор') || userRole('Рекламодатель') || userRole('Администратор'))
 	{
 		try
@@ -64,11 +87,12 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$scoreLp = '<i class="fa fa-money" aria-hidden="true" title="Размер счёта"></i>: '.$row['score'];//размер счёта автора
 
-		$payForms = '<form action = "//'.MAIN_URL.'/admin/payment/" method = "post">
-							<strong>'.$scoreLp.' | </strong>
+		$payForms = '
+						<form class="profile-menu-payform" action = "//'.MAIN_URL.'/admin/payment/" method = "post">
+							<strong>'.$scoreLp.'</strong>
 							<input type = "hidden" name = "id" value = "'.$selectedAuthor.'">
-							<button name = "action" class="btn_2" value = "Вывести средства"><strong><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Вывести</strong></button> |
-							<button name = "action" class="btn_2" value = "Пополнить счёт"><strong><i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Пополнить</strong></button>
+							<br><button name = "action" value = "Вывести средства"><strong><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> Вывести</strong></button>
+							<br><button name = "action" value = "Пополнить счёт"><strong><i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Пополнить</strong></button>
 						</form>';
 	}
 
@@ -82,15 +106,15 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 	
 	if (userRole('Автор'))
 	{
-		$panel = '| <a href="//'.MAIN_URL.'/admin/panels"><button type="button" class="btn_2"><strong><i class="fa fa-cog" aria-hidden="true"></i> Панель автора</strong></button></a> ';
+		$panel = '<a href="//'.MAIN_URL.'/admin/panels"><i class="fa fa-cog" aria-hidden="true"></i> Панель автора</a> ';
 	}
 	elseif(userRole('Рекламодатель'))
 	{
-		$panel = '| <a href="//'.MAIN_URL.'/admin/panels"><button type="button" class="btn_2"><strong><i class="fa fa-cog" aria-hidden="true"></i> Панель рекламодателя</strong></button></a> ';
+		$panel = '<a href="//'.MAIN_URL.'/admin/panels"><i class="fa fa-cog" aria-hidden="true"></i> Панель рекламодателя</a> ';
 	}
 	elseif(userRole('Администратор'))
 	{
-		$panel = '| <a href="//'.MAIN_URL.'/admin/panels"><button type="button" class="btn_2"><strong><i class="fa fa-cog" aria-hidden="true"></i> Панель Администратора</strong></button></a> ';
+		$panel = '<a href="//'.MAIN_URL.'/admin/panels"><i class="fa fa-cog" aria-hidden="true"></i> Панель Администратора</a> ';
 	}
 	else
 	{
@@ -136,7 +160,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			exit();
 		}
 			
-		$allPosts ='<br/><i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.($premodPosts + $premodNews).' | ';
+		$allPosts ='<a href="//'.MAIN_URL.'/admin/authorpremoderation/#bottom"><i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.($premodPosts + $premodNews).'</a>';
 
 		try
 		{
@@ -201,7 +225,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 			
 		$row = $s -> fetch();
 			
-		$allPosts = '<br/><i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.$row['mypremodpromotions'].' | ';//статьи в премодерации
+		$allPosts = '<a href="//'.MAIN_URL.'/admin/authorpremoderation/#bottom"><i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.$row['mypremodpromotions'].'</a>';//статьи в премодерации
 
 		try
 		{

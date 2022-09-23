@@ -20,7 +20,7 @@
 			
     <script src="<?php echo '//'.MAIN_URL.'/anime.min.js';?>"></script>
     <script src="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/owl.carousel.min.js';?>"></script>
-	<script src="<?php echo '//'.MAIN_URL.'/script-nd2.js';?>"></script>	
+	<script src="<?php echo '//'.MAIN_URL.'/script-nd.js';?>"></script>	
 	<script src="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/trumbowyg.min.js';?>"></script>
 	<script src="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/plugins/emoji/trumbowyg.emoji.min.js';?>"></script>
 	<script src="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/plugins/upload/trumbowyg.upload.min.js';?>"></script>
