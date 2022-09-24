@@ -6,16 +6,18 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); echo (' <a href="//'.MAIN_URL.'/account/?id='.$idAuthor.'">'.$authorName.'</a>');?></h1></div>
-    </div>
+	<div class = "main-headers-content">
+			<h2><?php htmlecho ($headMain); echo (' <a href="//'.MAIN_URL.'/account/?id='.$idAuthor.'">'.$authorName.'</a>');?></h2>
+	</div>
 </div>
 
+
 <div class = "main-headers">
-    <div class = "headers-places"> 
-            <div class = "main-headers-txtplace">Аватар</div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<h2 class="no-link-header">Аватар</h2>
+		<div class = "main-headers-line"></div>				
+	</div>
 </div>
 
 <div class="set-acc-ava-pl m-content">
@@ -28,11 +30,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</form>
 </div>
 
+
 <div class = "main-headers">
-    <div class = "headers-places"> 
-            <div class = "main-headers-txtplace">Добавить / изменить дополнительную информацию профиля</div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<h2 class="no-link-header">Добавить / изменить дополнительную информацию профиля</h2>
+		<div class = "main-headers-line"></div>				
+	</div>
 </div>
 
 <div class="m-content">
@@ -43,11 +47,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</form>
 </div>
 
+
 <div class = "main-headers">
-    <div class = "headers-places"> 
-            <div class = "main-headers-txtplace">Смена пароля</div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<h2 class="no-link-header">Смена пароля</h2>
+		<div class = "main-headers-line"></div>				
+	</div>
 </div>
 
 <div class="m-content">
@@ -58,12 +64,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <?php if ((userRole('Администратор')) || (userRole('Автор')) || (userRole('Рекламодатель'))): ?>
-
+	
 	<div class = "main-headers">
-		<div class = "headers-places"> 
-				<div class = "main-headers-txtplace">Обновить платёжные реквизиты</div>
+		<div class = "main-headers-circle"></div>
+		<div class = "main-headers-content">
+			<h2 class="no-link-header">Обновить платёжные реквизиты</h2>
+			<div class = "main-headers-line"></div>				
 		</div>
-		<div class = "main-headers-line"></div>
 	</div>
 
 	<div class="m-content">
