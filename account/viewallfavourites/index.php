@@ -72,6 +72,9 @@ if (isset ($_GET['id']))
 		$headMain = 'Все избранные материалы пользователя ' . $row['accname'];
 		$robots = 'noindex, follow';
 		$descr = 'В данном разделе публикуются все статьи пользователя '.$row['accname'];
+		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+		$breadPart2 = '<a href="//'.MAIN_URL.'/account/?id='.$idAuthor.'">Профиль пользователя</a> >> ';//Для хлебных крошек
+		$breadPart3 = '<a href="//'.MAIN_URL.'/account/viewallfavourites/?id='.$idAuthor.'">Всё избранное автора</a> ';//Для хлебных крошек
 	}
 	
 	else		//если статьи отсутствуют!
