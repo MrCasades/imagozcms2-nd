@@ -17,13 +17,8 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 
         catch (PDOException $e)
         {
-            $title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-            $headMain = 'Ошибка данных!';
-            $robots = 'noindex, nofollow';
-            $descr = '';
-            $error = 'Ошибка вывода новости администрации ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-            include 'error.html.php';
-            exit();
+            $error = 'Ошибка вывода новости администрации';
+		    include MAIN_FILE . '/includes/error.inc.php';
         }
 
         $row = $s -> fetch();
