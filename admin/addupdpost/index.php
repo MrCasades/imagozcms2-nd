@@ -68,11 +68,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора статьи';
+		include MAIN_FILE . '/includes/error.inc.php'; 
 	}
 	
 	$row = $s -> fetch();
@@ -105,11 +102,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода author '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода author';
+		include MAIN_FILE . '/includes/error.inc.php'; 
 	}
 	
 	foreach ($result as $row)
@@ -126,11 +120,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода category '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода category';
+		include MAIN_FILE . '/includes/error.inc.php'; 
 	}
 	
 	foreach ($result as $row)
@@ -149,11 +140,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода metapost ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода metapost';
+		include MAIN_FILE . '/includes/error.inc.php'; 
 	}
 	
 	foreach ($s as $row)
@@ -170,11 +158,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода meta '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода meta';
+		include MAIN_FILE . '/includes/error.inc.php'; 
 	}
 	
 	foreach ($result as $row)
@@ -270,13 +255,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		{
 			$pdo->rollBack();//отмена транзакции
 			
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Error transaction 1 newsblock '.$e -> getMessage();// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();		
+			$error = 'Ошибка обновления параметров задания';
+			include MAIN_FILE . '/includes/error.inc.php';	
 		}
 	}
 	
@@ -294,11 +274,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка вывода pubtime ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора времени публикации суперавтора';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 		$row = $s -> fetch();
@@ -315,11 +292,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 			}
 			catch (PDOException $e)
 			{
-				$robots = 'noindex, nofollow';
-				$descr = '';
-				$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-				include 'error.html.php';
-				exit();
+				$error = 'Ошибка добавления времени публикации суперавтора';
+				include MAIN_FILE . '/includes/error.inc.php';
 			}
 		}
 		
@@ -335,11 +309,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 			}
 			catch (PDOException $e)
 			{
-				$robots = 'noindex, nofollow';
-				$descr = '';
-				$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-				include 'error.html.php';
-				exit();
+				$error = 'Ошибка обновления времени публикации суперавтора';
+				include MAIN_FILE . '/includes/error.inc.php';
 			}
 		}
 	}
@@ -379,11 +350,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления статьи';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$idpost_ind = $pdo->lastInsertId();//метод возвращает число, которое MySQL назначил последней автомнкрементной записи (INSERT INTO post - в данном случае)
@@ -409,11 +377,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления информации в metaname';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 	}
@@ -458,13 +423,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['posttitle'] == ''))
 	{
-		$title = 'В форме есть незаполненные поля!';//Данные тега <title>
-		$headMain = 'В форме есть незаполненные поля!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
 		$error = 'Один или несколько атрибутов не указаны. Выбирете все.';
-		include 'error.html.php';
-		exit();
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Определение предворительной длины и цены текста*/
@@ -498,11 +458,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации post'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации post';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
@@ -514,11 +471,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации metapost';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	if (isset ($_POST['metas']))
@@ -542,11 +496,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка обновления информации metapost'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка обновления информации metapost';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 	
@@ -567,11 +518,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка отклонения публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка возврата материала в черновик';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 	
@@ -607,11 +555,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'ОПУБЛИКОВАТЬ')
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка публикации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	$row = $s -> fetch();
@@ -647,11 +592,8 @@ if (isset ($_GET['topremod']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка отправки в премодерацию';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Отправка сообщений (тест)*/
@@ -683,11 +625,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора id и заголовка posts';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -727,11 +666,8 @@ if (isset ($_GET['delete']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации comments';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	try
@@ -743,11 +679,8 @@ if (isset ($_GET['delete']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации metapost';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
@@ -759,11 +692,8 @@ if (isset ($_GET['delete']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации votedauthor';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
@@ -775,11 +705,8 @@ if (isset ($_GET['delete']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 
