@@ -45,11 +45,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'X'))
 	
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -79,13 +76,8 @@ try
 
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка вывода сообщений формы обратной связи ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка вывода сообщений формы обратной связи';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/
@@ -104,13 +96,8 @@ try
 
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка подсчёта новостей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка подсчёта новостей';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 	
 foreach ($result as $row)
