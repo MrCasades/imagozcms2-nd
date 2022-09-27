@@ -55,11 +55,8 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка формирования списка ролей '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка формирования списка ролей';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -87,11 +84,8 @@ if (isset ($_GET['addform']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации автора'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации автора';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$authorid = $pdo -> lastInsertid();//значение последнего автоинкрементного поля
@@ -110,11 +104,8 @@ if (isset ($_GET['addform']))
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка назначения пароля '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка назначения пароля';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}			
 	}
 	
@@ -133,11 +124,8 @@ if (isset ($_GET['addform']))
 			}
 			catch (PDOException $e)
 			{
-				$robots = 'noindex, nofollow';
-				$descr = '';
-				$error = 'Ошибка назначения роли '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-				include 'error.html.php';
-				exit();
+				$error = 'Ошибка назначения роли';
+				include MAIN_FILE . '/includes/error.inc.php';
 			}	
 		}
 	}
@@ -164,11 +152,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора автора';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -194,11 +179,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 		
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка получения списка ролей' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора idrole';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$selectedRoles = array();
@@ -216,11 +198,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 	
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка формирования списка ролей '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка формирования списка ролей';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -251,11 +230,8 @@ if (isset ($_GET['editform']))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Error Update: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка обновления author';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	if ($_POST['password'] != '')
@@ -272,11 +248,8 @@ if (isset ($_GET['editform']))
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка назначения пароля '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка назначения пароля';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}			
 	}
 
@@ -289,11 +262,8 @@ if (isset ($_GET['editform']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления неактуальных записей об роле'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления неактуальных записей об роле';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 	
 	if(isset ($_POST['roles']))
@@ -311,11 +281,8 @@ if (isset ($_GET['editform']))
 			}
 			catch (PDOException $e)
 			{
-				$robots = 'noindex, nofollow';
-				$descr = '';
-				$error = 'Ошибка назначения роли '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-				include 'error.html.php';
-				exit();
+				$error = 'Ошибка назначения роли';
+				include MAIN_FILE . '/includes/error.inc.php';
 			}	
 		}
 	}
@@ -341,11 +308,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления ролей'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления ролей';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 	
 	/*Команда SELECT для ID поста*/
@@ -359,17 +323,14 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select posts: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора posts';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$result = $s -> fetchAll();
 	
 	try
-	/*Удаление записи об издательстве*/
+	/*Удаление записи о тегах*/
 	{
 		$sql = 'DELETE FROM metapost WHERE idpost = :id';// - псевдопеременная получающая значение из формы 
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
@@ -385,11 +346,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	catch (PDOException $e)
 	
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка удаления metapost';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
@@ -402,11 +360,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка удаления posts';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
@@ -419,11 +374,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка удаления author';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	
@@ -443,11 +395,8 @@ try
 
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Error table "Author": ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора author';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/
