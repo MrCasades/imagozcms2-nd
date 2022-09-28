@@ -21,7 +21,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<?php echo $addCategory; ?>
 			<?php echo $addRoleAdvertiser; ?>
 			<br/>
-			<img src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
+			<?php if ($avatar !== 'ava-def.jpg'): ?>
+				<img src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
+			<?php else: ?>
+				<i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i>
+			<?php endif; ?>
 			<?php echo $setAccount; ?>
 			<?php echo $mainMessagesForm; ?>
 			<p><?php if (($authorRole === 'Автор') || ($authorRole === 'Администратор'))//если пользователю присвоен определённый статус, то выводятся его ранг

@@ -3,8 +3,8 @@
 <?php else:?>
 	<div class = "profile-panel">
 		<div class="profile-btn">
-			<?php if ($avatar !== 'ava-def.jpg'): ?>
-				<img src="//<?php echo MAIN_URL;?>/avatars/<?php echo $avatar;?>" alt="<?php echo $authorInSystem;?>">
+			<?php if ($avatarPB !== 'ava-def.jpg'): ?>
+				<img src="//<?php echo MAIN_URL;?>/avatars/<?php echo $avatarPB;?>" alt="<?php echo $authorInSystem;?>">
 			<?php else: ?>
 				<i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i>
 			<?php endif; ?>

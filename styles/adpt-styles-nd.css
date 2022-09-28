@@ -462,6 +462,10 @@
         width: 70%;      
     }
 
+    .ava-pl .fa-user-circle{
+        font-size: 12rem;
+    }
+
     main .about-proj{
         margin-left: 0.5rem;
         width: 95%;

@@ -60,7 +60,7 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 
 	$row = $s -> fetch();
 		
-	$avatar = $row['avatar'];//счётчик непрочитанных сообщений
+	$avatarPB = $row['avatar'];
 
 	if(userRole('Автор') || userRole('Рекламодатель') || userRole('Администратор'))
 	{

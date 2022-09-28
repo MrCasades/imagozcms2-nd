@@ -22,7 +22,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class="set-acc-ava-pl m-content">
 	<h4>Текущий аватар</h4>
-	<p><img src="../../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>"></p>
+	<p>
+		<?php if ($avatar !== 'ava-def.jpg'): ?>
+				<img src="../../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
+		<?php else: ?>
+				<i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i>
+		<?php endif; ?>
+	</p>
 	<form action = "../../account/setavatar/" method = "post">
 		<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
 		<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить аватар">

@@ -1875,6 +1875,12 @@ main .ava-pl img{
     
 }
 
+.ava-pl .fa-user-circle{
+    font-size: 15rem;
+    cursor: pointer;
+    color: #0F4780;
+}
+
 main .ava-pl button{
     margin-top: 0.5rem;
     width: 40%;
@@ -1895,6 +1901,12 @@ main .acc-info-pl{
 .set-acc-ava-pl img{
     width: 15rem;
     height: 15rem;
+}
+
+.set-acc-ava-pl .fa-user-circle{
+    font-size: 15rem;
+    cursor: pointer;
+    color: #0F4780;
 }
 
 .counts{
