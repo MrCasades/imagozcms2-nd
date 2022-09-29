@@ -49,11 +49,8 @@ if (isset ($_GET['addform']))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка добавления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -70,19 +67,16 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 	/*Команда SELECT*/
 	try
 	{
-	$sql = 'SELECT id, categoryname FROM category WHERE id = :idcategory';
-	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	$s -> bindValue(':idcategory', $_POST['idcategory']);//отправка значения
-	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		$sql = 'SELECT id, categoryname FROM category WHERE id = :idcategory';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idcategory', $_POST['idcategory']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Error select : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка выбора category';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -113,11 +107,8 @@ if (isset ($_GET['editform']))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Error Update: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка обновления category';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -141,11 +132,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка удаления category';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -164,11 +152,8 @@ try
 
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора категории: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора category';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/

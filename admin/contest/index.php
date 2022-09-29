@@ -59,11 +59,8 @@ if (isset ($_GET['addform']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -88,11 +85,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select contest: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора конкурса';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -133,11 +127,8 @@ if (isset ($_GET['editform']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error Update cotest: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления конкурса';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -161,11 +152,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления contest'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления конкурса';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -188,11 +176,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'ON'))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error Update coteston: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка включения конкурса';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -214,11 +199,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'OFF'))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error Update coteston: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выключения конкурса';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -241,11 +223,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'CP_ON'))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error Update contestpanel: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка включения панели конкурса';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -267,11 +246,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'CP_OFF'))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error Update contestpanel: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выключения панели конкурса';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -292,11 +268,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Обнулить балл�
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error Update coteston: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обнуления баллов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -315,11 +288,8 @@ try
 
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора contest: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора contest';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/

@@ -44,11 +44,8 @@ try
 	
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка формирования списка ролей '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора списка авторов';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 	
 foreach ($result as $row)
