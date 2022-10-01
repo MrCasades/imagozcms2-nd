@@ -49,11 +49,8 @@ if (isset ($_GET['addform']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации в таблицу "Тематика" '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации в таблицу "Тематика"';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -70,19 +67,16 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 	/*Команда SELECT*/
 	try
 	{
-	$sql = 'SELECT * FROM meta WHERE id = :idmeta';
-	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	$s -> bindValue(':idmeta', $_POST['idmeta']);//отправка значения
-	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		$sql = 'SELECT * FROM meta WHERE id = :idmeta';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idmeta', $_POST['idmeta']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Error select : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка выбора информации meta';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -113,11 +107,8 @@ if (isset ($_GET['editform']))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Error Update: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка обновления meta';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -143,11 +134,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	catch (PDOException $e)
 	
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка удаления metapost';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	try
@@ -160,11 +148,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка удаления meta';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -183,11 +168,8 @@ try
 
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора тематики: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора тематики';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/

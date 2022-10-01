@@ -26,13 +26,8 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта сообщений ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка подсчёта сообщений';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -49,13 +44,8 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка подсчёта сообщений ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора аватара';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	$row = $s -> fetch();
@@ -74,13 +64,8 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка подсчёта сообщений ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка вывода счёта';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -150,14 +135,9 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 		catch (PDOException $e)
 		{
 			$pdo->rollBack();//отмена транзакции
-			
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+
+			$error = 'Ошибка подсчёта материалов';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 			
 		$allPosts ='<a href="//'.MAIN_URL.'/admin/authorpremoderation/#bottom"><i class="fa fa-copyright" aria-hidden="true" title="Материалы в премодерации"></i>: '.($premodPosts + $premodNews).'</a>';
@@ -189,13 +169,8 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 		{
 			$pdo->rollBack();//отмена транзакции
 			
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка подсчёта материалов';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 			
 		$allRefused = '<a href="//'.MAIN_URL.'/admin/refused/#bottom"><i class="fa fa-thumbs-down" aria-hidden="true" title="Отклонённые материалы"></i>: '.($refusedPosts + $refusedNews).'</a>';//общее количество
@@ -214,13 +189,8 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка подсчёта материалов';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 			
 		$row = $s -> fetch();
@@ -236,13 +206,8 @@ if (isset($_SESSION['loggIn']))//если не выполнен вход в си
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка подсчёта материалов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка подсчёта материалов';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 			
 		$row = $s -> fetch();

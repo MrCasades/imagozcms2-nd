@@ -15,25 +15,15 @@ if (loggedIn())
 
 else
 {
-	$title = 'Ошибка доступа';//Данные тега <title>
-	$headMain = 'Ошибка доступа';
-	$robots = 'noindex, nofollow';
-	$descr = '';
 	$error = 'В данный раздел доступ запрещён!';
-	include 'error.html.php';
-	exit();
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Загрузка сообщения об ошибке входа*/
 if (!userRole('Администратор'))
 {
-	$title = 'Ошибка доступа';//Данные тега <title>
-	$headMain = 'Ошибка доступа';
-	$robots = 'noindex, nofollow';
-	$descr = '';
 	$error = 'В данный раздел доступ запрещён!';
-	include 'error.html.php';
-	exit();
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод платёжных реквизитов для администратора*/
@@ -53,13 +43,8 @@ try
 
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора информации для вывода заявок на платёж : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора информации для вывода заявок на платёж';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 foreach ($result as $row)

@@ -1,6 +1,6 @@
 <?php 
-$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-$headMain = 'Ошибка данных!';
+$title = 'Сообщение';//Данные тега <title>
+$headMain = 'Сообщение';
 $robots = 'noindex, nofollow';
 $descr = '';
 $error = $error.' '.$e -> getMessage();// вывод сообщения об ошибке в переменой $e

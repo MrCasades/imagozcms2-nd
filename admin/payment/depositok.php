@@ -21,13 +21,8 @@ if ((isset($_POST['operation_id'])) && ($_POST['unaccpted'] == false))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления счёта ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления счёта';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 	
 	/*Добавление информации о платеже в базу данных*/
@@ -44,11 +39,8 @@ if ((isset($_POST['operation_id'])) && ($_POST['unaccpted'] == false))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 }	
 
@@ -71,11 +63,8 @@ else
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 }
 

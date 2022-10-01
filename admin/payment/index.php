@@ -34,11 +34,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Обновить платё
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации об электронном кошельке : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации об электронном кошельке';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -62,11 +59,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Обновить платё
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода paysystem '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода paysystem';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	foreach ($result as $row)
@@ -101,11 +95,8 @@ if (isset($_GET['updewallet']))//Если есть переменная updewall
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации ewallet'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации ewallet';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL.'/account/?id='.$_SESSION['idAuthor']);//перенаправление обратно в контроллер index.php
@@ -136,13 +127,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Вывести средст
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о статусе оплаты заявки для автора : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации о статусе оплаты заявки для автора';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -164,11 +150,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Вывести средст
 
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации об электронном кошельке : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации об электронном кошельке';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	
 		$row = $s -> fetch();
@@ -191,13 +174,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Вывести средст
 		
 		if ((!isset ($paysystemname)) || (!isset ($ewallet)))
 		{
-			$title = 'Отсутствуют платёжные реквизиты';//Данные тега <title>
-			$headMain = 'Отсутствуют платёжные реквизиты';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Платёжные реквизиты отсутствуют. Обновите их в <a href="../../account/setaccount/">настройках профиля</a>!';// вывод сообщения об ошибке 
-			include 'error.html.php';
-			exit();
+			$error = 'Платёжные реквизиты отсутствуют. Обновите их в <a href="../../account/setaccount/">настройках профиля</a>!';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		@session_start();//Открытие сессии для сохранения платёжной системы
@@ -210,14 +188,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Вывести средст
 	
 	else//если заявка была ранее сформирована, но не подтверждена
 	{
-		$title = 'Заявка уже сформирована';//Данные тега <title>
-		$headMain = 'Заявка уже сформирована';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Вы ранее сформировали заявку на вывод средств. Новую можно будет создать после подтверждения предыдущей';// вывод сообщения об ошибке 
-		include 'error.html.php';
-		exit();
-		
+		$error = 'Вы ранее сформировали заявку на вывод средств. Новую можно будет создать после подтверждения предыдущей';
+		include MAIN_FILE . '/includes/error.inc.php';	
 	}
 }
 
@@ -240,13 +212,8 @@ if (isset($_GET['editpayment']))//Если есть переменная editpay
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о размере счёта автора : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации о размере счёта автора';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -281,12 +248,8 @@ if (isset($_GET['editpayment']))//Если есть переменная editpay
 		}
 		catch (PDOException $e)
 		{
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			$pdo->rollBack();//отмена транзакции
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка добавления информации';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 		/*Отправка сообщений (тест)*/
@@ -307,14 +270,8 @@ if (isset($_GET['editpayment']))//Если есть переменная editpay
 	
 	else
 	{
-		$title = 'Ошибка ввода суммы';//Данные тега <title>
-		$headMain = 'Ошибка ввода суммы';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Введите сумму больше "0" и меньше или равную той что есть на Вашем счёте. Либо выводимая сумма меньше 30 баллов.';// вывод сообщения об ошибке 
-		include 'error.html.php';
-		exit();
-		
+		$error = 'Введите сумму больше "0" и меньше или равную той что есть на Вашем счёте. Либо выводимая сумма меньше 30 баллов.';			
+		include MAIN_FILE . '/includes/error.inc.php';	
 	}
 }
 
@@ -338,11 +295,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Назначить прем
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о бонусе : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации о бонусе';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -383,11 +337,8 @@ if (isset($_GET['addbonus']))//Если есть переменная editpaymen
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка обновления информации о бонусе или счёте'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка обновления информации о бонусе или счёте';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL.'/account/?id='.$_SESSION['idAuthor']);//перенаправление обратно в контроллер index.php
@@ -439,13 +390,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'История платеж
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода новостей на главной странице ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода истории платежей';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/

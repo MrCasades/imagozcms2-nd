@@ -49,11 +49,8 @@ if (isset ($_GET['addform']))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка добавления информации paysystem';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -78,11 +75,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора paysystem';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -113,11 +107,8 @@ if (isset ($_GET['editform']))
 	}
 	catch (PDOException $e)
 	{
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Error Update: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+		$error = 'Ошибка обновления paysystem';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -142,11 +133,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
 	
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления paysystem';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: .');//перенаправление обратно в контроллер index.php
@@ -165,11 +153,8 @@ try
 
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора системы: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора paysystem';			
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/

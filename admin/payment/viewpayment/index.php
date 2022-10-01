@@ -41,13 +41,8 @@ if (isset($_GET['id']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода заявки на  : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода заявки на платёж';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -109,14 +104,8 @@ if (isset ($_GET['editpayment']))
 		
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$pdo->rollBack();//отмена транзакции
-		$error = 'Error transaction payment '.$e -> getMessage();// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();		
+		$error = 'Ошибка списания';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	unset($_SESSION['idAuthor'], $_SESSION['idPayment'], $_SESSION['payment']);//закрытие сессии
