@@ -73,9 +73,8 @@ if (isset ($_GET['addform']))
 	
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка поиска автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка поиска автора';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s-> fetch();
@@ -83,13 +82,8 @@ if (isset ($_GET['addform']))
 	/*Вывод сообщения об ошибке при дубле email*/	
 	if (!empty($row['email']))	
 	{
-			$title = 'Такой пользователь уже зарегестрирован в системе!';//Данные тега <title>
-			$headMain = 'Такой пользователь уже зарегестрирован в системе!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Пользователь с таким адресом электронной почты уже зарегестрирован в системе. Если Вы забыли свой пароль, воспользуйтесь <a href = "/admin/recoverpassword/?send">функцией восстановления</a>!';
-			include 'error.html.php';
-			exit();
+		$error = 'Пользователь с таким адресом электронной почты уже зарегестрирован в системе. Если Вы забыли свой пароль, воспользуйтесь <a href = "/admin/recoverpassword/?send">функцией восстановления</a>!';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Вывод сообщения об ошибке, если не заполнены поля email или "Пароль"*/
@@ -141,13 +135,8 @@ if (isset ($_GET['addform']))
 				}
 				catch (PDOException $e)
 				{
-					$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-					$headMain = 'Ошибка данных!';
-					$robots = 'noindex, nofollow';
-					$descr = '';
-					$error = 'Ошибка добавления информации автора'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-					include 'error.html.php';
-					exit();
+					$error = 'Ошибка добавления информации автора';
+					include MAIN_FILE . '/includes/error.inc.php';
 				}
 
 				$authorid = $pdo -> lastInsertid();//значение последнего автоинкрементного поля
@@ -166,13 +155,8 @@ if (isset ($_GET['addform']))
 					}
 					catch (PDOException $e)
 					{
-						$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-						$headMain = 'Ошибка данных!';
-						$robots = 'noindex, nofollow';
-						$descr = '';
-						$error = 'Ошибка назначения пароля '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-						include 'error.html.php';
-						exit();
+						$error = 'Ошибка назначения пароля';
+						include MAIN_FILE . '/includes/error.inc.php';
 					}			
 				}
 				

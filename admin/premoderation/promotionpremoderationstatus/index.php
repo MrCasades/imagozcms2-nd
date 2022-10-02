@@ -44,11 +44,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Опубликовать')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора promotion: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора promotion';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -83,11 +80,8 @@ if (isset ($_GET['premodyes']))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора цены статьи: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора статуса платежа';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -107,11 +101,8 @@ if (isset ($_GET['premodyes']))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора цены новости: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора счётчика статей и номера ранга';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -151,11 +142,9 @@ if (isset ($_GET['premodyes']))
 		catch (PDOException $e)
 		{
 			$pdo->rollBack();//отмена транзакции
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка транзакции при обновлении ранга'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+
+			$error = 'Ошибка транзакции при обновлении ранга';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
 	
@@ -168,11 +157,8 @@ if (isset ($_GET['premodyes']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка пуюликации promotion';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
@@ -197,11 +183,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Снять с публик�
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора promotion: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора promotion';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -233,11 +216,8 @@ if (isset ($_GET['premodno']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка снятия с публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка снятия с публикации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 		
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
@@ -262,11 +242,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора promotion: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора promotion';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -303,11 +280,8 @@ if (isset ($_GET['refusedyes']))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора цены promotion';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -325,11 +299,8 @@ if (isset ($_GET['refusedyes']))
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора id автора';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -360,11 +331,8 @@ if (isset ($_GET['refusedyes']))
 	{
 		$pdo->rollBack();//отмена транзакции
 		
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка отклонения публикации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка отклонения публикации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	$posttitle = $_POST['posttitle'];

@@ -46,13 +46,8 @@ if (isset ($_GET['sendmessage']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора старого пароля : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора старого пароля';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -61,13 +56,8 @@ if (isset ($_GET['sendmessage']))
 	
 	if (!isset ($oldPassword))
 	{
-		$title = 'Ошибка восстановления пароля!';//Данные тега <title>
-		$headMain = 'Ошибка восстановления пароля!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
 		$error = 'Данный E-mail отсутствует в системе!';
-		include 'error.html.php';
-		exit();
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*INSERT - вставка данных в таблицу recoverypasword*/
@@ -84,11 +74,8 @@ if (isset ($_GET['sendmessage']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации в recoverypassword'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления информации в recoverypassword';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$title ='Смена пароля для сайта imagoz.ru';
@@ -123,13 +110,8 @@ if (isset($_GET['tikey']))
 	
 	if ($tiKey+60*60*10 < $time)//Если прошло более 10 часов - ссылка недействительна!
 	{
-		$title = 'Ошибка восстановления пароля!';//Данные тега <title>
-		$headMain = 'Ошибка восстановления пароля!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
 		$error = 'Эта ссылка больше недействительна так как 10 часов истекло. Попробуйте восстановить пароль снова!';
-		include 'error.html.php';
-		exit();
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	else
@@ -168,13 +150,8 @@ if (isset($_GET['confrecover']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора старого пароля : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора старого пароля';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -254,13 +231,8 @@ if (isset($_GET['recover']))
 		
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка назначения пароля '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка назначения пароля';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}	
 		
 		$title = 'Смена пароля прошла успешно';//Данные тега <title>
