@@ -44,13 +44,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Взять задание')
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о задании: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации о задании';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -85,13 +80,8 @@ if (isset ($_GET['taskyes']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о задании: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора статуса задания';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -100,14 +90,8 @@ if (isset ($_GET['taskyes']))
 	
 	if ($taskstatus == 'YES')//если статус задания 'YES' значит его взял другой пользователь
 	{
-		$title = 'Ошибка взятия задания';//Данные тега <title>
-		$headMain = 'Ошибка взятия задания';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Данное задание взял другой пользователь. Попробуйте выбрать другое';// вывод сообщения об ошибке в переменой $e
-		
-		include 'error.html.php';
-		exit();
+		$error = 'Данное задание взял другой пользователь. Попробуйте выбрать другое';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	else
@@ -131,13 +115,8 @@ if (isset ($_GET['taskyes']))
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации числе взятых заданий автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации числе взятых заданий автора';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -156,13 +135,8 @@ if (isset ($_GET['taskyes']))
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации числе взятых заданий автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации о числе отказанных новостей';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -179,13 +153,8 @@ if (isset ($_GET['taskyes']))
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации числе взятых заданий автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации о числе отказанных статей';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -204,13 +173,8 @@ if (isset ($_GET['taskyes']))
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации числе взятых заданий автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации о числе новостей в премодерации';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -227,13 +191,8 @@ if (isset ($_GET['taskyes']))
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора информации числе взятых заданий автора: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора информации о числе статей в премодерации';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -243,38 +202,20 @@ if (isset ($_GET['taskyes']))
 		
 		if ($taskcount > $takenTasks)
 		{
-			$title = 'Ошибка взятия задания';//Данные тега <title>
-			$headMain = 'Ошибка взятия задания';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Вы не можете взять более '.$taskcount.' заданий!';// вывод сообщения об ошибке в переменой $e
-
-			include 'error.html.php';
-			exit();
+			$error = 'Вы не можете взять более '.$taskcount.' заданий!';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 		elseif ($refusedNews + $refusedPosts > $allRefused)
 		{
-			$title = 'Ошибка взятия задания';//Данные тега <title>
-			$headMain = 'Ошибка взятия задания';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'У Вас отклонено более '.($refusedNews + $refusedPosts).' заданий! Переделайте их или удалите, чтобы взять новые!';// вывод сообщения об ошибке в переменой $e
-
-			include 'error.html.php';
-			exit();
+			$error = 'У Вас отклонено более '.($refusedNews + $refusedPosts).' заданий! Переделайте их или удалите, чтобы взять новые!';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 		elseif ($premodNews + $premodPosts > $allPremod)
 		{
-			$title = 'Ошибка взятия задания';//Данные тега <title>
-			$headMain = 'Ошибка взятия задания';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'В премодерации находится '.($premodNews + $premodPosts).' материалов. Новое задание можно будет взять только когда на проверке будет оставаться максимум '.$allPremod.' материала!';// вывод сообщения об ошибке в переменой $e
-
-			include 'error.html.php';
-			exit();
+			$error = 'В премодерации находится '.($premodNews + $premodPosts).' материалов. Новое задание можно будет взять только когда на проверке будет оставаться максимум '.$allPremod.' материала!';			
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 		
 		else
@@ -304,13 +245,9 @@ if (isset ($_GET['taskyes']))
 			catch (PDOException $e)
 			{
 				$pdo->rollBack();//отмена транзакции
-				$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-				$headMain = 'Ошибка данных!';
-				$robots = 'noindex, nofollow';
-				$descr = '';
-				$error = 'Ошибка взятия задания '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-				include 'error.html.php';
-				exit();
+
+				$error = 'Ошибка взятия задания';			
+				include MAIN_FILE . '/includes/error.inc.php';				
 			}
 		}
 	}
@@ -341,13 +278,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отказаться')
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора информации о задании: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора информации о задании';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -398,13 +330,9 @@ if (isset ($_GET['taskno']))
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка отказа от задания '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка отказа от задания';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL.'/admin/viewallauthortask/'); //перенаправление обратно в контроллер index.php

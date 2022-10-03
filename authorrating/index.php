@@ -44,11 +44,8 @@ try
 	
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка формирования списка ролей '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка формирования списка авторов';			
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 	
 foreach ($result as $row)
@@ -103,11 +100,9 @@ if (isset ($_GET['add']))
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка транзакции при обновлении рейтинга'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка транзакции при обновлении рейтинга';			
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 }
 
