@@ -74,11 +74,8 @@ try
 
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка выбора сообщений: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка выбора сообщений';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 

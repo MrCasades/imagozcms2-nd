@@ -12,14 +12,9 @@ if (loggedIn())
 
 else
 {
-	$title = 'Ошибка добавления сообщения';//Данные тега <title>
-	$headMain = 'Нельзя добавить сообщение';
-	$robots = 'noindex, nofollow';
-	$descr = '';
 	$error = 'Для того, чтобы отправлять сообщения пользователю Вам нужно <a href="//'.MAIN_URL.'/admin/registration/?log">авторизироваться</a> в системе или пройти 
-						 <a href="//'.MAIN_URL.'/admin/registration/?reg">регистрацию</a>!';
-	include 'error.html.php';
-	exit();
+						<a href="//'.MAIN_URL.'/admin/registration/?reg">регистрацию</a>!';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 
@@ -114,13 +109,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	catch (PDOException $e)
 	{		
 		$pdo->rollBack();//отмена транзакции
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления сообщения '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка добавления сообщения';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Присвоение статуса первого сообщения*/
@@ -136,13 +127,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка обновления статуса первого сообщения '.$e -> getMessage();// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e;// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();		
+			$error = 'Ошибка обновления статуса первого сообщения';
+			include MAIN_FILE . '/includes/error.inc.php';	
 		}
 	}
 	
@@ -173,11 +159,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'X')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора первого сообщения';
+		include MAIN_FILE . '/includes/error.inc.php';	
 	}
 	
 	$row = $s -> fetch();
@@ -206,11 +189,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'X')
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора сообщения';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -240,11 +220,8 @@ if (isset ($_GET['delete']))
 	}
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации mainmessages'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления информации mainmessages';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php

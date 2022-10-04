@@ -23,13 +23,8 @@ if (isset($_POST["idfr"]))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка добавления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка добавления сообщения';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
     $idmessage_ind = $pdo->lastInsertId();
@@ -47,11 +42,8 @@ if (isset($_POST["idfr"]))
 
 	catch (PDOException $e)
 	{
-	    $robots = 'noindex, nofollow';
-	    $descr = '';
-	    $error = 'Error select comment: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	    include 'error.html.php';
-	    exit();
+		$error = 'Ошибка выбора сообщения';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();

@@ -22,11 +22,8 @@
         }
         catch (PDOException $e)
         {
-            $robots = 'noindex, nofollow';
-            $descr = '';
-            $error = 'Ошибка удаления информации mainmessages'. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-            include 'error.html.php';
-            exit();
+            $error = 'Ошибка удаления информации mainmessages';
+		    include MAIN_FILE . '/includes/error.inc.php';
         }
             
     }
