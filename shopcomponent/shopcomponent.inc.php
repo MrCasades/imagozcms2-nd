@@ -8,13 +8,8 @@ try
 
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Не удалось получить данные ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Не удалось получить данные';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/

@@ -101,13 +101,8 @@ try
 
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка поиска : ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка поиска';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 foreach ($s as $row)
@@ -145,13 +140,8 @@ try
 }
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка вывода author '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка вывода author';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 	
 foreach ($result as $row)
@@ -169,13 +159,8 @@ try
 }
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка вывода meta '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка вывода meta';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 	
 foreach ($result as $row)
