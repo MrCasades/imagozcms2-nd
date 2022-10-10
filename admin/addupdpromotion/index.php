@@ -8,6 +8,8 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка функций для формы входа*/
 include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
 
+$pubFolder = 'addupdpromotion'; //Папка скрипта
+
 if (loggedIn())
 {
 	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
@@ -417,7 +419,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	$metas = previewMetas('promotion', 'idpromotion', $idpost_ind);
 	
-	include 'premodsucc.html.php';
+	include '../commonfiles/preview.html.php';
 	exit();
 }
 
@@ -558,7 +560,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	$metas = previewMetas('promotion', 'idpromotion', $idpost_ind);
 	
-	include 'premodsucc.html.php';
+	include '../commonfiles/preview.html.php';
 	exit();
 }
 
@@ -595,7 +597,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'ОПУБЛИКОВАТЬ')
 	$id = $_POST['id'];
 	$button = 'Опубликовать';
 
-	include 'topremoderation.html.php';
+	include '../commonfiles/topremoderation.html.php';
 }
 
 if (isset ($_GET['topremod']))
