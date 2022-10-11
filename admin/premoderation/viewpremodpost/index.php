@@ -58,9 +58,12 @@ if (isset ($_GET['post']))
 	$articleTitle = $row['posttitle'];
 	$idTask = $row['idtask'];
 	$taskData = '<strong>Материал админа или супер-автора.</strong>';
+	$categoryId = '';
+	$posttitle = $row['posttitle'];
+	$categoryName = ''; 
 
 	$title = $row['posttitle'];//Данные тега <title>
-	$headMain = $row['posttitle'];	
+	$headMain = '<a href="#" onclick="history.back();">Назад</a>';	
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	
@@ -152,7 +155,7 @@ if (isset ($_GET['post']))
 					</form>";			  		  
 	}
 	
-	include 'viewpremodpost.html.php';
+	include '../../commonfiles/preview.html.php';
 }
 
 if (isset ($_POST['action']) && $_POST['action'] == 'Конвертировать в новость')
