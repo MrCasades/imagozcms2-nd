@@ -77,12 +77,34 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</div>
 
 		<div class = "m-content">
-			<p><?php echo $delAndUpd; ?></p>
+			<?php echo $delAndUpd = !empty($delAndUpd) ? '<p>'.$delAndUpd.'</p>' : ''; ?>
+			<?php echo $premoderation = !empty($premoderation) ? '<p>'.$premoderation.'</p>' : ''; ?>
+			<?php echo $convertData = !empty($convertData) ? '<p>'.$convertData.'</p>' : ''; ?>
 		</div>
 
 </div>
 
 </article>
+
+<?php if (!empty($idTask)):?>
+	<?php if ($idTask != 0):?>
+		<div class="m-content">
+			<div class="task-pl">
+				<div class="task-pl-header">
+					<?php echo ('Дата выдачи: '.$taskDate);?>				 
+				</div>
+				<div class="task-txt">
+					<h5 class="for-info-txt">Техническое задание #<?php echo $taskId;?> "<?php echo $taskTitle;?>"</h5>
+					<p><?php echomarkdown ($taskDescription); ?></p>
+				</div>
+			</div>
+		</div>
+
+	<?php else:?>
+		<p class = "for-info-txt"><strong>Материал админа или супер-автора.</strong></p>
+	<?php endif;?>
+
+<?php endif;?>
 	
 <?php 
 /*Загрузка footer*/

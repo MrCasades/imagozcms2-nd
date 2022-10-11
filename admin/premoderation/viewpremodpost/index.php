@@ -31,7 +31,11 @@ if (isset ($_GET['post']))
 	@session_start();//Открытие сессии для сохранения id статьи
 	
 	$_SESSION['idpost'] = $idPost;
-	$select = 'SELECT posts.id AS postid, post, posttitle, imghead, videoyoutube, imgalt, postdate, idtask FROM posts WHERE premoderation = "NO" AND refused = "NO" AND posts.id = ';
+	$select = 'SELECT posts.id AS postid, post, posttitle, imghead, videoyoutube, imgalt, postdate, idtask, author.id AS idauthor, authorname, category.id AS categoryid, categoryname 
+	FROM posts
+	INNER JOIN author ON idauthor = author.id 
+	INNER JOIN category ON idcategory = category.id 
+	WHERE premoderation = "NO" AND refused = "NO" AND posts.id = ';
 
 	include MAIN_FILE . '/includes/db.inc.php';
 	
@@ -58,9 +62,11 @@ if (isset ($_GET['post']))
 	$articleTitle = $row['posttitle'];
 	$idTask = $row['idtask'];
 	$taskData = '<strong>Материал админа или супер-автора.</strong>';
-	$categoryId = '';
+	$categoryId = $row['categoryid'];
 	$posttitle = $row['posttitle'];
-	$categoryName = ''; 
+	$categoryName = $row['categoryname']; 
+	$authorId = $row['idauthor']; 
+	$nameAuthor = $row['authorname']; 
 
 	$title = $row['posttitle'];//Данные тега <title>
 	$headMain = '<a href="#" onclick="history.back();">Назад</a>';	
