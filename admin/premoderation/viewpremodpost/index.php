@@ -59,7 +59,6 @@ if (isset ($_GET['post']))
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
 	$date = $row['postdate'];
-	$articleTitle = $row['posttitle'];
 	$idTask = $row['idtask'];
 	$taskData = '<strong>Материал админа или супер-автора.</strong>';
 	$categoryId = $row['categoryid'];

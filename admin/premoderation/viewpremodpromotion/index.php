@@ -31,7 +31,11 @@ if (isset ($_GET['promotion']))
 	@session_start();//Открытие сессии для сохранения id статьи
 	
 	$_SESSION['idpost'] = $idPost;
-	$select = 'SELECT id, promotion, promotiontitle, imghead, videoyoutube, imgalt, promotiondate FROM promotion WHERE premoderation = "NO" AND refused = "NO" AND id = ';
+	$select = 'SELECT promotion.id AS promotionid, promotion, promotiontitle, imghead, videoyoutube, imgalt, promotiondate, author.id AS idauthor, authorname, category.id AS categoryid, categoryname 
+				FROM promotion 
+				INNER JOIN author ON idauthor = author.id 
+				INNER JOIN category ON idcategory = category.id
+				WHERE premoderation = "NO" AND refused = "NO" AND promotion.id = ';
 
 	include MAIN_FILE . '/includes/db.inc.php';
 	
@@ -50,15 +54,20 @@ if (isset ($_GET['promotion']))
 	
 	$row = $s -> fetch();
 
-	$articleId = $row['id'];
+	$articleId = $row['promotionid'];
 	$articleText = $row['promotion'];
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
 	$date = $row['promotiondate'];
 	$articleTitle = $row['promotiontitle'];
+	$categoryId = $row['categoryid'];
+	$posttitle = $row['promotiontitle'];
+	$categoryName = $row['categoryname']; 
+	$authorId = $row['idauthor']; 
+	$nameAuthor = $row['authorname']; 
 	
 	$title = $row['promotiontitle'];//Данные тега <title>
-	$headMain = $row['promotiontitle'];	
+	$headMain = '<a href="#" onclick="history.back();">Назад</a>';	
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	
@@ -117,5 +126,5 @@ if (isset ($_GET['promotion']))
 					  </form>";			  
 	}
 	
-	include 'viewpremodpromotion.html.php';
+	include '../../commonfiles/preview.html.php';
 }

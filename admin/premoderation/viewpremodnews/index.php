@@ -34,7 +34,11 @@ if (isset ($_GET['news']))
 	
 	/*Выбор данных статьи*/
 	
-	$select = 'SELECT newsblock.id AS newsid, news, newstitle, imghead, videoyoutube, imgalt, newsdate, idtask FROM newsblock WHERE premoderation = "NO" AND refused = "NO" AND newsblock.id = ';
+	$select = 'SELECT newsblock.id AS newsid, news, newstitle, imghead, videoyoutube, imgalt, newsdate, idtask, author.id AS idauthor, authorname, category.id AS categoryid, categoryname
+	FROM newsblock 
+	INNER JOIN author ON idauthor = author.id 
+	INNER JOIN category ON idcategory = category.id
+	WHERE premoderation = "NO" AND refused = "NO" AND newsblock.id = ';
 
 	include MAIN_FILE . '/includes/db.inc.php';
 	
@@ -58,11 +62,15 @@ if (isset ($_GET['news']))
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
 	$date = $row['newsdate'];
-	$articleTitle = $row['newstitle'];
 	$idTask = $row['idtask'];
+	$categoryId = $row['categoryid'];
+	$posttitle = $row['newstitle'];
+	$categoryName = $row['categoryname']; 
+	$authorId = $row['idauthor']; 
+	$nameAuthor = $row['authorname']; 
 	
 	$title = $row['newstitle'];//Данные тега <title>
-	$headMain = $row['newstitle'];	
+	$headMain = '<a href="#" onclick="history.back();">Назад</a>';	
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	
@@ -153,7 +161,7 @@ if (isset ($_GET['news']))
 					  </form>";
 	}
 	
-	include 'viewpremodnews.html.php';
+	include '../../commonfiles/preview.html.php';
 }
 
 if (isset ($_POST['action']) && $_POST['action'] == 'Конвертировать в статью')
