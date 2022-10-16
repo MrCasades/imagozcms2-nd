@@ -41,7 +41,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	
 	addListsInForms();
 	
-	include 'addupdform.html.php';
+	include '../commonfiles/addupdform.html.php';
 	exit();
 }
 
@@ -168,7 +168,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 		$metas_1[] = array('idmeta' => $row['id'],'metaname' => $row['metaname'], 'selected' => in_array($row['id'], $selectedMeta));
 	}
 
-	include 'addupdform.html.php';
+	include '../commonfiles/addupdform.html.php';
 	exit();
 }
 
@@ -222,7 +222,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		
 		addListsInForms();
 	
-		include 'addupdform.html.php';
+		include '../commonfiles/addupdform.html.php';
 		exit();
 	}
 	
