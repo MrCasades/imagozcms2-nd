@@ -127,7 +127,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 		$robots = 'noindex, nofollow';
 		$descr = '';
 		$action = 'addform';
-		$promotiontitle = '';
+		$articletitle = '';
 		$translittitle = '';
 		$description = '';
 		$text = '';
@@ -140,11 +140,11 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 		$button = 'Добавить статью';
 		$errorForm = '';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 
 		addListsInForms();
 		
-		include 'addupdform.html.php';
+		include '../commonfiles/addupdform.html.php';
 		exit();
 	}
 	
@@ -166,7 +166,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, promotion, promotiontitle, www, idauthor, imghead, imgalt, videoyoutube, promotiontitle, description, idcategory FROM promotion WHERE id = :idpromotion';
+		$sql = 'SELECT id, promotion, promotiontitle, www, idauthor, imghead, imgalt, videoyoutube, description, idcategory FROM promotion WHERE id = :idpromotion';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -186,7 +186,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$descr = '';
 	$action = 'editform';
 	$text = $row['promotion'];
-	$promotiontitle = $row['promotiontitle'];
+	$articletitle = $row['promotiontitle'];
 	$description = $row['description'];
 	$imgalt = $row['imgalt']; 
 	$idcategory = $row['idcategory'];
@@ -195,7 +195,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$www = $row['www'];
 	$button = 'Обновить информацию о статье';
 	$errorForm ='';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 	
 	@session_start();//Открытие сессии для сохранения названия файла изображения
 	
@@ -274,7 +274,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 		$metas_1[] = array('idmeta' => $row['id'],'metaname' => $row['metaname'], 'selected' => in_array($row['id'], $selectedMeta));
 	}
 
-	include 'addupdform.html.php';
+	include '../commonfiles/addupdform.html.php';
 	exit();
 }
 
@@ -300,7 +300,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 	
-	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['promotiontitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$title = 'Добавить новую статью';//Данные тега <title>
 		$headMain = 'Добавить новую статью';
@@ -313,25 +313,25 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$button = 'Добавить статью';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$errorForm = 'Один или несколько атрибутов не указаны. Выбирете все!';
-		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 		
 		@session_start();//Открытие сессии для сохранения id автора
 	
-		$_SESSION['promotiontitle'] = $_POST['promotiontitle'];
+		$_SESSION['articletitle'] = $_POST['articletitle'];
 		$_SESSION['imgalt'] = $_POST['imgalt'];
 		$_SESSION['description'] = $_POST['description'];
-		$_SESSION['text'] = $_POST['text'];
+		$_SESSION['articletext'] = $_POST['articletext'];
 		
-		$promotiontitle = $_SESSION['promotiontitle'];
+		$articletitle = $_SESSION['articletitle'];
 		$imgalt = $_SESSION['imgalt'];
 		$description = $_SESSION['description'];
-		$text = $_SESSION['text'];
+		$text = $_SESSION['articletext'];
 		
 		/*Вывод информации для формы добавления*/
 		
 		addListsInForms();
 		
-		include 'addupdform.html.php';
+		include '../commonfiles/addupdform.html.php';
 		exit();
 	}
 	
@@ -342,8 +342,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$pdo->beginTransaction();//инициация транзакции
 		
 		$sql = 'INSERT INTO promotion SET 
-					promotion = :promotion,
-					promotiontitle = :promotiontitle,	
+					promotion = :articletext,
+					promotiontitle = :articletitle,	
 					description = :description,
 					promotiondate = SYSDATE(),
 					imgalt = :imgalt,
@@ -354,8 +354,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 					idauthor = :idauthor,
 					idcategory = :idcategory';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':promotion', viewVideoInArticle($_POST['text']));//отправка значения
-		$s -> bindValue(':promotiontitle', $_POST['promotiontitle']);//отправка значения
+		$s -> bindValue(':articletext', viewVideoInArticle($_POST['articletext']));//отправка значения
+		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
@@ -452,7 +452,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['promotiontitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$error = 'В форме есть незаполненные поля!';
 		include MAIN_FILE . '/includes/error.inc.php';
@@ -462,8 +462,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	try
 	{
 		$sql = 'UPDATE promotion SET 
-					promotion = :promotion,
-					promotiontitle = :promotiontitle,
+					promotion = :articletext,
+					promotiontitle = :articletitle,
 					description = :description,
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
@@ -473,8 +473,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 				WHERE id = :idpromotion';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
-		$s -> bindValue(':promotion', viewVideoInArticle($_POST['text']));//отправка значения
-		$s -> bindValue(':promotiontitle', $_POST['promotiontitle']);//отправка значения
+		$s -> bindValue(':articletext', viewVideoInArticle($_POST['articletext']));//отправка значения
+		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения

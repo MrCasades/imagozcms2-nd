@@ -21,7 +21,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'addform';
-	$posttitle = '';
+	$articletitle = '';
 	$description = '';
 	$text = '';
 	$imgalt = '';
@@ -32,7 +32,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$button = 'Добавить статью';
 	$errorForm = '';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 	
 	/*id задания*/
 	$idTask = isset($_POST['id']) ? $_POST['id'] : 0;
@@ -41,7 +41,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 
 	addListsInForms();
 
-	include 'addupdform.html.php';
+	include '../commonfiles/addupdform.html.php';
 	exit();
 	
 }
@@ -82,7 +82,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$descr = '';
 	$action = 'editform';
 	$text = $row['post'];
-	$posttitle = $row['posttitle'];
+	$articletitle = $row['posttitle'];
 	$description = $row['description'];
 	$imgalt = $row['imgalt']; 
 	$videoyoutube = $row['videoyoutube']; 
@@ -90,7 +90,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$id = $row['id'];
 	$button = 'Обновить информацию о статье';
 	$errorForm ='';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 	
 	@session_start();//Открытие сессии для сохранения названия файла изображения
 	
@@ -169,7 +169,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 		$metas_1[] = array('idmeta' => $row['id'],'metaname' => $row['metaname'], 'selected' => in_array($row['id'], $selectedMeta));
 	}
 
-	include 'addupdform.html.php';
+	include '../commonfiles/addupdform.html.php';
 	exit();
 }
 
@@ -192,7 +192,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 	
-	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['posttitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$title = 'Добавить новую новость';//Данные тега <title>
 		$headMain = 'Добавить новую новость';
@@ -205,31 +205,31 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$button = 'Добавить новость';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$errorForm = 'Один или несколько атрибутов не указаны. Выбирете все!';
-		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 		
 		@session_start();//Открытие сессии для сохранения id автора
 	
-		$_SESSION['posttitle'] = $_POST['posttitle'];
+		$_SESSION['articletitle'] = $_POST['articletitle'];
 		$_SESSION['imgalt'] = $_POST['imgalt'];
 		$_SESSION['description'] = $_POST['description'];
-		$_SESSION['text'] = $_POST['text'];
+		$_SESSION['articletext'] = $_POST['articletext'];
 		
-		$posttitle = $_SESSION['posttitle'];
+		$articletitle = $_SESSION['articletitle'];
 		$imgalt = $_SESSION['imgalt'];
 		$description = $_SESSION['description'];
-		$text = $_SESSION['text'];
+		$text = $_SESSION['articletext'];
 		
 		/*Вывод информации для формы добавления*/
 			
 		addListsInForms();
 		
-		include 'addupdform.html.php';
+		include '../commonfiles/addupdform.html.php';
 		exit();
 	}
 	
 	/*Определение предворительной длины и цены текста*/
 		
-	setArticlePrice($_POST['text'], 'pricepost', $selectedAuthor, 'add');//полная стоимость статьи
+	setArticlePrice($_POST['articletext'], 'pricepost', $selectedAuthor, 'add');//полная стоимость статьи
 	
 	/*Обновление параметров задания*/
 	
@@ -320,8 +320,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	try
 	{
 		$sql = 'INSERT INTO posts SET 
-					post = :post,
-					posttitle = :posttitle,	
+					post = :articletext,
+					posttitle = :articletitle,	
 					description = :description,
 					postdate = SYSDATE(),
 					imgalt = :imgalt,
@@ -335,8 +335,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 					authorbonus = :bonus,
 					pricetext = :fullprice';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':post', viewVideoInArticle($_POST['text']));//отправка значения
-		$s -> bindValue(':posttitle', $_POST['posttitle']);//отправка значения
+		$s -> bindValue(':articletext', viewVideoInArticle($_POST['articletext']));//отправка значения
+		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
@@ -423,20 +423,20 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	if (($_POST['category'] == '') || ($_POST['text'] == '') || ($_POST['posttitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$error = 'Один или несколько атрибутов не указаны. Выбирете все.';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Определение предворительной длины и цены текста*/
-	setArticlePrice($_POST['text'], 'pricepost', $_POST['id'], 'upd');//полная стоимость статьи
+	setArticlePrice($_POST['articletext'], 'pricepost', $_POST['id'], 'upd');//полная стоимость статьи
 	
 	try
 	{
 		$sql = 'UPDATE posts SET 
-					post = :post,
-					posttitle = :posttitle,
+					post = :articletext,
+					posttitle = :articletitle,
 					description = :description,
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
@@ -447,8 +447,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 				WHERE id = :idpost';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpost', $_POST['id']);//отправка значения
-		$s -> bindValue(':post', viewVideoInArticle($_POST['text']));//отправка значения
-		$s -> bindValue(':posttitle', $_POST['posttitle']);//отправка значения
+		$s -> bindValue(':articletext', viewVideoInArticle($_POST['articletext']));//отправка значения
+		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
@@ -600,8 +600,8 @@ if (isset ($_GET['topremod']))
 
 	/*Отправка сообщений (тест)*/
 	
-	$titleMessage = 'Ваш материал "'. $_POST['posttitle'].'" находится в премодерации.';
-	$mailMessage = 'Вами был отправлен в премодерацию материал "'. $_POST['posttitle'].'". После успешной проверки Вам будет начислен '.$_POST['price'].' балл';
+	$titleMessage = 'Ваш материал "'. $_POST['articletitle'].'" находится в премодерации.';
+	$mailMessage = 'Вами был отправлен в премодерацию материал "'. $_POST['articletitle'].'". После успешной проверки Вам будет начислен '.$_POST['price'].' балл';
 
 	toEmail_1($titleMessage, $mailMessage);//отправка письма
 

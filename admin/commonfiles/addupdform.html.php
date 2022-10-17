@@ -17,7 +17,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
+	<?php if ($pubFolder = 'addupdnews' || $pubFolder = 'addupdpost'):?>	
 	 <input type = "hidden" name = "idtask" value = "<?php htmlecho($idTask); ?>">
+	<?php endif;?>
 	 <div>
 		<label for = "author"> Автор:</label>
 		 <?php echo $authorPost;?>
@@ -26,7 +28,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<hr/>
 	<div>
 		<h3>Введите заголовок <span style = "color: red"> *</span> </h3>
-		<textarea id = "newstitle" name = "newstitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($newstitle);?></textarea>
+		<textarea id = "articletitle" name = "articletitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($articletitle);?></textarea>
 		<p><span id="counttitlelen">0</span> / 200	</p>
 	</div>
 	<div>
@@ -117,8 +119,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	 <?php $txtPlaceStyle = userRole('Администратор') ? 'mark-textarea-adm' : 'mark-textarea';?>
 	 <div class="txt-area-block fixed-txt-area">
-		<h3>Введите текст новости <span style = "color: red"> *</span></h3>
-		<textarea class = "<?php htmlecho($txtPlaceStyle); ?> fixed-txt-area" id = "text" name = "textnews" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
+		<h3>Введите текст публикации <span style = "color: red"> *</span></h3>
+		<textarea class = "<?php htmlecho($txtPlaceStyle); ?> fixed-txt-area" id = "text" name = "articletext" rows="10" placeholder = "Добавьте текст"><?php htmlecho($text);?></textarea>	
 	 </div>
 	 <hr/>	
 	  <div>

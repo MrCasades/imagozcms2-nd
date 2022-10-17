@@ -22,7 +22,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'addform';
-	$newstitle = '';
+	$articletitle = '';
 	$description = '';
 	$text = '';
 	$imgalt = '';
@@ -32,7 +32,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$id = '';
 	$button = 'Добавить новость';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 	
 	/*id задания*/
 	$idTask = isset($_POST['id']) ? $_POST['id'] : 0;
@@ -81,7 +81,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	$descr = '';
 	$action = 'editform';
 	$text = $row['news'];
-	$newstitle = $row['newstitle'];
+	$articletitle = $row['newstitle'];
 	$description = $row['description'];
 	$imgalt = $row['imgalt'];
 	$videoyoutube = $row['videoyoutube'];
@@ -90,7 +90,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	$id = $row['id'];
 	$button = 'Обновить информацию о новости';
 	$errorForm = '';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 	
 	@session_start();//Открытие сессии для сохранения названия файла изображения
 	
@@ -191,7 +191,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 	
-	if (($_POST['category'] == '') || ($_POST['textnews'] == '') || ($_POST['newstitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$title = 'Добавить новую новость';//Данные тега <title>
 		$headMain = 'Добавить новую новость';
@@ -204,19 +204,19 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$button = 'Добавить новость';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$errorForm = 'Один или несколько атрибутов не указаны. Выбирете все!';
-		$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 		
 		@session_start();//Открытие сессии для сохранения данных форм
 	
-		$_SESSION['newstitle'] = $_POST['newstitle'];
+		$_SESSION['articletitle'] = $_POST['articletitle'];
 		$_SESSION['imgalt'] = $_POST['imgalt'];
 		$_SESSION['description'] = $_POST['description'];
-		$_SESSION['textnews'] = $_POST['textnews'];
+		$_SESSION['articletext'] = $_POST['articletext'];
 		
-		$newstitle = $_SESSION['newstitle'];
+		$articletitle = $_SESSION['articletitle'];
 		$imgalt = $_SESSION['imgalt'];
 		$description = $_SESSION['description'];
-		$text = $_SESSION['textnews'];
+		$text = $_SESSION['articletext'];
 		
 		/*Вывод информации для формы добавления*/
 		
@@ -228,7 +228,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	/*Определение предворительной длины и цены текста*/
 		
-	setArticlePrice($_POST['textnews'], 'pricenews', $selectedAuthor, 'add');//полная стоимость статьи
+	setArticlePrice($_POST['articletext'], 'pricenews', $selectedAuthor, 'add');//полная стоимость статьи
 	
 	/*Обновление параметров задания*/
 	
@@ -320,7 +320,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	{
 		$sql = 'INSERT INTO newsblock SET 
 					news = :news,
-					newstitle = :newstitle,
+					newstitle = :articletitle,
 					description = :description,
 					imgalt = :imgalt,	
 					videoyoutube = :videoyoutube,
@@ -334,8 +334,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 					authorbonus = :bonus,
 					pricetext = :fullprice';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':news', viewVideoInArticle($_POST['textnews']));//отправка значения
-		$s -> bindValue(':newstitle', $_POST['newstitle']);//отправка значения
+		$s -> bindValue(':news', viewVideoInArticle($_POST['articletext']));//отправка значения
+		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
@@ -422,20 +422,20 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	if (($_POST['category'] == '') || ($_POST['textnews'] == '') || ($_POST['newstitle'] == ''))
+	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$error = 'Один или несколько атрибутов не указаны. Выбирете все.';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Определение предворительной длины и цены текста*/
-	setArticlePrice($_POST['textnews'], 'pricenews', $_POST['id'], 'upd');//полная стоимость статьи
+	setArticlePrice($_POST['articletext'], 'pricenews', $_POST['id'], 'upd');//полная стоимость статьи
 	
 	try
 	{
 		$sql = 'UPDATE newsblock SET 
 					news = :news,
-					newstitle = :newstitle,	
+					newstitle = :articletitle,	
 					description = :description,
 					imgalt = :imgalt,	
 					videoyoutube = :videoyoutube,
@@ -446,8 +446,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 				WHERE id = :idnews';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idnews', $_POST['id']);//отправка значения
-		$s -> bindValue(':news', viewVideoInArticle($_POST['textnews']));//отправка значения
-		$s -> bindValue(':newstitle', $_POST['newstitle']);//отправка значения
+		$s -> bindValue(':news', viewVideoInArticle($_POST['articletext']));//отправка значения
+		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
