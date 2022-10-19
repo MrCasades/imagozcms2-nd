@@ -201,6 +201,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	
 	$_SESSION['imghead'] = $row['imghead'];
 	
+	$promotionPrice = 0;
 	
 	/*Выбор автора статьи*/
 	try
@@ -670,7 +671,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	
 	$_SESSION['imghead'] = $row['imghead'];
 	
-	include 'delete.html.php';
+	include '../commonfiles/delete.html.php';
 }
 
 if (isset ($_GET['delete']))

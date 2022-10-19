@@ -95,7 +95,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	@session_start();//Открытие сессии для сохранения названия файла изображения
 	
 	$_SESSION['imghead'] = $row['imghead'];
-	
+
+	$idTask = 0;
 	
 	/*Выбор автора статьи*/
 	try
@@ -646,7 +647,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	
 	$_SESSION['imghead'] = $row['imghead'];
 	
-	include 'delete.html.php';
+	include '../commonfiles/delete.html.php';
 }
 
 if (isset ($_GET['delete']))

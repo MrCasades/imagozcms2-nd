@@ -26,7 +26,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<hr/>
 	<div>
 		<h3>Введите заголовок <span style = "color: red"> *</span> </h3>
-		<textarea id = "videotitle" name = "videotitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($posttitle);?></textarea>
+		<textarea id = "articletitle" name = "articletitle" rows = "3" cols = "40" placeholder = "Введите заголовок!"><?php htmlecho($posttitle);?></textarea>
 		<p><span id="counttitlelen">0</span> / 200	</p>
 	</div>
 	<div>

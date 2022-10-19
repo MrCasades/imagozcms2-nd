@@ -17,9 +17,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
-	<?php if ($pubFolder = 'addupdnews' || $pubFolder = 'addupdpost'):?>	
-	 <input type = "hidden" name = "idtask" value = "<?php htmlecho($idTask); ?>">
-	<?php endif;?>
+	<?php if ($pubFolder == 'addupdnews' || $pubFolder == 'addupdpost'):?>	
+		<input type = "hidden" name = "idtask" value = "<?php htmlecho($idTask); ?>">
+	 <?php elseif ($pubFolder == 'addupdpromotion'):?>
+		<input type = "hidden" name = "promotionprice" value = "<?php htmlecho($promotionPrice); ?>"> 
+	 <?php endif;?>
 	 <div>
 		<label for = "author"> Автор:</label>
 		 <?php echo $authorPost;?>
@@ -94,7 +96,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "imgalt" name = "imgalt" id = "imgalt" value = "<?php htmlecho($imgalt);?>">
 	</div>
 	<hr/>
-	<?php endif;?>		
+	<?php endif;?>
+	<?php if ($pubFolder == 'addupdpromotion'):?>	
+	<div>
+		<h3>Введите ссылку на сайт (при необходимости). </h3>
+		<input type = "www" name = "www" id = "www" value = "<?php htmlecho($www);?>" placeholder = "Без http://">
+	</div>
+	<?php endif;?>	
 	<div>
 		<h3>Ссылка на видео Youtube</h3>
 		<input type = "videoyoutube" name = "videoyoutube" id = "videoyoutube" value = "<?php htmlecho($videoyoutube);?>">
