@@ -49,6 +49,7 @@ if (isset ($_GET['id']))
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
+	$posttitle = $row['promotiontitle'];
 
 	/*Если страница отсутствует. Ошибка 404*/
 	if (!$row)
@@ -60,11 +61,10 @@ if (isset ($_GET['id']))
 	$categoryID = $row['categoryid'];//Сохранение id сатегории	
 	
 	$title = $row['promotiontitle'].' | imagoz.ru';//Данные тега <title>
-	$headMain = $row['promotiontitle'];
+	$headMain = '<a href="#" onclick="history.back();">Назад</a>';
 	$robots = 'noindex, nofollow';
-	$descr = $row['description'];
+	$descr = '';
 	$authorComment = '';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
@@ -112,7 +112,7 @@ if (isset ($_GET['id']))
 					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn_1 addit-btn'>
 				</form>";
 
-	include 'viewdraftpromotion.html.php';
+	include '../../commonfiles/preview.html.php';
 	exit();		
 }
 	

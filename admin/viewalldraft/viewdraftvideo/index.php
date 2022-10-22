@@ -63,9 +63,8 @@ if (isset ($_GET['id']))
 	$title = $row['videotitle'].' | imagoz.ru';//Данные тега <title>
 	$headMain = $row['videotitle'];
 	$robots = 'noindex, nofollow';
-	$descr = $row['description'];
+	$descr = '';
 	$authorComment = '';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))

@@ -76,7 +76,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					</div>								
 				</div>
 
-		<div class = "m-content">
+		<div  class = "m-content">
+			<?php echo $pubAndUpd = !empty($pubAndUpd) ? '<p>'.$pubAndUpd.'</p>' : ''; ?>
 			<?php echo $delAndUpd = !empty($delAndUpd) ? '<p>'.$delAndUpd.'</p>' : ''; ?>
 			<?php echo $premoderation = !empty($premoderation) ? '<p>'.$premoderation.'</p>' : ''; ?>
 			<?php echo $convertData = !empty($convertData) ? '<p>'.$convertData.'</p>' : ''; ?>
