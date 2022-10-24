@@ -307,7 +307,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	$id = $row['id'];
 	$button = 'Удалить';
 	
-	include 'delete.html.php';
+	include '../commonfiles/delete.html.php';
 }
 
 if (isset ($_GET['delete']))
