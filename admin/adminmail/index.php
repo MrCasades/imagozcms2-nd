@@ -37,14 +37,8 @@ if (isset ($_GET['addmessage']))
 	
 	else
 	{
-		$title = 'Форма обратной связи | imagoz.ru';//Данные тега <title>
-		$headMain = 'Форма обратной связи';
-		$robots = 'noindex, follow';
-		$descr = '';
-		$commentError = '<a href="//'.MAIN_URL.'/admin/registration/?log">Авторизируйтесь</a> в системе или <a href="//'.MAIN_URL.'/admin/registration/?reg">зарегестрируйтесь</a> для добавления сообщения!';//Вывод сообщения в случае невхода в систему
-		
-		include 'messagefail.html.php';
-		exit();
+		$error = '<a href="//'.MAIN_URL.'/admin/registration/?log">Авторизируйтесь</a> в системе или <a href="//'.MAIN_URL.'/admin/registration/?reg">зарегестрируйтесь</a> для добавления сообщения!';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}	
 }
 
