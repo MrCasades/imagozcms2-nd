@@ -71,6 +71,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					</div>
 					<div class="fav-and-recomm">
 						<div><?php echo $addFavourites;?></div>
+						<div><?php echo $recommendation;?></div>
 					</div>
 					<!-- <div class = "zen-ch">
 						<a href="https://zen.yandex.ru/imagoz" rel = "nofollow">

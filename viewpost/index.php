@@ -351,8 +351,10 @@ if (isset ($_GET['id']))
 	
 	elseif (!isset($_SESSION['loggIn']))
 	{
-		$recommendation = '<span class="recomm-nolog-txt">Вы можете <a href="../admin/registration/?log">авторизироваться</a> в системе или 
-						 <a href="../admin/registration/?reg">зарегестрироваться</a> для того, чтобы рекомендовать статью на главной странице!</span>';
+		// $recommendation = '<span class="recomm-nolog-txt">Вы можете <a href="../admin/registration/?log">авторизироваться</a> в системе или 
+		// 				 <a href="../admin/registration/?reg">зарегестрироваться</a> для того, чтобы рекомендовать статью на главной странице!</span>'
+		
+		$recommendation = '';
 	}
 	
 	/*Вывод похожих материалов*/
