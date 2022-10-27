@@ -601,8 +601,8 @@ if (isset ($_GET['topremod']))
 
 	/*Отправка сообщений (тест)*/
 	
-	$titleMessage = 'Ваш материал "'. $_POST['articletitle'].'" находится в премодерации.';
-	$mailMessage = 'Вами был отправлен в премодерацию материал "'. $_POST['articletitle'].'". После успешной проверки Вам будет начислен '.$_POST['price'].' балл';
+	$titleMessage = 'Ваш материал "'. $_POST['posttitle'].'" находится в премодерации.';
+	$mailMessage = 'Вами был отправлен в премодерацию материал "'. $_POST['posttitle'].'". После успешной проверки Вам будет начислен '.$_POST['price'].' балл';
 
 	toEmail_1($titleMessage, $mailMessage);//отправка письма
 
