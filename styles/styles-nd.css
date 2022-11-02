@@ -1909,10 +1909,10 @@ main .acc-info-pl{
     color: #0F4780;
 }
 
-.acc-menu{
+.acc-menu a{
     text-decoration: none;
     color: #0F4780;
-    margin-left: 1.5%;
+    margin-left: 2%;
 }
 
 .counts{

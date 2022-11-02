@@ -41,6 +41,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<a href="#">Главная</a>
 				<a href="#">Блог</a>
 				<a href="#">Публикации</a>
+				<a href="#">Избранное</a>
+				<a href="#">Сообщения</a>
 			</nav>
                 <h3>Инфо</h3>
                 <div>
