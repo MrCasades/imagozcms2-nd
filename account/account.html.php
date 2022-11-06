@@ -37,27 +37,45 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				}?></p>
 		</div> 
 		<div class="acc-info-pl">
-			<nav class="acc-menu">
+			<!-- <nav class="acc-menu">
 				<a href="#">Главная</a>
 				<a href="#">Блог</a>
 				<a href="#">Публикации</a>
 				<a href="#">Избранное</a>
 				<a href="#">Сообщения</a>
-			</nav>
-                <h3>Инфо</h3>
-                <div>
-					<?php echomarkdown ($accountInfo);?>
-                </div>
-                <p>
-					Сайт: <?php if ($www !== '')//если автор приложил ссылку
-							{
-								echo '<a href="//';
-								htmlecho ($www);
-								echo '" rel = "nofollow">';
-								htmlecho ($www);
-								echo '</a>';
-							}?> 
-				</p>     
+			</nav> -->
+
+				<?php if ($accountInfo != ''): ?>
+					<h3>Инфо</h3>
+					<div>
+						<?php echomarkdown ($accountInfo);?>
+					</div>
+				<?php else:?>
+					<div>
+						<p>
+							Информация аккаунта не заполнена
+							<?php if ($selectedAuthor == $idAuthor): ?>
+								<form action = "../account/setaccountinfo/" method = "post">
+									<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
+									<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить информацию профиля">
+								</form>
+							<?php endif;?>
+						</p>
+					</div>
+				<?php endif;?>
+				 
+				<?php if ($www !== ''): ?>
+					<p>
+						Сайт: <a href="//<?php htmlecho ($www); ?>" rel = "nofollow" target="blank_"><?php htmlecho ($www); ?></a> 
+					</p> 
+				<?php elseif ($www == '' && $accountInfo !== ''):?>
+					<?php if ($selectedAuthor == $idAuthor): ?>
+						<form action = "../account/setaccountinfo/" method = "post">
+							<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
+							<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить информацию о сайте">
+						</form> 
+					<?php endif;?>  
+				<?php endif;?>
         </div>   
 	</div> 
 
