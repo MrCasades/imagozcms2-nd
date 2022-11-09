@@ -37,16 +37,16 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				}?></p>
 		</div> 
 		<div class="acc-info-pl">
-			<!-- <nav class="acc-menu">
+			<nav class="acc-menu">
 				<a href="#">Главная</a>
-				<a href="#">Блог</a>
+				<a href="#">Блоги</a>
 				<a href="#">Публикации</a>
 				<a href="#">Избранное</a>
 				<a href="#">Сообщения</a>
-			</nav> -->
-
+			</nav>
+			<div id="acc_mp">
+				<h3 class="acc-header">Инфо</h3>
 				<?php if ($accountInfo != ''): ?>
-					<h3>Инфо</h3>
 					<div>
 						<?php echomarkdown ($accountInfo);?>
 					</div>
@@ -76,48 +76,48 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						</form> 
 					<?php endif;?>  
 				<?php endif;?>
+			</div>
+			
+			<div id="acc_fav">
+				<?php if (!empty ($favourites)): ?>
+
+					<h3 class="acc-header"><a href = "./viewallfavourites/?id=<?php echo $idAuthor;?>">Избранное</a></h3>
+		
+				<?php endif; ?>
+
+				<div class = "main-post">
+					<?php
+						if (empty ($favourites)) 
+								{
+									echo '<div class = "m-content">Здесь отображаются материалы добавленные пользователем в избранное</div>';
+									$favourites = '';
+								}
+							
+							else
+						
+						foreach ($favourites as $favourite): ?>
+
+
+							<a href = "//<?php echo $favourite['url']; ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($favourite['imghead']);?>)">
+								<div class = "post-top-1"><?php htmlecho ($favourite['date']);?></div>
+								<div class = "post-bottom-1"> <?php htmlecho ($favourite['title']); ?></div>
+							</a>
+
+					<?php endforeach; ?>
+				</div>
+			</div>
+
+			<div id="acc_pub">
+				<?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор'))//если пользователю присвоен определённый статус, то выводятся написанные им материалы
+				{
+					include MAIN_FILE . '/account/postandnews.inc.html.php';
+				}?>
+			</div>
         </div>   
 	</div> 
 
-	<?php if (!empty ($favourites)): ?>
-
-	<div class = "main-headers">
-		<div class = "main-headers-circle"></div>
-		<div class = "main-headers-content">
-			<a class = "main-headers-place" href = "./viewallfavourites/?id=<?php echo $idAuthor;?>"><h2>Избранное</h2></a>
-			<div class = "main-headers-line"></div>
-		</div>
-	</div>
-
-	<?php endif; ?>
 	
-	<div class = "newsblock m-content">
-	<?php
-		if (empty ($favourites)) 
-				{
-					echo '<div class = "m-content">Здесь отображаются материалы добавленные пользователем в избранное</div>';
-					$favourites = '';
-				}
-		 	
-			else
-		 
-		 foreach ($favourites as $favourite): ?>
-
 	
-            <a href = "//<?php echo $favourite['url']; ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($favourite['imghead']);?>)">
-                <div class = "post-top-1"><?php htmlecho ($favourite['date']);?></div>
-                <div class = "post-bottom-1"> <?php htmlecho ($favourite['title']); ?></div>
-            </a>
-	
-	<?php endforeach; ?>
-
-	</div>
-
-	
-	<?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор'))//если пользователю присвоен определённый статус, то выводятся написанные им материалы
-		{
-			include MAIN_FILE . '/account/postandnews.inc.html.php';
-		}?>
 
 	<div class = "main-headers">
 		<div class = "main-headers-content">

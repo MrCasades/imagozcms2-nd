@@ -10,7 +10,7 @@
 
 <?php endif; ?>
 
-<div class = "newsblock m-content">
+<div class = "main-post">
 	<?php  if (empty ($newsIn))
 		 {
 			 echo '<p>Автор не написал ни одной новости</p>';
@@ -20,7 +20,7 @@
 
 		 foreach ($newsIn as $news): ?>
 
-		<a href = "../viewnews/?id=<?php htmlecho ($news['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($news['imghead']); ?>)">
+		<a href = "../viewnews/?id=<?php htmlecho ($news['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php htmlecho ($news['imghead']); ?>)">
 			<div class = "post-top-1"><?php htmlecho ($news['newsdate']); ?></div>
 				<div class = "post-bottom-1"><?php htmlecho ($news['newstitle']); ?></div>
 		</a>
@@ -40,7 +40,7 @@
 
 <?php endif; ?>
 
-<div class = "newsblock m-content">
+<div class = "main-post">
 	<?php  if (empty ($posts))
 		 {
 			 echo '<p>Автор не написал ни одной статьи</p>';
@@ -50,7 +50,7 @@
 
 		 foreach ($posts as $post): ?>
 
-		<a href = "../viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($post['imghead']); ?>)">
+		<a href = "../viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php htmlecho ($post['imghead']); ?>)">
 			<div class = "post-top-1"><?php htmlecho ($post['postdate']); ?></div>
 				<div class = "post-bottom-1"><?php htmlecho ($post['posttitle']); ?></div>
 		</a>

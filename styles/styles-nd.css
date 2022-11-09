@@ -1855,6 +1855,15 @@ article .zen-ch .zen-ch-title{
 }
 
 /*Аккаунт*/
+.acc-header{
+    color: #0F4780;
+}
+
+.acc-header a{
+    color: #0F4780;
+    text-decoration: none;
+}
+
 main .acc-m{
     display: flex;
     margin-top: 1rem;
