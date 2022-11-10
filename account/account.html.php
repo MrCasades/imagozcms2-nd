@@ -81,8 +81,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div id="acc_fav">
 				<?php if (!empty ($favourites)): ?>
 
-					<h3 class="acc-header"><a href = "./viewallfavourites/?id=<?php echo $idAuthor;?>">Избранное</a></h3>
-		
+					<div class = "main-headers">
+						<div class = "main-headers-circle"></div>
+						<div class = "main-headers-content">
+						<a class = "main-headers-place" href = "./viewallfavourites/?id=<?php echo $idAuthor;?>"><h2>Избранное</h2></a>
+							<div class = "main-headers-line"></div>
+						</div>
+					</div>		
 				<?php endif; ?>
 
 				<div class = "main-post">
