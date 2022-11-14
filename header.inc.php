@@ -32,6 +32,10 @@
     <link href="<?php echo '//'.MAIN_URL.'/styles/menu-nd2.css';?>" rel= "stylesheet" type="text/css">
     <link href="<?php echo '//'.MAIN_URL.'/styles/styles-nd.css';?>" rel= "stylesheet" type="text/css">
     <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles-nd.css';?>" rel= "stylesheet" type="text/css">
+
+	<?php 
+		//Дополнительный код
+		echo $customStyle = $customStyle ?? ''; ?>
     
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.carousel.min.css';?>">
     <link rel="stylesheet" href="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/assets/owl.theme.default.min.css';?>">

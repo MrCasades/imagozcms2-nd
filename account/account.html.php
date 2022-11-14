@@ -36,87 +36,99 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					echo $ewallet;
 				}?></p>
 		</div> 
-		<div class="acc-info-pl">
-			<nav class="acc-menu">
-				<a href="#">Главная</a>
-				<a href="#">Блоги</a>
-				<a href="#">Публикации</a>
-				<a href="#">Избранное</a>
-				<a href="#">Сообщения</a>
+		<div id = "tabs" class="acc-info-pl">
+			<nav class="tabs-nav acc-menu">
+				<a href="#acc_mp">Главная</a>
+				<!-- <a href="#">Блоги</a> -->
+				<?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор')): ?>
+				<a href="#acc_pub">Публикации</a>
+				<?php endif;?>
+				<a href="#acc_fav">Избранное</a>
+				<!-- <a href="#">Сообщения</a> -->
 			</nav>
-			<div id="acc_mp">
-				<h3 class="acc-header">Инфо</h3>
-				<?php if ($accountInfo != ''): ?>
-					<div>
-						<?php echomarkdown ($accountInfo);?>
-					</div>
-				<?php else:?>
-					<div>
-						<p>
-							Информация аккаунта не заполнена
-							<?php if ($selectedAuthor == $idAuthor): ?>
-								<form action = "../account/setaccountinfo/" method = "post">
-									<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
-									<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить информацию профиля">
-								</form>
-							<?php endif;?>
-						</p>
-					</div>
-				<?php endif;?>
-				 
-				<?php if ($www !== ''): ?>
-					<p>
-						Сайт: <a href="//<?php htmlecho ($www); ?>" rel = "nofollow" target="blank_"><?php htmlecho ($www); ?></a> 
-					</p> 
-				<?php elseif ($www == '' && $accountInfo !== ''):?>
-					<?php if ($selectedAuthor == $idAuthor): ?>
-						<form action = "../account/setaccountinfo/" method = "post">
-							<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
-							<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить информацию о сайте">
-						</form> 
-					<?php endif;?>  
-				<?php endif;?>
+			<!-- Прелоадер -->
+			<div class="preloader">
+				<span class="preloader__row"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> ЗАГРУЗКА...</span>
 			</div>
-			
-			<div id="acc_fav">
-				<?php if (!empty ($favourites)): ?>
-
-					<div class = "main-headers">
-						<div class = "main-headers-circle"></div>
-						<div class = "main-headers-content">
-						<a class = "main-headers-place" href = "./viewallfavourites/?id=<?php echo $idAuthor;?>"><h2>Избранное</h2></a>
-							<div class = "main-headers-line"></div>
+			<div class="tabs-items">
+				<div id="acc_mp" class="tabs-item">					
+					<h3 class="acc-header">Инфо</h3>
+					<?php if ($accountInfo != ''): ?>
+						<div>
+							<?php echomarkdown ($accountInfo);?>
 						</div>
-					</div>		
-				<?php endif; ?>
-
-				<div class = "main-post">
-					<?php
-						if (empty ($favourites)) 
-								{
-									echo '<div class = "m-content">Здесь отображаются материалы добавленные пользователем в избранное</div>';
-									$favourites = '';
-								}
-							
-							else
-						
-						foreach ($favourites as $favourite): ?>
-
-
-							<a href = "//<?php echo $favourite['url']; ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($favourite['imghead']);?>)">
-								<div class = "post-top-1"><?php htmlecho ($favourite['date']);?></div>
-								<div class = "post-bottom-1"> <?php htmlecho ($favourite['title']); ?></div>
-							</a>
-
-					<?php endforeach; ?>
+					<?php else:?>
+						<div>
+							<p>
+								Информация аккаунта не заполнена
+								<?php if ($selectedAuthor == $idAuthor): ?>
+									<form action = "../account/setaccountinfo/" method = "post">
+										<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
+										<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить информацию профиля">
+									</form>
+								<?php endif;?>
+							</p>
+						</div>
+					<?php endif;?>
+					
+					<?php if ($www !== ''): ?>
+						<p>
+							Сайт: <a href="//<?php htmlecho ($www); ?>" rel = "nofollow" target="blank_"><?php htmlecho ($www); ?></a> 
+						</p> 
+					<?php elseif ($www == '' && $accountInfo !== ''):?>
+						<?php if ($selectedAuthor == $idAuthor): ?>
+							<form action = "../account/setaccountinfo/" method = "post">
+								<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
+								<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Обновить информацию о сайте">
+							</form> 
+						<?php endif;?>  
+					<?php endif;?>
 				</div>
-			</div>
+				
+				<div id="acc_fav" class="tabs-item">
+					<?php if (!empty ($favourites)): ?>
 
-			<div id="acc_pub">
-				<?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор'))//если пользователю присвоен определённый статус, то выводятся написанные им материалы
-				{
-					include MAIN_FILE . '/account/postandnews.inc.html.php';
-				}?>
+						<div class = "main-headers">
+							<div class = "main-headers-circle"></div>
+							<div class = "main-headers-content">
+							<a class = "main-headers-place" href = "./viewallfavourites/?id=<?php echo $idAuthor;?>"><h2>Избранное</h2></a>
+								<div class = "main-headers-line"></div>
+							</div>
+						</div>		
+					<?php endif; ?>
+
+					<div class = "main-post">
+						<?php
+							if (empty ($favourites)) 
+									{
+										echo '<p>Здесь отображаются материалы добавленные пользователем в избранное</p>';
+										$favourites = '';
+									}
+								
+								else
+							
+							foreach ($favourites as $favourite): ?>
+
+								<a href = "//<?php echo $favourite['url']; ?>" class = "post-place-1" style="background-image: url(../images/<?php htmlecho ($favourite['imghead']);?>)">
+									<div class = "post-top-1">
+										<span class="post-rubrics"><?php htmlecho ($favourite['categoryname']);?></span>
+									</div>
+									<div class = "post-bottom-1"> 
+										<span class="post-header-1"><?php htmlecho ($favourite['title']); ?></span>
+										<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($favourite['date'])); ?></span>
+									</div>
+								</a>
+
+						<?php endforeach; ?>
+					</div>
+				</div>
+
+				<div id="acc_pub" class="tabs-item">
+					<?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор'))//если пользователю присвоен определённый статус, то выводятся написанные им материалы
+					{
+						include MAIN_FILE . '/account/postandnews.inc.html.php';
+					}?>
+				</div>
 			</div>
         </div>   
 	</div> 

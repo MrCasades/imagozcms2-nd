@@ -65,6 +65,38 @@ if (removeContest)
 }
 
 $(document).ready(function() {
+
+	//Вкладки профиля
+	const tab = $('#tabs .tabs-items > div'); 
+	tab.hide().filter(':first').show(); 
+	console.log('OK!!')
+	
+	// Клики по вкладкам.
+	$('#tabs .tabs-nav a').click(function(){
+		tab.hide(); 
+		tab.filter(this.hash).show(); 
+		$('#tabs .tabs-nav a').removeClass('active');
+		$(this).addClass('active');
+		console.log('OK!')
+		return false;
+	}).filter(':first').click();
+ 
+	// Клики по якорным ссылкам.
+	// $('.tabs-target').click(function(){
+	// 	$('#tabs .tabs-nav a[href=' + $(this).attr('href')+ ']').click();
+	// });
+	
+	// Отрытие вкладки из хеша URL
+	if(window.location.hash){
+		$('#tabs-nav a[href=' + window.location.hash + ']').click();
+		window.scrollTo(0, $("#" . window.location.hash).offset().top);
+	}
+
+	//Прелоадер
+	$(window).on('load', function () {
+		$('.preloader').delay(100).fadeOut('fast');
+	  });
+
 	//Добавление записи на стену
 	$("#push_comment").on('click',
 			function(e){

@@ -59,12 +59,13 @@ if (isset ($_GET['id']))
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	$breadPart2 = '<a href="//'.MAIN_URL.'/account/?id='.$idAuthor.'">Профиль пользователя</a> ';//Для хлебных крошек
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$customStyle = '<link rel="stylesheet"  href="style.css" type="text/css">';//добавить код стиля
 	
 	/*Вывод избранного*/
 	
 	$selectFavourites = 'SELECT post, title, date, imghead, imgalt, idauthorpost, idcategory, url, authorname, categoryname FROM favourites 
 						 INNER JOIN author ON idauthorpost = author.id 
-			   			 INNER JOIN category ON idcategory = category.id WHERE idauthor = '.$idAuthor.' ORDER BY adddate DESC LIMIT 3';
+			   			 INNER JOIN category ON idcategory = category.id WHERE idauthor = '.$idAuthor.' ORDER BY adddate DESC LIMIT 9';
 		
 	try
 	{
@@ -212,9 +213,10 @@ if (isset ($_GET['id']))
 		/*Выбор новостей автора*/
 		try
 		{
-			$sql = 'SELECT newsblock.id AS newsid, newstitle, newsdate, imghead FROM author
+			$sql = 'SELECT newsblock.id AS newsid, newstitle, newsdate, imghead, categoryname FROM author
 					INNER JOIN newsblock ON author.id = idauthor 
-					WHERE premoderation = "YES" AND author.id = '.$idAuthor.' ORDER BY newsblock.id DESC LIMIT 3';
+					INNER JOIN category ON idcategory = category.id
+					WHERE premoderation = "YES" AND author.id = '.$idAuthor.' ORDER BY newsblock.id DESC LIMIT 6';
 			$result = $pdo->query($sql);
 		}
 	
@@ -227,7 +229,7 @@ if (isset ($_GET['id']))
 		/*Вывод результата в шаблон*/
 		foreach ($result as $row)
 		{
-			$newsIn[] =  array ('id' => $row['newsid'], 'newstitle' => $row['newstitle'], 'newsdate' => $row['newsdate'],
+			$newsIn[] =  array ('id' => $row['newsid'], 'newstitle' => $row['newstitle'], 'newsdate' => $row['newsdate'], 'categoryname' => $row['categoryname'],
 								'imghead' => $row['imghead']);
 		}	
 		
@@ -240,9 +242,10 @@ if (isset ($_GET['id']))
 		/*Выбор статей автора*/
 		try
 		{
-			$sql = 'SELECT posts.id AS postid, posttitle, postdate, imghead FROM author
+			$sql = 'SELECT posts.id AS postid, posttitle, postdate, imghead, categoryname FROM author
 					INNER JOIN posts ON author.id = idauthor 
-					WHERE premoderation = "YES" AND author.id = '.$idAuthor.' ORDER BY posts.id DESC LIMIT 3';
+					INNER JOIN category ON idcategory = category.id
+					WHERE premoderation = "YES" AND author.id = '.$idAuthor.' ORDER BY posts.id DESC LIMIT 6';
 			$result = $pdo->query($sql);
 		}
 	
@@ -255,7 +258,7 @@ if (isset ($_GET['id']))
 		/*Вывод результата в шаблон*/
 		foreach ($result as $row)
 		{
-			$posts[] =  array ('id' => $row['postid'], 'posttitle' => $row['posttitle'], 'postdate' => $row['postdate'],
+			$posts[] =  array ('id' => $row['postid'], 'posttitle' => $row['posttitle'], 'postdate' => $row['postdate'], 'categoryname' => $row['categoryname'],
 			'imghead' => $row['imghead']);
 		}	
 		

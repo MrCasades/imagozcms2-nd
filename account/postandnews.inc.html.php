@@ -19,10 +19,15 @@
 		 else
 
 		 foreach ($newsIn as $news): ?>
-
-		<a href = "../viewnews/?id=<?php htmlecho ($news['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php htmlecho ($news['imghead']); ?>)">
-			<div class = "post-top-1"><?php htmlecho ($news['newsdate']); ?></div>
-				<div class = "post-bottom-1"><?php htmlecho ($news['newstitle']); ?></div>
+		
+		<a href="../viewnews/?id=<?php htmlecho ($news['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $news['imghead']; ?>)">
+			<div class = "post-top-1">
+				<span class="post-rubrics"><?php htmlecho ($news['categoryname']); ?></span>
+			</div>
+			<div class = "post-bottom-1">
+				<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news['newstitle'])), 0, 7)))); ?>...</span>
+				<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($news['newsdate'])); ?></span>
+			</div>
 		</a>
 
 	<?php endforeach; ?>
@@ -50,10 +55,15 @@
 
 		 foreach ($posts as $post): ?>
 
-		<a href = "../viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php htmlecho ($post['imghead']); ?>)">
-			<div class = "post-top-1"><?php htmlecho ($post['postdate']); ?></div>
-				<div class = "post-bottom-1"><?php htmlecho ($post['posttitle']); ?></div>
-		</a>
+			<a href="../viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $post['imghead']; ?>)">
+				<div class = "post-top-1">
+					<span class="post-rubrics"><?php htmlecho ($post['categoryname']); ?></span>
+				</div>
+				<div class = "post-bottom-1">
+					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post['posttitle'])), 0, 7)))); ?>...</span>
+					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($post['postdate'])); ?></span>
+				</div>
+			</a>
 
 	<?php endforeach; ?>
 </div>
