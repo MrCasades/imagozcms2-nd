@@ -44,7 +44,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<a href="#acc_pub">Публикации</a>
 				<?php endif;?>
 				<a href="#acc_fav">Избранное</a>
-				<!-- <a href="#">Сообщения</a> -->
+				<?php if ($selectedAuthor == $idAuthor): ?>
+				<a href="#acc_mess">Сообщения</a>
+				<?php endif;?>
 			</nav>
 			<!-- Прелоадер -->
 			<div class="preloader">
@@ -128,6 +130,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					{
 						include MAIN_FILE . '/account/postandnews.inc.html.php';
 					}?>
+				</div>
+
+				<div id="acc_mess" class="tabs-item">
+					<?php 
+						include MAIN_FILE . '/mainmessages/dialogsforacc.inc.php';
+					?>
 				</div>
 			</div>
         </div>   
