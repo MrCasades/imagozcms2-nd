@@ -19,16 +19,37 @@ if (loggedIn())
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
-	$idPost = $_GET['id'];
+	$idPub = $_GET['id'];
 	
-	$select = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, videoyoutube, viewcount, votecount, averagenumber, favouritescount, description, imgalt, postdate, authorname, category.id AS categoryid, categoryname FROM posts 
-			   INNER JOIN author ON idauthor = author.id 
-			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "YES" AND zenpost = "NO" AND posts.id = ';
+	$select = 'SELECT 
+					p.id AS pubid, 
+					a.id AS idauthor, 
+					p.text, 
+					p.title, 
+					p.imghead, 
+					p.videoyoutube, 
+					p.viewcount, 
+					p.votecount, 
+					p.averagenumber, 
+					p.favouritescount, 
+					p.description, 
+					p.imgalt, 
+					p.date, 
+					a.authorname, 
+					c.id AS categoryid, 
+					c.categoryname,
+					b.title AS blogtitle,
+					b.id AS blogid
+				FROM publication p
+				INNER JOIN author a ON p.idauthor = a.id 
+				INNER JOIN blogs b ON b.idauthor = p.idauthor 
+				LEFT JOIN category c ON p.idcategory = c.id 
+				WHERE p.premoderation = "YES" AND p.id = ';
 	
 	/*Канонический адрес*/
 	if(!empty($_GET['utm_referrer']) || !empty($_GET['page']))
 	{
-		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewpost/?id='.$idPost.'"/>';
+		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/blog/publication?id='.$idPub.'"/>';
 	}
 
 	/*Подключение к базе данных*/
@@ -36,36 +57,34 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = $select.$idPost;
+		$sql = $select.$idPub;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода содержимого статьи ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода содержимого публикации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
 		
-	$articleId = $row['postid'];
+	$articleId = $row['pubid'];
 	$authorId = $row['idauthor'];
-	$articleText = $row['post'];
+	$articleText = $row['text'];
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
-	$date = $row['postdate'];
+	$date = $row['date'];
 	$viewCount = $row['viewcount'];
 	$averageNumber = $row['averagenumber'];
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
 	$favouritesCount = $row['favouritescount'];
+
+	$blogTitle = $row['blogtitle'];
+	$blogId = $row['blogid'];
 	
 	/*Если страница отсутствует. Ошибка 404*/
 	if (!$row)
@@ -76,21 +95,21 @@ if (isset ($_GET['id']))
 	
 	$categoryID = $row['categoryid'];//Сохранение id сатегории
 	
-	$title = $row['posttitle'].' | imagoz.ru';//Данные тега <title>
-	$headMain = $row['posttitle'];
+	$title = $row['title'].' | imagoz.ru';//Данные тега <title>
+	$headMain = $row['title'];
 	$robots = 'all';
 	$descr = $row['description'];
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallposts/">Все статьи</a> >> ';//Для хлебных крошек
-	$breadPart3 = '<a href="//'.MAIN_URL.'/viewpost/?id='.$idPost.'">'.$row['posttitle'].'</a> ';//Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/blog?id="'.$blogId.'>Блог "'.$blogTitle.'"</a> >> ';//Для хлебных крошек
+	$breadPart3 = '<a href="//'.MAIN_URL.'/blog/publication?id='.$idPub.'">'.$row['title'].'</a> ';//Для хлебных крошек
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	/*Микроразметка*/
 	
-	$dataMarkup = dataMarkup($row['posttitle'], $row['description'], $row['imghead'], $row['imgalt'], $row['postid'],
-							$row['postdate'], $row['authorname'], $row['averagenumber'], $row['votecount'], 'viewpost');
+	$dataMarkup = dataMarkup($row['title'], $row['description'], $row['imghead'], $row['imgalt'], $row['pubid'],
+							$row['date'], $row['authorname'], $row['averagenumber'], $row['votecount'], 'blog/publication');
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
@@ -115,13 +134,8 @@ if (isset ($_GET['id']))
 		
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора избранного ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора избранного';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -156,24 +170,19 @@ if (isset ($_GET['id']))
 	
 	/*Обновление значения счётчика*/
 	
-	$updateCount = 'UPDATE posts SET viewcount = viewcount + 1 WHERE id = ';
+	$updateCount = 'UPDATE publication SET viewcount = viewcount + 1 WHERE id = ';
 	
 	try
 	{
-		$sql = $updateCount.$idPost;
+		$sql = $updateCount.$idPub;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка счётчика ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка счётчика';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Вывод тематик(тегов)*/
