@@ -64,5 +64,39 @@ foreach ($result as $row)
 	}
 }
 
+/*Вывод даджеста*/
+/*Команда SELECT*/
+try
+{
+	$sql = 'SELECT id, 
+				text, 
+				title, 
+				imghead, 
+				description, 
+				imgalt, 
+				date, 
+				authorname, 
+				categoryname 
+			FROM newsset 
+			ORDER BY date DESC LIMIT 1000';//Вверху самое последнее значение
+	$result = $pdo->query($sql);
+}
+
+catch (PDOException $e)
+{
+	$error = 'Ошибка вывода даджеста rsspulse';
+	include MAIN_FILE . '/includes/error.inc.php';
+}
+
+/*Вывод результата в шаблон*/
+foreach ($result as $row)
+{
+
+	$newssets[] =  array ('id' => $row['id'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'],
+							'categoryname' =>  $row['categoryname'], 'description' => $row['description']);
+
+}
+
 include 'rsspulse.html.php';
 exit();

@@ -15,10 +15,11 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 include_once MAIN_FILE . '/header.inc.php';?>
 
 <div class = "main-headers">
-    <div class = "headers-places"> 
-        <div class = "main-headers-txtplace"><h1><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h1></div>
-    </div>
-    <div class = "main-headers-line"></div>
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+		<h2><?php htmlecho ($headMain); ?> | <a href="#" onclick="history.back();">Назад</a></h2>
+		<div class = "main-headers-line"></div>
+	</div>
 </div>
 
 <div class="m-content addupd-post">
@@ -35,6 +36,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<a href='../admin/contest/'><button class="btn_2">Управление конкурсом</button></a>
 	<a href='../admin/commentnewslist/'><button class="btn_2">Просмотр комментариев</button></a>
 	<a href='../sitemap.php' target="_blank"><button class="btn_2">Обновить карту сайта</button></a>	
+
+	<a href='../admin/newssetgenerator/' target="_blank"><button class="btn_2">Генератор новостного дайджеста</button></a>
 </div>
 	
 <?php 

@@ -22,6 +22,52 @@ $content = '<?xml version="1.0" encoding="UTF-8"?>
 </image>
 
 <language>ru</language>'?>
+
+<?php foreach ($newssets as $newsset): ?>
+
+<?php 
+      $articleNews = markdown2html_pub($newsset['text']);
+?>        
+	
+<?php $content .= '<item>
+
+<title>'. $newsset['title'].'</title>
+
+<guid isPermaLink="false">newssetid='.$newsset['id'].'</guid>
+
+<link>https://imagoz.ru/viewnewsset/?id='.$newsset['id'].'</link>
+
+<pubDate>'.date("D, j M Y G:i:s", strtotime($newsset['date'])).' +0300</pubDate>
+
+<author>'.$newsset['authorname'].'</author>
+
+<category>'.$newsset['categoryname'].'</category>
+
+<enclosure url="https://imagoz.ru/images/'.$newsset['imghead'].'" type= "image/jpeg"/>
+
+<description>
+
+<![CDATA['.
+
+markdown2html_pub($newsset['description']).'
+
+]]>
+
+</description>
+
+<content:encoded>
+
+        <![CDATA[
+
+        '.$articleNews.'
+
+        ]]>
+
+</content:encoded>
+
+</item>';?>
+
+<?php endforeach; ?>
 	
 	
 <?php foreach ($newsMain as $newsMain_3): ?>
