@@ -16,6 +16,16 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class = "m-content">
     <form id="generate_form">
         Дата от: <input type="date" id="dt1" name="dt1"> до <input type="date" id="dt2" name="dt2">
+        <hr/>
+        <select name = "category" id = "category" class="search-select">
+			<option value = "">Любая рубрика</option>
+				<?php foreach ($categorys as $category): ?>
+				    <option value = "<?php htmlecho($category['id']); ?>"><?php htmlecho($category['categoryname']); ?></option>
+				<?php endforeach; ?> 
+		</select>
+        <hr/>
+        <input name="ispulse" type="checkbox" value="1"> Публикация Пульс
+        <hr/>
         <input type = "hidden" value = "<?php htmlecho ($authorInSystem); ?>" name="authorname">
         <button id="generate" class="btn_2" type="button">Сгенерировать</button>
     </form>

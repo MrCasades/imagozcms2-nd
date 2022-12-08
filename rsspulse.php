@@ -14,7 +14,7 @@ try
 	$sql = 'SELECT newsblock.id AS newsid, author.id AS idauthor, news, newstitle, imghead, description, imgalt, newsdate, authorname, category.id AS categoryid, categoryname, videoyoutube FROM newsblock 
 			INNER JOIN author ON idauthor = author.id 
 			INNER JOIN category ON idcategory = category.id 
-			WHERE premoderation = "YES" ORDER BY newsdate DESC LIMIT 20';//Вверху самое последнее значение
+			WHERE premoderation = "YES" ORDER BY newsdate DESC LIMIT 5';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -43,7 +43,7 @@ try
 	$sql = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, description, imgalt, postdate, authorname, category.id AS categoryid, categoryname, videoyoutube FROM posts 
 			INNER JOIN author ON idauthor = author.id 
 			INNER JOIN category ON idcategory = category.id 
-			WHERE premoderation = "YES" ORDER BY postdate DESC LIMIT 1000';//Вверху самое последнее значение
+			WHERE premoderation = "YES" ORDER BY postdate DESC LIMIT 5';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -77,8 +77,9 @@ try
 				date, 
 				authorname, 
 				categoryname 
-			FROM newsset 
-			ORDER BY date DESC LIMIT 1000';//Вверху самое последнее значение
+			FROM newsset
+			WHERE ispulse = 1
+			ORDER BY date DESC LIMIT 5';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 

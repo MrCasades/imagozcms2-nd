@@ -12,6 +12,15 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Команда SELECT*/
 
 $content = '';
+$where = '';
+$forSearch = array();//массив заполнения запроса
+
+/*Выбор рубрики*/
+if ($_POST['category'] != '')//Если выбрана рубрика
+{
+	$where = " AND idcategory = :idcategory ";
+	$forSearch[':idcategory'] = $_POST['category'];
+}
 
 try
 {
@@ -20,10 +29,12 @@ try
                 newstitle,   
                 videoyoutube 
             FROM newsblock
-            WHERE premoderation = "YES" and newsdate >= "'.$_POST['dt1'].'" and newsdate <= "'.$_POST['dt2'].'"
+            WHERE premoderation = "YES" and newsdate >= "'.$_POST['dt1'].'" and newsdate <= "'.$_POST['dt2'].'"'.$where.'
             
             ORDER BY newsdate DESC';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
+    $s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+    $s -> execute($forSearch);// метод дает инструкцию PDO отправить запрос MySQL. Т. к. массив $forSearch хранит значение всех псевдопеременных 
+                                          // не нужно указывать их по отдельности с помощью bindValue	
 }
 
 catch (PDOException $e)
@@ -33,7 +44,7 @@ catch (PDOException $e)
 }
 
 /*Вывод результата в шаблон*/
-foreach ($result as $row)
+foreach ($s as $row)
 {
 	$newsMain[] =  array ('textnews' => $row['news'], 'newstitle' =>  $row['newstitle'],'videoyoutube' =>  $row['videoyoutube']);
 }
@@ -43,28 +54,38 @@ if (!empty($newsMain))
     /*Сборка статьи*/
     foreach ($newsMain as $news)
     {
-        $video = $news['videoyoutube'] != '' ? '<br><br><figure><iframe width="560" height="315" src="'.$news['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : '';
+        $video = $news['videoyoutube'] != '' ? '<br><figure><iframe width="560" height="315" src="'.$news['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : '';
         $textSet = markdown2html_pub($news['textnews']);
 
         $content .= '<h3>'.$news['newstitle'].'</h3>'.delDetails(isertTagFigure($textSet)).$video;
 
     }
 
-    $titleSet = 'Новостной дайджест '.$_POST['dt1'].' - '.$_POST['dt2'];
+    $isPulse = !empty($_POST['ispulse']) ? 1 : 0;
+
+    $blogType = $isPulse == 1 ? 'Пульс. ' : 'Дзен. ';
+
+    $interval = $_POST['dt1'].' - '.$_POST['dt2'];
+
+    $titleSet = $blogType.'Новостной дайджест '.$interval;
 
     try
     {
         $sql = 'INSERT INTO newsset SET 
                 date = SYSDATE(),
+                intervalofset = :intervalofset,
 				authorname = :authorname,
                 categoryname = :categoryname,	
                 title = :title,
-                text = :text';
+                text = :text,
+                ispulse = :ispulse';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':authorname', $_POST['authorname']);//отправка значения
+		$s -> bindValue(':intervalofset', $interval);//отправка значения
+        $s -> bindValue(':authorname', $_POST['authorname']);//отправка значения
         $s -> bindValue(':categoryname', 'Подборка новостей');//отправка значения
         $s -> bindValue(':title', $titleSet);//отправка значения
         $s -> bindValue(':text', $content);//отправка значения
+        $s -> bindValue(':ispulse', $isPulse);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)

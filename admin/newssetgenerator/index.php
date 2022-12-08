@@ -32,6 +32,25 @@ if (!userRole('Администратор'))
 	exit();
 }
 
+/*Подключение к базе данных*/
+include MAIN_FILE . '/includes/db.inc.php';
+
+try
+{
+	$result = $pdo -> query ('SELECT id, categoryname FROM category');
+}
+
+catch (PDOException $e)
+{
+	$error = 'Ошибка вывода category';
+	include MAIN_FILE . '/includes/error.inc.php';
+}
+	
+foreach ($result as $row)
+{
+	$categorys[] = array('id' => $row['id'], 'categoryname' => $row['categoryname']);
+}
+
 //$authorName = authorLogin($_SESSION['email'], $_SESSION['password']);//Имя автора
 
 $title = 'Генератор новостного дайджеста';//Данные тега <title>
@@ -40,5 +59,5 @@ $robots = 'noindex, nofollow';
 $descr = '';
 $scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
-include 'newssetgeneratog.html.php';
+include 'newssetgenerator.html.php';
 exit();

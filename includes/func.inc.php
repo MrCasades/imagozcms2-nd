@@ -119,7 +119,7 @@ function isertTagFigure($text)
 	return $text;
 }
 
-/*Добавление галереи для psspulse TEST*/
+/*Добавление галереи для psspulse и замена виджета Steam на ссылку TEST*/
 function delDetails($text)
 {
 	$element_1 = '|<details>(.+)</details>|isU';//искомый элемент
@@ -130,6 +130,11 @@ function delDetails($text)
 
 	$text = preg_replace($element_1, $replace_1, $text);
 	$text = preg_replace($element_2, $replace_2, $text);
+
+
+	//Замена виджета Steam на ссылку	                 
+    $text = str_replace('<iframe src="https://store.steampowered.com/widget', '<a href="https://store.steampowered.com/app', $text);
+	$text = str_replace('/" frameborder="0" width="85%" height="190"></iframe>', '"> Страница игры в Steam</a>', $text);
 			
 return $text;
 }
