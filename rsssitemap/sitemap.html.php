@@ -74,7 +74,7 @@ $content = '<?xml version="1.0" encoding="UTF-8"?>
 <?php $content .='</urlset>';
 
 /*Генерация rss-ленты*/
-$sitemap = 'sitemap.xml';
+$sitemap = MAIN_FILE.'/sitemap.xml';
 
 file_put_contents($sitemap, $content);
 

@@ -11,7 +11,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content addupd-post">
-	<button id="sitemap" class="btn_2 rss_btn">Обновить карту сайта</button>	
+	<button id="sitemap" class="btn_2 rss_btn" value = "sitemap">Обновить карту сайта</button>	
+	<button id="rsssmi" class="btn_2 rss_btn" value = "rsssmi">Обновить ленту СМИ</button>
+	<button id="rsspulse" class="btn_2 rss_btn">Обновить ленту Пульс</button>
+	<button id="rssvk" class="btn_2 rss_btn">Обновить ленту VK</button>
 </div>
 <div id="result"></div>
 	

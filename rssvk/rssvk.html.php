@@ -83,10 +83,10 @@ markdown2html_pub ($post['text']).'
 </rss>';
 
 /*Генерация rss-ленты*/
-$rssPulse = 'rssvk.xml';
+$rssPulse = MAIN_FILE.'/rssvk.xml';
 
 file_put_contents($rssPulse, $content);
 
-echo 'Файл создан!'
+echo 'rssvk Файл создан!'
 
 ?>

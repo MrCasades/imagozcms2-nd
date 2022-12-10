@@ -1,6 +1,6 @@
 <?php
 /*Загрузка главного пути*/
-include_once './includes/path.inc.php';
+include_once '../includes/path.inc.php';
 
 
 /*Подключение к базе данных*/

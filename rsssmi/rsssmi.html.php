@@ -63,6 +63,6 @@ $rssPulse = MAIN_FILE.'/rsssmi.xml';
 
 file_put_contents($rssPulse, $content);
 
-echo 'Файл создан!'
+echo 'rsssmi Файл создан!'
 
 ?>

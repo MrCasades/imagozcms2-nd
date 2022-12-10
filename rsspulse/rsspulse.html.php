@@ -167,10 +167,10 @@ markdown2html_pub ($post['description']).'
 </rss>';
 
 /*Генерация rss-ленты*/
-$rssPulse = 'rsspulse.xml';
+$rssPulse = MAIN_FILE.'/rsspulse.xml';
 
 file_put_contents($rssPulse, $content);
 
-echo 'Файл создан!'
+echo 'rsspulse Файл создан!'
 
 ?>

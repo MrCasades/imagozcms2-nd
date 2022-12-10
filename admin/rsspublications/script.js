@@ -2,56 +2,40 @@
 
 $( document ).ready(function() {
 
+   //Обновление карты сайта
    $('#sitemap').click(function(e) {
-      let url = '//'+document.location.host + '/imagozcms2-nd/sitemap.php';
+      let url = '//'+document.location.host + '/rsssitemap/';
       console.log (url)
       $('#result').load(url, function() {
-         alert('Load was performed.');
+         alert('sitemap');
       });
-         
    })
 
-   // $('#generate').click(function(e) {
+   //Обновление rsssmi.xml
+   $('#rsssmi').click(function(e) {
+      let url = '//'+document.location.host + '/rsssmi/';
+      console.log (url)
+      $('#result').load(url, function() {
+         alert('rsssmi');
+      }); 
+   })
 
-   //    if ($('#dt1').val() == '' || $('#dt2').val() == '') {
-   //       console.log('interval ' + $('#dt1').val() + '-' + $('#dt2').val());
-   //       alert('Интервал не может быть пустым');
-         
-   //    } else if ($('#dt1').val() > $('#dt2').val() ) {
-   //       console.log('interval ' + $('#dt1').val() + '-' + $('#dt2').val());
-   //       alert('Интервал некорректный');
-         
-   //    } else {
-   //       console.log('interval ' + $('#dt1').val() + '-' + $('#dt2').val());
-         
-   //       let timeOutVal = 3000;//Длина таймаута
+   //Обновление rsspulse.xml
+   $('#rsspulse').click(function(e) {
+      let url = '//'+document.location.host + '/rsspulse/';
+      console.log (url)
+      $('#result').load(url, function() {
+         alert('rsspulse');
+      });         
+   })
 
-   //       $('#generate').attr('disabled', true);
-   //       $('#generate').html('Заблокировано на '+timeOutVal/1000+' сек');
-
-   //       setTimeout(function(){
-   //          $('#generate').attr('disabled', false);
-   //          $('#generate').html('Сгенерировать');
-   //       }, timeOutVal);
-
-   //       $.ajax({
-   //                url: 'generation.inc.php',
-   //                type: 'POST',
-   //                data: $("#generate_form").serialize(),  // Сеарилизуем объект
-
-   //                success: function(response) { //Данные отправлены успешно
-   //                      result = $.parseJSON(response);  
-   //                      console.log(result);
-   //                      console.log('ОК');   
-                        
-   //                      if (result.res == 'generated'){
-   //                            $('#succ_form').html('<b>Дайджест сгенерирован!</b>');
-   //                      } else {
-   //                            $('#succ_form').html('<b>Неудача</b>');
-   //                      }
-   //                },
-   //          });        
-   //    }
-   // })
+   //Обновление rssvk.xml
+   $('#rssvk').click(function(e) {
+      let url = '//'+document.location.host + '/rssvk/';
+      console.log (url)
+      $('#result').load(url, function() {
+         alert('rssvk');
+      });  
+   })
 })
        
