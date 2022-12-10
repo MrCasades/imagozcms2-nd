@@ -57,7 +57,7 @@ if (!empty($newsMain))
         $video = $news['videoyoutube'] != '' ? '<br><figure><iframe width="560" height="315" src="'.$news['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : '';
         $textSet = markdown2html_pub($news['textnews']);
 
-        $content .= '<h3>'.$news['newstitle'].'</h3>'.delDetails(isertTagFigure($textSet)).$video;
+        $content .= '<h2>'.$news['newstitle'].'</h2>'.delDetails(isertTagFigure($textSet)).$video;
 
     }
 
