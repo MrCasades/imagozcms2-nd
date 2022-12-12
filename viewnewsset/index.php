@@ -26,7 +26,8 @@ if (isset ($_GET['id']))
 					title, 
 					imghead, 
 					imgalt,
-					date, 
+					date,
+					intervalofset, 
 					text,
 					categoryname, 
 					authorname,
@@ -69,6 +70,7 @@ if (isset ($_GET['id']))
 	$date = $row['date'];
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
+	$period = $row['intervalofset'];
 
 
 	/*Если страница отсутствует. Ошибка 404*/

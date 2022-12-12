@@ -12,6 +12,7 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Команда SELECT*/
 
 $content = '';
+$preview = '';
 $where = '';
 $forSearch = array();//массив заполнения запроса
 
@@ -26,7 +27,8 @@ try
 {
 	$sql = 'SELECT  
                 news, 
-                newstitle,   
+                newstitle, 
+                newsdate,  
                 videoyoutube 
             FROM newsblock
             WHERE premoderation = "YES" and newsdate >= "'.$_POST['dt1'].'" and newsdate <= "'.$_POST['dt2'].'"'.$where.'
@@ -46,7 +48,7 @@ catch (PDOException $e)
 /*Вывод результата в шаблон*/
 foreach ($s as $row)
 {
-	$newsMain[] =  array ('textnews' => $row['news'], 'newstitle' =>  $row['newstitle'],'videoyoutube' =>  $row['videoyoutube']);
+	$newsMain[] =  array ('textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'newsdate' =>  $row['newsdate'], 'videoyoutube' =>  $row['videoyoutube']);
 }
 
 if (!empty($newsMain))
@@ -54,6 +56,10 @@ if (!empty($newsMain))
     /*Сборка статьи*/
     foreach ($newsMain as $news)
     {
+        
+
+        $preview .= '<b>'.$news['newsdate'].' '.$news['newstitle'].'</b><br>';
+
         $video = $news['videoyoutube'] != '' ? '<br><figure><iframe width="560" height="315" src="'.$news['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : '';
         $textSet = markdown2html_pub($news['textnews']);
 
@@ -95,7 +101,8 @@ if (!empty($newsMain))
 	}
 
     // Формируем массив для JSON ответа
-    $result = array('res' => 'generated');
+    $result = array('res' => 'generated',
+                    'preview' => $preview);
 
     // Переводим массив в JSON
     echo json_encode($result);

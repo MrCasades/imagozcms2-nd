@@ -37,7 +37,7 @@ $( document ).ready(function() {
                         console.log('ОК');   
                         
                         if (result.res == 'generated'){
-                              $('#succ_form').html('<b>Дайджест сгенерирован!</b>');
+                              $('#succ_form').html('<b>Дайджест сгенерирован!</b><br>' + result.preview);
                         } else {
                               $('#succ_form').html('<b>Неудача</b>');
                         }

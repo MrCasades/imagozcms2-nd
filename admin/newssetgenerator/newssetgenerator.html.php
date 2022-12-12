@@ -27,7 +27,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
         <input name="ispulse" type="checkbox" value="1"> Публикация Пульс
         <hr/>
         <input type = "hidden" value = "<?php htmlecho ($authorInSystem); ?>" name="authorname">
-        <button id="generate" class="btn_2" type="button">Сгенерировать</button>
+        <button id="generate" class="btn_2" type="button" name="generate">Сгенерировать</button>
     </form>
     <br><div id="succ_form"></div>
 </div>

@@ -29,6 +29,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<h1 class="m-content"><?php htmlecho ($headMain); ?></h1>
 			<div class="article-head-bottom m-content">
 				<br><?php echo $date;?>
+				<br>Период публикации: <?php echo $period;?>
 			</div>
 
 				<!-- <div class="m-content">
