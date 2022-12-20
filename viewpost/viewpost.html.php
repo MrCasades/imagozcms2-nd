@@ -12,7 +12,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
-					<a href = "../viewallpost/"><h2>Статьи</h2></a>
+					<a href = "../viewallposts/"><h2>Статьи</h2></a>
 					<div class = "main-headers-line"></div>
 					<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
 				</div>
