@@ -4,6 +4,7 @@ $( document ).ready(function() {
 
 
    $('#generate').click(function(e) {
+      
 
       if ($('#dt1').val() == '' || $('#dt2').val() == '') {
          console.log('interval ' + $('#dt1').val() + '-' + $('#dt2').val());
@@ -12,8 +13,11 @@ $( document ).ready(function() {
       } else if ($('#dt1').val() > $('#dt2').val() ) {
          console.log('interval ' + $('#dt1').val() + '-' + $('#dt2').val());
          alert('Интервал некорректный');
-         
-      } else {
+
+      } /*else if ($('#lengthtext').val() == 0 || isNAN($('#lengthtext').val())){
+         alert('Число в поле не должно быть равно 0 или введено некорректное значение');
+
+      }*/ else {
          console.log('interval ' + $('#dt1').val() + '-' + $('#dt2').val());
          
          let timeOutVal = 3000;//Длина таймаута

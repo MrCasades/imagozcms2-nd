@@ -31,7 +31,11 @@ try
                 newsdate,  
                 videoyoutube 
             FROM newsblock
-            WHERE premoderation = "YES" and newsdate >= "'.$_POST['dt1'].'" and newsdate <= "'.$_POST['dt2'].'"'.$where.'
+            WHERE 
+                premoderation = "YES"
+                and lengthtext < '.$_POST['lengthtext'].' 
+                and newsdate >= "'.$_POST['dt1'].'" 
+                and newsdate <= "'.$_POST['dt2'].'"'.$where.'
             
             ORDER BY newsdate DESC';//Вверху самое последнее значение
     $s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной

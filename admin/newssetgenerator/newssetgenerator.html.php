@@ -24,6 +24,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php endforeach; ?> 
 		</select>
         <hr/>
+        Длина текста 1-й новости не более <input id="lengthtext" name="lengthtext" type="text" value="1500">
+        <hr/>
         <input name="ispulse" type="checkbox" value="1"> Публикация Пульс
         <hr/>
         <input type = "hidden" value = "<?php htmlecho ($authorInSystem); ?>" name="authorname">
