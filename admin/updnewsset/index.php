@@ -6,23 +6,22 @@ include_once '../../includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-/*Обновление информации о статье*/
-if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] == 'Переделать' || $_POST['action'] == 'ОБНОВИТЬ'))
+if (loggedIn())
 {
-	if ($_POST['action'] == 'Переделать')
-	{
-		@session_start();//Открытие сессии для сохранения флага переработки
-	
-		$_SESSION['rewrite'] = true;
-	}
-	
+	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
+}
+
+/*Обновление информации о статье*/
+if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
+{
+
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, text, title, imghead, imgalt, description, authorname FROM newsset WHERE id = :idset';
+		$sql = 'SELECT id, text, title, imgalt, description, authorname FROM newsset WHERE id = :idset';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idset', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -50,12 +49,6 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	$button = 'Обновить информацию о дайджесте';
 	$errorForm = '';
 	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
-	
-	@session_start();//Открытие сессии для сохранения названия файла изображения
-	
-	$_SESSION['imghead'] = $row['imghead'];
-
-	$idTask = 0;
 
 	include 'form.html.php';
 	exit();
@@ -63,28 +56,17 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
-	if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
-	{
-		$fileName = $_SESSION['imghead'];
-	}
-	
-	else
-	{
-		/*Удаление старого файла изображения*/
-		$fileName = $_SESSION['imghead'];
-		$delFile = MAIN_FILE . '/images/'.$fileName;//путь к файлу для удаления
-		unlink($delFile);//удаление файла
-		
-		/*Загрузка скрипта добавления файла*/
-		$fileNameScript = 'img-'. time();//имя файла новости/статьи
-		$filePathScript = '/images/';//папка с изображениями для новости/статьи
-		
-		include MAIN_FILE . '/includes/uploadfile.inc.php';
-	}
+	/*Загрузка функций в шаблон*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
+
+	$fileNameScript = 'img-'. time();//имя файла новости/статьи
+	$filePathScript = '/images/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'newsset', $_POST['id']);
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
-	
+
 	try
 	{
 		$sql = 'UPDATE newsset SET 

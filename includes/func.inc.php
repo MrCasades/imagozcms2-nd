@@ -77,6 +77,92 @@ function markdown2html ($text)
 	return Markdown($text);
 }
 
+function uploadImg ($fileNameScript, $filePathScript)
+{
+	/*Загрузка файла (тест)*/
+	
+	/*Извлечение расширения файла*/
+	
+	if (preg_match ('/^image\/p?jpeg$/i', $_FILES['upload']['type']))
+	{
+		$ext = '.jpg';
+	}
+		
+	elseif (preg_match ('/^image\/p?gif$/i', $_FILES['upload']['type']))
+	{
+		$ext = '.gif';
+	}
+		
+	elseif (preg_match ('/^image\/p?png$/i', $_FILES['upload']['type']))
+	{
+		$ext = '.png';
+	}
+		
+	else	
+	{
+		$ext = '.unk';
+	}
+			
+	$fileName = $fileNameScript . $ext;//присвоение имени файла
+	$filePath = MAIN_FILE . $filePathScript . $fileName;//путь загрузки
+			
+	if (!is_uploaded_file($_FILES['upload']['tmp_name']) or !copy($_FILES['upload']['tmp_name'], $filePath))
+	{
+		$fileName = '';
+	}
+
+	return $fileName;
+}
+
+/*Загрузка/обновление изображения шапки*/
+function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add', $typeArticle = '', $idArticle = '') //Если тип upd, то функция должна принимать id статьи и typeArticle
+{
+	if ($typeAction == 'upd')
+	{
+		/*Подключение к базе данных*/
+		include 'db.inc.php';
+
+		/*Команда SELECT*/
+		try
+		{
+			$sql = 'SELECT imghead FROM '.$typeArticle.' WHERE id = :idart';
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idart', $idArticle);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+
+		catch (PDOException $e)
+		{
+			$error = 'Ошибка выбора изображения';
+			include 'error.inc.php';
+		}
+
+		$row = $s -> fetch();
+
+		if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
+		{
+			$fileName = $row['imghead'];
+		}
+		
+		else
+		{
+			/*Удаление старого файла изображения*/
+			$fileName = $row['imghead'];
+			$delFile = MAIN_FILE . $filePathScript.$fileName;//путь к файлу для удаления
+			unlink($delFile);//удаление файла
+			
+			$fileName = uploadImg($fileNameScript, $filePathScript);
+		}
+	}
+
+	else
+	{
+		$fileName = uploadImg($fileNameScript, $filePathScript);
+	}
+	
+	return $fileName;
+}
+
 /*Добавление класса галереи к изображениям публикации*/
 function imgForGallery($text)
 {
