@@ -41,17 +41,20 @@ $text = '';
 
 if (isset($_GET['addform']))//Если есть переменная addform выводится форма
 {
-	$fileNameScript = 'formess-'. time();//имя файла новости/статьи
-	$filePathScript = 'formessages/';//папка с изображениями для сообщений
-	
 	/*Загрузка функций для формы входа*/
 	require_once MAIN_FILE . '/includes/access.inc.php';
-	
-	/*Загрузка скрипта добавления файла*/
-	include MAIN_FILE . '/includes/uploadfile.inc.php';
 		
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
+
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
+
+	$fileNameScript = 'formess-'. time();//имя файла новости/статьи
+	$filePathScript = 'formessages/';//папка с изображениями для сообщений
+		
+	//Загрузка файла изображения
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript);
 	
 	/*INSERT - добавление информации в базу данных и списание средств со счёта*/
 	

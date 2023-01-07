@@ -114,24 +114,13 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
-	if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
-	{
-		$fileName = $imghead;
-	}
-	
-	else
-	{
-		/*Удаление старого файла изображения*/
-		$fileName = $imghead;
-		$delFile = MAIN_FILE . '/images/'.$fileName;//путь к файлу для удаления
-		unlink($delFile);//удаление файла
-		
-		$fileNameScript = 'comm-'. time();//имя файла новости/статьи
-		$filePathScript = '/images/';//папка с изображениями для новости/статьи
-		
-		/*Загрузка скрипта добавления файла*/
-		include MAIN_FILE . '/includes/uploadfile.inc.php';
-	}
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
+
+	$fileNameScript = 'img-'. time();//имя файла изображения
+	$filePathScript = '/images/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'comments', $_POST['comment']);
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';

@@ -166,7 +166,7 @@ if (isset ($_GET['post']))
 if (isset ($_POST['action']) && $_POST['action'] == 'Конвертировать в новость')
 {
 	/*Загрузка функций в шаблон*/
-	include_once MAIN_FILE . '/includes/func.inc.php';
+	include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
 
 	/*Загрузка функций для формы входа*/
 	require_once MAIN_FILE . '/includes/access.inc.php';

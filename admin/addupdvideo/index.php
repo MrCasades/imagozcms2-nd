@@ -176,23 +176,26 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 /*команда INSERT  - добавление в базу данных*/
 if (isset($_GET['addform']))//Если есть переменная addform выводится форма
 {
-	$fileNameScript = 'img-'. time();//имя файла новости/статьи
-	$filePathScript = '/images/';//папка с изображениями для новости/статьи
-
 	$fileNameVideoScript = 'video-'. time().rand(11, 99);//имя файла новости/статьи
 	$filePathVideoScript = '/videofiles/';//папка с изображениями для новости/статьи
 	
 	/*Загрузка функций для формы входа*/
 	require_once MAIN_FILE . '/includes/access.inc.php';
-	
-	/*Загрузка скрипта добавления файла*/
-	include MAIN_FILE . '/includes/uploadfile.inc.php';
 
 	/*Загрузка скрипта добавления видео*/
 	include MAIN_FILE . '/includes/uploadvideo.inc.php';
 		
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
+
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
+
+	$fileNameScript = 'img-'. time();//имя файла изображения
+	$filePathScript = '/images/';//папка с изображениями для новости/статьи
+		
+	//Загрузка файла изображения
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript);
 	
 	/*Возвращение id автора*/
 	
@@ -403,27 +406,13 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
-	/*Загрузка функций*/
-	require_once MAIN_FILE . '/includes/func.inc.php';
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
 
-	if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
-	{
-		$fileName = $_SESSION['imghead'];
-	}
-	
-	else
-	{
-		/*Удаление старого файла изображения*/
-		$fileName = $_SESSION['imghead'];
-		$delFile = MAIN_FILE . '/images/'.$fileName;//путь к файлу для удаления
-		unlink($delFile);//удаление файла
-		
-		$fileNameScript = 'img-'. time();//имя файла новости/статьи
-		$filePathScript = '/images/';//папка с изображениями для новости/статьи
-		
-		/*Загрузка скрипта добавления файла*/
-		include MAIN_FILE . '/includes/uploadfile.inc.php';
-	}
+	$fileNameScript = 'img-'. time();//имя файла изображения
+	$filePathScript = '/images/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'video', $_POST['id']);
 
 	/*Удаление/сохранения названия видео */
 	if (!is_uploaded_file($_FILES['uploadvideo']['tmp_name'])) //если файл не загружен, оставить старое имя
