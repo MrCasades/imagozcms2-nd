@@ -26,6 +26,8 @@ if (isset ($_GET['id']))
 					v.imghead, 
 					v.videoyoutube, 
 					v.videofile, 
+					v.videofileext, 
+					v.duration,
 					v.viewcount, 
 					v.votecount, 
 					v.averagenumber, 
@@ -102,7 +104,8 @@ if (isset ($_GET['id']))
 	/*Микроразметка*/
 	
 	$dataMarkup = dataMarkup($row['videotitle'], $row['description'], $row['imghead'], $row['imgalt'], $row['videoid'],
-							$row['videodate'], $row['authorname'], $row['averagenumber'], $row['votecount'], 'video');
+							$row['videodate'], $row['authorname'], $row['averagenumber'], $row['votecount'], 
+							$row['duration'], $row['videofile'].'.'.$row['videofileext'], 'video');
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))

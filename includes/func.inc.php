@@ -468,16 +468,76 @@ function defaultRegFormData()
 
 /*Добавление микроразметки*/
 function dataMarkup ($title = '' , $description = '', $imghead = '', $imgalt = '', $id = '', $date = '', 
-					 $author = '', $averagenumber = '', $votecount = '', $articleType) //$articleType - viewpost, viewnews, video																												viewpromotion
+					 $author = '', $averagenumber = '', $votecount = '', $videoDuration = '', $videoFile = '',  $articleType) //$articleType - viewpost, viewnews, video																												viewpromotion
 {
 	if ($votecount == 0) 
 	{
 		$votecount = 1;
 		$averagenumber = 5;
 	}
-	
-	return '
-	
+
+	if ($articleType !== 'video')
+		return '
+		
+				<meta name="twitter:card" content="summary_large_image">
+				<meta name="twitter:site" content="@Arseni_Pol">
+				<meta name="twitter:title" content="'.substr($title, 0, 70).'">
+				<meta name="twitter:description" content="'.substr($description, 0, 200).'">
+				<meta name="twitter:image" content="https://'.$_SERVER['SERVER_NAME'].'/images/'.$imghead.'">	
+				<meta name="twitter:image:alt" content="'.$imgalt.'">
+				
+				
+				<meta name="og:url" content="https://'.$_SERVER['SERVER_NAME'].'/'.$articleType.'/?id='.$id.'">
+				<meta name="og:type" content="article">
+				<meta name="og:title" content="'.$title.'">
+				<meta name="og:description" content="'.substr($description, 0, 200).'">
+				<meta name="og:image" content="https://'.$_SERVER['SERVER_NAME'].'/images/'.$imghead.'">
+				
+				
+				<script type="application/ld+json">
+				{
+					"@context": "http://schema.org",
+					"@type": "Article",
+					"mainEntityOfPage": {
+						"@type": "WebPage",
+						"@id": "https://'.$_SERVER['SERVER_NAME'].'/'.$articleType.'/?id='.$id.'"
+						},
+					"headline": "'.$title.'",
+					"image": {
+						"@type": "ImageObject",
+						"url": "https://'.$_SERVER['SERVER_NAME'].'/images/'.$imghead.'",
+						"width": 800,
+						"height": 600
+						},
+					"datePublished": "'.$date.'",
+					"dateModified": "'.$date.'",
+					"author": {
+						"@type": "Person",
+						"name": "'.$author.'"
+						},
+					"publisher": {
+						"@type": "Organization",
+						"name": "IMAGOZ",
+						"logo": {
+							"@type": "ImageObject",
+							"url": "https://'.$_SERVER['SERVER_NAME'].'/logomain.png",
+							"width": 500,
+							"height": 500
+							}
+						},
+					"description": "'.$description.'",
+					"aggregateRating": {
+						"@type": "AggregateRating",
+						"itemReviewed": "Thing",
+						"bestRating": 5,
+						"ratingValue": '.$averagenumber.',
+						"ratingCount": '.$votecount.'
+						}
+					}
+				</script>';
+	else
+		return '
+
 			<meta name="twitter:card" content="summary_large_image">
 			<meta name="twitter:site" content="@Arseni_Pol">
 			<meta name="twitter:title" content="'.substr($title, 0, 70).'">
@@ -486,54 +546,17 @@ function dataMarkup ($title = '' , $description = '', $imghead = '', $imgalt = '
 			<meta name="twitter:image:alt" content="'.$imgalt.'">
 			
 			
-			<meta name="og:url" content="https://'.$_SERVER['SERVER_NAME'].'/'.$articleType.'/?id='.$id.'">
-			<meta name="og:type" content="article">
-			<meta name="og:title" content="'.$title.'">
-			<meta name="og:description" content="'.substr($description, 0, 200).'">
-			<meta name="og:image" content="https://'.$_SERVER['SERVER_NAME'].'/images/'.$imghead.'">
-			
-			
-			<script type="application/ld+json">
-			{
-				"@context": "http://schema.org",
-				"@type": "Article",
-				"mainEntityOfPage": {
-					"@type": "WebPage",
-					"@id": "https://'.$_SERVER['SERVER_NAME'].'/'.$articleType.'/?id='.$id.'"
-					},
-				"headline": "'.$title.'",
-				"image": {
-					"@type": "ImageObject",
-					"url": "https://'.$_SERVER['SERVER_NAME'].'/images/'.$imghead.'",
-					"width": 800,
-					"height": 600
-					},
-				"datePublished": "'.$date.'",
-				"dateModified": "'.$date.'",
-				"author": {
-					"@type": "Person",
-					"name": "'.$author.'"
-					},
-				"publisher": {
-					"@type": "Organization",
-					"name": "IMAGOZ",
-					"logo": {
-						"@type": "ImageObject",
-						"url": "https://'.$_SERVER['SERVER_NAME'].'/logomain.png",
-						"width": 500,
-						"height": 500
-						}
-					},
-				"description": "'.$description.'",
-				"aggregateRating": {
-					"@type": "AggregateRating",
-					"itemReviewed": "Thing",
-					"bestRating": 5,
-					"ratingValue": '.$averagenumber.',
-					"ratingCount": '.$votecount.'
-					}
-				}
-			</script>';
+			<meta property="og:title" content="'.$title.'">
+			<meta property="og:url" content="https://'.$_SERVER['SERVER_NAME'].'/'.$articleType.'/?id='.$id.'">
+			<meta property="og:video" content="https://'.$_SERVER['SERVER_NAME'].'/videofiles/'.$videoFile.'"/> 
+			<meta property="og:description" content="'.substr($description, 0, 200).'">
+			<meta property="video:duration" content="'.$videoDuration.'"/>
+			<meta property="og:image" content="https://'.$_SERVER['SERVER_NAME'].'/images/'.$imghead.'">
+			<meta property="ya:ovs:upload_date" content="'.$date.'"/>
+			<meta property="ya:ovs:adult" content="false"/>
+			<meta property="og:type" content="video.other">		
+			<meta property="og:video:type" content="flash">	
+			';
 }
 
 /*Данные для обновления комментариев*/

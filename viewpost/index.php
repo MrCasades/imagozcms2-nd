@@ -90,7 +90,7 @@ if (isset ($_GET['id']))
 	/*Микроразметка*/
 	
 	$dataMarkup = dataMarkup($row['posttitle'], $row['description'], $row['imghead'], $row['imgalt'], $row['postid'],
-							$row['postdate'], $row['authorname'], $row['averagenumber'], $row['votecount'], 'viewpost');
+							$row['postdate'], $row['authorname'], $row['averagenumber'], $row['votecount'], '', '', 'viewpost');
 	
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))

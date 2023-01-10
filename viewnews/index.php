@@ -90,7 +90,7 @@ if (isset ($_GET['id']))
 	/*Микроразметка*/
 	
 	$dataMarkup = dataMarkup($row['newstitle'], $row['description'], $row['imghead'], $row['imgalt'], $row['newsid'],
-							$row['newsdate'], $row['authorname'], $row['averagenumber'], $row['votecount'], 'viewnews');
+							$row['newsdate'], $row['authorname'], $row['averagenumber'], $row['votecount'], '', '', 'viewnews');
 	
 	
 	/*Вывод видео в статью*/
