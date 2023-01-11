@@ -15,6 +15,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<button id="rsssmi" class="btn_2 rss_btn" value = "rsssmi">Обновить ленту СМИ</button>
 	<button id="rsspulse" class="btn_2 rss_btn">Обновить ленту Пульс</button>
 	<button id="rssvk" class="btn_2 rss_btn">Обновить ленту VK</button>
+	<button id="rssdzen" class="btn_2 rss_btn">Обновить ленту Дзен</button>
 </div>
 <div id="result"></div>
 	

@@ -22,10 +22,11 @@
                     <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallposts/">Статьи</a></li>
                     <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallvideos/">Видео</a></li>
                     <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallpromotion/">Промоушен</a></li>
-                    <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallrecommpost/">Рекомендации</a></li>
+                    <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/viewallrecommpost/">Рекомендации</a></li>        
                 </ul>        
             </li>           
-            <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/adminmail/?addmessage#bottom"> Обратная связь</a></li>                                      
+            <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/admin/adminmail/?addmessage#bottom"> Обратная связь</a></li> 
+            <li class="menu-item"><a href="<?php echo '//'.MAIN_URL;?>/eshop/">Магазин</a></li>                                     
         </ul>
     </div>
 </div>

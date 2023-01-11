@@ -11,7 +11,7 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Выбор  новостей для дайджеста*/
 /*Команда SELECT*/
 
-$content = '';
+$content = 'Публикация на тему';
 $preview = '';
 $where = '';
 $forSearch = array();//массив заполнения запроса
@@ -73,7 +73,16 @@ if (!empty($newsMain))
 
     $isPulse = !empty($_POST['ispulse']) ? 1 : 0;
 
-    $blogType = $isPulse == 1 ? 'Пульс. ' : 'Дзен. ';
+    $isDzen = !empty($_POST['isdzen']) ? 1 : 0;
+
+    if ($isPulse == 1 && $isDzen == 1)
+        $blogType = 'Пульс и Дзен. ';
+    elseif ($isPulse == 1 && $isDzen == 0)
+        $blogType = 'Пульс. ';
+    elseif ($isPulse == 0 && $isDzen == 1)
+        $blogType = 'Дзен. ';
+    else
+        $blogType = 'Разное. ';
 
     $interval = $_POST['dt1'].' - '.$_POST['dt2'];
 
@@ -88,7 +97,8 @@ if (!empty($newsMain))
                 categoryname = :categoryname,	
                 title = :title,
                 text = :text,
-                ispulse = :ispulse';
+                ispulse = :ispulse,
+                isdzen = :isdzen';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':intervalofset', $interval);//отправка значения
         $s -> bindValue(':authorname', $_POST['authorname']);//отправка значения
@@ -96,11 +106,12 @@ if (!empty($newsMain))
         $s -> bindValue(':title', $titleSet);//отправка значения
         $s -> bindValue(':text', $content);//отправка значения
         $s -> bindValue(':ispulse', $isPulse);//отправка значения
+        $s -> bindValue(':isdzen', $isDzen);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка добавления новости';
+		$error = 'Ошибка генерации дайджеста';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 

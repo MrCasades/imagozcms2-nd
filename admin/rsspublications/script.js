@@ -37,5 +37,14 @@ $( document ).ready(function() {
          alert('rssvk');
       });  
    })
+
+   //Обновление rssdzen.xml
+   $('#rssdzen').click(function(e) {
+      let url = '//'+document.location.host + '/rssdzen/';
+      console.log (url)
+      $('#result').load(url, function() {
+         alert('rssdzen');
+      });  
+   })
 })
        

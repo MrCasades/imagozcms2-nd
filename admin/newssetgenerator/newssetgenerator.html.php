@@ -26,7 +26,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
         <hr/>
         Длина текста 1-й новости не более <input id="lengthtext" name="lengthtext" type="text" value="1500">
         <hr/>
-        <input name="ispulse" type="checkbox" value="1"> Публикация Пульс
+        <input name="ispulse" type="checkbox" value="1"> Публикация Пульс <input name="isdzen" type="checkbox" value="1"> Публикация Дзен
         <hr/>
         <input type = "hidden" value = "<?php htmlecho ($authorInSystem); ?>" name="authorname">
         <button id="generate" class="btn_2" type="button" name="generate">Сгенерировать</button>
