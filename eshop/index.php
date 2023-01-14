@@ -11,7 +11,9 @@ $descr = 'Информация для желающих стать автором
 
 try
 {
-	$xml = simplexml_load_file ('dump.yml');
+	$get_xml = file_get_contents('dump.yml');
+	$repl_xml = preg_replace('#&(?=[a-z_0-9]+=)#', '&amp;', $get_xml);
+	$xml = simplexml_load_string($repl_xml);
 }
 
 catch (PDOException $e)
@@ -23,8 +25,8 @@ catch (PDOException $e)
 /*Вывод результата в шаблон*/
 foreach ($xml as $row)
 {
-	$goodsAll[] =  array ('title' => $row->name, 'url' => $row->url, 'price' =>  $row->price, 'old_price' =>  $row->oldprice,
-					   'disount' => $row->disount, 'images' => $row->picture);
+	$goodsAll[] =  array ('title' => $row->offers->offer->name, 'url' => $row->offers->offer->url, 'price' =>  $row->offers->offer->price, 'old_price' =>  $row->offers->offer->oldprice,
+					   'disount' => $row->offers->offer->disount, 'images' => $row->offers->offer->picture);
 }
 
 /*Вывод рандомных игр*/

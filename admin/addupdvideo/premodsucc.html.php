@@ -24,7 +24,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <article>
 	<h2 class="video-header"><?php htmlecho ($headMain); ?></h2>	
 	<div class="video-pl">
-		<video controls width="90%" height="538" poster="../../images/<?php echo $imgHead; ?>" preload="none">
+		<video id = "videofile" controls width="90%" height="538" poster="../../images/<?php echo $imgHead; ?>" preload="metadata">
 			<source src="../../videofiles/<?php echo $videoFile; ?>.mp4" type="video/mp4">
 			<source src="../../videofiles/<?php echo $videoFile; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
 			<source src="../../videofiles/<?php echo $videoFile; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
@@ -62,10 +62,39 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 		</div>
 		<div class = "m-content">
+			<p><span id="duration_pl"></span></p>
 			<p><?php echo $delAndUpd; ?></p>
+			<form id="updmeta_form">
+				<input id="for_durationform" type = "hidden" value = "" name="duration">
+				<input type = "hidden" value = "<?php echo $idpost_ind; ?>" name="idvideo">
+			</form>
 		</div>
 	</div>			
 </article>
+
+<script>
+	const videoData = document.getElementById("videofile");
+	const durationPl = document.getElementById("duration_pl");
+	const durationForm = document.getElementById("for_durationform");
+	
+	videoData.addEventListener('loadedmetadata', function() {
+    	console.log(videoData.duration);
+		durationPl.innerHTML = videoData.duration;
+		durationForm.value = Math.trunc(videoData.duration);
+
+		$.ajax({
+                  url: 'updmetadata.inc.php',
+                  type: 'POST',
+                  data: $("#updmeta_form").serialize(),  // Сеарилизуем объект
+
+                  success: function(response) { //Данные отправлены успешно
+                        result = $.parseJSON(response);  
+                        console.log(result);
+                        console.log('ОК');                          
+            },
+        });   
+	});
+</script>
 	
 <?php 
 /*Загрузка footer*/
