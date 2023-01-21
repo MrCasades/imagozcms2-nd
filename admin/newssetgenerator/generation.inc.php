@@ -11,7 +11,7 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Выбор  новостей для дайджеста*/
 /*Команда SELECT*/
 
-$content = 'Публикация на тему';
+$content = '';
 $preview = '';
 $where = '';
 $forSearch = array();//массив заполнения запроса
@@ -74,6 +74,8 @@ if (!empty($newsMain))
     $isPulse = !empty($_POST['ispulse']) ? 1 : 0;
 
     $isDzen = !empty($_POST['isdzen']) ? 1 : 0;
+
+    $content = 'Публикация на тему '.$content;
 
     if ($isPulse == 1 && $isDzen == 1)
         $blogType = 'Пульс и Дзен. ';

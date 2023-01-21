@@ -96,7 +96,7 @@ markdown2html_pub($newsset['description']).'
 
 <![CDATA['.
 
-markdown2html_pub($newsMain_3['description']).'<br><br>Ставьте лайки, комментируйте, подписывайтесь на <a href="https://pulse.mail.ru/imagoz-igry-i-tehnologii/">КАНАЛ</a>!
+markdown2html_pub($newsMain_3['description']).'<br><br>Ставьте лайки, комментируйте, подписывайтесь на канал!
 
 ]]>
 
@@ -142,7 +142,7 @@ markdown2html_pub($newsMain_3['description']).'<br><br>Ставьте лайки
 
 <![CDATA['.
 
-markdown2html_pub ($post['description']).'<br><br>Ставьте лайки, комментируйте, подписывайтесь на <a href="https://pulse.mail.ru/imagoz-igry-i-tehnologii/">КАНАЛ</a>!
+markdown2html_pub ($post['description']).'<br><br>Ставьте лайки, комментируйте, подписывайтесь на канал!
 
 ]]>
 
