@@ -21,7 +21,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<?php echo $addCategory; ?>
 			<?php echo $addRoleAdvertiser; ?>
 			<br/>
-			<?php if ($avatar !== 'ava-def.jpg'): ?>
+			<?php if ($avatar !== ''): ?>
 				<img src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
 			<?php else: ?>
 				<i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i>
@@ -165,7 +165,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 				<div class="comment m-content">
 					<div class="comment-person-pl">
-						<?php if ($comment['avatar'] !== 'ava-def.jpg'): ?>
+						<?php if ($comment['avatar'] !== ''): ?>
 
 						<div> 
 							<img src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 

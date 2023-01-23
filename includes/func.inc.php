@@ -115,17 +115,19 @@ function uploadImg ($fileNameScript, $filePathScript)
 }
 
 /*Загрузка/обновление изображения шапки*/
-function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add', $typeArticle = '', $idArticle = '') //Если тип upd, то функция должна принимать id статьи и typeArticle
+function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add', $typeArticle = '', $idArticle = '') //Если тип upd, то функция должна принимать id статьи и typeArticle;
 {
 	if ($typeAction == 'upd')
 	{
+		$DBcol = ($typeArticle == 'author') ? 'avatar' : 'imghead';//Название колонки в зависимости от типа публикации
+
 		/*Подключение к базе данных*/
 		include 'db.inc.php';
 
 		/*Команда SELECT*/
 		try
 		{
-			$sql = 'SELECT imghead FROM '.$typeArticle.' WHERE id = :idart';
+			$sql = 'SELECT '.$DBcol.' FROM '.$typeArticle.' WHERE id = :idart';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> bindValue(':idart', $idArticle);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL

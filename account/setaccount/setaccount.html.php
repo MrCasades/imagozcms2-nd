@@ -23,7 +23,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="set-acc-ava-pl m-content">
 	<h4>Текущий аватар</h4>
 	<p>
-		<?php if ($avatar !== 'ava-def.jpg'): ?>
+		<?php if ($avatar !== ''): ?>
 				<img src="../../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
 		<?php else: ?>
 				<i class="fa fa-user-circle" aria-hidden="true" title="Вы вошли как: <?php echo $authorInSystem;?>"></i>

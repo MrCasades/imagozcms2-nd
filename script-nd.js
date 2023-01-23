@@ -242,7 +242,7 @@ $(document).ready(function() {
         success: function(response) { //Данные отправлены успешно
         	result = $.parseJSON(response);
 
-            let avatar = result.avatar !== 'ava-def.jpg' ? '<div><img src="../avatars/'+result.avatar+'" alt="ava"/></div>' : '<i class="fa fa-user-circle-o" aria-hidden="true"></i>'
+            let avatar = result.avatar !== '' ? '<div><img src="../avatars/'+result.avatar+'" alt="ava"/></div>' : '<i class="fa fa-user-circle-o" aria-hidden="true"></i>'
         	$('#result_form').prepend('<div class="comment m-content"><div class="comment-person-pl">'+avatar+'<div class="comment-person-name"><a href="../account/?id='+result.idauthor+'">'+result.authorname+'</a><br><span class="comment-date">Только что</span></div></div><div class="comment-text"><p><form action = "?" method = "post"><div><input type = "hidden" name = "id" value = "'+result.id+'"><input type = "hidden" name = "idarticle" value = "'+result.idarticle+'"><input type = "submit" name = "action" class="btn_2" value = "Редактировать"><input type = "submit" name = "action" class="btn_1" value = "Del"></div></form></p>'+result.text+'</div></div><div class = "comment-line"></div>');
             
 			let countComm = document.getElementById('comm_count');//счётчик комментариев

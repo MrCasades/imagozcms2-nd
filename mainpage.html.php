@@ -352,7 +352,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<div class="comment-mp">
 				<div class="comment-auth-pl-mp">
 					
-					<?php if ($comment['avatar'] !== 'ava-def.jpg'): ?>
+					<?php if ($comment['avatar'] !== ''): ?>
 
 					<div> 
 						<img src="./avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 
@@ -539,7 +539,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			foreach ($authorsTOP as $authorTOP): ?>
 				<div class = "for-top-auth">
 
-					<?php if ($authorTOP['avatar'] !== 'ava-def.jpg'): ?>
+					<?php if ($authorTOP['avatar'] !== ''): ?>
 
 					<div class="for-top-auth-ava-pl"> 
 						<img src="./avatars/<?php echo $authorTOP['avatar'];?>" alt="<?php echo $authorTOP['authorname'];?>">&nbsp; 

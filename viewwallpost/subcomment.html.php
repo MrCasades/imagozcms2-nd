@@ -13,7 +13,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 
 		<div class="comment m-content">
 			<div class="comment-person-pl">
-				<?php if ($subcomment['subavatar'] !== 'ava-def.jpg'): ?>
+				<?php if ($subcomment['subavatar'] !== ''): ?>
 
 				<div> 
 					<img src="../avatars/<?php echo $subcomment['subavatar'];?>" alt="<?php echo $subcomment['subauthorname'];?>"> 

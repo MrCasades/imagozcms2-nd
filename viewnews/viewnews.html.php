@@ -127,7 +127,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 				<div class="comment m-content">
 					<div class="comment-person-pl">
-						<?php if ($comment['avatar'] !== 'ava-def.jpg'): ?>
+						<?php if ($comment['avatar'] !== ''): ?>
 
 						<div> 
 							<img src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 

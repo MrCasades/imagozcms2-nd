@@ -57,29 +57,14 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить ават�
 
 if (isset($_GET['updavatar']))//Если есть переменная editform выводится форма
 {
-	if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
-	{
-		$fileName = $avatar;//из $_GLOBALS['avatar'] 
-	}
-	
-	else
-	{
-		/*Удаление старого файла изображения*/
-		
-		if ($avatar !== 'ava-def.jpg')
-		{
-			$fileName = $avatar;
-			$delFile = MAIN_FILE . '/avatars/'.$fileName;//путь к файлу для удаления
-			unlink($delFile);//удаление файла
-		}
-		
-		$fileNameScript = 'ava-'. time();//имя файла новости/статьи
-		$filePathScript = '/avatars/';//папка с изображениями для новости/статьи
-		
-		/*Загрузка скрипта добавления файла*/
-		include MAIN_FILE . '/includes/uploadfile.inc.php';
-	}
-	
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
+
+	$fileNameScript = 'ava-'. time();//имя файла новости/статьи
+	$filePathScript = '/avatars/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'author', $_POST['id']);
+
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
@@ -124,7 +109,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Удалить авата�
 	
 	$row = $s -> fetch();
 	
-	if ($row['avatar'] == "ava-def.jpg")
+	if ($row['avatar'] == "")
 	{
 		$title = 'Удаление аватара';//Данные тега <title>
 		$headMain = 'Удаление аватара';
@@ -167,7 +152,7 @@ if (isset ($_GET['delava']))
 	try
 	{
 		$sql = 'UPDATE author SET 
-			avatar = "ava-def.jpg" WHERE id = :id';
+			avatar = "" WHERE id = :id';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
