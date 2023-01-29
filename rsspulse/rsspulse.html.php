@@ -59,7 +59,7 @@ markdown2html_pub($newsset['description']).'
 
         <![CDATA[
 
-            '.$articleNews.'<br><br>Ставьте лайки, комментируйте, подписывайтесь на <a href="https://pulse.mail.ru/imagoz-igry-i-tehnologii/">КАНАЛ</a>!
+            '.$articleNews.'<br><br>Ставьте лайки, комментируйте, подписывайтесь на КАНАЛ!
 
         ]]>
 
