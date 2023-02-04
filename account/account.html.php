@@ -39,7 +39,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<div id = "tabs" class="acc-info-pl">
 			<nav class="tabs-nav acc-menu">
 				<a href="#acc_mp">Главная</a>
-				<!-- <a href="#">Блоги</a> -->
+				<a href="#acc_blog">Блоги</a>
 				<?php if (($authorRole == 'Автор') || ($authorRole == 'Администратор')): ?>
 				<a href="#acc_pub">Публикации</a>
 				<?php endif;?>
