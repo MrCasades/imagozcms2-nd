@@ -183,6 +183,32 @@ if (isset ($_GET['id']))
 	{
 		$mainMessagesForm = '';
 	}
+
+	/*Вывод блогов автора */
+	/*Выбор новостей автора*/
+	try
+	{
+		$sql = 'SELECT 
+					b.id as blogid
+					,b.idauthor
+					,b.title
+				FROM blogs b
+				INNER JOIN author a ON a.id = b.idauthor';
+		$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода блогов автора';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$blogs[] =  array ('id' => $row['blogid'], 'title' => $row['title']);
+	}
+
 	
 	/*Вывод новостей и статей автора*/
 	/*Команда SELECT, возвращение роли автора*/
