@@ -18,8 +18,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post">
 	<div>
-	 <label for = "tasktitle">Введите заголовок</label>
-	 <br><input type = "tasktitle" name = "tasktitle" id = "tasktitle" value = "<?php htmlecho($blogtitle);?>">
+	 <label for = "blogtitle">Введите заголовок</label>
+	 <br><input type = "blogtitle" name = "blogtitle" id = "blogtitle" value = "<?php htmlecho($blogtitle);?>">
 	</div>
 	<br>
 	<div>

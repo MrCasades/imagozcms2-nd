@@ -16,10 +16,7 @@ $breadPart2 = '<a href="//'.MAIN_URL.'/viewallnews/">Все новости</a> '
 require_once MAIN_FILE . '/includes/access.inc.php';
 
 /*Определение нахождения пользователя в системе*/
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+loggedIn();
 
 /*Постраничный вывод информации*/
 		

@@ -137,6 +137,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 {
 	/*Загрузка функций для формы входа*/
 	require_once MAIN_FILE . '/includes/access.inc.php';
+
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
 	
 	/*Возвращение id автора*/
 	
@@ -147,6 +150,11 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$error = 'Введите недостающую информацию';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
+
+	$fileNameScript = 'hd-'. time().rand(100, 999);//имя файла новости/статьи
+	$filePathScript = '/blog/headersimages/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript);
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -159,14 +167,14 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 			date = SYSDATE(),
 			idauthor = :idauthor';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':title', $_POST['blogtitle']);//отправка значения
+		$s -> bindValue(':blogtitle', $_POST['blogtitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка добавления информации';
+		$error = 'Ошибка добавления информации о блоге';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
@@ -184,10 +192,21 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
+	if ($_POST['description'] == '' || $_POST['blogtitle'] == '')
+	{
+		$error = 'Введите недостающую информацию';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	$fileNameScript = 'hd-'. time().rand(100, 999);//имя файла новости/статьи
+	$filePathScript = '/blog/headersimages/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'blogs', $_POST['id']);
+
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	if (($_POST['idtasktype'] == '') || ($_POST['description'] == '') || ($_POST['tasktitle'] == ''))
+	if ($_POST['description'] == '' || $_POST['blogtitle'] == '')
 	{
 		$error = 'Введите недостающую информацию';
 		include MAIN_FILE . '/includes/error.inc.php';
@@ -195,18 +214,15 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	try
 	{
-		$sql = 'UPDATE task SET 
-				tasktitle = :tasktitle,	
+		$sql = 'UPDATE blogs SET 
+				title = :blogtitle,	
 				description = :description,
-				idtasktype = :idtasktype,
-				idrang = :idrang
-				WHERE id = :idtask';
+				upddate = SYSDATE(),
+				WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idtask', $_POST['id']);//отправка значения
-		$s -> bindValue(':tasktitle', $_POST['tasktitle']);//отправка значения
+		$s -> bindValue(':idblog', $_POST['id']);//отправка значения
+		$s -> bindValue(':blogtitle', $_POST['tasktitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
-		$s -> bindValue(':idtasktype', $_POST['idtasktype']);//отправка значения
-		$s -> bindValue(':idrang', $_POST['idrang']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
