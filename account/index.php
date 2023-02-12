@@ -193,7 +193,8 @@ if (isset ($_GET['id']))
 					,b.idauthor
 					,b.title
 				FROM blogs b
-				INNER JOIN author a ON a.id = b.idauthor';
+				INNER JOIN author a ON a.id = b.idauthor 
+				WHERE a.id = '.$idAuthor;
 		$result = $pdo->query($sql);
 	}
 

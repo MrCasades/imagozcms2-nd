@@ -34,9 +34,9 @@ if (isset ($_GET['id']))
 					b.id as blogid
 					,b.title
 					,b.description
+					,b.indexing
 				FROM blogs b
 				INNER JOIN author a ON b.idauthor = a.id 
-
 				WHERE a.id = :blogid';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':blogid', $idBlog);//отправка значения
@@ -56,6 +56,7 @@ if (isset ($_GET['id']))
 	$blogTitle = $row['title'];
 	$blogDescr = $row['description'];
 	$imgHead = $row['imghead'];
+	$indexing = $row['indexing'];
 
 	/*Определение количества статей*/
 	try
@@ -78,10 +79,10 @@ if (isset ($_GET['id']))
 
 	$title = 'Каталог статей | imagoz.ru';//Данные тега <title>
 	$headMain = 'Все статьи';
-	$robots = 'noindex, follow';
+	$robots = $indexing;
 	$descr = 'В данном разделе размещаются список всех статей портала';
-	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallposts/">Все статьи</a> ';//Для хлебных крошек
+	//$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+	//$breadPart2 = '<a href="//'.MAIN_URL.'/blog/">Все статьи</a> ';//Для хлебных крошек
 
 	include 'blog.html.php';
 	exit();
