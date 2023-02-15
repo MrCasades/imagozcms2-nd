@@ -118,6 +118,8 @@
                 </form>
         </div>  -->          
 		<div class="header-line"></div>
+		<?php else:?>
+			<h1><?php echo $blogTitle;?></h1>
 		<?php endif;?>
 		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>   
 	</header>
