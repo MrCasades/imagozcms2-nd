@@ -80,9 +80,11 @@
     <header>
 		<div class = "header-logo-pl">
 			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo2.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>
+			<?php if (empty($itIsBlog)) :?>
 			<?php 
 				/*Загрузка главного меню*/
 				include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
+			
 			<a class="search-btn" href="<?php echo '//'.MAIN_URL;?>/searchpost/"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></a>
 			<div class="header-social-net-pl">
 				<a href = "https://vk.com/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/vк1.png';?>" alt="Наша группа VK" title="Наша группа VK"/></a>
@@ -114,9 +116,10 @@
                         <a href="//admin/recoverpassword/?send">Забыли пароль?</a>
                     </div>  
                 </form>
-        </div>  -->
-        <script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>       
+        </div>  -->          
 		<div class="header-line"></div>
+		<?php endif;?>
+		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>   
 	</header>
     <!-- <div class="subheader"></div> -->
 

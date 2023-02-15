@@ -11,11 +11,13 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Определение нахождения пользователя в системе*/
 loggedIn();
 
+$itIsBlog = true;
+
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
 
-	$idBlog = $_GET['id'];
+	(int) $idBlog = $_GET['id'];
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -34,10 +36,13 @@ if (isset ($_GET['id']))
 					b.id as blogid
 					,b.title
 					,b.description
+					,b.imghead
 					,b.indexing
+					,b.idauthor
+					,a.authorname
 				FROM blogs b
 				INNER JOIN author a ON b.idauthor = a.id 
-				WHERE a.id = :blogid';
+				WHERE b.id = :blogid';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':blogid', $idBlog);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -57,30 +62,31 @@ if (isset ($_GET['id']))
 	$blogDescr = $row['description'];
 	$imgHead = $row['imghead'];
 	$indexing = $row['indexing'];
+	$nameAuthor = $row['authorname'];
 
 	/*Определение количества статей*/
-	try
-	{
-		$sql = "SELECT count(id) AS all_articles FROM posts WHERE premoderation = 'YES' AND zenpost = 'NO'";
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// try
+	// {
+	// 	$sql = "SELECT count(id) AS all_articles FROM posts WHERE premoderation = 'YES' AND zenpost = 'NO'";
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка подсчёта статей';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка подсчёта статей';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 		
-	$row = $s -> fetch();
+	// $row = $s -> fetch();
 		
-	$countPosts = $row["all_articles"];
-	$pagesCount = ceil($countPosts / $onPage);
+	// $countPosts = $row["all_articles"];
+	// $pagesCount = ceil($countPosts / $onPage);
 
-	$title = 'Каталог статей | imagoz.ru';//Данные тега <title>
+	$title = $blogTitle.' | imagoz.ru';//Данные тега <title>
 	$headMain = 'Все статьи';
 	$robots = $indexing;
-	$descr = 'В данном разделе размещаются список всех статей портала';
+	$descr = 'Блог пользователя '.$nameAuthor;
 	//$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	//$breadPart2 = '<a href="//'.MAIN_URL.'/blog/">Все статьи</a> ';//Для хлебных крошек
 
