@@ -96,7 +96,7 @@ markdown2html_pub($newsset['description']).'
 
 <![CDATA['.
 
-markdown2html_pub($newsMain_3['description']).'<br><br>Ставьте лайки, комментируйте, подписывайтесь на канал!
+markdown2html_pub($newsMain_3['description']).'
 
 ]]>
 
@@ -106,7 +106,7 @@ markdown2html_pub($newsMain_3['description']).'<br><br>Ставьте лайки
 
         <![CDATA[
 
-        '.delDetails(isertTagFigure($articleNews)).$video.'
+        '.delDetails(isertTagFigure($articleNews)).$video.'<br><br>Ставьте лайки, комментируйте, подписывайтесь на канал!
 
         ]]>
 
@@ -142,7 +142,7 @@ markdown2html_pub($newsMain_3['description']).'<br><br>Ставьте лайки
 
 <![CDATA['.
 
-markdown2html_pub ($post['description']).'<br><br>Ставьте лайки, комментируйте, подписывайтесь на канал!
+markdown2html_pub ($post['description']).'
 
 ]]>
 
@@ -152,7 +152,7 @@ markdown2html_pub ($post['description']).'<br><br>Ставьте лайки, к�
 
         <![CDATA[
 
-        '.delDetails(isertTagFigure($articlePost)).$video.'
+        '.delDetails(isertTagFigure($articlePost)).$video.'<br><br>Ставьте лайки, комментируйте, подписывайтесь на канал!
 
         ]]>
 
