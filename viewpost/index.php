@@ -11,10 +11,8 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+/*Определение нахождения пользователя в системе*/
+loggedIn();
 
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
@@ -43,13 +41,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода содержимого статьи ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода содержимого статьи';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -115,13 +108,8 @@ if (isset ($_GET['id']))
 		
 		catch (PDOException $e)
 		{
-			$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-			$headMain = 'Ошибка данных!';
-			$robots = 'noindex, nofollow';
-			$descr = '';
-			$error = 'Ошибка выбора избранного ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-			include 'error.html.php';
-			exit();
+			$error = 'Ошибка выбора избранного';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
@@ -167,13 +155,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка счётчика ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка счётчика';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Вывод тематик(тегов)*/
@@ -190,13 +173,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода списка тегов ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода списка тегов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Вывод результата в шаблон*/
@@ -233,13 +211,8 @@ if (isset ($_GET['id']))
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора данных из votedauthor ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора данных из votedauthor';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
@@ -315,33 +288,30 @@ if (isset ($_GET['id']))
 	if (isset($_SESSION['loggIn']) && ((userRole('Администратор')) || (userRole('Автор')) || (userRole('Рекламодатель'))))
 	{
 		/*Команда SELECT выбор цены промоушена*/
-	try
-	{
-		$sql = 'SELECT promotionprice FROM promotionprice WHERE id = 2';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+		try
+		{
+			$sql = 'SELECT promotionprice FROM promotionprice WHERE id = 2';
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
 
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'ошибка выбора цены рекомендации: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		catch (PDOException $e)
+		{
+			$error = 'Ошибка выбора цены рекомендации';
+			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
 		$row = $s -> fetch();
 
 		$recommendationPrice = $row['promotionprice'];
-	
+		
 		$recommendation = '<form action = "" method = "post" id = "ajax_form_recomm">
-							<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
-							<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
-							<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
-							<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-bell" aria-hidden="true"></i> Рекомендовать статью</button>
-						</form>
-						<strong><p id = "result_form_recomm"></p></strong>';
+								<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
+								<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
+								<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
+								<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-bell" aria-hidden="true"></i> Рекомендовать статью</button>
+							</form>
+							<strong><p id = "result_form_recomm"></p></strong>';
 	}
 	
 	elseif (isset($_SESSION['loggIn']) && ((!userRole('Администратор')) || (!userRole('Автор')) || (!userRole('Рекламодатель'))))
@@ -367,13 +337,8 @@ if (isset ($_GET['id']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода заголовка похожей статьи ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка вывода заголовка похожей статьи';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
@@ -460,14 +425,9 @@ if (isset ($_GET['delete']))
 	catch (PDOException $e)
 	{
 		$pdo->rollBack();//отмена транзакции
-		
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления информации '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+
+		$error = 'Ошибка удаления информации';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	/*Удаление ответов*/
@@ -481,13 +441,8 @@ if (isset ($_GET['delete']))
 	
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка удаления ответов '. ' Error: '. $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка удаления ответов';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	header ('Location: ../viewpost/?id='.$_POST['idarticle']);//перенаправление обратно в контроллер index.php
