@@ -9,6 +9,9 @@ $headMain = 'Сотрудничество';
 $robots = 'all';
 $descr = 'Информация для желающих стать автором на портале imagoz.ru';
 
+$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+$breadPart2 = '<a href="//'.MAIN_URL.'/cooperation">Сотрудничество</a> ';//Для хлебных крошек
+
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 	
