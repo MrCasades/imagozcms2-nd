@@ -78,12 +78,13 @@
 <html>
 <body>
     <header>
+		<?php if (empty($itIsBlog)) :?>
 		<div class = "header-logo-pl">
-			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo2.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>
-			<?php if (empty($itIsBlog)) :?>
+			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo2.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>			
 			<?php 
 				/*Загрузка главного меню*/
 				include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
+			
 			
 			<a class="search-btn" href="<?php echo '//'.MAIN_URL;?>/searchpost/"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></a>
 			<div class="header-social-net-pl">
@@ -91,6 +92,7 @@
 				<a href = "https://zen.yandex.ru/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/zen2.png';?>" alt="Наш Дзен-канал" title="Наш Дзен-канал"/></a>
 				<a href = "https://pulse.mail.ru/imagoz-igry-i-tehnologii/" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/mail3.png';?>" alt="Мы на Пульсе!" title="Мы на Пульсе!"/></a>
 			</div>
+			
 			<div class="login-logout-btn-pl">
 				<?php if (!isset($_SESSION['loggIn'])):?>
 					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-user" aria-hidden="true"></i> <span class="hide-for-adpt-2">Вход</span></a> 
@@ -101,6 +103,13 @@
 				<?php endif;?>
 			</div>
 		</div>
+
+		<?php else:?>
+			<div class="blog-header-pl" style="background-image: url(../blog/headersimages/<?php echo $imgHead; ?>)">
+				<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo2.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>	
+				<h1><?php echo $blogTitle;?></h1>
+			</div>
+		<?php endif;?>
 		<!-- <div class="authorization-form">
                 <div class=close-btn>x</div>
                 <form action = " " method = "post">   
@@ -118,9 +127,7 @@
                 </form>
         </div>  -->          
 		<div class="header-line"></div>
-		<?php else:?>
-			<h1><?php echo $blogTitle;?></h1>
-		<?php endif;?>
+		
 		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>   
 	</header>
     <!-- <div class="subheader"></div> -->

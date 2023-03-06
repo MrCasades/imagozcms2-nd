@@ -27,9 +27,9 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Создать блог')//
 	$action = 'addform';
 	$blogtitle = '';
 	$description = '';
-	$idtasktype = '';
-	$idrang = 1;
-	$id = '';
+	// $idtasktype = '';
+	// $idrang = 1;
+	// $id = '';
 	$button = 'Создать блог';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
@@ -40,7 +40,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Создать блог')//
 }
 
 /*Обновление информации о статье*/
-if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
+if (isset ($_POST['action']) && $_POST['action'] == 'Настройка')
 {
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -48,86 +48,45 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, description, tasktitle, idcreator, idtasktype, idrang FROM task WHERE id = :idtask';
+		$sql = 'SELECT 
+					b.id as blogid
+					,b.title
+					,b.description
+					,b.imghead
+					,b.indexing
+					,b.idauthor
+					,a.authorname
+				FROM blogs b
+				INNER JOIN author a ON b.idauthor = a.id 
+				WHERE b.id = :blogid';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idtask', $_POST['id']);//отправка значения
+		$s -> bindValue(':blogid', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка выбора задания';
+		$error = 'Ошибка вывода информации о блоге';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
 	
-	$title = 'Обновление задания';//Данные тега <title>
-	$headMain = 'Обновление задания';
+	$title = 'Обновление блога';//Данные тега <title>
+	$headMain = 'Обновление блога';
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'editform';
-	$tasktitle = $row['tasktitle'];
-	$tasktitle = $row['tasktitle'];
+	$blogtitle = $row['title'];
 	$description = $row['description'];
-	$idtasktype = $row['idtasktype'];
-	$idrang = $row['idrang'];
-	$id = $row['id'];
-	$button = 'Обновить информацию о задании';
+	// $idtasktype = $row['idtasktype'];
+	// $idrang = $row['idrang'];
+	$id = $row['blogid'];
+	$button = 'Обновить информацию';
 	$errorForm = '';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
-	/*Выбор автора статьи*/
-	try
-	{
-		$result = $pdo -> query ('SELECT authorname FROM newsblock INNER JOIN author ON idauthor = author.id WHERE newsblock.id = '.$id);
-	}
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода author';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-	
-	foreach ($result as $row)
-	{
-		$authors_1[] = array('authorname' => $row['authorname']);
-	}
-	
-	$authorPost = $row['authorname'];//возвращает имя автора
-	
-	/*Список рубрик*/
-	try
-	{
-		$result = $pdo -> query ('SELECT id, tasktypename FROM tasktype');
-	}
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода tasktype';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-	
-	foreach ($result as $row)
-	{
-		$tasktypes_1[] = array('idtasktype' => $row['id'], 'tasktypename' => $row['tasktypename']);
-	}
-	
-	/*Список рангов*/
-	try
-	{
-		$result = $pdo -> query ('SELECT id, rangname FROM rang');
-	}
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода rang';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-	
-	foreach ($result as $row)
-	{
-		$rangs_1[] = array('idrang' => $row['id'], 'rangname' => $row['rangname']);
-	}
-	
-	include 'addtask.html.php';
+	include 'addupdblog.html.php';
 	exit();
 }
 
@@ -163,11 +122,13 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	{
 		$sql = 'INSERT INTO blogs SET 
 			title = :blogtitle,
+			imghead = :imghead,
 			description = :description,		
 			date = SYSDATE(),
 			idauthor = :idauthor';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':blogtitle', $_POST['blogtitle']);//отправка значения
+		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -192,6 +153,12 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
+	/*Загрузка функций для формы входа*/
+	require_once MAIN_FILE . '/includes/access.inc.php';
+
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
+
 	if ($_POST['description'] == '' || $_POST['blogtitle'] == '')
 	{
 		$error = 'Введите недостающую информацию';
@@ -216,22 +183,29 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	{
 		$sql = 'UPDATE blogs SET 
 				title = :blogtitle,	
+				imghead = :imghead,
 				description = :description,
-				upddate = SYSDATE(),
+				upddate = SYSDATE()
 				WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idblog', $_POST['id']);//отправка значения
-		$s -> bindValue(':blogtitle', $_POST['tasktitle']);//отправка значения
+		$s -> bindValue(':imghead', $fileName);//отправка значения 
+		$s -> bindValue(':blogtitle', $_POST['blogtitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка обновления информации task';
+		$error = 'Ошибка обновления информации blogs';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
+	$title = 'Блог обновлён';//Данные тега <title>
+	$headMain = 'Блог обновлён';
+	$robots = 'noindex, nofollow';
+	$descr = '';
+	
+	include 'blogsucc.html.php';
 	exit();
 }
 

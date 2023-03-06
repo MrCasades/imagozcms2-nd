@@ -120,7 +120,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
 	$descr = '';
 	$action = 'editform';
 	$tasktitle = $row['tasktitle'];
-	$tasktitle = $row['tasktitle'];
 	$description = $row['description'];
 	$idtasktype = $row['idtasktype'];
 	$idrang = $row['idrang'];

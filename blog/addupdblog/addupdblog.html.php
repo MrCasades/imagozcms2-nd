@@ -16,12 +16,18 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content">
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
-	<form action = "?<?php htmlecho($action); ?> " method = "post">
+	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
 	<div>
 	 <label for = "blogtitle">Введите заголовок</label>
 	 <br><input type = "blogtitle" name = "blogtitle" id = "blogtitle" value = "<?php htmlecho($blogtitle);?>">
 	</div>
-	<br>
+	<hr/>
+	<div>
+	    <h3>Выберете файл изображения для шапки</h3>
+		<input type = "file" name = "upload" id = "upload">
+		<input type = "hidden" name = "action" value = "upload">
+	</div>
+	<hr/>
 	<div>
 		<label for = "description">Добавьте описание своего блога</label><br>
 		<textarea class = "mark-textarea" id = "description" name = "description" rows="10"><?php htmlecho($description);?></textarea>	

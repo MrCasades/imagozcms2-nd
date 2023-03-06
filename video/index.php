@@ -215,15 +215,7 @@ if (isset ($_GET['id']))
 	/*Возвращение id автора*/
 		
 	/*Подключение к базе данных*/
-	if (isset($_SESSION['loggIn']))
-	{
-		$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));;//id автора
-	}
-		
-	else
-	{
-		$selectedAuthor = 0;//id автора
-	}
+	$selectedAuthor = (isset($_SESSION['loggIn'])) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 	
 	$votedPost = (int)$idVideo;
 	
@@ -243,7 +235,6 @@ if (isset ($_GET['id']))
 	$row = $s -> fetch();
 
 	$votedAuthor = empty($row['idauthor']) ? '' : (int)$row['idauthor'];
-
 	$votedPost = empty($row['idvideo']) ? '' : (int)$row['idvideo'];
 				
 	/*Условия вывода панели голосования*/

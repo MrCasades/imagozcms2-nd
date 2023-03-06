@@ -68,9 +68,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<script src="//yastatic.net/share2/share.js"></script>
 						<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>
 					</div>
-					<div class="fav-and-recomm">
+					<!-- <div class="fav-and-recomm">
 						<div><?php echo $addFavourites;?></div>
-					</div>
+					</div> -->
 					<!-- <div class = "zen-ch">
 						<a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
 						<img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"><span class="zen-ch-title">Подписывайтесь на наш Дзен-канал!</span></a>

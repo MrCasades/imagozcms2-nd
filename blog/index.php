@@ -29,7 +29,7 @@ if (isset ($_GET['id']))
 	$onPage = 10;// количество статей на страницу
 	$shift = ($page - 1) * $onPage;// (номер страницы - 1) * статей на страницу
 
-	/*Вывод стаей*/
+	/*Вывод блога*/
 	/*Команда SELECT*/
 	try
 	{
@@ -83,6 +83,23 @@ if (isset ($_GET['id']))
 		
 	// $countPosts = $row["all_articles"];
 	// $pagesCount = ceil($countPosts / $onPage);
+
+	$selectedAuthor = (isset($_SESSION['loggIn'])) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : '';//id автора
+
+	if ($selectedAuthor == $authorId) 
+	{
+		$editBlog = "<form action = '../blog/addupdblog/' method = 'post'>
+						<input type = 'hidden' name = 'id' value = '".$idBlog."'>
+						<input type = 'submit' name = 'action' value = 'Настройка' class='btn_1'>
+					  </form>";
+	}
+
+	else
+	{
+		$editBlog = '';
+	}
+
+	
 
 	$title = $blogTitle.' | imagoz.ru';//Данные тега <title>
 	$headMain = 'Все статьи';

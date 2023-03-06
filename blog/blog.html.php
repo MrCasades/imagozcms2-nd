@@ -12,14 +12,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
-					<a href = "../viewallnews/"><h2>Блог</h2></a>
+					<h2><?php echo $blogTitle;?></h2>
 					<div class = "main-headers-line"></div>
 					<div class = "sub-header"><?php htmlecho ($subHeaderNews); ?></div>
 				</div>
 			</div>
-			<div class = "article-head m-content" style="background-image: url(../blog/headersimages/<?php echo $imgHead; ?>)">
+			<p><?php echo $editBlog; ?></p>
+			<!-- <div class = "article-head m-content" style="background-image: url(../blog/headersimages/<?php echo $imgHead; ?>)">
 
-			</div>
+			</div> -->
 			
 			</div>
 			<h1 class="m-content"><?php htmlecho ($headMain); ?></h1>

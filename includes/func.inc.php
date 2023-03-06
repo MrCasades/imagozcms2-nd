@@ -106,7 +106,7 @@ function uploadImg ($fileNameScript, $filePathScript)
 	$fileName = $fileNameScript . $ext;//присвоение имени файла
 	$filePath = MAIN_FILE . $filePathScript . $fileName;//путь загрузки
 			
-	if (!is_uploaded_file($_FILES['upload']['tmp_name']) or !copy($_FILES['upload']['tmp_name'], $filePath))
+	if (!is_uploaded_file($_FILES['upload']['tmp_name']) || !copy($_FILES['upload']['tmp_name'], $filePath))
 	{
 		$fileName = '';
 	}

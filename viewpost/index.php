@@ -190,15 +190,7 @@ if (isset ($_GET['id']))
 	/*Возвращение id автора*/
 		
 	/*Подключение к базе данных*/
-	if (isset($_SESSION['loggIn']))
-	{
-		$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));;//id автора
-	}
-		
-	else
-	{
-		$selectedAuthor = 0;//id автора
-	}
+	$selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 	
 	$votedPost = (int)$idPost;
 	
@@ -217,25 +209,8 @@ if (isset ($_GET['id']))
 	
 	$row = $s -> fetch();
 		
-	if(empty($row['idauthor']))
-	{		
-		$votedAuthor = '';
-	}
-	
-	else
-	{
-		$votedAuthor = (int)$row['idauthor'];//id автора, который проголосовал
-	}	
-	
-	if (empty($row['idpost']))//если переменная отсутствует
-	{
-		$votedPost = '';
-	}
-	
-	else
-	{		
-		$votedPost = (int)$row['idpost'];//id статьи, за которую проголосовали
-	}
+	$votedAuthor = empty ($row['idauthor']) ? '' : (int)$row['idauthor'];
+	$votedPost = empty($row['idpost']) ? '' : (int)$row['idpost'];
 	
 	/*Условия вывода панели голосования*/
 	if (($votedAuthor == $selectedAuthor) && ($votedPost == $idPost) || (!isset($_SESSION['loggIn'])))
