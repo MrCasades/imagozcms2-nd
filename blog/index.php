@@ -38,6 +38,7 @@ if (isset ($_GET['id']))
 					,b.title
 					,b.description
 					,b.imghead
+					,b.avatar
 					,b.indexing
 					,b.idauthor
 					,a.authorname
@@ -62,6 +63,7 @@ if (isset ($_GET['id']))
 	$blogTitle = $row['title'];
 	$blogDescr = $row['description'];
 	$imgHead = $row['imghead'];
+	$avatar = $row['avatar'];
 	$indexing = $row['indexing'];
 	$nameAuthor = $row['authorname'];
 
@@ -90,7 +92,7 @@ if (isset ($_GET['id']))
 	{
 		$editBlog = "<form action = '../blog/addupdblog/' method = 'post'>
 						<input type = 'hidden' name = 'id' value = '".$idBlog."'>
-						<input type = 'submit' name = 'action' value = 'Настройка' class='btn_1'>
+						<button name = 'action' class='btn_1 addit-btn' value='Настройка'>Настройка</button>
 					  </form>";
 	}
 

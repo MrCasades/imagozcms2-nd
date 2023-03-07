@@ -2029,3 +2029,42 @@ main .acc-info-pl{
     height: 15rem;
     width: 100%;
 }
+
+.blog-m{
+    display: flex;
+    margin-top: 1rem;
+}
+
+.blog-ava-pl{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 50%;
+    margin-left: 1.5%;
+}
+
+.blog-ava-pl img{
+    height: 40%;
+    width: 40%;
+    border-radius: 10px;
+    
+}
+
+.blog-ava-pl .fa-user-circle{
+    font-size: 15rem;
+    cursor: pointer;
+    color: #0F4780;
+}
+
+.blog-ava-pl button{
+    margin-top: 0.5rem;
+    width: 40%;
+}
+
+.blog-info-pl{
+    height: 50%;
+    width: 80%;
+    margin-left: -27%;
+    margin-top: -1.5%;
+    font-size: 1.5rem;
+}

@@ -14,16 +14,35 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<div class = "main-headers-content">
 					<h2><?php echo $blogTitle;?></h2>
 					<div class = "main-headers-line"></div>
-					<div class = "sub-header"><?php htmlecho ($subHeaderNews); ?></div>
 				</div>
 			</div>
-			<p><?php echo $editBlog; ?></p>
+
+			<div class="blog-m m-content">	
+				<div class="blog-ava-pl">				
+					<?php if ($avatar !== ''): ?>
+						<img src="../avatars/<?php echo $avatar;?>" alt="<?php echo $authorName;?>">
+					<?php else: ?>
+						<i class="fa fa-user-circle" aria-hidden="true" title="Аватар блога"></i>
+					<?php endif; ?>
+					<?php echo $editBlog; ?>
+				</div> 
+				<div class="blog-info-pl">
+		
+					<h3 class="acc-header">Инфо</h3>
+					<?php if ($blogDescr != ''): ?>
+						<div>
+							<?php echomarkdown ($blogDescr);?>
+						</div>
+					<?php endif;?>							
+				</div>   
+			</div> 
+			
 			<!-- <div class = "article-head m-content" style="background-image: url(../blog/headersimages/<?php echo $imgHead; ?>)">
 
 			</div> -->
 			
-			</div>
-			<h1 class="m-content"><?php htmlecho ($headMain); ?></h1>
+		</div>
+		<h1 class="m-content"><?php htmlecho ($headMain); ?></h1>
 			
 
 				<!-- <div class="m-content">
