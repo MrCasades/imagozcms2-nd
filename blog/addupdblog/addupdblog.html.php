@@ -29,6 +29,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 	<hr/>
 	<div>
+	    <h3>Выберете файл изображения для аватара</h3>
+		<input type = "file" name = "uploadavatar" id = "uploadavatar">
+		<input type = "hidden" name = "action" value = "uploadavatar">
+	</div>
+	<hr/>
+	<div>
 		<label for = "description">Добавьте описание своего блога</label><br>
 		<textarea class = "mark-textarea" id = "description" name = "description" rows="10"><?php htmlecho($description);?></textarea>	
 	 </div>

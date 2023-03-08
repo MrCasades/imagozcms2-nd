@@ -11,10 +11,8 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+/*Определение нахождения пользователя в системе*/
+loggedIn();
 
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))

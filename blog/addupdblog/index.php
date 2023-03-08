@@ -113,7 +113,13 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	$fileNameScript = 'hd-'. time().rand(100, 999);//имя файла новости/статьи
 	$filePathScript = '/blog/headersimages/';//папка с изображениями для новости/статьи
 
-	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript);
+	$fileNameHead = uploadImgHeadFull ($fileNameScript, $filePathScript);
+
+	
+	$fileNameScriptAva = 'ava-'. time().rand(100, 999);//имя файла новости/статьи
+	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
+
+	$fileNameAva = uploadImgHeadFull ($fileNameScriptAva, $filePathScriptAva, 'add', '', '', 'uploadavatar');
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -123,12 +129,14 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$sql = 'INSERT INTO blogs SET 
 			title = :blogtitle,
 			imghead = :imghead,
+			avatar = :avatar,
 			description = :description,		
 			date = SYSDATE(),
 			idauthor = :idauthor';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':blogtitle', $_POST['blogtitle']);//отправка значения
-		$s -> bindValue(':imghead', $fileName);//отправка значения
+		$s -> bindValue(':imghead', $fileNameHead);//отправка значения
+		$s -> bindValue(':avatar', $fileNameAva);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -170,6 +178,11 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 
 	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'blogs', $_POST['id']);
 
+	$fileNameScriptAva = 'ava-'. time().rand(100, 999);//имя файла новости/статьи
+	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadImgHeadFull ($fileNameScriptAva, $filePathScriptAva, 'upd', 'blogs', 'uploadavatar');
+
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
@@ -184,12 +197,14 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		$sql = 'UPDATE blogs SET 
 				title = :blogtitle,	
 				imghead = :imghead,
+				avatar = :avatar,
 				description = :description,
 				upddate = SYSDATE()
 				WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idblog', $_POST['id']);//отправка значения
-		$s -> bindValue(':imghead', $fileName);//отправка значения 
+		$s -> bindValue(':imghead', $fileNameHead);//отправка значения
+		$s -> bindValue(':avatar', $fileNameAva);//отправка значения
 		$s -> bindValue(':blogtitle', $_POST['blogtitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL

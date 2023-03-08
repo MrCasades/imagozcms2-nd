@@ -94,11 +94,14 @@ if (isset ($_GET['id']))
 						<input type = 'hidden' name = 'id' value = '".$idBlog."'>
 						<button name = 'action' class='btn_1 addit-btn' value='Настройка'>Настройка</button>
 					  </form>";
+		
+		$addPublication = '<a href="//'.MAIN_URL.'/admin/addupdblogpublication/?add"><button class="btn_1 addit-btn">Написать статью</button></a>';
 	}
 
 	else
 	{
 		$editBlog = '';
+		$addPublication = '';
 	}
 
 	
