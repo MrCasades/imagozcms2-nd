@@ -77,23 +77,23 @@ function markdown2html ($text)
 	return Markdown($text);
 }
 
-function uploadImg ($fileNameScript, $filePathScript)
+function uploadFile ($fileNameScript, $filePathScript, $typeInput)
 {
 	/*Загрузка файла (тест)*/
 	
 	/*Извлечение расширения файла*/
 	
-	if (preg_match ('/^image\/p?jpeg$/i', $_FILES['upload']['type']))
+	if (preg_match ('/^image\/p?jpeg$/i', $_FILES[$typeInput]['type']))
 	{
 		$ext = '.jpg';
 	}
 		
-	elseif (preg_match ('/^image\/p?gif$/i', $_FILES['upload']['type']))
+	elseif (preg_match ('/^image\/p?gif$/i', $_FILES[$typeInput]['type']))
 	{
 		$ext = '.gif';
 	}
 		
-	elseif (preg_match ('/^image\/p?png$/i', $_FILES['upload']['type']))
+	elseif (preg_match ('/^image\/p?png$/i', $_FILES[$typeInput]['type']))
 	{
 		$ext = '.png';
 	}
@@ -106,7 +106,7 @@ function uploadImg ($fileNameScript, $filePathScript)
 	$fileName = $fileNameScript . $ext;//присвоение имени файла
 	$filePath = MAIN_FILE . $filePathScript . $fileName;//путь загрузки
 			
-	if (!is_uploaded_file($_FILES['upload']['tmp_name']) || !copy($_FILES['upload']['tmp_name'], $filePath))
+	if (!is_uploaded_file($_FILES[$typeInput]['tmp_name']) || !copy($_FILES[$typeInput]['tmp_name'], $filePath))
 	{
 		$fileName = '';
 	}
@@ -115,7 +115,7 @@ function uploadImg ($fileNameScript, $filePathScript)
 }
 
 /*Загрузка/обновление изображения шапки*/
-function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add', $typeArticle = '', $idArticle = '') //Если тип upd, то функция должна принимать id статьи и typeArticle;
+function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add', $typeArticle = '', $idArticle = '', $typeInput = 'upload') //Если тип upd, то функция должна принимать id статьи и typeArticle; В $typeInput - атрибут name input file (по умолчанию - upload)
 {
 	if ($typeAction == 'upd')
 	{
@@ -141,7 +141,7 @@ function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add'
 
 		$row = $s -> fetch();
 
-		if (!is_uploaded_file($_FILES['upload']['tmp_name']))//если файл не загружен, оставить старое имя
+		if (!is_uploaded_file($_FILES[$typeInput]['tmp_name']))//если файл не загружен, оставить старое имя
 		{
 			$fileName = $row['imghead'];
 		}
@@ -153,13 +153,13 @@ function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add'
 			$delFile = MAIN_FILE . $filePathScript.$fileName;//путь к файлу для удаления
 			unlink($delFile);//удаление файла
 			
-			$fileName = uploadImg($fileNameScript, $filePathScript);
+			$fileName = uploadFile($fileNameScript, $filePathScript, $typeInput);
 		}
 	}
 
 	else
 	{
-		$fileName = uploadImg($fileNameScript, $filePathScript);
+		$fileName = uploadFile($fileNameScript, $filePathScript, $typeInput);
 	}
 	
 	return $fileName;

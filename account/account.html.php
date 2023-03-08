@@ -87,11 +87,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php endif;?>
 				</div>
 
-				<!-- <div id="acc_blog" class="tabs-item">
+				<div id="acc_blog" class="tabs-item">
 					<?php 
-						//include MAIN_FILE . '/account/blogs.inc.html.php';
+						 include MAIN_FILE . '/account/blogs.inc.html.php';
 					?>
-				</div> -->
+				</div>
 				
 				<div id="acc_fav" class="tabs-item">
 					<?php if (!empty ($favourites)): ?>
