@@ -13,23 +13,23 @@ $pubFolder = 'addupdblogpublication'; //Папка скрипта
 /*Определение нахождения пользователя в системе*/
 loggedIn();
 
-else
+if(!loggedIn())
 {
 	include '../login.html.php';
 	exit();
 }
 
 /*Загрузка сообщения об ошибке входа*/
-if ((!userRole('Администратор')) && (!userRole('Автор')) && (!userRole('Рекламодатель')))
-{
-	$title = 'Ошибка доступа';//Данные тега <title>
-	$headMain = 'Ошибка доступа';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'В данный раздел доступ запрещён!';
-	include '../accessfail.html.php';
-	exit();
-}
+// if ((!userRole('Администратор')) && (!userRole('Автор')) && (!userRole('Рекламодатель')))
+// {
+// 	$title = 'Ошибка доступа';//Данные тега <title>
+// 	$headMain = 'Ошибка доступа';
+// 	$robots = 'noindex, nofollow';
+// 	$descr = '';
+// 	$error = 'В данный раздел доступ запрещён!';
+// 	include '../accessfail.html.php';
+// 	exit();
+// }
 
 /*Вывод ссылок на разделы администрирования списков*/
 if (userRole('Администратор'))
@@ -49,102 +49,126 @@ else
 /*Добавление информации о статье*/
 if (isset($_GET['add']))//Если есть переменная add выводится форма
 {
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
-	
-	/*Команда SELECT выбор цены промоушена*/
-	try
-	{
-		$sql = 'SELECT promotionprice FROM promotionprice WHERE id = 1';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	$title = 'Добавить новую статью';//Данные тега <title>
+	$headMain = 'Добавить новую статью';
+	$robots = 'noindex, nofollow';
+	$descr = '';
+	$action = 'addform';
+	$articletitle = '';
+	$translittitle = '';
+	$description = '';
+	$text = '';
+	$imgalt = '';
+	$idauthor = '';
+	$videoyoutube = '';
+	$idcategory = '';
+	$id = '';
+	$www = '';
+	$button = 'Добавить статью';
+	$errorForm = '';
+	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора цены промоушена';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	addListsInForms();
+		
+	include '../commonfiles/addupdform.html.php';
+	exit();
+	// /*Подключение к базе данных*/
+	// include MAIN_FILE . '/includes/db.inc.php';
 	
-	$row = $s -> fetch();
-	
-	$promotionPrice = $row['promotionprice'];
-	
-	/*Возвращение id автора*/
-	
-	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
-	
-	/*Команда SELECT выбор счёа автора для сравнения*/
-	try
-	{
-		$sql = 'SELECT score, authorpaymentstatus FROM author WHERE id = '.$selectedAuthor;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// /*Команда SELECT выбор цены промоушена*/
+	// try
+	// {
+	// 	$sql = 'SELECT promotionprice FROM promotionprice WHERE id = 1';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора счёта и статуса премодерации';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка выбора цены промоушена';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
-	$row = $s -> fetch();
+	// $row = $s -> fetch();
 	
-	$score = $row['score'];
-	$paymentStatus = $row['authorpaymentstatus'];
+	// $promotionPrice = $row['promotionprice'];
 	
-	if ($promotionPrice > $score)//Если на счету нет достаточной суммы для написания статьи.
-	{
-		$title = 'Ошибка доступа';//Данные тега <title>
-		$headMain = 'Ошибка доступа';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Для написания рекламной статьи на Вашем счету должно быть сумма больше или равная '.$promotionPrice.'. Пополните счёт в своём профиле!';
+	// /*Возвращение id автора*/
+	
+	// $selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
+	
+	// /*Команда SELECT выбор счёа автора для сравнения*/
+	// try
+	// {
+	// 	$sql = 'SELECT score, authorpaymentstatus FROM author WHERE id = '.$selectedAuthor;
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
+
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка выбора счёта и статуса премодерации';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
+	
+	// $row = $s -> fetch();
+	
+	// $score = $row['score'];
+	// $paymentStatus = $row['authorpaymentstatus'];
+	
+	// if ($promotionPrice > $score)//Если на счету нет достаточной суммы для написания статьи.
+	// {
+	// 	$title = 'Ошибка доступа';//Данные тега <title>
+	// 	$headMain = 'Ошибка доступа';
+	// 	$robots = 'noindex, nofollow';
+	// 	$descr = '';
+	// 	$error = 'Для написания рекламной статьи на Вашем счету должно быть сумма больше или равная '.$promotionPrice.'. Пополните счёт в своём профиле!';
 			
-		include '../accessfail.html.php';
-		exit();
-	}
+	// 	include '../accessfail.html.php';
+	// 	exit();
+	// }
 	
-	elseif ($paymentStatus == 'NO')//Если ранее была сформирована заявка на вывод средств.
-	{
-		$title = 'Ошибка доступа';//Данные тега <title>
-		$headMain = 'Ошибка доступа';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Вы ранее сформировали заявку на вывод средств. Пока она не будет подтверждена, Вы не сможете писать рекламные статьи!';
+	// elseif ($paymentStatus == 'NO')//Если ранее была сформирована заявка на вывод средств.
+	// {
+	// 	$title = 'Ошибка доступа';//Данные тега <title>
+	// 	$headMain = 'Ошибка доступа';
+	// 	$robots = 'noindex, nofollow';
+	// 	$descr = '';
+	// 	$error = 'Вы ранее сформировали заявку на вывод средств. Пока она не будет подтверждена, Вы не сможете писать рекламные статьи!';
 		
-		include '../accessfail.html.php';
-		exit();
-	}
+	// 	include '../accessfail.html.php';
+	// 	exit();
+	// }
 	
-	else
-	{
+	// else
+	// {
 	
-		$title = 'Добавить новую статью';//Данные тега <title>
-		$headMain = 'Добавить новую статью';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$action = 'addform';
-		$articletitle = '';
-		$translittitle = '';
-		$description = '';
-		$text = '';
-		$imgalt = '';
-		$idauthor = '';
-		$videoyoutube = '';
-		$idcategory = '';
-		$id = '';
-		$www = '';
-		$button = 'Добавить статью';
-		$errorForm = '';
-		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-		$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+	// 	$title = 'Добавить новую статью';//Данные тега <title>
+	// 	$headMain = 'Добавить новую статью';
+	// 	$robots = 'noindex, nofollow';
+	// 	$descr = '';
+	// 	$action = 'addform';
+	// 	$articletitle = '';
+	// 	$translittitle = '';
+	// 	$description = '';
+	// 	$text = '';
+	// 	$imgalt = '';
+	// 	$idauthor = '';
+	// 	$videoyoutube = '';
+	// 	$idcategory = '';
+	// 	$id = '';
+	// 	$www = '';
+	// 	$button = 'Добавить статью';
+	// 	$errorForm = '';
+	// 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
+	// 	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
 
-		addListsInForms();
+	// 	addListsInForms();
 		
-		include '../commonfiles/addupdform.html.php';
-		exit();
-	}
+	// 	include '../commonfiles/addupdform.html.php';
+	// 	exit();
+	// }
 	
 }
 
