@@ -47,7 +47,7 @@ else
 }
 
 /*Добавление информации о статье*/
-if (isset($_GET['add']))//Если есть переменная add выводится форма
+if (isset ($_POST['action']) && $_POST['action'] == 'Добавить статью')
 {
 	$title = 'Добавить новую статью';//Данные тега <title>
 	$headMain = 'Добавить новую статью';
@@ -63,7 +63,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$videoyoutube = '';
 	$idcategory = '';
 	$id = '';
-	$www = '';
+	$idBlog = $_POST['id'];
 	$button = 'Добавить статью';
 	$errorForm = '';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
@@ -309,8 +309,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	/*Подключение функций*/
 	include_once MAIN_FILE . '/includes/func.inc.php';
 
-	$fileNameScript = 'img-'. time();//имя файла изображения
-	$filePathScript = '/images/';//папка с изображениями для новости/статьи
+	$fileNameScript = 'img-'. time().rand(100, 999);//имя файла изображения
+	$filePathScript = '/blog/pubheaders/';//папка с изображениями для новости/статьи
 	
 	//Загрузка файла изображения
 	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript);
@@ -358,20 +358,17 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	try
 	{
-		$pdo->beginTransaction();//инициация транзакции
-		
-		$sql = 'INSERT INTO promotion SET 
-					promotion = :articletext,
-					promotiontitle = :articletitle,	
+		$sql = 'INSERT INTO publication SET 
+					text = :articletext,
+					title = :articletitle,	
 					description = :description,
-					promotiondate = SYSDATE(),
+					date = SYSDATE(),
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
 					www = :www,
-					pricetext = :pricetext,
 					imghead = :imghead,
 					idauthor = :idauthor,
-					idcategory = :idcategory';
+					idblog = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':articletext', viewVideoInArticle($_POST['articletext']));//отправка значения
 		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
@@ -380,28 +377,18 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':www', $_POST['www']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
-		$s -> bindValue(':pricetext', $_POST['promotionprice']);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
-		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
+		$s -> bindValue(':idblog', $_POST['blogid']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		
-		$idpost_ind = $pdo->lastInsertId();//метод возвращает число, которое MySQL назначил последней автомнкрементной записи (INSERT INTO post - в данном случае)
-		
-		$sql = 'UPDATE author SET score  = score - '.$_POST['promotionprice'].'
-								  WHERE id = '.$selectedAuthor;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		
-		$pdo->commit();//подтверждение транзакции
 	}
 	
 	catch (PDOException $e)
 	{
-		$pdo->rollBack();//отмена транзакции
-
 		$error = 'Ошибка добавления информации promotion';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
+
+	$idpost_ind = $pdo->lastInsertId();//метод возвращает число, которое MySQL назначил последней автомнкрементной записи (INSERT INTO post - в данном случае)
 	
 	if (isset ($_POST['metas']))
 	{
@@ -432,11 +419,11 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 /*Предварительенй просмотр*/
 
-	preview('promotion', $idpost_ind);
+	preview('publication', $idpost_ind);
 	
 	/*Вывод тематик(тегов)*/
 	
-	$metas = previewMetas('promotion', 'idpromotion', $idpost_ind);
+	$metas = previewMetas('publication', 'idpromotion', $idpost_ind);
 	
 	include '../commonfiles/preview.html.php';
 	exit();

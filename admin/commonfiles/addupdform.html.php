@@ -21,6 +21,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "hidden" name = "idtask" value = "<?php htmlecho($idTask); ?>">
 	 <?php elseif ($pubFolder == 'addupdpromotion'):?>
 		<input type = "hidden" name = "promotionprice" value = "<?php htmlecho($promotionPrice); ?>"> 
+	 <?php elseif ($pubFolder == 'addupdblogpublication'):?>
+		<input type = "hidden" name = "blogid" value = "<?php htmlecho($idBlog); ?>"> 
 	 <?php endif;?>
 	 <div>
 		<label for = "author"> Автор:</label>
@@ -37,7 +39,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<h3>Краткое описание</h3>
 		<textarea id = "description" name = "description" rows = "3" cols = "40" placeholder = "Опишите в паре предложений суть материала"><?php htmlecho($description);?></textarea>	
 	</div>
-	<hr/>	
+	<hr/>
+	<?php if ($pubFolder !== 'addupdblogpublication'):?>	
 	 <div>
 		<h3> Рубрика:<span style = "color: red"> *</span></h3>
 		<select name = "category" id = "category">
@@ -54,6 +57,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 <?php echo $addCatigorys;?>	
 	 </div>	
 	 <br>
+	 <?php endif;?>
 	 <h3>Теги публикации:</h3>
 	 <p style="color: red">
 	 	В данной форме можно добавить свои теги публикаций. <strong>ОБЯЗАТЕЛЬНО!</strong> Прежде чем добавлять свои теги, сначала сверьтесь со списком имеющихся нажав ссылку "Вывести теги"

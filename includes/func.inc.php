@@ -759,6 +759,15 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 		$forDelUpd = 'addupdvideo';
 	}
 
+	elseif ($type == 'publication')
+	{
+		$select = 'SELECT publication.id AS articleid, author.id AS idauthor, text AS articledata, title, imghead, imgalt, videoyoutube, date AS articledate, authorname FROM publication 
+			   INNER JOIN author ON idauthor = author.id 
+			   WHERE premoderation = "NO" AND video.id = ';
+
+		$forDelUpd = 'addupdblogpublication';
+	}
+
 	include MAIN_FILE . '/includes/db.inc.php';
  
 	try
