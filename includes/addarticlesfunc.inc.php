@@ -273,3 +273,40 @@ function convertToPostOrNews($inData, $idData)
 		include 'error.inc.php';
 	}
 }
+
+/*Получение атрибутов блога */
+function getBlogAtributs($idBlog)
+{
+	/*Подключение к базе данных*/
+	include 'db.inc.php';
+
+	try
+	{
+		$sql = 'SELECT 
+					b.id as blogid
+					,b.title
+					,b.description
+					,b.imghead
+					,b.avatar
+					,b.indexing
+					,b.idauthor
+					,a.authorname
+				FROM blogs b
+				INNER JOIN author a ON b.idauthor = a.id 
+				WHERE b.id = :blogid';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':blogid', $idBlog);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода информации о блоге';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	$row = $s -> fetch();
+
+	$GLOBALS['imgHead'] = $row['imghead'];//цена за 1000 знаков
+	$GLOBALS['blogTitle'] = $row['title'];
+}

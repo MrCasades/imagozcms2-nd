@@ -19,6 +19,12 @@ if(!loggedIn())
 	exit();
 }
 
+/*Флаг, указывающий, что открыт блог*/
+$itIsBlog = true;
+
+/*Получение атрибутов блога для шапки */
+getBlogAtributs($_POST['id']);
+
 /*Загрузка сообщения об ошибке входа*/
 // if ((!userRole('Администратор')) && (!userRole('Автор')) && (!userRole('Рекламодатель')))
 // {
@@ -423,7 +429,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	/*Вывод тематик(тегов)*/
 	
-	$metas = previewMetas('publication', 'idpromotion', $idpost_ind);
+	//$metas = previewMetas('publication', 'idpromotion', $idpost_ind);
 	
 	include '../commonfiles/preview.html.php';
 	exit();
