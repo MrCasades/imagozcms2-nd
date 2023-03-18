@@ -180,7 +180,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		/*Загрузка компонента магазина*/
 			include_once MAIN_FILE . '/shopcomponent/shopcomponent.inc.php';?>
 
-		<div class = "main-headers">
+		<!-- <div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
 				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Отражение дня</h2></a>
@@ -207,7 +207,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				</a>
 			<?php endforeach; ?>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- <div class="m-content">
 			Место для рекламы
@@ -577,6 +577,17 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				</div> -->
 				<div class="zen-link-m">
 					<a href="https://zen.yandex.ru/imagoz"><img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"></a>
+				</div>
+			</div>
+			<div class="zen-c-m">
+				<div class = "main-headers">
+					<div class = "main-headers-content">
+						<h2 class="no-link-header">Наш YouTube-канал</h2>
+						<div class = "main-headers-line"></div>				
+					</div>
+				</div>
+				<div class="zen-link-m">
+					<a href="https://www.youtube.com/channel/UCYAlQfGJQC4de8gEmZwF9Yg"><img src="<?php echo '//'.MAIN_URL.'/decoration/youtubem.png';?>" alt="Мы на YouTube!" title="Мы на YouTube!"/></a>
 				</div>
 			</div>
 			<div class="vk-m">
