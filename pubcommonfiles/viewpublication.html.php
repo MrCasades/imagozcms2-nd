@@ -12,7 +12,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
-					<a href = "../viewallposts/"><h2>Статьи</h2></a>
+					<?php if ($pubFolder == 'viewnews'):?>
+						<a href = "../viewallnews/"><h2>Новости</h2></a>
+					<?php elseif ($pubFolder == 'viewpost'):?>
+						<a href = "../viewallposts/"><h2>Статьи</h2></a>
+					<?php elseif ($pubFolder == 'viewpromotion'):?>
+						<a href = "../viewallpromotion/"><h2>Промоушен</h2></a>
+					<?php elseif ($pubFolder == 'viewnewsset'): ?>
+						<a href = "../newssets/"><h2>Новостные дайджесты</h2></a>
+					<?php endif;?>
 					<div class = "main-headers-line"></div>
 					<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
 				</div>

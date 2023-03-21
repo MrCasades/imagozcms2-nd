@@ -181,33 +181,6 @@ if (isset ($_GET['id']))
 	{
 		$mainMessagesForm = '';
 	}
-
-	/*Вывод блогов автора */
-	/*Выбор новостей автора*/
-	try
-	{
-		$sql = 'SELECT 
-					b.id as blogid
-					,b.idauthor
-					,b.title
-				FROM blogs b
-				INNER JOIN author a ON a.id = b.idauthor 
-				WHERE a.id = '.$idAuthor;
-		$result = $pdo->query($sql);
-	}
-
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода блогов автора';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$blogs[] =  array ('id' => $row['blogid'], 'title' => $row['title']);
-	}
-
 	
 	/*Вывод новостей и статей автора*/
 	/*Команда SELECT, возвращение роли автора*/
@@ -234,7 +207,7 @@ if (isset ($_GET['id']))
 	/*Если у автора роль автора, администратора и т. д., то выводится список его новостей и статей*/
 
 	if	(($authorRole == 'Автор') || ($authorRole == 'Администратор'))
-	{	
+	{	 
 		/*Выбор новостей автора*/
 		try
 		{

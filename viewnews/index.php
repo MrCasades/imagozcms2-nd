@@ -14,6 +14,8 @@ include_once MAIN_FILE . '/includes/commonvar.inc.php';
 /*Определение нахождения пользователя в системе*/
 loggedIn();
 
+$pubFolder = 'viewnews'; //Папка скрипта
+
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
@@ -289,7 +291,7 @@ if (isset ($_GET['id']))
 
 	showComments('news', 'idnews', $idNews);
 	
-	include 'viewnews.html.php';
+	include '../pubcommonfiles/viewpublication.html.php';
 	exit();		
 }
 	
