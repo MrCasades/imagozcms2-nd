@@ -79,7 +79,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					</div>
 					<div class="fav-and-recomm">
 						<div><?php echo $addFavourites;?></div>
-						<div><?php echo $recommendation;?></div>
+						<div>
+							<?php if ($pubFolder == 'viewpost'):?>
+								<?php echo $recommendation;?>
+							<?php endif;?>
+						</div>
 					</div>
 					<!-- <div class = "zen-ch">
 						<a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
@@ -234,7 +238,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php if ($comment['subcommentcount'] != 0):?>
 					<div class="sub-comment-open" id="hide_open_pl_<?php echo $comment['id']; ?>">
 						<!-- <a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a>  -->
-						<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=promotion&idart=<?php echo $idNews; ?>">Все ответы</a>
+						<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=promotion&idart=<?php echo $idPublication; ?>">Все ответы</a>
 					</div>
 				<?php endif;?>
 				
@@ -252,11 +256,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					// если текущая старница
 					if($i == $page)
 					{
-						echo "<a href='../viewpost/?id=".$idPost."&page=$i'><button class='btn_2'>$i</button></a> ";
+						echo "<a href='../".$pubFolder."/?id=".$idPublication."&page=$i'><button class='btn_2'>$i</button></a> ";
 					} 
 					else 
 					{
-						echo "<a href='../viewpost/?id=".$idPost."&page=$i'><button class='btn_1'>$i</button></a> ";
+						echo "<a href='../".$pubFolder."/?id=".$idPublication."&page=$i'><button class='btn_1'>$i</button></a> ";
 					}
 				}?>
 			</div>
@@ -281,17 +285,17 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			</div>
 
 			<div class = "similar-art">
-				<?php if (empty($similarPosts))
+				<?php if (empty($similarPub))
 				{
 					echo '<p align = "center">Статьи отсутствуют</p>';
 				}
 					
 				else
 						
-				foreach ($similarPosts as $post_1): ?>
+				foreach ($similarPub as $pubs): ?>
 					
-				<a href = "../viewpost/?id=<?php htmlecho ($post_1['id']); ?>" class = "post-place-grid" style="background-image: url(../images/<?php echo $post_1['imghead']; ?>)">
-					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post_1['posttitle'])), 0, 7)))); ?>...</div>
+				<a href = "../<?php echo $pubFolder; ?>/?id=<?php htmlecho ($pubs['id']); ?>" class = "post-place-grid" style="background-image: url(../images/<?php echo $pubs['imghead']; ?>)">
+					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pubs['title'])), 0, 7)))); ?>...</div>
 				</a> 
 				<?php endforeach; ?>
 			</div>

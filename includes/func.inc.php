@@ -852,3 +852,31 @@ function previewMetas($type, $typeId, $idArticle)//$type - newsblock, posts, pro
 
 	return $metas;
 }
+
+/*Вывод аналогичных публикаций*/
+function similarPublication($type, $categoryID) //$type = news, post, promotion ...
+{
+	if($type = 'news')
+		$select = 'SELECT id, newstitle as title, imghead, imgalt FROM newsblock WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
+
+	/*Подключение к базе данных*/
+	include 'db.inc.php';
+
+	try
+	{
+		$sql = $select;
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода заголовка похожей новости';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$GLOBALS['similarPub'][] =  array ('id' => $row['id'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
+	}	
+}

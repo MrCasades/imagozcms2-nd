@@ -19,7 +19,7 @@ $pubFolder = 'viewnews'; //Папка скрипта
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
-	$idNews = $_GET['id'];
+	$idPublication = $_GET['id'];
 	
 	$select = 'SELECT newsblock.id AS newsid, author.id AS idauthor, news, newstitle, imghead, videoyoutube, viewcount, votecount, averagenumber, favouritescount, description, imgalt, newsdate, authorname, category.id AS categoryid, categoryname FROM newsblock 
 			   INNER JOIN author ON idauthor = author.id 
@@ -28,7 +28,7 @@ if (isset ($_GET['id']))
 	/*Канонический адрес*/
 	if(!empty($_GET['utm_referrer']) || !empty($_GET['page']))
 	{
-		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewnews/?id='.$idNews.'"/>';
+		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewnews/?id='.$idPublication.'"/>';
 	}
 
 	/*Подключение к базе данных*/
@@ -36,7 +36,7 @@ if (isset ($_GET['id']))
 		
 	try
 	{
-		$sql = $select.$idNews;
+		$sql = $select.$idPublication;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -77,7 +77,7 @@ if (isset ($_GET['id']))
 	$descr = $row['description'];
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallnews/">Все новости</a> >> ';//Для хлебных крошек
-	$breadPart3 = '<a href="//'.MAIN_URL.'/viewnews/?id='.$idNews.'">'.$row['newstitle'].'</a> ';//Для хлебных крошек
+	$breadPart3 = '<a href="//'.MAIN_URL.'/viewnews/?id='.$idPublication.'">'.$row['newstitle'].'</a> ';//Для хлебных крошек
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
@@ -104,7 +104,7 @@ if (isset ($_GET['id']))
 	{
 		try
 		{
-			$sql = 'SELECT idnews FROM favourites WHERE idauthor = '.(authorID($_SESSION['email'], $_SESSION['password'])).' AND idnews = '.$idNews;
+			$sql = 'SELECT idnews FROM favourites WHERE idauthor = '.(authorID($_SESSION['email'], $_SESSION['password'])).' AND idnews = '.$idPublication;
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		}
@@ -121,7 +121,7 @@ if (isset ($_GET['id']))
 		{
 			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
-								<input type = "hidden" name = "id" value = "'.$idNews.'">
+								<input type = "hidden" name = "id" value = "'.$idPublication.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
 								<button id = "btn_fav" title="Убрать из избранного" class = btn_fav_2><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button>  
 							 </form>
@@ -132,7 +132,7 @@ if (isset ($_GET['id']))
 		{
 			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
-								<input type = "hidden" name = "id" value = "'.$idNews.'">
+								<input type = "hidden" name = "id" value = "'.$idPublication.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
 								<button id = "btn_fav" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button> 
 							 </form>
@@ -151,7 +151,7 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = $updateCount.$idNews;
+		$sql = $updateCount.$idPublication;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -171,7 +171,7 @@ if (isset ($_GET['id']))
 		$sql = 'SELECT meta.id, metaname FROM newsblock 
 				INNER JOIN metapost ON newsblock.id = idnews 
 				INNER JOIN meta ON meta.id = idmeta 
-				WHERE newsblock.id = '.$idNews;//Вверху самое последнее значение
+				WHERE newsblock.id = '.$idPublication;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	
@@ -197,7 +197,7 @@ if (isset ($_GET['id']))
 	/*Подключение к базе данных*/
 	$selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 	
-	$votedNews = (int)$idNews;
+	$votedNews = (int)$idPublication;
 	
 	try
 	{
@@ -218,7 +218,7 @@ if (isset ($_GET['id']))
 	$votedNews = empty($row['idnews']) ? '' : (int)$row['idnews'];
 	
 	/*Условия вывода панели голосования*/
-	if (($votedAuthor == $selectedAuthor) && ($votedNews == $idNews) || (!isset($_SESSION['loggIn'])))
+	if (($votedAuthor == $selectedAuthor) && ($votedNews == $idPublication) || (!isset($_SESSION['loggIn'])))
 	{
 		$votePanel = '';
 	}
@@ -227,7 +227,7 @@ if (isset ($_GET['id']))
 	{
 		$votePanel = '<form action=" " metod "post" id = "confirmlike">
 							<i class="fa fa-thumbs-up" aria-hidden="true" title="Оценить"></i>
-							<input type = "hidden" name = "id" id = "idarticle" value = "'.$idNews.'">
+							<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPublication.'">
 							<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
 							<input type = "submit" name = "vote" id = "btn_vot_5" class = "btn_vot" value = "5"> 
 							<input type = "submit" name = "vote" id = "btn_vot_4" class = "btn_vot" value = "4"> 
@@ -245,7 +245,7 @@ if (isset ($_GET['id']))
 		$delAndUpd = "<form action = '../admin/addupdnews/' method = 'post'>
 			
 						Действия с материалом:
-						<input type = 'hidden' name = 'id' value = '".$idNews."'>
+						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
 						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
 					  </form>";
@@ -253,7 +253,7 @@ if (isset ($_GET['id']))
 		$premoderation = "<form action = '../admin/premoderation/newspremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
-						<input type = 'hidden' name = 'id' value = '".$idNews."'>
+						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
 						<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn_3'>
 					  </form>";					  
 	}
@@ -266,30 +266,13 @@ if (isset ($_GET['id']))
 
 	/*Вывод похожих материалов*/
 	
-	try
-	{
-		$sql = 'SELECT id, newstitle, imghead, imgalt FROM newsblock WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
-		$result = $pdo->query($sql);
-	}
-	
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода заголовка похожей новости';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$similarNews[] =  array ('id' => $row['id'], 'newstitle' =>  $row['newstitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
-	}	
-	
-	$columns = count ($similarNews) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
+	similarPublication('news', $categoryID);
+	//$columns = count ($similarPub) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
 	
 	/*Вывод комментариев*/
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';
 
-	showComments('news', 'idnews', $idNews);
+	showComments('news', 'idnews', $idPublication);
 	
 	include '../pubcommonfiles/viewpublication.html.php';
 	exit();		
