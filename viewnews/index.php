@@ -80,7 +80,7 @@ if (isset ($_GET['id']))
 	$breadPart3 = '<a href="//'.MAIN_URL.'/viewnews/?id='.$idPublication.'">'.$row['newstitle'].'</a> ';//Для хлебных крошек
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="//'.MAIN_URL.'/pubcommonfiles/script.js"></script>';//добавить код JS
 	
 	/*Микроразметка*/
 	
@@ -227,6 +227,7 @@ if (isset ($_GET['id']))
 	{
 		$votePanel = '<form action=" " metod "post" id = "confirmlike">
 							<i class="fa fa-thumbs-up" aria-hidden="true" title="Оценить"></i>
+							<input type = "hidden" name = "pb_type" id = "pb_type" value = "news">
 							<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPublication.'">
 							<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
 							<input type = "submit" name = "vote" id = "btn_vot_5" class = "btn_vot" value = "5"> 
