@@ -235,7 +235,7 @@ function sendAjaxForm(result_form, ajax_form, url) {
 
 function voteClick(btn){
 				$("#confirmlike").hide();
-				const url = 'vote.inc.php?vote=' + $("#"+btn).attr('value');
+				const url = '../pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
 				//$("#btn_vot").attr('src', ' ');
 				sendAjaxForm('result_form_vot', 'confirmlike', url);
 				$("#result_form_vot").html('Ваш голос принят!');
