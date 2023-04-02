@@ -57,7 +57,7 @@ $( document ).ready(function() {
     $("#btn_fav").click(
 		function(){
 			$("#btn_fav").attr('class', ' ');
-			sendAjaxForm('result_form_fav', 'ajax_form_fav', 'favourites.inc.php');
+			sendAjaxForm('result_form_fav', 'ajax_form_fav', '../pubcommonfiles/favourites.inc.php');
 			
 			if ($("#val_fav").attr('value') === 'delfav'){
 				$("#val_fav").attr('value', 'addfav');
@@ -72,85 +72,81 @@ $( document ).ready(function() {
 			return false; 
 		}
 	);
-});
 
  
-//Оценка статьи
+	//Оценка статьи
 
-$( document ).ready(function() {
-		$("#btn_vot_5").click(
-			function(event){
-				confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
-				if (confLk === false){
-					event.preventDefault();
-				}
-				
-				else{
-					voteClick('btn_vot_5');
-					event.preventDefault();
-				}
+	$("#btn_vot_5").click(
+		function(event){
+			confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
+			if (confLk === false){
+				event.preventDefault();
 			}
-		);
+				
+			else{
+				voteClick('btn_vot_5');
+				event.preventDefault();
+			}
+		}
+	);
 	
 	$("#btn_vot_4").click(
-			function(event){
-				confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
-				if (confLk === false){
-					event.preventDefault();
-				}
-				
-				else{
-					voteClick('btn_vot_4');
-					event.preventDefault();
-				}
+		function(event){
+			confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
+			if (confLk === false){
+				event.preventDefault();
 			}
-		);
+				
+			else{
+				voteClick('btn_vot_4');
+				event.preventDefault();
+			}
+		}
+	);
 	
 	$("#btn_vot_3").click(
-			function(event){
-				confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
-				if (confLk === false){
-					event.preventDefault();
-				}
-				
-				else{
-					voteClick('btn_vot_3');
-					event.preventDefault();
-				}
+		function(event){
+			confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
+			if (confLk === false){
+				event.preventDefault();
 			}
-		);
+				
+			else{
+				voteClick('btn_vot_3');
+				event.preventDefault();
+			}
+		}
+	);
 	
 	$("#btn_vot_2").click(
-			function(event){
-				confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
-				if (confLk === false){
-					event.preventDefault();
-				}
-				
-				else{
-					voteClick('btn_vot_2');
-					event.preventDefault();
-				}
+		function(event){
+			confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
+			if (confLk === false){
+				event.preventDefault();
 			}
-		);
+				
+			else{
+				voteClick('btn_vot_2');
+				event.preventDefault();
+			}
+		}
+	);
 	
 	$("#btn_vot_1").click(
-			function(event){
-				confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
-				if (confLk === false){
-					event.preventDefault();
-				}
-				
-				else{
-					voteClick('btn_vot_1');
-					event.preventDefault();
-				}
+		function(event){
+			confLk = confirm('Вы уверены, что хотите проголосовать за данный материал?')
+			if (confLk === false){
+				event.preventDefault();
 			}
-		);
-});
+				
+			else{
+				voteClick('btn_vot_1');
+				event.preventDefault();
+			}
+		}
+	);
 
-//Рекомендация статьи
-$( document ).ready(function() {
+	//Рекомендация статьи
 
 	//Тест галлереи
 	const images = $(".pic-for-gallery");
@@ -177,7 +173,7 @@ $( document ).ready(function() {
 				
 				else {
 					//$("#btn_fav").attr('src', ' ');
-					sendAjaxForm('result_form_recomm', 'ajax_form_recomm', 'reccomendation.inc.php');
+					sendAjaxForm('result_form_recomm', 'ajax_form_recomm', '../pubcommonfiles/reccomendation.inc.php');
 					console.log('OK1');
 					
 					$("#score").html(parseInt($("#score").html()) - parseInt($("#recommprice").attr('value')))//изменение счёта
@@ -203,45 +199,46 @@ $( document ).ready(function() {
 			}		
 		}
 	);
-});
 
-//Функция AJAX
-function sendAjaxForm(result_form, ajax_form, url) {
-    $.ajax({
-        url:     url, //url страницы (action_ajax_form.php)
-        type:     "POST", //метод отправки
-        //dataType: "html", //формат данных
-        data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
-        success: function(response) { //Данные отправлены успешно
-        	//result = parseJSON(response);
-			
-			//if (result['err']) {
-			//	alert(result['err']);	
-			//}
+	//Функция AJAX
+	function sendAjaxForm(result_form, ajax_form, url) {
+		$.ajax({
+			url:     url, //url страницы (action_ajax_form.php)
+			type:     "POST", //метод отправки
+			//dataType: "html", //формат данных
+			data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
+			success: function(response) { //Данные отправлены успешно
+				//result = parseJSON(response);
 				
-			//$('#'+ajax_form).html('Ожидание...');
-			//$('#'+ajax_form).html('');
-        	//$('#'+result_form).html(' ');
-			console.log('OK');
-    	},
-    	error: function(response) { // Данные не отправлены
-            $('#result_form').html('Ошибка. Данные не отправлены.');
-			console.log('no');
-    	}
- 	});
-}
+				//if (result['err']) {
+				//	alert(result['err']);	
+				//}
+					
+				//$('#'+ajax_form).html('Ожидание...');
+				//$('#'+ajax_form).html('');
+				//$('#'+result_form).html(' ');
+				console.log('OK');
+			},
+			error: function(response) { // Данные не отправлены
+				$('#result_form').html('Ошибка. Данные не отправлены.');
+				console.log('no');
+			}
+		});
+	}
 
 //Обработка действия кнопки для голосования
 
-function voteClick(btn){
-				$("#confirmlike").hide();
-				const url = '../pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
-				//$("#btn_vot").attr('src', ' ');
-				sendAjaxForm('result_form_vot', 'confirmlike', url);
-				$("#result_form_vot").html('Ваш голос принят!');
+	function voteClick(btn){
+		$("#confirmlike").hide();
+		const url = '../pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
+					//$("#btn_vot").attr('src', ' ');
+		sendAjaxForm('result_form_vot', 'confirmlike', url);
+		$("#result_form_vot").html('Ваш голос принят!');
 
-				console.log('OK1');
-				console.log(url);
+		console.log('OK1');
+		console.log(url);
 
-				return false; 
-}
+		return false; 
+	}
+
+});

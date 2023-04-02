@@ -120,6 +120,7 @@ if (isset ($_GET['id']))
 		if (!empty($row['idnews']))
 		{
 			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
+								<input type = "hidden" name = "pb_type" id = "pb_type" value = "news">
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idPublication.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
@@ -131,6 +132,7 @@ if (isset ($_GET['id']))
 		else
 		{
 			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
+								<input type = "hidden" name = "pb_type" id = "pb_type" value = "news">
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
 								<input type = "hidden" name = "id" value = "'.$idPublication.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
@@ -268,7 +270,6 @@ if (isset ($_GET['id']))
 	/*Вывод похожих материалов*/
 	
 	similarPublication('news', $categoryID);
-	//$columns = count ($similarPub) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
 	
 	/*Вывод комментариев*/
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';
@@ -284,7 +285,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 {		
 	updCommentData($_POST['id'], $_POST['idarticle']);
 	
-	include 'form.html.php';
+	include '../pubcommonfiles/form.html.php';
 	exit();
 }
 	
@@ -303,7 +304,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 {	
 	delCommentData($_POST['id'], $_POST['idarticle']);
 	
-	include 'delete.html.php';
+	include '../pubcommonfiles/delete.html.php';
 }
 	
 if (isset ($_GET['delete']))

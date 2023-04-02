@@ -14,10 +14,12 @@ include_once MAIN_FILE . '/includes/commonvar.inc.php';
 /*Определение нахождения пользователя в системе*/
 loggedIn();
 
+$pubFolder = 'viewpost'; //Папка скрипта
+
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
-	$idPost = $_GET['id'];
+	$idPublication = $_GET['id'];
 	
 	$select = 'SELECT posts.id AS postid, author.id AS idauthor, post, posttitle, imghead, videoyoutube, viewcount, votecount, averagenumber, favouritescount, description, imgalt, postdate, authorname, category.id AS categoryid, categoryname FROM posts 
 			   INNER JOIN author ON idauthor = author.id 
@@ -26,7 +28,7 @@ if (isset ($_GET['id']))
 	/*Канонический адрес*/
 	if(!empty($_GET['utm_referrer']) || !empty($_GET['page']))
 	{
-		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewpost/?id='.$idPost.'"/>';
+		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewpost/?id='.$idPublication.'"/>';
 	}
 
 	/*Подключение к базе данных*/
@@ -34,7 +36,7 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = $select.$idPost;
+		$sql = $select.$idPublication;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -75,10 +77,10 @@ if (isset ($_GET['id']))
 	$descr = $row['description'];
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallposts/">Все статьи</a> >> ';//Для хлебных крошек
-	$breadPart3 = '<a href="//'.MAIN_URL.'/viewpost/?id='.$idPost.'">'.$row['posttitle'].'</a> ';//Для хлебных крошек
+	$breadPart3 = '<a href="//'.MAIN_URL.'/viewpost/?id='.$idPublication.'">'.$row['posttitle'].'</a> ';//Для хлебных крошек
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="//'.MAIN_URL.'/pubcommonfiles/script.js"></script>';//добавить код JS
 	
 	/*Микроразметка*/
 	
@@ -101,7 +103,7 @@ if (isset ($_GET['id']))
 	{
 		try
 		{
-			$sql = 'SELECT idpost FROM favourites WHERE idauthor = '.(authorID($_SESSION['email'], $_SESSION['password'])).' AND idpost = '.$idPost;
+			$sql = 'SELECT idpost FROM favourites WHERE idauthor = '.(authorID($_SESSION['email'], $_SESSION['password'])).' AND idpost = '.$idPublication;
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		}
@@ -117,8 +119,9 @@ if (isset ($_GET['id']))
 		if (!empty($row['idpost']))
 		{
 			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
+								<input type = "hidden" name = "pb_type" id = "pb_type" value = "post">
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
-								<input type = "hidden" name = "id" value = "'.$idPost.'">
+								<input type = "hidden" name = "id" value = "'.$idPublication.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
 								<button id = "btn_fav" title="Убрать из избранного" class = btn_fav_2><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button>  
 							</form>
@@ -128,8 +131,9 @@ if (isset ($_GET['id']))
 		else
 		{
 			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
+								<input type = "hidden" name = "pb_type" id = "pb_type" value = "post">
 								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
-								<input type = "hidden" name = "id" value = "'.$idPost.'">
+								<input type = "hidden" name = "id" value = "'.$idPublication.'">
 								<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
 								<button id = "btn_fav" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button> 
 							</form>
@@ -148,7 +152,7 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = $updateCount.$idPost;
+		$sql = $updateCount.$idPublication;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -167,7 +171,7 @@ if (isset ($_GET['id']))
 		$sql = 'SELECT meta.id, metaname FROM posts 
 				INNER JOIN metapost ON posts.id = idpost 
 				INNER JOIN meta ON meta.id = idmeta 
-				WHERE posts.id = '.$idPost;//Вверху самое последнее значение
+				WHERE posts.id = '.$idPublication;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	
@@ -192,7 +196,7 @@ if (isset ($_GET['id']))
 	/*Подключение к базе данных*/
 	$selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 	
-	$votedPost = (int)$idPost;
+	$votedPost = (int)$idPublication;
 	
 	try
 	{
@@ -213,7 +217,7 @@ if (isset ($_GET['id']))
 	$votedPost = empty($row['idpost']) ? '' : (int)$row['idpost'];
 	
 	/*Условия вывода панели голосования*/
-	if (($votedAuthor == $selectedAuthor) && ($votedPost == $idPost) || (!isset($_SESSION['loggIn'])))
+	if (($votedAuthor == $selectedAuthor) && ($votedPost == $idPublication) || (!isset($_SESSION['loggIn'])))
 	{
 		$votePanel = '';
 	}
@@ -222,7 +226,8 @@ if (isset ($_GET['id']))
 	{
 		$votePanel = '<form action=" " metod "post" id = "confirmlike">
 						<i class="fa fa-thumbs-up" aria-hidden="true" title="Оценить"></i>
-						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
+						<input type = "hidden" name = "pb_type" id = "pb_type" value = "post">
+						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPublication.'">
 						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
 						<input type = "submit" name = "vote" id = "btn_vot_5" class = "btn_vot" value = "5"> 
 						<input type = "submit" name = "vote" id = "btn_vot_4" class = "btn_vot" value = "4"> 
@@ -240,7 +245,7 @@ if (isset ($_GET['id']))
 		$delAndUpd = "<form action = '../admin/addupdpost/' method = 'post'>
 			
 						Действия с материалом:
-						<input type = 'hidden' name = 'id' value = '".$idPost."'>
+						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
 						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
 					  </form>";
@@ -248,7 +253,7 @@ if (isset ($_GET['id']))
 		$premoderation = "<form action = '../admin/premoderation/postpremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
-						<input type = 'hidden' name = 'id' value = '".$idPost."'>
+						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
 						<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn_3'>
 					  </form>";				
 	}
@@ -281,7 +286,8 @@ if (isset ($_GET['id']))
 		$recommendationPrice = $row['promotionprice'];
 		
 		$recommendation = '<form action = "" method = "post" id = "ajax_form_recomm">
-								<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
+								<input type = "hidden" name = "pb_type" id = "pb_type" value = "post">
+								<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPublication.'">
 								<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
 								<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
 								<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-bell" aria-hidden="true"></i> Рекомендовать статью</button>
@@ -304,35 +310,17 @@ if (isset ($_GET['id']))
 	
 	/*Вывод похожих материалов*/
 
-	try
-	{
-		$sql = 'SELECT id, posttitle, imghead, imgalt FROM posts WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
-		$result = $pdo->query($sql);
-	}
-	
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода заголовка похожей статьи';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$similarPosts[] =  array ('id' => $row['id'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
-	}	
-		
-	$columns = count ($similarPosts) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
+	similarPublication('post', $categoryID);
 	
 	/*Вывод комментариев*/	
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';
 
-	showComments('post', 'idpost', $idPost);
+	showComments('post', 'idpost', $idPublication);
 	
 	if($categoryName === 'Изображение дня')
-		include 'viewimageday.html.php';//Шаблон для изображения дня
+		include '../pubcommonfiles/viewimageday.html.php';//Шаблон для изображения дня
 	else
-		include 'viewpost.html.php';//Шаблон для статьи
+		include '../pubcommonfiles/viewpublication.html.php';//Шаблон для статьи
 	exit();		
 }
 	
