@@ -10,7 +10,7 @@ include_once '../includes/path.inc.php';
 if ($_POST['pb_type'] == 'news')
 	$articleIdType = 'idnews';
 elseif ($_POST['pb_type'] == 'post')
-	$articleIdType = 'idost';
+	$articleIdType = 'idpost';
 
 if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor']) && $_POST['val_fav'] == 'addfav')
 {
@@ -34,9 +34,10 @@ if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor'])
 			
 		$row = $s -> fetch();
 		
-		$post = implode(' ', array_slice(explode(' ', strip_tags($row['news'])), 0, 50));
+		
 		if ($_POST['pb_type'] == 'news')
 		{
+			$post = implode(' ', array_slice(explode(' ', strip_tags($row['news'])), 0, 50));
 			$postTitle = $row['newstitle'];
 			$postDate = $row['newsdate'];
 			$url = '//'.MAIN_URL.'/viewnews/?id='.$row['id'];
@@ -44,6 +45,7 @@ if (isset($_POST['val_fav']) && isset($_POST['id']) && isset($_POST['idauthor'])
 
 		elseif ($_POST['pb_type'] == 'post')
 		{
+			$post = implode(' ', array_slice(explode(' ', strip_tags($row['post'])), 0, 50));
 			$postTitle = $row['posttitle'];
 			$postDate = $row['postdate'];
 			$url = '//'.MAIN_URL.'/viewpost/?id='.$row['id'];

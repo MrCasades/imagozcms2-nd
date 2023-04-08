@@ -329,7 +329,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 {		
 	updCommentData($_POST['id'], $_POST['idarticle']);
 	
-	include 'form.html.php';
+	include '../pubcommonfiles/form.html.php';
 	exit();
 }
 	
@@ -348,7 +348,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 {	
 	delCommentData($_POST['id'], $_POST['idarticle']);
 	
-	include 'delete.html.php';
+	include '../pubcommonfiles/delete.html.php';
 }
 	
 if (isset ($_GET['delete']))
