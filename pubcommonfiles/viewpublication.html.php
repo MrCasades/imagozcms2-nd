@@ -33,7 +33,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<div class="article-rating">
 						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($viewCount); ?>  
 						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho (round($averageNumber, 2, PHP_ROUND_HALF_DOWN)); ?>
-						<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
+						<?php if ($pubFolder !== 'viewpromotion'):?>
+							<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
+						<?php endif;?>
 				</div>
 			</div>
 			
@@ -78,7 +80,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<div class="ya-share2" data-services="collections,vkontakte,facebook,odnoklassniki,moimir,twitter,lj"></div>
 					</div>
 					<div class="fav-and-recomm">
-						<div><?php echo $addFavourites;?></div>
+						<div>
+							<?php if ($pubFolder !== 'viewpromotion'):?>
+								<?php echo $addFavourites;?>
+							<?php endif;?>
+						</div>
 						<div>
 							<?php if ($pubFolder == 'viewpost'):?>
 								<?php echo $recommendation;?>
