@@ -260,23 +260,7 @@ if (isset ($_GET['id']))
 	
 	/*Вывод похожих материалов*/
 
-	try
-	{
-		$sql = 'SELECT id, promotiontitle, imghead, imgalt FROM promotion WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
-		$result = $pdo->query($sql);
-	}
-	
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода заголовка похожей статьи';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$similarPosts[] =  array ('id' => $row['id'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
-	}	
+	similarPublication('promotion', $categoryID);
 	
 	/*Вывод комментариев*/
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';

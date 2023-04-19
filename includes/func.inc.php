@@ -860,8 +860,10 @@ function similarPublication($type, $categoryID) //$type = news, post, promotion 
 		$select = 'SELECT id, newstitle as title, imghead, imgalt FROM newsblock WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
 	elseif ($type == 'post')
 		$select = 'SELECT id, posttitle as title, imghead, imgalt FROM posts WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
-
-	/*Подключение к базе данных*/
+	elseif ($type == 'promotion')
+		$select = 'SELECT id, promotiontitle as title, imghead, imgalt FROM promotion WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
+	
+		/*Подключение к базе данных*/
 	include 'db.inc.php';
 
 	try
