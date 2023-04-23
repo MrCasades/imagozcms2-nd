@@ -25,6 +25,15 @@ if (isset($_GET['vote']))
 		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idnews = 0, idvideo = 0, idpost = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
 		$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 	}
+
+	elseif($_POST['pb_type'] == 'promotion')
+	{
+		$updateVoteCount = 'UPDATE promotion SET votecount = votecount + 1 WHERE id = '.$_POST['id'];//обновление числа проголосовавших
+		$updateTotalNumber = 'UPDATE promotion SET totalnumber = totalnumber + '.$vote.' WHERE id = '.$_POST['id'];//обновление общего числа
+		$updateAverageNumber = 'UPDATE promotion SET averagenumber = totalnumber/votecount WHERE id = '.$_POST['id'];//обновление среднего значения в БД
+		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpost = 0, idnews = 0, idvideo = 0, idpromotion = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
+		$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
+	}
 								
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
