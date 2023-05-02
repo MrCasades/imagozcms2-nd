@@ -200,6 +200,39 @@ $( document ).ready(function() {
 		}
 	);
 
+
+	//Функции видео
+	//Счётчик просмотров видео
+	const video = document.querySelector('video');
+
+	let isPlay = true;
+	console.log('1. Play ' + isPlay);
+
+	video.addEventListener('play', (event) => {
+		console.log('The Boolean paused property is now false. Either the ' +
+		'play() method was called or the autoplay attribute was toggled.');
+	
+		console.log('2. Play ' + isPlay);
+
+		if (isPlay){
+			isPlay = false;
+			console.log('3. Play ' + isPlay);
+
+			$.ajax({
+				url:    '../pubcommonfiles/viewcount.inc.php?id=' + $("#for_view_count").attr('value'),
+				type:     "POST", //метод отправки
+				data: $("#view_count_form").serialize(),  // Сеарилизуем объект
+				success: function(response) { //Данные отправлены успешно
+					console.log('OK');
+				},
+				error: function(response) { // Данные не отправлены
+					$('#view_cnt_error').html('Ошибка. Данные не отправлены.');
+					console.log('no');
+				}
+			 });
+		}
+	});
+
 	//Функция AJAX
 	function sendAjaxForm(result_form, ajax_form, url) {
 		$.ajax({

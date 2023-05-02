@@ -270,10 +270,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					}
 				}?>
 			</div>
-			<div class="gallery-place">		
+			<!-- <div class="gallery-place">		
 				<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
 				<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
-			</div>
+			</div> -->
 		</div>
 		<div class="right-side">
 		<?php

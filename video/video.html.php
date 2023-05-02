@@ -8,7 +8,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <article>
 	<form id="view_count_form">
-		<input id = "for_view_count" type="hidden" value="<?php htmlecho ($idVideo);?>">
+		<input id = "for_view_count" type="hidden" value="<?php htmlecho ($idPublication);?>">
 	</form>
 	<div id="view_cnt_error"></div>
 	<div class="article-row">
@@ -84,12 +84,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				Место для рекламы
 			</div> -->
 
-			<div class = "main-headers">
+			<!-- <div class = "main-headers">
 				<div class = "headers-places"> 
 					<div class = "main-headers-txtplace">Новости наших партнёров</div>
 				</div>
 				<div class = "main-headers-line"></div>
-			</div>
+			</div> -->
 
 			<div class="gallery-place">		
 				<div id="unit_95706"><a href="http://mirtesen.ru/" >Новости МирТесен</a></div>
@@ -240,11 +240,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					// если текущая старница
 					if($i == $page)
 					{
-						echo "<a href='./viewpost/?id=".$idVideo."&page=$i'><button class='btn_2'>$i</button></a> ";
+						echo "<a href='./video/?id=".$idPublication."&page=$i'><button class='btn_2'>$i</button></a> ";
 					} 
 					else 
 					{
-						echo "<a href='./viewpost/?id=".$idVideo."&page=$i'><button class='btn_1'>$i</button></a> ";
+						echo "<a href='./video/?id=".$idPublication."&page=$i'><button class='btn_1'>$i</button></a> ";
 					}
 				}?>
 			</div>
