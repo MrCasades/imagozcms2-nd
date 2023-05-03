@@ -60,10 +60,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<div>
 						<?php echo $votePanel; ?>
 					</div>
-					<div class="fav-and-recomm">
+					<!-- <div class="fav-and-recomm">
 						<div><?php echo $addFavourites;?></div>
 						<div><?php echo $recommendation;?></div>
-					</div>
+					</div> -->
 					<!-- <div class = "zen-ch">
 						<a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
 						<img src="./zen-icon.png" alt="Наш Дзен-канал" title="zen.yandex.ru/imagoz"><span class="zen-ch-title">Подписывайтесь на наш Дзен-канал!</span></a>
@@ -247,10 +247,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						echo "<a href='./video/?id=".$idPublication."&page=$i'><button class='btn_1'>$i</button></a> ";
 					}
 				}?>
-			</div>
-			<div class="gallery-place">		
-				<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
-				<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
 			</div>
 		</div>
 		<div class="right-side">
