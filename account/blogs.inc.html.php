@@ -24,7 +24,7 @@
 
 		 foreach ($blogs as $blog): ?>
 		
-		<a href="../blog/?id=<?php htmlecho ($blog['id']); ?>" class = "post-place-2" style="background-image: url(../blog/headersimages/<?php echo $blog['imghead']; ?>)">
+		<a href="../blog/?id=<?php htmlecho ($blog['id']); ?>" class = "post-place-2" style="background-image: url(../blog/avatars/<?php echo $blog['avatar']; ?>)">
 			<!-- <div class = "post-top-1">
 				<span class="post-rubrics"><?php htmlecho ($news['categoryname']); ?></span>
 			</div> -->

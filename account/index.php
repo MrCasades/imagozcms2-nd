@@ -24,7 +24,13 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = 'SELECT authorname, www, accountinfo, avatar FROM author WHERE id = :id';
+		$sql = 'SELECT 
+					a.authorname, 
+					a.www, 
+					a.accountinfo, 
+					a.avatar 
+				FROM author a
+				WHERE a.id = :id';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':id', $idAuthor);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -85,6 +91,31 @@ if (isset ($_GET['id']))
 							'idauthorpost' => $row['idauthorpost'], 'idcategory' => $row['idcategory'], 'url' => $row['url'],
 							'categoryname' => $row['categoryname']);
 	}		
+
+	/*Выбор блогов автора*/
+	try
+	{
+		$sql = 'SELECT 
+					b.id,
+					b.title,
+					b.description,
+					b.avatar
+				FROM blogs b
+				WHERE b.idauthor = '.$idAuthor;
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода blogs';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$blogs[] =  array ('id' => $row['id'], 'avatar' => $row['avatar'], 'title' => $row['title']);
+	}
 	
 	/*Управление аккаунтом*/
 	
