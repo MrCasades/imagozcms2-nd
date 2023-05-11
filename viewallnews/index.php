@@ -5,15 +5,14 @@ include_once '../includes/path.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
-$title = 'Каталог новостей | imagoz.ru';//Данные тега <title>
-$headMain = 'Все новости';
-$robots = 'noindex, follow';
-$descr = 'В данном разделе отображаются все новости портала';
-$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-$breadPart2 = '<a href="//'.MAIN_URL.'/viewallnews/">Все новости</a> ';//Для хлебных крошек
+
 
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
+
+/*Загрузка настроек раздела*/
+$blockFolder = 'viewallnews';
+include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
 
 /*Определение нахождения пользователя в системе*/
 loggedIn();
