@@ -47,7 +47,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<div class = "main-post m-content">			 
 			<?php foreach ($metas_video as $meta_1): ?>
 				<div class = "post-place-video">
-					<a href="./video/?id=<?php htmlecho ($meta_1['id']); ?>">
+					<a href="../video/?id=<?php htmlecho ($meta_1['id']); ?>">
 						<video controls width="100%" height="80%" poster="../images/<?php echo $meta_1['imghead']; ?>" preload="none" class="prev-video" muted="muted">
 							<source src="../videofiles/<?php echo $meta_1['videofile']; ?>.mp4" type="video/mp4">
 							<source src="../videofiles/<?php echo $meta_1['videofile']; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
