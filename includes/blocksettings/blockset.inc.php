@@ -6,6 +6,13 @@ $data = json_decode($json_object, true);
 if($blockFolder == 'viewallnewsincat')
 
 {
+    if ($blockFolder == 'viewallnewsincat')
+    {
+        $preBlockFolder = 'viewcategory';
+        $linkType = '/?id='.$row['categoryid'];
+    }
+        
+
     $phrases = array('categoryname');
 
     foreach ($phrases as $tm)
@@ -17,9 +24,9 @@ if($blockFolder == 'viewallnewsincat')
         if (!empty($data['breadPart1'])) 
             $breadPart1 = '<a href="//'.MAIN_URL.'">'.insertVar($phrases, $row[$tm], $data['breadPart1']).'</a> >> '; //Для хлебных крошек
         if (!empty($data['breadPart2']))
-            $breadPart2 = '<a href="//'.MAIN_URL.'/'.$blockFolder.'/">'.insertVar($phrases, $row[$tm], $data['breadPart2']).'</a> ';//Для хлебных крошек
+            $breadPart2 = '<a href="//'.MAIN_URL.'/'.$preBlockFolder.$linkType.'">'.insertVar($phrases, $row[$tm], $data['breadPart2']).'</a> ';//Для хлебных крошек
         if (!empty($data['breadPart3']))
-            $breadPart3 = '>> <a href="//'.MAIN_URL.'/'.$blockFolder.'/">'.insertVar($phrases, $row[$tm], $data['breadPart3']).'</a> ';//Для хлебных крошек
+            $breadPart3 = '>> <a href="//'.MAIN_URL.'/'.$blockFolder.$linkType.'">'.insertVar($phrases, $row[$tm], $data['breadPart3']).'</a> ';//Для хлебных крошек
     }
 }
 
@@ -33,8 +40,8 @@ else
         $breadPart1 = '<a href="//'.MAIN_URL.'">'.$data['breadPart1'].'</a> >> '; //Для хлебных крошек
     if (!empty($data['breadPart2']))
         $breadPart2 = '<a href="//'.MAIN_URL.'/'.$blockFolder.'/">'.$data['breadPart2'].'</a> ';//Для хлебных крошек
-    if (!empty($data['breadPart3']))
-        $breadPart3 = '>> <a href="//'.MAIN_URL.'/'.$blockFolder.'/">'.$data['breadPart3'].'</a> ';//Для хлебных крошек
+    // if (!empty($data['breadPart3']))
+    //     $breadPart3 = '>> <a href="//'.MAIN_URL.'/'.$blockFolder.'/">'.$data['breadPart3'].'</a> ';//Для хлебных крошек
 }
 
 $robots = $data['robots'];
