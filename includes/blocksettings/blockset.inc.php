@@ -3,31 +3,37 @@
 $json_object = file_get_contents('../includes/blocksettings/'.$blockFolder.'.json');
 $data = json_decode($json_object, true);
 
-if($blockFolder == 'viewallnewsincat')
+if($blockFolder == 'viewallnewsincat' || $blockFolder == 'viewallmetas' || $blockFolder == 'viewcategory')
 
 {
-    if ($blockFolder == 'viewallnewsincat')
+    if ($blockFolder == 'viewallnewsincat' || $blockFolder == 'viewcategory')
     {
         $preBlockFolder = 'viewcategory';
         $linkType = '/?id='.$row['categoryid'];
+        $tm = 'categoryname';
+    }
+
+    elseif ($blockFolder == 'viewallmetas')
+    {
+        $preBlockFolder = 'viewallmetas';
+        $linkType = '/?metaid='.$idMeta;
+        $tm = 'metaname';
     }
         
 
-    $phrases = array('categoryname');
+    //$phrases = array('metaname', 'categoryname');
 
-    foreach ($phrases as $tm)
-    {
-        $title = insertVar($phrases, $row[$tm], $data['title'] );
-        $headMain = insertVar($phrases, $row[$tm], $data['headMain'] ); 
-        $descr = insertVar($phrases, $row[$tm], $data['descr'] ); 
+   
+    $title = insertVar($tm, $row[$tm], $data['title'] );
+    $headMain = insertVar($tm, $row[$tm], $data['headMain'] ); 
+    $descr = insertVar($tm, $row[$tm], $data['descr'] ); 
 
-        if (!empty($data['breadPart1'])) 
-            $breadPart1 = '<a href="//'.MAIN_URL.'">'.insertVar($phrases, $row[$tm], $data['breadPart1']).'</a> >> '; //Для хлебных крошек
-        if (!empty($data['breadPart2']))
-            $breadPart2 = '<a href="//'.MAIN_URL.'/'.$preBlockFolder.$linkType.'">'.insertVar($phrases, $row[$tm], $data['breadPart2']).'</a> ';//Для хлебных крошек
-        if (!empty($data['breadPart3']))
-            $breadPart3 = '>> <a href="//'.MAIN_URL.'/'.$blockFolder.$linkType.'">'.insertVar($phrases, $row[$tm], $data['breadPart3']).'</a> ';//Для хлебных крошек
-    }
+    if (!empty($data['breadPart1'])) 
+        $breadPart1 = '<a href="//'.MAIN_URL.'">'.insertVar($tm, $row[$tm], $data['breadPart1']).'</a> >> '; //Для хлебных крошек
+    if (!empty($data['breadPart2']))
+        $breadPart2 = '<a href="//'.MAIN_URL.'/'.$preBlockFolder.$linkType.'">'.insertVar($tm, $row[$tm], $data['breadPart2']).'</a> ';//Для хлебных крошек
+    if (!empty($data['breadPart3']))
+        $breadPart3 = '>> <a href="//'.MAIN_URL.'/'.$blockFolder.$linkType.'">'.insertVar($tm, $row[$tm], $data['breadPart3']).'</a> ';//Для хлебных крошек
 }
 
 else 

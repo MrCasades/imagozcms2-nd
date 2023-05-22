@@ -11,10 +11,8 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 	
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+/*Определение нахождения пользователя в системе*/
+loggedIn();
 
 /*Вывод статей по категориям*/
 
@@ -138,25 +136,9 @@ if (isset ($_GET['id']))
 		exit();	
 	}
 
-	if (isset ($row['categoryname']))
-	{		
-	
-		$title = $row['categoryname'].' | '.MAIN_URL;//Данные тега <title>
-		$headMain = 'Материалы рубрики '. '"'.$row['categoryname'].'"';
-		$robots = 'noindex, follow';
-		$descr = 'В даном разделе отображаются все статьи и новости рубрики '.$row['categoryname'];
-		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-		$breadPart2 = '<a href="//'.MAIN_URL.'/viewcategory/?id='.$idCategory.'">Материалы рубрики '.$row['categoryname'].'</a> ';//Для хлебных крошек
-	}
-	
-	else
-	{
-		$title = 'В рубрике отсутствуют материалы';//Данные тега <title>
-		$headMain = 'В рубрике отсутствуют материалы';
-		$robots = 'noindex, follow';
-		$descr = '';
-		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	}
+	/*Загрузка настроек раздела*/
+	$blockFolder = 'viewcategory';
+	include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
 
 	include 'categorypost.html.php';
 	exit();
