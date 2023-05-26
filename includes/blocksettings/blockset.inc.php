@@ -3,10 +3,16 @@
 $json_object = file_get_contents('../includes/blocksettings/'.$blockFolder.'.json');
 $data = json_decode($json_object, true);
 
-if($blockFolder == 'viewallnewsincat' || $blockFolder == 'viewallmetas' || $blockFolder == 'viewcategory')
+if(
+    $blockFolder == 'viewallnewsincat' || 
+    $blockFolder == 'viewallmetas' || 
+    $blockFolder == 'viewcategory' || 
+    $blockFolder == 'viewallpostsincat' ||
+    $blockFolder == 'viewallpromotionincat'
+    )
 
 {
-    if ($blockFolder == 'viewallnewsincat' || $blockFolder == 'viewcategory')
+    if ($blockFolder == 'viewallnewsincat' || $blockFolder == 'viewcategory' || $blockFolder == 'viewallpostsincat' || $blockFolder == 'viewallpromotionincat')
     {
         $preBlockFolder = 'viewcategory';
         $linkType = '/?id='.$row['categoryid'];
