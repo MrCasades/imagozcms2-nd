@@ -8,11 +8,12 @@ if(
     $blockFolder == 'viewallmetas' || 
     $blockFolder == 'viewcategory' || 
     $blockFolder == 'viewallpostsincat' ||
-    $blockFolder == 'viewallpromotionincat'
+    $blockFolder == 'viewallpromotionincat' ||
+    $blockFolder == 'viewallvideosincat' 
     )
 
 {
-    if ($blockFolder == 'viewallnewsincat' || $blockFolder == 'viewcategory' || $blockFolder == 'viewallpostsincat' || $blockFolder == 'viewallpromotionincat')
+    if ($blockFolder == 'viewallnewsincat' || $blockFolder == 'viewcategory' || $blockFolder == 'viewallpostsincat' || $blockFolder == 'viewallpromotionincat' || $blockFolder == 'viewallvideosincat')
     {
         $preBlockFolder = 'viewcategory';
         $linkType = '/?id='.$row['categoryid'];

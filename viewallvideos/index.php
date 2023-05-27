@@ -5,21 +5,15 @@ include_once '../includes/path.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
-$title = 'Все видеозаписи портала | imagoz.ru';//Данные тега <title>
-$headMain = 'Все видеозаписи портала';
-$robots = 'noindex, follow';
-$descr = 'В данном разделе размещаются все видеозаписи портала';
-$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-$breadPart2 = '<a href="//'.MAIN_URL.'/viewallvideos/">Все видео</a> ';//Для хлебных крошек
+/*Загрузка настроек раздела*/
+$blockFolder = 'viewallvideos';
+include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
 
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
 /*Определение нахождения пользователя в системе*/
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+loggedIn();
 
 /*Подключение к базе данных*/
 include MAIN_FILE . '/includes/db.inc.php';

@@ -11,10 +11,8 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 	
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+/*Определение нахождения пользователя в системе*/
+loggedIn();
 
 /*Вывод статей по категориям*/
 
@@ -66,24 +64,9 @@ if (isset ($_GET['id']))
 		exit();	
 	}
 	
-	if (isset ($row['categoryname']))		//если статьи в рубрике есть!	
-	{
-		$title = $row['categoryname'].' | '.MAIN_URL;//Данные тега <title>
-		$headMain = 'Всё видео рубрики '. '"'.$row['categoryname'].'"';
-		$robots = 'noindex, follow';
-		$descr = 'В данном разделе размещаются все видео из рубрики '.$row['categoryname'];
-		$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-		$breadPart2 = '<a href="//'.MAIN_URL.'/viewcategory/?id='.$row['categoryid'].'">Материалы рубрики '.$row['categoryname'].'</a>  >>';//Для хлебных крошек
-		$breadPart3 = '<a href="//'.MAIN_URL.'/viewallvideosincat/?id='.$row['categoryid'].'">Видео рубрики '.$row['categoryname'].'</a> ';//Для хлебных крошек
-	}
-	
-	else		//если статьи отсутствуют!
-	{
-		$title = 'Видео в рубрике отсутствуют';//Данные тега <title>
-		$headMain = 'Видео в рубрике отсутствуют';
-		$robots = 'noindex, follow';
-		$descr = '';
-	}
+	/*Загрузка настроек раздела*/
+	$blockFolder = 'viewallvideosincat';
+	include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
 	
 	/*Определение количества статей*/
 	try
