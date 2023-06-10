@@ -251,12 +251,8 @@ function toEmail_2($title, $message, $idAuthor)
 
 function accessForWritingArticles()
 {
-	if (loggedIn())
-	{
-		/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-	}
-
-	else
+	/*Определение нахождения пользователя в системе*/
+	if (!loggedIn())
 	{
 		$title = 'Ошибка доступа';//Данные тега <title>
 		$headMain = 'Ошибка доступа';
@@ -320,13 +316,13 @@ function accessForWritingArticles()
 	if (empty ($lastPubTime)) $lastPubTime = '';//если переменная не объявлена
 
 	/*Суточный лимит публикаций в качестве Супер-автора*/
-	if ((userRole('Супер-автор')) && ($lastPubTime != '') && (time() < $lastPubTime + 60*60*24))
+	if ((userRole('Супер-автор')) && ($lastPubTime != '') && (time() < $lastPubTime + 60 * 60))
 	{
 			$title = 'Ошибка доступа';//Данные тега <title>
 			$headMain = 'Ошибка доступа';
 			$robots = 'noindex, nofollow';
 			$descr = '';
-			$error = 'Можно делать только 1 публикацию в течении 48 часов в качестве Супер-автора!';
+			$error = 'Можно делать только 1 публикацию в течении часа в качестве Супер-автора!';
 			include '../accessfail.html.php';
 			exit();
 	}

@@ -148,7 +148,7 @@ elseif (userRole('Автор'))
 
 		if ($pubtTime != '')
 		{
-			$timer = ($row['pubtime'] + 60 * 60 * 24 * 2) - time();//остаток до завершения 
+			$timer = ($row['pubtime'] + 60 * 60) - time();//остаток до завершения 
 			
 			if ($timer <= 0)
 			{
