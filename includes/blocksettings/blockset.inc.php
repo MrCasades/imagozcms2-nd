@@ -9,7 +9,8 @@ if(
     $blockFolder == 'viewcategory' || 
     $blockFolder == 'viewallpostsincat' ||
     $blockFolder == 'viewallpromotionincat' ||
-    $blockFolder == 'viewallvideosincat' 
+    $blockFolder == 'viewallvideosincat' ||
+    $blockFolder == 'viewmetanews'
     )
 
 {
@@ -20,7 +21,7 @@ if(
         $tm = 'categoryname';
     }
 
-    elseif ($blockFolder == 'viewallmetas')
+    elseif ($blockFolder == 'viewallmetas' || $blockFolder == 'viewmetanews')
     {
         $preBlockFolder = 'viewallmetas';
         $linkType = '/?metaid='.$idMeta;
