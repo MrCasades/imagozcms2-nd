@@ -8,10 +8,8 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+/*Определение нахождения пользователя в системе*/
+loggedIn();
 
 /*Загрузка статей по тематике*/
 if (isset ($_GET['metaid']))
@@ -60,25 +58,9 @@ if (isset ($_GET['metaid']))
 		exit();	
 	}
 	
-	if (isset($metas_1))
-	{
-		$title = $row['metaname'].' | imagoz.ru';//Данные тега <title>
-		$headMain = 'Статьи по тегу '. '"'.$row['metaname'].'"';
-		$robots = 'noindex, follow';
-		$descr = 'В даном разделе отображаются все статьи, помеченные тегом '.$row['metaname'];
-	}
-	
-	else
-	{
-		$title = 'Новости отсутствуют';//Данные тега <title>
-		$headMain = 'Новости отсутствуют';
-		$robots = 'noindex, follow';
-		$descr = ' ';
-	}
-
-	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallmetas/?metaid='.$idMeta.'">Материалы по тегу '.$row['metaname'].'</a> >> ';//Для хлебных крошек
-	$breadPart3 = '<a href="//'.MAIN_URL.'/viewmetapost/?metaid='.$idMeta.'">Статьи по тегу '.$row['metaname'].'</a>';//Для хлебных крошек
+	/*Загрузка настроек раздела*/
+	$blockFolder = 'viewmetapost';
+	include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
 	
 	/*Определение количества статей*/
 	try

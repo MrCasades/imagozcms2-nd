@@ -60,10 +60,6 @@ if (isset ($_GET['metaid']))
 	/*Загрузка настроек раздела*/
 	$blockFolder = 'viewmetanews';
 	include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
-
-	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/viewallmetas/?metaid='.$idMeta.'">Материалы по тегу '.$row['metaname'].'</a> >> ';//Для хлебных крошек
-	$breadPart3 = '<a href="//'.MAIN_URL.'/viewmetanews/?metaid='.$idMeta.'">Новости по тегу '.$row['metaname'].'</a>';//Для хлебных крошек
 	
 	/*Определение количества статей*/
 	try

@@ -10,7 +10,10 @@ if(
     $blockFolder == 'viewallpostsincat' ||
     $blockFolder == 'viewallpromotionincat' ||
     $blockFolder == 'viewallvideosincat' ||
-    $blockFolder == 'viewmetanews'
+    $blockFolder == 'viewmetanews' ||
+    $blockFolder == 'viewmetapost' ||
+    $blockFolder == 'viewmetapromotion' ||
+    $blockFolder == 'viewmetavideo'
     )
 
 {
@@ -21,7 +24,7 @@ if(
         $tm = 'categoryname';
     }
 
-    elseif ($blockFolder == 'viewallmetas' || $blockFolder == 'viewmetanews')
+    elseif ($blockFolder == 'viewallmetas' || $blockFolder == 'viewmetanews' || $blockFolder == 'viewmetapost' || $blockFolder == 'viewmetapromotion' || $blockFolder == 'viewmetavideo')
     {
         $preBlockFolder = 'viewallmetas';
         $linkType = '/?metaid='.$idMeta;
