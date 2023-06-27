@@ -11,12 +11,14 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Определение нахождения пользователя в системе*/
 loggedIn();
 
-/*Флаг, указывающий, что открыт блог*/
-$itIsBlog = true;
-
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($_GET['id']);
 
 	(int) $idBlog = $_GET['id'];
 
@@ -35,9 +37,8 @@ if (isset ($_GET['id']))
 	{
 		$sql = 'SELECT 
 					b.id as blogid
-					,b.title
+				
 					,b.description
-					,b.imghead
 					,b.avatar
 					,b.indexing
 					,b.idauthor
@@ -60,9 +61,9 @@ if (isset ($_GET['id']))
 		
 	$blogId = $row['blogid'];
 	$authorId = $row['idauthor'];
-	$blogTitle = $row['title'];
+	//$blogTitle = $row['title'];
 	$blogDescr = $row['description'];
-	$imgHead = $row['imghead'];
+	//$imgHead = $row['imghead'];
 	$avatar = $row['avatar'];
 	$indexing = $row['indexing'];
 	$nameAuthor = $row['authorname'];

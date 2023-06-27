@@ -307,6 +307,6 @@ function getBlogAtributs($idBlog)
 
 	$row = $s -> fetch();
 
-	$GLOBALS['imgHead'] = $row['imghead'];//цена за 1000 знаков
+	$GLOBALS['imgHead'] = $row['imghead'];
 	$GLOBALS['blogTitle'] = $row['title'];
 }

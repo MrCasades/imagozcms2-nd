@@ -42,6 +42,12 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Создать блог')//
 /*Обновление информации о статье*/
 if (isset ($_POST['action']) && $_POST['action'] == 'Настройка')
 {
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($_POST['id']);
+	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	

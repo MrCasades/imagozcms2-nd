@@ -5,22 +5,22 @@ include_once '../../includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-/*Загрузка функций для формы входа*/
-include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
-
 $pubFolder = 'addupdblogpublication'; //Папка скрипта
 
 /*Определение нахождения пользователя в системе*/
-loggedIn();
+if (loggedIn())
+{
+	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
+}
 
-if(!loggedIn())
+else
 {
 	include '../login.html.php';
 	exit();
 }
 
-/*Флаг, указывающий, что открыт блог*/
-$itIsBlog = true;
+/*Инициализация блога*/
+require_once MAIN_FILE . '/includes/blogvar.inc.php';
 
 /*Получение атрибутов блога для шапки */
 getBlogAtributs($_POST['id']);
