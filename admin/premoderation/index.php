@@ -151,3 +151,46 @@ if (isset ($_GET['video']))
 	include 'premoderationvideo.html.php';
 	exit();
 }
+
+if (isset ($_GET['blog']))
+{
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+	
+	/*Вывод стаей*/
+	/*Команда SELECT*/
+	try
+	{
+		$sql = 'SELECT 
+			p.id, 
+			p.title, 
+			p.date, 
+			p.idblog,
+			b.title,
+			a.authorname, 
+			a.email 
+		FROM publication p
+		INNER JOIN author a
+		ON p.idauthor = a.id 
+		INNER JOIN blogs b
+		ON p.idblog = b.id 
+		WHERE p.premoderation = "NO" AND p.refused = "NO" AND p.draft = "NO" LIMIT 20';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода видео в премодерации';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$blogpubs[] =  array ('id' => $row['id'], 'title' =>  $row['title'], 'date' =>  $row['date'], 
+							'authorname' =>  $row['authorname'], 'email' =>  $row['email']);
+	}
+
+	include 'premoderationblogpub.html.php';
+	exit();
+}

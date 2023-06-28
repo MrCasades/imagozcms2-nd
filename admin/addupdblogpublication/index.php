@@ -325,7 +325,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 	
-	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
+	if (($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$title = 'Добавить новую статью';//Данные тега <title>
 		$headMain = 'Добавить новую статью';
