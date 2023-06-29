@@ -26,6 +26,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php endif; ?>
 					<?php echo $editBlog; ?>
 					<?php echo $addPublication; ?>
+					<?php echo $toDraft; ?>
 				</div> 
 				<div class="blog-info-pl">
 		

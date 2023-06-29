@@ -100,12 +100,14 @@ if (isset ($_GET['id']))
 								<input type = 'hidden' name = 'id' value = '".$idBlog."'>
 								<button name = 'action' class='btn_1 addit-btn' value='Добавить статью'>Добавить статью</button>
 							</form>";
+		$toDraft = "<a href='//".MAIN_URL."/blog/draft?blid=".$idBlog."'><button class='btn_1 addit-btn'>Черновик</button></a>";
 	}
 
 	else
 	{
 		$editBlog = '';
 		$addPublication = '';
+		$toDraft = '';
 	}
 
 	
