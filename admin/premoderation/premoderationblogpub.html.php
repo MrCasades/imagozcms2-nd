@@ -32,11 +32,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			 
 		 foreach ($blogpubs as $blogpub): ?> 
 		  <tr>
-				<td><?php echo '# '.$video['id'];?></td>
-				<td><?php echo $video['videodate'];?></td>
-				<td><a href="../../admin/premoderation/viewpremodvideo/?video=<?php echo $video['id'];?>"><?php echo $video['videotitle'];?></a></td>
-				<td><?php echo $video['authorname'];?></td>
-				<td><?php echo $video['email'];?></td>
+				<td><?php echo '# '.$blogpub['id'];?></td>
+				<td><?php echo $blogpub['date'];?></td>
+				<td><a href="../../admin/premoderation/viewpremodblogpub/?blogpub=<?php echo $blogpub['id'];?>"><?php echo $blogpub['title'];?></a></td>
+				<td><?php echo $blogpub['authorname'];?></td>
+				<td><?php echo $blogpub['email'];?></td>
 		  </tr> 				
 		 <?php endforeach; ?> 
 	</table>

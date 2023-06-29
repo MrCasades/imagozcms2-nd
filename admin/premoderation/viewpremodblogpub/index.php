@@ -24,22 +24,27 @@ if (!userRole('Администратор'))
 }
 
 /*Загрузка содержимого статьи*/
-if (isset ($_GET['video']))
+if (isset ($_GET['blogpub']))
 {
-	$idPost = $_GET['video'];
+	$idPub = $_GET['blogpub'];
 	
-	@session_start();//Открытие сессии для сохранения id статьи
-	
-	$_SESSION['idpost'] = $idPost;
-	$select = 'SELECT video.id, author.id AS idauthor, post, videotitle, videofile, imghead, imgalt, videoyoutube, videofile, videodate, authorname, category.id AS categoryid, categoryname FROM video 
-				INNER JOIN author ON idauthor = author.id 
-				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND video.id = ';
+	$select = 'SELECT p.id, 
+					  a.id AS idauthor, 
+					  p.title, 
+					  p.imghead, 
+					  p.imgalt, 
+					  p.videoyoutube, 
+					  p.date, 
+					  a.authorname, 
+				FROM publication p 
+				INNER JOIN author a ON p.idauthor = a.id 
+				WHERE p.premoderation = "NO" AND p.id = ';
 
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	try
 	{
-		$sql = $select.$idPost;
+		$sql = $select.$idPub;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -53,19 +58,19 @@ if (isset ($_GET['video']))
 	$row = $s -> fetch();
 
 	$articleId = $row['id'];
-	$articleText = $row['post'];
+	//$articleText = $row['post'];
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
-	$videoFile = $row['videofile'];
-	$date = $row['videodate'];
-	$articleTitle = $row['videotitle'];
+	//$videoFile = $row['videofile'];
+	$date = $row['date'];
+	$articleTitle = $row['title'];
 	$nameAuthor = $row['authorname'];
-	$categoryName = $row['categoryname'];
+	//$categoryName = $row['categoryname'];
 	$authorId = $row['idauthor'];
-	$categoryId = $row['categoryid'];
+	//$categoryId = $row['categoryid'];
 	
-	$title = $row['videotitle'];//Данные тега <title>
-	$headMain = $row['videotitle'];	
+	$title = $row['title'];//Данные тега <title>
+	$headMain = $row['title'];	
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	
@@ -88,7 +93,7 @@ if (isset ($_GET['video']))
 		$sql = 'SELECT meta.id, metaname FROM video 
 				INNER JOIN metapost ON video.id = idpromotion 
 				INNER JOIN meta ON meta.id = idmeta 
-				WHERE video.id = '.$idPost;//Вверху самое последнее значение
+				WHERE video.id = '.$idPub;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	
@@ -111,14 +116,14 @@ if (isset ($_GET['video']))
 		$delAndUpd = "<form action = '../../../admin/addupdvideo/' method = 'post'>
 			
 						Действия с материалом:
-						<input type = 'hidden' name = 'id' value = '".$_SESSION['idpost']."'>
+						<input type = 'hidden' name = 'id' value = '".$idPub."'>
 						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2 addit-btn'>
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_3 addit-btn'>
 					  </form>";
 		$premoderation = "<form action = '../../../admin/premoderation/videopremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
-						<input type = 'hidden' name = 'id' value = '".$_SESSION['idpost']."'>
+						<input type = 'hidden' name = 'id' value = '".$idPub."'>
 						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn_1 addit-btn'>
 						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn_2 addit-btn'>
 					  </form>";			  
