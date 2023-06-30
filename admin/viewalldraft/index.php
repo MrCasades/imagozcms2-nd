@@ -59,7 +59,7 @@ if (userRole('Автор') || userRole('Администратор'))
 							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 	}
 
-	/*Вывод стаей*/
+	/*Вывод статей*/
 	/*Команда SELECT*/
 	try
 	{

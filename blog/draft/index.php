@@ -14,5 +14,38 @@ $selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//i
 /*Черновик блога*/
 if (isset ($_GET['blid']))
 {
-	
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+
+    try
+	{
+		$sql = 'SELECT 
+                    p.id AS pubid,  
+                    a.id AS authorid, 
+                    p.title, 
+                    p.imghead,  
+                    p.date, 
+                    a.authorname,  
+                FROM publication p 
+				INNER JOIN author a ON p.idauthor = a.id 
+				INNER JOIN blogs b ON p.idblog = b.id 
+				WHERE p.premoderation = "NO" AND p.draft = "YES" AND p.idauthor = '.$selectedAuthor.' LIMIT 10';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+
+    catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода новостей в черновике';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$pubs[] =  array ('pubid' => $row['pubid'], 'authorid' => $row['authorid'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname']);
+	}
+
+    include 'draft.html.php';
+	exit();
 }
