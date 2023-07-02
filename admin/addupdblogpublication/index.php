@@ -359,6 +359,9 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		include '../commonfiles/addupdform.html.php';
 		exit();
 	}
+
+	if ($_POST['category'] == '')
+		$_POST['category'] = 6;
 	
 	/*INSERT - добавление информации в базу данных и списание средств со счёта*/
 	
@@ -373,6 +376,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 					videoyoutube = :videoyoutube,
 					www = :www,
 					imghead = :imghead,
+					idcategory = :idcategory,
 					idauthor = :idauthor,
 					idblog = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
@@ -383,6 +387,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':www', $_POST['www']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
+		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
 		$s -> bindValue(':idblog', $_POST['blogid']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -401,16 +406,17 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		try
 		{
 			$sql = 'INSERT INTO metapost SET 
-				idpromotion = :idpromotion, 
+				idpublication = :idpublication, 
 				idmeta = :idmeta,
 				idnews = 0,
 				idpost = 0,
-				idvideo = 0';
+				idvideo = 0,
+				idpromotion = 0';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 
 			foreach	($_POST['metas'] as $idmetas)
 			{		
-				$s -> bindValue(':idpromotion', $idpost_ind);//отправка значения
+				$s -> bindValue(':idpublication', $idpost_ind);//отправка значения
 				$s -> bindValue(':idmeta', $idmetas);//отправка значения
 				$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 			}

@@ -28,9 +28,12 @@ if (isset ($_GET['id']))
 					p.imgalt, 
 					p.date, 
 					a.authorname, 
+					c.id AS categoryid, 
+					c.categoryname
 			   FROM publication p  
 			   INNER JOIN author a ON a.idauthor = a.id 
 			   INNER JOIN blogs b ON p.idblog = b.id 
+			   INNER JOIN category c ON p.idcategory = c.id
 			   WHERE p.premoderation = "NO" AND p.draft = "YES" AND p.id = ';
 	
 	/*Подключение к базе данных*/
@@ -58,8 +61,8 @@ if (isset ($_GET['id']))
 	$imgAlt = $row['imgalt'];
 	$date = $row['date'];
 	$nameAuthor = $row['authorname'];
-	$categoryName = '';
-	$categoryId = '';
+	$categoryName = $row['categoryname'];
+	$categoryId = $row['categoryid'];
 	$posttitle = $row['title'];
 
 	/*Если страница отсутствует. Ошибка 404*/

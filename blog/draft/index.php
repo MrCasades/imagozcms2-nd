@@ -25,10 +25,13 @@ if (isset ($_GET['blid']))
                     p.title, 
                     p.imghead,  
                     p.date, 
-                    a.authorname,  
+                    a.authorname, 
+					c.id AS categoryid, 
+					c.categoryname 
                 FROM publication p 
 				INNER JOIN author a ON p.idauthor = a.id 
 				INNER JOIN blogs b ON p.idblog = b.id 
+				INNER JOIN category c ON p.idcategory = c.id
 				WHERE p.premoderation = "NO" AND p.draft = "YES" AND p.idauthor = '.$selectedAuthor.' LIMIT 10';//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
@@ -43,7 +46,7 @@ if (isset ($_GET['blid']))
 	foreach ($result as $row)
 	{
 		$pubs[] =  array ('pubid' => $row['pubid'], 'authorid' => $row['authorid'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 
-							'date' =>  $row['date'], 'authorname' =>  $row['authorname']);
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 	}
 
     include 'draft.html.php';

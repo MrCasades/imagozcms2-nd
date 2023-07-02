@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		else
 					
 		foreach ($pubs as $pub): ?>
-		<a href="./viewdraftpublication/?id=<?php htmlecho ($pub['id']); ?>" class = "post-place-2" style="background-image: url(../../images/<?php echo $pub['imghead']; ?>)">
+		<a href="./viewdraftpublication/?id=<?php htmlecho ($pub['pubid']); ?>" class = "post-place-2" style="background-image: url(../../images/<?php echo $pub['imghead']; ?>)">
 			<div class = "post-top-1">
 				<p><?php echo date("Y.m.d H:i", strtotime($pub['date'])); ?></p>
 			</div>
