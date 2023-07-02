@@ -110,7 +110,75 @@ if (isset ($_GET['id']))
 		$toDraft = '';
 	}
 
-	
+	/*Загрузка публикаций блога*/
+	/*Постраничный вывод информации*/
+		
+	$page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;// помещаем номер страницы из массива GET в переменую $page
+	$onPage = 10;// количество статей на страницу
+	$shift = ($page - 1) * $onPage;// (номер страницы - 1) * статей на страницу
+
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+
+	/*Вывод новостей*/
+	/*Команда SELECT*/
+
+	try
+	{
+		$sql = 'SELECT 
+					p.id AS pubid, 
+					p.text, 
+					a.id AS authorid, 
+					p.title, 
+					p.imghead, 
+					p.imgalt, 
+					p.date, 
+					a.authorname, 
+					c.id AS categoryid, 
+					c.categoryname 
+				FROM publication p 
+				INNER JOIN author a ON p.idauthor = a.id 
+				INNER JOIN category c ON p.idcategory = c.id 
+				INNER JOIN blogs b ON p.idblog = b.id
+				WHERE p.premoderation = "YES" and b.id = '.$idBlog.' ORDER BY p.date DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода новостей';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$pubs[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
+
+	/*Определение количества статей*/
+	try
+	{
+		$sql = "SELECT count(*) AS all_articles 
+				FROM publication p
+				INNER JOIN blogs b ON p.idblog = b.id
+				WHERE premoderation = 'YES' and b.id = ".$idBlog;
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка подсчёта новостей';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	$row = $s -> fetch();
+
+	$countPosts = $row['all_articles'];			
+	$pagesCount = ceil($countPosts / $onPage);
 
 	$title = $blogTitle.' | imagoz.ru';//Данные тега <title>
 	$headMain = 'Все статьи';
