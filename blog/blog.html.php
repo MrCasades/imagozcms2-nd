@@ -43,7 +43,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<div class = "main-headers">
 					<div class = "main-headers-circle"></div>
 					<div class = "main-headers-content">
-					<a class = "main-headers-place" href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>"><h2>Новости автора</h2></a>
+					<a class = "main-headers-place" href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>"><h2>Недавние публикации блога</h2></a>
 						<div class = "main-headers-line"></div>
 					</div>
 				</div>
@@ -51,22 +51,22 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php endif; ?>
 
 				<div class = "main-post">
-					<?php  if (empty ($newsIn))
+					<?php  if (empty ($pubs))
 						{
-							echo '<p>Автор не написал ни одной новости</p>';
+							echo '<p>Автор ничего не опубликовал</p>';
 						}
 						
 						else
 
-						foreach ($newsIn as $news): ?>
+						foreach ($pubs as $pub): ?>
 						
-						<a href="../viewnews/?id=<?php htmlecho ($news['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $news['imghead']; ?>)">
+						<a href="./publication/?id=<?php htmlecho ($pub['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $pub['imghead']; ?>)">
 							<div class = "post-top-1">
-								<span class="post-rubrics"><?php htmlecho ($news['categoryname']); ?></span>
+								<span class="post-rubrics"><?php htmlecho ($pub['categoryname']); ?></span>
 							</div>
 							<div class = "post-bottom-1">
-								<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($news['newstitle'])), 0, 7)))); ?>...</span>
-								<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($news['newsdate'])); ?></span>
+								<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pub['title'])), 0, 7)))); ?>...</span>
+								<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($pub['date'])); ?></span>
 							</div>
 						</a>
 
