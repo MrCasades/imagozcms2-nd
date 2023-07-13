@@ -16,7 +16,7 @@ if (loggedIn())
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
-	$idPost = $_GET['id'];
+	$idPub = $_GET['id'];
 	
 	$select = 'SELECT 
 					p.id AS pubid, 
@@ -41,7 +41,7 @@ if (isset ($_GET['id']))
 		
 	try
 	{
-		$sql = $select.$idPost;
+		$sql = $select.$idPub;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -97,10 +97,10 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = 'SELECT meta.id, metaname FROM posts 
-				INNER JOIN metapost ON posts.id = idpost 
+		$sql = 'SELECT meta.id, metaname FROM publication 
+				INNER JOIN metapost ON publication.id = idpublication 
 				INNER JOIN meta ON meta.id = idmeta 
-				WHERE posts.id = '.$idPost;//Вверху самое последнее значение
+				WHERE publication.id = '.$idPub;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	
@@ -118,10 +118,10 @@ if (isset ($_GET['id']))
 		
 	/*Вывод кнопок "Обновить" | "Удалить"*/
 	
-	$pubAndUpd = "<form action = './admin/addupdblogpublication/' method = 'post'>
+	$pubAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
 			
 					Действия с материалом:
-					<input type = 'hidden' name = 'id' value = '".$idPost."'>
+					<input type = 'hidden' name = 'id' value = '".$idPub."'>
 					<input type = 'submit' name = 'action' value = 'ОБНОВИТЬ' class='btn_2 addit-btn'>
 					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn_1 addit-btn'>
 				</form>";

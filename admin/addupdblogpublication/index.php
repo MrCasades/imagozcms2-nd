@@ -194,9 +194,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, promotion, promotiontitle, www, idauthor, imghead, imgalt, videoyoutube, description, idcategory FROM promotion WHERE id = :idpromotion';
+		$sql = 'SELECT id, text, title, idauthor, imghead, imgalt, videoyoutube, description, idcategory FROM publication WHERE id = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
@@ -213,14 +213,13 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'editform';
-	$text = $row['promotion'];
-	$articletitle = $row['promotiontitle'];
+	$text = $row['text'];
+	$articletitle = $row['title'];
 	$description = $row['description'];
 	$imgalt = $row['imgalt']; 
 	$idcategory = $row['idcategory'];
 	$videoyoutube = $row['videoyoutube'];
 	$id = $row['id'];
-	$www = $row['www'];
 	$button = 'Обновить информацию о статье';
 	$errorForm ='';
 	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
@@ -230,7 +229,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	/*Выбор автора статьи*/
 	try
 	{
-		$result = $pdo -> query ('SELECT authorname FROM promotion INNER JOIN author ON idauthor = author.id WHERE promotion.id = '.$id);
+		$result = $pdo -> query ('SELECT authorname FROM publication INNER JOIN author ON idauthor = author.id WHERE publication.id = '.$id);
 	}
 	catch (PDOException $e)
 	{
@@ -264,9 +263,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	/*Статьи по тематикам*/
 	try
 	{
-		$sql = 'SELECT idmeta FROM metapost WHERE idpromotion = :idpromotion';
+		$sql = 'SELECT idmeta FROM metapost WHERE idpublication = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $id);//отправка значения
+		$s -> bindValue(':idpublication', $id);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
@@ -468,13 +467,12 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	/*UPDATE - обновление информации в базе данных*/
 	try
 	{
-		$sql = 'UPDATE promotion SET 
-					promotion = :articletext,
-					promotiontitle = :articletitle,
+		$sql = 'UPDATE publication SET 
+					text = :articletext,
+					title = :articletitle,
 					description = :description,
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
-					www = :www,
 					imghead = :imghead, 
 					idcategory = :idcategory
 				WHERE id = :idpromotion';
@@ -485,7 +483,6 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
-		$s -> bindValue(':www', $_POST['www']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -498,9 +495,9 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	try
 	{
-		$sql = 'DELETE FROM metapost WHERE idpromotion = :idpromotion';
+		$sql = 'DELETE FROM metapost WHERE idpublication = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
@@ -514,16 +511,17 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		try
 		{
 			$sql = 'INSERT INTO metapost SET 
-				idpromotion = :idpromotion, 
+				idpublication = :idpublication, 
 				idmeta = :idmeta,
 				idnews = 0,
 				idpost = 0,
+				idpromotion = 0,
 				idvideo = 0';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 
 			foreach	($_POST['metas'] as $idmetas)
 			{		
-				$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+				$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 				$s -> bindValue(':idmeta', $idmetas);//отправка значения
 				$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 			}
@@ -541,12 +539,12 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		/*Вернуть материал в премодерацию*/
 		try
 		{
-			$sql = 'UPDATE promotion SET 
+			$sql = 'UPDATE publication SET 
 					refused = "NO",
 					draft = "YES"  
-					WHERE id = :idpromotion';
+					WHERE id = :idpublication';
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+			$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 
 		}
@@ -565,7 +563,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	/*Вывод тематик(тегов)*/
 	
-	$metas = previewMetas('promotion', 'idpromotion', $idpost_ind);
+	$metas = previewMetas('publication', 'idpublication', $idpost_ind);
 	
 	include '../commonfiles/preview.html.php';
 	exit();
