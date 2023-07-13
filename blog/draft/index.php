@@ -8,12 +8,30 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
+if (loggedIn())
+{
+	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
+}
+
+else
+{
+	include '../login.html.php';
+	exit();
+}
+
 /*возврат ID автора*/
 $selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 
 /*Черновик блога*/
 if (isset ($_GET['blid']))
 {
+
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($_GET['blid']);
+
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 

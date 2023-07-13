@@ -31,7 +31,7 @@ if (isset ($_GET['id']))
 					c.id AS categoryid, 
 					c.categoryname
 			   FROM publication p  
-			   INNER JOIN author a ON a.idauthor = a.id 
+			   INNER JOIN author a ON p.idauthor = a.id 
 			   INNER JOIN blogs b ON p.idblog = b.id 
 			   INNER JOIN category c ON p.idcategory = c.id
 			   WHERE p.premoderation = "NO" AND p.draft = "YES" AND p.id = ';
@@ -118,7 +118,7 @@ if (isset ($_GET['id']))
 		
 	/*Вывод кнопок "Обновить" | "Удалить"*/
 	
-	$pubAndUpd = "<form action = '../addupdblog/' method = 'post'>
+	$pubAndUpd = "<form action = './admin/addupdblogpublication/' method = 'post'>
 			
 					Действия с материалом:
 					<input type = 'hidden' name = 'id' value = '".$idPost."'>
@@ -126,7 +126,7 @@ if (isset ($_GET['id']))
 					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn_1 addit-btn'>
 				</form>";
 
-	include '../admin/commonfiles/preview.html.php';
+	include MAIN_FILE .'/admin/commonfiles/preview.html.php';
 	exit();		
 }
 	

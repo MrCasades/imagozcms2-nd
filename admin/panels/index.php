@@ -95,6 +95,14 @@ if (userRole('Администратор'))
 		$row = $s -> fetch();
 		
 		$premodVideo = $row['mypremodvideo'];//новости в премодерации
+
+		$sql = "SELECT count(*) AS mypremodpubs FROM publication WHERE premoderation = 'NO' AND refused = 'NO' AND draft = 'NO'";
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		
+		$row = $s -> fetch();
+		
+		$premodPubs = $row['mypremodpubs'];//новости в премодерации
 		
 		$sql = "SELECT count(*) AS payments FROM payments WHERE paymentstatus = 'NO'";
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
