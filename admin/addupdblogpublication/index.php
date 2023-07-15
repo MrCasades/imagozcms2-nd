@@ -453,12 +453,12 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	$fileNameScript = 'img-'. time();//имя файла изображения
 	$filePathScript = '/images/';//папка с изображениями для новости/статьи
 
-	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'promotion', $_POST['id']);
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'publication', $_POST['id']);
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	if (($_POST['category'] == '') || ($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
+	if (($_POST['articletext'] == '') || ($_POST['articletitle'] == ''))
 	{
 		$error = 'В форме есть незаполненные поля!';
 		include MAIN_FILE . '/includes/error.inc.php';
