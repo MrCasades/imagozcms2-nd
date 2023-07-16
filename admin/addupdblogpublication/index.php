@@ -315,7 +315,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	include_once MAIN_FILE . '/includes/func.inc.php';
 
 	$fileNameScript = 'img-'. time().rand(100, 999);//имя файла изображения
-	$filePathScript = '/blog/pubheaders/';//папка с изображениями для новости/статьи
+	$filePathScript = '/images/';//папка с изображениями для новости/статьи
 	
 	//Загрузка файла изображения
 	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript);
@@ -359,7 +359,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		exit();
 	}
 
-	if ($_POST['category'] == '')
+	if (empty($_POST['category']))
 		$_POST['category'] = 6;
 	
 	/*INSERT - добавление информации в базу данных и списание средств со счёта*/
@@ -373,7 +373,6 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 					date = SYSDATE(),
 					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
-					www = :www,
 					imghead = :imghead,
 					idcategory = :idcategory,
 					idauthor = :idauthor,
@@ -384,7 +383,6 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
 		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
-		$s -> bindValue(':www', $_POST['www']);//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
 		$s -> bindValue(':idauthor', $selectedAuthor);//отправка значения
@@ -450,7 +448,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	/*Подключение функций*/
 	include_once MAIN_FILE . '/includes/func.inc.php';
 
-	$fileNameScript = 'img-'. time();//имя файла изображения
+	$fileNameScript = 'img-'. time().rand(100, 999);//имя файла изображения
 	$filePathScript = '/images/';//папка с изображениями для новости/статьи
 
 	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'publication', $_POST['id']);
