@@ -119,7 +119,17 @@ function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add'
 {
 	if ($typeAction == 'upd')
 	{
-		$DBcol = ($typeArticle == 'author') ? 'avatar' : 'imghead';//Название колонки в зависимости от типа публикации
+		if ($typeArticle == 'author')
+			$DBcol = 'avatar';
+		elseif ($typeArticle == 'blogsAVA')
+		{
+			$DBcol = 'avatar';
+			$typeArticle == 'blogs';
+		}
+		else
+			$DBcol = 'imghead';
+		
+		//	$DBcol = ($typeArticle == 'author') ? 'avatar' : 'imghead';//Название колонки в зависимости от типа публикации
 
 		/*Подключение к базе данных*/
 		include 'db.inc.php';
@@ -143,13 +153,13 @@ function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add'
 
 		if (!is_uploaded_file($_FILES[$typeInput]['tmp_name']))//если файл не загружен, оставить старое имя
 		{
-			$fileName = $row['imghead'];
+			$fileName = $row[$DBcol];
 		}
 		
 		else
 		{
 			/*Удаление старого файла изображения*/
-			$fileName = $row['imghead'];
+			$fileName = $row[$DBcol];
 			$delFile = MAIN_FILE . $filePathScript.$fileName;//путь к файлу для удаления
 			unlink($delFile);//удаление файла
 			

@@ -182,12 +182,12 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	$fileNameScript = 'hd-'. time().rand(100, 999);//имя файла новости/статьи
 	$filePathScript = '/blog/headersimages/';//папка с изображениями для новости/статьи
 
-	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'blogs', $_POST['id']);
+	$fileNameHead = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'blogs', $_POST['id']);
 
 	$fileNameScriptAva = 'ava-'. time().rand(100, 999);//имя файла новости/статьи
 	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
 
-	$fileName = uploadImgHeadFull ($fileNameScriptAva, $filePathScriptAva, 'upd', 'blogs', 'uploadavatar');
+	$fileNameAva = uploadImgHeadFull ($fileNameScriptAva, $filePathScriptAva, 'upd', 'blogsAVA', 'uploadavatar');
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
