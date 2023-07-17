@@ -286,7 +286,7 @@ function getBlogAtributs($idBlog)
 					b.id as blogid
 					,b.title
 					,b.description
-					,b.imghead
+					,b.imghead as headblog
 					,b.avatar
 					,b.indexing
 					,b.idauthor
@@ -307,6 +307,6 @@ function getBlogAtributs($idBlog)
 
 	$row = $s -> fetch();
 
-	$GLOBALS['imgHead'] = $row['imghead'];
+	$GLOBALS['headBlog'] = $row['headblog'];
 	$GLOBALS['blogTitle'] = $row['title'];
 }

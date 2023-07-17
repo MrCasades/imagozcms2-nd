@@ -180,7 +180,7 @@ if (isset ($_GET['blog']))
 
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка вывода видео в премодерации';
+		$error = 'Ошибка вывода публикации блога в премодерации';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 

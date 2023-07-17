@@ -30,13 +30,17 @@ if (isset ($_GET['blogpub']))
 	
 	$select = 'SELECT p.id, 
 					  a.id AS idauthor, 
-					  p.title, 
+					  p.title,
+					  p.text, 
 					  p.imghead, 
 					  p.imgalt, 
 					  p.videoyoutube, 
 					  p.date, 
-					  a.authorname, 
+					  a.authorname,
+					  c.id AS categoryid, 
+					  c.categoryname
 				FROM publication p 
+				INNER JOIN category c ON p.idcategory = c.id
 				INNER JOIN author a ON p.idauthor = a.id 
 				WHERE p.premoderation = "NO" AND p.id = ';
 
@@ -51,29 +55,29 @@ if (isset ($_GET['blogpub']))
 	
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка вывода содержимого видео';
+		$error = 'Ошибка вывода содержимого публикации';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
 
 	$articleId = $row['id'];
-	//$articleText = $row['post'];
+	$articleText = $row['text'];
 	$imgHead = $row['imghead'];
 	$imgAlt = $row['imgalt'];
-	//$videoFile = $row['videofile'];
 	$date = $row['date'];
 	$articleTitle = $row['title'];
-	$nameAuthor = $row['authorname'];
-	//$categoryName = $row['categoryname'];
-	$authorId = $row['idauthor'];
-	//$categoryId = $row['categoryid'];
+	$categoryId = $row['categoryid'];
+	$posttitle = $row['title'];
+	$categoryName = $row['categoryname']; 
+	$authorId = $row['idauthor']; 
+	$nameAuthor = $row['authorname']; 
 	
 	$title = $row['title'];//Данные тега <title>
-	$headMain = $row['title'];	
+	$headMain = '<a href="#" onclick="history.back();">Назад</a>';	
 	$robots = 'noindex, nofollow';
 	$descr = '';
-	
+
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
 	{
@@ -90,10 +94,10 @@ if (isset ($_GET['blogpub']))
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT meta.id, metaname FROM video 
-				INNER JOIN metapost ON video.id = idpromotion 
+		$sql = 'SELECT meta.id, metaname FROM publication 
+				INNER JOIN metapost ON publication.id = idpublication 
 				INNER JOIN meta ON meta.id = idmeta 
-				WHERE video.id = '.$idPub;//Вверху самое последнее значение
+				WHERE publication.id = '.$idPub;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	
@@ -113,14 +117,14 @@ if (isset ($_GET['blogpub']))
 	
 	if ((isset($_SESSION['loggIn'])) && (userRole('Администратор')))
 	{
-		$delAndUpd = "<form action = '../../../admin/addupdvideo/' method = 'post'>
+		$delAndUpd = "<form action = '../../../admin/addupdblogpublication/' method = 'post'>
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$idPub."'>
 						<input type = 'submit' name = 'action' value = 'Upd' class='btn_2 addit-btn'>
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_3 addit-btn'>
 					  </form>";
-		$premoderation = "<form action = '../../../admin/premoderation/videopremoderationstatus/' method = 'post'>
+		$premoderation = "<form action = '../../../admin/premoderation/blogpubpremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
 						<input type = 'hidden' name = 'id' value = '".$idPub."'>
@@ -129,5 +133,5 @@ if (isset ($_GET['blogpub']))
 					  </form>";			  
 	}
 	
-	include 'viewpremodvideo.html.php';
+	include '../../commonfiles/preview.html.php';
 }

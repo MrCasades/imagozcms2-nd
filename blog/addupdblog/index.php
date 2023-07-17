@@ -187,7 +187,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	$fileNameScriptAva = 'ava-'. time().rand(100, 999);//имя файла новости/статьи
 	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
 
-	$fileNameAva = uploadImgHeadFull ($fileNameScriptAva, $filePathScriptAva, 'upd', 'blogsAVA', 'uploadavatar');
+	$fileNameAva = uploadImgHeadFull ($fileNameScriptAva, $filePathScriptAva, 'upd', 'blogsAVA', $_POST['id'], 'uploadavatar');
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';

@@ -23,7 +23,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<th>E-mail</th>				
 		  </tr> 
 		  
-		   <?php if (empty ($videos))
+		   <?php if (empty ($blogpubs))
 		 {
 			 echo '<p class = "for-info-txt">Материалы для премодерации отсутствуют</p>';
 		 }

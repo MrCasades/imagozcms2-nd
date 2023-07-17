@@ -124,7 +124,7 @@ function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add'
 		elseif ($typeArticle == 'blogsAVA')
 		{
 			$DBcol = 'avatar';
-			$typeArticle == 'blogs';
+			$typeArticle = 'blogs';
 		}
 		else
 			$DBcol = 'imghead';
@@ -764,16 +764,16 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 	{
 		$select = 'SELECT video.id AS articleid, author.id AS idauthor, post AS articledata, videotitle AS title, imghead, imgalt, videoyoutube, videofile, videodate AS articledate, authorname, category.id AS categoryid, categoryname FROM video 
 			   INNER JOIN author ON idauthor = author.id 
-			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND video.id = ';
+			   INNER JOIN category ON idcategory = category.id INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND video.id = ';
 
 		$forDelUpd = 'addupdvideo';
 	}
 
 	elseif ($type == 'publication')
 	{
-		$select = 'SELECT publication.id AS articleid, author.id AS idauthor, text AS articledata, title, imghead, imgalt, idblog, videoyoutube, date AS articledate, authorname FROM publication 
+		$select = 'SELECT publication.id AS articleid, author.id AS idauthor, text AS articledata, title, imghead, imgalt, idblog, videoyoutube, date AS articledate, authorname, category.id AS categoryid, categoryname FROM publication 
 			   INNER JOIN author ON idauthor = author.id 
-			   WHERE premoderation = "NO" AND publication.id = ';
+			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND publication.id = ';
 
 		$forDelUpd = 'addupdblogpublication';
 	}
