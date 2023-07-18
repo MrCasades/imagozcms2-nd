@@ -56,7 +56,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Опубликовать')
 	$descr = '';
 	$action = 'premodyes';
 	$premodYes = 'Опубликовать материал ';
-	$posttitle = $row['promotiontitle'];
+	$posttitle = $row['title'];
 	$id = $row['id'];
 	$button = 'Опубликовать';
 	
@@ -70,89 +70,89 @@ if (isset ($_GET['premodyes']))
 	
 	/*Скрипт списания со счёта автора и изменение ранга*/
 	/*Выбор цены  и id автора*/
-	try
-	{
-		$sql = 'SELECT idauthor, paymentstatus FROM promotion WHERE id = :idpromotion';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// try
+	// {
+	// 	$sql = 'SELECT idauthor, paymentstatus FROM promotion WHERE id = :idpromotion';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора статуса платежа';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка выбора статуса платежа';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
-	$row = $s -> fetch();
+	// $row = $s -> fetch();
 	
-	$idAuthor = (int) $row['idauthor'];
-	$paymentStatus = $row['paymentstatus'];
+	// $idAuthor = (int) $row['idauthor'];
+	// $paymentStatus = $row['paymentstatus'];
 	
-	/*Выбор счётчика статей и номера ранга для сравнения*/
-	try
-	{
-		$sql = 'SELECT lastnumber FROM author
-				INNER JOIN rang ON idrang = rang.id 
-				WHERE author.id = '.$idAuthor;
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// /*Выбор счётчика статей и номера ранга для сравнения*/
+	// try
+	// {
+	// 	$sql = 'SELECT lastnumber FROM author
+	// 			INNER JOIN rang ON idrang = rang.id 
+	// 			WHERE author.id = '.$idAuthor;
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора счётчика статей и номера ранга';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка выбора счётчика статей и номера ранга';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
-	$row = $s -> fetch();
+	// $row = $s -> fetch();
 	
-	$lastNumber = $row['lastnumber'];
+	// $lastNumber = $row['lastnumber'];
 	
-	if ($paymentStatus == 'NO')//Если публикация подтверждается в первый раз, а не после предварительного снятия с публикации, происходит обновление ранга
-	{
+	// if ($paymentStatus == 'NO')//Если публикация подтверждается в первый раз, а не после предварительного снятия с публикации, происходит обновление ранга
+	// {
 	
-		try
-		{
-			$pdo->beginTransaction();//инициация транзакции
+	// 	try
+	// 	{
+	// 		$pdo->beginTransaction();//инициация транзакции
 		
-			/*Обновить счёт автора и счётчик статей*/
-			$sql = 'UPDATE author SET countposts = countposts + 1,
-					rating = rating + 100 WHERE id = '.$idAuthor;
-			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// 		/*Обновить счёт автора и счётчик статей*/
+	// 		$sql = 'UPDATE author SET countposts = countposts + 1,
+	// 				rating = rating + 100 WHERE id = '.$idAuthor;
+	// 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
-			/*Обновить ранг автора*/
-			$sql = 'UPDATE author 
-					SET idrang = idrang + 1
-					WHERE id = '.$idAuthor. ' AND countposts > '.$lastNumber;
-			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// 		/*Обновить ранг автора*/
+	// 		$sql = 'UPDATE author 
+	// 				SET idrang = idrang + 1
+	// 				WHERE id = '.$idAuthor. ' AND countposts > '.$lastNumber;
+	// 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 			
-			/*Обновить статус оплаты во избежании повторной оплаты*/
-			$sql = 'UPDATE promotion SET paymentstatus = "YES",
-						   promotiondate = SYSDATE() WHERE id = :idpromotion';
-			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
-			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// 		/*Обновить статус оплаты во избежании повторной оплаты*/
+	// 		$sql = 'UPDATE promotion SET paymentstatus = "YES",
+	// 					   promotiondate = SYSDATE() WHERE id = :idpromotion';
+	// 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+	// 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
-			$pdo->commit();//подтверждение транзакции	
-		}
+	// 		$pdo->commit();//подтверждение транзакции	
+	// 	}
 		
-		catch (PDOException $e)
-		{
-			$pdo->rollBack();//отмена транзакции
+	// 	catch (PDOException $e)
+	// 	{
+	// 		$pdo->rollBack();//отмена транзакции
 
-			$error = 'Ошибка транзакции при обновлении ранга';
-			include MAIN_FILE . '/includes/error.inc.php';
-		}
-	}
+	// 		$error = 'Ошибка транзакции при обновлении ранга';
+	// 		include MAIN_FILE . '/includes/error.inc.php';
+	// 	}
+	// }
 	
 	try
 	{
-		$sql = 'UPDATE promotion SET premoderation = "YES" WHERE id = :idpromotion';
+		$sql = 'UPDATE publication SET premoderation = "YES" WHERE id = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
@@ -175,15 +175,15 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Снять с публик�
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, promotiontitle, imghead FROM promotion WHERE id = :idpromotion';
+		$sql = 'SELECT id, title, imghead FROM publication WHERE id = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка выбора promotion';
+		$error = 'Ошибка выбора publication';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
@@ -195,7 +195,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Снять с публик�
 	$descr = '';
 	$action = 'premodno';
 	$premodYes = 'Снять с публикации материал ';
-	$posttitle = $row['posttitle'];
+	$posttitle = $row['title'];
 	$id = $row['id'];
 	$button = 'Снять с публикации';
 	
@@ -209,9 +209,9 @@ if (isset ($_GET['premodno']))
 	
 	try
 	{
-		$sql = 'UPDATE promotion SET premoderation = "NO" WHERE id = :idpromotion';
+		$sql = 'UPDATE publication SET premoderation = "NO" WHERE id = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
@@ -234,15 +234,15 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, promotiontitle FROM promotion WHERE id = :idpromotion';
+		$sql = 'SELECT id, title FROM publication WHERE id = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка выбора promotion';
+		$error = 'Ошибка выбора publication';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
@@ -254,7 +254,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Отклонить')
 	$descr = '';
 	$action = 'refusedyes';
 	$premodYes = 'Отклонить материал ';
-	$posttitle = $row['promotiontitle'];
+	$posttitle = $row['title'];
 	$reasonrefusal = '';
 	$id = $row['id'];
 	$button = 'Отклонить';
@@ -309,19 +309,19 @@ if (isset ($_GET['refusedyes']))
 	
 	try
 	{
-		$pdo->beginTransaction();//инициация транзакции
+		// $pdo->beginTransaction();//инициация транзакции
 		
-		$sql = 'UPDATE author SET score = score + '.$promotionPrice.' WHERE id = '.$idAuthor;//Возврат денег на счёт
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		// $sql = 'UPDATE author SET score = score + '.$promotionPrice.' WHERE id = '.$idAuthor;//Возврат денег на счёт
+		// $s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		// $s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		// $s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
-		$sql = 'UPDATE promotion 
+		$sql = 'UPDATE publication 
 				SET refused = "YES" 
 					,reasonrefusal = :reasonrefusal
-				WHERE id = :idpromotion';
+				WHERE id = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> bindValue(':reasonrefusal', $_POST['reasonrefusal']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 				
@@ -329,13 +329,13 @@ if (isset ($_GET['refusedyes']))
 	}
 	catch (PDOException $e)
 	{
-		$pdo->rollBack();//отмена транзакции
+		//$pdo->rollBack();//отмена транзакции
 		
 		$error = 'Ошибка отклонения публикации';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
-	$posttitle = $_POST['posttitle'];
+	$posttitle = $_POST['title'];
 	$titleMessage = 'Ваш материал "'. $posttitle.'" отклонён.';
 	$mailMessage = 'Ваш материал "'. $posttitle.'" отклонён модератором по причине: <br>***'.$_POST['reasonrefusal'].'***';
 	

@@ -1,6 +1,8 @@
 <?php
+$pubFolder = 'publication'; //Папка скрипта
+
 /*Загрузка главного пути*/
-include_once '../includes/path.inc.php';
+include_once '../../includes/path.inc.php';
 
 /*Загрузка функций в шаблон*/
 include_once MAIN_FILE . '/includes/func.inc.php';
@@ -17,6 +19,12 @@ loggedIn();
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($_GET['id']);
+
 	$idPub = $_GET['id'];
 	
 	$select = 'SELECT 
@@ -28,8 +36,7 @@ if (isset ($_GET['id']))
 					p.videoyoutube, 
 					p.viewcount, 
 					p.votecount, 
-					p.averagenumber, 
-					p.favouritescount, 
+					p.averagenumber,  
 					p.description, 
 					p.imgalt, 
 					p.date, 
@@ -79,7 +86,7 @@ if (isset ($_GET['id']))
 	$nameAuthor = $row['authorname'];
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
-	$favouritesCount = $row['favouritescount'];
+	//$favouritesCount = $row['favouritescount'];
 
 	$blogTitle = $row['blogtitle'];
 	$blogId = $row['blogid'];
@@ -121,50 +128,50 @@ if (isset ($_GET['id']))
 	}
 	
 	/*Кнопка добавления в избранное*/
-	if (isset($_SESSION['loggIn']))
-	{
-		try
-		{
-			$sql = 'SELECT idpost FROM favourites WHERE idauthor = '.(authorID($_SESSION['email'], $_SESSION['password'])).' AND idpost = '.$idPost;
-			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		}
+	// if (isset($_SESSION['loggIn']))
+	// {
+	// 	try
+	// 	{
+	// 		$sql = 'SELECT idpost FROM favourites WHERE idauthor = '.(authorID($_SESSION['email'], $_SESSION['password'])).' AND idpost = '.$idPost;
+	// 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// 	}
 		
-		catch (PDOException $e)
-		{
-			$error = 'Ошибка выбора избранного';
-			include MAIN_FILE . '/includes/error.inc.php';
-		}
+	// 	catch (PDOException $e)
+	// 	{
+	// 		$error = 'Ошибка выбора избранного';
+	// 		include MAIN_FILE . '/includes/error.inc.php';
+	// 	}
 
-		$row = $s -> fetch();
+	// 	$row = $s -> fetch();
 
-		if (!empty($row['idpost']))
-		{
-			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
-								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
-								<input type = "hidden" name = "id" value = "'.$idPost.'">
-								<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
-								<button id = "btn_fav" title="Убрать из избранного" class = btn_fav_2><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button>  
-							</form>
-							<strong><p id = "result_form_fav"></p></strong>';
-		}
+	// 	if (!empty($row['idpost']))
+	// 	{
+	// 		$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
+	// 							<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
+	// 							<input type = "hidden" name = "id" value = "'.$idPost.'">
+	// 							<input type = "hidden" id = "val_fav" name = "val_fav" value = "delfav">
+	// 							<button id = "btn_fav" title="Убрать из избранного" class = btn_fav_2><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button>  
+	// 						</form>
+	// 						<strong><p id = "result_form_fav"></p></strong>';
+	// 	}
 
-		else
-		{
-			$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
-								<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
-								<input type = "hidden" name = "id" value = "'.$idPost.'">
-								<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
-								<button id = "btn_fav" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button> 
-							</form>
-							<strong><p id = "result_form_fav"></p></strong>';
-		}
-	}
+	// 	else
+	// 	{
+	// 		$addFavourites = '<form action=" " metod "post" id = "ajax_form_fav">
+	// 							<input type = "hidden" name = "idauthor" value = "'.(authorID($_SESSION['email'], $_SESSION['password'])).'">
+	// 							<input type = "hidden" name = "id" value = "'.$idPost.'">
+	// 							<input type = "hidden" id = "val_fav" name = "val_fav" value = "addfav">
+	// 							<button id = "btn_fav" title="Добавить в избранное" class = btn_fav_1><i class="fa fa-check-square" aria-hidden="true"></i> Избранное</button> 
+	// 						</form>
+	// 						<strong><p id = "result_form_fav"></p></strong>';
+	// 	}
+	// }
 	
-	else
-	{
-		$addFavourites = '';
-	}
+	// else
+	// {
+	// 	$addFavourites = '';
+	// }
 	
 	/*Обновление значения счётчика*/
 	
@@ -224,50 +231,28 @@ if (isset ($_GET['id']))
 		$selectedAuthor = 0;//id автора
 	}
 	
-	$votedPost = (int)$idPost;
+	$votedPost = (int)$idPub;
 	
 	try
 	{
-		$sql = 'SELECT idauthor, idpost FROM votedauthor WHERE idauthor = '.$selectedAuthor.' AND idpost = '.$votedPost;
+		$sql = 'SELECT idauthor, idpublication FROM votedauthor WHERE idauthor = '.$selectedAuthor.' AND idpublication = '.$votedPost;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка выбора данных из votedauthor ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора id';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
 		
-	if(empty($row['idauthor']))
-	{		
-		$votedAuthor = '';
-	}
-	
-	else
-	{
-		$votedAuthor = (int)$row['idauthor'];//id автора, который проголосовал
-	}	
-	
-	if (empty($row['idpost']))//если переменная отсутствует
-	{
-		$votedPost = '';
-	}
-	
-	else
-	{		
-		$votedPost = (int)$row['idpost'];//id статьи, за которую проголосовали
-	}
+	$votedAuthor = empty ($row['idauthor']) ? '' : (int)$row['idauthor'];
+	$votedPost = empty($row['idpublication']) ? '' : (int)$row['idpublication'];
 	
 	/*Условия вывода панели голосования*/
-	if (($votedAuthor == $selectedAuthor) && ($votedPost == $idPost) || (!isset($_SESSION['loggIn'])))
+	if (($votedAuthor == $selectedAuthor) && ($votedPost == $idPub) || (!isset($_SESSION['loggIn'])))
 	{
 		$votePanel = '';
 	}
@@ -276,7 +261,7 @@ if (isset ($_GET['id']))
 	{
 		$votePanel = '<form action=" " metod "post" id = "confirmlike">
 						<i class="fa fa-thumbs-up" aria-hidden="true" title="Оценить"></i>
-						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
+						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPub.'">
 						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
 						<input type = "submit" name = "vote" id = "btn_vot_5" class = "btn_vot" value = "5"> 
 						<input type = "submit" name = "vote" id = "btn_vot_4" class = "btn_vot" value = "4"> 
@@ -291,10 +276,10 @@ if (isset ($_GET['id']))
 	
 	if ((isset($_SESSION['loggIn'])) && (userRole('Администратор')))
 	{
-		$delAndUpd = "<form action = '../admin/addupdpost/' method = 'post'>
+		$delAndUpd = "<form action = '../admin/addupdblogpublication/' method = 'post'>
 			
 						Действия с материалом:
-						<input type = 'hidden' name = 'id' value = '".$idPost."'>
+						<input type = 'hidden' name = 'id' value = '".$idPub."'>
 						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
 					  </form>";
@@ -302,7 +287,7 @@ if (isset ($_GET['id']))
 		$premoderation = "<form action = '../admin/premoderation/postpremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
-						<input type = 'hidden' name = 'id' value = '".$idPost."'>
+						<input type = 'hidden' name = 'id' value = '".$idPub."'>
 						<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn_3'>
 					  </form>";				
 	}
@@ -314,87 +299,63 @@ if (isset ($_GET['id']))
 	}	
 	
 	/*Вывод кнопки "Рекомендовать статью"*/
-	if (isset($_SESSION['loggIn']) && ((userRole('Администратор')) || (userRole('Автор')) || (userRole('Рекламодатель'))))
-	{
-		/*Команда SELECT выбор цены промоушена*/
-	try
-	{
-		$sql = 'SELECT promotionprice FROM promotionprice WHERE id = 2';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// if (isset($_SESSION['loggIn']) && ((userRole('Администратор')) || (userRole('Автор')) || (userRole('Рекламодатель'))))
+	// {
+	// 	/*Команда SELECT выбор цены промоушена*/
+	// try
+	// {
+	// 	$sql = 'SELECT promotionprice FROM promotionprice WHERE id = 2';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'ошибка выбора цены рекомендации: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-		}
+	// catch (PDOException $e)
+	// {
+	// 	$robots = 'noindex, nofollow';
+	// 	$descr = '';
+	// 	$error = 'ошибка выбора цены рекомендации: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+	// 	include 'error.html.php';
+	// 	exit();
+	// 	}
 
-		$row = $s -> fetch();
+	// 	$row = $s -> fetch();
 
-		$recommendationPrice = $row['promotionprice'];
+	// 	$recommendationPrice = $row['promotionprice'];
 	
-		$recommendation = '<form action = "" method = "post" id = "ajax_form_recomm">
-							<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPost.'">
-							<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
-							<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
-							<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-bell" aria-hidden="true"></i> Рекомендовать статью</button>
-						</form>
-						<strong><p id = "result_form_recomm"></p></strong>';
-	}
+	// 	$recommendation = '<form action = "" method = "post" id = "ajax_form_recomm">
+	// 						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPub.'">
+	// 						<input type = "hidden" name = "recommprice" id = "recommprice" value = "'.$recommendationPrice.'">
+	// 						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
+	// 						<button id = "btn_recomm" title="Рекомендовать статью" class = btn_recomm><i class="fa fa-bell" aria-hidden="true"></i> Рекомендовать статью</button>
+	// 					</form>
+	// 					<strong><p id = "result_form_recomm"></p></strong>';
+	// }
 	
-	elseif (isset($_SESSION['loggIn']) && ((!userRole('Администратор')) || (!userRole('Автор')) || (!userRole('Рекламодатель'))))
-	{
-		$recommendation = '<strong>Получите статус рекламодателя в профиле, чтобы получить возможность рекомендовать статью.</strong>';
-	}
+	// elseif (isset($_SESSION['loggIn']) && ((!userRole('Администратор')) || (!userRole('Автор')) || (!userRole('Рекламодатель'))))
+	// {
+	// 	$recommendation = '<strong>Получите статус рекламодателя в профиле, чтобы получить возможность рекомендовать статью.</strong>';
+	// }
 	
-	elseif (!isset($_SESSION['loggIn']))
-	{
-		// $recommendation = '<span class="recomm-nolog-txt">Вы можете <a href="../admin/registration/?log">авторизироваться</a> в системе или 
-		// 				 <a href="../admin/registration/?reg">зарегестрироваться</a> для того, чтобы рекомендовать статью на главной странице!</span>'
+	// elseif (!isset($_SESSION['loggIn']))
+	// {
+	// 	// $recommendation = '<span class="recomm-nolog-txt">Вы можете <a href="../admin/registration/?log">авторизироваться</a> в системе или 
+	// 	// 				 <a href="../admin/registration/?reg">зарегестрироваться</a> для того, чтобы рекомендовать статью на главной странице!</span>'
 		
-		$recommendation = '';
-	}
+	// 	$recommendation = '';
+	// }
 	
 	/*Вывод похожих материалов*/
 
-	try
-	{
-		$sql = 'SELECT id, posttitle, imghead, imgalt FROM posts WHERE idcategory = '.$categoryID.' AND premoderation = "YES" ORDER BY rand() LIMIT 6';
-		$result = $pdo->query($sql);
-	}
-	
-	catch (PDOException $e)
-	{
-		$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-		$headMain = 'Ошибка данных!';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Ошибка вывода заголовка похожей статьи ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
+	/*Вывод похожих материалов*/
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$similarPosts[] =  array ('id' => $row['id'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
-	}	
-		
-	$columns = count ($similarPosts) > 1 ? 'columns' : 'columns_f1';//подсчёт материалов
+	similarPublication('post', $categoryID);
 	
 	/*Вывод комментариев*/	
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';
 
-	showComments('post', 'idpost', $idPost);
+	showComments('publication', 'idpublication', $idPub);
 	
-	if($categoryName === 'Изображение дня')
-		include 'viewimageday.html.php';//Шаблон для изображения дня
-	else
-		include 'viewpost.html.php';//Шаблон для статьи
+	include '../../pubcommonfiles/viewpublication.html.php';//Шаблон для статьи
 	exit();		
 }
 	
@@ -403,7 +364,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 {		
 	updCommentData($_POST['id'], $_POST['idarticle']);
 	
-	include 'form.html.php';
+	include '../../pubcommonfiles/form.html.php';
 	exit();
 }
 	
@@ -413,7 +374,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Редактировать'
 
 if (isset($_GET['editform']))//Если есть переменная editform выводится форма
 {
-	updComment($_POST['id'], $_POST['comment'], $_POST['idarticle'], 'post');
+	updComment($_POST['id'], $_POST['comment'], $_POST['idarticle'], 'publication');
 }
 
 /*DELETE - удаление комментария*/
@@ -422,7 +383,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 {	
 	delCommentData($_POST['id'], $_POST['idarticle']);
 	
-	include 'delete.html.php';
+	include '../../pubcommonfiles/delete.html.php';
 }
 	
 if (isset ($_GET['delete']))

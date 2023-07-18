@@ -1,4 +1,6 @@
 <?php
+$pubFolder = 'viewpost'; //Папка скрипта
+
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
@@ -13,8 +15,6 @@ include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
 /*Определение нахождения пользователя в системе*/
 loggedIn();
-
-$pubFolder = 'viewpost'; //Папка скрипта
 
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))

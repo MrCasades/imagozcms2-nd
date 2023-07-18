@@ -12,28 +12,20 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
-					<?php if ($pubFolder == 'viewnews'):?>
-						<a href = "../viewallnews/"><h2>Новости</h2></a>
-					<?php elseif ($pubFolder == 'viewpost'):?>
-						<a href = "../viewallposts/"><h2>Статьи</h2></a>
-					<?php elseif ($pubFolder == 'viewpromotion'):?>
-						<a href = "../viewallpromotion/"><h2>Промоушен</h2></a>
-					<?php elseif ($pubFolder == 'viewnewsset'): ?>
-						<a href = "../newssets/"><h2>Новостные дайджесты</h2></a>
-					<?php endif;?>
+					<?php htmlecho ($linkHeaderSP); ?>
 					<div class = "main-headers-line"></div>
-					<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
+					<div class = "sub-header"><?php htmlecho ($subHeaderCP); ?></div>
 				</div>
 			</div>
-			<div class = "article-head m-content" style="background-image: url(../images/<?php echo $imgHead; ?>)">
+			<div class = "article-head m-content" style="background-image: url(//<?php echo MAIN_URL; ?>/images/<?php echo $imgHead; ?>)">
 				<div class = "article-head-top"> 
 					<div class ="article-info">
-						<p><span class="post-rubrics"><a href="../viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
+						<p><span class="post-rubrics"><a href="//<?php echo MAIN_URL; ?>/viewcategory/?id=<?php echo $categoryId; ?>"><?php echo $categoryName;?></a></span></p>
 					</div>
 				<div class="article-rating">
 						<i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php htmlecho ($viewCount); ?>  
 						<i class="fa fa-heartbeat" aria-hidden="true" title="Оценка"></i> <?php htmlecho (round($averageNumber, 2, PHP_ROUND_HALF_DOWN)); ?>
-						<?php if ($pubFolder !== 'viewpromotion'):?>
+						<?php if ($pubFolder !== 'viewpromotion' && $pubFolder !== 'publication'):?>
 							<i class="fa fa-check-square-o" aria-hidden="true" title="Добавили в избранное"></i> <?php htmlecho ($favouritesCount); ?>
 						<?php endif;?>
 				</div>
