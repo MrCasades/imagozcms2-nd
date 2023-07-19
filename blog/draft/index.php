@@ -44,13 +44,14 @@ if (isset ($_GET['blid']))
                     p.imghead,  
                     p.date, 
                     a.authorname, 
+					b.title as blogtitle,
 					c.id AS categoryid, 
 					c.categoryname 
                 FROM publication p 
 				INNER JOIN author a ON p.idauthor = a.id 
 				INNER JOIN blogs b ON p.idblog = b.id 
 				INNER JOIN category c ON p.idcategory = c.id
-				WHERE p.premoderation = "NO" AND p.draft = "YES" AND p.idauthor = '.$selectedAuthor.' LIMIT 10';//Вверху самое последнее значение
+				WHERE p.premoderation = "NO" AND p.draft = "YES" AND p.idauthor = '.$selectedAuthor.' AND p.idblog = '.$_GET['blid'].' LIMIT 10';//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 
@@ -63,9 +64,14 @@ if (isset ($_GET['blid']))
 	/*Вывод результата в шаблон*/
 	foreach ($result as $row)
 	{
-		$pubs[] =  array ('pubid' => $row['pubid'], 'authorid' => $row['authorid'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 
+		$pubs[] =  array ('pubid' => $row['pubid'], 'authorid' => $row['authorid'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'blogtitle'  => $row['blogtitle'],
 							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 	}
+
+	$title = 'Черновик блога "'.$row['blogtitle'].'"';//Данные тега <title>
+	$headMain = 'Черновик блога "'.$row['blogtitle'].'"';
+	$robots = 'noindex, nofollow';
+	$descr = 'В данном разделе выводятся материалы которые находятся в черновике';
 
     include 'draft.html.php';
 	exit();

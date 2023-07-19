@@ -19,12 +19,6 @@ loggedIn();
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
-	/*Инициализация блога*/
-	require_once MAIN_FILE . '/includes/blogvar.inc.php';
-
-	/*Получение атрибутов блога для шапки */
-	getBlogAtributs($_GET['id']);
-
 	$idPub = $_GET['id'];
 	
 	$select = 'SELECT 
@@ -40,11 +34,11 @@ if (isset ($_GET['id']))
 					p.description, 
 					p.imgalt, 
 					p.date, 
+					p.idblog,
 					a.authorname, 
 					c.id AS categoryid, 
 					c.categoryname,
-					b.title AS blogtitle,
-					b.id AS blogid
+					b.title AS blogtitle
 				FROM publication p
 				INNER JOIN author a ON p.idauthor = a.id 
 				INNER JOIN blogs b ON b.idauthor = p.idauthor 
@@ -89,7 +83,7 @@ if (isset ($_GET['id']))
 	//$favouritesCount = $row['favouritescount'];
 
 	$blogTitle = $row['blogtitle'];
-	$blogId = $row['blogid'];
+	$blogId = $row['idblog'];
 	
 	/*Если страница отсутствует. Ошибка 404*/
 	if (!$row)
@@ -97,6 +91,12 @@ if (isset ($_GET['id']))
 		header ('Location: ../page-not-found/');//перенаправление обратно в контроллер index.php
 		exit();	
 	}
+
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($blogId);
 	
 	$categoryID = $row['categoryid'];//Сохранение id сатегории
 	
@@ -105,7 +105,7 @@ if (isset ($_GET['id']))
 	$robots = 'all';
 	$descr = $row['description'];
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/blog?id="'.$blogId.'>Блог "'.$blogTitle.'"</a> >> ';//Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/blog?id='.$blogId.'">Блог "'.$blogTitle.'"</a> >> ';//Для хлебных крошек
 	$breadPart3 = '<a href="//'.MAIN_URL.'/blog/publication?id='.$idPub.'">'.$row['title'].'</a> ';//Для хлебных крошек
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
