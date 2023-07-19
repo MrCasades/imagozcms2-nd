@@ -13,7 +13,7 @@ if (isset($_GET['vote']))
 		$updateVoteCount = 'UPDATE newsblock SET votecount = votecount + 1 WHERE id = '.$_POST['id'];//обновление числа проголосовавших
 		$updateTotalNumber = 'UPDATE newsblock SET totalnumber = totalnumber + '.$vote.' WHERE id = '.$_POST['id'];//обновление общего числа
 		$updateAverageNumber = 'UPDATE newsblock SET averagenumber = totalnumber/votecount WHERE id = '.$_POST['id'];//обновление среднего значения в БД
-		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idpost = 0, idvideo = 0, idnews = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
+		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idpost = 0, idvideo = 0, idpublication = 0, idnews = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
 		$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 	}
 
@@ -22,7 +22,7 @@ if (isset($_GET['vote']))
 		$updateVoteCount = 'UPDATE posts SET votecount = votecount + 1 WHERE id = '.$_POST['id'];//обновление числа проголосовавших
 		$updateTotalNumber = 'UPDATE posts SET totalnumber = totalnumber + '.$vote.' WHERE id = '.$_POST['id'];//обновление общего числа
 		$updateAverageNumber = 'UPDATE posts SET averagenumber = totalnumber/votecount WHERE id = '.$_POST['id'];//обновление среднего значения в БД
-		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idnews = 0, idvideo = 0, idpost = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
+		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idnews = 0, idvideo = 0, idpublication = 0, idpost = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
 		$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 	}
 
@@ -31,7 +31,7 @@ if (isset($_GET['vote']))
 		$updateVoteCount = 'UPDATE promotion SET votecount = votecount + 1 WHERE id = '.$_POST['id'];//обновление числа проголосовавших
 		$updateTotalNumber = 'UPDATE promotion SET totalnumber = totalnumber + '.$vote.' WHERE id = '.$_POST['id'];//обновление общего числа
 		$updateAverageNumber = 'UPDATE promotion SET averagenumber = totalnumber/votecount WHERE id = '.$_POST['id'];//обновление среднего значения в БД
-		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpost = 0, idnews = 0, idvideo = 0, idpromotion = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
+		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpost = 0, idnews = 0, idvideo = 0, idpublication = 0, idpromotion = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
 		$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 	}
 
@@ -40,7 +40,16 @@ if (isset($_GET['vote']))
 		$updateVoteCount = 'UPDATE video SET votecount = votecount + 1 WHERE id = '.$_POST['id'];//обновление числа проголосовавших
 		$updateTotalNumber = 'UPDATE video SET totalnumber = totalnumber + '.$vote.' WHERE id = '.$_POST['id'];//обновление общего числа
 		$updateAverageNumber = 'UPDATE video SET averagenumber = totalnumber/votecount WHERE id = '.$_POST['id'];//обновление среднего значения в БД
-		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idnews = 0, idpost = 0, idvideo = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
+		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idnews = 0, idpost = 0, idpublication = 0, idvideo = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
+		$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
+	}
+
+	elseif($_POST['pb_type'] == 'publication')
+	{
+		$updateVoteCount = 'UPDATE publication SET votecount = votecount + 1 WHERE id = '.$_POST['id'];//обновление числа проголосовавших
+		$updateTotalNumber = 'UPDATE publication SET totalnumber = totalnumber + '.$vote.' WHERE id = '.$_POST['id'];//обновление общего числа
+		$updateAverageNumber = 'UPDATE publication SET averagenumber = totalnumber/votecount WHERE id = '.$_POST['id'];//обновление среднего значения в БД
+		$insertToVotedAuthor ='INSERT INTO votedauthor SET idpromotion = 0, idnews = 0, idpost = 0, idvideo = 0, idpublication = '.$_POST['id'].', idauthor = '.$_POST['idauthor'].', vote = '.$vote;//обновление таблицы проголосовавшего автора
 		$SELECTCONTEST = 'SELECT conteston FROM contest WHERE id = 1';//проверка включения/выключения конкурса
 	}
 								

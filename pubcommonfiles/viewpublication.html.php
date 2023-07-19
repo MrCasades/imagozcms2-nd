@@ -73,7 +73,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					</div>
 					<div class="fav-and-recomm">
 						<div>
-							<?php if ($pubFolder !== 'viewpromotion'):?>
+							<?php if ($pubFolder !== 'viewpromotion' && $pubFolder !== 'publication'):?>
 								<?php echo $addFavourites;?>
 							<?php endif;?>
 						</div>

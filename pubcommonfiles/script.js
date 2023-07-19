@@ -263,7 +263,7 @@ $( document ).ready(function() {
 
 	function voteClick(btn){
 		$("#confirmlike").hide();
-		const url = '../pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
+		const url = '//' + window.location.hostname +'/pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
 					//$("#btn_vot").attr('src', ' ');
 		sendAjaxForm('result_form_vot', 'confirmlike', url);
 		$("#result_form_vot").html('Ваш голос принят!');
