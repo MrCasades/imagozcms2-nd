@@ -5,7 +5,7 @@ include_once '../../includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-/*Загрузка функций для формы входа*/
+/*Загрузка функций для формы публикаций*/
 include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
 
 $pubFolder = 'addupdpost'; //Папка скрипта

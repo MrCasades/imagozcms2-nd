@@ -566,11 +566,13 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 /*Предварительенй просмотр*/
 
+	$idBlog = $_POST['blogid'];
+
 	/*Инициализация блога*/
 	require_once MAIN_FILE . '/includes/blogvar.inc.php';
 
 	/*Получение атрибутов блога для шапки */
-	getBlogAtributs($_POST['blogid']);
+	getBlogAtributs($idBlog);
 	
 	preview('publication', $idpost_ind);
 	
@@ -588,6 +590,14 @@ if (isset ($_POST['action']) && $_POST['action'] == 'ОПУБЛИКОВАТЬ')
 {
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
+
+	$idBlog = $_POST['blogid'];
+
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($idBlog);
 
 	/*Отправка материала в премодерацию*/
 	try

@@ -307,6 +307,39 @@ function getBlogAtributs($idBlog)
 
 	$row = $s -> fetch();
 
+	$GLOBALS['idBlog'] = $row['blogid'];
 	$GLOBALS['headBlog'] = $row['headblog'];
 	$GLOBALS['blogTitle'] = $row['title'];
+}
+
+
+/*Выбор блогов автора*/
+function getAuthorBlogs ($idAuthor)
+{
+	/*Подключение к базе данных*/
+	include 'db.inc.php';
+
+	try
+	{
+		$sql = 'SELECT 
+					b.id,
+					b.title,
+					b.description,
+					b.avatar
+				FROM blogs b
+				WHERE b.idauthor = '.$idAuthor;
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода blogs';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$GLOBALS['blogs'][] =  array ('id' => $row['id'], 'avatar' => $row['avatar'], 'title' => $row['title']);
+	}
 }

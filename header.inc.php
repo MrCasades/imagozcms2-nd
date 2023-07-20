@@ -108,7 +108,7 @@
 		<?php else:?>
 			<div class="blog-header-pl" style="background-image: url(<?php echo '//'.MAIN_URL;?>/blog/headersimages/<?php echo $headBlog; ?>)">
 				<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo2.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>	
-				<h1><?php echo $blogTitle;?></h1>
+				<h1><a href = "<?php echo '//'.MAIN_URL;?>/blog/?id=<?php echo $idBlog;?>"><?php echo $blogTitle;?></a></h1>
 			</div>
 		<?php endif;?>
 		<!-- <div class="authorization-form">

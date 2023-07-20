@@ -9,6 +9,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <article>
 	<div class="article-row">
 		<div class="left-side">
+		  <?php if ($pubFolder !== 'publication'):?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
@@ -17,6 +18,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<div class = "sub-header"><?php htmlecho ($subHeaderCP); ?></div>
 				</div>
 			</div>
+			<?php endif;?>
 			<div class = "article-head m-content" style="background-image: url(//<?php echo MAIN_URL; ?>/images/<?php echo $imgHead; ?>)">
 				<div class = "article-head-top"> 
 					<div class ="article-info">

@@ -8,6 +8,9 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
+/*Загрузка функций для формы публикаций*/
+include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
+
 /*Определение нахождения пользователя в системе*/
 loggedIn();
 
@@ -93,29 +96,7 @@ if (isset ($_GET['id']))
 	}		
 
 	/*Выбор блогов автора*/
-	try
-	{
-		$sql = 'SELECT 
-					b.id,
-					b.title,
-					b.description,
-					b.avatar
-				FROM blogs b
-				WHERE b.idauthor = '.$idAuthor;
-		$result = $pdo->query($sql);
-	}
-	
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода blogs';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$blogs[] =  array ('id' => $row['id'], 'avatar' => $row['avatar'], 'title' => $row['title']);
-	}
+	getAuthorBlogs ($idAuthor);
 	
 	/*Управление аккаунтом*/
 	

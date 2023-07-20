@@ -27,6 +27,7 @@ if (isset ($_GET['id']))
 					p.videoyoutube, 
 					p.imgalt, 
 					p.date, 
+					p.idblog,
 					a.authorname, 
 					c.id AS categoryid, 
 					c.categoryname
@@ -64,6 +65,7 @@ if (isset ($_GET['id']))
 	$categoryName = $row['categoryname'];
 	$categoryId = $row['categoryid'];
 	$posttitle = $row['title'];
+	$idBlog = $row['idblog'];
 
 	/*Если страница отсутствует. Ошибка 404*/
 	if (!$row)
@@ -71,6 +73,12 @@ if (isset ($_GET['id']))
 		header ('Location: ../page-not-found/');//перенаправление обратно в контроллер index.php
 		exit();	
 	}
+
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($idBlog);
 	
 	$categoryID = $row['categoryid'];//Сохранение id сатегории	
 	
@@ -121,6 +129,7 @@ if (isset ($_GET['id']))
 	$pubAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
 			
 					Действия с материалом:
+					<input type = 'hidden' name = 'blogid' value = '".$idBlog."'>
 					<input type = 'hidden' name = 'id' value = '".$idPub."'>
 					<input type = 'submit' name = 'action' value = 'ОБНОВИТЬ' class='btn_2 addit-btn'>
 					<input type = 'submit' name = 'action' value = 'ОПУБЛИКОВАТЬ' class='btn_1 addit-btn'>

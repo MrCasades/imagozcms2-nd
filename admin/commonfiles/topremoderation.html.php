@@ -20,7 +20,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
           <input type = "hidden" name = "posttitle" value = "<?php htmlecho($posttitle); ?>">
           <input type = "hidden" name = "price" value = "<?php htmlecho($price); ?>">
 		  <input type = "submit" name = "delete" class="btn_2" value = "<?php htmlecho($button); ?>">
-          <a href='../viewalldraft/'><button class='btn_1' type="button">В черновик</button></a>
+		  <?php if ($pubFolder == 'publication'):?>
+			<a href='../viewalldraft/'><button class='btn_1' type="button">В черновик</button></a>
+		  <?php else:?>
+            <a href='//<?php htmlecho(MAIN_URL); ?>/blog/draft/?blid=<?php htmlecho($idBlog); ?>'><button class='btn_1' type="button">В черновик</button></a>
+		  <?php endif;?>
 		</form></p>
 	 </div>	 
 	</div>	

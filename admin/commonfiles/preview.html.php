@@ -21,6 +21,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<p class = "for-info-txt">Число знаков в статье (без пробелов) <?php echo $lengthText;?> | Стоимость  <?php echo $fullPrice.$bonusText;?></p>
 		<?php endif; ?>
 		<form action = "../../admin/<?php echo $pubFolder; ?>/" method = "post" id = "confirmok">
+			<?php if ($pubFolder == 'publication'):?>
+				<input type = "hidden" name = "blogid" value = "<?php htmlecho($idBlog); ?>">
+			<?php endif;?>
 			<input type = "hidden" name = "id" value = "<?php echo $idpost_ind; ?>">
 			<input type = "submit" name = "action" value = "ОПУБЛИКОВАТЬ" class= "btn_3">
 		</form>

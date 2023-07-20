@@ -263,7 +263,7 @@ $( document ).ready(function() {
 
 	function voteClick(btn){
 		$("#confirmlike").hide();
-		const url = '//' + window.location.hostname +'/pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
+		const url = '//' + window.location.hostname + forTestPath() +'/pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
 					//$("#btn_vot").attr('src', ' ');
 		sendAjaxForm('result_form_vot', 'confirmlike', url);
 		$("#result_form_vot").html('Ваш голос принят!');
@@ -272,6 +272,14 @@ $( document ).ready(function() {
 		console.log(url);
 
 		return false; 
+	}
+
+	//адрес для теста
+	function forTestPath(){
+		if (window.location.hostname = 'localhost')
+			return '/imagozcms2-nd';
+		else
+			return '';
 	}
 
 });
