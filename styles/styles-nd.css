@@ -2048,6 +2048,12 @@ main .acc-info-pl{
     margin-top: 5%;
 }
 
+.blog-header-main a{
+    margin-left: 35%;
+    color: #0F4780;
+    text-decoration: none;
+}
+
 .blog-m{
     display: flex;
     margin-top: 1rem;

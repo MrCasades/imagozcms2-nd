@@ -108,7 +108,7 @@
 		<?php else:?>
 			<div class="blog-header-pl" style="background-image: url(<?php echo '//'.MAIN_URL;?>/blog/headersimages/<?php echo $headBlog; ?>)">
 				
-				<h1><a href = "<?php echo '//'.MAIN_URL;?>/blog/?id=<?php echo $idBlog;?>"><?php echo $blogTitle;?></a></h1>
+				
 			</div>
 		<?php endif;?>
 		<!-- <div class="authorization-form">
@@ -130,10 +130,11 @@
 		<div class="header-line"></div>
 		<?php if (!empty($itIsBlog)) :?>
 			<div class="blog-login-logout-btn-pl">
+				<h1 class="blog-header-main"><a href = "<?php echo '//'.MAIN_URL;?>/blog/?id=<?php echo $idBlog;?>"><?php echo $blogTitle;?></a></h1>
 				<a href = "<?php echo '//'.MAIN_URL;?>"><?php echo MAIN_URL;?></a> |
 				<?php if (!isset($_SESSION['loggIn'])):?>
 					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom">Вход</a> 
-				<?php else:?>
+				<?php else:?>					
 					<a href="//<?php echo MAIN_URL;?>/account/?id=<?php echo $selectedAuthor;?>">Профиль</a> |
 					<a href="//<?php echo MAIN_URL;?>/blog/myblogs">Мои блоги</a>
 				<?php endif;?>

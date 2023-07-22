@@ -9,14 +9,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <article>
 	<div class="article-row">
 		<div class="left-side">
-			<div class = "main-headers">
-				<div class = "main-headers-circle"></div>
-				<div class = "main-headers-content">
-					<h2><?php echo $blogTitle;?></h2>
-					<div class = "main-headers-line"></div>
-				</div>
-			</div>
-
 			<div class="blog-m m-content">	
 				<div class="blog-ava-pl">				
 					<?php if ($avatar !== ''): ?>
