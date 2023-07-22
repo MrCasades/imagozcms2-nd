@@ -1,6 +1,6 @@
 <?php
 /*Загрузка главного пути*/
-include_once '../includes/path.inc.php';
+include_once '../../includes/path.inc.php';
 
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
@@ -24,7 +24,7 @@ $headMain = 'Мои блоги';
 $robots = 'noindex, nofollow';
 $descr = 'Все мои блоги';
 $breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-$breadPart2 = '<a href="//'.MAIN_URL.'/blog/myblogs/">Мои блоги</a> >> ';//Для хлебных крошек
+$breadPart2 = '<a href="//'.MAIN_URL.'/blog/myblogs/">Мои блоги</a>';//Для хлебных крошек
 
 include 'myblogs.html.php';
 exit();

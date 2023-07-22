@@ -128,6 +128,21 @@
                 </form>
         </div>  -->          
 		<div class="header-line"></div>
+		<?php if (!empty($itIsBlog)) :?>
+			<div class="blog-login-logout-btn-pl">
+				<a href = "<?php echo '//'.MAIN_URL;?>">imagoz.ru</a> |
+				<?php if (!isset($_SESSION['loggIn'])):?>
+					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom">Вход</a> 
+				<?php else:?>
+					<a href="//<?php echo MAIN_URL;?>/account/?id=<?php echo $selectedAuthor;?>">Профиль</a> |
+					<a href="//<?php echo MAIN_URL;?>/blog/myblogs">Мои блоги</a>
+				<?php endif;?>
+			</div>
+			<?php else:?>
+				<div class="blog-login-logout-btn-pl">
+					<a href="//<?php echo MAIN_URL;?>/blog/myblogs"><i class="fa fa-pencil-square" aria-hidden="true"></i> Мои блоги</a>
+				</div>
+		<?php endif;?>
 		
 		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>   
 	</header>

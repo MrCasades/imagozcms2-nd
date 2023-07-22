@@ -2030,6 +2030,16 @@ main .acc-info-pl{
     width: 100%;
 }
 
+.blog-login-logout-btn-pl{
+    margin-left: 3%;
+    color: #0F4780;
+}
+
+.blog-login-logout-btn-pl a{
+    color: #0F4780;
+    text-decoration: none;
+}
+
 .blog-m{
     display: flex;
     margin-top: 1rem;

@@ -10,7 +10,7 @@
 			<?php endif; ?>
 			<span class="profile-name"><?php echo $authorInSystem;?></span>
 		</div>
-		 
+
 		<div class="profile-menu">
 			<a href="//<?php echo MAIN_URL;?>/account/?id=<?php echo $selectedAuthor;?>"><i class="fa fa-user-circle" aria-hidden="true"></i> Профиль</a>
 			<a href="//<?php echo MAIN_URL;?>/mainmessages/"><i class="fa fa-envelope" aria-hidden="true" class="env-main"></i><span id = "countcolor"><?php echo $unreadCount;?></span> Сообщения</a>
@@ -23,6 +23,7 @@
 				<button class="btn_1"><strong><i class="fa fa-sign-out" aria-hidden="true"></i>Выход</strong></button>
 			</form>
 		</div>
+		
 	</div>
 	
 	<script>
