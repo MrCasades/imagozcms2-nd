@@ -2040,6 +2040,14 @@ main .acc-info-pl{
     text-decoration: none;
 }
 
+.blog-login-logout-btn-pl-2 a{
+    margin-left: 85%;
+    color: #0F4780;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-top: 5%;
+}
+
 .blog-m{
     display: flex;
     margin-top: 1rem;

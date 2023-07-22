@@ -517,6 +517,12 @@
         margin-left: 5%;
         max-width: 95%;
     }
+
+    /*Стили блога*/
+    .blog-login-logout-btn-pl-2 a{
+        margin-left: 70%;
+
+    }
     
 }
 
