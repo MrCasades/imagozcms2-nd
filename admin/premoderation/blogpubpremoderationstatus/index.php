@@ -157,8 +157,25 @@ if (isset ($_GET['premodyes']))
 	}
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка пуюликации promotion';
+		$error = 'Ошибка пуюликации publication';
 		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Индексация статьи*/
+	if (isset ($_POST['indexing']))
+	{
+		try
+		{
+			$sql = 'UPDATE publication SET indexing = "all" WHERE id = :idpublication';
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+		catch (PDOException $e)
+		{
+			$error = 'Ошибка индексации publication';
+			include MAIN_FILE . '/includes/error.inc.php';
+		}
 	}
 		
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php

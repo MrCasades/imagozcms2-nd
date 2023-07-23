@@ -35,6 +35,7 @@ if (isset ($_GET['id']))
 					p.imgalt, 
 					p.date, 
 					p.idblog,
+					p.indexing,
 					a.authorname, 
 					c.id AS categoryid, 
 					c.categoryname,
@@ -82,6 +83,8 @@ if (isset ($_GET['id']))
 	$categoryId = $row['categoryid'];
 	//$favouritesCount = $row['favouritescount'];
 
+	$indexing = $row['indexing'];
+
 	$blogTitle = $row['blogtitle'];
 	$blogId = $row['idblog'];
 	
@@ -102,7 +105,7 @@ if (isset ($_GET['id']))
 	
 	$title = $row['title'].' | imagoz.ru';//Данные тега <title>
 	$headMain = $row['title'];
-	$robots = 'all';
+	$robots = $indexing;
 	$descr = $row['description'];
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	$breadPart2 = '<a href="//'.MAIN_URL.'/blog?id='.$blogId.'">Блог "'.$blogTitle.'"</a> >> ';//Для хлебных крошек

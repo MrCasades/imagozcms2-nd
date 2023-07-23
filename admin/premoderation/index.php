@@ -163,10 +163,11 @@ if (isset ($_GET['blog']))
 	{
 		$sql = 'SELECT 
 			p.id, 
-			p.title, 
+			p.title as pubtitle, 
 			p.date, 
 			p.idblog,
-			b.title,
+			b.title as blogtitle,
+			b.blogpremoderation,
 			a.authorname, 
 			a.email 
 		FROM publication p
@@ -187,8 +188,9 @@ if (isset ($_GET['blog']))
 	/*Вывод результата в шаблон*/
 	foreach ($result as $row)
 	{
-		$blogpubs[] =  array ('id' => $row['id'], 'title' =>  $row['title'], 'date' =>  $row['date'], 
-							'authorname' =>  $row['authorname'], 'email' =>  $row['email']);
+		$blogpubs[] =  array ('id' => $row['id'], 'pubtitle' =>  $row['pubtitle'], 'date' =>  $row['date'], 
+							'authorname' =>  $row['authorname'], 'email' =>  $row['email'], 
+							'blogtitle' =>  $row['blogtitle'], 'idblog' =>  $row['idblog'], 'blogpremoderation' =>  $row['blogpremoderation']);
 	}
 
 	include 'premoderationblogpub.html.php';

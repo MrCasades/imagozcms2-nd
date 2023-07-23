@@ -19,6 +19,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<th>#id</th>
 				<th>Дата публикации</th>
 				<th>Заголовок</th>	
+				<th>Блог</th>
+				<th>Премодерация блога</th>
 				<th>Автор</th>
 				<th>E-mail</th>				
 		  </tr> 
@@ -34,7 +36,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		  <tr>
 				<td><?php echo '# '.$blogpub['id'];?></td>
 				<td><?php echo $blogpub['date'];?></td>
-				<td><a href="../../admin/premoderation/viewpremodblogpub/?blogpub=<?php echo $blogpub['id'];?>"><?php echo $blogpub['title'];?></a></td>
+				<td><a href="../../admin/premoderation/viewpremodblogpub/?blogpub=<?php echo $blogpub['id'];?>"><?php echo $blogpub['pubtitle'];?></a></td>
+				<td><a href="//<?php echo MAIN_URL ;?>/blog/?id=<?php echo $blogpub['idblog'];?>" target="blank_"><?php echo $blogpub['blogtitle'];?></a></td>
+				<td><?php echo $blogpub['blogpremoderation'];?></td>
 				<td><?php echo $blogpub['authorname'];?></td>
 				<td><?php echo $blogpub['email'];?></td>
 		  </tr> 				
