@@ -6,7 +6,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
-<article>
+<main>
 	<div class="article-row">
 		<div class="left-side">
 			<div class="blog-m m-content">	
@@ -30,48 +30,50 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php endif;?>							
 				</div>
 				
-				<?php if (!empty ($newsIn)): ?>
-
-				<div class = "main-headers">
-					<div class = "main-headers-circle"></div>
-					<div class = "main-headers-content">
-					<a class = "main-headers-place" href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>"><h2>Недавние публикации блога</h2></a>
-						<div class = "main-headers-line"></div>
-					</div>
-				</div>
-
-				<?php endif; ?>
-
-				<div class = "main-post">
-					<?php  if (empty ($pubs))
-						{
-							echo '<p>Автор ничего не опубликовал</p>';
-						}
-						
-						else
-
-						foreach ($pubs as $pub): ?>
-						
-						<a href="./publication/?id=<?php htmlecho ($pub['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $pub['imghead']; ?>)">
-							<div class = "post-top-1">
-								<span class="post-rubrics"><?php htmlecho ($pub['categoryname']); ?></span>
-							</div>
-							<div class = "post-bottom-1">
-								<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pub['title'])), 0, 7)))); ?>...</span>
-								<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($pub['date'])); ?></span>
-							</div>
-						</a>
-
-					<?php endforeach; ?>
-				</div>
+				
 			</div> 
+
+			<?php if (!empty ($pubs)): ?>
+
+<div class = "main-headers">
+	<div class = "main-headers-circle"></div>
+	<div class = "main-headers-content">
+	<a class = "main-headers-place" href = "../account/allauthornews/?id=<?php htmlecho ($idAuthor); ?>"><h2>Недавние публикации блога</h2></a>
+		<div class = "main-headers-line"></div>
+	</div>
+</div>
+
+<?php endif; ?>
+
+<div class = "main-post">
+	<?php  if (empty ($pubs))
+		{
+			echo '<p>Автор ничего не опубликовал</p>';
+		}
+		
+		else
+
+		foreach ($pubs as $pub): ?>
+		
+		<a href="./publication/?id=<?php htmlecho ($pub['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $pub['imghead']; ?>)">
+			<div class = "post-top-1">
+				<span class="post-rubrics"><?php htmlecho ($pub['categoryname']); ?></span>
+			</div>
+			<div class = "post-bottom-1">
+				<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pub['title'])), 0, 7)))); ?>...</span>
+				<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($pub['date'])); ?></span>
+			</div>
+		</a>
+
+	<?php endforeach; ?>
+</div>
 			
 			<!-- <div class = "article-head m-content" style="background-image: url(../blog/headersimages/<?php echo $imgHead; ?>)">
 
 			</div> -->
 			
 		</div>
-		<h1 class="m-content"><?php htmlecho ($headMain); ?></h1>
+		
 			
 
 				<!-- <div class="m-content">
@@ -80,7 +82,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 				
 		<div class="right-side">
-
+		<?php
+			/*Загрузка компонента последних новостей*/
+			include_once MAIN_FILE . '/blog/blogspublicationinrightside/blogspublicationinrightside.inc.php';?>
 			<!-- <div class="zen-c-m">
 				<div class = "main-headers">
 					<div class = "main-headers-content">
@@ -94,7 +98,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			</div> -->
 		</div>
 	</div>
-</article>
+	</main>
 
 <?php 
 /*Загрузка footer*/

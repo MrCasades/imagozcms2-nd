@@ -68,8 +68,8 @@ if (isset ($_GET['blid']))
 							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 	}
 
-	$title = 'Черновик блога "'.$row['blogtitle'].'"';//Данные тега <title>
-	$headMain = 'Черновик блога "'.$row['blogtitle'].'"';
+	$title = 'Черновик блога';//Данные тега <title>
+	$headMain = 'Черновик блога';
 	$robots = 'noindex, nofollow';
 	$descr = 'В данном разделе выводятся материалы которые находятся в черновике';
 

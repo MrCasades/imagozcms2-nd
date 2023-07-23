@@ -2056,7 +2056,7 @@ main .acc-info-pl{
 
 .blog-m{
     display: flex;
-    margin-top: 1rem;
+    margin-top: 0.3rem;
 }
 
 .blog-ava-pl{
@@ -2088,7 +2088,7 @@ main .acc-info-pl{
 .blog-info-pl{
     height: 50%;
     width: 80%;
-    margin-left: -27%;
+    margin-left: -25%;
     margin-top: -1.5%;
     font-size: 1.5rem;
 }
