@@ -110,6 +110,36 @@ if (isset ($_GET['id']))
 		$toDraft = '';
 	}
 
+	/*Индексировать блог*/
+	if (userRole('Администратор'))
+	
+	{
+		if ($indexing == 'noindex, nofollow')
+		{
+			$indexBlog = '<form action=" " metod "post" id = "ajax_form_bl_ind">
+								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
+								<input type = "hidden" id = "val_bl_ind" name = "val_bl_ind" value = "addindex">
+								<button id = "btn_bl_ind" title="Индексировать блог" class="btn_1 addit-btn">Индексировать</button> 
+							</form>
+							<strong><p id = "result_form_bl_ind"></p></strong>';
+		}
+
+		else
+		{
+			$indexBlog = '<form action=" " metod "post" id = "ajax_form_bl_ind">
+								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
+								<input type = "hidden" id = "val_bl_ind" name = "val_bl_ind" value = "delindex">
+								<button id = "btn_bl_ind" title="Индексировать блог" class="btn_2 addit-btn">Убрать индекс</button> 
+							</form>
+							<strong><p id = "result_form_bl_ind"></p></strong>';
+		}
+	}
+
+	else
+	{
+		$indexBlog = '';
+	}
+
 	/*Загрузка публикаций блога*/
 	/*Постраничный вывод информации*/
 		
@@ -184,6 +214,7 @@ if (isset ($_GET['id']))
 	$headMain = 'Все статьи';
 	$robots = $indexing;
 	$descr = 'Блог пользователя '.$nameAuthor;
+	$scriptJScode = '<script src="//'.MAIN_URL.'/pubcommonfiles/script.js"></script>';//добавить код JS
 	//$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	//$breadPart2 = '<a href="//'.MAIN_URL.'/blog/">Все статьи</a> ';//Для хлебных крошек
 

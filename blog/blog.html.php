@@ -19,6 +19,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php echo $editBlog; ?>
 					<?php echo $addPublication; ?>
 					<?php echo $toDraft; ?>
+					<?php echo $indexBlog; ?>
 				</div> 
 				<div class="blog-info-pl">
 		

@@ -15,12 +15,9 @@ try
 
 catch (PDOException $e)
 {
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'ошибка выбора цены рекомендации: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
-	}
+	$error = 'Ошибка выбора цены рекомендации';
+	include MAIN_FILE . '/includes/error.inc.php';
+}
 	
 	$row = $s -> fetch();
 	
@@ -36,11 +33,8 @@ catch (PDOException $e)
 
 	catch (PDOException $e)
 	{
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = 'Error select book: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
+		$error = 'Ошибка выбора счёта';
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
