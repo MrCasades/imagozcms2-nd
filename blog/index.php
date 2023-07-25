@@ -42,6 +42,7 @@ if (isset ($_GET['id']))
 					,b.avatar
 					,b.indexing
 					,b.idauthor
+					,b.blogpremoderation
 					,a.authorname
 				FROM blogs b
 				INNER JOIN author a ON b.idauthor = a.id 
@@ -67,6 +68,7 @@ if (isset ($_GET['id']))
 	$avatar = $row['avatar'];
 	$indexing = $row['indexing'];
 	$nameAuthor = $row['authorname'];
+	$premodStatus = $row['blogpremoderation'];
 
 	/*Определение количества статей*/
 	// try
@@ -110,10 +112,10 @@ if (isset ($_GET['id']))
 		$toDraft = '';
 	}
 
-	/*Индексировать блог*/
-	if (userRole('Администратор'))
-	
+	if (userRole('Администратор'))	
 	{
+
+		/*Индексировать блог */
 		if ($indexing == 'noindex, nofollow')
 		{
 			$indexBlog = '<form action=" " metod "post" id = "ajax_form_bl_ind">
@@ -133,11 +135,37 @@ if (isset ($_GET['id']))
 							</form>
 							<strong><p id = "result_form_bl_ind"></p></strong>';
 		}
+
+		/*Статус премодерации блога*/
+		if ($premodStatus == 'NO')
+		{
+			$premodBlog = '<form action="./blogstatuses/" metod "post">
+								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
+								<button name = "action" title="Статус премодерации" class="btn_3 addit-btn" value = "Премодерация NO">Премодерация NO</button> 
+							</form>';
+		}
+
+		else
+		{
+			$premodBlog = '<form action="./blogstatuses/" metod "post">
+								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">							
+								<button name = "action" title="Статус премодерации" class="btn_4 addit-btn" value = "Премодерация YES">Премодерация YES</button> 
+							</form>';
+		}
+
+		/*Кнопка удаления блога*/
+
+		$delBlog = "<form action = './addupdblog/' method = 'post'>			
+						<input type = 'hidden' name = 'idblog' value = '".$idBlog."'>
+						<input type = 'submit' name = 'action' value = 'Удалить блог' class='btn_3 addit-btn'>
+					</form>";
 	}
 
 	else
 	{
 		$indexBlog = '';
+		$premodBlog = '';
+		$delBlog = '';
 	}
 
 	/*Загрузка публикаций блога*/

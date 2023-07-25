@@ -10,7 +10,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div class="article-row">
 		<div class="left-side">
 			<div class="blog-m m-content">	
-				<div class="blog-ava-pl">				
+				<div class="blog-ava-pl">
+					<?php echo $delBlog; ?>				
 					<?php if ($avatar !== ''): ?>
 						<img src="../blog/avatars/<?php echo $avatar;?>" alt="avatar">
 					<?php else: ?>
@@ -20,6 +21,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php echo $addPublication; ?>
 					<?php echo $toDraft; ?>
 					<?php echo $indexBlog; ?>
+					<?php echo $premodBlog; ?>
 				</div> 
 				<div class="blog-info-pl">
 		

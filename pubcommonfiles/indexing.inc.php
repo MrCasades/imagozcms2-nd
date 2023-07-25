@@ -4,7 +4,7 @@ include_once '../includes/path.inc.php';
 
 /*Индексация блога*/
 
-if (isset($_POST['val_bl_ind']) && isset($_POST['idblog']) && $_POST['val_fav'] == 'addindex')
+if (isset($_POST['val_bl_ind']) && isset($_POST['idblog']) && $_POST['val_bl_ind'] == 'addindex')
 {
     /*Обновление индексации блога*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -23,7 +23,7 @@ if (isset($_POST['val_bl_ind']) && isset($_POST['idblog']) && $_POST['val_fav'] 
     }
 }
 
-elseif (isset($_POST['val_bl_ind']) && isset($_POST['idblog']) && $_POST['val_fav'] == 'delindex')
+elseif (isset($_POST['val_bl_ind']) && isset($_POST['idblog']) && $_POST['val_bl_ind'] == 'delindex')
 {
     /*Обновление индексации блога*/
 	include MAIN_FILE . '/includes/db.inc.php';

@@ -232,7 +232,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 
 /*DELETE - удаление материала*/
 
-if (isset ($_POST['action']) && $_POST['action'] == 'Del')
+if (isset ($_POST['action']) && $_POST['action'] == 'Удалить блог')
 {	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -240,30 +240,30 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Del')
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, tasktitle FROM task WHERE id = :idtask';
+		$sql = 'SELECT id, title FROM blogs WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idtask', $_POST['id']);//отправка значения
+		$s -> bindValue(':idblog', $_POST['idblog']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка выбора id и заголовка task';
+		$error = 'Ошибка выбора id и заголовка blogs';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
 	$row = $s -> fetch();
 	
-	$title = 'Удаление задания';//Данные тега <title>
-	$headMain = 'Удаление задания';
+	$title = 'Удаление блога';//Данные тега <title>
+	$headMain = 'Удаление блога';
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'delete';
-	$posttitle = $row['tasktitle'];
+	$posttitle = $row['title'];
 	$id = $row['id'];
 	$button = 'Удалить';
 	
-	include '../commonfiles/delete.html.php';
+	include '../../pubcommonfiles/delete.html.php';
 }
 
 if (isset ($_GET['delete']))
@@ -273,14 +273,27 @@ if (isset ($_GET['delete']))
 	
 	try
 	{
-		$sql = 'DELETE FROM task WHERE id = :idtask';
+		$sql = 'DELETE FROM blogs WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idtask', $_POST['id']);//отправка значения
+		$s -> bindValue(':idblog', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка удаления информации task';
+		$error = 'Ошибка удаления информации blogs';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	try
+	{
+		$sql = 'DELETE FROM publication WHERE idblog = :idblog';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idblog', $_POST['id']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка удаления информации publication';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
