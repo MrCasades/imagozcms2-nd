@@ -226,7 +226,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	
-	include 'blogsucc.html.php';
+	header ('Location: //'.MAIN_URL.'/blog/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
 	exit();
 }
 
