@@ -16,7 +16,7 @@ else
 	exit();
 }
 
-if (isset ($_POST['action']) && $_POST['action'] == 'Премодерация NO')
+if (isset ($_GET['addyes']))
 {	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -27,7 +27,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Премодерация NO
 					blogpremoderation = "YES"
 				WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idblog', $_POST['idblog']);//отправка значения
+		$s -> bindValue(':idblog', $_GET['idblog']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
@@ -35,11 +36,11 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Премодерация NO
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	header ('Location: //'.MAIN_URL.'/blog/?id='.$_POST['idblog']);//перенаправление обратно в контроллер index.php
+	header ('Location: //'.MAIN_URL.'/blog/?id='.$_GET['idblog']);//перенаправление обратно в контроллер index.php
 	exit();
 }	
 
-if (isset ($_POST['action']) && $_POST['action'] == 'Премодерация YES')
+if (isset ($_GET['addno']))
 {	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -50,7 +51,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Премодерация YE
 					blogpremoderation = "NO"
 				WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idblog', $_POST['idblog']);//отправка значения
+		$s -> bindValue(':idblog', $_GET['idblog']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	catch (PDOException $e)
 	{
@@ -58,6 +60,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Премодерация YE
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
+	header ('Location: //'.MAIN_URL.'/blog/?id='.$_GET['idblog']);//перенаправление обратно в контроллер index.php
 	exit();
 }
