@@ -139,7 +139,7 @@ if (isset ($_GET['id']))
 		/*Статус премодерации блога*/
 		if ($premodStatus == 'NO')
 		{
-			$premodBlog = '<form action="./blogstatuses/" metod "post">
+			$premodBlog = '<form action="./blogstatuses/" metod = "post">
 								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
 								<button name = "action" title="Статус премодерации" class="btn_3 addit-btn" value = "Премодерация NO">Премодерация NO</button> 
 							</form>';
@@ -147,7 +147,7 @@ if (isset ($_GET['id']))
 
 		else
 		{
-			$premodBlog = '<form action="./blogstatuses/" metod "post">
+			$premodBlog = '<form action="./blogstatuses/" metod = "post">
 								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">							
 								<button name = "action" title="Статус премодерации" class="btn_4 addit-btn" value = "Премодерация YES">Премодерация YES</button> 
 							</form>';
