@@ -118,22 +118,18 @@ if (isset ($_GET['id']))
 		/*Индексировать блог */
 		if ($indexing == 'noindex, nofollow')
 		{
-			$indexBlog = '<form action=" " metod "post" id = "ajax_form_bl_ind">
+			$indexBlog = '<form action="./blogstatuses/" metod "post">
 								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
-								<input type = "hidden" id = "val_bl_ind" name = "val_bl_ind" value = "addindex">
-								<button id = "btn_bl_ind" title="Индексировать блог" class="btn_1 addit-btn">Индексировать</button> 
-							</form>
-							<strong><p id = "result_form_bl_ind"></p></strong>';
+								<button title="Индексировать блог" class="btn_1 addit-btn" name="addindex">Индексировать</button> 
+							</form>';
 		}
 
 		else
 		{
-			$indexBlog = '<form action=" " metod "post" id = "ajax_form_bl_ind">
+			$indexBlog = '<form action="./blogstatuses/" metod "post">
 								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
-								<input type = "hidden" id = "val_bl_ind" name = "val_bl_ind" value = "delindex">
-								<button id = "btn_bl_ind" title="Индексировать блог" class="btn_2 addit-btn">Убрать индекс</button> 
-							</form>
-							<strong><p id = "result_form_bl_ind"></p></strong>';
+								<button  title="Индексировать блог" class="btn_2 addit-btn" name="delindex">Убрать индекс</button> 
+							</form>';
 		}
 
 		/*Статус премодерации блога*/

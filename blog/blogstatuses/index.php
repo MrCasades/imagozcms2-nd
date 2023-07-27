@@ -35,9 +35,6 @@ if (isset ($_GET['addyes']))
 		$error = 'Ошибка удаления информации blogs';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
-	
-	header ('Location: //'.MAIN_URL.'/blog/?id='.$_GET['idblog']);//перенаправление обратно в контроллер index.php
-	exit();
 }	
 
 if (isset ($_GET['addno']))
@@ -59,7 +56,47 @@ if (isset ($_GET['addno']))
 		$error = 'Ошибка удаления информации blogs';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
-	
-	header ('Location: //'.MAIN_URL.'/blog/?id='.$_GET['idblog']);//перенаправление обратно в контроллер index.php
-	exit();
 }
+
+/*Индексация блога*/
+
+if (isset ($_GET['addindex']))
+{
+    /*Обновление индексации блога*/
+	include MAIN_FILE . '/includes/db.inc.php';
+
+    try
+    {
+        $sql = 'UPDATE blogs SET indexing = "all" WHERE id = :idblog';
+        $s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+        $s -> bindValue(':idblog', $_GET['idblog']);//отправка значения
+        $s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+    }
+    catch (PDOException $e)
+    {
+        $error = 'Ошибка индексации блога';
+        include MAIN_FILE . '/includes/error.inc.php';
+    }
+}
+
+if (isset ($_GET['delindex']))
+{
+    /*Обновление индексации блога*/
+	include MAIN_FILE . '/includes/db.inc.php';
+
+    try
+    {
+        $sql = 'UPDATE blogs SET indexing = "noindex, nofollow" WHERE id = :idblog';
+        $s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+        $s -> bindValue(':idblog', $_GET['idblog']);//отправка значения
+        $s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+    }
+    catch (PDOException $e)
+    {
+        $error = 'Ошибка индексации publication';
+        include MAIN_FILE . '/includes/error.inc.php';
+    }
+}
+
+header ('Location: //'.MAIN_URL.'/blog/?id='.$_GET['idblog']);//перенаправление обратно в контроллер index.php
+exit();

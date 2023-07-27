@@ -205,7 +205,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 				imghead = :imghead,
 				avatar = :avatar,
 				description = :description,
-				upddate = SYSDATE()
+				upddate = SYSDATE(),
+				blogpremoderation = "NO"
 				WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idblog', $_POST['id']);//отправка значения

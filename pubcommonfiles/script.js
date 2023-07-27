@@ -73,31 +73,6 @@ $( document ).ready(function() {
 		}
 	);
 
-
-	//Индексация блога
-	$("#btn_bl_ind").click(
-		function(){
-			$("#btn_bl_ind").attr('class', ' ');
-			console.log('Hello!');
-			sendAjaxForm('result_form_bl_ind', 'ajax_form_bl_ind', '../pubcommonfiles/indexing.inc.php');
-			
-			if ($("#val_bl_ind").attr('value') === 'addindex'){
-				$("#val_bl_ind").attr('value', 'delindex');
-				$("#btn_bl_ind").attr('class', 'btn_2 addit-btn');
-				$("#btn_bl_ind").html('Убрать индекс');
-				console.log('OK11');
-				
-			} else {
-				$("#val_bl_ind").attr('value', 'addindex');
-				$("#btn_bl_ind").attr('class', 'btn_1 addit-btn');
-				$("#btn_bl_ind").html('Индексировать');
-			}
-			
-			return false; 
-		}
-	);
-
- 
 	//Оценка статьи
 
 	$("#btn_vot_5").click(
