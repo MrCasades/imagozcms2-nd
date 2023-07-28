@@ -12,12 +12,13 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
 
 /*Определение нахождения пользователя в системе*/
-loggedIn();
+if(loggedIn())
+{
+    $idAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 
-$idAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
-
-/*Выбор блогов автора*/
-getAuthorBlogs ($idAuthor);
+    /*Выбор блогов автора*/
+    getAuthorBlogs ($idAuthor);
+}
 
 $title = 'Мои блоги | imagoz.ru';//Данные тега <title>
 $headMain = 'Мои блоги';

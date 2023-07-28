@@ -16,7 +16,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 				<?php if ($subcomment['subavatar'] !== ''): ?>
 
 				<div> 
-					<img src="../avatars/<?php echo $subcomment['subavatar'];?>" alt="<?php echo $subcomment['subauthorname'];?>"> 
+					<img src="//<?php echo MAIN_URL; ?>/avatars/<?php echo $subcomment['subavatar'];?>" alt="<?php echo $subcomment['subauthorname'];?>"> 
 				</div>
 
 				<?php else: ?>

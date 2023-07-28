@@ -193,7 +193,12 @@ $( document ).ready(function() {
 				$('.trumbowyg-editor').attr("placeholder", "Поле комментария не может быть пустым");
 				e.preventDefault();
 			} else {
-				addComment('result_form', 'addcomment', '../includes/addcomment.inc.php');
+				let forTest = '';
+
+				if (window.location.hostname == 'localhost')
+					forTest = '/imagozcms2-nd';
+
+				addComment('result_form', 'addcomment', '//' + window.location.hostname + forTest + '/includes/addcomment.inc.php');
 				return false; 
 			}		
 		}
@@ -261,8 +266,13 @@ $( document ).ready(function() {
 //Обработка действия кнопки для голосования
 
 	function voteClick(btn){
+		let forTest = '';
+
+		if (window.location.hostname == 'localhost')
+			forTest = '/imagozcms2-nd';
+
 		$("#confirmlike").hide();
-		const url = '//' + window.location.hostname + forTestPath() +'/pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
+		const url = '//' + window.location.hostname + forTest +'/pubcommonfiles/vote.inc.php?vote=' + $("#"+btn).attr('value');
 					//$("#btn_vot").attr('src', ' ');
 		sendAjaxForm('result_form_vot', 'confirmlike', url);
 		$("#result_form_vot").html('Ваш голос принят!');
@@ -274,11 +284,11 @@ $( document ).ready(function() {
 	}
 
 	//адрес для теста
-	function forTestPath(){
-		if (window.location.hostname = 'localhost')
-			return '/imagozcms2-nd';
-		else
-			return '';
-	}
+	// function forTestPath(){
+	// 	if (window.location.hostname = 'localhost')
+	// 		return '/imagozcms2-nd';
+	// 	else
+	// 		return '';
+	// }
 
 });

@@ -19,7 +19,7 @@ loggedIn();
 /*Загрузка содержимого статьи*/
 if (isset ($_GET['id']))
 {
-	$idPub = $_GET['id'];
+	$idPublication = $_GET['id'];
 	
 	$select = 'SELECT 
 					p.id AS pubid, 
@@ -49,7 +49,7 @@ if (isset ($_GET['id']))
 	/*Канонический адрес*/
 	if(!empty($_GET['utm_referrer']) || !empty($_GET['page']))
 	{
-		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/blog/publication?id='.$idPub.'"/>';
+		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/blog/publication?id='.$idPublication.'"/>';
 	}
 
 	/*Подключение к базе данных*/
@@ -57,7 +57,7 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = $select.$idPub;
+		$sql = $select.$idPublication;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -109,7 +109,7 @@ if (isset ($_GET['id']))
 	$descr = $row['description'];
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	$breadPart2 = '<a href="//'.MAIN_URL.'/blog?id='.$blogId.'">Блог "'.$blogTitle.'"</a> >> ';//Для хлебных крошек
-	$breadPart3 = '<a href="//'.MAIN_URL.'/blog/publication?id='.$idPub.'">'.$row['title'].'</a> ';//Для хлебных крошек
+	$breadPart3 = '<a href="//'.MAIN_URL.'/blog/publication?id='.$idPublication.'">'.$row['title'].'</a> ';//Для хлебных крошек
 	$authorComment = '';
 	//$jQuery = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>';
 	$scriptJScode = '<script src="//'.MAIN_URL.'/pubcommonfiles/script.js"></script>';//добавить код JS
@@ -182,7 +182,7 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = $updateCount.$idPub;
+		$sql = $updateCount.$idPublication;
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
@@ -201,7 +201,7 @@ if (isset ($_GET['id']))
 		$sql = 'SELECT meta.id, metaname FROM publication 
 				INNER JOIN metapost ON publication.id = idpublication 
 				INNER JOIN meta ON meta.id = idmeta 
-				WHERE publication.id = '.$idPub;//Вверху самое последнее значение
+				WHERE publication.id = '.$idPublication;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	
@@ -234,7 +234,7 @@ if (isset ($_GET['id']))
 		$selectedAuthor = 0;//id автора
 	}
 	
-	$votedPost = (int)$idPub;
+	$votedPost = (int)$idPublication;
 	
 	try
 	{
@@ -255,7 +255,7 @@ if (isset ($_GET['id']))
 	$votedPost = empty($row['idpublication']) ? '' : (int)$row['idpublication'];
 	
 	/*Условия вывода панели голосования*/
-	if (($votedAuthor == $selectedAuthor) && ($votedPost == $idPub) || (!isset($_SESSION['loggIn'])))
+	if (($votedAuthor == $selectedAuthor) && ($votedPost == $idPublication) || (!isset($_SESSION['loggIn'])))
 	{
 		$votePanel = '';
 	}
@@ -265,7 +265,7 @@ if (isset ($_GET['id']))
 		$votePanel = '<form action=" " metod "post" id = "confirmlike">
 						<i class="fa fa-thumbs-up" aria-hidden="true" title="Оценить"></i>
 						<input type = "hidden" name = "pb_type" id = "pb_type" value = "publication">
-						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPub.'">
+						<input type = "hidden" name = "id" id = "idarticle" value = "'.$idPublication.'">
 						<input type = "hidden" name = "idauthor" id = "idauthor" value = "'.$selectedAuthor.'">
 						<input type = "submit" name = "vote" id = "btn_vot_5" class = "btn_vot" value = "5"> 
 						<input type = "submit" name = "vote" id = "btn_vot_4" class = "btn_vot" value = "4"> 
@@ -283,7 +283,7 @@ if (isset ($_GET['id']))
 		$delAndUpd = "<form action = '../admin/addupdblogpublication/' method = 'post'>
 			
 						Действия с материалом:
-						<input type = 'hidden' name = 'id' value = '".$idPub."'>
+						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
 						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
 					  </form>";
@@ -291,7 +291,7 @@ if (isset ($_GET['id']))
 		$premoderation = "<form action = '../admin/premoderation/postpremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
-						<input type = 'hidden' name = 'id' value = '".$idPub."'>
+						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
 						<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn_3'>
 					  </form>";				
 	}
@@ -357,7 +357,7 @@ if (isset ($_GET['id']))
 	/*Вывод комментариев*/	
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';
 
-	showComments('publication', 'idpublication', $idPub);
+	showComments('publication', 'idpublication', $idPublication);
 	
 	include '../../pubcommonfiles/viewpublication.html.php';//Шаблон для статьи
 	exit();		

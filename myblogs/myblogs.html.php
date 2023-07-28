@@ -14,17 +14,25 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</div>
 	</div>
     <div class = "main-post m-content">
-        <form action = "//<?php htmlecho (MAIN_URL); ?>/blog/addupdblog/" method = "post">
-            <input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
-            <input type = "submit" name = "action" class="btn_2 addit-btn" value = "Создать блог">
-        </form> 
+		<?php if (isset($_SESSION['loggIn'])):?>
+			<form action = "//<?php htmlecho (MAIN_URL); ?>/blog/addupdblog/" method = "post">
+				<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
+				<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Создать блог">
+			</form> 
+		<?php endif;?>
     </div>
 	<div class = "main-post m-content">
-		<?php if (empty($blogs))
+		<?php if (!isset($_SESSION['loggIn']))
+		{
+			echo '<p><a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
+			<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы создать или редактировать блог и смотреть свии подписки!</p>';
+		}
+			
+		elseif (empty($blogs))
 		{
 			echo '<p>Статьи отсутствуют</p>';
 		}
-			
+
 		else
 				
 		foreach ($blogs as $blog): ?>

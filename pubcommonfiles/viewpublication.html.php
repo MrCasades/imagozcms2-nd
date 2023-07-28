@@ -143,7 +143,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<?php if ($comment['avatar'] !== ''): ?>
 
 						<div> 
-							<img src="../avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 
+							<img src="//<?php echo MAIN_URL; ?>/avatars/<?php echo $comment['avatar'];?>" alt="<?php echo $comment['authorname'];?>"> 
 						</div>
 
 						<?php else: ?>
@@ -229,7 +229,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php else:?>
 						<div class="for-info-txt">
 							<a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
-							<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы ответиь на комментарий!
+							<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы ответить на комментарий!
 						</div>
 					<?php endif;?>
 				</div> 				
