@@ -40,6 +40,11 @@ if (isset($_POST["idarticle"]))
 	{
 		$idType = 'idvideo = ';
 	}
+
+	elseif ($_POST["articletype"] === 'publication')
+	{
+		$idType = 'idpublication = ';
+	}
 		
 	try
 	{

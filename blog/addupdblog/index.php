@@ -201,12 +201,12 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	try
 	{
 		$sql = 'UPDATE blogs SET 
-				title = :blogtitle,	
-				imghead = :imghead,
-				avatar = :avatar,
-				description = :description,
-				upddate = SYSDATE(),
-				blogpremoderation = "NO"
+					title = :blogtitle,	
+					imghead = :imghead,
+					avatar = :avatar,
+					description = :description,
+					upddate = SYSDATE(),
+					blogpremoderation = "NO"
 				WHERE id = :idblog';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idblog', $_POST['id']);//отправка значения
