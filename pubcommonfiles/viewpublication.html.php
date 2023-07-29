@@ -224,6 +224,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							<textarea class = "descr mark-textarea" id = "subcomment" name = "subcomment" rows="10"></textarea>	
 							<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor; ?>">
 							<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id']; ?>">
+							<input type = "hidden" name = "typeart" value = "<?php echo $pubFolder; ?>">
 							<input type = "submit" value = "Ответить" class="btn_2 addit-btn" id="add_subcomm_<?php echo $comment['id']; ?>">  
 						</form>	
 					<?php else:?>
@@ -238,7 +239,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php if ($comment['subcommentcount'] != 0):?>
 					<div class="sub-comment-open" id="hide_open_pl_<?php echo $comment['id']; ?>">
 						<!-- <a href="#" id="subcomment_hide_<?php echo $comment['id']; ?>">Скрыть</a>  -->
-						<a href="../viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=promotion&idart=<?php echo $idPublication; ?>">Все ответы</a>
+						<a href="//<?php echo MAIN_URL; ?>/viewwallpost/?id=<?php echo $comment['id']; ?>&typeart=<?php echo $pubFolder; ?>&idart=<?php echo $idPublication; ?>">Все ответы</a>
 					</div>
 				<?php endif;?>
 				

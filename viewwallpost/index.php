@@ -21,25 +21,25 @@ if (isset ($_GET['id']))
 	/*Формируем URL для возврата */
 	if (!empty($_GET['idart']) && $_GET['idart'] !== '')
 	{
-		if ($_GET['typeart'] === 'news' )
+		if ($_GET['typeart'] === 'viewnews' )
 		{
 			$URL = '//'.MAIN_URL.'/viewnews/?id='.$_GET['idart'];
 			$linkText = 'К новости';
 		}
 
-		elseif ($_GET['typeart'] === 'post' )
+		elseif ($_GET['typeart'] === 'viewpost' )
 		{
 			$URL = '//'.MAIN_URL.'/viewpost/?id='.$_GET['idart'];
 			$linkText = 'К статье';
 		} 
 
-		elseif ($_GET['typeart'] === 'prom' )
+		elseif ($_GET['typeart'] === 'viewpromotion' )
 		{
 			$URL = '//'.MAIN_URL.'/viewpromotion/?id='.$_GET['idart'];
 			$linkText = 'К статье';
 		} 
 
-		elseif ($_GET['typeart'] === 'acc' )
+		elseif ($_GET['typeart'] === 'account' )
 		{
 			$URL = '//'.MAIN_URL.'/account/?id='.$_GET['idart'];
 			$linkText = 'К профилю';
@@ -50,6 +50,12 @@ if (isset ($_GET['id']))
 			$URL = '//'.MAIN_URL.'/video/?id='.$_GET['idart'];
 			$linkText = 'К видео';
 		} 
+
+		elseif ($_GET['typeart'] === 'publication' )
+		{
+			$URL = '//'.MAIN_URL.'/blog/publication/?id='.$_GET['idart'];
+			$linkText = 'К записи';
+		}
 
 		else
 		{
