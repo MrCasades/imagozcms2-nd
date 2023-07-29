@@ -53,6 +53,8 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 					{
 						$updAnddel = '<form action = "//'.MAIN_URL.'/viewwallpost/index.php" method = "post">
 										<div>
+											<input type = "hidden" name = "typeart" value = "'.$typeArt.'">
+											<input type = "hidden" name = "idart" value = "'.$subcomment ['idart'].'">
 											<input type = "hidden" name = "id" value = "'.$subcomment ['id'].'">
 											<input type = "hidden" name = "idcomment" value = "'.$idComment.'">
 											<input type = "submit" name = "action" class="btn_2" value = "Редактировать">
@@ -76,7 +78,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 				<a href="#"><button class="btn_1" id = "op_form_<?php echo $comment['id'];?>">Ответить</button></a> 
 				
 			</div> -->
-			<form class="one-comment-like" id = "like_form_sc_<?php echo $subcomment['id'];?>">
+			<form class="one-comment-like" id = "like_form_sc_<?php echo $subcomment['id'];?>">			
 				<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
 				<input type = "hidden" name = "idsubcomment" value = "<?php echo $subcomment['id'];?>">
 				<input type = "hidden" name = "type-like" id = "type_like_sc_<?php echo $subcomment['id'];?>">

@@ -23,7 +23,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<label for = "comment">Введите текст комментария</label><br>
 		<textarea class = "descr mark-textarea" id = "subcomment" name = "subcomment" rows="10"><?php htmlecho($text);?></textarea>	
 	 </div>
-	  <div>
+	  <div>		
+	  	<input type = "hidden" name = "idart" value = "<?php htmlecho($idArt); ?>">
+	    <input type = "hidden" name = "typeart" value = "<?php htmlecho($typeArt); ?>">
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
 		<input type = "hidden" name = "idcomment" value = "<?php htmlecho($idComment); ?>">
 		<p><input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2 addit-btn">
