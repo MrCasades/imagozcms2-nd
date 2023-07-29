@@ -628,7 +628,13 @@ function updComment($id, $comment, $idArticle, $type) //news, post, promotion
 		$error = 'Ошибка обновления информации comment' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 		include 'error.inc.php';
 	}
-	header ('Location: ../view'.$type.'/?id='.$idArticle);//перенаправление обратно в контроллер index.php
+
+	if ($type == 'publication')
+		$folder = $type;
+	else
+		$folder = 'view'.$type;
+
+	header ('Location: ../'.$folder.'/?id='.$idArticle);//перенаправление обратно в контроллер index.php
 	exit();
 }
 

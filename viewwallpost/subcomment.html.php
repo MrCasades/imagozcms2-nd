@@ -51,7 +51,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 
 				if ($selectedAuthor == $subcomment['subidauthor'])
 					{
-						$updAnddel = '<form action = "../viewwallpost/index.php" method = "post">
+						$updAnddel = '<form action = "//'.MAIN_URL.'/viewwallpost/index.php" method = "post">
 										<div>
 											<input type = "hidden" name = "id" value = "'.$subcomment ['id'].'">
 											<input type = "hidden" name = "idcomment" value = "'.$idComment.'">

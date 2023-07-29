@@ -447,6 +447,6 @@ if (isset ($_GET['delete']))
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	header ('Location: ../viewpost/?id='.$_POST['idarticle']);//перенаправление обратно в контроллер index.php
+	header ('Location: ../publication/?id='.$_POST['idarticle']);//перенаправление обратно в контроллер index.php
 	exit();
 }	
