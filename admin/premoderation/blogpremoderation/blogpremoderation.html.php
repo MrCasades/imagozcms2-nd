@@ -17,30 +17,27 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<table class = "for-tables-premod">
 		  <tr>
 				<th>#id</th>
-				<th>Дата публикации</th>
-				<th>Заголовок</th>	
+				<th>Дата публикации</th>				
 				<th>Блог</th>
-				<th>Премодерация блога</th>
 				<th>Автор</th>
 				<th>E-mail</th>				
 		  </tr> 
 		  
-		   <?php if (empty ($blogpubs))
+		   <?php if (empty ($blogs))
 		 {
 			 echo '<p class = "for-info-txt">Материалы для премодерации отсутствуют</p>';
 		 }
 
 		 else
 			 
-		 foreach ($blogpubs as $blogpub): ?> 
+		 foreach ($blogs as $blog): ?> 
+		 <?php $blog['upddate'] = $blog['upddate'] != '' ? $blog['upddate'] :  'Новый блог'?>
 		  <tr>
-				<td><?php echo '# '.$blogpub['id'];?></td>
-				<td><?php echo $blogpub['date'];?></td>
-				<td><a href="../../admin/premoderation/viewpremodblogpub/?blogpub=<?php echo $blogpub['id'];?>"><?php echo $blogpub['pubtitle'];?></a></td>
-				<td><a href="//<?php echo MAIN_URL ;?>/blog/?id=<?php echo $blogpub['idblog'];?>" target="blank_"><?php echo $blogpub['blogtitle'];?></a></td>
-				<td><?php echo $blogpub['blogpremoderation'];?></td>
-				<td><?php echo $blogpub['authorname'];?></td>
-				<td><?php echo $blogpub['email'];?></td>
+				<td><?php echo '# '.$blog['id'];?></td>
+				<td><?php echo $blog['upddate'];?></td>
+				<td><a href="//<?php echo MAIN_URL ;?>/blog/?id=<?php echo $blog['idblog'];?>" target="blank_"><?php echo $blog['title'];?></a></td>
+				<td><?php echo $blog['authorname'];?></td>
+				<td><?php echo $blog['email'];?></td>
 		  </tr> 				
 		 <?php endforeach; ?> 
 	</table>

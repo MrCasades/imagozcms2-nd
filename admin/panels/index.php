@@ -102,7 +102,15 @@ if (userRole('Администратор'))
 		
 		$row = $s -> fetch();
 		
-		$premodPubs = $row['mypremodpubs'];//новости в премодерации
+		$premodPubs = $row['mypremodpubs'];//публикации блога в премодерации
+
+		$sql = "SELECT count(*) AS mypremodblogs FROM blogs WHERE blogpremoderation = 'NO'";
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		
+		$row = $s -> fetch();
+		
+		$premodBlogs = $row['mypremodblogs'];//публикации блога в премодерации
 		
 		$sql = "SELECT count(*) AS payments FROM payments WHERE paymentstatus = 'NO'";
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной

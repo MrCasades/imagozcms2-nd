@@ -33,8 +33,8 @@ include MAIN_FILE . '/includes/db.inc.php';
 
 try
 {
-	$sql = 'SELECT newsblock.id, newstitle, newsdate, authorname, email FROM newsblock INNER JOIN author 
-			ON idauthor = author.id WHERE premoderation = "NO" AND refused = "NO" AND draft = "NO" LIMIT 20';//Вверху самое последнее значение
+	$sql = 'SELECT blogs.id, title, upddate, authorname, email FROM blogs INNER JOIN author 
+			ON idauthor = author.id WHERE blogpremoderation = "NO" LIMIT 20';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -47,7 +47,7 @@ catch (PDOException $e)
 /*Вывод результата в шаблон*/
 foreach ($result as $row)
 {
-	$newsIn[] =  array ('id' => $row['id'], 'newstitle' =>  $row['newstitle'], 'newsdate' =>  $row['newsdate'], 
+	$blogs[] =  array ('id' => $row['id'], 'title' =>  $row['title'], 'upddate' =>  $row['upddate'], 
 						'authorname' =>  $row['authorname'], 'email' =>  $row['email']);
 }
 
