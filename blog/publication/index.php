@@ -36,6 +36,7 @@ if (isset ($_GET['id']))
 					p.date, 
 					p.idblog,
 					p.indexing,
+					p.secondpremoderation
 					a.authorname, 
 					c.id AS categoryid, 
 					c.categoryname,
@@ -84,6 +85,7 @@ if (isset ($_GET['id']))
 	//$favouritesCount = $row['favouritescount'];
 
 	$indexing = $row['indexing'];
+	$secondPremoderation = $row['secondpremoderation']
 
 	$blogTitle = $row['blogtitle'];
 	$blogId = $row['idblog'];
@@ -128,6 +130,14 @@ if (isset ($_GET['id']))
 	else
 	{
 		$video = '';
+	}
+
+	if ($secondPremoderation == 'NO')
+	{
+		$secondPremoderationStatus = '<form action=" " metod = "post">
+											<input type = "hidden" name = "idblog" value = "'.$idPublication.'">
+											<button name = "addyes" title="Снять статус премодерации" class="btn_3 addit-btn" value = "Премодерация NO">Премодерация NO</button> 
+									  </form>';
 	}
 	
 	/*Кнопка добавления в избранное*/
@@ -280,7 +290,7 @@ if (isset ($_GET['id']))
 	
 	if ((isset($_SESSION['loggIn'])) && (userRole('Администратор')))
 	{
-		$delAndUpd = "<form action = '../admin/addupdblogpublication/' method = 'post'>
+		$delAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
 			
 						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
@@ -288,7 +298,7 @@ if (isset ($_GET['id']))
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
 					  </form>";
 		
-		$premoderation = "<form action = '../admin/premoderation/postpremoderationstatus/' method = 'post'>
+		$premoderation = "<form action = '//".MAIN_URL."/admin/premoderation/blogpubpremoderationstatus/' method = 'post'>
 			
 						Статус публикации:
 						<input type = 'hidden' name = 'id' value = '".$idPublication."'>

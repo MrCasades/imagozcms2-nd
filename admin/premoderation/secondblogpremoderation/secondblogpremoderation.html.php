@@ -23,21 +23,20 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<th>E-mail</th>				
 		  </tr> 
 		  
-		   <?php if (empty ($blogs))
+		   <?php if (empty ($publications))
 		 {
 			 echo '<p class = "for-info-txt">Материалы для премодерации отсутствуют</p>';
 		 }
 
 		 else
 			 
-		 foreach ($blogs as $blog): ?> 
-		 <?php $blog['upddate'] = $blog['upddate'] != '' ? $blog['upddate'] :  'Новый блог'?>
+		 foreach ($publications as $publication): ?> 
 		  <tr>
-				<td><?php echo '# '.$blog['id'];?></td>
-				<td><?php echo $blog['upddate'];?></td>
-				<td><a href="//<?php echo MAIN_URL ;?>/blog/?id=<?php echo $blog['id'];?>" target="blank_"><?php echo $blog['title'];?></a></td>
-				<td><?php echo $blog['authorname'];?></td>
-				<td><?php echo $blog['email'];?></td>
+				<td><?php echo '# '.$publication['id'];?></td>
+				<td><?php echo $publication['upddate'];?></td>
+				<td><a href="//<?php echo MAIN_URL ;?>/blog/publication/?id=<?php echo $publication['id'];?>" target="blank_"><?php echo $publication['title'];?></a></td>
+				<td><?php echo $publication['authorname'];?></td>
+				<td><?php echo $publication['email'];?></td>
 		  </tr> 				
 		 <?php endforeach; ?> 
 	</table>

@@ -52,7 +52,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?posts"><button class="btn_2">Премодерация статей ("<?php echo $premodPosts;?>")</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?news"><button class="btn_2">Премодерация новостей ("<?php echo $premodNews;?>")</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?promotion"><button class="btn_2">Премодерация промоушена ("<?php echo $premodPromotion;?>")</button></a>
-        <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?blog"><button class="btn_2">Премодерация статей блогов ("<?php echo $premodPubs;?>")</button></a>
+        <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?blog"><button class="btn_2">Премодерация статей блогов ("<?php echo $premodPubsSec;?>")</button></a>
+        <a href="//<?php echo MAIN_URL;?>/admin/premoderation/secondblogpremoderation/"><button class="btn_2">Повторная премодерация статей блогов ("<?php echo $premodBlogs;?>")</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/blogpremoderation/"><button class="btn_2">Премодерация блогов ("<?php echo $premodBlogs;?>")</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/premoderation/?video"><button class="btn_2">Премодерация видео ("<?php echo $premodVideo;?>")</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/payment/viewallpayments/"><button class="btn_2">Заявки на выплату ("<?php echo $paymentsCount;?>")</button></a>
