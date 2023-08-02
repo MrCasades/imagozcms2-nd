@@ -94,6 +94,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<div class = "m-content">
 					<p><?php echo $delAndUpd; ?></p>
 					<p><?php echo $premoderation; ?></p>
+					<?php if ($pubFolder == 'publication'):?>
+						<p><?php echo $secondPremoderationStatus; ?></p>
+					<?php endif;?>
 				</div>
 
 			<!-- <div class="m-content">

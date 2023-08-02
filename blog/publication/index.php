@@ -36,7 +36,7 @@ if (isset ($_GET['id']))
 					p.date, 
 					p.idblog,
 					p.indexing,
-					p.secondpremoderation
+					p.secondpremoderation,
 					a.authorname, 
 					c.id AS categoryid, 
 					c.categoryname,
@@ -85,7 +85,7 @@ if (isset ($_GET['id']))
 	//$favouritesCount = $row['favouritescount'];
 
 	$indexing = $row['indexing'];
-	$secondPremoderation = $row['secondpremoderation']
+	$secondPremoderation = $row['secondpremoderation'];
 
 	$blogTitle = $row['blogtitle'];
 	$blogId = $row['idblog'];
@@ -132,13 +132,18 @@ if (isset ($_GET['id']))
 		$video = '';
 	}
 
-	if ($secondPremoderation == 'NO')
+
+	/*Кнопка статуса повторной премодерации */
+	if ($secondPremoderation == 'NO' && userRole('Администратор'))
 	{
-		$secondPremoderationStatus = '<form action=" " metod = "post">
-											<input type = "hidden" name = "idblog" value = "'.$idPublication.'">
+		$secondPremoderationStatus = '<form action="//'.MAIN_URL.'/admin/addupdblogpublication/" metod = "post">
+											<input type = "hidden" name = "idpub" value = "'.$idPublication.'">
 											<button name = "addyes" title="Снять статус премодерации" class="btn_3 addit-btn" value = "Премодерация NO">Премодерация NO</button> 
 									  </form>';
 	}
+
+	else
+		$secondPremoderationStatus = '';
 	
 	/*Кнопка добавления в избранное*/
 	// if (isset($_SESSION['loggIn']))

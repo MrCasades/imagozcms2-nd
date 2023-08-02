@@ -806,3 +806,29 @@ if (isset ($_GET['delete']))
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();
 }
+
+
+/*Изменение статуса повторной премодерации */
+if (isset ($_GET['addyes']))
+{	
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+	
+	try
+	{
+		$sql = 'UPDATE publication SET 
+					secondpremoderation = "YES"
+				WHERE id = :idpub';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idpub', $_GET['idpub']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка удаления информации blogs';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	header ('Location: //'.MAIN_URL.'/blog/publication/?id='.$_GET['idpub']);//перенаправление обратно в контроллер index.php
+	exit();
+}
