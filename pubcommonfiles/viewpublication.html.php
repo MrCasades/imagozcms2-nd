@@ -275,8 +275,18 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</div>
 		<div class="right-side">
 		<?php
-			/*Загрузка компонента последних новостей*/
-			include_once MAIN_FILE . '/newsblockinrightside/newsblockinrightside.inc.php';?>
+			if ($pubFolder !== 'publication')
+			{
+				/*Загрузка компонента последних новостей*/
+				include_once MAIN_FILE . '/newsblockinrightside/newsblockinrightside.inc.php';
+			}
+
+			else
+			{
+				/*Загрузка компонента последних публикаций блогов*/
+				include_once MAIN_FILE . '/blog/blogspublicationinrightside/blogspublicationinrightside.inc.php';
+			}
+			?>
 			
 			<!-- <div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
 			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script> -->

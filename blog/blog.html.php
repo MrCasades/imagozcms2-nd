@@ -86,7 +86,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				
 		<div class="right-side">
 		<?php
-			/*Загрузка компонента последних новостей*/
+			/*Загрузка компонента последних публикаций блогов*/
 			include_once MAIN_FILE . '/blog/blogspublicationinrightside/blogspublicationinrightside.inc.php';?>
 			<!-- <div class="zen-c-m">
 				<div class = "main-headers">
