@@ -104,7 +104,7 @@ if (userRole('Администратор'))
 		
 		$premodPubs = $row['mypremodpubs'];//публикации блога в премодерации
 
-		$sql = "SELECT count(*) AS mypremodpubsec FROM publication WHERE secondpremoderation = 'NO' AND refused = 'NO' AND draft = 'NO'";
+		$sql = "SELECT count(*) AS mypremodpubsec FROM publication WHERE secondpremoderation = 'NO'";
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 		
