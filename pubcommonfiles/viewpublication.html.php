@@ -49,7 +49,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						
 				foreach ($metas as $meta): ?> 
 					
-					<a href="../viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
+					<a href="//<?php echo MAIN_URL;?>/viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
 						
 				<?php endforeach; ?>
 
@@ -291,9 +291,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<!-- <div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
 			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script> -->
 
+			<?php 
+				/*Заголовок блока случайных публикаций*/
+				$similarPubHeader = ($pubFolder == 'publication') ? 'Случайное из подписок' : 'Случайные статьи рубрики';
+			?>
+
 			<div class = "main-headers">
 				<div class = "main-headers-content">
-					<h2 class="no-link-header">Случайные статьи рубрики</h2>
+					<h2 class="no-link-header"><?php echo $similarPubHeader; ?></h2>
 					<div class = "main-headers-line"></div>				
 				</div>
 			</div>
