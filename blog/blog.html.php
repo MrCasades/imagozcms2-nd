@@ -17,6 +17,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php else: ?>
 						<i class="fa fa-user-circle" aria-hidden="true" title="Аватар блога"></i>
 					<?php endif; ?>
+					<?php echo $subskribe; ?>
 					<?php echo $editBlog; ?>
 					<?php echo $addPublication; ?>
 					<?php echo $toDraft; ?>

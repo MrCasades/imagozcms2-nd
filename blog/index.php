@@ -70,6 +70,13 @@ if (isset ($_GET['id']))
 	$nameAuthor = $row['authorname'];
 	$premodStatus = $row['blogpremoderation'];
 
+	/*Если страница отсутствует. Ошибка 404*/
+	if (!$row)
+	{
+		header ('Location: ../page-not-found/');//перенаправление обратно в контроллер index.php
+		exit();	
+	}
+
 	/*Определение количества статей*/
 	// try
 	// {
@@ -91,6 +98,65 @@ if (isset ($_GET['id']))
 
 	$selectedAuthor = (isset($_SESSION['loggIn'])) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : '';//id автора
 
+	/*Определение подписки на блог */
+
+	if (isset($_SESSION['loggIn']))
+	{
+		/*Команда SELECT*/
+		try
+		{
+			$sql = 'SELECT 
+						idauthor
+					FROM subscribers
+					WHERE idblog = :blogid and idauthor = :authorid';
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':blogid', $idBlog);//отправка значения
+			$s -> bindValue(':authorid', $selectedAuthor);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+
+		catch (PDOException $e)
+		{
+			$error = 'Ошибка вывода информации о блоге';
+			include MAIN_FILE . '/includes/error.inc.php';
+		}
+
+		$row = $s -> fetch();
+
+		$isSubscribed = $row['idauthor'] != '' ?  $row['idauthor'] : 'ok';
+	}
+
+	else
+	{
+		$isSubscribed = false;
+	}
+
+	if ($isSubscribed == 'ok')
+	{
+		if ($isSubscribed == $selectedAuthor)
+		{
+			$subskribe = '<form action="./blogstatuses/" metod = "post">
+								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
+								<input type = "hidden" name = "idauthor" value = "'.$idBlog.'">
+								<button name = "addno" title="Отписаться" class="btn_3 addit-btn" value = "Отписаться">Отписаться</button> 
+						  </form>';
+		}
+
+		else
+		{
+			$subskribe = '<form action="./blogstatuses/" metod = "post">
+								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
+								<input type = "hidden" name = "idauthor" value = "'.$idBlog.'">
+								<button name = "addyes" title="Отписаться" class="btn_4 addit-btn" value = "Подписаться">Подписаться</button> 
+						  </form>';
+		}
+	}
+
+	else
+	{
+		$subskribe = '';
+	}
+	
 	if ($selectedAuthor == $authorId) 
 	{
 		$editBlog = "<form action = '../blog/addupdblog/' method = 'post'>
