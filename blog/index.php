@@ -135,19 +135,21 @@ if (isset ($_GET['id']))
 	{
 		if ($isSubscribed == $selectedAuthor)
 		{
-			$subskribe = '<form action="./blogstatuses/" metod = "post">
+			$subskribe = '<form action="" metod = "post" id = "ajax_form_subs">
 								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
-								<input type = "hidden" name = "idauthor" value = "'.$idBlog.'">
-								<button name = "addno" title="Отписаться" class="btn_3 addit-btn" value = "Отписаться">Отписаться</button> 
+								<input type = "hidden" name = "idauthor" value = "'.$selectedAuthor.'">
+								<input type = "hidden" id = "val_subs" name = "val_subs" value = "addsubs">
+								<button id ="btn_subs" title="Отписаться" class="btn_3 addit-btn" value = "Отписаться">Отписаться</button> 
 						  </form>';
 		}
 
 		else
 		{
-			$subskribe = '<form action="./blogstatuses/" metod = "post">
+			$subskribe = '<form action="" metod = "post" id = "ajax_form_subs">
 								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
-								<input type = "hidden" name = "idauthor" value = "'.$idBlog.'">
-								<button name = "addyes" title="Отписаться" class="btn_4 addit-btn" value = "Подписаться">Подписаться</button> 
+								<input type = "hidden" name = "idauthor" value = "'.$selectedAuthor.'">
+								<input type = "hidden" id = "val_subs" name = "val_subs" value = "delsubs">
+								<button id ="btn_subs" title="Отписаться" class="btn_4 addit-btn" value = "Подписаться">Подписаться</button> 
 						  </form>';
 		}
 	}
