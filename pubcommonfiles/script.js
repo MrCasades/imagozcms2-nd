@@ -73,6 +73,28 @@ $( document ).ready(function() {
 		}
 	);
 
+	//Подписка-отписка
+	$("#btn_subs").click(
+		function(){
+			$("#btn_subs").attr('class', ' ');
+			sendAjaxForm('result_form_subs', 'ajax_form_subs', '../pubcommonfiles/subscrib.inc.php');
+			
+			if ($("#val_subs").attr('value') === 'delsubs'){
+				$("#val_subs").attr('value', 'addsubs');
+				$("#btn_subs").attr('class', 'btn_4 addit-btn');
+				$("#btn_subs").html('Подписаться');
+				console.log('OK11');
+				
+			} else {
+				$("#val_subs").attr('value', 'delsubs');
+				$("#btn_subs").attr('class', 'btn_3 addit-btn');
+				$("#btn_subs").html('Отписаться');
+			}
+			
+			return false; 
+		}
+	);
+
 	//Оценка статьи
 
 	$("#btn_vot_5").click(
