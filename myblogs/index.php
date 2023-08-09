@@ -18,6 +18,9 @@ if(loggedIn())
 
     /*Выбор блогов автора*/
     getAuthorBlogs ($idAuthor);
+
+    /*Выбор подписок*/
+    getAuthorSubscriptions ($idAuthor);
 }
 
 $title = 'Мои блоги | imagoz.ru';//Данные тега <title>

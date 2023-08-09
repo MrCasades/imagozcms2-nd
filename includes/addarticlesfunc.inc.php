@@ -343,3 +343,35 @@ function getAuthorBlogs ($idAuthor)
 		$GLOBALS['blogs'][] =  array ('id' => $row['id'], 'avatar' => $row['avatar'], 'title' => $row['title']);
 	}
 }
+
+/*Выбор блогов автора*/
+function getAuthorSubscriptions ($idAuthor)
+{
+	/*Подключение к базе данных*/
+	include 'db.inc.php';
+
+	try
+	{
+		$sql = 'SELECT 
+					b.id,
+					b.title,
+					b.description,
+					b.avatar
+				FROM blogs b
+				INNER JOIN subscribers s ON s.idblog = b.id
+				WHERE s.idauthor = '.$idAuthor;
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода blogs';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$GLOBALS['subscriptions'][] =  array ('id' => $row['id'], 'avatar' => $row['avatar'], 'title' => $row['title']);
+	}
+}

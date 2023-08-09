@@ -43,6 +43,31 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<?php endforeach; ?>
 		
 	</div>
+	<?php if (isset($_SESSION['loggIn'])): ?>
+		<div class = "main-headers">
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<h2 class="no-link-header">Подписки</h2>
+				<div class = "main-headers-line"></div>				
+			</div>
+		</div>
+		<div class = "main-post m-content">
+			<?php if (empty($subscriptions))
+			{
+				echo '<p>Подписки отсутствуют</p>';
+			}
+
+			else
+					
+			foreach ($subscriptions as $subscription): ?>
+			<a href="//<?php htmlecho (MAIN_URL); ?>/blog/?id=<?php htmlecho ($subscription['id']); ?>" class = "post-place-2" style="background-image: url(//<?php htmlecho (MAIN_URL); ?>/blog/avatars/<?php echo $subscription['avatar']; ?>)">			
+				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($subscription['title'])), 0, 7)))); ?>...</div>
+			</a>
+				
+			<?php endforeach; ?>
+			
+		</div>
+	<?php endif;?>
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>

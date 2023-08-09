@@ -98,7 +98,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<?php endforeach; ?>
 		</div>
 
-		<div class = "main-headers">
+		<!-- <div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
 				<h2 class="no-link-header">Новости наших партнёров</h2>
@@ -110,7 +110,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
 			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
 			<br>
-		</div>
+		</div> -->
 
 		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
@@ -176,9 +176,9 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<?php endforeach; ?>
 		</div>
 
-		<?php
+		<!-- <?php
 		/*Загрузка компонента магазина*/
-			include_once MAIN_FILE . '/shopcomponent/shopcomponent.inc.php';?>
+			//include_once MAIN_FILE . '/shopcomponent/shopcomponent.inc.php';?> -->
 
 		<!-- <div class = "main-headers">
 			<div class = "main-headers-circle"></div>
@@ -209,9 +209,18 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		</div> -->
 
-		<!-- <div class="m-content">
-			Место для рекламы
-		</div> -->
+		<div class="m-content">
+			<!--Место для рекламы-->
+			<!-- Yandex.RTB R-A-448222-17 -->
+			<div id="yandex_rtb_R-A-448222-17"></div>
+			<script>window.yaContextCb.push(()=>{
+				Ya.Context.AdvManager.render({
+					"blockId": "R-A-448222-17",
+					"renderTo": "yandex_rtb_R-A-448222-17"
+				})
+			})
+			</script>
+		</div>
 
 		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
@@ -613,6 +622,16 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				</script>
 					
 			</div>
+			<br>
+				<!-- Yandex.RTB R-A-448222-18 -->
+				<div id="yandex_rtb_R-A-448222-18"></div>
+				<script>window.yaContextCb.push(()=>{
+					Ya.Context.AdvManager.render({
+						"blockId": "R-A-448222-18",
+						"renderTo": "yandex_rtb_R-A-448222-18"
+					})
+				})
+				</script>
 		</div>
 	</div>
 </div>
