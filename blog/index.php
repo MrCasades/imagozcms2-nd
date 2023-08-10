@@ -43,6 +43,7 @@ if (isset ($_GET['id']))
 					,b.indexing
 					,b.idauthor
 					,b.blogpremoderation
+					,b.subscriptioncount
 					,a.authorname
 				FROM blogs b
 				INNER JOIN author a ON b.idauthor = a.id 
@@ -69,6 +70,7 @@ if (isset ($_GET['id']))
 	$indexing = $row['indexing'];
 	$nameAuthor = $row['authorname'];
 	$premodStatus = $row['blogpremoderation'];
+	$subscriptionCount = $row['subscriptioncount'];
 
 	/*Если страница отсутствует. Ошибка 404*/
 	if (!$row)

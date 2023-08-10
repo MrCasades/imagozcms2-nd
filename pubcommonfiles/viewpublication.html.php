@@ -318,6 +318,17 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</a> 
 				<?php endforeach; ?>
 			</div>
+			<?php if ($pubFolder == 'viewpost'):?>
+			<!-- Yandex.RTB R-A-448222-19 -->
+			<div id="yandex_rtb_R-A-448222-19"></div>
+			<script>window.yaContextCb.push(()=>{
+				Ya.Context.AdvManager.render({
+					"blockId": "R-A-448222-19",
+					"renderTo": "yandex_rtb_R-A-448222-19"
+				})
+			})
+			</script>
+			<?php endif;?>
 			<!-- <div class="zen-c-m">
 				<div class = "main-headers">
 					<div class = "main-headers-content">
