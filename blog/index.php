@@ -237,7 +237,7 @@ if (isset ($_GET['id']))
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 
-	/*Вывод новостей*/
+	/*Вывод публикаций блога*/
 	/*Команда SELECT*/
 
 	try
