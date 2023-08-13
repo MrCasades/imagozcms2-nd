@@ -63,6 +63,25 @@ elseif ($_GET['article_type'] == 'news')
 	}
 
 }
+
+elseif ($_GET['article_type'] == 'publication')
+{
+	/*Переменные для выражения SELECT*/
+	$select = 'SELECT p.id AS pubid, p.text, p.title, p.imghead, p.imgalt, p.date, a.authorname, a.id AS authorid, c.id AS categoryid, c.categoryname';
+	$from = ' FROM publication p 
+			  INNER JOIN author a ON p.idauthor = a.id 
+			  INNER JOIN category c ON p.idcategory = c.id';
+	$where = ' WHERE TRUE AND premoderation = "YES"';
+
+	/*Поле строки*/
+	if ($_GET['text'] != '')//Если выбрана какая-то строка
+	{
+		$where .= " AND p.text LIKE :text OR p.title LIKE :title";
+		$forSearch[':text'] = '%'. $_GET['text']. '%';	
+		$forSearch[':title'] = '%'. $_GET['text']. '%';
+	}
+
+}
 	
 /*Выбор автора*/
 /*
