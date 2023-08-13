@@ -82,6 +82,24 @@ elseif ($_GET['article_type'] == 'publication')
 	}
 
 }
+
+elseif ($_GET['article_type'] == 'blog')
+{
+	/*Переменные для выражения SELECT*/
+	$select = 'SELECT b.id AS blogid, b.title, b.description, b.avatar, b.date, a.authorname, a.id AS authorid';
+	$from = ' FROM blogs b 
+			  INNER JOIN author a ON b.idauthor = a.id';
+	$where = ' WHERE TRUE AND blogpremoderation = "YES"';
+
+	/*Поле строки*/
+	if ($_GET['text'] != '')//Если выбрана какая-то строка
+	{
+		$where .= " AND b.description LIKE :text OR b.title LIKE :title";
+		$forSearch[':text'] = '%'. $_GET['text']. '%';	
+		$forSearch[':title'] = '%'. $_GET['text']. '%';
+	}
+
+}
 	
 /*Выбор автора*/
 /*
@@ -93,7 +111,7 @@ if ($_GET['author'] != '')//Если выбран автор
 */
 		
 /*Выбор рубрики*/
-if ($_GET['category'] != '')//Если выбрана рубрика
+if ($_GET['category'] != '' && $_GET['category'] != 'undefined')//Если выбрана рубрика
 {
 	$where .= " AND idcategory = :idcategory";
 	$forSearch[':idcategory'] = $_GET['category'];
@@ -146,6 +164,19 @@ foreach ($s as $row)
 		$newsIn[] = array('id' => $row['newsid'], 'textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
 						'newsdate' =>  $row['newsdate'], 'authorname' =>  $row['authorname'], 'idauthor' =>  $row['authorid'],
 						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
+
+	elseif ($_GET['article_type'] == 'publication')
+	{
+		$pubs[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
+
+	elseif ($_GET['article_type'] == 'blog')
+	{
+		$blogs[] =  array ('id' => $row['blogid'], 'idauthor' => $row['authorid'], 'title' =>  $row['title'], 'avatar' =>  $row['avatar'], 
+							'authorname' =>  $row['authorname']);
 	}
 }
 			

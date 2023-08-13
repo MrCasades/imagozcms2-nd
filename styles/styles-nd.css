@@ -407,6 +407,15 @@ details{
     margin-left: 20%;
 }
 
+.search-form-blog{
+    margin-top: 1rem;
+    margin-left: 20%;
+}
+
+.search-form-blog .btn_1{
+    height: 1.5rem;
+}
+
 .search-text{
     height: 1.5rem;
     width: 35%;

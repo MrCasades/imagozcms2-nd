@@ -87,6 +87,7 @@ $robots = 'all';
 $descr = 'Делитесь мнением, пишите интересные заметки в нашем сервисе блогов!';
 $breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 $breadPart2 = '<a href="//'.MAIN_URL.'/blogs/">Блоги</a>';//Для хлебных крошек
+$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 //$breadPart3 = '<a href="//'.MAIN_URL.'/viewnews/?id='.$idPublication.'">'.$row['newstitle'].'</a> ';//Для хлебных крошек
 
 include 'blogs.html.php';
