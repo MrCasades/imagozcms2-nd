@@ -57,18 +57,11 @@ foreach ($result as $row)
 try
 {
 	$sql = 'SELECT 
-				p.id AS pubid, 
-				p.text, 
+				p.id AS blogid, 
 				a.id AS authorid, 
 				p.title, 
 				p.imghead, 
-				p.imgalt, 
-				p.date, 
 				a.authorname, 
-				c.id AS categoryid, 
-				c.categoryname,
-				b.id as blogid,
-				b.title as blogtitle 
 			FROM blogs b 
 			INNER JOIN author a ON b.idauthor = a.id 
 			WHERE p.blogspremoderation = "YES" LIMIT 17';//Вверху самое последнее значение
