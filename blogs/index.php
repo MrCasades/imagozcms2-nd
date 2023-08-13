@@ -57,29 +57,28 @@ foreach ($result as $row)
 try
 {
 	$sql = 'SELECT 
-				p.id AS blogid, 
+				b.id AS blogid, 
 				a.id AS authorid, 
-				p.title, 
-				p.imghead, 
-				a.authorname, 
+				b.title, 
+				b.avatar, 
+				a.authorname
 			FROM blogs b 
 			INNER JOIN author a ON b.idauthor = a.id 
-			WHERE p.blogspremoderation = "YES" LIMIT 17';//Вверху самое последнее значение
+			WHERE b.blogpremoderation = "YES" LIMIT 17';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
 catch (PDOException $e)
 {
-	$error = 'Ошибка вывода публикаций';
+	$error = 'Ошибка вывода блогов';
 	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/
 foreach ($result as $row)
 {
-	$blogs[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 
-							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	$blogs[] =  array ('id' => $row['blogid'], 'idauthor' => $row['authorid'], 'title' =>  $row['title'], 'avatar' =>  $row['avatar'], 
+							'authorname' =>  $row['authorname']);
 }
 
 $title = 'Блоги | imagoz.ru';//Данные тега <title>
