@@ -130,6 +130,46 @@ foreach ($result as $row)
 						'imghead' =>  $row['imghead'], 'videofile' =>  $row['videofile'], 'idauthor' =>  $row['idauthor'], 'authorname' =>  $row['authorname']);
 }
 
+/*Вывод публикаций*/
+/*Команда SELECT*/
+try
+{
+	$sql = 'SELECT 
+				p.id AS pubid, 
+				p.text, 
+				a.id AS authorid, 
+				p.title, 
+				p.imghead, 
+				p.imgalt, 
+				p.date, 
+				a.authorname, 
+				c.id AS categoryid, 
+				c.categoryname,
+				b.id as blogid,
+				b.title as blogtitle 
+			FROM publication p 
+			INNER JOIN author a ON p.idauthor = a.id 
+			INNER JOIN category c ON p.idcategory = c.id 
+			INNER JOIN blogs b ON p.idblog = b.id
+			WHERE p.premoderation = "YES" ORDER BY p.date DESC LIMIT 5';//Вверху самое последнее значение
+	$result = $pdo->query($sql);
+}
+
+catch (PDOException $e)
+{
+	$error = 'Ошибка вывода публикаций';
+	include MAIN_FILE . '/includes/error.inc.php';
+}
+
+/*Вывод результата в шаблон*/
+foreach ($result as $row)
+{
+	$pubs[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'], 'blogtitle' => $row['blogtitle']);
+}
+
+
 /*Вывод списка случайных тегов для новостей и статей*/
 
 /*Команда SELECT для облака тегов*/

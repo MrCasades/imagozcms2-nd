@@ -21,11 +21,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<div class="m-content">
 	<div class="search-form-blog">
-		<form action = " " method = "get">
+		<form action = " " method = "get" id="search-btn">
 			<input type = "text" name = "text" id = "text" class="search-text"/>
 			<input type = "hidden" name = "action" value = "search"/>
-			<button class="btn_1" id="search-btn" type="button"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></button>
-			<!-- <i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span> -->
+			<!--  -->
+			<!-- <i class="fa fa-search" aria-<button class="btn_1" id="search-btn" type="button"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></button>hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span> -->
 			<!-- <input type = "submit" value = "Найти" class="btn_2" id="search-btn"/> -->
 			<br>
 				<input name="article_type" type="radio" value="publication" checked>Публикация

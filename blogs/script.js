@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
   /*Загрузка результатов поиска*/
 
-    $( "#search-btn" ).click(function(e) {
+    $( "#search-btn" ).keyup(function(e) {
        let category = $('#category[name="category"]').val();
        let text = $('#text[name="text"]').val();
        text = text.replaceAll(' ', '&nbsp;');

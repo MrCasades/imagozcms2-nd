@@ -79,11 +79,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 								<?php echo $addFavourites;?>
 							<?php endif;?>
 						</div>
-						<div>
+						<!-- <div>
 							<?php if ($pubFolder == 'viewpost'):?>
-								<?php echo $recommendation;?>
+								<?php echo $recommendation;//Временно закомментировано?>
 							<?php endif;?>
-						</div>
+						</div> -->
 					</div>
 					<!-- <div class = "zen-ch">
 						<a href="https://zen.yandex.ru/imagoz" rel = "nofollow">
