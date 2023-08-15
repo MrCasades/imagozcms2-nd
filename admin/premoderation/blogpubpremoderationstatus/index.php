@@ -287,23 +287,23 @@ if (isset ($_GET['refusedyes']))
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	/*Команда SELECT выбор цены промоушена*/
-	try
-	{
-		$sql = 'SELECT pricetext FROM promotion WHERE id = :idpromotion';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// try
+	// {
+	// 	$sql = 'SELECT pricetext FROM promotion WHERE id = :idpromotion';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> bindValue(':idpromotion', $_POST['id']);//отправка значения
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора цены promotion';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка выбора цены promotion';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
-	$row = $s -> fetch();
+	// $row = $s -> fetch();
 	
-	$promotionPrice = $row['pricetext'];
+	// $promotionPrice = $row['pricetext'];
 	
 	/*Команда SELECT выбор id автора промоушена*/
 	try
@@ -342,7 +342,7 @@ if (isset ($_GET['refusedyes']))
 		$s -> bindValue(':reasonrefusal', $_POST['reasonrefusal']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 				
-		$pdo->commit();//подтверждение транзакции	
+		//$pdo->commit();//подтверждение транзакции	
 	}
 	catch (PDOException $e)
 	{

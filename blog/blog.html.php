@@ -18,7 +18,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						<i class="fa fa-user-circle" aria-hidden="true" title="Аватар блога"></i>
 					<?php endif; ?>
 					<br>
-					<strong>Подписчики: <?php echo $subscriptionCount; ?></strong>
+					<strong>Подписчики: <?php echo $subscriptionCount; ?> <?php echo $allRefusedBl; ?></strong>
 					<?php echo $subskribe; ?>
 					<?php echo $editBlog; ?>
 					<?php echo $addPublication; ?>

@@ -166,6 +166,8 @@ if (isset ($_GET['id']))
 								<button name = 'action' class='btn_1 addit-btn' value='Добавить статью'>Добавить статью</button>
 							</form>";
 		$toDraft = "<a href='//".MAIN_URL."/blog/draft?blid=".$idBlog."'><button class='btn_1 addit-btn'>Черновик</button></a>";
+
+		$allRefusedBl = '<a href="//'.MAIN_URL.'/admin/blogpubrefused/"><i class="fa fa-exclamation-circle" aria-hidden="true" title="Отклонённые материалы"></i>:</a>';//Отклонённые материалы
 	}
 
 	else
@@ -173,6 +175,7 @@ if (isset ($_GET['id']))
 		$editBlog = '';
 		$addPublication = '';
 		$toDraft = '';
+		$allRefusedBl = '';//Отклонённые материалы
 	}
 
 	if (userRole('Администратор'))	

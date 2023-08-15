@@ -1582,6 +1582,10 @@ article .article-rating{
     color: gray;
 }
 
+.fa-exclamation-circle{
+    color: red;
+}
+
 article .article-rating i{
     margin-left: 10%;
 }
