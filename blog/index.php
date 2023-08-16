@@ -156,6 +156,26 @@ if (isset ($_GET['id']))
 	
 	if ($selectedAuthor == $authorId) 
 	{
+		try
+		{
+			$pdo->beginTransaction();//инициация транзакции
+			
+			$sql = "SELECT count(*) AS mypremodpubs FROM publication WHERE premoderation = 'NO' AND refused = 'YES' AND draft = 'NO' AND idauthor = ".$selectedAuthor;
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+			
+			$row = $s -> fetch();
+			
+			$premodPubs = $row['mypremodpubs'];//статьи в премодерации
+		}
+
+		catch (PDOException $e)
+		{
+			$error = 'Ошибка подсчёта материалов';
+			include MAIN_FILE . '/includes/error.inc.php';
+		}
+
+
 		$editBlog = "<form action = '../blog/addupdblog/' method = 'post'>
 						<input type = 'hidden' name = 'id' value = '".$idBlog."'>
 						<button name = 'action' class='btn_1 addit-btn' value='Настройка'>Настройка</button>
@@ -167,7 +187,7 @@ if (isset ($_GET['id']))
 							</form>";
 		$toDraft = "<a href='//".MAIN_URL."/blog/draft?blid=".$idBlog."'><button class='btn_1 addit-btn'>Черновик</button></a>";
 
-		$allRefusedBl = '<a href="//'.MAIN_URL.'/admin/blogpubrefused/"><i class="fa fa-exclamation-circle" aria-hidden="true" title="Отклонённые материалы"></i>:</a>';//Отклонённые материалы
+		$allRefusedBl = $premodPubs !== 0 ? '<a href="//'.MAIN_URL.'/admin/blogpubrefused/"><i class="fa fa-exclamation-circle" aria-hidden="true" title="Отклонённые материалы"></i></a>: '.$premodPubs : '';//Отклонённые материалы
 	}
 
 	else
