@@ -36,7 +36,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			</div>
 			<h1 class="m-content"><?php htmlecho ($headMain); ?></h1>
 			<div class="article-head-bottom m-content">
-				<a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a>
+				<?php if ($pubFolder !== 'publication'):?>
+					<a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a>
+				<?php else: ?>
+					<a href="//<?php echo MAIN_URL;?>/blog/?id=<?php echo $blogId;?>"><?php echo $blogTitle;?></a>
+				<?php endif;?>
 				<br><?php echo $date;?>
 			</div>
 			<div class="tags-place-m m-content"> 

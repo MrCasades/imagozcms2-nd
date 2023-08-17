@@ -18,8 +18,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
 	<div>
-	 <label for = "blogtitle">Введите заголовок</label>
+	 <label for = "blogtitle">Введите заголовок <span style = "color: red"> *</span></label>
 	 <br><input type = "blogtitle" name = "blogtitle" id = "blogtitle" value = "<?php htmlecho($blogtitle);?>">
+	 <p><span id="counttitlelen">0</span> / 100	</p>
 	</div>
 	<hr/>
 	<div>
@@ -41,7 +42,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <hr/>
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2">
+		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id="confirm">
 	  </div>	  
 	</form>	
 </div>
