@@ -35,6 +35,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					echo $prices;
 					echo $ewallet;
 				}?></p>
+			<p><?php if (userRole ('Администратор'))//если пользователю присвоен определённый статус, то выводятся кнопки бана
+				
+				{
+					include_once MAIN_FILE . '/account/blockedbuttons/blockedbuttons.inc.html.php';
+				}?></p>
 		</div> 
 		<div id = "tabs" class="acc-info-pl">
 			<nav class="tabs-nav acc-menu">
