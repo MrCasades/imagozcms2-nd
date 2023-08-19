@@ -342,3 +342,53 @@ function accessForWritingArticles()
 		$GLOBALS['addMetas'] = '';
 	}
 }
+
+/*Проверка бана пользователя*/
+function checkBlockedAuthor($idAuthor)
+{
+	/*Подключение к базе данных*/
+	include 'db.inc.php';
+	
+	try
+	{
+		$sql = 'SELECT currtime, term FROM blockedauthor
+				WHERE idauthor = :idauthor';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idauthor', $idAuthor);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка проверки бана' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+		include 'error.inc.php';
+	}
+
+	$row = $s -> fetch();
+
+	if (!empty($row))
+	{
+		if ($row['term'] == 'alltime')
+			return true;
+		elseif (time() < $row['currtime'] + 60*60*24*(int)$row['term'])
+			return true;
+		else
+			return false;
+	}
+
+	else
+		return false;
+}
+
+/*Блокировка страницы*/ 
+function blockedAuthorPage()
+{
+
+	$title = 'Страница заблокирована';//Данные тега <title>
+	$headMain = 'Страница заблокирована';
+	$robots = 'noindex, nofollow';
+	$descr = '';
+	$error = 'Страница пользователя заблокирована за нарушения';
+	include '../admin/accessfail.html.php';
+	exit();
+}
