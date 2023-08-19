@@ -1,4 +1,4 @@
-<form action = "../account/blockedbuttons/blockedbuttons.inc.php" method = "post">
+<form action = "../account/blockedbuttons/" method = "post">
 	<div>
 		<input type = "hidden" name = "idauthor" value = "<?php htmlecho ($idAuthor); ?>">
         <input type = "hidden" name = "banterm" value = "1">
@@ -6,7 +6,7 @@
 	</div>
 </form>
 
-<form action = "../account/blockedbuttons/blockedbuttons.inc.php" method = "post">
+<form action = "../account/blockedbuttons/" method = "post">
 	<div>
 		<input type = "hidden" name = "idauthor" value = "<?php htmlecho ($idAuthor); ?>">
         <input type = "hidden" name = "banterm" value = "3">
@@ -14,7 +14,7 @@
 	</div>
 </form>
 
-<form action = "../account/blockedbuttons/blockedbuttons.inc.php" method = "post">
+<form action = "../account/blockedbuttons/" method = "post">
 	<div>
 		<input type = "hidden" name = "idauthor" value = "<?php htmlecho ($idAuthor); ?>">
         <input type = "hidden" name = "banterm" value = "7">
@@ -22,7 +22,7 @@
 	</div>
 </form>
 
-<form action = "../account/blockedbuttons/blockedbuttons.inc.php" method = "post">
+<form action = "../account/blockedbuttons/" method = "post">
 	<div>
 		<input type = "hidden" name = "idauthor" value = "<?php htmlecho ($idAuthor); ?>">
         <input type = "hidden" name = "banterm" value = "30">
@@ -30,7 +30,7 @@
 	</div>
 </form>
 
-<form action = "../account/blockedbuttons/blockedbuttons.inc.php" method = "post">
+<form action = "../account/blockedbuttons/" method = "post">
 	<div>
 		<input type = "hidden" name = "idauthor" value = "<?php htmlecho ($idAuthor); ?>">
         <input type = "hidden" name = "banterm" value = "alltime">
