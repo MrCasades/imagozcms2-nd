@@ -21,6 +21,8 @@ if(loggedIn())
 
     /*Выбор подписок*/
     getAuthorSubscriptions ($idAuthor);
+
+    $isBlocked = checkBlockedAuthor($idAuthor);//Проверка пользователя на бан
 }
 
 $title = 'Мои блоги | imagoz.ru';//Данные тега <title>

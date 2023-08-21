@@ -100,6 +100,9 @@ if (isset ($_GET['id']))
 
 	$selectedAuthor = (isset($_SESSION['loggIn'])) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : '';//id автора
 
+	$isBlocked = checkBlockedAuthor($selectedAuthor);//Проверка пользователя на бан
+
+
 	/*Определение подписки на блог */
 
 	if (isset($_SESSION['loggIn']))
@@ -152,7 +155,7 @@ if (isset ($_GET['id']))
 		$subskribe = '';
 	}
 
-	if ($selectedAuthor == $authorId) 
+	if ($selectedAuthor == $authorId && !$isBlocked) 
 	{
 		try
 		{

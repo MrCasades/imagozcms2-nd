@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</div>
 	</div>
     <div class = "main-post m-content">
-		<?php if (isset($_SESSION['loggIn'])):?>
+		<?php if (isset($_SESSION['loggIn']) && !$isBlocked):?>
 			<form action = "//<?php htmlecho (MAIN_URL); ?>/blog/addupdblog/" method = "post">
 				<input type = "hidden" name = "id" value = "<?php echo $idAuthor;?>'">
 				<input type = "submit" name = "action" class="btn_2 addit-btn" value = "Создать блог">
