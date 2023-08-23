@@ -46,6 +46,11 @@ confirm.addEventListener('click', (event) => {
         alert ('Длина заголовка превышена!')
         event.preventDefault()	
     }
+
+    else if (!document.getElementById('iagree').checked) {
+        alert ('Необходимо согласиться с правилами!')
+        event.preventDefault()	
+    }
 })
 
 //Подсчёт количества знаков в заголовке

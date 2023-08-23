@@ -40,6 +40,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<textarea class = "mark-textarea" id = "description" name = "description" rows="10"><?php htmlecho($description);?></textarea>	
 	 </div>
 	 <hr/>
+	 <p style="color: red"><strong>Прежде чем создать блог, ознакомьтесь с правилами. Их несоблюдение может привести к удалению блога и блокировке учётной записи!</strong></p>
+	 <input type="checkbox" name="iagree" value="iagree" id="iagree"> Я ознакомился с правилами
+	 <hr/>
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
 		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id="confirm">
