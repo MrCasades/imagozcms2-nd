@@ -41,6 +41,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 </div>
 	 <hr/>
 	 <p style="color: red"><strong>Прежде чем создать блог, ознакомьтесь с правилами. Их несоблюдение может привести к удалению блога и блокировке учётной записи!</strong></p>
+	 <div class="m-content blog-rules">
+		Правила ведения блога на imagoz.ru
+	 </div>
 	 <input type="checkbox" name="iagree" value="iagree" id="iagree"> Я ознакомился с правилами
 	 <hr/>
 	  <div>
