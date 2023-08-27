@@ -49,7 +49,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 			   $dislikeStyleSc = 'fa-thumbs-o-down';
 		   }
 
-				if ($selectedAuthor == $subcomment['subidauthor'])
+				if ($selectedAuthor == $subcomment['subidauthor'] && !$isBlocked)
 					{
 						$updAnddel = '<form action = "//'.MAIN_URL.'/viewwallpost/index.php" method = "post">
 										<div>

@@ -343,6 +343,10 @@ if (isset ($_GET['id']))
 	{
 		$similarPosts[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
 	}	
+
+	/*Проверка пользователя на бан*/
+
+	$isBlocked = checkBlockedAuthor($selectedAuthor);
 			
 	/*Вывод комментариев*/	
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';

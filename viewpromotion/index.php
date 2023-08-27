@@ -262,6 +262,10 @@ if (isset ($_GET['id']))
 	/*Вывод похожих материалов*/
 
 	similarPublication('promotion', $categoryID);
+
+	/*Проверка пользователя на бан*/
+
+	$isBlocked = checkBlockedAuthor($selectedAuthor);
 	
 	/*Вывод комментариев*/
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';

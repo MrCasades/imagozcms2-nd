@@ -184,7 +184,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 							$dislikeStyle = 'fa-thumbs-o-down';
 						}
 
-						if (($selectedAuthor  == $comment['idauthor']) || (userRole('Администратор')))
+						if (($selectedAuthor  == $comment['idauthor'] || userRole('Администратор')) && !$isBlocked)
 						{
 							$updAnddel = '<form action = "?" method = "post">
 							<div>

@@ -69,6 +69,10 @@ if (isset ($_GET['id']))
 								'subavatar' => $row['subavatar'], 'subidauthor' => $row['subidauthor'], 'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 
 								'islike' => $row['islike'],	'isdislike' => $row['isdislike'], 'idart' => $row['idart']);
 	}
+
+	/*Проверка пользователя на бан*/
+
+	$isBlocked = checkBlockedAuthor($selectedAuthor);
 	
 	include 'subcomment.html.php';
 	exit();

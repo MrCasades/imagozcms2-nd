@@ -135,7 +135,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			$authorName = '';
 		}
 
-	if ($authorName == $subcomment['subauthorname'])
+	if ($authorName == $subcomment['subauthorname'] && !$isBlocked)
 		{
 			$updAnddel = '<form action = "?" method = "post">
 							<div>

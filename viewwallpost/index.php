@@ -208,6 +208,12 @@ if (isset ($_GET['id']))
 	{
 		$numPosts[] = array('all_articles' => $row['all_articles']);
 	}
+
+	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));;//id автора
+
+	/*Проверка пользователя на бан*/
+
+	$isBlocked = checkBlockedAuthor($selectedAuthor);
 	
 	$countPosts = $row["all_articles"];
 	$pagesCount = ceil($countPosts / $onPage);
