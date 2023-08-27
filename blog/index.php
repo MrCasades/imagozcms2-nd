@@ -157,17 +157,16 @@ if (isset ($_GET['id']))
 
 	if ($selectedAuthor == $authorId && !$isBlocked) 
 	{
+		/*Подсчёт отклонённых материалов */
 		try
-		{
-			$pdo->beginTransaction();//инициация транзакции
-			
-			$sql = "SELECT count(*) AS mypremodpubs FROM publication WHERE premoderation = 'NO' AND refused = 'YES' AND draft = 'NO' AND idauthor = ".$selectedAuthor;
+		{		
+			$sql = "SELECT count(*) AS refusedpubs FROM publication WHERE premoderation = 'NO' AND refused = 'YES' AND draft = 'NO' AND idauthor = ".$selectedAuthor;
 			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 			
 			$row = $s -> fetch();
 			
-			$premodPubs = $row['mypremodpubs'];//статьи в премодерации
+			$premodPubs = $row['refusedpubs'];//статьи в премодерации
 		}
 
 		catch (PDOException $e)
@@ -188,7 +187,7 @@ if (isset ($_GET['id']))
 							</form>";
 		$toDraft = "<a href='//".MAIN_URL."/blog/draft?blid=".$idBlog."'><button class='btn_1 addit-btn'>Черновик</button></a>";
 
-		$allRefusedBl = $premodPubs !== 0 ? '<a href="//'.MAIN_URL.'/admin/blogpubrefused/"><i class="fa fa-exclamation-circle" aria-hidden="true" title="Отклонённые материалы"></i></a>: '.$premodPubs : '';//Отклонённые материалы
+		$allRefusedBl = $premodPubs != 0 ? '<a href="//'.MAIN_URL.'/admin/blogpubrefused/"><i class="fa fa-exclamation-circle" aria-hidden="true" title="Отклонённые материалы"></i></a>: '.$premodPubs : '';//Отклонённые материалы
 	}
 
 	else

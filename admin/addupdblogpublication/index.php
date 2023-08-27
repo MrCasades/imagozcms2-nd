@@ -435,6 +435,8 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	
 /*Предварительенй просмотр*/
 
+	$idBlog = $_POST['blogid'];
+
 	/*Инициализация блога*/
 	require_once MAIN_FILE . '/includes/blogvar.inc.php';
 
