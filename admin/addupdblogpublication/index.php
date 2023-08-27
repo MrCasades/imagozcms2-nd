@@ -58,7 +58,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Добавить стать
 	$translittitle = '';
 	$description = '';
 	$text = '';
-	$imgalt = '';
 	$idauthor = '';
 	$videoyoutube = '';
 	$idcategory = '';
@@ -159,7 +158,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Добавить стать
 	// 	$translittitle = '';
 	// 	$description = '';
 	// 	$text = '';
-	// 	$imgalt = '';
 	// 	$idauthor = '';
 	// 	$videoyoutube = '';
 	// 	$idcategory = '';
@@ -194,7 +192,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT id, text, title, idauthor, idblog, imghead, imgalt, videoyoutube, description, idcategory FROM publication WHERE id = :idpublication';
+		$sql = 'SELECT id, text, title, idauthor, idblog, imghead, videoyoutube, description, idcategory FROM publication WHERE id = :idpublication';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -216,7 +214,6 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$text = $row['text'];
 	$articletitle = $row['title'];
 	$description = $row['description'];
-	$imgalt = $row['imgalt']; 
 	$idcategory = $row['idcategory'];
 	$videoyoutube = $row['videoyoutube'];
 	$id = $row['id'];
@@ -349,12 +346,10 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		@session_start();//Открытие сессии для сохранения id автора
 	
 		$_SESSION['articletitle'] = $_POST['articletitle'];
-		$_SESSION['imgalt'] = $_POST['imgalt'];
 		$_SESSION['description'] = $_POST['description'];
 		$_SESSION['articletext'] = $_POST['articletext'];
 		
 		$articletitle = $_SESSION['articletitle'];
-		$imgalt = $_SESSION['imgalt'];
 		$description = $_SESSION['description'];
 		$text = $_SESSION['articletext'];
 		
@@ -378,7 +373,6 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 					title = :articletitle,	
 					description = :description,
 					date = SYSDATE(),
-					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
 					imghead = :imghead,
 					idcategory = :idcategory,
@@ -388,7 +382,6 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$s -> bindValue(':articletext', viewVideoInArticle($_POST['articletext']));//отправка значения
 		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
-		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
@@ -481,7 +474,6 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 					text = :articletext,
 					title = :articletitle,
 					description = :description,
-					imgalt = :imgalt,
 					videoyoutube = :videoyoutube,
 					imghead = :imghead
 				WHERE id = :idpub';
@@ -490,7 +482,6 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		$s -> bindValue(':articletext', viewVideoInArticle($_POST['articletext']));//отправка значения
 		$s -> bindValue(':articletitle', $_POST['articletitle']);//отправка значения
 		$s -> bindValue(':description', $_POST['description']);//отправка значения
-		$s -> bindValue(':imgalt', $_POST['imgalt']);//отправка значения
 		$s -> bindValue(':videoyoutube', toEmbedInVideo($_POST['videoyoutube']));//отправка значения
 		$s -> bindValue(':imghead', $fileName);//отправка значения
 		//$s -> bindValue(':idcategory', $_POST['category']);//отправка значения
