@@ -359,7 +359,7 @@ function getAuthorSubscriptions ($idAuthor)
 					b.avatar
 				FROM blogs b
 				INNER JOIN subscribers s ON s.idblog = b.id
-				WHERE s.idauthor = '.$idAuthor;
+				WHERE s.idauthor = '.$idAuthor.'  ORDER BY rand()';
 		$result = $pdo->query($sql);
 	}
 	
