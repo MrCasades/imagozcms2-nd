@@ -362,12 +362,14 @@ if (isset ($_GET['id']))
 		
 	// 	$recommendation = '';
 	// }
-	
-	/*Вывод похожих материалов*/
 
 	/*Вывод похожих материалов*/
 
 	similarPublication('post', $categoryID);
+
+	/*Проверка пользователя на бан*/
+
+	$isBlocked = checkBlockedAuthor($selectedAuthor);
 	
 	/*Вывод комментариев*/	
 	include_once MAIN_FILE . '/includes/showcomments.inc.php';
