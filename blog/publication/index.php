@@ -293,7 +293,7 @@ if (isset ($_GET['id']))
 	
 	/*Вывод кнопок "Обновить" | "Удалить" | "Снять с публикации"(Возможно убрать эту кнопку для всех, кромке админа и редактора)"*/
 	
-	if ((isset($_SESSION['loggIn'])) && (userRole('Администратор')))
+	if (isset($_SESSION['loggIn']) && !userRole('Администратор'))
 	{
 		$delAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
 			
@@ -302,15 +302,27 @@ if (isset ($_GET['id']))
 						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
 						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
 					  </form>";
-		
+		$premoderation = '';
+	} 
+
+	elseif (isset($_SESSION['loggIn']) && userRole('Администратор')) 
+	{
+		$delAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
+			
+						Действия с материалом:
+						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
+						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
+						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
+					  </form>";
+					  
 		$premoderation = "<form action = '//".MAIN_URL."/admin/premoderation/blogpubpremoderationstatus/' method = 'post'>
 			
-						Статус публикации:
-						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
-						<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn_3'>
-					  </form>";				
+							Статус публикации:
+							<input type = 'hidden' name = 'id' value = '".$idPublication."'>
+							<input type = 'submit' name = 'action' value = 'Снять с публикации' class='btn_3'>
+						</form>";	
 	}
-	
+					
 	else
 	{
 		$delAndUpd = '';
