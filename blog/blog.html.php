@@ -19,6 +19,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php endif; ?>
 					<br>
 					<strong>Подписчики: <?php echo $subscriptionCount; ?> <?php echo $allRefusedBl; ?></strong>
+					<strong>Автор: <a href="../account/?id=<?php echo $authorId;?>" target="blank_"><?php echo $nameAuthor;?></a></strong>
 					<?php echo $subskribe; ?>
 					<?php echo $editBlog; ?>
 					<?php echo $addPublication; ?>

@@ -293,7 +293,7 @@ if (isset ($_GET['id']))
 	
 	/*Вывод кнопок "Обновить" | "Удалить" | "Снять с публикации"(Возможно убрать эту кнопку для всех, кромке админа и редактора)"*/
 	
-	if (isset($_SESSION['loggIn']) && !userRole('Администратор'))
+	if (isset($_SESSION['loggIn']) && !userRole('Администратор') && $authorId == $selectedAuthor)
 	{
 		$delAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
 			

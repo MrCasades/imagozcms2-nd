@@ -42,6 +42,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<a href="//<?php echo MAIN_URL;?>/blog/?id=<?php echo $blogId;?>"><?php echo $blogTitle;?></a>
 				<?php endif;?>
 				<br><?php echo $date;?>
+				<p><?php echo $delAndUpd; ?></p>
 			</div>
 			<div class="tags-place-m m-content"> 
 				<?php if (empty($metas))
@@ -96,7 +97,6 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</div>
 
 				<div class = "m-content">
-					<p><?php echo $delAndUpd; ?></p>
 					<p><?php echo $premoderation; ?></p>
 					<?php if ($pubFolder == 'publication'):?>
 						<p><?php echo $secondPremoderationStatus; ?></p>
