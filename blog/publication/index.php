@@ -296,11 +296,9 @@ if (isset ($_GET['id']))
 	if (isset($_SESSION['loggIn']) && !userRole('Администратор') && $authorId == $selectedAuthor)
 	{
 		$delAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
-			
-						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
-						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
+						<button title='Обновить' class='btn_1' name = 'action' value = 'Upd'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button>
+						<button title='Удалить' class='btn_3' name = 'action' value = 'Del'><i class='fa fa-window-close' aria-hidden='true'></i></button>			
 					  </form>";
 		$premoderation = '';
 	} 
@@ -308,11 +306,9 @@ if (isset ($_GET['id']))
 	elseif (isset($_SESSION['loggIn']) && userRole('Администратор')) 
 	{
 		$delAndUpd = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
-			
-						Действия с материалом:
 						<input type = 'hidden' name = 'id' value = '".$idPublication."'>
-						<input type = 'submit' name = 'action' value = 'Upd' class='btn_1'>
-						<input type = 'submit' name = 'action' value = 'Del' class='btn_2'>
+						<button title='Обновить' class='btn_1' name = 'action' value = 'Upd'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button>
+						<button title='Удалить' class='btn_3' name = 'action' value = 'Del'><i class='fa fa-window-close' aria-hidden='true'></i></button>	
 					  </form>";
 					  
 		$premoderation = "<form action = '//".MAIN_URL."/admin/premoderation/blogpubpremoderationstatus/' method = 'post'>
@@ -377,7 +373,7 @@ if (isset ($_GET['id']))
 
 	/*Вывод похожих материалов*/
 
-	similarPublication('post', $categoryID);
+	similarPublication('publication', $categoryID);
 
 	/*Проверка пользователя на бан*/
 
