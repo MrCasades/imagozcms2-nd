@@ -506,44 +506,6 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
-	/*Проверка на нахождение в черновике*/
-	/*Команда SELECT*/
-	try
-	{
-		$sql = 'SELECT draft, premoderation FROM publication WHERE id = :idpublication';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора статьи';
-		include MAIN_FILE . '/includes/error.inc.php'; 
-	}
-	
-	$row = $s -> fetch();
-
-	if ($row['draft'] == 'NO' && $row['premoderation'] == 'YES')
-	{
-		/*UPDATE - обновление информации в базе данных*/
-		try
-		{
-			$sql = 'UPDATE publication SET 
-						upddate = SYSDATE(),
-						secondpremoderation = "NO"
-					WHERE id = :idpub';
-			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> bindValue(':idpub', $_POST['id']);//отправка значения
-			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		}
-		catch (PDOException $e)
-		{
-			$error = 'Ошибка обновления информации publication';
-			include MAIN_FILE . '/includes/error.inc.php';
-		}
-	}
-	
 	/*Обновление тегов*/
 	if (isset ($_POST['metas']))
 	{
@@ -595,25 +557,69 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	}
 	
 	$idpost_ind = $_POST['id'];//id материала
-	
-/*Предварительенй просмотр*/
 
-	$idBlog = $_POST['blogid'];
+	/*Проверка на нахождение в черновике*/
+	/*Команда SELECT*/
+	try
+	{
+		$sql = 'SELECT draft, premoderation FROM publication WHERE id = :idpublication';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idpublication', $_POST['id']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
 
-	/*Инициализация блога*/
-	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка выбора статьи';
+		include MAIN_FILE . '/includes/error.inc.php'; 
+	}
+	
+	$row = $s -> fetch();
 
-	/*Получение атрибутов блога для шапки */
-	getBlogAtributs($idBlog);
-	
-	preview('publication', $idpost_ind);
-	
-	/*Вывод тематик(тегов)*/
-	
-	$metas = previewMetas('publication', 'idpublication', $idpost_ind);
-	
-	include '../commonfiles/preview.html.php';
-	exit();
+	if ($row['draft'] == 'YES' && $row['premoderation'] == 'YES')
+	{
+		/*UPDATE - обновление информации в базе данных*/
+		try
+		{
+			$sql = 'UPDATE publication SET 
+						upddate = SYSDATE(),
+						secondpremoderation = "NO"
+					WHERE id = :idpub';
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> bindValue(':idpub', $_POST['id']);//отправка значения
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+		catch (PDOException $e)
+		{
+			$error = 'Ошибка обновления информации publication';
+			include MAIN_FILE . '/includes/error.inc.php';
+		}
+
+		header ('Location: //'.MAIN_URL.'/blog/publication/?id='.$idpost_ind);//перенаправление обратно в контроллер index.php
+		exit();
+	}
+
+	else
+	{
+		/*Предварительенй просмотр*/
+
+		$idBlog = $_POST['blogid'];
+
+		/*Инициализация блога*/
+		require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+		/*Получение атрибутов блога для шапки */
+		getBlogAtributs($idBlog);
+		
+		preview('publication', $idpost_ind);
+		
+		/*Вывод тематик(тегов)*/
+		
+		$metas = previewMetas('publication', 'idpublication', $idpost_ind);
+		
+		include '../commonfiles/preview.html.php';
+		exit();
+	}
 }
 
 /*Публикация материала*/
