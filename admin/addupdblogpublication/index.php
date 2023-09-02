@@ -576,7 +576,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	$row = $s -> fetch();
 
-	if ($row['draft'] == 'YES' && $row['premoderation'] == 'YES')
+	if ($row['draft'] == 'YES' && $row['premoderation'] == 'YES')//Доработать!
 	{
 		/*UPDATE - обновление информации в базе данных*/
 		try
