@@ -185,6 +185,13 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	
 		$_SESSION['rewrite'] = true;
 	}
+
+	else
+	{
+		@session_start();//Открытие сессии для сохранения флага переработки
+	
+		$_SESSION['rewrite'] = false;
+	}
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -576,7 +583,7 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 	
 	$row = $s -> fetch();
 
-	if ($row['draft'] == 'YES' && $row['premoderation'] == 'YES')//Доработать!
+	if ($row['draft'] == 'NO' && $row['premoderation'] == 'YES')//Доработать!
 	{
 		/*UPDATE - обновление информации в базе данных*/
 		try
