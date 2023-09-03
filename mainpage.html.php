@@ -357,7 +357,14 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					$articleType = 'viewpromotion';
 					$articleId = $comment['idpromotion'];
 					$backLinkType = 'prom';
-				}	
+				}
+				elseif ($comment['title'] != '')
+				{
+					$title = $comment['title'];
+					$articleType = 'blog/publication';
+					$articleId = $comment['idpublication'];
+					$backLinkType = 'publication';
+				}		
 			/*Стили кнопок лайков дизлайков*/
 				if ($comment['islike'] == 1)
 				{

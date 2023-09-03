@@ -482,9 +482,11 @@ try
 		cm.idpost,
 		cm.idnews,
 		cm.idpromotion,
+		cm.idpublication,
 		pos.posttitle,
 		n.newstitle,
-		pr.promotiontitle
+		pr.promotiontitle,
+		pb.title
 	FROM comments cm
 	INNER JOIN author a 
 	ON cm.idauthor = a.id 
@@ -496,11 +498,13 @@ try
 	ON pr.id = idpromotion
 	LEFT JOIN posts p
 	ON p.id = idpost
+	LEFT JOIN publication pb
+	ON pb.id = idpublication
 	LEFT JOIN 
 		(SELECT idauthor AS idauthorlk, idcomment, islike, isdislike
 		FROM commentlikes WHERE idauthor = '.$selectedAuthor.') cml
 	ON cm.id = cml.idcomment
-	WHERE cm.idpost IS NOT NULL OR cm.idnews IS NOT NULL OR cm.idpromotion IS NOT NULL
+	WHERE cm.idpost IS NOT NULL OR cm.idnews IS NOT NULL OR cm.idpromotion IS NOT NULL OR cm.idpublication IS NOT NULL
 	ORDER BY cm.id DESC LIMIT 7';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 	}
@@ -518,8 +522,8 @@ try
 								'subcommentcount' => $row['subcommentcount'], 'imghead' => $row['imghead'], 'imgalt' => $row['imgalt'], 'avatar' => $row['avatar'],
 								'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'islike' => $row['islike'], 
 								'isdislike' => $row['isdislike'], 'idcommentlk' => $row['idcommentlk'], 'idauthorlk' => $row['idauthorlk'],
-								'idpost' => $row['idpost'], 'idnews' => $row['idnews'], 'idpromotion' => $row['idpromotion'],
-								'posttitle' => $row['posttitle'], 'newstitle' => $row['newstitle'], 'promotiontitle' => $row['promotiontitle'],
+								'idpost' => $row['idpost'], 'idnews' => $row['idnews'], 'idpromotion' => $row['idpromotion'], 'idpublication' => $row['idpublication'],
+								'posttitle' => $row['posttitle'], 'newstitle' => $row['newstitle'], 'promotiontitle' => $row['promotiontitle'], 'title' => $row['title'],
 							);
 	}
 
