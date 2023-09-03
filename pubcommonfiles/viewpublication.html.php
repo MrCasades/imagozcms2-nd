@@ -317,7 +317,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						
 				foreach ($similarPub as $pubs): ?>
 					
-				<a href = "../<?php echo $pubFolder; ?>/?id=<?php htmlecho ($pubs['id']); ?>" class = "post-place-grid" style="background-image: url(../images/<?php echo $pubs['imghead']; ?>)">
+				<a href = "../<?php echo $pubFolder; ?>/?id=<?php htmlecho ($pubs['id']); ?>" class = "post-place-grid" style="background-image: url(//<?php echo MAIN_URL; ?>/images/<?php echo $pubs['imghead']; ?>)">
 					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pubs['title'])), 0, 7)))); ?>...</div>
 				</a> 
 				<?php endforeach; ?>
