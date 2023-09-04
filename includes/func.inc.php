@@ -903,3 +903,31 @@ function similarPublication($type, $categoryID) //$type = news, post, promotion 
 		$GLOBALS['similarPub'][] =  array ('id' => $row['id'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
 	}	
 }
+
+/*Вывод аналогичных публикаций*/
+function randomSubscriptions ($idAuthor)
+{
+
+	$select = 'SELECT p.id, p.title, p.imghead, p.imgalt FROM publication p LEFT JOIN subscribers s ON s.idblog = p.idblog WHERE p.premoderation = "YES" and s.idauthor = '.$idAuthor.' ORDER BY rand() LIMIT 6';
+
+	/*Подключение к базе данных*/
+	include 'db.inc.php';
+
+	try
+	{
+		$sql = $select;
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода заголовка похожей новости';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$GLOBALS['similarPub'][] =  array ('id' => $row['id'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt']);
+	}	
+}

@@ -373,7 +373,7 @@ if (isset ($_GET['id']))
 
 	/*Вывод похожих материалов*/
 
-	similarPublication('publication', $categoryID);
+	randomSubscriptions($selectedAuthor);
 
 	/*Проверка пользователя на бан*/
 
