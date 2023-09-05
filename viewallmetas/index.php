@@ -133,6 +133,33 @@ if (isset ($_GET['metaid']))
 							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'],
 							'metaname' => $row['metaname']);
 	}
+
+	try
+	{
+		$sql = 'SELECT p.id AS pubid, text, p.title, a.id AS authorid, p.imghead, p.imgalt, p.date, a.authorname, m.metaname FROM meta m
+				INNER JOIN metapost mp	ON m.id = idmeta
+				INNER JOIN publication p ON p.id = idpublication 
+				INNER JOIN author a ON a.id = idauthor 
+				INNER JOIN blogs b ON idblog = b.id 
+				WHERE premoderation = "YES" AND m.id = :id ORDER BY date DESC LIMIT 6';//Вверху самое последнее значение
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':id', $_GET['metaid']);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL. Т. к. массив $forSearch хранит значение всех псевдопеременных 
+								  // не нужно указывать их по отдельности с помощью bindValue	
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка выбора публикаций блога';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+
+	/*Вывод результата в шаблон*/
+	foreach ($s as $row)
+	{
+		$metas_pub[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 'metaname' => $row['metaname']);
+	}
 			
 	/*Загрузка настроек раздела*/
 	$blockFolder = 'viewallmetas';

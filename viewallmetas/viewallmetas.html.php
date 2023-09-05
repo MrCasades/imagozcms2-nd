@@ -118,6 +118,30 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
+
+	<?php if (!empty($metas_pub)): ?>
+		<div class = "main-headers">
+			<div class = "main-headers-circle"></div>
+			<div class = "main-headers-content">
+				<a class = "main-headers-place" href="../blog/viewmetablogpublication/?metaid=<?php echo $idMeta; ?>"><h2>В блогах</h2></a>
+				<div class = "main-headers-line"></div>
+				<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
+			</div>
+		</div>
+
+		<div class = "main-post m-content">		 
+			<?php foreach ($metas_pub as $meta_1): ?>
+			<a href="../blog/publication?id=<?php htmlecho ($meta_1['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $meta_1['imghead']; ?>)">
+				<div class = "post-top-1">
+					<p><?php echo date("Y.m.d H:i", strtotime($meta_1['date'])); ?></p>
+					
+				</div>
+				<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($meta_1['title'])), 0, 7)))); ?>...</div>
+			</a>
+			
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>
