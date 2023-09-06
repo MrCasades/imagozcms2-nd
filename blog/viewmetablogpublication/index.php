@@ -1,6 +1,6 @@
 <?php
 /*Загрузка главного пути*/
-include_once '../includes/path.inc.php';
+include_once '../../includes/path.inc.php';
 
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
@@ -27,28 +27,26 @@ if (isset ($_GET['metaid']))
 
 	try
 	{
-		$sql = 'SELECT posts.id AS postid, post, posttitle, author.id AS authorid, imghead, imgalt, postdate, authorname, category.id AS categoryid, categoryname, metaname FROM meta 
-				INNER JOIN metapost	ON meta.id = idmeta
-				INNER JOIN posts ON posts.id = idpost 
-				INNER JOIN author ON author.id = idauthor 
-				INNER JOIN category ON idcategory = category.id 
-				WHERE premoderation = "YES" AND zenpost = "NO" AND meta.id = '.$idMeta.' ORDER BY postdate DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
+		$sql = 'SELECT p.id AS pubid, text, p.title, a.id AS authorid, p.imghead, p.imgalt, p.date, a.authorname, m.metaname FROM meta m
+				INNER JOIN metapost mp	ON m.id = mp.idmeta
+				INNER JOIN publication p ON p.id = mp.idpublication 
+				INNER JOIN author a ON a.id = p.idauthor 
+				INNER JOIN blogs b ON p.idblog = b.id 
+				WHERE p.premoderation = "YES" AND m.id = '.$idMeta.' ORDER BY p.date DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка выбора статей';
+		$error = 'Ошибка выбора публикаций';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 
 	/*Вывод результата в шаблон*/
 	foreach ($result as $row)
 	{
-		$metas_1[] =  array ('id' => $row['postid'], 'idauthor' => $row['authorid'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
-							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'],
-							'metaname' => $row['metaname']);
+		$metas_1[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 'metaname' => $row['metaname']);
 	}
 	
 	/*Если страница отсутствует. Ошибка 404*/
@@ -59,20 +57,20 @@ if (isset ($_GET['metaid']))
 	}
 	
 	/*Загрузка настроек раздела*/
-	$blockFolder = 'viewmetapost';
+	$blockFolder = 'viewmetablogpublication';
 	include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
 	
 	/*Определение количества статей*/
 	try
 	{
-		$sql = "SELECT count(*) AS all_articles FROM meta INNER JOIN metapost ON meta.id = idmeta
-				INNER JOIN posts ON posts.id = idpost INNER JOIN author ON author.id = idauthor WHERE premoderation = 'YES' AND zenpost = 'NO' AND meta.id = ".$idMeta;
+		$sql = "SELECT count(*) AS all_articles FROM meta m INNER JOIN metapost mp ON m.id = mp.idmeta
+				INNER JOIN publication p ON p.id = mp.idpublication INNER JOIN author a ON a.id = p.idauthor WHERE p.premoderation = 'YES' AND m.id = ".$idMeta;
 		$result = $pdo->query($sql);
 	}
 
 	catch (PDOException $e)
 	{
-		$error = 'Ошибка подсчёта статей';
+		$error = 'Ошибка подсчёта публикаций';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
@@ -84,7 +82,7 @@ if (isset ($_GET['metaid']))
 	$countPosts = $row["all_articles"];
 	$pagesCount = ceil($countPosts / $onPage);
 		
-	include 'metapost.html.php';
+	include 'metapublication.html.php';
 	exit();		
 
 }	

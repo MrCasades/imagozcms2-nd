@@ -23,12 +23,12 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		else
 				
 		foreach ($metas_1 as $meta_1): ?>
-		<a href="../viewpost/?id=<?php htmlecho ($meta_1['id']); ?>" class = "post-place-2" style="background-image: url(../images/<?php echo $meta_1['imghead']; ?>)">
+		<a href="//<?php htmlecho (MAIN_URL); ?>/blog/publication/?id=<?php htmlecho ($meta_1['id']); ?>" class = "post-place-2" style="background-image: url(//<?php htmlecho (MAIN_URL); ?>/images/<?php echo $meta_1['imghead']; ?>)">
 			<div class = "post-top-1">
-				<p><?php echo date("Y.m.d H:i", strtotime($meta_1['postdate'])); ?></p>
-				<span class="post-rubrics"><?php htmlecho ($meta_1['categoryname']); ?></span>
+				<p><?php echo date("Y.m.d H:i", strtotime($meta_1['date'])); ?></p>
+				
 			</div>
-			<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($meta_1['posttitle'])), 0, 7)))); ?>...</div>
+			<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($meta_1['title'])), 0, 7)))); ?>...</div>
 		</a>
 			
 		<?php endforeach; ?>

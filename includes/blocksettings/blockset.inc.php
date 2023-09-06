@@ -1,6 +1,6 @@
 <?php
 
-$json_object = file_get_contents('../includes/blocksettings/'.$blockFolder.'.json');
+$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/'.$blockFolder.'.json');
 $data = json_decode($json_object, true);
 
 if(
@@ -13,7 +13,8 @@ if(
     $blockFolder == 'viewmetanews' ||
     $blockFolder == 'viewmetapost' ||
     $blockFolder == 'viewmetapromotion' ||
-    $blockFolder == 'viewmetavideo'
+    $blockFolder == 'viewmetavideo' ||
+    $blockFolder == 'viewmetablogpublication'
     )
 
 {
@@ -24,7 +25,7 @@ if(
         $tm = 'categoryname';
     }
 
-    elseif ($blockFolder == 'viewallmetas' || $blockFolder == 'viewmetanews' || $blockFolder == 'viewmetapost' || $blockFolder == 'viewmetapromotion' || $blockFolder == 'viewmetavideo')
+    elseif ($blockFolder == 'viewallmetas' || $blockFolder == 'viewmetanews' || $blockFolder == 'viewmetapost' || $blockFolder == 'viewmetapromotion' || $blockFolder == 'viewmetavideo' || $blockFolder == 'viewmetablogpublication')
     {
         $preBlockFolder = 'viewallmetas';
         $linkType = '/?metaid='.$idMeta;
@@ -38,6 +39,8 @@ if(
     $title = insertVar($tm, $row[$tm], $data['title'] );
     $headMain = insertVar($tm, $row[$tm], $data['headMain'] ); 
     $descr = insertVar($tm, $row[$tm], $data['descr'] ); 
+
+    $blockFolder = $blockFolder == 'viewmetablogpublication' ? 'blog/'.$blockFolder : $blockFolder;
 
     if (!empty($data['breadPart1'])) 
         $breadPart1 = '<a href="//'.MAIN_URL.'">'.insertVar($tm, $row[$tm], $data['breadPart1']).'</a> >> '; //Для хлебных крошек
