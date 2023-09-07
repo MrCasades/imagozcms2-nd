@@ -49,7 +49,7 @@ foreach ($result as $row)
 {
 	$pubs[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
 							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 
-							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+							'blogtitle' =>  $row['blogtitle'], 'categoryid' => $row['categoryid']);
 }
 
 /*Вывод блогов */

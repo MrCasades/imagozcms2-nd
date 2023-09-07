@@ -52,7 +52,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<a href = "../blog/publication?id=<?php htmlecho ($pub['id']); ?>" class = "post-place-1" style="background-image: url(../images/<?php echo $pub['imghead']; ?>)">
 					<div class = "post-top-1">
 						<p><?php echo date("Y.m.d H:i", strtotime($pub['date'])); ?></p>
-						<span class="post-rubrics"><?php htmlecho ($pub['categoryname']); ?></span>
+						<span class="post-rubrics"><?php htmlecho ($pub['blogtitle']); ?></span>
 					</div>
 					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pub['title'])), 0, 7)))); ?>...</div>
 				</a>
