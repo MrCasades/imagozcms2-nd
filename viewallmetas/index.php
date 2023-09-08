@@ -136,7 +136,7 @@ if (isset ($_GET['metaid']))
 
 	try
 	{
-		$sql = 'SELECT p.id AS pubid, text, p.title, a.id AS authorid, p.imghead, p.imgalt, p.date, a.authorname, m.metaname FROM meta m
+		$sql = 'SELECT p.id AS pubid, text, p.title, a.id AS authorid, p.imghead, p.imgalt, p.date, a.authorname, m.metaname, b.id as blogid, b.title as blogtitle  FROM meta m
 				INNER JOIN metapost mp	ON m.id = idmeta
 				INNER JOIN publication p ON p.id = idpublication 
 				INNER JOIN author a ON a.id = idauthor 
@@ -158,7 +158,7 @@ if (isset ($_GET['metaid']))
 	foreach ($s as $row)
 	{
 		$metas_pub[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 'metaname' => $row['metaname']);
+							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 'metaname' => $row['metaname'], 'blogtitle' =>  $row['blogtitle'], 'blogid' => $row['blogid']);
 	}
 			
 	/*Загрузка настроек раздела*/

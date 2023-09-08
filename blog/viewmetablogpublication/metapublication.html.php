@@ -26,7 +26,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<a href="//<?php htmlecho (MAIN_URL); ?>/blog/publication/?id=<?php htmlecho ($meta_1['id']); ?>" class = "post-place-2" style="background-image: url(//<?php htmlecho (MAIN_URL); ?>/images/<?php echo $meta_1['imghead']; ?>)">
 			<div class = "post-top-1">
 				<p><?php echo date("Y.m.d H:i", strtotime($meta_1['date'])); ?></p>
-				
+				<span class="post-rubrics"><?php htmlecho ($meta_1['blogtitle']); ?></span>
 			</div>
 			<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($meta_1['title'])), 0, 7)))); ?>...</div>
 		</a>
