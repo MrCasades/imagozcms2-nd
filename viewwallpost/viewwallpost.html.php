@@ -13,12 +13,33 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 </div>
 
-<div class="m-content">
+<div class="comment m-content">
+	<div class="comment-person-pl">
+		<?php if ($avatar !== ''): ?>
+
+			<div> 
+				<img src="//<?php echo MAIN_URL; ?>/avatars/<?php echo $avatar;?>" alt="<?php echo $nameAuthor;?>"> 
+			</div>
+
+			<?php else: ?>
+				<i class="fa fa-user-circle-o" aria-hidden="true"></i> 
+			<?php endif; ?>
+			<div class="comment-person-name">
+				<?php echo ('<a href="../account/?id='.$authorId.'">'.$nameAuthor).'</a>';?><br>
+				<span class="comment-date"><?php echo $date; ?></span>
+			</div> 
+	</div>
     <div class="comment-text">
 		<img src="../images/<?php echo $imgHead;?>" alt="<?php echo $imgAlt;?>"/>
         <?php echomarkdown ($articleText);?>
     </div>
-	<div class="one-comment-bottom">
+
+</div> 
+<div class="comment-bottom">
+	<div class="comment-ans">
+		<a href="#" id = "open_form"><button class="btn_2">Ответить</button></a>
+		<!-- <a href="#"><button class="btn_1" id = "load_<?php echo $comment['id'];?>"><i class="fa fa-comments-o" aria-hidden="true"></i> Ответы (<span id="subcomm_count_<?php echo $comment['id']; ?>"><?php echo $comment['subcommentcount']; ?></span>)</button></a> -->
+	</div>
 	
 	<?php 	
 		//Вывод панели обновления - удаления комментария и проверка на поставленные лайки/дизлайки!				
@@ -38,24 +59,24 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			$likeStyle = 'fa-thumbs-o-up';
 			$dislikeStyle = 'fa-thumbs-o-down';
 		}
-		?>
-		<form class="one-comment-like" id = "like_form_<?php echo $comment['id'];?>">
-			<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
-			<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
-			<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
-			<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
-			<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
-		</form> 
+	?>
+	<form class="comment-like" id = "like_form_<?php echo $comment['id'];?>">
+		<input type = "hidden" name = "idauthor" value = "<?php echo $selectedAuthor;?>">
+		<input type = "hidden" name = "idcomment" value = "<?php echo $comment['id'];?>">
+		<input type = "hidden" name = "type-like" id = "type_like_<?php echo $comment['id'];?>">
+		<button id="like_<?php echo $comment['id'];?>" class="comment-like-btn" name = "like" type="submit"><i id="lk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $likeStyle;?>" aria-hidden="true"></i> <span id="likecount_<?php echo $comment['id'];?>"><?php echo $comment['likescount'];?></span></button>
+		<button id="dislike_<?php echo $comment['id'];?>" class="comment-like-btn" name ="dislike" type="submit"><i id="dlk_sign_<?php echo $comment['id'];?>" class="fa <?php echo $dislikeStyle;?>" aria-hidden="true"></i> <span id="dislikecount_<?php echo $comment['id'];?>"><?php echo $comment['dislikescount'];?></span></button>					
+	</form> 
 		
-		<?php 
-			/*Загрузка скрипта добавления лайков/дизлайков*/
-			 include MAIN_FILE . '/includes/likescript.inc.php';?>
-	</div>
-</div> 
+	<?php 
+		/*Загрузка скрипта добавления лайков/дизлайков*/
+		include MAIN_FILE . '/includes/likescript.inc.php';?>
+</div>
+
 
 <div class = "main-headers">
 	<div class = "main-headers-content">
-		<h2 class="no-link-header">Ответы (<span id="comm_count"><?php echo $countPosts; ?></span>) | <a href="#" id = "open_form"><button class="btn_2">Ответить</button></a></h2>
+		<h2 class="no-link-header">Ответы (<span id="comm_count"><?php echo $countPosts; ?></span>)</h2>
 		<div class = "main-headers-line"></div>				
 	</div>
 </div>
