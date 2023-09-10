@@ -69,6 +69,8 @@ if (isset ($_GET['id']))
 		$URL = '#';
 		$linkText = 'Не определено';
 	}
+
+	$typeArt = $_GET['typeart'];
 	
 	
 	// @session_start();//Открытие сессии для сохранения id статьи
@@ -163,6 +165,7 @@ if (isset ($_GET['id']))
 					scm.likescount,
 					scm.dislikescount, 
 					a.authorname AS subauthorname,
+					a.avatar AS subavatar,
 					scml.islike, 
 					scml.isdislike, 
 					case 
@@ -196,7 +199,7 @@ if (isset ($_GET['id']))
 	foreach ($result as $row)
 	{
 		$subcomments[] =  array ('id' => $row['id'], 'text' => $row['subcomment'], 'date' => $row['subcommentdate'], 'subauthorname' => $row['subauthorname'],
-										'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'subidauthor' => $row['subidauthor'],
+										'likescount' => $row['likescount'], 'dislikescount' => $row['dislikescount'], 'subidauthor' => $row['subidauthor'], 'subavatar' => $row['subavatar'],
 										'islike' => $row['islike'],	'isdislike' => $row['isdislike'], 'idart' => $row['idart']);
 	}
 	
