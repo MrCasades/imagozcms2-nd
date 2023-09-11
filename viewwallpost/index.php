@@ -18,50 +18,82 @@ if (isset ($_GET['id']))
 	
 	$selectedAuthor =  isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 
+	$artTitle ='';
+
 	/*Формируем URL для возврата */
 	if (!empty($_GET['idart']) && $_GET['idart'] !== '')
 	{
 		if ($_GET['typeart'] === 'viewnews' )
 		{
+			$select = 'SELECT newstitle as title FROM newsblock WHERE id = ';
 			$URL = '//'.MAIN_URL.'/viewnews/?id='.$_GET['idart'];
 			$linkText = 'К новости';
 		}
 
 		elseif ($_GET['typeart'] === 'viewpost' )
 		{
+			$select = 'SELECT posttitle as title FROM posts WHERE id = ';
 			$URL = '//'.MAIN_URL.'/viewpost/?id='.$_GET['idart'];
 			$linkText = 'К статье';
 		} 
 
 		elseif ($_GET['typeart'] === 'viewpromotion' )
 		{
+			$select = 'SELECT promotiontitle as title FROM promotion WHERE id = ';
 			$URL = '//'.MAIN_URL.'/viewpromotion/?id='.$_GET['idart'];
 			$linkText = 'К статье';
 		} 
 
 		elseif ($_GET['typeart'] === 'account' )
 		{
+			$select = 'SELECT authorname as title FROM author WHERE id = ';
 			$URL = '//'.MAIN_URL.'/account/?id='.$_GET['idart'];
 			$linkText = 'К профилю';
 		} 
 
 		elseif ($_GET['typeart'] === 'video' )
 		{
+			$select = 'SELECT videotitle as title FROM video WHERE id = ';
 			$URL = '//'.MAIN_URL.'/video/?id='.$_GET['idart'];
 			$linkText = 'К видео';
 		} 
 
 		elseif ($_GET['typeart'] === 'publication' )
 		{
+			$select = 'SELECT title FROM publication WHERE id = ';
 			$URL = '//'.MAIN_URL.'/blog/publication/?id='.$_GET['idart'];
 			$linkText = 'К записи';
 		}
 
 		else
 		{
+			$select = '';
 			$URL = '#';
 			$linkText = 'Не определено';
+			$artTitle ='';
 		}
+
+		/*Подключение к базе данных*/
+		include MAIN_FILE . '/includes/db.inc.php';
+
+		/*Получение заголовка для ссылки */
+
+		try
+		{
+			$sql = $select.$_GET['idart'];
+			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		}
+
+		catch (PDOException $e)
+		{
+			$error = 'Ошибка вывода записи';
+			include MAIN_FILE . '/includes/error.inc.php';
+		}
+
+		$row = $s -> fetch();
+
+		$artTitle = $row['title'];
 	}
 
 	else
@@ -141,9 +173,9 @@ if (isset ($_GET['id']))
 		exit();	
 	}
 	
-	$title = 'Запись пользователя '. $row['authorname'].' от '.$row['commentdate'].' | imagoz.ru';//Данные тега <title>
-	$headMain = 'Запись пользователя '. $row['authorname'].' от '.$row['commentdate'];
-	$robots = 'noindex, follow';;
+	$title = 'Комментарий пользователя '. $row['authorname'].' | imagoz.ru';//Данные тега <title>
+	$headMain = 'Комментарий к "<a href="'.$URL.'">'.implode(' ', array_slice(explode(' ', strip_tags($artTitle)), 0, 7)).'...</a>"';
+	$robots = 'noindex, follow';
 	$descr = '';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	

@@ -1,4 +1,6 @@
 <?php
+$pubFolder = 'video';
+
 /*Загрузка главного пути*/
 include_once '../includes/path.inc.php';
 
