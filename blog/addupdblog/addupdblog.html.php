@@ -41,7 +41,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<textarea class = "mark-textarea" id = "description" name = "description" rows="10"><?php htmlecho($description);?></textarea>	
 	 </div>
 	 <hr/>
-	 <p style="color: red"><strong>Прежде чем создать блог, ознакомьтесь с правилами. Их несоблюдение может привести к удалению блога и блокировке учётной записи!</strong></p>
+	 <?php if ($isCreate == 1):?>
+	 <p style="color: red"><strong>Прежде чем создать блог, ознакомьтесь с правилами. Их несоблюдение может привести к удалению блога и блокировке учётной записи!</strong></p>	 
 	 <div class="m-content blog-rules">
 		Правила ведения блога на imagoz.ru
 		<ol>
@@ -55,6 +56,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		</ol>
 	 </div>
 	 <input type="checkbox" name="iagree" value="iagree" id="iagree"> Я ознакомился с правилами
+	 <?php endif;?>
 	 <hr/>
 	  <div>
 		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">

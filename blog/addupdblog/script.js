@@ -47,7 +47,7 @@ confirm.addEventListener('click', (event) => {
         event.preventDefault()	
     }
 
-    else if (!document.getElementById('iagree').checked) {
+    else if (!document.getElementById('iagree').checked && document.getElementById('iscreate') !== 0) {
         alert ('Необходимо согласиться с правилами!')
         event.preventDefault()	
     }
