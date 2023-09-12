@@ -19,6 +19,8 @@ else
 /*Добавление информации о задании*/
 if (isset ($_POST['action']) && $_POST['action'] == 'Создать блог')//Если есть переменная add выводится форма
 {
+	$isCreate = 1;
+
 	$errorForm = '';
 	$title = 'Создать блог';//Данные тега <title>
 	$headMain = 'Создать блог';
@@ -47,6 +49,8 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Настройка')
 
 	/*Получение атрибутов блога для шапки */
 	getBlogAtributs($_POST['id']);
+
+	$isCreate = 0;
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';

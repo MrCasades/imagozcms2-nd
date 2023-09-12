@@ -17,8 +17,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
+	<input type = "hidden" id="iscreate" name = "iscreate" value = "<?php htmlecho($isCreate); ?>">
 	<div>
-	 <label for = "blogtitle">Введите заголовок <span style = "color: red"> *</span></label>
+	 <label for = "text">Введите заголовок <span style = "color: red"> *</span></label>
 	 <br><input type = "blogtitle" name = "blogtitle" id = "blogtitle" value = "<?php htmlecho($blogtitle);?>">
 	 <p><span id="counttitlelen">0</span> / 100	</p>
 	</div>
