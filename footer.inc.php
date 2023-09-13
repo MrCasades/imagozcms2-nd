@@ -13,6 +13,7 @@
 			<a href="<?php echo '//'.MAIN_URL;?>/promotion/">Промоушен</a>
 			<a href="<?php echo '//'.MAIN_URL;?>/newssets/">Дайджесты</a>
 		</p>
+		<p><a href="<?php echo '//'.MAIN_URL;?>/blog/aboutblogs/">О блогах</a></p>
 		<p>Copyright © 2019-2021 MrCasades. All rights reserved.</p>
 	<div class="counts">
 		  
@@ -21,7 +22,7 @@
 			
     <script src="<?php echo '//'.MAIN_URL.'/anime.min.js';?>"></script>
     <script src="<?php echo '//'.MAIN_URL.'/OwlCarousel/dist/owl.carousel.min.js';?>"></script>
-	<script src="<?php echo '//'.MAIN_URL.'/script-nd.js';?>"></script>	
+	<script src="<?php echo '//'.MAIN_URL.'/script.js';?>"></script>	
 	<script src="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/trumbowyg.min.js';?>"></script>
 	<script src="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/plugins/emoji/trumbowyg.emoji.min.js';?>"></script>
 	<script src="<?php echo '//'.MAIN_URL.'/Trumbowyg-main/dist/plugins/upload/trumbowyg.upload.min.js';?>"></script>

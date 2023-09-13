@@ -30,7 +30,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			
 		elseif (empty($blogs))
 		{
-			echo '<p>Статьи отсутствуют</p>';
+			echo '<p>Блоги отсутствуют</p>';
 		}
 
 		else
