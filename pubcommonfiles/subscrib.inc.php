@@ -68,4 +68,5 @@ elseif (isset($_POST['val_subs']) && isset($_POST['idblog']) && $_POST['val_subs
 	}
 }
 
+
 ?>
