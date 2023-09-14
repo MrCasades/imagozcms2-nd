@@ -107,6 +107,46 @@ foreach ($result as $row)
 	$authors[] =  array ('id' => $row['id'], 'regdate' => $row['regdate']);
 }
 
+/*Вывод блогов*/
+/*Команда SELECT*/
+try
+{
+	$sql = 'SELECT id, date FROM blogs WHERE blogpremoderation = "YES" and indexing = "all" ORDER BY date DESC';//Вверху самое последнее значение
+	$result = $pdo->query($sql);
+}
+
+catch (PDOException $e)
+{
+	$error = 'Ошибка вывода промоушена sitemap';
+	include MAIN_FILE . '/includes/error.inc.php';
+}
+
+/*Вывод результата в шаблон*/
+foreach ($result as $row)
+{
+	$blogs[] =  array ('id' => $row['id'], 'date' => $row['date']);
+}
+
+/*Вывод публикаций блогов*/
+/*Команда SELECT*/
+try
+{
+	$sql = 'SELECT id, date FROM publication WHERE premoderation = "YES" and indexing = "all" ORDER BY date DESC';//Вверху самое последнее значение
+	$result = $pdo->query($sql);
+}
+
+catch (PDOException $e)
+{
+	$error = 'Ошибка вывода промоушена sitemap';
+	include MAIN_FILE . '/includes/error.inc.php';
+}
+
+/*Вывод результата в шаблон*/
+foreach ($result as $row)
+{
+	$pubs[] =  array ('id' => $row['id'], 'date' => $row['date']);
+}
+
 include 'sitemap.html.php';
 exit();
 

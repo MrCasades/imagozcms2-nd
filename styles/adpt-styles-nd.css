@@ -519,9 +519,37 @@
     }
 
     /*Стили блога*/
-    .blog-login-logout-btn-pl-2 a{
-        margin-left: 70%;
+    .blog-m{
+        flex-direction: column;
+        margin-top: 0.1rem;
+    }
 
+    .blog-ava-pl{
+        height: 70%;
+        width: 70%;
+        margin-left: 1.5%;
+    }
+
+    .blog-ava-pl img{
+        height: 60%;
+        width: 60%;  
+    }
+
+    .blog-header-main a{
+        margin-left: 30%;
+    }
+
+    .blog-login-logout-btn-pl-2 a{
+        margin-left: 65%;
+
+    }
+
+    .blog-info-pl{
+        height: 50%;
+        width: 90%;
+        margin-left: 1%;
+        margin-top: -1%;
+        font-size: 1.5rem;
     }
     
 }
@@ -876,5 +904,14 @@
     .a-line{
         display: none;
     }
+
+    /*Стили блога*/
+    .blog-login-logout-btn-pl-2 a{
+        margin-left: 60%;
+
+    }
     
+    .blog-header-main a{
+        margin-left: 5%;
+    }
 }

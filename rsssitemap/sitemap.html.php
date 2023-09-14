@@ -51,6 +51,26 @@ $content = '<?xml version="1.0" encoding="UTF-8"?>
 
 <?php endforeach; ?>
 
+<?php foreach ($blogs as $blog): ?>
+
+<?php $content .= '<url>
+      <loc>https://'.MAIN_URL.'/blog/?id='.$blog['id'].'</loc>
+	  <lastmod>'.date("Y-m-d", strtotime($blog['date'])).'</lastmod>
+	  <priority>0.8</priority>
+   </url>';?>
+
+<?php endforeach; ?>
+
+<?php foreach ($pubs as $pub): ?>
+
+<?php $content .= '<url>
+      <loc>https://'.MAIN_URL.'/blog/publication/?id='.$pub['id'].'</loc>
+	  <lastmod>'.date("Y-m-d", strtotime($pub['date'])).'</lastmod>
+	  <priority>0.8</priority>
+   </url>';?>
+
+<?php endforeach; ?>
+
 <?php foreach ($promotions as $promotion): ?>
 
 <?php $content .= '<url>

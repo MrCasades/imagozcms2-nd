@@ -33,6 +33,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<?php endforeach; ?> 
 	<p><a href="../cooperation/"> <strong>Сотрудничество</strong></a></p>
 	<p><a href="../promotion/"> <strong>Промоушен</strong></a></p>
+	<p><a href="../blogs/"> <strong>Блоги</strong></a></p>
+	<p><a href="../blog/aboutblogs/"> <strong>О блогах</strong></a></p>
 	<p><a href="../admin/adminmail/?addmessage"> <strong>Обратная связь</strong></a></p>
 </div>
 
