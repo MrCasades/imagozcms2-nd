@@ -912,6 +912,7 @@
     }
     
     .blog-header-main a{
-        margin-left: 5%;
+        margin-left: 1%;
+        font-size: 18px;
     }
 }
