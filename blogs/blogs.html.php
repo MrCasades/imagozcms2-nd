@@ -28,8 +28,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<!-- <i class="fa fa-search" aria-<button class="btn_1" id="search-btn" type="button"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></button>hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span> -->
 			<!-- <input type = "submit" value = "Найти" class="btn_2" id="search-btn"/> -->
 			<br>
-				<input name="article_type" type="radio" value="publication" checked>Публикация
-				<input name="article_type" type="radio" value="blog">Блог
+				<input name="article_type_bl" type="radio" value="publication" checked>Публикация
+				<input name="article_type_bl" type="radio" value="blog">Блог
 		</form>
 	</div>
 	

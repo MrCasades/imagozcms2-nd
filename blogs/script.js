@@ -8,7 +8,7 @@ $( document ).ready(function() {
        let category = $('#category[name="category"]').val();
        let text = $('#text-blog[name="text"]').val();
        text = text.replaceAll(' ', '&nbsp;');
-       let articleType = $('input[name="article_type"]:checked').val();
+       let articleType = $('input[name="article_type_bl"]:checked').val();
         console.log("./searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
 
        if (text.length < 3 && text.length > 0){
