@@ -25,7 +25,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<?php if (!isset($_SESSION['loggIn']))
 		{
 			echo '<p><a href="../admin/registration/?log">Авторизируйтесь</a> в системе или 
-			<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы создать или редактировать блог и смотреть свии подписки!</p>';
+			<a href="../admin/registration/?reg">зарегестрируйтесь</a> для того, чтобы создать или редактировать блог и смотреть свои подписки!</p>';
 		}
 			
 		elseif (empty($blogs))
