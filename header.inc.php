@@ -86,7 +86,21 @@
 				include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
 			
 			
-			<a class="search-btn" href="<?php echo '//'.MAIN_URL;?>/searchpost/"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></a>
+			<div class="search-btn"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></div>
+			<div class="search-form-site">
+				<form action = " " method = "get" id="search-btn-site">
+					<input type = "text" name = "text" id = "text-site" class="search-text-site"/>
+					<input type = "hidden" name = "action" value = "search"/>
+					<!--  -->
+					<!-- <i class="fa fa-search" aria-<button class="btn_1" id="search-btn" type="button"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></button>hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span> -->
+					<!-- <input type = "submit" value = "Найти" class="btn_2" id="search-btn"/> -->
+					<br>
+					<input name="article_type" type="radio" value="posts" checked>Статья
+					<input name="article_type" type="radio" value="promotions">Промоушен
+					<input name="article_type" type="radio" value="news">Новость
+				</form>
+			</div>
+			
 			<div class="header-social-net-pl">
 				<a href = "https://vk.com/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/vк1.png';?>" alt="Наша группа VK" title="Наша группа VK"/></a>
 				<a href = "https://zen.yandex.ru/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/zen2.png';?>" alt="Наш Дзен-канал" title="Наш Дзен-канал"/></a>
@@ -148,7 +162,8 @@
 		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>   
 	</header>
     <!-- <div class="subheader"></div> -->
-
+	
+	<div id="search-result-site"></div>
 	<main>
 
 	<!-- <div class="m-content">

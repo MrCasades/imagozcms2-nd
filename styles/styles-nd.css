@@ -677,6 +677,17 @@ header .search-btn{
     font-family: 'Roboto Condensed', sans-serif;
     transition: .2s ease-in-out;
     width: 20%;
+    cursor: pointer;
+}
+
+header .search-form-site{
+    display: none;
+    position: absolute;
+    background: #BFE2FF;
+    z-index: 15;
+    width: auto;
+    right: 50%;
+    border-radius: 10px;
 }
 
 header .header-social-net-pl{

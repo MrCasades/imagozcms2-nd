@@ -46,7 +46,7 @@ $(document).ready(function() {
     $(".menu-mobile").click(function(e) {
         $(".menu > ul").toggleClass('show-on-mobile');
         $(".login-logout-btn-pl").toggleClass('hidden');
-        $(".search-btn + a").toggleClass('hidden');
+        $(". + a").toggleClass('hidden');
         $(".header-line").toggleClass('hidden');
         e.preventDefault();
     });
@@ -225,6 +225,52 @@ $(document).ready(function() {
 
 	document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !$(".wrap").hasClass("hidden")) closePic()})
+
+    //Вывод меню поиска
+    $('.search-btn').click(function(e) {
+        if ($('.search-form-site').css('display') == 'none') {
+            $('.search-form-site').show();            
+            e.preventDefault();
+        } else {
+            $('.search-form-site').hide();
+            e.preventDefault();
+        }
+    })
+
+    //Закрытие меню поиска кликом по свободному месту
+    $(document).click(function (e) {
+        if ($(e.target).closest(".search-form-site").length || $(e.target).closest(".search-btn").length) {
+            // клик внутри элемента
+            return;
+        }
+        // клик снаружи элемента
+        $(".search-form-site").fadeOut();
+    });
+
+
+    //Поиск по сайту
+    $( "#search-btn-site" ).keyup(function(e) {
+        let category = $('#category[name="category"]').val();
+        let text = $('#text-site[name="text"]').val();
+        text = text.replaceAll(' ', '&nbsp;');
+        let articleType = $('input[name="article_type"]:checked').val();
+         console.log("./searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
+ 
+        if (text.length < 3 && text.length > 0){
+           $( "#search-result-site" ).html('<p class="for-info-txt">Нужно ввести от 3-х знаков для поиска!</p>')
+           e.preventDefault()
+        } else if (text.length == 0){
+          $('#search-result-site').empty();
+          $('main').delay(500).fadeIn('fast')  
+          e.preventDefault()
+        }else {
+           $( "#search-result-site" ).load( "./searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
+           $('main').delay(500).fadeOut('fast')
+           $('#search-result-site').delay(1000).fadeIn('slow')
+           
+           e.preventDefault()
+        }
+    });
 
     //Функция закрытия изображения    
 	function closePic(){
