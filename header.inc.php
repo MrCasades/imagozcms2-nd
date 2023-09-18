@@ -162,8 +162,9 @@
 		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>   
 	</header>
     <!-- <div class="subheader"></div> -->
-	
-	<div id="search-result-site"></div>
+	<div class="wrap-searchres hidden">
+		<div class="search-pl-site m-content"><div id="search-result-site"></div></div>
+	</div>
 	<main>
 
 	<!-- <div class="m-content">

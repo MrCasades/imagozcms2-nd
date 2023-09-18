@@ -254,28 +254,49 @@ $(document).ready(function() {
         let text = $('#text-site[name="text"]').val();
         text = text.replaceAll(' ', '&nbsp;');
         let articleType = $('input[name="article_type"]:checked').val();
-         console.log("./searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
+
+        let forTest = '';
+
+        if (window.location.hostname == 'localhost')
+            forTest = '/imagozcms2-nd';
+
+         console.log("//" + window.location.hostname + forTest + "/searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
  
         if (text.length < 3 && text.length > 0){
+        $(".wrap-searchres").removeClass('hidden');
            $( "#search-result-site" ).html('<p class="for-info-txt">Нужно ввести от 3-х знаков для поиска!</p>')
            e.preventDefault()
         } else if (text.length == 0){
+          $(".wrap-searchres").addClass('hidden');
           $('#search-result-site').empty();
           $('main').delay(500).fadeIn('fast')  
           e.preventDefault()
         }else {
-           $( "#search-result-site" ).load( "./searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
-           $('main').delay(500).fadeOut('fast')
-           $('#search-result-site').delay(1000).fadeIn('slow')
-           
+           $( "#search-result-site" ).load( "//" + window.location.hostname + forTest + "/searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
+           $(".wrap-searchres").removeClass('hidden');
+           $('#search-result-site').delay(1000).fadeIn('slow')          
            e.preventDefault()
         }
     });
 
+    //Закрытие поля поиска
+    $(".wrap-searchres").click(function (e){
+		closeSearch();
+	})
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !$(".wrap-searchres").hasClass("hidden")) closeSearch()})
+
     //Функция закрытия изображения    
 	function closePic(){
 		$(".one-pic").empty();
-		$(". ").addClass('hidden');
+		$(".wrap").addClass('hidden');
+	}
+
+    //Функция закрытия поиска    
+	function closeSearch(){
+		$( "#search-result-site" ).empty();
+		$(".wrap-searchres").addClass('hidden');
 	}
 
   //Функция добавления
