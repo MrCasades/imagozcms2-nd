@@ -244,6 +244,7 @@ $(document).ready(function() {
             return;
         }
         // клик снаружи элемента
+        $("#text-site").val('');
         $(".search-form-site").fadeOut();
     });
 
@@ -262,21 +263,26 @@ $(document).ready(function() {
 
          console.log("//" + window.location.hostname + forTest + "/searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
  
-        if (text.length < 3 && text.length > 0){
-        $(".wrap-searchres").removeClass('hidden');
-           $( "#search-result-site" ).html('<p class="for-info-txt">Нужно ввести от 3-х знаков для поиска!</p>')
-           e.preventDefault()
-        } else if (text.length == 0){
-          $(".wrap-searchres").addClass('hidden');
-          $('#search-result-site').empty();
-          $('main').delay(500).fadeIn('fast')  
-          e.preventDefault()
-        }else {
-           $( "#search-result-site" ).load( "//" + window.location.hostname + forTest + "/searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
-           $(".wrap-searchres").removeClass('hidden');
-           $('#search-result-site').delay(1000).fadeIn('slow')          
-           e.preventDefault()
-        }
+         searchContent(text, category, articleType, forTest, e)
+
+         $('input[name="article_type"]').click(function(){
+            $(".wrap-searchres").addClass('hidden');
+            $('#text-site[name="text"]').val('');
+            $('#search-result-site').empty();       
+         })
+        //  $('input[name="article_type"]').click(function(){
+        //     let category = $('#category[name="category"]').val();
+        //     let text = $('#text-site[name="text"]').val();
+        //     text = text.replaceAll(' ', '&nbsp;');
+        //     let articleType = $('input[name="article_type"]:checked').val();
+
+        //     let forTest = '';
+
+        //     console.log('ClickHere!')
+        //     $('#search-result-site').empty();
+        //     //$('#text-site[name="text"]').val('');
+        //     searchContent(text, category, articleType, forTest, e)
+        //  })
     });
 
     //Закрытие поля поиска
@@ -286,6 +292,25 @@ $(document).ready(function() {
 
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && !$(".wrap-searchres").hasClass("hidden")) closeSearch()})
+
+    //Функция поиска   
+    function searchContent(text, category, articleType, forTest, e){
+        if (text.length < 3 && text.length > 0){
+            $(".wrap-searchres").removeClass('hidden');
+               $( "#search-result-site" ).html('<p class="for-info-txt">Нужно ввести от 3-х знаков для поиска!</p>')
+               e.preventDefault()
+            } else if (text.length == 0){
+              $(".wrap-searchres").addClass('hidden');
+              $('#search-result-site').empty();
+              $('main').delay(500).fadeIn('fast')  
+              e.preventDefault()
+            }else {
+               $( "#search-result-site" ).load( "//" + window.location.hostname + forTest + "/searchpost/search.inc.php?text=" + text+"&category=" + category + "&article_type=" + articleType)
+               $(".wrap-searchres").removeClass('hidden');
+               $('#search-result-site').delay(1000).fadeIn('slow')          
+               e.preventDefault()
+            }
+    }
 
     //Функция закрытия изображения    
 	function closePic(){
