@@ -711,8 +711,13 @@ header .search-form-site{
     background: #BFE2FF;
     z-index: 150;
     width: auto;
-    right: 50%;
+    right: 45%;
     border-radius: 10px;
+    padding: 1%;
+}
+
+header .search-text-site{
+    width: 97%;
 }
 
 header .header-social-net-pl{
