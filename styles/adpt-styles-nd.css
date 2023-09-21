@@ -556,6 +556,10 @@
 
 @media (max-width: 768px){
 
+    header .search-form-site{
+        right: 5%;
+    }
+
      /*Мессенжер*/
 
      .messeger-pl{
