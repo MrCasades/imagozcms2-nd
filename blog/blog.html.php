@@ -15,7 +15,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					<?php if ($avatar !== ''): ?>
 						<img src="../blog/avatars/<?php echo $avatar;?>" alt="avatar">
 					<?php else: ?>
-						<i class="fa fa-user-circle" aria-hidden="true" title="Аватар блога"></i>
+						<i class="fa fa-picture-o" aria-hidden="true" title="Аватар блога"></i>
 					<?php endif; ?>
 					<br>
 					<strong>Подписчики: <?php echo $subscriptionCount; ?> <?php echo $allRefusedBl; ?></strong>
