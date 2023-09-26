@@ -300,6 +300,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				$similarPubHeader = ($pubFolder == 'publication') ? 'Случайное из подписок' : 'Случайные статьи рубрики';
 			?>
 
+			<?php if ($pubFolder === 'publication' && isset($_SESSION['loggIn'])):?>
 			<div class = "main-headers">
 				<div class = "main-headers-content">
 					<h2 class="no-link-header"><?php echo $similarPubHeader; ?></h2>
@@ -322,6 +323,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				</a> 
 				<?php endforeach; ?>
 			</div>
+			<?php endif;?>
 			<?php if ($pubFolder == 'viewpost'):?>
 			<!-- Yandex.RTB R-A-448222-19 -->
 			<div id="yandex_rtb_R-A-448222-19"></div>
