@@ -1,6 +1,6 @@
 <?php
 /*Загрузка главного пути*/
-include_once '../includes/path.inc.php';
+include_once '../../includes/path.inc.php';
 
 /*Формирование запроса SELECT*/
 	
@@ -14,7 +14,7 @@ $from = ' FROM meta';
 $where = ' WHERE TRUE';
 
 /*Поле строки*/
-if ($_GET['text'] != '')//Если выбрана какая-то строка
+if ($_GET['metaname'] != '')//Если выбрана какая-то строка
 {
     $where .= " AND metaname LIKE :metaname ORDER BY metaname";
     $forSearch[':metaname'] = '%'. $_GET['metaname']. '%';	
@@ -36,7 +36,12 @@ catch (PDOException $e)
 	include MAIN_FILE . '/includes/error.inc.php';
 }
 
-foreach ($result as $row)
+foreach ($s as $row)
 {
     $metas_1[] = array('idmeta' => $row['id'], 'metaname' => $row['metaname'], 'selected' => FALSE);
 }
+
+//echo $metas_1[0]['metaname'];
+
+include 'searchtag.html.php';
+exit();

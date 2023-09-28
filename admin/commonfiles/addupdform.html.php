@@ -65,9 +65,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <div id="checked-tags"></div>
 	 <div id="checked-tags-add"></div><br>
 	 	<!-- <input type = "text" id = "search_form"><br> -->
-	 	<input type = "text" name = "tags" id = "addtags_form">
+	 	<div id="search_tags_pl"><input type = "text" name = "tags" id = "addtags_form"></div>
 		 <button id = "tags_to_base" class="btn_4">Добавить</button>
 	 <br><br>
+	 <div id="search-result-tags"></div>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
 	 <br><fieldset id="tags_list" style="display: none">
 		<legend>Список <?php echo $addMetas;?></legend>

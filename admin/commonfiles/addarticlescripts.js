@@ -106,6 +106,54 @@ $(document).ready(function() {
         defaultLinkTarget: '_blank'
     });
 
+    //Поиск тегов
+    $( "#search_tags_pl" ).keyup(function(e) {
+        //let category = $('#category[name="category"]').val();
+        let text = $('#addtags_form[name="tags"]').val();
+        text = text.replaceAll(' ', '&nbsp;');
+        //let articleType = $('input[name="article_type"]:checked').val();
+
+        let forTest = '';
+
+        if (window.location.hostname == 'localhost')
+            forTest = '/imagozcms2-nd';
+
+         console.log("//" + window.location.hostname + forTest + "/metalist/searchtag.inc.php?metaname=" + text)
+ 
+         if (text.length < 3 && text.length > 0){
+            $( "#search-result-tags" ).html('<p class="for-info-txt">Нужно ввести от 3-х знаков для поиска!</p>')
+            e.preventDefault()
+         } else if (text.length == 0){
+           $('#search-result-tags').empty();
+           //$('#pubs-pl').delay(500).fadeIn('fast')  
+           e.preventDefault()
+         }else {
+            $( "#search-result-tags" ).load( "../metalist/searchtag.inc.php?metaname=" + text)
+           // $('#pubs-pl').delay(500).fadeOut('fast')
+            $('#search-result-blog').delay(1000).fadeIn('slow')
+            
+            e.preventDefault()
+         }
+
+        //  $('input[name="article_type"]').click(function(){
+        //     $(".wrap-searchres").addClass('hidden');
+        //     $('#text-site[name="text"]').val('');
+        //     $('#search-result-site').empty();       
+        //  })
+        //  $('input[name="article_type"]').click(function(){
+        //     let category = $('#category[name="category"]').val();
+        //     let text = $('#text-site[name="text"]').val();
+        //     text = text.replaceAll(' ', '&nbsp;');
+        //     let articleType = $('input[name="article_type"]:checked').val();
+
+        //     let forTest = '';
+
+        //     console.log('ClickHere!')
+        //     $('#search-result-site').empty();
+        //     //$('#text-site[name="text"]').val('');
+        //     searchContent(text, category, articleType, forTest, e)
+        //  })
+    });
     //Hide show tags
 
     $('#hide_show_tags').click(function(e) {
