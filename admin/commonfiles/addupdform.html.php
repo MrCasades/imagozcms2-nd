@@ -70,7 +70,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <br><br>
 	 <div id="search-result-tags"></div>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
-	 <br><fieldset id="tags_list" style="display: none">
+	 <!-- <br><fieldset id="tags_list" style="display: none">
 		<legend>Список <?php echo $addMetas;?></legend>
 		 <?php if (empty ($metas_1))
 		 { 
@@ -93,7 +93,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 </div>
 		<?php endforeach; ?>
 		<div id="result_form"></div> 
-	 </fieldset>
+	 </fieldset> -->
 	<hr/>
 	<?php if (userRole('Администратор')):?>				
 	<div>
