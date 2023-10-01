@@ -69,6 +69,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 <button id = "tags_to_base" class="btn_4">Добавить</button>
 	 <br><br>
 	 <div id="search-result-tags"></div>
+	 <div id="tags-to-form"></div>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
 
 	<hr/>
