@@ -70,30 +70,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <br><br>
 	 <div id="search-result-tags"></div>
 	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
-	 <!-- <br><fieldset id="tags_list" style="display: none">
-		<legend>Список <?php echo $addMetas;?></legend>
-		 <?php if (empty ($metas_1))
-		 { 
-			 echo '<p>Теги не добавлены</p>';
-		 }
-		 
-		 else
-			 
-		foreach ($metas_1 as $meta): ?>
-		 <div>
-		  <label for = "meta<?php htmlecho ($meta['idmeta']);?>">
-		   <input class = "all-tags" type = "checkbox" name = "metas[]" id = "meta<?php htmlecho ($meta['idmeta']);?>"
-		   value = "<?php htmlecho ($meta['idmeta']);?>"
-		   <?php if ($meta['selected'])
-		   {
-			   echo ' checked';
-		   }
-		   ?> title="<?php htmlecho ($meta['metaname']);?>"><?php htmlecho ($meta['metaname']);?>
-		  </label>
-		 </div>
-		<?php endforeach; ?>
-		<div id="result_form"></div> 
-	 </fieldset> -->
+
 	<hr/>
 	<?php if (userRole('Администратор')):?>				
 	<div>

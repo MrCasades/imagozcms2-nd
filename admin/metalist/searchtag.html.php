@@ -38,7 +38,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
                 console.log(checked2);
             });
 
-        $('#checked-tags').html(checked2)
+        $('#checked-tags').append(checked2)
 
         $('#tags_list input:checkbox').click(function(e) {
             if ($(this).is(':checked')){
@@ -55,7 +55,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
                 console.log(checked2);
             }
 
-            $('#checked-tags').html(checked2)
+            $('#checked-tags').append(checked2)
         })
     }
 
