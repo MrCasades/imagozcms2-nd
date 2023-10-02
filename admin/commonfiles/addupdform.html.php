@@ -62,15 +62,28 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <p style="color: red">
 	 	В данной форме можно добавить свои теги публикаций. <strong>ОБЯЗАТЕЛЬНО!</strong> Прежде чем добавлять свои теги, сначала сверьтесь со списком имеющихся нажав ссылку "Вывести теги"
 	</p>
-	 <div id="checked-tags"></div>
-	 <div id="checked-tags-add"></div><br>
+	 <br>
 	 	<!-- <input type = "text" id = "search_form"><br> -->
 	 	<div id="search_tags_pl"><input type = "text" name = "tags" id = "addtags_form"></div>
 		 <button id = "tags_to_base" class="btn_4">Добавить</button>
 	 <br><br>
+	 <div id="checked-tags-add"></div>
+	 <div id="checked-tags">
+	 	<?php if (isset ($metas_1)): ?>
+			<?php foreach ($metas_1 as $meta): ?>
+				<span class="tags-plase-prew"><?php htmlecho($meta['metaname']); ?></span> 
+	 		<?php endforeach; ?>
+	 	<?php endif;?>
+	 </div>
+	 <div id="tags-to-form">
+	 	<?php if (isset ($metas_1)): ?>
+			<?php foreach ($metas_1 as $meta): ?>
+				<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta<?php htmlecho($meta['idmeta']); ?>" value = "<?php htmlecho($meta['idmeta']); ?>"> 
+	 		<?php endforeach; ?>
+		<?php endif;?>
+	 </div>
 	 <div id="search-result-tags"></div>
-	 <div id="tags-to-form"></div>
-	 <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong>
+	 <!-- <strong><a href = "#" id="hide_show_tags">Вывести теги</a></strong> -->
 
 	<hr/>
 	<?php if (userRole('Администратор')):?>				

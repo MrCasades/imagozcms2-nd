@@ -38,7 +38,7 @@ catch (PDOException $e)
 
 foreach ($s as $row)
 {
-    $metas_1[] = array('idmeta' => $row['id'], 'metaname' => $row['metaname'], 'selected' => FALSE);
+    $searshedMetas[] = array('idmeta' => $row['id'], 'metaname' => $row['metaname'], 'selected' => FALSE);
 }
 
 //echo $metas_1[0]['metaname'];

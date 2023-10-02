@@ -4,23 +4,15 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 
 <fieldset id="tags_list">
 	<legend>Список</legend>
-		<?php if (empty ($metas_1)): ?>
+		<?php if (empty ($searshedMetas)): ?>
             <p class = "for-info-txt">Поиск не дал результата</p>
 		<?php endif;?>
 		
 			 
-        <?php if (isset ($metas_1)): ?>
-            <?php foreach ($metas_1 as $meta): ?>
+        <?php if (isset ($searshedMetas)): ?>
+            <?php foreach ($searshedMetas as $searshedMeta): ?>
             <div>
-            <label for = "meta<?php htmlecho ($meta['idmeta']);?>">
-            <input class = "all-tags" type = "checkbox" name = "metas[]" id = "meta<?php htmlecho ($meta['idmeta']);?>"
-            value = "<?php htmlecho ($meta['idmeta']);?>"
-            <?php if ($meta['selected'])
-            {
-                echo ' checked';
-            }
-            ?> title="<?php htmlecho ($meta['metaname']);?>"><?php htmlecho ($meta['metaname']);?>
-            </label>
+                <button type="button" class="btn_1" id = "btn<?php htmlecho ($searshedMeta['idmeta']);?>" value = "<?php htmlecho ($searshedMeta['idmeta']);?>"><?php htmlecho ($searshedMeta['metaname']);?></button>
             </div>
             <?php endforeach; ?>
         <?php endif;?>
@@ -59,6 +51,8 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
                 console.log(index);
                 checked2.splice(index, 1);
                 checked3.splice(index2, 1);
+                $('#checked-tags').append(checked2)
+                $('#tags-to-form').append(checked3)
                 console.log(checked2);
                 console.log(checked3);
             }
