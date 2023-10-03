@@ -14,11 +14,23 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
             <div>
                 <button type="button" class="btn_1" id = "btn<?php htmlecho ($searshedMeta['idmeta']);?>" value = "<?php htmlecho ($searshedMeta['idmeta']);?>"><?php htmlecho ($searshedMeta['metaname']);?></button>
             </div>
+
+            <script>
+                $('#btn<?php htmlecho ($searshedMeta['idmeta']);?>').click(function(){
+                    $('#checked-tags').append('<span class="tags-plase-prew">'+'<?php htmlecho ($searshedMeta['metaname']);?>'+'</span>')
+                    $('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'" value = "'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'">')
+                    $('#addtags_form').val('');
+                    $('#tags_list').remove();
+                })
+            </script>
             <?php endforeach; ?>
         <?php endif;?>
 </fieldset>
 
-<script>
+<!-- <script>
+    
+
+
     checkedTags();    
 
     function checkedTags() {
@@ -63,4 +75,4 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
     }
 
     
-</script>
+</script> -->

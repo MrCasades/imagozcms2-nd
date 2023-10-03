@@ -23,20 +23,20 @@ function addListsInForms()
 	}
 	
 	/*Список тематик*/
-	try
-	{
-		$result = $pdo -> query ('SELECT id, metaname FROM meta ORDER BY metaname');
-	}
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода meta Error: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-		include 'error.inc.php';
-	}
+	// try
+	// {
+	// 	$result = $pdo -> query ('SELECT id, metaname FROM meta ORDER BY metaname');
+	// }
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка вывода meta Error: ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
+	// 	include 'error.inc.php';
+	// }
 	
-	foreach ($result as $row)
-	{
-		$GLOBALS['metas_1'][] = array('idmeta' => $row['id'], 'metaname' => $row['metaname'], 'selected' => FALSE);
-	}
+	// foreach ($result as $row)
+	// {
+	// 	$GLOBALS['metas_1'][] = array('idmeta' => $row['id'], 'metaname' => $row['metaname'], 'selected' => FALSE);
+	// }
 }
 
 /*Функции возвращают длину текста без пробела*/
