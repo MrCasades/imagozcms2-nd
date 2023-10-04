@@ -17,22 +17,24 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 
             <script>
                 $('#btn<?php htmlecho ($searshedMeta['idmeta']);?>').click(function(){
-                    $('#checked-tags').append('<span class="tags-plase-prew" id="prew'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">'+'<?php htmlecho ($searshedMeta['metaname']);?>'+' <button type="button" onclick="RemoveTag()" class="btn_2" id="remove'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">X</button></span>')
+                    $('#checked-tags').append('<span class="tags-plase-prew" id="prew'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">'+'<?php htmlecho ($searshedMeta['metaname']);?>'+' <button type="button" onclick="RemoveTag('+<?php htmlecho ($searshedMeta['idmeta']);?>+')" class="btn_2" id="remove'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">X</button></span>')
                     $('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'" value = "'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'">')
                     $('#addtags_form').val('');
                     $('#tags_list').remove();
                 })
-
-                function RemoveTag(){
-                    console.log('click');
-                    $('#prew<?php htmlecho ($searshedMeta['idmeta']);?>').remove();
-                    $('#meta<?php htmlecho ($searshedMeta['idmeta']);?>').remove();
-                }
             </script>
             <?php endforeach; ?>
         <?php endif;?>
 </fieldset>
 
+<script>
+    function RemoveTag(id){
+                    console.log('click');
+                  
+                    $('#prew' + id).remove();
+                    $('#meta' + id).remove();
+                }
+</script>
 <!-- <script>
     
 
