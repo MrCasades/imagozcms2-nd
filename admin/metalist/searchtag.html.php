@@ -3,7 +3,7 @@
 include_once MAIN_FILE . '/includes/func.inc.php';?>
 
 <fieldset id="tags_list">
-	<legend>Список</legend>
+	<legend>Выберете тег из списка</legend>
 		<?php if (empty ($searshedMetas)): ?>
             <p class = "for-info-txt">Поиск не дал результата</p>
 		<?php endif;?>
@@ -17,8 +17,10 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
 
             <script>
                 $('#btn<?php htmlecho ($searshedMeta['idmeta']);?>').click(function(){
-                    $('#checked-tags').append('<span class="tags-plase-prew" id="prew'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">'+'<?php htmlecho ($searshedMeta['metaname']);?>'+' <button type="button" onclick="RemoveTag('+<?php htmlecho ($searshedMeta['idmeta']);?>+')" class="btn_2" id="remove'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">X</button></span>')
-                    $('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'" value = "'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'">')
+                    if (!$('#prew<?php htmlecho ($searshedMeta['idmeta']);?>').length){
+                        $('#checked-tags').append('<span class="tags-plase-prew" id="prew'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">'+'<?php htmlecho ($searshedMeta['metaname']);?>'+' <button type="button" onclick="RemoveTag('+<?php htmlecho ($searshedMeta['idmeta']);?>+')" class="btn_2" id="remove'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">X</button></span>')
+                        $('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'" value = "'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'">')
+                    }                    
                     $('#addtags_form').val('');
                     $('#tags_list').remove();
                 })
