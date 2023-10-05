@@ -18,7 +18,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
             <script>
                 $('#btn<?php htmlecho ($searshedMeta['idmeta']);?>').click(function(){
                     if (!$('#prew<?php htmlecho ($searshedMeta['idmeta']);?>').length){
-                        $('#checked-tags').append('<span class="tags-plase-prew" id="prew'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">'+'<?php htmlecho ($searshedMeta['metaname']);?>'+' <button type="button" onclick="RemoveTag('+<?php htmlecho ($searshedMeta['idmeta']);?>+')" class="btn_2" id="remove'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">X</button></span>')
+                        $('#checked-tags').append('<span class="tags-plase-prew" id="prew'+<?php htmlecho ($searshedMeta['idmeta']);?>+'">'+'<?php htmlecho ($searshedMeta['metaname']);?>'+' <span onclick="RemoveTag('+<?php htmlecho ($searshedMeta['idmeta']);?>+')" id="remove'+<?php htmlecho ($searshedMeta['idmeta']);?>+'"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>')
                         $('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'" value = "'+ '<?php htmlecho ($searshedMeta['idmeta']);?>' +'">')
                     }                    
                     $('#addtags_form').val('');
