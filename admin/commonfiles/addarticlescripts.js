@@ -256,10 +256,11 @@ function sendAjaxForm(res_form, ajax_form, url) {
         data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
         success: function(response) { //Данные отправлены успешно
         	result = $.parseJSON(response);
-        	$('#result_form').append('<div><label for = "meta'+result.id+'"><input type = "checkbox" name = "metas[]" id = "meta'+result.id+'" value = "'+result.id+'" checked title="'+result.name+'">'+result.name+'</label></div>');
-            $('#checked-tags-add').append('<span class="tags-plase-prew">'+result.name+'</span>')
+        	$('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+result.id+'" value = "'+result.id+'">')
+            $('#checked-tags-add').append('<span class="tags-plase-prew" id="prew'+result.id+'">'+result.name+' <span onclick="RemoveTag('+result.id+')" id="remove'+result.id+'"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>')
             $('#addtags_form').val('');
             $('#addtags_form').attr("placeholder", "");
+            $('#tags_list').remove();
     	},
     	error: function(response) { // Данные не отправлены
             $('#result_form').html('Ошибка. Данные не отправлены.');
