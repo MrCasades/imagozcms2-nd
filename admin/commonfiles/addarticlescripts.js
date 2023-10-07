@@ -198,7 +198,7 @@ $(document).ready(function() {
 
     $("#tags_to_base").on('click',
         function(e){
-            const allTags = Array.from(document.querySelectorAll('.all-tags'), v=> v.getAttribute('title'));        
+            const allTags = Array.from(document.querySelectorAll('.tags-plase-prew'), v=> v.getAttribute('title'));        
 
             if ($('#addtags_form').val() === ''){
                 $('#addtags_form').html('');
@@ -211,7 +211,8 @@ $(document).ready(function() {
                 for (let i = 0; i < allTags.length; i++) {                 
                     if ($('#addtags_form').val() == allTags[i]){
                         e.preventDefault();
-                        alert ('Тэг '+ $('#addtags_form').val() + ' уже есть в списке!');
+                        $('#addtags_form').val('');
+                        $('#tags_list').remove();
                         inList = true;                      
                         break;                    
                     } 
@@ -257,7 +258,7 @@ function sendAjaxForm(res_form, ajax_form, url) {
         success: function(response) { //Данные отправлены успешно
         	result = $.parseJSON(response);
         	$('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+result.id+'" value = "'+result.id+'">')
-            $('#checked-tags-add').append('<span class="tags-plase-prew" id="prew'+result.id+'">'+result.name+' <span onclick="RemoveTag('+result.id+')" id="remove'+result.id+'"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>')
+            $('#checked-tags-add').append('<span class="tags-plase-prew" id="prew'+result.id+'" title="'+result.name+'">'+result.name+' <span onclick="RemoveTag('+result.id+')" id="remove'+result.id+'"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>')
             $('#addtags_form').val('');
             $('#addtags_form').attr("placeholder", "");
             $('#tags_list').remove();
