@@ -258,7 +258,7 @@ function sendAjaxForm(res_form, ajax_form, url) {
         success: function(response) { //Данные отправлены успешно
         	result = $.parseJSON(response);
         	$('#tags-to-form').append('<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta'+result.id+'" value = "'+result.id+'">')
-            $('#checked-tags-add').append('<span class="tags-plase-prew" id="prew'+result.id+'" title="'+result.name+'">'+result.name+' <span onclick="RemoveTag('+result.id+')" id="remove'+result.id+'"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>')
+            $('#checked-tags').append('<span class="tags-plase-prew" id="prew'+result.id+'" title="'+result.name+'">'+result.name+' <span onclick="RemoveTag('+result.id+')" id="remove'+result.id+'"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>')
             $('#addtags_form').val('');
             $('#addtags_form').attr("placeholder", "");
             $('#tags_list').remove();

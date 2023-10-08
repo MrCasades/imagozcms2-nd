@@ -67,7 +67,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 	<div id="search_tags_pl"><input type = "text" name = "tags" id = "addtags_form"></div>
 		 <button id = "tags_to_base" class="btn_4">Добавить</button>
 	 <br><br>
-	 <div id="checked-tags-add"></div>
+	 <!-- <div id="checked-tags-add"></div> -->
 	 <div id="checked-tags">
 	 	<?php if (isset ($metas_1)): ?>
 			<?php foreach ($metas_1 as $meta): ?>
