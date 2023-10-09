@@ -71,7 +71,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <div id="checked-tags">
 	 	<?php if (isset ($metas_1)): ?>
 			<?php foreach ($metas_1 as $meta): ?>
-				<span class="tags-plase-prew"><?php htmlecho($meta['metaname']); ?></span> 
+				<span class="tags-plase-prew" id="prew<?php htmlecho ($metas_1['idmeta']);?>" title="<?php htmlecho ($metas_1['metaname']);?>"><?php htmlecho ($metas_1['metaname']);?><span onclick="RemoveTag(<?php htmlecho ($metas_1['idmeta']);?>)" id="remove<?php htmlecho ($metas_1['idmeta']);?>"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>
+				<!-- <span class="tags-plase-prew"><?php htmlecho($meta['metaname']); ?></span>  -->
 	 		<?php endforeach; ?>
 	 	<?php endif;?>
 	 </div>

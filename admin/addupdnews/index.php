@@ -153,7 +153,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	/*Список тематик*/
 	try
 	{
-		$sql = 'SELECT SELECT m.id, m.metaname FROM meta m INNER JOIN metapost mp ON m.id = mp.idnews WHERE idnews = :idnews';
+		$sql = 'SELECT m.id, m.metaname FROM meta m INNER JOIN metapost mp ON m.id = mp.idmeta WHERE idnews = :idnews';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':idnews', $id);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
