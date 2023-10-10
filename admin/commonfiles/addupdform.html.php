@@ -71,14 +71,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <div id="checked-tags">
 	 	<?php if (isset ($metas_1)): ?>
 			<?php foreach ($metas_1 as $meta): ?>
-				<span class="tags-plase-prew" id="prew<?php htmlecho ($metas_1['idmeta']);?>" title="<?php htmlecho ($metas_1['metaname']);?>"><?php htmlecho ($metas_1['metaname']);?><span onclick="RemoveTag(<?php htmlecho ($metas_1['idmeta']);?>)" id="remove<?php htmlecho ($metas_1['idmeta']);?>"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>
+				<span class="tags-plase-prew" id="prew<?php htmlecho ($meta['idmeta']);?>" title="<?php htmlecho ($meta['metaname']);?>"><?php htmlecho ($meta['metaname']);?> <span onclick="RemoveTag(<?php htmlecho ($meta['idmeta']);?>)" id="remove<?php htmlecho ($meta['idmeta']);?>"><i class="fa fa-window-close-o" aria-hidden="true"></i></span></span>
 				<!-- <span class="tags-plase-prew"><?php htmlecho($meta['metaname']); ?></span>  -->
 	 		<?php endforeach; ?>
 	 	<?php endif;?>
 	 </div>
 	 <div id="tags-to-form">
-	 	<?php if (isset ($metas_1)): ?>
-			<?php foreach ($metas_1 as $meta): ?>
+	 	<?php if (isset ($metas_2)): ?>
+			<?php foreach ($metas_2 as $meta): ?>
 				<input type = "hidden" class= "tags-form-pl" name = "metas[]" id = "meta<?php htmlecho($meta['idmeta']); ?>" value = "<?php htmlecho($meta['idmeta']); ?>"> 
 	 		<?php endforeach; ?>
 		<?php endif;?>
@@ -134,6 +134,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	  </div>	  
 	</form>	
 </div>
+
+<script>
+    function RemoveTag(id){
+        console.log('click');
+                  
+        $('#prew' + id).remove();
+        $('#meta' + id).remove();
+    }
+</script>
 		
 <?php 
 /*Загрузка footer*/

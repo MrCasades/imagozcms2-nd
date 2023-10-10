@@ -168,6 +168,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	foreach ($s as $row)
 	{
 		$metas_1[] = array('idmeta' => $row['id'],'metaname' => $row['metaname']/*, 'selected' => in_array($row['id'], $selectedMeta)*/);
+		$metas_2[] = array('idmeta' => $row['id'],'metaname' => $row['metaname']/*, 'selected' => in_array($row['id'], $selectedMeta)*/);
 	}
 
 	include '../commonfiles/addupdform.html.php';

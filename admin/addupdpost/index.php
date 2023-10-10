@@ -129,41 +129,46 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	}
 	
 	/*Статьи по тематикам*/
-	try
-	{
-		$sql = 'SELECT idmeta FROM metapost WHERE idpost = :idpost';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idpost', $id);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// try
+	// {
+	// 	$sql = 'SELECT idmeta FROM metapost WHERE idpost = :idpost';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> bindValue(':idpost', $id);//отправка значения
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка вывода metapost';
-		include MAIN_FILE . '/includes/error.inc.php'; 
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка вывода metapost';
+	// 	include MAIN_FILE . '/includes/error.inc.php'; 
+	// }
 	
-	foreach ($s as $row)
-	{
-		$selectedMeta[] = $row['idmeta'];
-	}
+	// foreach ($s as $row)
+	// {
+	// 	$selectedMeta[] = $row['idmeta'];
+	// }
 	
-	if (empty ($selectedMeta)) $selectedMeta[] = 0;//если нет ни одной тематики
+	// if (empty ($selectedMeta)) $selectedMeta[] = 0;//если нет ни одной тематики
 	
 	/*Список тематик*/
 	try
 	{
-		$result = $pdo -> query ('SELECT id, metaname FROM meta ORDER BY metaname');
+		$sql = 'SELECT m.id, m.metaname FROM meta m INNER JOIN metapost mp ON m.id = mp.idmeta WHERE idpost = :idpost';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idpost', $id);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		// $result = $pdo -> query ('SELECT id, metaname FROM meta INNER ORDER BY metaname');
 	}
 	catch (PDOException $e)
 	{
 		$error = 'Ошибка вывода meta';
-		include MAIN_FILE . '/includes/error.inc.php'; 
+		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	foreach ($result as $row)
+	foreach ($s as $row)
 	{
-		$metas_1[] = array('idmeta' => $row['id'],'metaname' => $row['metaname'], 'selected' => in_array($row['id'], $selectedMeta));
+		$metas_1[] = array('idmeta' => $row['id'],'metaname' => $row['metaname']/*, 'selected' => in_array($row['id'], $selectedMeta)*/);
+		$metas_2[] = array('idmeta' => $row['id'],'metaname' => $row['metaname']/*, 'selected' => in_array($row['id'], $selectedMeta)*/);
 	}
 
 	include '../commonfiles/addupdform.html.php';
