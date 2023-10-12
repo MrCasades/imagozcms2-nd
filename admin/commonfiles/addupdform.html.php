@@ -60,9 +60,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 <?php endif;?>
 	 <h3>Теги публикации:</h3>
 	 <p style="color: red">
-	 	В данной форме можно добавить свои теги публикаций. <strong>ОБЯЗАТЕЛЬНО!</strong> Прежде чем добавлять свои теги, сначала сверьтесь со списком имеющихся нажав ссылку "Вывести теги"
+	 	Начните вводить название тега и выберете нужный из всплывшего списка. Если необходимого тега нет в этом списке, нажмите "Добавить".
 	</p>
-	 <br>
 	 	<!-- <input type = "text" id = "search_form"><br> -->
 	 	<div id="search_tags_pl"><input type = "text" name = "tags" id = "addtags_form"></div><button id = "tags_to_base" class="btn_4">Добавить</button>
 	 <br><br>
