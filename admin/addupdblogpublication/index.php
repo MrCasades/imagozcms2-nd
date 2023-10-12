@@ -66,7 +66,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Добавить стать
 	$button = 'Добавить статью';
 	$errorForm = '';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 
 	/*Инициализация блога*/
 	require_once MAIN_FILE . '/includes/blogvar.inc.php';
@@ -166,7 +166,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Добавить стать
 	// 	$button = 'Добавить статью';
 	// 	$errorForm = '';
 	// 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	// 	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+	// 	$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 
 	// 	addListsInForms();
 		
@@ -227,7 +227,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$idBlog = $row['idblog'];
 	$button = 'Обновить информацию о статье';
 	$errorForm ='';
-	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 		
 	$promotionPrice = 0;
 
@@ -353,7 +353,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$button = 'Добавить статью';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$errorForm = 'Один или несколько атрибутов не указаны. Выбирете все!';
-		$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 		
 		@session_start();//Открытие сессии для сохранения id автора
 	

@@ -209,7 +209,7 @@ $(document).ready(function() {
                 let inList = false;
 
                 for (let i = 0; i < allTags.length; i++) {                 
-                    if ($('#addtags_form').val() == allTags[i]){
+                    if ($('#addtags_form').val().toLowerCase() == allTags[i].toLowerCase()){
                         e.preventDefault();
                         $('#addtags_form').val('');
                         $('#tags_list').remove();

@@ -32,7 +32,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$button = 'Добавить статью';
 	$errorForm = '';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 	
 	/*id задания*/
 	$idTask = isset($_POST['id']) ? $_POST['id'] : 0;
@@ -90,7 +90,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$id = $row['id'];
 	$button = 'Обновить информацию о статье';
 	$errorForm ='';
-	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 
 	$idTask = 0;
 	
@@ -210,7 +210,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$button = 'Добавить новость';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 		$errorForm = 'Один или несколько атрибутов не указаны. Выбирете все!';
-		$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+		$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 		
 		@session_start();//Открытие сессии для сохранения id автора
 	

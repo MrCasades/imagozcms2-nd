@@ -48,7 +48,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Upd')
     $authorPost = $row['authorname'];//возвращает имя автора
 	$button = 'Обновить информацию о дайджесте';
 	$errorForm = '';
-	$scriptJScode = '<script src="../commonfiles/addarticlescripts.js"></script>';//добавить код JS
+	$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
 
 	include 'form.html.php';
 	exit();
