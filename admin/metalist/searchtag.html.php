@@ -12,7 +12,7 @@ include_once MAIN_FILE . '/includes/func.inc.php';?>
         <?php if (isset ($searshedMetas)): ?>
             <?php foreach ($searshedMetas as $searshedMeta): ?>
             <div>
-                <button type="button" class="btn_1" id = "btn<?php htmlecho ($searshedMeta['idmeta']);?>" value = "<?php htmlecho ($searshedMeta['idmeta']);?>"><?php htmlecho ($searshedMeta['metaname']);?></button>
+                <p><button type="button" class="btn_1" id = "btn<?php htmlecho ($searshedMeta['idmeta']);?>" value = "<?php htmlecho ($searshedMeta['idmeta']);?>"><?php htmlecho ($searshedMeta['metaname']);?></button></p>
             </div>
 
             <script>

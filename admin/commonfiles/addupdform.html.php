@@ -63,7 +63,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 	Начните вводить название тега и выберете нужный из всплывшего списка. Если необходимого тега нет в этом списке, нажмите "Добавить".
 	</p>
 	 	<!-- <input type = "text" id = "search_form"><br> -->
-	 	<div id="search_tags_pl"><input type = "text" name = "tags" id = "addtags_form"></div><button id = "tags_to_base" class="btn_4">Добавить</button>
+	 	<div id="search_tags_pl"><input type = "text" name = "tags" id = "addtags_form"> <button id = "tags_to_base" class="btn_4">Добавить</button></div>
 	 <br><br>
 	 <!-- <div id="checked-tags-add"></div> -->
 	 <div id="checked-tags">
