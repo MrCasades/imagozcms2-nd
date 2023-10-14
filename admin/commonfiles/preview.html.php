@@ -61,7 +61,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						
 				foreach ($metas as $meta): ?> 
 					
-					<a href="<?php echo MAIN_URL; ?>/viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
+					<a href="//<?php echo MAIN_URL; ?>/viewallmetas/?metaid=<?php echo $meta['id']; ?>"><?php echomarkdown ($meta['metaname']); ?></a>
 						
 				<?php endforeach; ?>
 
