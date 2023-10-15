@@ -25,6 +25,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 	$articletitle = '';
 	$description = '';
 	$text = '';
+	$imgHead = '';
 	$imgalt = '';
 	$videoyoutube = '';
 	$idauthor = '';
@@ -83,6 +84,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd' || $_POST['action'] =
 	$text = $row['news'];
 	$articletitle = $row['newstitle'];
 	$description = $row['description'];
+	$imgHead = $row['imghead']; 
 	$imgalt = $row['imgalt'];
 	$videoyoutube = $row['videoyoutube'];
 	$idauthor = 
