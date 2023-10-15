@@ -105,7 +105,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<hr/>
 	<div>
 	    <h3>Выберете файл изображения для шапки</h3>
-		<input type = "file" name = "upload" id = "upload">
+		<div class="input-file-row">
+			<label class="input-file">
+				<input type = "file" name = "upload" id = "upload" accept="image/*">		
+				<span>Выберите файл</span>
+			</label>
+			<div class="input-file-list"></div>  
+		</div>
+		<!-- <input type = "file" name = "upload" id = "upload"> -->
 		<input type = "hidden" name = "action" value = "upload">
 	</div>
 	<hr/>		
