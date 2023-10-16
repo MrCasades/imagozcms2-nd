@@ -106,8 +106,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div>
 	    <h3>Выберете файл изображения для шапки</h3>
 		<?php if ($imgHead != ''):?>
-			<strong>Текущее изображение</strong>
-			<p><img src="<?php echo '//'.MAIN_URL; ?>/images/<?php echo $imgHead; ?>" width = "150px"></p>
+			<div id="curr_pic_1">
+				<strong>Текущее изображение</strong>
+				<p><img src="<?php echo '//'.MAIN_URL; ?>/images/<?php echo $imgHead; ?>" width = "150px"></p>
+			</div>
 		<?php endif;?>	
 		<div class="input-file-row">
 			<label class="input-file">

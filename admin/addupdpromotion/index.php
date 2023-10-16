@@ -131,6 +131,7 @@ if (isset($_GET['add']))//Если есть переменная add вывод�
 		$translittitle = '';
 		$description = '';
 		$text = '';
+		$imgHead = ''; 
 		$imgalt = '';
 		$idauthor = '';
 		$videoyoutube = '';
@@ -188,6 +189,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$text = $row['promotion'];
 	$articletitle = $row['promotiontitle'];
 	$description = $row['description'];
+	$imgHead = $row['imghead']; 
 	$imgalt = $row['imgalt']; 
 	$idcategory = $row['idcategory'];
 	$videoyoutube = $row['videoyoutube'];
@@ -311,6 +313,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 		$action = 'addform';
 		$idauthor = '';
 		$idcategory = '';
+		$imgHead = ''; 
 		$id = '';
 		$button = 'Добавить статью';
 		$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора

@@ -59,6 +59,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Добавить стать
 	$description = '';
 	$text = '';
 	$idauthor = '';
+	$imgHead = '';
 	$videoyoutube = '';
 	$idcategory = '';
 	$id = '';
@@ -224,6 +225,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 	$idcategory = $row['idcategory'];
 	$videoyoutube = $row['videoyoutube'];
 	$id = $row['id'];
+	$imgHead = $row['imghead']; 
 	$idBlog = $row['idblog'];
 	$button = 'Обновить информацию о статье';
 	$errorForm ='';

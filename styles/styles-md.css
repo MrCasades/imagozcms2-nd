@@ -2221,7 +2221,7 @@ main .acc-info-pl{
 }
 .input-file-list-item {
 	display: inline-block;
-	margin: 0 15px 15px;
+	/* margin: 0 15px 15px; */
 	width: 150px;
 	vertical-align: top;
 	position: relative;

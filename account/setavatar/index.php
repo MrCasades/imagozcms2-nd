@@ -46,6 +46,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить ават�
 	$idAuthor = $_POST['id'];
 	$button = 'Обновить аватар';
 	$errorForm = '';
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
 	$_GLOBALS['avatar'] = $row['avatar'];
 	
