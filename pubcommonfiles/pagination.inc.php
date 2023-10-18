@@ -2,8 +2,8 @@
 		 <?php
 			/*Постраничный вывод информации*/
 			if($page > 1){
-				echo "<a href='index.php?page=1'><button class='btn_1'><<</button></a>";
-				echo "<a href='index.php?page=$previousPage'><button class='btn_1'><</button></a>";
+				echo "<a href='index.php?page=1$additData'><button class='btn_1'><<</button></a>";
+				echo "<a href='index.php?page=$previousPage$additData'><button class='btn_1'><</button></a>";
 			}
 
 			if ($pagesCount <= 10)
@@ -13,11 +13,11 @@
 					// если текущая старница
 					if($i == $page)
 					{
-						echo "<a href='index.php?page=$i'><button class='btn_2'>$i</button></a> ";
+						echo "<a href='index.php?page=$i$additData'><button class='btn_2'>$i</button></a> ";
 					} 
 					else 
 					{
-						echo "<a href='index.php?page=$i'><button class='btn_1'>$i</button></a> ";
+						echo "<a href='index.php?page=$i$additData'><button class='btn_1'>$i</button></a> ";
 					}
 				}
 			}
@@ -28,17 +28,17 @@
 				{			
 					for ($i = 1; $i < 8; $i++) {		 
 					   if ($i == $page) {
-						  echo "<a href='index.php?page=$i'><button class='btn_2'>$i</button></a>";	
+						  echo "<a href='index.php?page=$i$additData'><button class='btn_2'>$i</button></a>";	
 						   }
 						   
 						   else
 						   {
-							  echo "<a href='index.php?page=$i'><button class='btn_1'>$i</button></a>";
+							  echo "<a href='index.php?page=$i$additData'><button class='btn_1'>$i</button></a>";
 						   }
 				   }
 				   echo "<a>...</a>";
-				   echo "<a href='index.php?page=$secondLast'><button class='btn_1'>$secondLast</button></a>";
-				   echo "<a href='index.php?page=$pagesCount'><button class='btn_1'>$pagesCount</button></a>";
+				   echo "<a href='index.php?page=$secondLast$additData'><button class='btn_1'>$secondLast</button></a>";
+				   echo "<a href='index.php?page=$pagesCount$additData'><button class='btn_1'>$pagesCount</button></a>";
 				}
 
 				elseif($page > 4 && $page < $pagesCount - 4) 
@@ -50,16 +50,16 @@
 					{		
 						if ($i == $page) 
 						{
-							echo "<a href='index.php?page=$i'><button class='btn_2'>$i</button></a>";	
+							echo "<a href='index.php?page=$i$additData'><button class='btn_2'>$i</button></a>";	
 						}
 						else
 						{
-							echo "<a href='index.php?page=$i'><button class='btn_1'>$i</button></a>";
+							echo "<a href='index.php?page=$i$additData'><button class='btn_1'>$i</button></a>";
 						}                  
 					}
 					echo "<a>...</a>";
-				    echo "<a href='index.php?page=$secondLast'><button class='btn_1'>$secondLast</button></a>";
-				    echo "<a href='index.php?page=$pagesCount'><button class='btn_1'>$pagesCount</button></a>";
+				    echo "<a href='index.php?page=$secondLast$additData'><button class='btn_1'>$secondLast</button></a>";
+				    echo "<a href='index.php?page=$pagesCount$additData'><button class='btn_1'>$pagesCount</button></a>";
 				}
 				else 
 				{
@@ -70,19 +70,19 @@
 					{
 						if ($i == $page) 
 						{
-							echo "<a href='index.php?page=$i'><button class='btn_2'>$i</button></a>";
+							echo "<a href='index.php?page=$i$additData'><button class='btn_2'>$i</button></a>";
 						}
 						else
 						{
-							echo "<a href='index.php?page=$i'><button class='btn_1'>$i</button></a>";
+							echo "<a href='index.php?page=$i$additData'><button class='btn_1'>$i</button></a>";
 						}                   
 					}
 				}
 			}
 
 			if($page < $pagesCount){				
-				echo "<a href='index.php?page=$nextPage'><button class='btn_1'>></button></a>";
-				echo "<a href='index.php?page=$pagesCount'><button class='btn_1'>>></button></a>";
+				echo "<a href='index.php?page=$nextPage$additData'><button class='btn_1'>></button></a>";
+				echo "<a href='index.php?page=$pagesCount$additData'><button class='btn_1'>>></button></a>";
 			}
 			
 			?>

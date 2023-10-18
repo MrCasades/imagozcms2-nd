@@ -71,6 +71,7 @@ $pagesCount = ceil($countPosts / $onPage);
 $previousPage = $page - 1;
 $nextPage = $page + 1;
 $secondLast = $pagesCount -1;
+$additData = '';
 
 include 'viewallnews.html.php';
 exit();
