@@ -264,11 +264,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					// если текущая старница
 					if($i == $page)
 					{
-						echo "<a href='../".$pubFolder."/?id=".$idPublication."&page=$i'><button class='btn_2'>$i</button></a> ";
+						echo "<a href='index.php?page=$i&id=$idPublication'><button class='btn_2'>$i</button></a> ";
 					} 
 					else 
 					{
-						echo "<a href='../".$pubFolder."/?id=".$idPublication."&page=$i'><button class='btn_1'>$i</button></a> ";
+						echo "<a href='index.php?page=$i&id=$idPublication'><button class='btn_1'>$i</button></a> ";
 					}
 				}?>
 			</div>
