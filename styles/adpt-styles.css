@@ -551,6 +551,26 @@
         margin-top: -1%;
         font-size: 1.5rem;
     }
+
+    .page-output{
+        margin-left: 1%;
+        max-width: 100%;
+    }
+
+    .page-output .btn_1{
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-top: 1%;
+        font-size: 0.5rem;
+    }
+    
+    .page-output .btn_2{
+        width: 1.6rem;
+        height: 1.6rem;
+        font-weight: bold;
+        margin-top: 1%;
+        font-size: 0.5rem;
+    }
     
 }
 

@@ -11,10 +11,7 @@ $descr = 'В данном разделе размещаются список в�
 require_once MAIN_FILE . '/includes/access.inc.php';
 
 /*Определение нахождения пользователя в системе*/
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+loggedIn();
 
 /*Подключение к базе данных*/
 include MAIN_FILE . '/includes/db.inc.php';
@@ -38,13 +35,8 @@ try
 
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка вывода статей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка вывода статей';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 
 /*Вывод результата в шаблон*/
@@ -64,13 +56,8 @@ try
 
 catch (PDOException $e)
 {
-	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
-	$headMain = 'Ошибка данных!';
-	$robots = 'noindex, nofollow';
-	$descr = '';
-	$error = 'Ошибка подсчёта статей ' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
-	include 'error.html.php';
-	exit();
+	$error = 'Ошибка подсчёта статей';
+	include MAIN_FILE . '/includes/error.inc.php';
 }
 	
 foreach ($result as $row)
@@ -80,6 +67,10 @@ foreach ($result as $row)
 	
 $countPosts = $row["all_articles"];
 $pagesCount = ceil($countPosts / $onPage);
+$previousPage = $page - 1;
+$nextPage = $page + 1;
+$secondLast = $pagesCount -1;
+$additData = '';
 
 include 'viewallrecommpromotions.html.php';
 exit();
