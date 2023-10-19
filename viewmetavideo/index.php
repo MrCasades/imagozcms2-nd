@@ -83,6 +83,10 @@ if (isset ($_GET['metaid']))
 	
 	$countPosts = $row["all_articles"];
 	$pagesCount = ceil($countPosts / $onPage);
+	$previousPage = $page - 1;
+	$nextPage = $page + 1;
+	$secondLast = $pagesCount -1;
+	$additData = '&metaid='.$idMeta;
 		
 	include 'metavideo.html.php';
 	exit();		
