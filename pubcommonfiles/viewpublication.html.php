@@ -145,7 +145,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 					
 				foreach ($comments as $comment): ?> 
 
-				<div class="comment m-content">
+				<div class="comment m-content" id='comm_'>
 					<div class="comment-person-pl">
 						<?php if ($comment['avatar'] !== ''): ?>
 
@@ -256,22 +256,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 			<?php endforeach; ?>
 
-			<div class="page-output">	
-			<?php
-				/*Постраничный вывод информации*/
-				for ($i = 1; $i <= $pagesCount; $i++) 
-				{
-					// если текущая старница
-					if($i == $page)
-					{
-						echo "<a href='index.php?page=$i&id=$idPublication'><button class='btn_2'>$i</button></a> ";
-					} 
-					else 
-					{
-						echo "<a href='index.php?page=$i&id=$idPublication'><button class='btn_1'>$i</button></a> ";
-					}
-				}?>
-			</div>
+			<?php 
+			/*Загрузка пагинации*/
+			include_once MAIN_FILE . '/pubcommonfiles/pagination.inc.php';?>
 			<!-- <div class="gallery-place">		
 				<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
 				<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>

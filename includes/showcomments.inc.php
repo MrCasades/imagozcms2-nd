@@ -108,4 +108,8 @@ function showComments($type, $typeId, $idArticle/*id автора для про�
 	
 	$GLOBALS['countPosts'] = $row["all_articles"];
 	$GLOBALS['pagesCount'] = ceil($GLOBALS['countPosts'] / $onPage);
+	$GLOBALS['previousPage'] = $GLOBALS['page'] - 1;
+	$GLOBALS['nextPage'] = $GLOBALS['page'] + 1;
+	$GLOBALS['secondLast'] = $GLOBALS['pagesCount'] - 1;
+	$GLOBALS['additData'] = '&id='.$idArticle.'#comm_';
 }
