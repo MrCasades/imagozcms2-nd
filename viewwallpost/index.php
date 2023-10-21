@@ -103,6 +103,7 @@ if (isset ($_GET['id']))
 	}
 
 	$typeArt = $_GET['typeart'];
+	$idArt = $_GET['idart'];
 	
 	
 	// @session_start();//Открытие сессии для сохранения id статьи
@@ -255,7 +256,7 @@ if (isset ($_GET['id']))
 	$previousPage = $page - 1;
 	$nextPage = $page + 1;
 	$secondLast = $pagesCount -1;
-	$additData = '&id='.$idComment.'&typeart='.$typeArt.'&idart='.$articleId;
+	$additData = '&id='.$idComment.'&typeart='.$typeArt.'&idart='.$idArt;
 	
 	include 'viewwallpost.html.php';
 	exit();
