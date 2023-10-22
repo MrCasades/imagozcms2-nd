@@ -87,15 +87,16 @@ $(document).ready(function() {
 	// });
 	
 	// Отрытие вкладки из хеша URL
-	if(window.location.hash){
+	if(window.location.hash && window.location.hash !== '#comm_'){
+
+		console.log(window.location.hash);
 		$('#tabs-nav a[href=' + window.location.hash + ']').click();
 		window.scrollTo(0, $("#" . window.location.hash).offset().top);
 	}
 
 	//Прелоадер
-	$(window).on('load', function () {
-		$('.preloader').delay(100).fadeOut('fast');
-	  });
+	
+	$('.preloader').delay(100).fadeOut('fast');
 
 	//Добавление записи на стену
 	$("#push_comment").on('click',
