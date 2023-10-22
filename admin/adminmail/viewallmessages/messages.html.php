@@ -41,22 +41,9 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		 </div>
 		<?php endforeach; ?>
 
-		<div class="page-output">	
-		 <?php
-			/*Постраничный вывод информации*/
-			for ($i = 1; $i <= $pagesCount; $i++) 
-			{
-				// если текущая старница
-				if($i == $page)
-				{
-					echo "<a href='index.php?page=$i'><button class='btn_2'>$i</button></a> ";
-				} 
-				else 
-				{
-					echo "<a href='index.php?page=$i'><button class='btn_1'>$i</button></a> ";
-				}
-			}?>
-		</div>
+<?php 
+/*Загрузка пагинации*/
+include_once MAIN_FILE . '/pubcommonfiles/pagination.inc.php';?>
 </div>
 	
 <?php 
