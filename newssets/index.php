@@ -77,6 +77,10 @@ $row = $s -> fetch();
 	
 $countPosts = $row["all_articles"];
 $pagesCount = ceil($countPosts / $onPage);
+$previousPage = $page - 1;
+$nextPage = $page + 1;
+$secondLast = $pagesCount -1;
+$additData = '';
 
 include 'viewallnewssets.html.php';
 exit();
