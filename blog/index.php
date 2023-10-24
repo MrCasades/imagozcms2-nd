@@ -175,9 +175,9 @@ if (isset ($_GET['id']))
 			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
-		$setBlAvatar = "<form action = '../../account/setavatar/' method = 'post'>
-							<input type = 'hidden' name = 'id' value = '".$idAuthor."'>
-							<input type = 'submit' name = 'action'' class='btn_2 addit-btn' value = 'Обновить аватар'>
+		$setBlAvatar = "<form action = '../blog/setavatar/' method = 'post'>
+							<input type = 'hidden' name = 'id' value = '".$idBlog."'>
+							<button name = 'action' class='btn_1 addit-btn' value='Обновить аватар'>Обновить аватар</button>
 						</form>";
 
 		$editBlog = "<form action = '../blog/addupdblog/' method = 'post'>

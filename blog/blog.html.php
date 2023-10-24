@@ -11,7 +11,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<div class="left-side">
 			<div class="blog-m m-content">	
 				<div class="blog-ava-pl">
-					<?php echo $delBlog; ?>				
+					<?php echo $delBlog; ?>	
+					<?php echo $setBlAvatar; ?>			
 					<?php if ($avatar !== ''): ?>
 						<img src="../blog/avatars/<?php echo $avatar;?>" alt="avatar">
 					<?php else: ?>
