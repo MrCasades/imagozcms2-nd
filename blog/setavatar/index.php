@@ -17,13 +17,21 @@ if (loggedIn())
 
 if (isset ($_POST['action']) && $_POST['action'] === 'Обновить аватар')
 {
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($_POST['id']);
+
+	(int) $idBlog = $_POST['id'];
+
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT avatar FROM author WHERE id = :id';
+		$sql = 'SELECT avatar FROM blogs WHERE id = :id';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':id', $_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -62,7 +70,7 @@ if (isset($_GET['updavatar']))//Если есть переменная editform 
 	include_once MAIN_FILE . '/includes/func.inc.php';
 
 	$fileNameScript = 'ava-'. time();//имя файла новости/статьи
-	$filePathScript = '/avatars/';//папка с изображениями для новости/статьи
+	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
 
 	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'author', $_POST['id']);
 
@@ -71,7 +79,7 @@ if (isset($_GET['updavatar']))//Если есть переменная editform 
 	
 	try
 	{
-		$sql = 'UPDATE author SET avatar = :filename WHERE id = :id';
+		$sql = 'UPDATE blogs SET avatar = :filename WHERE id = :id';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':filename', $fileName);//отправка значения
 		$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
@@ -83,7 +91,7 @@ if (isset($_GET['updavatar']))//Если есть переменная editform 
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	header ('Location: //'.MAIN_URL.'/account/setaccount/');//перенаправление обратно в контроллер index.php
+	header ('Location: //'.MAIN_URL.'/blog/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
 	exit();
 }
 
@@ -96,7 +104,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Удалить авата�
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT avatar FROM author WHERE id = :id';
+		$sql = 'SELECT avatar FROM blogs WHERE id = :id';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
@@ -144,7 +152,7 @@ if (isset ($_GET['delava']))
 	
 	/*Удаление аватара*/
 	$fileName = $avatar;//из $_GLOBALS['avatar'] 
-	$delFile = MAIN_FILE . '/avatars/'.$fileName;//путь к файлу для удаления
+	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
 	unlink($delFile);//удаление 
 	
 	/*Подключение к базе данных*/
@@ -152,7 +160,7 @@ if (isset ($_GET['delava']))
 	
 	try
 	{
-		$sql = 'UPDATE author SET 
+		$sql = 'UPDATE blogs SET 
 			avatar = "" WHERE id = :id';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
 		$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
@@ -164,6 +172,6 @@ if (isset ($_GET['delava']))
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	header ('Location: //'.MAIN_URL.'/account/setaccount/');//перенаправление обратно в контроллер index.php
+	header ('Location: //'.MAIN_URL.'/blog/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
 	exit();
 }
