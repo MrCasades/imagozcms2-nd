@@ -23,7 +23,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить ават�
 	/*Получение атрибутов блога для шапки */
 	getBlogAtributs($_POST['id']);
 
-	(int) $idBlog = $_POST['id'];
+	// (int) $idBlog = $_POST['id'];
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -33,7 +33,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить ават�
 	{
 		$sql = 'SELECT avatar FROM blogs WHERE id = :id';
 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':id', $_POST['id']);//отправка значения
+		$s -> bindValue(':id', $idBlog);//отправка значения
 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 
@@ -51,7 +51,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить ават�
 	$descr = '';
 	$action = 'updavatar';
 	$avatar = $row['avatar'];
-	$idAuthor = $_POST['id'];
+	(int) $idBlog = $_POST['id'];
 	$button = 'Обновить аватар';
 	$errorForm = '';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
@@ -72,8 +72,7 @@ if (isset($_GET['updavatar']))//Если есть переменная editform 
 	$fileNameScript = 'ava-'. time();//имя файла новости/статьи
 	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
 
-	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript, 'upd', 'author', $_POST['id']);
-
+	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScriptAva, 'upd', 'blogsAVA', $_POST['id']);
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	
