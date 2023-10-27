@@ -180,6 +180,11 @@ if (isset ($_GET['id']))
 							<button name = 'action' class='btn_1 addit-btn' value='Обновить аватар'>Обновить аватар</button>
 						</form>";
 
+		$setHeaderIMG = "<form action = '../blog/setavatar/' method = 'post'>
+						<input type = 'hidden' name = 'id' value = '".$idBlog."'>
+						<button name = 'action' class='btn_1 addit-btn' value='Обновить шапку' title='Изображение для шапки'><i class='fa fa-camera' aria-hidden='true'></i></button>
+					</form>";
+
 		$editBlog = "<form action = '../blog/addupdblog/' method = 'post'>
 						<input type = 'hidden' name = 'id' value = '".$idBlog."'>
 						<button name = 'action' class='btn_1 addit-btn' value='Настройка'>Настройка</button>
@@ -197,6 +202,7 @@ if (isset ($_GET['id']))
 	else
 	{
 		$setBlAvatar = '';
+		$setHeaderIMG = '';
 		$editBlog = '';
 		$addPublication = '';
 		$toDraft = '';

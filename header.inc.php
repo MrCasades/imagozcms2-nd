@@ -122,7 +122,9 @@
 		<?php else:?>
 			<div class="blog-header-pl" style="background-image: url(<?php echo '//'.MAIN_URL;?>/blog/headersimages/<?php echo $headBlog; ?>)">
 				
-				
+				<?php if (!empty($setHeaderIMG))
+						echo $setHeaderIMG;
+				?>
 			</div>
 		<?php endif;?>
 		<!-- <div class="authorization-form">
