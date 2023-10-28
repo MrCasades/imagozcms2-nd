@@ -177,7 +177,7 @@ if (isset ($_GET['id']))
 
 		$setBlAvatar = "<form action = '../blog/setavatar/' method = 'post'>
 							<input type = 'hidden' name = 'id' value = '".$idBlog."'>
-							<button name = 'action' class='btn_1 addit-btn' value='Обновить аватар'>Обновить аватар</button>
+							<button name = 'action' class='btn_1 addit-btn' value='Обновить аватар'><i class='fa fa-camera' aria-hidden='true'></i></button>
 						</form>";
 
 		$setHeaderIMG = "<form action = '../blog/setavatar/' method = 'post'>

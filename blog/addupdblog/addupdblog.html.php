@@ -20,11 +20,11 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<input type = "hidden" id="iscreate" name = "iscreate" value = "<?php htmlecho($isCreate); ?>">
 	<div>
 	 <label for = "text">Введите заголовок <span style = "color: red"> *</span></label>
-	 <br><input type = "blogtitle" name = "blogtitle" id = "blogtitle" value = "<?php htmlecho($blogtitle);?>">
+	 <br><input type = "blogtitle" name = "blogtitle" id = "blogtitle" value = "<?php htmlecho($blogtitle);?>" style = "width: 100%">
 	 <p><span id="counttitlelen">0</span> / 100	</p>
 	</div>
 	<hr/>
-	<div>
+	<!-- <div>
 	    <h3>Выберете файл изображения для шапки</h3>
 		<input type = "file" name = "upload" id = "upload">
 		<input type = "hidden" name = "action" value = "upload">
@@ -35,7 +35,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "file" name = "uploadavatar" id = "uploadavatar">
 		<input type = "hidden" name = "action" value = "uploadavatar">
 	</div>
-	<hr/>
+	<hr/> -->
 	<div>
 		<label for = "description">Добавьте описание своего блога</label><br>
 		<textarea class = "mark-textarea" id = "description" name = "description" rows="10"><?php htmlecho($description);?></textarea>	
