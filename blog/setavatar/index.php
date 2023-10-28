@@ -94,6 +94,60 @@ if (isset($_GET['updavatar']))//Если есть переменная editform 
 	exit();
 }
 
+/*Обновить аватар*/
+
+if (isset ($_POST['action']) && $_POST['action'] === 'Обновить шапку')
+{
+	/*Инициализация блога*/
+	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+
+	/*Получение атрибутов блога для шапки */
+	getBlogAtributs($_POST['id']);
+
+	// (int) $idBlog = $_POST['id'];
+
+	/*Подключение к базе данных*/
+	include MAIN_FILE . '/includes/db.inc.php';
+	
+	/*Команда SELECT*/
+	try
+	{
+		$sql = 'SELECT imghead FROM blogs WHERE id = :id';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':id', $idBlog);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка выбора данных аватара';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+	
+	$row = $s -> fetch();
+	
+	$title = 'Обновление шапки';//Данные тега <title>
+	$headMain = 'Обновление шапки';
+	$robots = 'noindex, шапки';
+	$descr = '';
+	$action = 'updimg';
+	$imgHead = $row['imghead'];
+	(int) $idBlog = $_POST['id'];
+	$button = 'Обновить шапку';
+	$errorForm = '';
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+
+	$_GLOBALS['imghead'] = $row['imghead'];
+	
+	include 'updavatar.html.php';
+	exit();
+}
+
+
+
+
+
+
 /*Удаление аватара*/
 if (isset ($_POST['action']) && $_POST['action'] === 'Удалить аватар')
 {	
