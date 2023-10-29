@@ -103,7 +103,8 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
 					<a href = "./blogs/"><h2>Блоги</h2></a>
-					<div class = "main-headers-line"></div>				
+					<div class = "main-headers-line"></div>	
+					<div class = "sub-header"><?php htmlecho ($subHeaderBlog); ?></div>			
 				</div>
 			</div>
 		

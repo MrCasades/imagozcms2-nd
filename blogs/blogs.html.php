@@ -62,7 +62,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
-					<h2>Блоги</h2>
+					<h2>Недавние блоги</h2>
 					<div class = "main-headers-line"></div>				
 				</div>
 			</div>
