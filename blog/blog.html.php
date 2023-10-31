@@ -11,13 +11,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<div class="left-side">
 			<div class="blog-m m-content">	
 				<div class="blog-ava-pl">
-					<?php echo $delBlog; ?>	
-					<?php echo $setBlAvatar; ?>			
+					<?php echo $delBlog; ?>								
 					<?php if ($avatar !== ''): ?>
 						<img src="../blog/avatars/<?php echo $avatar;?>" alt="avatar">
 					<?php else: ?>
 						<i class="fa fa-picture-o" aria-hidden="true" title="Аватар блога"></i>
 					<?php endif; ?>
+					<?php echo $setBlAvatar; ?>	
 					<br>
 					<strong>Подписчики: <?php echo $subscriptionCount; ?> <?php echo $allRefusedBl; ?></strong>
 					<strong>Автор: <a href="../account/?id=<?php echo $authorId;?>" target="blank_"><?php echo $nameAuthor;?></a></strong>
