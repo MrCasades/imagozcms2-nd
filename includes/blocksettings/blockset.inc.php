@@ -66,6 +66,9 @@ else
 
 $robots = $data['robots'];
 
+if (!empty($data['about'])) 
+    $about = $data['about'];
+
 /*Замена на название категории*/
 function insertVar($typeVar, $var, $text)
 {

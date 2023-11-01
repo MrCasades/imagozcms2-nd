@@ -9,16 +9,17 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
-$title = 'Hi-Tech новости, игры, наука, интернет в отражении на imagoz.ru';//Данные тега <title>
-$headMain = '';
-$robots = 'all';
-$descr = 'Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!';
+/*Загрузка настроек раздела*/
+$blockFolder = 'mainpage';
+include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
+
+// $title = 'Hi-Tech новости, игры, наука, интернет в отражении на imagoz.ru';//Данные тега <title>
+// $headMain = '';
+// $robots = 'all';
+// $descr = 'Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!';
 
 /*Определение нахождения пользователя в системе*/
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+loggedIn();
 
 $selectedAuthor = isset($_SESSION['loggIn']) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : -1;//id автора
 
