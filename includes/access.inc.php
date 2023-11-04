@@ -47,7 +47,8 @@ function loggedIn()
 	}
 	
 	/*Проверка нахождения пользователя в системе*/
-	session_start();
+	if(!isset($_SESSION))
+		session_start();
 	
 	if (isset($_SESSION['loggIn']))
 	{

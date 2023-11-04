@@ -1,4 +1,12 @@
 <?php
+/*Кнопка настроек */
+if (loggedIn() && userRole('Администратор'))	
+{
+    //$mainpageSet = "<a href='//".MAIN_URL."/pagesettings/mainpagesetting/'><button class='btn_1 addit-btn'>Настроить</button></a>";
+
+    $pageSetButton = "<a href='//".MAIN_URL."/pagesettings/".$blockFolder."setting/'><button class='btn_1 addit-btn'>Настроить</button></a>";
+}
+
 
 $json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/'.$blockFolder.'.json');
 $data = json_decode($json_object, true);

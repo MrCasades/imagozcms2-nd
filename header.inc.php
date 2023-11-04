@@ -116,7 +116,7 @@
 						/*Загрузка меню авторизации*/
 						include_once MAIN_FILE . '/admin/logpanel/logpanel.inc.php';?>
 				<?php endif;?>
-			</div>
+			</div>			
 		</div>
 
 		<?php else:?>
@@ -162,6 +162,9 @@
 		<?php endif;?>
 		
 		<script src="<?php echo '//'.MAIN_URL.'/jquery-3.5.1.min.js';?>"></script>   
+		<?php if (!empty($pageSetButton))
+						echo $pageSetButton;
+				?>		
 	</header>
     <!-- <div class="subheader"></div> -->
 	<div class="wrap-searchres hidden">
