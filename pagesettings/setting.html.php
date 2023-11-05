@@ -16,8 +16,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class="m-content">
 <p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
-	<form action = "?<?php htmlecho($action); ?> " method = "post" enctype="multipart/form-data">
-	<input type = "hidden" id="iscreate" name = "iscreate" value = "<?php htmlecho($isCreate); ?>">
+	<form action = "?<?php htmlecho($action); ?> " method = "post">
 	<div>
 	 <label for = "text">Тег title<span style = "color: red"> *</span></label>
 	 <br><input type = "text" name = "title" id = "title" value = "<?php htmlecho($data['title']);?>" style = "width: 100%">
