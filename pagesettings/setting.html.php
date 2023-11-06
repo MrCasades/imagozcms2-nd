@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content">
-<p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
+<p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong> <strong><?php htmlecho($array); ?></strong></p>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post">
 	<div>

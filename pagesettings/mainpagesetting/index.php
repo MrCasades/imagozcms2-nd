@@ -18,33 +18,36 @@ if (!userRole('Администратор'))
 	exit();
 }
 
-$title = 'Настройки главной страницы | imagoz.ru';//Данные тега <title>
-$headMain = 'Настройки главной страницы';
-$robots = 'noindex, nofollow';
-$descr = 'Информация для желающих стать автором на портале imagoz.ru';
+if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
+{
+	$title = 'Настройки главной страницы | imagoz.ru';//Данные тега <title>
+	$headMain = 'Настройки главной страницы';
+	$robots = 'noindex, nofollow';
+	$descr = 'Информация для желающих стать автором на портале imagoz.ru';
 
-$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-$breadPart2 = '<a href="//'.MAIN_URL.'/pagesettings/mainpagesetting">Настройка главной страницы</a> ';//Для хлебных крошек
+	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/pagesettings/mainpagesetting">Настройка главной страницы</a> ';//Для хлебных крошек
 
-$action = 'editform';
-$errorForm = '';
-$button = "Обновить";
+	$action = 'editform';
+	$errorForm = '';
+	$button = "Обновить";
 
-$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/mainpage.json');
-$data = json_decode($json_object, true);
-			
-include MAIN_FILE .'/pagesettings/setting.html.php';
-exit();	
+	$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/mainpage.json');
+	$data = json_decode($json_object, true);
+				
+	include MAIN_FILE .'/pagesettings/setting.html.php';
+	exit();	
+}
 
 if (isset($_GET['editform']))
 {
 	/*Сохранение настроек в файл json */
 	$array = array(
-		"title" => '"'.$_POST['title'].'"',
-		"headMain"=> '"'.$_POST['header'].'"',
+		"title" => $_POST['title'],
+		"headMain"=> $_POST['header'],
 		"robots"=> "all",
 		"descr"=> "Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!",
-		"about"=> '"'.$_POST['about'].'"'
+		"about"=> $_POST['about']
 	);
 
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
