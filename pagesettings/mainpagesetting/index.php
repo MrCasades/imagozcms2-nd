@@ -40,16 +40,16 @@ if (isset($_GET['editform']))
 {
 	/*Сохранение настроек в файл json */
 	$array = array(
-		"title" => $_GET['title'],
-		"headMain"=> $_GET['header'],
+		"title" => '"'.$_POST['title'].'"',
+		"headMain"=> '"'.$_POST['header'].'"',
 		"robots"=> "all",
 		"descr"=> "Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!",
-		"about"=> $_GET['about']
+		"about"=> '"'.$_POST['about'].'"'
 	);
 
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 
-	$jsonPath = MAIN_FILE .'includes/blocksettings/mainpage.json';
+	$jsonPath = MAIN_FILE .'/includes/blocksettings/mainpage.json';
 
 	file_put_contents($jsonPath, $json);
 

@@ -43,8 +43,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<textarea class = "mark-textarea" id = "about" name = "about" rows="10"><?php htmlecho($data['about']);?></textarea>	
 	 </div>	 
 	 <hr/>
-	  <div>
-		<input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
+	  <div>		
 		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id="confirm">
 	  </div>	  
 	</form>	
