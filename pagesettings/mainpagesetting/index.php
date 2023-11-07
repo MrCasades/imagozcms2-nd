@@ -28,8 +28,11 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
 	$breadPart2 = '<a href="//'.MAIN_URL.'/pagesettings/mainpagesetting">Настройка главной страницы</a> ';//Для хлебных крошек
 
+	/*Данные из формы и загрузка json*/
+
 	$action = 'editform';
 	$errorForm = '';
+	$blockFolder = $_GET['blockfolder'];
 	$button = "Обновить";
 
 	$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/mainpage.json');

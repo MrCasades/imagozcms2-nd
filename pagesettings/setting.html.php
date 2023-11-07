@@ -46,14 +46,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div>
 		<h3> Индексация:<span style = "color: red"> *</span></h3>
 		<select name = "robots" id = "robots">
-		  <option value = "">Выбрать</option>
+		  <!-- <option value = "">Выбрать</option> -->
 		  <option value = "all" <?php if ($data['robots'] == 'all') echo 'selected';?>>all</option>
 		  <option value = "noindex, nofollow" <?php if ($data['robots'] == 'noindex, nofollow') echo 'selected';?>>noindex, nofollow</option>noindex, follow
 		  <option value = "noindex, follow" <?php if ($data['robots'] == 'noindex, follow') echo 'selected';?>>noindex, follow</option>
 		</select>		 	
 	 </div> 
 	 <hr/>
-	<div>		
+	<div>	
+		<input type = "hidden" name = "blockfolder" value = <?php htmlecho($blockFolder);?>>	
 		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id="confirm">
 	</div> 
 </form>	
