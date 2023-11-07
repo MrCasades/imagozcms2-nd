@@ -45,7 +45,7 @@ if (isset($_GET['editform']))
 	$array = array(
 		"title" => $_POST['title'],
 		"headMain"=> $_POST['header'],
-		"robots"=> "all",
+		"robots"=> $_POST['robots'],
 		"descr"=> "Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!",
 		"about"=> $_POST['about']
 	);

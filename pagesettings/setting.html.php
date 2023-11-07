@@ -14,7 +14,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 </div>
 
 <div class="m-content">
-<p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong> <strong><?php htmlecho($array); ?></strong></p>
+<p class="for-info-txt"><strong><?php htmlecho($errorForm); ?></strong></p>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post">
 	<div>
@@ -41,12 +41,22 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<div>
 		<label for = "about">Добавьте описание сайта</label><br>
 		<textarea class = "mark-textarea" id = "about" name = "about" rows="10"><?php htmlecho($data['about']);?></textarea>	
-	 </div>	 
+	</div>		 
+	 <hr/>	
+	<div>
+		<h3> Индексация:<span style = "color: red"> *</span></h3>
+		<select name = "robots" id = "robots">
+		  <option value = "">Выбрать</option>
+		  <option value = "all" <?php if ($data['robots'] == 'all') echo 'selected';?>>all</option>
+		  <option value = "noindex, nofollow" <?php if ($data['robots'] == 'noindex, nofollow') echo 'selected';?>>noindex, nofollow</option>noindex, follow
+		  <option value = "noindex, follow" <?php if ($data['robots'] == 'noindex, follow') echo 'selected';?>>noindex, follow</option>
+		</select>		 	
+	 </div> 
 	 <hr/>
-	  <div>		
+	<div>		
 		<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id="confirm">
-	  </div>	  
-	</form>	
+	</div> 
+</form>	
 </div>
 
 <?php 
