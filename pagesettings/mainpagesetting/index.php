@@ -49,7 +49,7 @@ if (isset($_GET['editform']))
 		"title" => $_POST['title'],
 		"headMain"=> $_POST['header'],
 		"robots"=> $_POST['robots'],
-		"descr"=> "Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!",
+		"descr"=> $_POST['descr'],
 		"about"=> $_POST['about']
 	);
 

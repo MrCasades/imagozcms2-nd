@@ -18,11 +18,15 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post">
 	<div>
-	 <label for = "text">Тег title<span style = "color: red"> *</span></label>
+	 <label for = "title">Тег title<span style = "color: red"> *</span></label>
 	 <br><input type = "text" name = "title" id = "title" value = "<?php htmlecho($data['title']);?>" style = "width: 100%">
 	</div>
 	<div>
-	 <label for = "text">Заголовок</label>
+	 <label for = "descr">Тег description<span style = "color: red"> *</span></label>
+	 <br><input type = "text" name = "descr" id = "descr" value = "<?php htmlecho($data['descr']);?>" style = "width: 100%">
+	</div>
+	<div>
+	 <label for = "header">Заголовок</label>
 	 <br><input type = "text" name = "header" id = "header" value = "<?php htmlecho($data['headMain']);?>" style = "width: 100%">
 	</div>
 	<hr/>
