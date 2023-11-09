@@ -42,10 +42,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "hidden" name = "action" value = "uploadavatar">
 	</div>
 	<hr/> -->
+	
+	<?php if ($blockFolder == 'mainpage'):?>
 	<div>
 		<label for = "about">Добавьте описание сайта</label><br>
 		<textarea class = "mark-textarea" id = "about" name = "about" rows="10"><?php htmlecho($data['about']);?></textarea>	
-	</div>		 
+	</div>	
+	<?php endif; ?>	 
 	 <hr/>	
 	<div>
 		<h3> Индексация:<span style = "color: red"> *</span></h3>
