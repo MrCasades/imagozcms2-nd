@@ -42,6 +42,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "hidden" name = "action" value = "uploadavatar">
 	</div>
 	<hr/> -->
+	<?php if ($blockFolder == 'viewallnews'):?>
+		<label for = "bread1">Хлебные крошки главная<span style = "color: red"> *</span></label>
+	 	<br><input type = "text" name = "bread1" id = "bread1" value = "<?php htmlecho($data['breadPart1']);?>" style = "width: 100%">
+		<hr/>
+		<label for = "bread2">Хлебные крошки вкладка 2<span style = "color: red"> *</span></label>
+	 	<br><input type = "text" name = "bread2" id = "bread2" value = "<?php htmlecho($data['breadPart2']);?>" style = "width: 100%">
+		<hr/>
+	<?php endif; ?>
 	
 	<?php if ($blockFolder == 'mainpage'):?>
 	<div>

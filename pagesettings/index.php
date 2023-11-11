@@ -54,6 +54,12 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['about']))
 		$array["about"] = $_POST['about'];
+
+	if (!empty($_POST['bread1']))
+		$array["breadPart1"] = $_POST['bread1'];
+
+	if (!empty($_POST['bread2']))
+		$array["breadPart2"] = $_POST['bread2'];
  
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 
