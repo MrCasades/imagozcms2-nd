@@ -26,7 +26,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 	$descr = 'Информация для желающих стать автором на портале imagoz.ru';
 
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/pagesettings">Настройка главной страницы</a> ';//Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/pagesettings">Настройка страницы</a> ';//Для хлебных крошек
 
 	/*Данные из формы и загрузка json*/
 
@@ -60,6 +60,9 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['bread2']))
 		$array["breadPart2"] = $_POST['bread2'];
+
+	if (!empty($_POST['bread3']))
+		$array["breadPart3"] = $_POST['bread3'];
  
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 

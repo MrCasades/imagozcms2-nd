@@ -43,12 +43,24 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 	<hr/> -->
 	<?php if (!empty ($data['breadPart1'])):?>
+	<div>
 		<label for = "bread1">Хлебные крошки главная<span style = "color: red"> *</span></label>
 	 	<br><input type = "text" name = "bread1" id = "bread1" value = "<?php htmlecho($data['breadPart1']);?>" style = "width: 100%">
-		<hr/>
+	</div>	
+	<?php endif; ?>
+
+	<?php if (!empty ($data['breadPart1'])):?>
+	<div>
 		<label for = "bread2">Хлебные крошки вкладка 2<span style = "color: red"> *</span></label>
 	 	<br><input type = "text" name = "bread2" id = "bread2" value = "<?php htmlecho($data['breadPart2']);?>" style = "width: 100%">
-		<hr/>
+	</div>	
+	<?php endif; ?>
+
+	<?php if (!empty ($data['breadPart3'])):?>
+	<div>
+		<label for = "bread3">Хлебные крошки вкладка 3<span style = "color: red"> *</span></label>
+	 	<br><input type = "text" name = "bread3" id = "bread3" value = "<?php htmlecho($data['breadPart3']);?>" style = "width: 100%">
+	</div>	
 	<?php endif; ?>
 	
 	<?php if (!empty ($data['about'])):?>
