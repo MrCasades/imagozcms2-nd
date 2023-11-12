@@ -42,7 +42,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<input type = "hidden" name = "action" value = "uploadavatar">
 	</div>
 	<hr/> -->
-	<?php if ($blockFolder == 'viewallnews'):?>
+	<?php if (!empty ($data['breadPart1'])):?>
 		<label for = "bread1">Хлебные крошки главная<span style = "color: red"> *</span></label>
 	 	<br><input type = "text" name = "bread1" id = "bread1" value = "<?php htmlecho($data['breadPart1']);?>" style = "width: 100%">
 		<hr/>
@@ -51,7 +51,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<hr/>
 	<?php endif; ?>
 	
-	<?php if ($blockFolder == 'mainpage'):?>
+	<?php if (!empty ($data['about'])):?>
 	<div>
 		<label for = "about">Добавьте описание сайта</label><br>
 		<textarea class = "mark-textarea" id = "about" name = "about" rows="10"><?php htmlecho($data['about']);?></textarea>	
