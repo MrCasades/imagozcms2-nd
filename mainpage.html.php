@@ -675,6 +675,8 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div>
 	</div>
 	<div class = "about-project">
+		<?php echo $about;?>
+
 		<p>Добро пожаловать! На портале <strong>imagoz.ru</strong> (от лат. Imago - отражение) мы пишем <a href="./viewcategory/?id=1">об играх</a> и игровой индустрии, 
 			достижениях в области высоких технологий (<a href="./viewcategory/?id=2">Hi-Tech</a>) и <a href="./viewcategory/?id=3">популярной науки</a>, об интересных <a href="./viewcategory/?id=4">гаджетах</a>. Одним словом о 
 			самом интересном и технологичном, что окружает нас. Мы публикуем новости, статьи, различные интересные подборки, 
