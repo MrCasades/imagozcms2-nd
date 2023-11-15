@@ -66,7 +66,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	<?php if (!empty ($data['about'])):?>
 	<div>
 		<label for = "about">Добавьте описание сайта</label><br>
-		<textarea class = "mark-textarea" id = "about" name = "about" rows="10"><?php htmlecho($data['about']);?></textarea>	
+		<textarea class = "mark-textarea-adm" id = "about" name = "about" rows="10"><?php htmlecho($data['about']);?></textarea>	
 	</div>	
 	<?php endif; ?>	 
 	 <hr/>	
