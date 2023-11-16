@@ -1,6 +1,6 @@
 <?php
 /*Загрузка главного пути*/
-include_once '../includes/path.inc.php';
+include_once '../../includes/path.inc.php';
 
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
@@ -23,11 +23,11 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 	$title = 'Настройки страницы | imagoz.ru';//Данные тега <title>
 	$headMain = 'Настройки страницы';
 	$robots = 'noindex, nofollow';
-	$descr = 'Информация для желающих стать автором на портале imagoz.ru';
+	$descr = 'Настройки страницы';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/pagesettings">Настройка страницы</a> ';//Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/admin/pagesettings">Настройка страницы</a> ';//Для хлебных крошек
 
 	/*Данные из формы и загрузка json*/
 

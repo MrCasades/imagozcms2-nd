@@ -6,7 +6,7 @@ if (loggedIn() && userRole('Администратор'))
 
     //$pageSetButton = "<a href='//".MAIN_URL."/pagesettings/".$blockFolder."setting/'><button class='btn_1 addit-btn'>Настроить</button></a>";
 
-    $pageSetButton = "<form action = '//".MAIN_URL."/pagesettings/' method = 'get'>
+    $pageSetButton = "<form action = '//".MAIN_URL."/admin/pagesettings/' method = 'get'>
             <input type = 'hidden' name = 'blockfolder' value = '".$blockFolder."'>
             <button name = 'action' class='btn_1 addit-btn' value='Настроить'><i class='fa fa-cog' aria-hidden='true'></i></button>
         </form>";
