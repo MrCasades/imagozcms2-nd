@@ -10,6 +10,10 @@ if (loggedIn() && userRole('Администратор'))
             <input type = 'hidden' name = 'blockfolder' value = '".$blockFolder."'>
             <button name = 'action' class='btn_1 addit-btn' value='Настроить'><i class='fa fa-cog' aria-hidden='true'></i></button>
         </form>";
+
+    $setLogo = "<form action = '//".MAIN_URL."/admin/setsitelogo/' method = 'post'>
+        <button name = 'action' class='btn_1 addit-btn' value='Обновить лого' title='Обновить лого'><i class='fa fa-camera' aria-hidden='true'></i></button>
+    </form>";
 }
 
 

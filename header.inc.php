@@ -79,8 +79,14 @@
 <body>
     <header>
 		<?php if (empty($itIsBlog)) :?>
+			<?php 
+						/*Загрузка логотипов*/
+						include_once MAIN_FILE . '/includes/loadlogo/loadlogo.inc.php';?>	
 		<div class = "header-logo-pl">
-			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/logo2.png';?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>			
+			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoMain;?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoAdpt;?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>			
+				<?php if (!empty($setLogo))
+							echo $setLogo;
+					?>			
 			<?php 
 				/*Загрузка главного меню*/
 				include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
