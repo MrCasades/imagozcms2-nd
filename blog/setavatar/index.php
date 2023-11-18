@@ -128,7 +128,7 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Обновить шапк�
 	
 	$title = 'Обновление шапки';//Данные тега <title>
 	$headMain = 'Обновление шапки';
-	$robots = 'noindex, шапки';
+	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'updimg';
 	$imgHead = $row['imghead'];
