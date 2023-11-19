@@ -5,16 +5,8 @@ include_once '../../includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
-
-else
-{
-	include '../login.html.php';
-	exit();
-}
+/*Определение нахождения пользователя в системе*/
+loggedIn();
 
 /*Загрузка сообщения об ошибке входа*/
 if (!userRole('Администратор') && !userRole('Автор') && !userRole('Рекламодатель'))
