@@ -72,22 +72,22 @@ if (isset($_GET['updlogo']))//Если есть переменная editform в
 	$filePathScript = '/decoration/';//папка с изображениями для новости/статьи
 
 	$fileName = uploadSiteLogo ($fileNameScript, $filePathScript, 'main');
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
+	// /*Подключение к базе данных*/
+	// include MAIN_FILE . '/includes/db.inc.php';
 	
-	try
-	{
-		$sql = 'UPDATE blogs SET avatar = :filename WHERE id = :id';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':filename', $fileName);//отправка значения
-		$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка обновления аватара';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// try
+	// {
+	// 	$sql = 'UPDATE blogs SET avatar = :filename WHERE id = :id';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> bindValue(':filename', $fileName);//отправка значения
+	// 	$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка обновления аватара';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
 	header ('Location: //'.MAIN_URL.'/blog/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
 	exit();
