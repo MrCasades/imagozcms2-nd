@@ -25,38 +25,37 @@ if (!userRole('Администратор'))
 
 if (isset ($_GET['main']))
 {
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
+	// /*Подключение к базе данных*/
+	// include MAIN_FILE . '/includes/db.inc.php';
 	
-	/*Команда SELECT*/
-	try
-	{
-		$sql = 'SELECT avatar FROM blogs WHERE id = :id';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':id', $idBlog);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// /*Команда SELECT*/
+	// try
+	// {
+	// 	$sql = 'SELECT avatar FROM blogs WHERE id = :id';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> bindValue(':id', $idBlog);//отправка значения
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора данных аватара';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка выбора данных аватара';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
-	$row = $s -> fetch();
+	// $row = $s -> fetch();
 	
-	$title = 'Обновление аватара';//Данные тега <title>
-	$headMain = 'Обновление аватара';
+	$title = 'Обновление логотипа';//Данные тега <title>
+	$headMain = 'Обновление логотипа';
 	$robots = 'noindex, nofollow';
 	$descr = '';
-	$action = 'updavatar';
-	$avatar = $row['avatar'];
-	(int) $idBlog = $_POST['id'];
-	$button = 'Обновить аватар';
+	$action = 'updlogo';
+	//$avatar = $row['avatar'];
+	$button = 'Обновить логотип';
 	$errorForm = '';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
-	$_GLOBALS['avatar'] = $row['avatar'];
+	//$_GLOBALS['avatar'] = $row['avatar'];
 	
 	include 'updlogo.html.php';
 	exit();
@@ -64,15 +63,15 @@ if (isset ($_GET['main']))
 
 /*UPDATE - обновление аватара*/
 
-if (isset($_GET['updavatar']))//Если есть переменная editform выводится форма
+if (isset($_GET['updlogo']))//Если есть переменная editform выводится форма
 {
 	/*Подключение функций*/
 	include_once MAIN_FILE . '/includes/func.inc.php';
 
-	$fileNameScript = 'ava-'. time();//имя файла новости/статьи
-	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
+	$fileNameScript = 'logo-'. time().rand(100, 999);//имя файла новости/статьи
+	$filePathScript = '/decoration/';//папка с изображениями для новости/статьи
 
-	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScriptAva, 'upd', 'blogsAVA', $_POST['id']);
+	$fileName = uploadSiteLogo ($fileNameScript, $filePathScript, 'main');
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
 	

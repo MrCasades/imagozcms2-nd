@@ -175,6 +175,12 @@ function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add'
 	return $fileName;
 }
 
+/*Обновление лого сайта*/
+function uploadSiteLogo($fileNameScript, $filePathScript, $typeLogo) //$typeLogo = main or adpt
+{
+
+}
+
 /*Добавление класса галереи к изображениям публикации*/
 function imgForGallery($text)
 {
