@@ -65,13 +65,31 @@ if (isset ($_GET['main']))
 
 if (isset($_GET['updlogo']))//Если есть переменная editform выводится форма
 {
+	/*Получение данных логотипа */
+
+	$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/logo.json');
+	$dataLogo = json_decode($json_object, true);
+
 	/*Подключение функций*/
 	include_once MAIN_FILE . '/includes/func.inc.php';
 
 	$fileNameScript = 'logo-'. time().rand(100, 999);//имя файла новости/статьи
 	$filePathScript = '/decoration/';//папка с изображениями для новости/статьи
 
-	$fileName = uploadSiteLogo ($fileNameScript, $filePathScript, 'main');
+	$fileName = uploadSiteLogo ($fileNameScript, $filePathScript);
+
+	/*Сохранение в json */
+	$dataLogo["logomain"] = $fileName;
+
+	$json = json_encode($dataLogo, JSON_UNESCAPED_UNICODE);
+
+	$jsonPath = MAIN_FILE .'/includes/blocksettings/logo.json';
+
+	file_put_contents($jsonPath, $json);
+
+
+
+
 	// /*Подключение к базе данных*/
 	// include MAIN_FILE . '/includes/db.inc.php';
 	
@@ -89,7 +107,7 @@ if (isset($_GET['updlogo']))//Если есть переменная editform в
 	// 	include MAIN_FILE . '/includes/error.inc.php';
 	// }
 	
-	header ('Location: //'.MAIN_URL.'/blog/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
+	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();
 }
 
