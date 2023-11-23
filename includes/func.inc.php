@@ -179,6 +179,8 @@ function uploadImgHeadFull($fileNameScript, $filePathScript, $typeAction = 'add'
 function uploadSiteLogo($fileNameScript, $filePathScript, $typeInput = 'upload') //$typeLogo = main or adpt
 {
 	$fileName = uploadFile($fileNameScript, $filePathScript, $typeInput);
+
+	return $fileName;
 }
 
 /*Добавление класса галереи к изображениям публикации*/
