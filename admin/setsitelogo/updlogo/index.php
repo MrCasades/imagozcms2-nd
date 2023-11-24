@@ -25,26 +25,6 @@ if (!userRole('Администратор'))
 
 if (isset ($_GET['main']))
 {
-	// /*Подключение к базе данных*/
-	// include MAIN_FILE . '/includes/db.inc.php';
-	
-	// /*Команда SELECT*/
-	// try
-	// {
-	// 	$sql = 'SELECT avatar FROM blogs WHERE id = :id';
-	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	// 	$s -> bindValue(':id', $idBlog);//отправка значения
-	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	// }
-
-	// catch (PDOException $e)
-	// {
-	// 	$error = 'Ошибка выбора данных аватара';
-	// 	include MAIN_FILE . '/includes/error.inc.php';
-	// }
-	
-	// $row = $s -> fetch();
-	
 	$title = 'Обновление логотипа';//Данные тега <title>
 	$headMain = 'Обновление логотипа';
 	$robots = 'noindex, nofollow';
@@ -87,78 +67,58 @@ if (isset($_GET['updlogo']))//Если есть переменная editform в
 
 	file_put_contents($jsonPath, $json);
 
-
-
-
-	// /*Подключение к базе данных*/
-	// include MAIN_FILE . '/includes/db.inc.php';
-	
-	// try
-	// {
-	// 	$sql = 'UPDATE blogs SET avatar = :filename WHERE id = :id';
-	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	// 	$s -> bindValue(':filename', $fileName);//отправка значения
-	// 	$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
-	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	// }
-	// catch (PDOException $e)
-	// {
-	// 	$error = 'Ошибка обновления аватара';
-	// 	include MAIN_FILE . '/includes/error.inc.php';
-	// }
-	
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();
 }
 
 /*Обновить аватар*/
 
-if (isset ($_POST['action']) && $_POST['action'] === 'Обновить шапку')
-{
-	/*Инициализация блога*/
-	require_once MAIN_FILE . '/includes/blogvar.inc.php';
+// if (isset ($_POST['action']) && $_POST['action'] === 'Обновить шапку')
+// {
+// 	/*Инициализация блога*/
+// 	require_once MAIN_FILE . '/includes/blogvar.inc.php';
 
-	/*Получение атрибутов блога для шапки */
-	getBlogAtributs($_POST['id']);
+// 	/*Получение атрибутов блога для шапки */
+// 	getBlogAtributs($_POST['id']);
 
-	// (int) $idBlog = $_POST['id'];
+// 	// (int) $idBlog = $_POST['id'];
 
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
+// 	/*Подключение к базе данных*/
+// 	include MAIN_FILE . '/includes/db.inc.php';
 	
-	/*Команда SELECT*/
-	try
-	{
-		$sql = 'SELECT imghead FROM blogs WHERE id = :id';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':id', $idBlog);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+// 	/*Команда SELECT*/
+// 	try
+// 	{
+// 		$sql = 'SELECT imghead FROM blogs WHERE id = :id';
+// 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+// 		$s -> bindValue(':id', $idBlog);//отправка значения
+// 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+// 	}
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора данных аватара';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
+// 	catch (PDOException $e)
+// 	{
+// 		$error = 'Ошибка выбора данных аватара';
+// 		include MAIN_FILE . '/includes/error.inc.php';
+// 	}
 	
-	$row = $s -> fetch();
+// 	$row = $s -> fetch();
 	
-	$title = 'Обновление шапки';//Данные тега <title>
-	$headMain = 'Обновление шапки';
-	$robots = 'noindex, шапки';
-	$descr = '';
-	$action = 'updimg';
-	$imgHead = $row['imghead'];
-	(int) $idBlog = $_POST['id'];
-	$button = 'Обновить шапку';
-	$errorForm = '';
-	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+// 	$title = 'Обновление шапки';//Данные тега <title>
+// 	$headMain = 'Обновление шапки';
+// 	$robots = 'noindex, шапки';
+// 	$descr = '';
+// 	$action = 'updimg';
+// 	$imgHead = $row['imghead'];
+// 	(int) $idBlog = $_POST['id'];
+// 	$button = 'Обновить шапку';
+// 	$errorForm = '';
+// 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
-	$_GLOBALS['imghead'] = $row['imghead'];
+// 	$_GLOBALS['imghead'] = $row['imghead'];
 	
-	include 'updavatar.html.php';
-	exit();
-}
+// 	include 'updavatar.html.php';
+// 	exit();
+// }
 
 if (isset($_GET['updimg']))//Если есть переменная editform выводится форма
 {
@@ -243,31 +203,51 @@ if (isset ($_POST['action']) && $_POST['action'] === 'Удалить авата�
 	}
 }
 
-if (isset ($_GET['delava']))
+if (isset ($_GET['adpt']))
 {
 	
-	/*Удаление аватара*/
-	$fileName = $avatar;//из $_GLOBALS['avatar'] 
-	$filePathScriptAva = '/blog/avatars/';//папка с изображениями для новости/статьи
-	unlink($delFile);//удаление 
+	$title = 'Обновление логотипа';//Данные тега <title>
+	$headMain = 'Обновление логотипа';
+	$robots = 'noindex, nofollow';
+	$descr = '';
+	$action = 'updlogoadpt';
+	//$avatar = $row['avatar'];
+	$button = 'Обновить логотип';
+	$errorForm = '';
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+
+	//$_GLOBALS['avatar'] = $row['avatar'];
 	
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
-	
-	try
-	{
-		$sql = 'UPDATE blogs SET 
-			avatar = "" WHERE id = :id';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':id', (int)$_POST['id']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка удаления аватара';
-		include MAIN_FILE . '/includes/error.inc.php';
-	}
-	
-	header ('Location: //'.MAIN_URL.'/blog/?id='.$_POST['id']);//перенаправление обратно в контроллер index.php
+	include 'updlogo.html.php';
+	exit();
+}
+
+/*UPDATE - обновление аватара*/
+
+if (isset($_GET['updlogoadpt']))//Если есть переменная editform выводится форма
+{
+	/*Получение данных логотипа */
+
+	$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/logo.json');
+	$dataLogo = json_decode($json_object, true);
+
+	/*Подключение функций*/
+	include_once MAIN_FILE . '/includes/func.inc.php';
+
+	$fileNameScript = 'logo-'. time().rand(100, 999);//имя файла новости/статьи
+	$filePathScript = '/decoration/';//папка с изображениями для новости/статьи
+
+	$fileName = uploadSiteLogo ($fileNameScript, $filePathScript);
+
+	/*Сохранение в json */
+	$dataLogo["logoadpt"] = $fileName;
+
+	$json = json_encode($dataLogo, JSON_UNESCAPED_UNICODE);
+
+	$jsonPath = MAIN_FILE .'/includes/blocksettings/logo.json';
+
+	file_put_contents($jsonPath, $json);
+
+	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();
 }
