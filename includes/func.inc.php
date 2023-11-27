@@ -688,9 +688,13 @@ function toEmbedInVideo($video)
 	
 	$element_2 = 'youtu.be'; //искомый элемент
 	$replace_2 = 'www.youtube.com/embed'; //на что меняем
+
+	$element_3 = 'shorts'; //искомый элемент
+	$replace_3 = 'embed'; //на что меняем
 	
 	$findStWatch = strpos ($video, $element_1);
 	$findStYoutube = strpos ($video, $element_2);
+	$findStShort = strpos ($video, $element_3);
 	
 	if ($findStWatch != '')
 	{
@@ -700,6 +704,11 @@ function toEmbedInVideo($video)
 	elseif ($findStYoutube != '')
 	{
 		$video = str_replace($element_2, $replace_2, $video);
+	}
+
+	elseif ($findStShort != '')
+	{
+		$video = str_replace($element_3, $replace_3, $video);
 	}
 	
 	else
