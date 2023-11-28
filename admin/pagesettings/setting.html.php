@@ -62,6 +62,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	 	<br><input type = "text" name = "bread3" id = "bread3" value = "<?php htmlecho($data['breadPart3']);?>" style = "width: 100%">
 	</div>	
 	<?php endif; ?>
+
+	<?php if (!empty ($data['newsblock'])):?>
+	<div>
+		<input type="checkbox" name = "newsblock" id = "newsblock" value = "show" <?php htmlecho($isChecked);?>><label for = "about">Показывать блок новостей</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>	
 	
 	<?php if (!empty ($data['about'])):?>
 	<div>

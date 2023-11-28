@@ -38,7 +38,13 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 
 	$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/'.$blockFolder.'.json');
 	$data = json_decode($json_object, true);
-				
+
+	//Выврд блока новостей
+	if (!empty ($data['newsblock']))
+	{
+		$isChecked = ($data['newsblock'] == 'show') ? 'checked' : '';
+	}
+						
 	include 'setting.html.php';
 	exit();	
 }
