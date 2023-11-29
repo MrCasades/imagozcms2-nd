@@ -83,26 +83,29 @@ foreach ($result as $row)
 /*Вывод новостей*/
 /*Команда SELECT*/
 
-try
+if ($data['newsblock'] == 1)
 {
-	$sql = 'SELECT n.id, n.news, n.newstitle, n.newsdate, n.imghead, c.categoryname
-			FROM newsblock n 
-			INNER JOIN category c ON idcategory = c.id  
-			WHERE premoderation = "YES" ORDER BY newsdate DESC LIMIT 8';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
-}
+	try
+	{
+		$sql = 'SELECT n.id, n.news, n.newstitle, n.newsdate, n.imghead, c.categoryname
+				FROM newsblock n 
+				INNER JOIN category c ON idcategory = c.id  
+				WHERE premoderation = "YES" ORDER BY newsdate DESC LIMIT 8';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
 
-catch (PDOException $e)
-{
-	$error = 'Ошибка вывода новостей на главной странице';
-	include MAIN_FILE . '/includes/error.inc.php';
-}
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода новостей на главной странице';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
 
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$newsIn[] =  array ('id' => $row['id'], 'textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'newsdate' =>  $row['newsdate'], 'categoryname' =>  $row['categoryname'],
-						'imghead' =>  $row['imghead']);
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$newsIn[] =  array ('id' => $row['id'], 'textnews' => $row['news'], 'newstitle' =>  $row['newstitle'], 'newsdate' =>  $row['newsdate'], 'categoryname' =>  $row['categoryname'],
+							'imghead' =>  $row['imghead']);
+	}
 }
 
 /*Вывод видео*/
