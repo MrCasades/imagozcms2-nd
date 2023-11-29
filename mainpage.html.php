@@ -12,6 +12,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 ?>
 <div class="main-row">
 	<div class="left-side">
+	<?php if ($data['newsblock'] == 1) :?>
 		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
@@ -43,6 +44,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 			<?php endforeach; ?>
 		</div>
+	<?php endif; ?>
 
 		<!-- <div class="m-content">
 				Место для рекламы
