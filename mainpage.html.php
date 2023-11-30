@@ -69,36 +69,38 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</script> 
 		</div>
 
-		<div class = "main-headers">
-			<div class = "main-headers-circle"></div>
-			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallposts/"><h2>Статьи</h2></a>
-				<div class = "main-headers-line"></div>
-				<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
-			</div>
-		</div>	
+		<?php if ($data['posts'] == 1) :?>
+			<div class = "main-headers">
+				<div class = "main-headers-circle"></div>
+				<div class = "main-headers-content">
+					<a class = "main-headers-place" href="./viewallposts/"><h2>Статьи</h2></a>
+					<div class = "main-headers-line"></div>
+					<div class = "sub-header"><?php htmlecho ($subHeaderPost); ?></div>
+				</div>
+			</div>	
 
-		<div class = "main-post m-content artickleblock">
-		<?php if (empty($posts))
-			{
-				echo '<p>Статьи отсутствуют</p>';
-			}
-			
-			else
+			<div class = "main-post m-content artickleblock">
+			<?php if (empty($posts))
+				{
+					echo '<p>Статьи отсутствуют</p>';
+				}
 				
-			foreach ($posts as $post): ?>
-			<a href="./viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $post['imghead']; ?>)">
-				<div class = "post-top-1">
-					<span class="post-rubrics"><?php htmlecho ($post['categoryname']); ?></span>
-				</div>
-				<div class = "post-bottom-1">
-					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post['posttitle'])), 0, 7)))); ?>...</span>
-					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($post['postdate'])); ?></span>
-				</div>
-			</a>
-			
-			<?php endforeach; ?>
-		</div>
+				else
+					
+				foreach ($posts as $post): ?>
+				<a href="./viewpost/?id=<?php htmlecho ($post['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $post['imghead']; ?>)">
+					<div class = "post-top-1">
+						<span class="post-rubrics"><?php htmlecho ($post['categoryname']); ?></span>
+					</div>
+					<div class = "post-bottom-1">
+						<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($post['posttitle'])), 0, 7)))); ?>...</span>
+						<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($post['postdate'])); ?></span>
+					</div>
+				</a>
+				
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 
 		<?php if (!empty ($pubs)): ?>
 			<div class = "main-headers">

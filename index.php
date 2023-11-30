@@ -29,27 +29,30 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Последняя рекомендованная статья*/
 /*Команда SELECT*/
 
-try
+if ($data['posts'] == 1)
 {
-	$sql = 'SELECT p.id AS postid, a.id AS idauthor, post, posttitle, imghead, imgalt, postdate, authorname, c.id AS categoryid, categoryname FROM posts p 
-			INNER JOIN author a ON idauthor = a.id 
-			INNER JOIN category c ON idcategory = c.id 
-			WHERE premoderation = "YES" AND zenpost = "NO" AND recommendationdate ORDER BY recommendationdate DESC LIMIT 4';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
-}
+	try
+	{
+		$sql = 'SELECT p.id AS postid, a.id AS idauthor, post, posttitle, imghead, imgalt, postdate, authorname, c.id AS categoryid, categoryname FROM posts p 
+				INNER JOIN author a ON idauthor = a.id 
+				INNER JOIN category c ON idcategory = c.id 
+				WHERE premoderation = "YES" AND zenpost = "NO" AND recommendationdate ORDER BY recommendationdate DESC LIMIT 4';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
 
-catch (PDOException $e)
-{
-	$error = 'Ошибка вывода статей на главной странице';
-	include MAIN_FILE . '/includes/error.inc.php';
-}
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода статей на главной странице';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
 
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$lastRecommPosts[] =  array ('id' => $row['postid'], 'idauthor' => $row['idauthor'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-						'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
-						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$lastRecommPosts[] =  array ('id' => $row['postid'], 'idauthor' => $row['idauthor'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
 }
 
 /*Вывод последней новости*/
