@@ -124,38 +124,41 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
-		<!-- <div class = "main-headers">
-			<div class = "main-headers-circle"></div>
-			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Пользователи рекомендуют</h2></a>
-				<div class = "main-headers-line"></div>
-				<div class = "sub-header"><?php htmlecho ($subHeaderRecomm); ?></div>
+
+		<?php if ($data['recommendations'] == 1) :?>
+			<div class = "main-headers">
+				<div class = "main-headers-circle"></div>
+				<div class = "main-headers-content">
+					<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Пользователи рекомендуют</h2></a>
+					<div class = "main-headers-line"></div>
+					<div class = "sub-header"><?php htmlecho ($subHeaderRecomm); ?></div>
+				</div>
 			</div>
-		</div>
 
-		<div class = "main-post m-content lastrecommblock">
-		<?php if (empty($lastRecommPosts))
-			{
-				echo '<p>Рекомендации отсутствуют</p>';
-			}
-			
-			else
+			<div class = "main-post m-content lastrecommblock">
+			<?php if (empty($lastRecommPosts))
+				{
+					echo '<p>Рекомендации отсутствуют</p>';
+				}
 				
-			foreach ($lastRecommPosts as $lastRecommPost): ?>
-			<a href = "./viewpost/?id=<?php htmlecho ($lastRecommPost['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $lastRecommPost['imghead']; ?>)">
-				<div class = "post-top-1">			
-					<span class="post-rubrics"><?php htmlecho ($lastRecommPost['categoryname']); ?></span>
-				</div>
-				<div class = "post-bottom-1">
-					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($lastRecommPost['posttitle'])), 0, 7)))); ?>...</span>
-					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($lastRecommPost['postdate'])); ?></span>
-				</div>
-			</a>
-			
-			<?php endforeach; ?>
-		</div> -->
+				else
+					
+				foreach ($lastRecommPosts as $lastRecommPost): ?>
+				<a href = "./viewpost/?id=<?php htmlecho ($lastRecommPost['id']); ?>" class = "post-place-2" style="background-image: url(images/<?php echo $lastRecommPost['imghead']; ?>)">
+					<div class = "post-top-1">			
+						<span class="post-rubrics"><?php htmlecho ($lastRecommPost['categoryname']); ?></span>
+					</div>
+					<div class = "post-bottom-1">
+						<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($lastRecommPost['posttitle'])), 0, 7)))); ?>...</span>
+						<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($lastRecommPost['postdate'])); ?></span>
+					</div>
+				</a>
+				
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 
-		<!-- <div class = "main-headers">
+		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
 				<h2 class="no-link-header">Новости наших партнёров</h2>
@@ -167,50 +170,51 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
 			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
 			<br>
-		</div> -->
-
-		<div class = "main-headers">
-			<div class = "main-headers-circle"></div>
-			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallvideos/"><h2>Наше видео</h2></a>
-				<div class = "main-headers-line"></div>
-				<div class = "sub-header"><?php htmlecho ($subHeaderVideo); ?></div>
-			</div>
 		</div>
 
-		<div class = "main-post m-content videoblock">
-		<?php if (empty($videos))
-			{
-				echo '<p>Рекомендации отсутствуют</p>';
-			}
-			
-			else
+		<?php if ($data['video'] == 1) :?>
+			<div class = "main-headers">
+				<div class = "main-headers-circle"></div>
+				<div class = "main-headers-content">
+					<a class = "main-headers-place" href="./viewallvideos/"><h2>Наше видео</h2></a>
+					<div class = "main-headers-line"></div>
+					<div class = "sub-header"><?php htmlecho ($subHeaderVideo); ?></div>
+				</div>
+			</div>
+
+			<div class = "main-post m-content videoblock">
+			<?php if (empty($videos))
+				{
+					echo '<p>Рекомендации отсутствуют</p>';
+				}
 				
-			foreach ($videos as $video): ?>
-			<div class = "post-place-video">
-				<a href="./video/?id=<?php htmlecho ($video['id']); ?>">
-					<video controls width="100%" height="80%" poster="./images/<?php echo $video['imghead']; ?>" preload="none" class="prev-video" muted="muted">
-						<source src="./videofiles/<?php echo $video['videofile']; ?>.mp4" type="video/mp4">
-						<source src="./videofiles/<?php echo $video['videofile']; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
-						<source src="./videofiles/<?php echo $video['videofile']; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
-						<object data="./videofiles/<?php echo $video['videofile']; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
-							<param name="movie" value="./videofiles/<?php echo $video['videofile']; ?>.swf">
-						</object>
-										
-					</video>
-					<div class = "post-bottom-video">
-						<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...			
-					</div>
-				</a>
-				<p class = "post-bottom-video-2">
-					<a href="./account/?id=<?php echo $video['idauthor'];?>"><?php echo $video['authorname'];?></a>
-					<br><?php echo date("Y.m.d", strtotime($video['videodate'])); ?> | <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php echo $video['viewcount']; ?>
-				</p>
+				else
+					
+				foreach ($videos as $video): ?>
+				<div class = "post-place-video">
+					<a href="./video/?id=<?php htmlecho ($video['id']); ?>">
+						<video controls width="100%" height="80%" poster="./images/<?php echo $video['imghead']; ?>" preload="none" class="prev-video" muted="muted">
+							<source src="./videofiles/<?php echo $video['videofile']; ?>.mp4" type="video/mp4">
+							<source src="./videofiles/<?php echo $video['videofile']; ?>.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+							<source src="./videofiles/<?php echo $video['videofile']; ?>.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+							<object data="./videofiles/<?php echo $video['videofile']; ?>" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+								<param name="movie" value="./videofiles/<?php echo $video['videofile']; ?>.swf">
+							</object>
+											
+						</video>
+						<div class = "post-bottom-video">
+							<?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($video['videotitle'])), 0, 7)))); ?>...			
+						</div>
+					</a>
+					<p class = "post-bottom-video-2">
+						<a href="./account/?id=<?php echo $video['idauthor'];?>"><?php echo $video['authorname'];?></a>
+						<br><?php echo date("Y.m.d", strtotime($video['videodate'])); ?> | <i class="fa fa-eye" aria-hidden="true" title="Просмотры"></i> <?php echo $video['viewcount']; ?>
+					</p>
+				</div>
+				
+				<?php endforeach; ?>
 			</div>
-			
-			<?php endforeach; ?>
-		</div>
-		
+		<?php endif; ?>
 		<!-- <div class = "main-headers">
 			<div class = "headers-places"> 
 				<div class = "main-headers-txtplace">Облако тегов</div>

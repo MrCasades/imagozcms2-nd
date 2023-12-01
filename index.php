@@ -29,7 +29,7 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Последняя рекомендованная статья*/
 /*Команда SELECT*/
 
-if ($data['posts'] == 1)
+if ($data['recommendations'] == 1)
 {
 	try
 	{
@@ -113,69 +113,74 @@ if ($data['newsblock'] == 1)
 
 /*Вывод видео*/
 /*Команда SELECT*/
-
-try
+if ($data['video'] == 1)
 {
-	$sql = 'SELECT v.id, v.videotitle, v.videodate, v.imghead, v.videofile, v.viewcount, c.categoryname, a.id AS idauthor, a.authorname
-			FROM video v 
-			INNER JOIN category c ON v.idcategory = c.id  
-			INNER JOIN author a ON v.idauthor = a.id 
-			WHERE premoderation = "YES" ORDER BY videodate DESC LIMIT 6';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
-}
-
-catch (PDOException $e)
-{
-	$error = 'Ошибка вывода видео на главной странице';
-	include MAIN_FILE . '/includes/error.inc.php';
-}
-
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$videos[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'videodate' =>  $row['videodate'], 'viewcount' =>  $row['viewcount'], 'categoryname' =>  $row['categoryname'],
-						'imghead' =>  $row['imghead'], 'videofile' =>  $row['videofile'], 'idauthor' =>  $row['idauthor'], 'authorname' =>  $row['authorname']);
+	try
+	{
+		$sql = 'SELECT v.id, v.videotitle, v.videodate, v.imghead, v.videofile, v.viewcount, c.categoryname, a.id AS idauthor, a.authorname
+				FROM video v 
+				INNER JOIN category c ON v.idcategory = c.id  
+				INNER JOIN author a ON v.idauthor = a.id 
+				WHERE premoderation = "YES" ORDER BY videodate DESC LIMIT 6';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода видео на главной странице';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+	
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$videos[] =  array ('id' => $row['id'], 'videotitle' =>  $row['videotitle'], 'videodate' =>  $row['videodate'], 'viewcount' =>  $row['viewcount'], 'categoryname' =>  $row['categoryname'],
+							'imghead' =>  $row['imghead'], 'videofile' =>  $row['videofile'], 'idauthor' =>  $row['idauthor'], 'authorname' =>  $row['authorname']);
+	}
 }
 
 /*Вывод публикаций*/
 /*Команда SELECT*/
-try
+if ($data['posts'] == 1)
 {
-	$sql = 'SELECT 
-				p.id AS pubid, 
-				p.text, 
-				a.id AS authorid, 
-				p.title, 
-				p.imghead, 
-				p.imgalt, 
-				p.date, 
-				a.authorname, 
-				c.id AS categoryid, 
-				c.categoryname,
-				b.id as blogid,
-				b.title as blogtitle 
-			FROM publication p 
-			INNER JOIN author a ON p.idauthor = a.id 
-			INNER JOIN category c ON p.idcategory = c.id 
-			INNER JOIN blogs b ON p.idblog = b.id
-			WHERE p.premoderation = "YES" ORDER BY p.date DESC LIMIT 5';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
-}
+	try
+	{
+		$sql = 'SELECT 
+					p.id AS pubid, 
+					p.text, 
+					a.id AS authorid, 
+					p.title, 
+					p.imghead, 
+					p.imgalt, 
+					p.date, 
+					a.authorname, 
+					c.id AS categoryid, 
+					c.categoryname,
+					b.id as blogid,
+					b.title as blogtitle 
+				FROM publication p 
+				INNER JOIN author a ON p.idauthor = a.id 
+				INNER JOIN category c ON p.idcategory = c.id 
+				INNER JOIN blogs b ON p.idblog = b.id
+				WHERE p.premoderation = "YES" ORDER BY p.date DESC LIMIT 5';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
 
-catch (PDOException $e)
-{
-	$error = 'Ошибка вывода публикаций';
-	include MAIN_FILE . '/includes/error.inc.php';
-}
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода публикаций';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
 
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$pubs[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-							'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 
-							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'], 'blogtitle' => $row['blogtitle']);
-}
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$pubs[] =  array ('id' => $row['pubid'], 'idauthor' => $row['authorid'], 'text' => $row['text'], 'title' =>  $row['title'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+								'date' =>  $row['date'], 'authorname' =>  $row['authorname'], 
+								'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'], 'blogtitle' => $row['blogtitle']);
+	}
 
+}
 
 /*Вывод списка случайных тегов для новостей и статей*/
 
