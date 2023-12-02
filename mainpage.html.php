@@ -102,27 +102,29 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		<?php endif; ?>
 
-		<?php if (!empty ($pubs)): ?>
-			<div class = "main-headers">
-				<div class = "main-headers-circle"></div>
-				<div class = "main-headers-content">
-					<a href = "./blogs/"><h2>Блоги</h2></a>
-					<div class = "main-headers-line"></div>	
-					<div class = "sub-header"><?php htmlecho ($subHeaderBlog); ?></div>			
-				</div>
-			</div>
-		
-			<div class = "newsblock m-content">			 
-				<?php foreach ($pubs as $pub): ?> 
-				<a href = "./blog/publication?id=<?php htmlecho ($pub['id']); ?>" class = "post-place-1" style="background-image: url(./images/<?php echo $pub['imghead']; ?>)">
-					<div class = "post-top-1">
-						<p><?php echo date("Y.m.d H:i", strtotime($pub['date'])); ?></p>
-						<span class="post-rubrics"><?php htmlecho ($pub['blogtitle']); ?></span>
+		<?php if ($data['blogpubs'] == 1) :?>
+			<?php if (!empty ($pubs)): ?>
+				<div class = "main-headers">
+					<div class = "main-headers-circle"></div>
+					<div class = "main-headers-content">
+						<a href = "./blogs/"><h2>Блоги</h2></a>
+						<div class = "main-headers-line"></div>	
+						<div class = "sub-header"><?php htmlecho ($subHeaderBlog); ?></div>			
 					</div>
-					<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pub['title'])), 0, 7)))); ?>...</div>
-				</a>
-				<?php endforeach; ?>
-			</div>
+				</div>
+			
+				<div class = "newsblock m-content">			 
+					<?php foreach ($pubs as $pub): ?> 
+					<a href = "./blog/publication?id=<?php htmlecho ($pub['id']); ?>" class = "post-place-1" style="background-image: url(./images/<?php echo $pub['imghead']; ?>)">
+						<div class = "post-top-1">
+							<p><?php echo date("Y.m.d H:i", strtotime($pub['date'])); ?></p>
+							<span class="post-rubrics"><?php htmlecho ($pub['blogtitle']); ?></span>
+						</div>
+						<div class = "post-bottom-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($pub['title'])), 0, 7)))); ?>...</div>
+					</a>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php if ($data['recommendations'] == 1) :?>
@@ -283,36 +285,38 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</script>
 		</div>
 
-		<div class = "main-headers">
-			<div class = "main-headers-circle"></div>
-			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallpromotion/"><h2>Промоушен</h2></a>
-				<div class = "main-headers-line"></div>
-				<div class = "sub-header"><?php htmlecho ($subHeaderPromotion); ?></div>
-			</div>
-		</div>	
+		<?php if ($data['promotion'] == 1) :?>
+			<div class = "main-headers">
+				<div class = "main-headers-circle"></div>
+				<div class = "main-headers-content">
+					<a class = "main-headers-place" href="./viewallpromotion/"><h2>Промоушен</h2></a>
+					<div class = "main-headers-line"></div>
+					<div class = "sub-header"><?php htmlecho ($subHeaderPromotion); ?></div>
+				</div>
+			</div>	
 
-		<div class = "main-post m-content promotionblock">
-		<?php if (empty($promotions))
-			{
-				echo '<p>Статьи отсутствуют</p>';
-			}
-			
-			else
+			<div class = "main-post m-content promotionblock">
+			<?php if (empty($promotions))
+				{
+					echo '<p>Статьи отсутствуют</p>';
+				}
 				
-			foreach ($promotions as $promotion): ?>
-			<a href="./viewpromotion/?id=<?php htmlecho ($promotion['id']); ?>" class = "post-place-1" style="background-image: url(images/<?php echo $promotion['imghead']; ?>)">
-				<div class = "post-top-1">
-					<span class="post-rubrics"><?php htmlecho ($promotion['categoryname']); ?></span>
-				</div>
-				<div class = "post-bottom-1">
-					<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($promotion['promotiontitle'])), 0, 7)))); ?>...</span>
-					<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($promotion['promotiondate'])); ?></span>
-				</div>
-			</a>
-			
-			<?php endforeach; ?>
-		</div>
+				else
+					
+				foreach ($promotions as $promotion): ?>
+				<a href="./viewpromotion/?id=<?php htmlecho ($promotion['id']); ?>" class = "post-place-1" style="background-image: url(images/<?php echo $promotion['imghead']; ?>)">
+					<div class = "post-top-1">
+						<span class="post-rubrics"><?php htmlecho ($promotion['categoryname']); ?></span>
+					</div>
+					<div class = "post-bottom-1">
+						<span class="post-header-1"><?php htmlecho ((implode(' ', array_slice(explode(' ', strip_tags($promotion['promotiontitle'])), 0, 7)))); ?>...</span>
+						<br><span class="post-date-1"><?php echo date("Y.m.d H:i", strtotime($promotion['promotiondate'])); ?></span>
+					</div>
+				</a>
+				
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 		
 		<!-- <div class="m-content">
 			Место для рекламы

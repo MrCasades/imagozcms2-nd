@@ -139,9 +139,9 @@ if ($data['video'] == 1)
 	}
 }
 
-/*Вывод публикаций*/
+/*Вывод публикаций блогов*/
 /*Команда SELECT*/
-if ($data['posts'] == 1)
+if ($data['blogpubs'] == 1)
 {
 	try
 	{
@@ -180,6 +180,63 @@ if ($data['posts'] == 1)
 								'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid'], 'blogtitle' => $row['blogtitle']);
 	}
 
+}
+
+/*Вывод статей*/
+/*Команда SELECT*/
+if ($data['posts'] == 1)
+{
+	try
+	{
+		$sql = 'SELECT p.id AS postid, a.id AS idauthor, post, posttitle, imghead, imgalt, postdate, authorname, c.id AS categoryid, categoryname FROM posts p
+				INNER JOIN author a ON idauthor = a.id 
+				INNER JOIN category c ON idcategory = c.id 
+				WHERE premoderation = "YES" ORDER BY postdate DESC LIMIT 6';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода статей';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+	
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$posts[] =  array ('id' => $row['postid'], 'idauthor' => $row['idauthor'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
+}
+
+/*Вывод промоушена*/
+/*Команда SELECT*/
+if ($data['promotion'] == 1)
+{
+	try
+	{
+		$sql = 'SELECT pr.id AS promotionid, a.id AS idauthor, promotion, promotiontitle, imghead, imgalt, pr.www, promotiondate, authorname, c.id AS categoryid, categoryname FROM promotion pr
+				INNER JOIN author a ON idauthor = a.id 
+				INNER JOIN category c ON idcategory = c.id 
+				WHERE premoderation = "YES" ORDER BY promotiondate DESC LIMIT 4';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода промоушена';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
+}
+
+
+/*Вывод результата в шаблон*/
+foreach ($result as $row)
+{
+	$promotions[] =  array ('id' => $row['promotionid'], 'idauthor' => $row['idauthor'], 'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+						'promotiondate' =>  $row['promotiondate'], 'authorname' =>  $row['authorname'], 'www' =>  $row['www'],
+						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 }
 
 /*Вывод списка случайных тегов для новостей и статей*/
@@ -417,56 +474,6 @@ catch (PDOException $e)
 foreach ($result as $row)
 {
 	$postsIMG[] =  array ('id' => $row['postid'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-						'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
-						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
-}
-
-/*Вывод промоушена*/
-/*Команда SELECT*/
-try
-{
-	$sql = 'SELECT pr.id AS promotionid, a.id AS idauthor, promotion, promotiontitle, imghead, imgalt, pr.www, promotiondate, authorname, c.id AS categoryid, categoryname FROM promotion pr
-			INNER JOIN author a ON idauthor = a.id 
-			INNER JOIN category c ON idcategory = c.id 
-			WHERE premoderation = "YES" ORDER BY promotiondate DESC LIMIT 4';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
-}
-
-catch (PDOException $e)
-{
-	$error = 'Ошибка вывода промоушена';
-	include MAIN_FILE . '/includes/error.inc.php';
-}
-
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$promotions[] =  array ('id' => $row['promotionid'], 'idauthor' => $row['idauthor'], 'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-						'promotiondate' =>  $row['promotiondate'], 'authorname' =>  $row['authorname'], 'www' =>  $row['www'],
-						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
-}
-
-/*Вывод статей*/
-/*Команда SELECT*/
-try
-{
-	$sql = 'SELECT p.id AS postid, a.id AS idauthor, post, posttitle, imghead, imgalt, postdate, authorname, c.id AS categoryid, categoryname FROM posts p
-			INNER JOIN author a ON idauthor = a.id 
-			INNER JOIN category c ON idcategory = c.id 
-			WHERE premoderation = "YES" ORDER BY postdate DESC LIMIT 6';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
-}
-
-catch (PDOException $e)
-{
-	$error = 'Ошибка вывода статей';
-	include MAIN_FILE . '/includes/error.inc.php';
-}
-
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$posts[] =  array ('id' => $row['postid'], 'idauthor' => $row['idauthor'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
 						'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
 						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
 }
