@@ -42,7 +42,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 	//Выврд блока новостей
 	if (!empty ($data['newsblock']))
 	{
-		$isChecked = ($data['newsblock'] == 'show') ? 'checked' : '';
+		$isChecked = ($data['newsblock'] == 1) ? 'checked' : '';
 	}
 						
 	include 'setting.html.php';
