@@ -70,7 +70,12 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['bread3']))
 		$array["breadPart3"] = $_POST['bread3'];
- 
+
+	if (!empty($_POST['newsblock']))
+	{
+		$array["newsblock"] = $_POST['newsblock'];
+	}
+		
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 
 	$jsonPath = MAIN_FILE .'/includes/blocksettings/'.$_POST['blockfolder'].'.json';
