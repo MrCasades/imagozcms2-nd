@@ -75,6 +75,63 @@ if (isset($_GET['editform']))
 	{
 		$array["newsblock"] = $_POST['newsblock'];
 	}
+
+	else
+	{
+		$array["newsblock"] = 0;
+	}
+
+	if (!empty($_POST['recommendations']))
+	{
+		$array["recommendations"] = $_POST['recommendations'];
+	}
+
+	else
+	{
+		$array["recommendations"] = 0;
+	}
+
+	if (!empty($_POST['video']))
+	{
+		$array["video "] = $_POST['video'];
+	}
+
+	else
+	{
+		$array["video"] = 0;
+	}
+
+	if (!empty($_POST['blogpubs']))
+	{
+		$array["blogpubs"] = $_POST['blogpubs'];
+	}
+
+	else
+	{
+		$array["blogpubs"] = 0;
+	}
+
+	if (!empty($_POST['promotion']))
+	{
+		$array["promotion"] = $_POST['promotion'];
+	}
+
+	else
+	{
+		$array["promotion"] = 0;
+	}
+
+	if (!empty($_POST['posts']))
+	{
+		$array["posts"] = $_POST['posts'];
+	}
+
+	else
+	{
+		$array["posts"] = 0;
+	}
+
+
 		
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 

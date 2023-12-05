@@ -228,15 +228,16 @@ if ($data['promotion'] == 1)
 		$error = 'Ошибка вывода промоушена';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
-}
 
 
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$promotions[] =  array ('id' => $row['promotionid'], 'idauthor' => $row['idauthor'], 'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-						'promotiondate' =>  $row['promotiondate'], 'authorname' =>  $row['authorname'], 'www' =>  $row['www'],
-						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$promotions[] =  array ('id' => $row['promotionid'], 'idauthor' => $row['idauthor'], 'text' => $row['promotion'], 'promotiontitle' =>  $row['promotiontitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'promotiondate' =>  $row['promotiondate'], 'authorname' =>  $row['authorname'], 'www' =>  $row['www'],
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
 }
 
 /*Вывод списка случайных тегов для новостей и статей*/
