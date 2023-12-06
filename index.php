@@ -86,7 +86,7 @@ if ($data['recommendations'] == 1)
 /*Вывод новостей*/
 /*Команда SELECT*/
 
-if ($data['newsblock'] == 1)
+if ($data['newsblock'] == "on")
 {
 	try
 	{

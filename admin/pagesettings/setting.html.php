@@ -65,7 +65,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<?php if (!empty ($data['newsblock'])):?>
 	<div>
-		<input type="checkbox" name = "newsblock" id = "newsblock" value = "<?php htmlecho($data['newsblock']);?>" <?php htmlecho($isChecked);?>><label for = "about">Показывать блок новостей</label>
+		<input type="checkbox" name = "newsblock" id = "newsblock" value = "<?php htmlecho($data['newsblock']);?>" <?php if ($data['newsblock'] == "on") echo "checked";?>><label for = "about">Показывать блок новостей</label>
 		<hr/>
 	</div>	
 	<?php endif; ?>	

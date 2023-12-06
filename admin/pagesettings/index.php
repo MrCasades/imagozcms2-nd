@@ -40,10 +40,10 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 	$data = json_decode($json_object, true);
 
 	//Выврд блока новостей
-	if (!empty ($data['newsblock']))
-	{
-		$isChecked = ($data['newsblock'] == 1) ? 'checked' : '';
-	}
+	// if (!empty ($data['newsblock']))
+	// {
+	// 	$isChecked = ($data['newsblock'] == 1) ? 'checked' : '';
+	// }
 						
 	include 'setting.html.php';
 	exit();	
@@ -73,17 +73,17 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['newsblock']))
 	{
-		$array["newsblock"] = $_POST['newsblock'];
+		$array["newsblock"] = "on";
 	}
 
 	else
 	{
-		$array["newsblock"] = 0;
+		$array["newsblock"] = "off";
 	}
 
 	if (!empty($_POST['recommendations']))
 	{
-		$array["recommendations"] = $_POST['recommendations'];
+		$array["recommendations"] = 1;
 	}
 
 	else
@@ -93,7 +93,7 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['video']))
 	{
-		$array["video "] = $_POST['video'];
+		$array["video "] = 1;
 	}
 
 	else
@@ -103,7 +103,7 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['blogpubs']))
 	{
-		$array["blogpubs"] = $_POST['blogpubs'];
+		$array["blogpubs"] = 1;
 	}
 
 	else
@@ -113,7 +113,7 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['promotion']))
 	{
-		$array["promotion"] = $_POST['promotion'];
+		$array["promotion"] = 1;
 	}
 
 	else
@@ -123,7 +123,7 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['posts']))
 	{
-		$array["posts"] = $_POST['posts'];
+		$array["posts"] = 1;
 	}
 
 	else

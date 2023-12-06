@@ -12,7 +12,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 ?>
 <div class="main-row">
 	<div class="left-side">
-	<?php if ($data['newsblock'] == 1) :?>
+	<?php if ($data['newsblock'] == "on") :?>
 		<div class = "main-headers">
 			<div class = "main-headers-circle"></div>
 			<div class = "main-headers-content">
