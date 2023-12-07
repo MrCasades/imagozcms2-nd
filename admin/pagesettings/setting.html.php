@@ -65,10 +65,46 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 	<?php if (!empty ($data['newsblock'])):?>
 	<div>
-		<input type="checkbox" name = "newsblock" id = "newsblock" value = "<?php htmlecho($data['newsblock']);?>" <?php if ($data['newsblock'] == "on") echo "checked";?>><label for = "about">Показывать блок новостей</label>
+		<input type="checkbox" name = "newsblock" id = "newsblock" value = "<?php htmlecho($data['newsblock']);?>" <?php if ($data['newsblock'] == "on") echo "checked";?>><label for = "newsblock">Показывать блок новостей</label>
 		<hr/>
 	</div>	
 	<?php endif; ?>	
+
+	<?php if (!empty ($data['recommendations'])):?>
+	<div>
+		<input type="checkbox" name = "recommendations" id = "recommendations" value = "<?php htmlecho($data['recommendations']);?>" <?php if ($data['recommendations'] == "on") echo "checked";?>><label for = "recommendations">Показывать блок рекомендаций</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
+
+	<?php if (!empty ($data['blogpubs'])):?>
+	<div>
+		<input type="checkbox" name = "blogpubs" id = "blogpubs" value = "<?php htmlecho($data['blogpubs']);?>" <?php if ($data['blogpubs'] == "on") echo "checked";?>><label for = "blogpubs">Показывать блок публикаций блога</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
+
+
+	<?php if (!empty ($data['recommendations'])):?>
+	<div>
+		<input type="checkbox" name = "posts" id = "posts" value = "<?php htmlecho($data['posts']);?>" <?php if ($data['posts'] == "on") echo "checked";?>><label for = "posts">Показывать блок статей</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
+
+	<?php if (!empty ($data['video'])):?>
+	<div>
+		<input type="checkbox" name = "video" id = "video" value = "<?php htmlecho($data['video']);?>" <?php if ($data['video'] == "on") echo "checked";?>><label for = "video">Показывать блок видео</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
+
+	<?php if (!empty ($data['promotion'])):?>
+	<div>
+		<input type="checkbox" name = "promotion" id = "promotion" value = "<?php htmlecho($data['promotion']);?>" <?php if ($data['promotion'] == "on") echo "checked";?>><label for = "promotion">Показывать блок промоушена</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
 	
 	<?php if (!empty ($data['about'])):?>
 	<div>

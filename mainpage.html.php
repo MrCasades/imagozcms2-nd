@@ -69,7 +69,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</script> 
 		</div>
 
-		<?php if ($data['posts'] == 1) :?>
+		<?php if ($data['posts'] == "on") :?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
@@ -102,7 +102,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		<?php endif; ?>
 
-		<?php if ($data['blogpubs'] == 1) :?>
+		<?php if ($data['blogpubs'] == "on") :?>
 			<?php if (!empty ($pubs)): ?>
 				<div class = "main-headers">
 					<div class = "main-headers-circle"></div>
@@ -127,7 +127,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<?php if ($data['recommendations'] == 1) :?>
+		<?php if ($data['recommendations'] == "on") :?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
@@ -174,7 +174,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			<br>
 		</div>
 
-		<?php if ($data['video'] == 1) :?>
+		<?php if ($data['video'] == "on") :?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">
@@ -285,7 +285,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</script>
 		</div>
 
-		<?php if ($data['promotion'] == 1) :?>
+		<?php if ($data['promotion'] == "on") :?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
 				<div class = "main-headers-content">

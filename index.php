@@ -29,7 +29,7 @@ include MAIN_FILE . '/includes/db.inc.php';
 /*Последняя рекомендованная статья*/
 /*Команда SELECT*/
 
-if ($data['recommendations'] == 1)
+if ($data['recommendations'] == "on")
 {
 	try
 	{
@@ -113,7 +113,7 @@ if ($data['newsblock'] == "on")
 
 /*Вывод видео*/
 /*Команда SELECT*/
-if ($data['video'] == 1)
+if ($data['video'] == "on")
 {
 	try
 	{
@@ -141,7 +141,7 @@ if ($data['video'] == 1)
 
 /*Вывод публикаций блогов*/
 /*Команда SELECT*/
-if ($data['blogpubs'] == 1)
+if ($data['blogpubs'] == "on")
 {
 	try
 	{
@@ -184,7 +184,7 @@ if ($data['blogpubs'] == 1)
 
 /*Вывод статей*/
 /*Команда SELECT*/
-if ($data['posts'] == 1)
+if ($data['posts'] == "on")
 {
 	try
 	{
@@ -212,7 +212,7 @@ if ($data['posts'] == 1)
 
 /*Вывод промоушена*/
 /*Команда SELECT*/
-if ($data['promotion'] == 1)
+if ($data['promotion'] == "on")
 {
 	try
 	{

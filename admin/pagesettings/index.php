@@ -38,13 +38,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 
 	$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/'.$blockFolder.'.json');
 	$data = json_decode($json_object, true);
-
-	//Выврд блока новостей
-	// if (!empty ($data['newsblock']))
-	// {
-	// 	$isChecked = ($data['newsblock'] == 1) ? 'checked' : '';
-	// }
-						
+				
 	include 'setting.html.php';
 	exit();	
 }
@@ -83,52 +77,52 @@ if (isset($_GET['editform']))
 
 	if (!empty($_POST['recommendations']))
 	{
-		$array["recommendations"] = 1;
+		$array["recommendations"] = "on";
 	}
 
 	else
 	{
-		$array["recommendations"] = 0;
+		$array["recommendations"] = "off";
 	}
 
 	if (!empty($_POST['video']))
 	{
-		$array["video "] = 1;
+		$array["video "] = "on";
 	}
 
 	else
 	{
-		$array["video"] = 0;
+		$array["video"] = "off";
 	}
 
 	if (!empty($_POST['blogpubs']))
 	{
-		$array["blogpubs"] = 1;
+		$array["blogpubs"] = "on";
 	}
 
 	else
 	{
-		$array["blogpubs"] = 0;
+		$array["blogpubs"] = "off";
 	}
 
 	if (!empty($_POST['promotion']))
 	{
-		$array["promotion"] = 1;
+		$array["promotion"] = "on";
 	}
 
 	else
 	{
-		$array["promotion"] = 0;
+		$array["promotion"] = "off";
 	}
 
 	if (!empty($_POST['posts']))
 	{
-		$array["posts"] = 1;
+		$array["posts"] = "on";
 	}
 
 	else
 	{
-		$array["posts"] = 0;
+		$array["posts"] = "off";
 	}
 
 
