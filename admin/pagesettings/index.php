@@ -65,66 +65,68 @@ if (isset($_GET['editform']))
 	if (!empty($_POST['bread3']))
 		$array["breadPart3"] = $_POST['bread3'];
 
-	if (!empty($_POST['newsblock']))
+	if ($_POST['blockfolder'] == 'mainpage')
 	{
-		$array["newsblock"] = "on";
-	}
+		if (!empty($_POST['newsblock']))
+		{
+			$array["newsblock"] = "on";
+		}
 
-	else
-	{
-		$array["newsblock"] = "off";
-	}
+		else
+		{
+			$array["newsblock"] = "off";
+		}
 
-	if (!empty($_POST['recommendations']))
-	{
-		$array["recommendations"] = "on";
-	}
+		if (!empty($_POST['recommendations']))
+		{
+			$array["recommendations"] = "on";
+		}
 
-	else
-	{
-		$array["recommendations"] = "off";
-	}
+		else
+		{
+			$array["recommendations"] = "off";
+		}
 
-	if (!empty($_POST['video']))
-	{
-		$array["video "] = "on";
-	}
+		if (!empty($_POST['video']))
+		{
+			$array["video "] = "on";
+		}
 
-	else
-	{
-		$array["video"] = "off";
-	}
+		else
+		{
+			$array["video"] = "off";
+		}
 
-	if (!empty($_POST['blogpubs']))
-	{
-		$array["blogpubs"] = "on";
-	}
+		if (!empty($_POST['blogpubs']))
+		{
+			$array["blogpubs"] = "on";
+		}
 
-	else
-	{
-		$array["blogpubs"] = "off";
-	}
+		else
+		{
+			$array["blogpubs"] = "off";
+		}
 
-	if (!empty($_POST['promotion']))
-	{
-		$array["promotion"] = "on";
-	}
+		if (!empty($_POST['promotion']))
+		{
+			$array["promotion"] = "on";
+		}
 
-	else
-	{
-		$array["promotion"] = "off";
-	}
+		else
+		{
+			$array["promotion"] = "off";
+		}
 
-	if (!empty($_POST['posts']))
-	{
-		$array["posts"] = "on";
-	}
+		if (!empty($_POST['posts']))
+		{
+			$array["posts"] = "on";
+		}
 
-	else
-	{
-		$array["posts"] = "off";
+		else
+		{
+			$array["posts"] = "off";
+		}
 	}
-
 
 		
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
