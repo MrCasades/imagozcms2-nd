@@ -13,11 +13,6 @@ include_once MAIN_FILE . '/includes/commonvar.inc.php';
 $blockFolder = 'mainpage';
 include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
 
-// $title = 'Hi-Tech новости, игры, наука, интернет в отражении на imagoz.ru';//Данные тега <title>
-// $headMain = '';
-// $robots = 'all';
-// $descr = 'Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!';
-
 /*Определение нахождения пользователя в системе*/
 loggedIn();
 

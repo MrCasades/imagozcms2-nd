@@ -89,7 +89,7 @@ if (isset($_GET['editform']))
 
 		if (!empty($_POST['video']))
 		{
-			$array["video "] = "on";
+			$array["video"] = "on";
 		}
 
 		else
