@@ -159,21 +159,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
-
-		<div class = "main-headers">
-			<div class = "main-headers-circle"></div>
-			<div class = "main-headers-content">
-				<h2 class="no-link-header">Новости наших партнёров</h2>
-				<div class = "main-headers-line"></div>				
-			</div>
-		</div>
-
-		<div class="gallery-place">		
-			<div class="pulse-widget" data-sid="partners_widget_imagozru_2"></div>
-			<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script>
-			<br>
-		</div>
-
+		
 		<?php if ($data['video'] == "on") :?>
 			<div class = "main-headers">
 				<div class = "main-headers-circle"></div>
