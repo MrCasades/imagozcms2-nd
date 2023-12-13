@@ -105,6 +105,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<hr/>
 	</div>	
 	<?php endif; ?>
+
+	<?php if (!empty ($data['viewabout'])):?>
+	<div>
+		<input type="checkbox" name = "viewabout" id = "viewabout" value = "<?php htmlecho($data['viewabout']);?>" <?php if ($data['viewabout'] == "on") echo "checked";?>><label for = "viewabout">Показывать блок описания</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
 	
 	<?php if (!empty ($data['about'])):?>
 	<div>

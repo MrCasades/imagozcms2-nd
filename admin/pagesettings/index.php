@@ -126,6 +126,16 @@ if (isset($_GET['editform']))
 		{
 			$array["posts"] = "off";
 		}
+
+		if (!empty($_POST['viewabout']))
+		{
+			$array["viewabout"] = "on";
+		}
+
+		else
+		{
+			$array["viewabout"] = "off";
+		}
 	}
 
 		
