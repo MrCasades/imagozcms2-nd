@@ -136,6 +136,16 @@ if (isset($_GET['editform']))
 		{
 			$array["viewabout"] = "off";
 		}
+
+		if (!empty($_POST['shopcomponent']))
+		{
+			$array["shopcomponent"] = "on";
+		}
+
+		else
+		{
+			$array["shopcomponent"] = "off";
+		}
 	}
 
 		

@@ -99,6 +99,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>	
 	<?php endif; ?>
 
+	<?php if (!empty ($data['shopcomponent'])):?>
+	<div>
+		<input type="checkbox" name = "shopcomponent" id = "shopcomponent" value = "<?php htmlecho($data['shopcomponent']);?>" <?php if ($data['shopcomponent'] == "on") echo "checked";?>><label for = "shopcomponent">Показывать блок магазина</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
+
 	<?php if (!empty ($data['promotion'])):?>
 	<div>
 		<input type="checkbox" name = "promotion" id = "promotion" value = "<?php htmlecho($data['promotion']);?>" <?php if ($data['promotion'] == "on") echo "checked";?>><label for = "promotion">Показывать блок промоушена</label>

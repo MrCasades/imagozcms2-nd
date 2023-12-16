@@ -225,9 +225,11 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				<?php endforeach; ?>
 		</div>
 
-		<!-- <?php
-		/*Загрузка компонента магазина*/
-			//include_once MAIN_FILE . '/shopcomponent/shopcomponent.inc.php';?> -->
+		<?php if ($data['shopcomponent'] == "on") :?>
+			<?php
+				/*Загрузка компонента магазина*/
+				include_once MAIN_FILE . '/shopcomponent/shopcomponent.inc.php';?>
+		<?php endif; ?>
 
 		<!-- <div class = "main-headers">
 			<div class = "main-headers-circle"></div>
