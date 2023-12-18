@@ -231,34 +231,36 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				include_once MAIN_FILE . '/shopcomponent/shopcomponent.inc.php';?>
 		<?php endif; ?>
 
-		<!-- <div class = "main-headers">
-			<div class = "main-headers-circle"></div>
-			<div class = "main-headers-content">
-				<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Отражение дня</h2></a>
-				<div class = "main-headers-line"></div>
-				<div class = "sub-header"><?php htmlecho ($subRefDay); ?></div>
-			</div>
-		</div>		
-
-		<div class="gallery-place">
-			<div class="owl-carousel owl-theme">
-				<?php if (empty ($postsIMG))
-				{
-					echo '<p>Статьи отсутствуют</p>';
-				}
-				
-				else
-					
-				foreach ($postsIMG as $postIMG): ?>
-				<a href="./viewpost/?id=<?php htmlecho ($postIMG['id']); ?>">
-				<div class = "day-reflection" style="background-image: url(images/<?php htmlecho ($postIMG['imghead']); ?>)">
-					<div class = "post-top-1"><?php htmlecho ($postIMG['postdate']); ?></div>
-					<div class = "post-bottom-1"><?php htmlecho ($postIMG['posttitle']); ?></div>
+		<?php if ($data['refday'] == "on") :?>
+			<div class = "main-headers">
+				<div class = "main-headers-circle"></div>
+				<div class = "main-headers-content">
+					<a class = "main-headers-place" href="./viewallrecommpost/"><h2>Отражение дня</h2></a>
+					<div class = "main-headers-line"></div>
+					<div class = "sub-header"><?php htmlecho ($subRefDay); ?></div>
 				</div>
-				</a>
-			<?php endforeach; ?>
+			</div>		
+
+			<div class="gallery-place">
+				<div class="owl-carousel owl-theme">
+					<?php if (empty ($postsIMG))
+					{
+						echo '<p>Статьи отсутствуют</p>';
+					}
+					
+					else
+						
+					foreach ($postsIMG as $postIMG): ?>
+					<a href="./viewpost/?id=<?php htmlecho ($postIMG['id']); ?>">
+					<div class = "day-reflection" style="background-image: url(images/<?php htmlecho ($postIMG['imghead']); ?>)">
+						<div class = "post-top-1"><?php htmlecho ($postIMG['postdate']); ?></div>
+						<div class = "post-bottom-1"><?php htmlecho ($postIMG['posttitle']); ?></div>
+					</div>
+					</a>
+				<?php endforeach; ?>
+				</div>
 			</div>
-		</div> -->
+		<?php endif; ?>
 
 		<div class="m-content">
 			<!--Место для рекламы-->

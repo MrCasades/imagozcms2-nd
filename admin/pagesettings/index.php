@@ -146,6 +146,16 @@ if (isset($_GET['editform']))
 		{
 			$array["shopcomponent"] = "off";
 		}
+
+		if (!empty($_POST['refday']))
+		{
+			$array["refday"] = "on";
+		}
+
+		else
+		{
+			$array["refday"] = "off";
+		}
 	}
 
 		

@@ -106,6 +106,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>	
 	<?php endif; ?>
 
+	<?php if (!empty ($data['refday'])):?>
+	<div>
+		<input type="checkbox" name = "refday" id = "refday" value = "<?php htmlecho($data['refday']);?>" <?php if ($data['refday'] == "on") echo "checked";?>><label for = "refday">Показывать отражение дня</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
+
 	<?php if (!empty ($data['promotion'])):?>
 	<div>
 		<input type="checkbox" name = "promotion" id = "promotion" value = "<?php htmlecho($data['promotion']);?>" <?php if ($data['promotion'] == "on") echo "checked";?>><label for = "promotion">Показывать блок промоушена</label>

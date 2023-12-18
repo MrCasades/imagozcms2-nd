@@ -449,29 +449,31 @@ else
 
 /*Вывод изображения дня*/
 /*Команда SELECT*/
-
-try
+if ($data['refday'] == "on")
 {
-	$sql = 'SELECT p.id AS postid, post, posttitle, imghead, imgalt, postdate, authorname, c.id AS categoryid, categoryname 
-			FROM category c
-			INNER JOIN posts p ON idcategory = c.id
-			INNER JOIN author a ON idauthor = a.id			
-			WHERE categoryname = "Изображение дня" AND premoderation = "YES" AND zenpost = "NO" ORDER BY postdate DESC LIMIT 10';//Вверху самое последнее значение
-	$result = $pdo->query($sql);
-}
+	try
+	{
+		$sql = 'SELECT p.id AS postid, post, posttitle, imghead, imgalt, postdate, authorname, c.id AS categoryid, categoryname 
+				FROM category c
+				INNER JOIN posts p ON idcategory = c.id
+				INNER JOIN author a ON idauthor = a.id			
+				WHERE categoryname = "Изображение дня" AND premoderation = "YES" AND zenpost = "NO" ORDER BY postdate DESC LIMIT 10';//Вверху самое последнее значение
+		$result = $pdo->query($sql);
+	}
 
-catch (PDOException $e)
-{
-	$error = 'Ошибка вывода изображения дня';
-	include MAIN_FILE . '/includes/error.inc.php';
-}
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка вывода изображения дня';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
 
-/*Вывод результата в шаблон*/
-foreach ($result as $row)
-{
-	$postsIMG[] =  array ('id' => $row['postid'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
-						'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
-						'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	/*Вывод результата в шаблон*/
+	foreach ($result as $row)
+	{
+		$postsIMG[] =  array ('id' => $row['postid'], 'text' => $row['post'], 'posttitle' =>  $row['posttitle'], 'imghead' =>  $row['imghead'], 'imgalt' =>  $row['imgalt'],
+							'postdate' =>  $row['postdate'], 'authorname' =>  $row['authorname'], 
+							'categoryname' =>  $row['categoryname'], 'categoryid' => $row['categoryid']);
+	}
 }
 
 /*Вывод комментариев для главной страницы*/
