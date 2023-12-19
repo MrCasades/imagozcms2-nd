@@ -149,34 +149,29 @@ if (isset ($_POST['action']) && $_POST['action'] == 'X')
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	/*Команда SELECT*/
-	try
-	{
-		$sql = 'SELECT firstmessage FROM mainmessages WHERE id = :idmainmessage';
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':idmainmessage', $_POST['idmessage']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	}
+	// try
+	// {
+	// 	$sql = 'SELECT firstmessage FROM mainmessages WHERE id = :idmainmessage';
+	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+	// 	$s -> bindValue(':idmainmessage', $_POST['idmessage']);//отправка значения
+	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	// }
 
-	catch (PDOException $e)
-	{
-		$error = 'Ошибка выбора первого сообщения';
-		include MAIN_FILE . '/includes/error.inc.php';	
-	}
+	// catch (PDOException $e)
+	// {
+	// 	$error = 'Ошибка выбора первого сообщения';
+	// 	include MAIN_FILE . '/includes/error.inc.php';	
+	// }
 	
-	$row = $s -> fetch();
+	// $row = $s -> fetch();
 	
-	$firstMess = $row['firstmessage'];
+	// $firstMess = $row['firstmessage'];
 	
-	if ($firstMess == 'YES')
-	{
-		$title = 'Ошибка удаления сообщения';//Данные тега <title>
-		$headMain = 'Ошибка удаления сообщения';
-		$robots = 'noindex, nofollow';
-		$descr = '';
-		$error = '<p class="for-info-txt">Нельзя удалить первое сообщение в диалоге!</p>';// вывод сообщения об ошибке в переменой $e
-		include 'error.html.php';
-		exit();
-	}
+	// if ($firstMess == 'YES')
+	// {
+	// 	$error = '<p class="for-info-txt">Нельзя удалить первое сообщение в диалоге!</p>';
+	// 	include MAIN_FILE . '/includes/error.inc.php';
+	// }
 	
 	/*Команда SELECT*/
 	try
@@ -200,6 +195,7 @@ if (isset ($_POST['action']) && $_POST['action'] == 'X')
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$action = 'delete';
+	$idAuthor = $_POST['idauthor'];
 	$id = $row['id'];
 	$button = 'Удалить';
 	
@@ -224,6 +220,6 @@ if (isset ($_GET['delete']))
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
 	
-	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
+	header ('Location: //'.MAIN_URL.'/mainmessages/viewmainmessages/?id='.$_POST['idauthor']);//перенаправление обратно в контроллер index.php
 	exit();
 }	

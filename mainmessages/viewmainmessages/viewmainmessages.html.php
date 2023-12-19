@@ -57,6 +57,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 						$typeMessage = '<strong>Вы ответили </strong>';	
 						$deleteForm = '<div class="del-mess"><form action = "..\..\mainmessages\addupdmainmessage\ " method = "post">
 										<input type = "hidden" name = "idmessage" value = "'.$mainmessage['idmess'].'">
+										<input type = "hidden" name = "idauthor" value = "'.$mainmessage['idto'].'">
 						<input type = "submit" name = "action" value = "X" class="btn_1">
 		      		</form></div>';
 						$accountLink = '';
