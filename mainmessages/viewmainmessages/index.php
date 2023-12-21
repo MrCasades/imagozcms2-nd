@@ -8,12 +8,6 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-$title = 'Диалог';//Данные тега <title>
-$headMain = 'Диалог';
-$robots = 'noindex, nofollow';
-$descr = '';
-$scriptJScode = '<script src="script.js"></script>';//добавить код JS
-
 /*Загрузка формы входа*/
 if (loggedIn())
 {
@@ -174,6 +168,12 @@ if (isset($_GET['id']))
 			include MAIN_FILE . '/includes/error.inc.php';
 		}
 	}
+
+	$title = 'Диалог';//Данные тега <title>
+	$headMain = 'Диалог c ';
+	$robots = 'noindex, nofollow';
+	$descr = '';
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	include 'viewmainmessages.html.php';
 	exit();
