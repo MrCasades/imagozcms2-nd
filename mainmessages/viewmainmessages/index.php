@@ -24,7 +24,6 @@ else
 
 $selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 
-$padgeTitle = 'Новая категория';// Переменные для формы "Категория"
 $action = 'addform';
 $button = 'Ответить';
 $scriptJScode = '<script src="script.js"></script>';//добавить код JS
