@@ -144,6 +144,8 @@ if (isset($_GET['id']))
 		}
 	}
 
+	/*Имя для заголовка диалога*/
+
 	try
 	{
 		$sql = 'SELECT authorname FROM author WHERE id = '.$toDialog;
