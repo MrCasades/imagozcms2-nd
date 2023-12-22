@@ -86,32 +86,7 @@ if (isset($_GET['addform']))//Если есть переменная addform в�
 	header ('Location: ../viewmainmessages/?id='.$_SESSION['toDialog'].'#bottom');//перенаправление обратно в контроллер index.php
 	exit();
 }
-
-/*Удаление из таблици category*/
-
-// if (isset ($_POST['action']) && ($_POST['action'] == 'Del'))
-// {
-// 	/*Подключение к базе данных*/
-// 	include MAIN_FILE . '/includes/db.inc.php';
 	
-// 	try
-	
-// 	{
-// 		$sql = 'DELETE FROM category WHERE id = :idcategory';// - псевдопеременная получающая значение из формы
-// 		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-// 		$s -> bindValue(':idcategory', $_POST['idcategory']);//отправка значения
-// 		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-// 	}
-// 	catch (PDOException $e)
-// 	{
-// 		$error = 'Ошибка удаления';
-// 		include MAIN_FILE . '/includes/error.inc.php';
-// 	}
-	
-// 	header ('Location: .');//перенаправление обратно в контроллер index.php
-// 	exit();
-// }	
-
 /*Вывод диалога*/
 if (isset($_GET['id']))
 {
@@ -169,8 +144,25 @@ if (isset($_GET['id']))
 		}
 	}
 
+	try
+	{
+		$sql = 'SELECT authorname FROM author WHERE id = '.$toDialog;
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+		
+		$row = $s -> fetch();
+
+		$dialogAuthor = $row['authorname'];
+	}
+	
+	catch (PDOException $e)
+	{	
+		$error = 'Ошибка добавления сообщения';
+		include MAIN_FILE . '/includes/error.inc.php';	
+	}
+
 	$title = 'Диалог';//Данные тега <title>
-	$headMain = 'Диалог c ';
+	$headMain = 'Диалог c '.'<a href="../../account/?id='.$toDialog.'">'.$dialogAuthor.'</a>';
 	$robots = 'noindex, nofollow';
 	$descr = '';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
