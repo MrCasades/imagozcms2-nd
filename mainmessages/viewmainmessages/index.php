@@ -9,83 +9,19 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 require_once MAIN_FILE . '/includes/access.inc.php';
 
 /*Загрузка формы входа*/
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+loggedIn();
 
-else
+
+if (!loggedIn())
 {
+	$title = 'Ошибка доступа';//Данные тега <title>
+	$headMain = 'Ошибка доступа';
+	$robots = 'noindex, nofollow';
+	$descr = '';
 	include MAIN_FILE .'/admin/login.html.php';
 	exit();
 }
 
-/*Возвращение id автора для вызова функции изменения пароля*/
-
-$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
-
-$action = 'addform';
-$button = 'Ответить';
-$scriptJScode = '<script src="script.js"></script>';//добавить код JS
-	
-/*Имя и текст для формы*/
-$authorPost = authorLogin($_SESSION['email'], $_SESSION['password']);
-$text = '';
-
-if (isset($_GET['addform']))//Если есть переменная addform выводится форма
-{
-	/*Загрузка функций для формы входа*/
-	require_once MAIN_FILE . '/includes/access.inc.php';
-		
-	/*Подключение к базе данных*/
-	include MAIN_FILE . '/includes/db.inc.php';
-
-	/*Подключение функций*/
-	include_once MAIN_FILE . '/includes/func.inc.php';
-
-	$fileNameScript = 'formess-'. time();//имя файла новости/статьи
-	$filePathScript = 'formessages/';//папка с изображениями для сообщений
-		
-	//Загрузка файла изображения
-	$fileName = uploadImgHeadFull ($fileNameScript, $filePathScript);
-	
-	/*INSERT - добавление информации в базу данных и списание средств со счёта*/
-	
-	try
-	{
-		$sql = 'INSERT INTO mainmessages SET 
-			mainmessage = :mainmessage,
-			mainmessagedate = SYSDATE(),
-			imghead = '.'"'.$fileName.'"'.', '.
-			'idfrom = '.$selectedAuthor.',
-			idto = '.$_SESSION['toDialog'];
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> bindValue(':mainmessage', $_POST['text']);//отправка значения
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL	
-		
-		$idmessage_ind = $pdo->lastInsertId();//метод возвращает число, которое MySQL назначил последней автомнкрементной записи (INSERT INTO mainmessages - в данном случае)
-		
-		$sql = 'SELECT count(idfrom) AS idfrom_count, count(idto) AS idto_count FROM mainmessages 
-																				WHERE idfrom = '.$selectedAuthor.' AND idto = '.$_SESSION['toDialog'];
-		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		
-		$row = $s -> fetch();
-		
-		$idFromCount = $row['idfrom_count'];
-		$idtoCount = $row['idto_count'];
-	}
-	
-	catch (PDOException $e)
-	{	
-		$error = 'Ошибка добавления сообщения';
-		include MAIN_FILE . '/includes/error.inc.php';	
-	}
-			
-	header ('Location: ../viewmainmessages/?id='.$_SESSION['toDialog'].'#bottom');//перенаправление обратно в контроллер index.php
-	exit();
-}
-	
 /*Вывод диалога*/
 if (isset($_GET['id']))
 {
@@ -94,10 +30,6 @@ if (isset($_GET['id']))
 	$selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
 	
 	$toDialog = $_GET['id'];//id первого сообщения
-	
-	@session_start();//Открытие сессии для сохранения id автора
-	
-	$_SESSION['toDialog'] = $toDialog;
 	
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -166,6 +98,8 @@ if (isset($_GET['id']))
 	$headMain = 'Диалог c '.'<a href="../../account/?id='.$toDialog.'">'.$dialogAuthor.'</a>';
 	$robots = 'noindex, nofollow';
 	$descr = '';
+	$text = '';
+	$button = 'Ответить';
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 	
 	include 'viewmainmessages.html.php';
