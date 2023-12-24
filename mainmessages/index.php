@@ -11,22 +11,18 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 /*Загрузка функции вывода диалогов*/
 include_once 'commondialogsfunc.inc.php';
 
-  if (loggedIn())
-    {
-        /*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-    }
+loggedIn();
 
-    else
-    {
-        $title = 'Ошибка доступа';//Данные тега <title>
-        $headMain = 'Ошибка доступа';
-        $robots = 'noindex, nofollow';
-        $descr = '';
-        $error = 'Доступ запрещен';
-        include '//'.MAIN_URL.'/admin/accessfail.html.php';
-        exit();
-    }
-
+if (!loggedIn())
+{
+    $title = 'Ошибка доступа';//Данные тега <title>
+    $headMain = 'Ошибка доступа';
+    $robots = 'noindex, nofollow';
+    $descr = '';
+    $error = 'Доступ запрещен';
+    include MAIN_FILE.'/admin/accessfail.html.php';
+    exit();
+}
 
 /*Возвращение id автора*/
 

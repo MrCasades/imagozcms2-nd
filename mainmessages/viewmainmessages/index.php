@@ -57,24 +57,27 @@ if (isset($_GET['id']))
 		$mainmessages[] =  array ('mainmessage' => $row['mainmessage'], 'idmess' => $row['mainmessageid'], 'mainmessagedate' => $row['mainmessagedate'], 'imghead' => $row['imghead'],
 								 'authorfrom' => $row['afr'], 'authorto' => $row['ato'], 'idfrom' => $row['idfr'], 'idto' => $row['idt'],);
 	}
-	
-	if ($row['ato'] != $selectedAuthor)
-	{
-		/*Обновить статус непрочитанных сообщений*/
-		try
-		{
-			$sql = 'UPDATE mainmessages SET unread = "NO"		
-			WHERE idto = '.$selectedAuthor.' AND idfrom = '.$toDialog;
-			$result = $pdo->query($sql);
-		}
 
-		catch (PDOException $e)
+	if (!empty($row))
+	{
+		if ($row['ato'] != $selectedAuthor)
 		{
-			$error = 'Ошибка обновления статуса непрочитанных сообщений';
-			include MAIN_FILE . '/includes/error.inc.php';
+			/*Обновить статус непрочитанных сообщений*/
+			try
+			{
+				$sql = 'UPDATE mainmessages SET unread = "NO"		
+				WHERE idto = '.$selectedAuthor.' AND idfrom = '.$toDialog;
+				$result = $pdo->query($sql);
+			}
+	
+			catch (PDOException $e)
+			{
+				$error = 'Ошибка обновления статуса непрочитанных сообщений';
+				include MAIN_FILE . '/includes/error.inc.php';
+			}
 		}
 	}
-
+	
 	/*Имя для заголовка диалога*/
 
 	try
