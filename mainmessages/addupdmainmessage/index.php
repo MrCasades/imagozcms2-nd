@@ -5,12 +5,10 @@ include_once '../../includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+/*Загрузка формы входа*/
+loggedIn();
 
-else
+if (!loggedIn())
 {
 	$error = 'Для того, чтобы отправлять сообщения пользователю Вам нужно <a href="//'.MAIN_URL.'/admin/registration/?log">авторизироваться</a> в системе или пройти 
 						<a href="//'.MAIN_URL.'/admin/registration/?reg">регистрацию</a>!';
