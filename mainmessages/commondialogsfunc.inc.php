@@ -8,22 +8,6 @@ function commonDialogsFunc($selectedAuthor)
     $GLOBALS['robots'] = 'noindex, follow';
     $GLOBALS['descr'] = 'В данном разделе отображаются сообщения пользователей';
         
-    // if (loggedIn())
-    // {
-    //     /*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-    // }
-
-    // else
-    // {
-    //     $title = 'Ошибка доступа';//Данные тега <title>
-    //     $headMain = 'Ошибка доступа';
-    //     $robots = 'noindex, nofollow';
-    //     $descr = '';
-    //     $error = 'Доступ запрещен';
-    //     include '//'.MAIN_URL.'/admin/accessfail.html.php';
-    //     exit();
-    // }
-
     /*Вывод имён пользователей для диалогов*/
                 
     /*Подключение к базе данных*/
