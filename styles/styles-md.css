@@ -340,6 +340,12 @@ details{
     border-radius: 10px;
 }
 
+.for-dialogs-mess .noava{
+    font-size: 3rem;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
 .dialog-mess-pl{
     display: flex;
 }

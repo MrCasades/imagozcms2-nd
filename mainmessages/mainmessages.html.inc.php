@@ -18,7 +18,12 @@
 			  	<?php if ($dialog['unr'] > 0):?>
 					<div class="unr-mess-count"><?php echo $dialog['unr'];?></div>
 			 	<?php endif;?>
-			  <img src="../avatars/<?php echo $dialog['ava'];?>" alt="<?php echo $dialog['authorname'];?>">&nbsp;<span class="unr-mess-txt"><?php echo $dialog['authorname'];?></span>  		
+				 <?php if ($dialog['ava'] !== ''): ?>
+						<img src="../avatars/<?php echo $dialog['ava'];?>" alt="<?php echo $dialog['authorname'];?>"> 
+					<?php else: ?>
+						<i class="noava fa fa-user-circle-o" aria-hidden="true"></i> 
+					<?php endif; ?>
+			  &nbsp;<span class="unr-mess-txt"><?php echo $dialog['authorname'];?></span>  		
 			</div>
 			</a>
 			<form id="dd_form_<?php echo $dialog['idauth'];?>">
