@@ -737,7 +737,8 @@ function viewVideoInArticle ($text)
 	
 	$element_1 = "/http(s)?:\/\/youtu\.be\/([^\40\t\r\n\<]+)/i"; //искомый элемент
 	$element_2 = "#(https?)://www\.youtube\.com\/watch\?v=([-_a-z0-9]{11})#i"; //искомый элемент
-	$element_3 = 'width="646"';//для виджета Steam
+	$element_3 = "#(https?)://www\.youtube\.com\/shorts\/([A-Za-z0-9_-]{11})#i"; //искомый элемент
+	$element_4 = 'width="646"';//для виджета Steam
 
 	$replace_1 = '<iframe width="85%" height="400" src="https://www.youtube.com/embed/${2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; //на что меняем
 	$replace_2 = 'width="85%"';
@@ -746,7 +747,8 @@ function viewVideoInArticle ($text)
 	
 	$text = preg_replace($element_1, $replace_1, $text);
 	$text = preg_replace($element_2, $replace_1, $text);
-	$text = str_replace($element_3, $replace_2, $text);
+	$text = preg_replace($element_3, $replace_1, $text);
+	$text = str_replace($element_4, $replace_2, $text);
 
 	return $text;
 	
