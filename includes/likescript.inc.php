@@ -4,8 +4,7 @@
         const url = '//<?php echo MAIN_URL;?>/includes/addlike.inc.php'
 
         //Добавить лайк / дизлайк для комментария
-        
-        
+               
         $('#like_<?php echo $comment['id']; ?>').click(function(e) {
 
             $('#type_like_<?php echo $comment['id'];?>[name="type-like"]').val('like');
