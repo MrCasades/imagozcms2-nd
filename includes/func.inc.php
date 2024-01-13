@@ -480,7 +480,6 @@ function defaultRegFormData()
 	$GLOBALS ['password2'] = '';
 	$GLOBALS ['accountinfo'] = '';
 	$GLOBALS ['button'] = 'Регистрация';
-	//$errLog = '';
 	$GLOBALS ['scriptJScode'] = '<script src="script.js"></script>';//добавить код JS
 	
 	$GLOBALS ['reCapchaAPI'] = '<script src="https://www.google.com/recaptcha/api.js"></script>'; //для ReCapcha
