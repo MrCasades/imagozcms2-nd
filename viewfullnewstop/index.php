@@ -5,12 +5,12 @@ include_once '../includes/path.inc.php';
 /*Загрузка общих переменных*/
 include_once MAIN_FILE . '/includes/commonvar.inc.php';
 
+/*Загрузка функций для формы входа*/
+require_once MAIN_FILE . '/includes/access.inc.php';
+
 /*Загрузка настроек раздела*/
 $blockFolder = 'viewfullnewstop';
 include_once MAIN_FILE . '/includes/blocksettings/blockset.inc.php';
-	
-/*Загрузка функций для формы входа*/
-require_once MAIN_FILE . '/includes/access.inc.php';
 
 /*Определение нахождения пользователя в системе*/
 loggedIn();
@@ -32,7 +32,7 @@ try
 	$sql = 'SELECT newsblock.id AS newsid, news, author.id AS authorid, newstitle, imghead, imgalt, newsdate, authorname, viewcount, averagenumber, category.id AS categoryid, categoryname FROM newsblock 
 			INNER JOIN author ON idauthor = author.id 
 			INNER JOIN category ON idcategory = category.id 
-			WHERE premoderation = "YES" AND votecount > 1 ORDER BY averagenumber DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
+			WHERE premoderation = "YES" AND votecount > 1 ORDER BY averagenumber DESC, votecount DESC LIMIT '.$shift.' ,'.$onPage;//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 

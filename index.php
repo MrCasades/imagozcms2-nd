@@ -318,7 +318,7 @@ foreach ($result as $row)
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT id, newstitle, viewcount, averagenumber, imghead, newsdate FROM newsblock WHERE premoderation = "YES" AND votecount > 1  ORDER BY averagenumber DESC LIMIT 3';//Вверху самое последнее значение
+	$sql = 'SELECT id, newstitle, viewcount, averagenumber, imghead, newsdate FROM newsblock WHERE premoderation = "YES" AND votecount > 1  ORDER BY averagenumber DESC, votecount DESC LIMIT 3';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -339,7 +339,7 @@ foreach ($result as $row)
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT id, posttitle, viewcount, averagenumber, imghead, postdate FROM posts WHERE premoderation = "YES" AND zenpost = "NO" AND votecount > 1 ORDER BY averagenumber DESC LIMIT 3';//Вверху самое последнее значение
+	$sql = 'SELECT id, posttitle, viewcount, averagenumber, imghead, postdate FROM posts WHERE premoderation = "YES" AND zenpost = "NO" AND votecount > 1 ORDER BY averagenumber DESC, votecount DESC LIMIT 3';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 
@@ -360,7 +360,7 @@ foreach ($result as $row)
 /*Команда SELECT*/
 try
 {
-	$sql = 'SELECT id, promotiontitle, viewcount, averagenumber, imghead, promotiondate FROM promotion WHERE premoderation = "YES" AND votecount > 1 ORDER BY averagenumber DESC LIMIT 3';//Вверху самое последнее значение
+	$sql = 'SELECT id, promotiontitle, viewcount, averagenumber, imghead, promotiondate FROM promotion WHERE premoderation = "YES" AND votecount > 1 ORDER BY averagenumber DESC, votecount DESC LIMIT 3';//Вверху самое последнее значение
 	$result = $pdo->query($sql);
 }
 

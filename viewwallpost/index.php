@@ -23,21 +23,21 @@ if (isset ($_GET['id']))
 	/*Формируем URL для возврата */
 	if (!empty($_GET['idart']) && $_GET['idart'] !== '')
 	{
-		if ($_GET['typeart'] === 'viewnews' )
+		if ($_GET['typeart'] === 'news' )
 		{
 			$select = 'SELECT newstitle as title FROM newsblock WHERE id = ';
 			$URL = '//'.MAIN_URL.'/viewnews/?id='.$_GET['idart'];
 			$linkText = 'К новости';
 		}
 
-		elseif ($_GET['typeart'] === 'viewpost' )
+		elseif ($_GET['typeart'] === 'post' )
 		{
 			$select = 'SELECT posttitle as title FROM posts WHERE id = ';
 			$URL = '//'.MAIN_URL.'/viewpost/?id='.$_GET['idart'];
 			$linkText = 'К статье';
 		} 
 
-		elseif ($_GET['typeart'] === 'viewpromotion' )
+		elseif ($_GET['typeart'] === 'promotion' )
 		{
 			$select = 'SELECT promotiontitle as title FROM promotion WHERE id = ';
 			$URL = '//'.MAIN_URL.'/viewpromotion/?id='.$_GET['idart'];
@@ -87,7 +87,7 @@ if (isset ($_GET['id']))
 
 		catch (PDOException $e)
 		{
-			$error = 'Ошибка вывода записи';
+			$error = 'Ошибка вывода записи 1';
 			include MAIN_FILE . '/includes/error.inc.php';
 		}
 
