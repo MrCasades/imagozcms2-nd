@@ -39,7 +39,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php if ($pubFolder !== 'publication'):?>
 					<a href="../account/?id=<?php echo $authorId;?>"><?php echo $nameAuthor;?></a>
 				<?php else: ?>
-					<a href="//<?php echo MAIN_URL;?>/blog/?id=<?php echo $blogId;?>"><?php echo $blogTitle;?></a>
+					<a href="//<?php echo MAIN_URL;?>/blog/?id=<?php echo $blogId;?>"><?php echo $blogTitle;?></a> <?php echo $subscrBtn;?>
 				<?php endif;?>
 				<br><?php echo $date;?>
 				<p><?php echo $delAndUpd; ?></p>
