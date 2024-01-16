@@ -107,47 +107,7 @@ if (isset ($_GET['id']))
 
 	if (isset($_SESSION['loggIn']))
 	{
-		/*Команда SELECT*/
-		try
-		{
-			$sql = 'SELECT 
-						idauthor
-					FROM subscribers
-					WHERE idblog = :blogid and idauthor = :authorid';
-			$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-			$s -> bindValue(':blogid', $idBlog);//отправка значения
-			$s -> bindValue(':authorid', $selectedAuthor);//отправка значения
-			$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-		}
-
-		catch (PDOException $e)
-		{
-			$error = 'Ошибка вывода информации о блоге';
-			include MAIN_FILE . '/includes/error.inc.php';
-		}
-
-		$row = $s -> fetch();
-
-		//$isSubscribed = $row['idauthor'];
-		if (!empty($row))
-		{
-			$subskribe = '<form action="" metod = "post" id = "ajax_form_subs">
-								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
-								<input type = "hidden" name = "idauthor" value = "'.$selectedAuthor.'">
-								<input type = "hidden" id = "val_subs" name = "val_subs" value = "delsubs">
-								<button id ="btn_subs" title="Отписаться" class="btn_3 addit-btn" value = "Отписаться">Отписаться</button> 
-							</form>';
-		}
-
-		else
-		{
-			$subskribe = '<form action="" metod = "post" id = "ajax_form_subs">
-								<input type = "hidden" name = "idblog" value = "'.$idBlog.'">
-								<input type = "hidden" name = "idauthor" value = "'.$selectedAuthor.'">
-								<input type = "hidden" id = "val_subs" name = "val_subs" value = "addsubs">
-								<button id ="btn_subs" title="Отписаться" class="btn_4 addit-btn" value = "Подписаться">Подписаться</button> 
-							</form>';
-		}
+		$subskribe = subscrButton ($idBlog, $selectedAuthor);
 	}
 
 	else
