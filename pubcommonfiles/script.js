@@ -76,8 +76,13 @@ $( document ).ready(function() {
 	//Подписка-отписка
 	$("#btn_subs").click(
 		function(){
+			let forTest = '';
+
+			if (window.location.hostname == 'localhost')
+				forTest = '/imagozcms2-nd';
+
 			$("#btn_subs").attr('class', ' ');
-			sendAjaxForm('result_form_subs', 'ajax_form_subs', '../pubcommonfiles/subscrib.inc.php');
+			sendAjaxForm('result_form_subs', 'ajax_form_subs', '//' + window.location.hostname + forTest + '/pubcommonfiles/subscrib.inc.php');
 			
 			if ($("#val_subs").attr('value') === 'delsubs'){
 				$("#val_subs").attr('value', 'addsubs');

@@ -326,13 +326,17 @@ if (isset ($_GET['id']))
 	}	
 
 	/*Подписаться на блог*/
+	/*Определение подписки на блог */
+
 	if (isset($_SESSION['loggIn']))
-		$subscrBtn = "<form action = '//".MAIN_URL."/admin/addupdblogpublication/' method = 'post'>
-							<input type = 'hidden' name = 'id' value = '".$idPublication."'>
-							<button title='Подписаться' class='btn_1' name = 'action' value = 'Upd'>Подписаться</button>							
-						</form>";
+	{
+		$subskribe = subscrButton ($idBlog, $selectedAuthor);
+	}
+
 	else
-		$subscrBtn = '';
+	{
+		$subskribe = '';
+	}
 	
 	/*Вывод кнопки "Рекомендовать статью"*/
 	// if (isset($_SESSION['loggIn']) && ((userRole('Администратор')) || (userRole('Автор')) || (userRole('Рекламодатель'))))
