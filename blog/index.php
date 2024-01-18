@@ -36,8 +36,7 @@ if (isset ($_GET['id']))
 	try
 	{
 		$sql = 'SELECT 
-					b.id as blogid
-				
+					b.id as blogid			
 					,b.description
 					,b.avatar
 					,b.indexing
@@ -78,25 +77,6 @@ if (isset ($_GET['id']))
 		header ('Location: ../page-not-found/');//перенаправление обратно в контроллер index.php
 		exit();	
 	}
-
-	/*Определение количества статей*/
-	// try
-	// {
-	// 	$sql = "SELECT count(id) AS all_articles FROM posts WHERE premoderation = 'YES' AND zenpost = 'NO'";
-	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	// }
-
-	// catch (PDOException $e)
-	// {
-	// 	$error = 'Ошибка подсчёта статей';
-	// 	include MAIN_FILE . '/includes/error.inc.php';
-	// }
-		
-	// $row = $s -> fetch();
-		
-	// $countPosts = $row["all_articles"];
-	// $pagesCount = ceil($countPosts / $onPage);
 
 	$selectedAuthor = (isset($_SESSION['loggIn'])) ? (int)(authorID($_SESSION['email'], $_SESSION['password'])) : '';//id автора
 
