@@ -5,6 +5,12 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка header*/
 include_once MAIN_FILE . '/header.inc.php';?>
 
+<div class = "main-headers">
+	<div class = "main-headers-content">
+    	<h2><?php htmlecho ($headMain); ?>
+	</div>
+</div>
+
 <div class="m-content task-pl task-txt">
 	<h3 class="for-info-txt"><?php htmlecho($premodYes); ?> "<?php htmlecho($posttitle); ?>"?</h3>
 		<form action = "?<?php htmlecho($action); ?> " method = "post">
