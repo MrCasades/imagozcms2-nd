@@ -13,18 +13,19 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 </div>
 
-	  <div class = "maincont"> 
-	   <div class = "post" align = "center">
-		  <p><?php htmlecho($taskYes); ?> "<?php htmlecho($tasktitle); ?>"?</p>
-		  <p>
-		   <form action = "?<?php htmlecho($action); ?> " method = "post">
-		     <input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
-		     <input type = "submit" name = "delete" class="btn btn-primary btn-sm" value = "<?php htmlecho($button); ?>">
-	       </form>
-	      </p>
-	      <p><a href="#" onclick="history.back();" class="btn btn-primary btn-sm">Назад</a></p>
-	   </div>
-	</div>	
+<div class = "error-pl">
+	<p class="for-info-txt">
+		<?php htmlecho($taskYes); ?> "<?php htmlecho($tasktitle); ?>"?
+	</p>
+	<p>
+		<form action = "?<?php htmlecho($action); ?> " method = "post">
+		    <input type = "hidden" name = "id" value = "<?php htmlecho($id); ?>">
+		    <input type = "submit" name = "delete" class="btn btn-primary btn-sm" value = "<?php htmlecho($button); ?>">
+	    </form>
+	</p>
+	<p><a href="#" onclick="history.back();" class="btn btn-primary btn-sm">Назад</a></p>
+</div>
+
 <?php 
 /*Загрузка footer*/
 include_once MAIN_FILE . '/footer.inc.php';?>
