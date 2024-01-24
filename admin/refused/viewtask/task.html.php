@@ -27,15 +27,12 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 		<div class = "maincont_for_window">
 		<h1><?php htmlecho ($headMain); ?> </h1>
 		<div class = "post">
-		 <?php foreach ($tasks as $task): ?> 	  
-			<div  align="justify">
-			
+		 <?php foreach ($tasks as $task): ?> 	  		
 				<div class = "posttitle">
 				  <?php echo ('Дата выдачи: '.$task['taskdate']. ' | Задание выдал: <a href="../../../account/?id='.$task['idauthor'].'" style="color: white" >'.$task['authorname']).'</a>';?>
 					<p>Тип: <?php echo $task['tasktypename'];?> | Для ранга не ниже: <?php echo $task['rangname'];?></p>
 				</div>	
-					<p><?php echomarkdown ($task['text']); ?></p>
-			</div>			
+					<p><?php echomarkdown ($task['text']); ?></p>	
 		 <?php endforeach; ?>
 		</div>	
 	  </div>
