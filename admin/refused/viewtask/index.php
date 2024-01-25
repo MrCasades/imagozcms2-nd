@@ -31,22 +31,19 @@ if ((!userRole('Администратор')) && (!userRole('Автор')))
 if (isset ($_GET['id']))
 {
 	$idTask = $_GET['id'];
-	
-	@session_start();//Открытие сессии для сохранения id статьи
-	
-	$_SESSION['idtask'] = $idTask;
-	$select = 'SELECT task.id AS taskid, description, author.id AS authorid, tasktitle, taskdate, authorname, task.idrang AS rangid, tasktype.id AS tasktypeid, rangname, tasktypename FROM task 
-			   INNER JOIN author ON idcreator = author.id 
-			   INNER JOIN tasktype ON idtasktype = tasktype.id  
-			   INNER JOIN rang ON task.idrang = rang.id
-			   WHERE task.id = ';
 
 	include MAIN_FILE . '/includes/db.inc.php';
 	
 	try
 	{
-		$sql = $select.$idTask;
-		$result = $pdo->query($sql);
+		$sql = 'SELECT task.id AS taskid, description, author.id AS authorid, tasktitle, taskdate, authorname, task.idrang AS rangid, tasktype.id AS tasktypeid, rangname, tasktypename FROM task 
+					INNER JOIN author ON idcreator = author.id 
+					INNER JOIN tasktype ON idtasktype = tasktype.id  
+					INNER JOIN rang ON task.idrang = rang.id
+				WHERE task.id = :idtask';
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> bindValue(':idtask', $idTask);//отправка значения
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
 	}
 	
 	catch (PDOException $e)
@@ -54,15 +51,20 @@ if (isset ($_GET['id']))
 		$error = 'Ошибка вывода содержимого задания';
 		include MAIN_FILE . '/includes/error.inc.php';
 	}
+	
+	$row = $s -> fetch();
 
-	/*Вывод результата в шаблон*/
-	foreach ($result as $row)
-	{
-		$tasks[] =  array ('id' => $row['taskid'], 'idauthor' => $row['authorid'], 'text' => $row['description'], 'tasktitle' =>  $row['tasktitle'],
-							'taskdate' =>  $row['taskdate'], 'authorname' =>  $row['authorname'], 
-							'tasktypename' =>  $row['tasktypename'], 'tasktypeid' => $row['tasktypeid'], 'idrang' => $row['rangid'], 'rangname' => $row['rangname']);
-	}	
-
+	$taskId = $row['taskid'];
+	$authorId = $row['authorid'];
+	$text = $row['description'];
+	$date = $row['taskdate'];
+	$nameAuthor = $row['authorname'];
+	$taskTitle = $row['tasktitle'];
+	$tasktypeName = $row['tasktypename'];
+	$tasktypeId = $row['tasktypeid'];
+	$taskRangName = $row['rangname'];
+	$taskRang = $row['rangid'];
+		
 	$taskRang = $row['rangid'];
 	$title = 'Техническое задание #'.$row['taskid'].' "'.$row['tasktitle'].'"' ;//Данные тега <title>
 	$headMain = 'Техническое задание #'.$row['taskid'].' "'.$row['tasktitle'].'"' ;	
