@@ -62,9 +62,7 @@ if (isset ($_GET['id']))
 		
 	$blogId = $row['blogid'];
 	$authorId = $row['idauthor'];
-	//$blogTitle = $row['title'];
 	$blogDescr = $row['description'];
-	//$imgHead = $row['imghead'];
 	$avatar = $row['avatar'];
 	$indexing = $row['indexing'];
 	$nameAuthor = $row['authorname'];

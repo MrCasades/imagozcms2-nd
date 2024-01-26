@@ -29,9 +29,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Создать блог')//
 	$action = 'addform';
 	$blogtitle = '';
 	$description = '';
-	// $idtasktype = '';
-	// $idrang = 1;
-	// $id = '';
 	$button = 'Создать блог';
 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
@@ -89,8 +86,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Настройка')
 	$action = 'editform';
 	$blogtitle = $row['title'];
 	$description = $row['description'];
-	// $idtasktype = $row['idtasktype'];
-	// $idrang = $row['idrang'];
 	$id = $row['blogid'];
 	$button = 'Обновить информацию';
 	$errorForm = '';
