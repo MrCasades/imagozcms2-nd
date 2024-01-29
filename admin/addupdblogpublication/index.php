@@ -8,12 +8,7 @@ require_once MAIN_FILE . '/includes/access.inc.php';
 $pubFolder = 'addupdblogpublication'; //Папка скрипта
 
 /*Определение нахождения пользователя в системе*/
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
-
-else
+if (!loggedIn())
 {
 	include '../login.html.php';
 	exit();
@@ -79,102 +74,6 @@ if (isset ($_POST['action']) && $_POST['action'] == 'Добавить стать
 		
 	include '../commonfiles/addupdform.html.php';
 	exit();
-	// /*Подключение к базе данных*/
-	// include MAIN_FILE . '/includes/db.inc.php';
-	
-	// /*Команда SELECT выбор цены промоушена*/
-	// try
-	// {
-	// 	$sql = 'SELECT promotionprice FROM promotionprice WHERE id = 1';
-	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	// }
-
-	// catch (PDOException $e)
-	// {
-	// 	$error = 'Ошибка выбора цены промоушена';
-	// 	include MAIN_FILE . '/includes/error.inc.php';
-	// }
-	
-	// $row = $s -> fetch();
-	
-	// $promotionPrice = $row['promotionprice'];
-	
-	// /*Возвращение id автора*/
-	
-	// $selectedAuthor = (int)(authorID($_SESSION['email'], $_SESSION['password']));//id автора
-	
-	// /*Команда SELECT выбор счёа автора для сравнения*/
-	// try
-	// {
-	// 	$sql = 'SELECT score, authorpaymentstatus FROM author WHERE id = '.$selectedAuthor;
-	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	// }
-
-	// catch (PDOException $e)
-	// {
-	// 	$error = 'Ошибка выбора счёта и статуса премодерации';
-	// 	include MAIN_FILE . '/includes/error.inc.php';
-	// }
-	
-	// $row = $s -> fetch();
-	
-	// $score = $row['score'];
-	// $paymentStatus = $row['authorpaymentstatus'];
-	
-	// if ($promotionPrice > $score)//Если на счету нет достаточной суммы для написания статьи.
-	// {
-	// 	$title = 'Ошибка доступа';//Данные тега <title>
-	// 	$headMain = 'Ошибка доступа';
-	// 	$robots = 'noindex, nofollow';
-	// 	$descr = '';
-	// 	$error = 'Для написания рекламной статьи на Вашем счету должно быть сумма больше или равная '.$promotionPrice.'. Пополните счёт в своём профиле!';
-			
-	// 	include '../accessfail.html.php';
-	// 	exit();
-	// }
-	
-	// elseif ($paymentStatus == 'NO')//Если ранее была сформирована заявка на вывод средств.
-	// {
-	// 	$title = 'Ошибка доступа';//Данные тега <title>
-	// 	$headMain = 'Ошибка доступа';
-	// 	$robots = 'noindex, nofollow';
-	// 	$descr = '';
-	// 	$error = 'Вы ранее сформировали заявку на вывод средств. Пока она не будет подтверждена, Вы не сможете писать рекламные статьи!';
-		
-	// 	include '../accessfail.html.php';
-	// 	exit();
-	// }
-	
-	// else
-	// {
-	
-	// 	$title = 'Добавить новую статью';//Данные тега <title>
-	// 	$headMain = 'Добавить новую статью';
-	// 	$robots = 'noindex, nofollow';
-	// 	$descr = '';
-	// 	$action = 'addform';
-	// 	$articletitle = '';
-	// 	$translittitle = '';
-	// 	$description = '';
-	// 	$text = '';
-	// 	$idauthor = '';
-	// 	$videoyoutube = '';
-	// 	$idcategory = '';
-	// 	$id = '';
-	// 	$www = '';
-	// 	$button = 'Добавить статью';
-	// 	$errorForm = '';
-	// 	$authorPost = authorLogin ($_SESSION['email'], $_SESSION['password']);//возвращает имя автора
-	// 	$scriptJScode = '<script src="../commonfiles/addarticlescripts-md.js"></script>';//добавить код JS
-
-	// 	addListsInForms();
-		
-	// 	include '../commonfiles/addupdform.html.php';
-	// 	exit();
-	// }
-	
 }
 
 /*Обновление информации о статье*/
@@ -255,46 +154,8 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'Upd'|| $_POST['action'] ==
 		$authors_1[] = array('authorname' => $row['authorname']);
 	}
 	
-	$authorPost = $row['authorname'];//возвращает имя автора00
-	
-	/*Список рубрик*/
-	// try
-	// {
-	// 	$result = $pdo -> query ('SELECT id, categoryname FROM category');
-	// }
-	// catch (PDOException $e)
-	// {
-	// 	$error = 'Ошибка вывода category';
-	// 	include MAIN_FILE . '/includes/error.inc.php';
-	// }
-	
-	// foreach ($result as $row)
-	// {
-	// 	$categorys_1[] = array('idcategory' => $row['id'], 'categoryname' => $row['categoryname']);
-	// }
-	
-	// /*Статьи по тематикам*/
-	// try
-	// {
-	// 	$sql = 'SELECT idmeta FROM metapost WHERE idpublication = :idpublication';
-	// 	$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
-	// 	$s -> bindValue(':idpublication', $id);//отправка значения
-	// 	$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
-	// }
+	$authorPost = $row['authorname'];//возвращает имя автора
 
-	// catch (PDOException $e)
-	// {
-	// 	$error = 'Ошибка выбора metapost';
-	// 	include MAIN_FILE . '/includes/error.inc.php';
-	// }
-	
-	// foreach ($s as $row)
-	// {
-	// 	$selectedMeta[] = $row['idmeta'];
-	// }
-	
-	// if (empty ($selectedMeta)) $selectedMeta[] = 0;//если нет ни одной тематики
-	
 	/*Список тематик*/
 	try
 	{
