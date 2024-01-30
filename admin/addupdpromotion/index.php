@@ -10,12 +10,7 @@ include_once MAIN_FILE . '/includes/addarticlesfunc.inc.php';
 
 $pubFolder = 'addupdpromotion'; //Папка скрипта
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
-
-else
+if (!loggedIn())
 {
 	include '../login.html.php';
 	exit();

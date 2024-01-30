@@ -5,10 +5,8 @@ include_once '../../includes/path.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
+/*Определение нахождения пользователя в системе*/
+loggedIn();
 
 /*Добавление комментария*/
 if (isset ($_GET['addmessage']))
