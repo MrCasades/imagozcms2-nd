@@ -6,12 +6,8 @@ include_once '../../../includes/path.inc.php';
 require_once MAIN_FILE . '/includes/access.inc.php';
 
 /*Определение нахождения пользователя в системе*/
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
-
-else
+/*Загрузка формы входа*/
+if (!loggedIn())
 {
 	include '../login.html.php';
 	exit();

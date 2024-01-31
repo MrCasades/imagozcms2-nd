@@ -8,12 +8,8 @@ include_once MAIN_FILE . '/includes/func.inc.php';
 /*Загрузка функций для формы входа*/
 require_once MAIN_FILE . '/includes/access.inc.php';
 
-if (loggedIn())
-{
-	/*Если loggedIn = TRUE, выводится имя пользователя иначе меню авторизации*/
-}
-
-else
+/*Загрузка формы входа*/
+if (!loggedIn())
 {
 	include '../login.html.php';
 	exit();
