@@ -30,9 +30,11 @@ if (isset($_GET['log']))
 	
 	elseif ($_SESSION['loggIn'])
 	{
-		$loggood = 'Вы успешно вошли в систему!';
-		include MAIN_FILE.'/admin/accessgood.html.php';
+		header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 		exit();
+		// $loggood = 'Вы успешно вошли в систему!';
+		// include MAIN_FILE.'/admin/accessgood.html.php';
+		// exit();
 	}
 }
 
