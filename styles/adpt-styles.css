@@ -57,9 +57,9 @@
     }
 
     .authorization-form{   
-        width: 70%;
-        height: 80%;
-        margin-left: 10%;
+        width: 90%;
+        height: 90%;
+        margin-left: 5%;
     }
 
     .reg-form{
@@ -141,9 +141,9 @@
         width: 45%;
     }
 
-    header .authorization-form{
+    /* header .authorization-form{
         margin-left: 35%;
-    }
+    } */
 
     main .post-place-1{
         margin: 1% 5px;
@@ -346,9 +346,9 @@
         font-size: 1.5rem;
     }
 
-    header .authorization-form{
+    /* header .authorization-form{
         margin-left: 35%;
-    }
+    } */
 
     header{
         height: 5rem;
@@ -668,9 +668,9 @@
         font-size: 1.5rem;
     }
 
-    header .authorization-form{
+    /* header .authorization-form{
         margin-left: 35%;
-    }
+    } */
 
     header{
         height: 5rem;

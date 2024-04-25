@@ -15,7 +15,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 
 <p><a name="bottom"></a></p>
 <div class="m-content">
-	<div>
+	<!-- <div>
 		<p>Пройдите процедуру регистрации в системе, для того, чтобы получить возможность оценивать материалы наших авторов, оставлять комментарии и отвечать на них. 
 		   У Вас будет свой профиль, где сможете вести персональный блог на стенеи и общаться с другими пользователями.</p>
 
@@ -26,7 +26,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			  <li>VKontakte: <a href="https://vk.com/id213646416" rel="nofollow">Арсений Поляков</a></li>
 			</ul>
 		  </p>
-	</div>	
+	</div>	 -->
 	<div class="authorization-form reg-form">
 	<?php if (isset($errLogin)): ?>
 		<p id = "incorr" style="color: red"><strong><?php htmlecho($errLog); ?></strong></p>
