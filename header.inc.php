@@ -30,8 +30,8 @@
 
 	
     <link href="<?php echo '//'.MAIN_URL.'/styles/menu.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles/styles-md.css';?>" rel= "stylesheet" type="text/css">
-    <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/styles-mdr.css';?>" rel= "stylesheet" type="text/css">
+    <link href="<?php echo '//'.MAIN_URL.'/styles/adpt-styles-mdr.css';?>" rel= "stylesheet" type="text/css">
 
 	<?php 
 		//Дополнительный код

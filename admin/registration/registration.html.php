@@ -27,25 +27,27 @@ include_once MAIN_FILE . '/header.inc.php';?>
 			</ul>
 		  </p>
 	</div>	 -->
-	<div class="authorization-form reg-form">
-	<?php if (isset($errLogin)): ?>
-		<p id = "incorr" style="color: red"><strong><?php htmlecho($errLog); ?></strong></p>
-	  <?php endif; ?>
-	    <form action = "?<?php htmlecho ($action); ?>" method = "post">   
-				<div class="send">
-					Имя автора:*
-					<input type = "text" name = "authorname" id = "authorname" value = "<?php htmlecho($authorname);?>">
-					E-mail:*
-					<input type = "text" name = "email" id = "email" value = "<?php htmlecho($email);?>">
-					Пароль:*
-					<input type = "password" name = "password" id = "password" value = "<?php htmlecho($password);?>">
-					Повторить пароль:*
-					<input type = "password" name = "password2" id = "password2" value = "<?php htmlecho($password2);?>">
-					<div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div>
-					<input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_1" id = "confirm">
-				</div>
+	
+	    <form class="authorization-form reg-form" action = "?<?php htmlecho ($action); ?>" method = "post"> 
+			<?php if (isset($errLogin)): ?>
+				<p id = "incorr" style="color: red"><strong><?php htmlecho($errLog); ?></strong></p>
+			<?php else: ?>  
+				<p id = "incorr" style="color: red"><strong><?php htmlecho($errLog); ?></strong></p>
+			<?php endif;?>
+			<div class="send">
+				Имя автора:*
+				<input type = "text" name = "authorname" id = "authorname" value = "<?php htmlecho($authorname);?>">
+				E-mail:*
+				<input type = "text" name = "email" id = "email" value = "<?php htmlecho($email);?>">
+				Пароль:*
+				<input type = "password" name = "password" id = "password" value = "<?php htmlecho($password);?>">
+				Повторить пароль:*
+				<input type = "password" name = "password2" id = "password2" value = "<?php htmlecho($password2);?>">
+				<div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div>
+				<button class="btn_1" value = "<?php htmlecho($button); ?>" id = "confirm">Вход</button>
+				<!-- <input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_1" id = "confirm"> -->
+			</div>
 		</form>
-	</div> 
 </div>
 		
 <?php 

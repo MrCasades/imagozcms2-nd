@@ -10,13 +10,13 @@ const confirm = document.getElementById('confirm')
 confirm.addEventListener('click', (event) => {
     if ((authorName.value === '') || (email.value === '') || (password.value === '') || (password2.value === '')){
         const incorr = document.getElementById('incorr')
-        incorr.innerHTML = 'Не заполнены обязательные поля!'
+        incorr.innerHTML = '<strong>Не заполнены обязательные поля!</strong>'
         event.preventDefault()
     }
 
     else if (password.value !== password2.value){
         const incorr = document.getElementById('incorr')
-        incorr.innerHTML = 'Пароли не совпадают!'
+        incorr.innerHTML = '<strong>Пароли не совпадают!</strong>'
         event.preventDefault()
     }
 })

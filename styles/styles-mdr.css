@@ -900,7 +900,7 @@ header .authorization-form .reg-group a {
     font-family: Arial;
     /* background: #1e90ff; */
     width: 30%;
-    height: 20%;
+    height: auto;
     padding: 10px;
     margin-left: 40%;
     margin-top: 1rem;
@@ -930,14 +930,9 @@ header .authorization-form .reg-group a {
     flex-direction: column;
     background: #1e90ff;
     margin-top: 0.2rem;
-    height: 1.8rem; 
     border-radius: 5px;
-}
-
-.authorization-form .btn_1{
-    margin-top: 1rem;
-    margin-left: 40%;
-    width: 3rem;
+    font-weight: bold;
+    color: #FFFFFF;
 }
 
 .authorization-form .send input{
@@ -946,28 +941,40 @@ header .authorization-form .reg-group a {
    height: 3rem;
 }
 
+.authorization-form .send .btn_1 {
+    margin-top: 5%;
+    height: 3rem;
+    width: 100%;
+    font-weight: bold;
+}
+
 .authorization-form .reg-group {
     text-align: center;
-    margin-top: 4rem;
-} 
+    margin-top: 1rem;
+}
 
-.authorization-form .reg-group a {
+.authorization-form a {
     color: #ffff;
     cursor: pointer;
 } 
 
-.reg-form{
-    height: 20rem;
-}
+.authorization-form .g-recaptcha {
+    margin-left: 15%;
+} 
 
-.reg-form .btn_1{
+
+/* .reg-form{
+    height: auto;
+} */
+
+/* .reg-form .btn_1{
     width: 6rem;
-}
+} */
 
-.reg-form .send{
+/* .reg-form .send{
     font-weight: bold;
     color: #FFFFFF;
-}
+} */
 
 /*Конец формы авторизации*/
 

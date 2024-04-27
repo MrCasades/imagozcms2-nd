@@ -57,19 +57,9 @@
     }
 
     .authorization-form{   
-        width: 90%;
-        height: 90%;
-        margin-left: 5%;
+        width: 50%;
+        margin-left: 20%;
     }
-
-    .reg-form{
-        height: 21rem;
-    }
-
-    .authorization-form .send input{
-        margin-bottom: 3px;
-        height: 1rem;
-     }
 
     .m-content{
         margin-left: 5%;
@@ -140,10 +130,6 @@
     header .login-logout-btn-pl{
         width: 45%;
     }
-
-    /* header .authorization-form{
-        margin-left: 35%;
-    } */
 
     main .post-place-1{
         margin: 1% 5px;
@@ -282,7 +268,7 @@
         max-width: 98%;    
     }
 
-    /* .authorization-form{   
+    /* .{   
         width: 50%;
         height: 30%;
         padding: 10px;
@@ -345,10 +331,6 @@
         height: 2rem;
         font-size: 1.5rem;
     }
-
-    /* header .authorization-form{
-        margin-left: 35%;
-    } */
 
     header{
         height: 5rem;
@@ -668,9 +650,10 @@
         font-size: 1.5rem;
     }
 
-    /* header .authorization-form{
-        margin-left: 35%;
-    } */
+    .authorization-form{   
+        width: 90%;
+        margin-left: 5%;
+    }
 
     header{
         height: 5rem;
