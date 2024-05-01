@@ -20,7 +20,7 @@
 			<form action = " " method = "post" class="logout-form">
 				<input type = "hidden" name = "action" value = "logout">
 				<input type = "hidden" name = "goto" value = "//<?php echo MAIN_URL;?>">  
-				<button class="btn_1"><strong><i class="fa fa-sign-out" aria-hidden="true"></i>Выход</strong></button>
+				<br><button class="btn_1"><strong><i class="fa fa-sign-out" aria-hidden="true"></i>Выход</strong></button>
 			</form>
 		</div>
 		

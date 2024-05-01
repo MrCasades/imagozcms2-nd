@@ -892,7 +892,13 @@ header .authorization-form .reg-group a {
 
 .profile-menu .logout-form{
     margin-left: 3%;
-    padding-bottom: 2%;
+    padding: 2%;
+    
+}
+
+.profile-menu .logout-form button{
+    height: 2rem;
+    width: 100%;
 }
 
 .authorization-form{
