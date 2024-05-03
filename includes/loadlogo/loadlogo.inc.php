@@ -6,3 +6,5 @@ $dataLogo = json_decode($json_object, true);
 
 $logoMain = $dataLogo["logomain"];
 $logoAdpt = $dataLogo["logoadpt"];
+$altTxt = $dataLogo["altTxt"];
+$titleLogo = $dataLogo["titleLogo"];

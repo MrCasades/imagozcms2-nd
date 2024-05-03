@@ -83,7 +83,7 @@
 						/*Загрузка логотипов*/
 						include_once MAIN_FILE . '/includes/loadlogo/loadlogo.inc.php';?>	
 		<div class = "header-logo-pl">
-			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoMain;?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoAdpt;?>" alt="imagoz.ru | Hi-Tech, игры, интернет в отражении" title="Главная страница"/></a>			
+			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoMain;?>" alt="<?php echo $altTxt;?>" title="<?php echo $titleLogo;?>"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoAdpt;?>" alt="<?php echo $altTxt;?>" title="<?php echo $titleLogo;?>"/></a>			
 				<?php if (!empty($setLogo))
 							echo $setLogo;
 					?>			
