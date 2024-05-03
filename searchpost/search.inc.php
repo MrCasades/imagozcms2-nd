@@ -21,7 +21,7 @@ if ($_GET['article_type'] == 'posts')
 	/*Поле строки*/
 	if ($_GET['text'] != '')//Если выбрана какая-то строка
 	{
-		$where .= " AND post LIKE :post OR posttitle LIKE :posttitle";
+		$where .= " AND (post LIKE :post OR posttitle LIKE :posttitle)";
 		$forSearch[':post'] = '%'. $_GET['text']. '%';	
 		$forSearch[':posttitle'] = '%'. $_GET['text']. '%';
 	}
@@ -39,7 +39,7 @@ elseif ($_GET['article_type'] == 'promotions')
 	/*Поле строки*/
 	if ($_GET['text'] != '')//Если выбрана какая-то строка
 	{
-		$where .= " AND promotion LIKE :promotion OR promotiontitle LIKE :promotiontitle";
+		$where .= " AND (promotion LIKE :promotion OR promotiontitle LIKE :promotiontitle)";
 		$forSearch[':promotion'] = '%'. $_GET['text']. '%';	
 		$forSearch[':promotiontitle'] = '%'. $_GET['text']. '%';
 	}
@@ -57,7 +57,7 @@ elseif ($_GET['article_type'] == 'news')
 	/*Поле строки*/
 	if ($_GET['text'] != '')//Если выбрана какая-то строка
 	{
-		$where .= " AND news LIKE :news OR newstitle LIKE :newstitle";
+		$where .= " AND (news LIKE :news OR newstitle LIKE :newstitle)";
 		$forSearch[':news'] = '%'. $_GET['text']. '%';	
 		$forSearch[':newstitle'] = '%'. $_GET['text']. '%';
 	}
@@ -76,7 +76,7 @@ elseif ($_GET['article_type'] == 'publication')
 	/*Поле строки*/
 	if ($_GET['text'] != '')//Если выбрана какая-то строка
 	{
-		$where .= " AND p.text LIKE :text OR p.title LIKE :title";
+		$where .= " AND (p.text LIKE :text OR p.title LIKE :title)";
 		$forSearch[':text'] = '%'. $_GET['text']. '%';	
 		$forSearch[':title'] = '%'. $_GET['text']. '%';
 	}
@@ -94,7 +94,7 @@ elseif ($_GET['article_type'] == 'blog')
 	/*Поле строки*/
 	if ($_GET['text'] != '')//Если выбрана какая-то строка
 	{
-		$where .= " AND b.description LIKE :text OR b.title LIKE :title";
+		$where .= " AND (b.description LIKE :text OR b.title LIKE :title)";
 		$forSearch[':text'] = '%'. $_GET['text']. '%';	
 		$forSearch[':title'] = '%'. $_GET['text']. '%';
 	}
