@@ -16,6 +16,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 <div class = "m-content addupd-post">
     <a href="//<?php echo MAIN_URL;?>/admin/setsitelogo/updlogo/?main"><button class="btn_2"><strong>Основное Лого</strong></button></a>
 	<a href="//<?php echo MAIN_URL;?>/admin/setsitelogo/updlogo/?adpt"><button class="btn_2"><strong>Адаптивное Лого</strong></button></a>
+	<a href="//<?php echo MAIN_URL;?>/admin/setsitelogo/updlogo/?descr"><button class="btn_2"><strong>Подписи Лого</strong></button></a>
 </div>
 
 

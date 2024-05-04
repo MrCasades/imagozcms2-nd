@@ -270,7 +270,7 @@ foreach ($result as $row)
 
 // catch (PDOException $e)
 // {
-// 	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+// 	$title = 'Ошибка данных!';//Данные тега <title>
 // 	$headMain = 'Ошибка данных!';
 // 	$robots = 'noindex, nofollow';
 // 	$descr = '';
@@ -297,7 +297,7 @@ foreach ($result as $row)
 
 // catch (PDOException $e)
 // {
-// 	$title = 'ImagozCMS | Ошибка данных!';//Данные тега <title>
+// 	$title = 'Ошибка данных!';//Данные тега <title>
 // 	$headMain = 'Ошибка данных!';
 // 	$robots = 'noindex, nofollow';
 // 	$descr = '';
