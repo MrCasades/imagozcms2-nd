@@ -78,6 +78,10 @@
 <html>
 <body>
     <header>
+		<?php 
+				/*Загрузка общих настроек*/
+				include MAIN_FILE . '/includes/blocksettings/commonset.inc.php'; ?>
+
 		<?php if (empty($itIsBlog)) :?>
 			<?php 
 						/*Загрузка логотипов*/
@@ -86,10 +90,13 @@
 			<a href = "<?php echo '//'.MAIN_URL;?>"><img class="full-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoMain;?>" alt="<?php echo $altTxt;?>" title="<?php echo $titleLogo;?>"/><img class="adpt-logo" src="<?php echo '//'.MAIN_URL.'/decoration/'.$logoAdpt;?>" alt="<?php echo $altTxt;?>" title="<?php echo $titleLogo;?>"/></a>			
 				<?php if (!empty($setLogo))
 							echo $setLogo;
+					  if (!empty($pageSetButtonCommon))
+							echo $pageSetButtonCommon;
 					?>			
 			<?php 
 				/*Загрузка главного меню*/
-				include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
+				if ($data_common['mainmenu'] == "on")				
+					include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
 			
 			
 			<div class="search-btn"><i class="fa fa-search" aria-hidden="true"></i> <span class="hide-for-adpt-1">Поиск</span></div>
@@ -107,13 +114,15 @@
 				</form>
 			</div>
 			
-			<div class="header-social-net-pl">
-				<a href = "https://vk.com/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/vк1.png';?>" alt="Наша группа VK" title="Наша группа VK"/></a>
-				<a href = "https://zen.yandex.ru/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/zen2.png';?>" alt="Наш Дзен-канал" title="Наш Дзен-канал"/></a>
-				<!-- <a href = "https://pulse.mail.ru/imagoz-igry-i-tehnologii/" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/mail3.png';?>" alt="Мы на Пульсе!" title="Мы на Пульсе!"/></a> -->
-				<a href = "https://www.youtube.com/channel/UCYAlQfGJQC4de8gEmZwF9Yg" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/youtube.png';?>" alt="Мы на YouTube!" title="Мы на YouTube!"/></a>
-			</div>
-			
+			<?php if ($data_common['difflinks'] == "on") :?>
+				<div class="header-social-net-pl">
+					<a href = "https://vk.com/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/vк1.png';?>" alt="Наша группа VK" title="Наша группа VK"/></a>
+					<a href = "https://zen.yandex.ru/imagoz" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/zen2.png';?>" alt="Наш Дзен-канал" title="Наш Дзен-канал"/></a>
+					<!-- <a href = "https://pulse.mail.ru/imagoz-igry-i-tehnologii/" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/mail3.png';?>" alt="Мы на Пульсе!" title="Мы на Пульсе!"/></a> -->
+					<a href = "https://www.youtube.com/channel/UCYAlQfGJQC4de8gEmZwF9Yg" target="_blank"><img src="<?php echo '//'.MAIN_URL.'/decoration/youtube.png';?>" alt="Мы на YouTube!" title="Мы на YouTube!"/></a>
+				</div>
+			<?php endif;?>
+
 			<div class="login-logout-btn-pl">
 				<?php if (!isset($_SESSION['loggIn'])):?>
 					<a href="<?php echo '//'.MAIN_URL;?>/admin/registration/?log#bottom"><i class="fa fa-user" aria-hidden="true"></i> <span class="hide-for-adpt-2">Вход</span></a> 
