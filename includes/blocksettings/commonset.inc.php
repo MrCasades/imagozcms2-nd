@@ -7,7 +7,7 @@ if (loggedIn() && userRole('Администратор'))
     //$pageSetButton = "<a href='//".MAIN_URL."/pagesettings/".$blockFolder."setting/'><button class='btn_1 addit-btn'>Настроить</button></a>";
 
     $pageSetButtonCommon = "<form action = '//".MAIN_URL."/admin/pagesettings/' method = 'get'>           
-            <button name = 'action' class='btn_1 addit-btn' value='Общие настройки'><i class='fa fa-cog' aria-hidden='true' title='Общие настройки'></i></button>
+            <button name = 'common_action' class='btn_1 addit-btn' value='Общие настройки'><i class='fa fa-cog' aria-hidden='true' title='Общие настройки'></i></button>
         </form>";
 }
 

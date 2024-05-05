@@ -27,7 +27,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'Настроить')
 	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
 
 	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
-	$breadPart2 = '<a href="//'.MAIN_URL.'/admin/pagesettings">Настройка страницы</a> ';//Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/admin/pagesettings/?blockfolder='.$_GET['blockfolder'].'&action=Настроить">Настройка страницы</a> ';//Для хлебных крошек
 
 	/*Данные из формы и загрузка json*/
 
@@ -167,4 +167,31 @@ if (isset($_GET['editform']))
 
 	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
 	exit();
+}
+
+
+/*Общие настройки сайта, шапки и подвала */
+if (isset ($_GET['common_action']) && $_GET['common_action'] == 'Общие настройки')
+{
+	$title = 'Настройки сайта';//Данные тега <title>
+	$headMain = 'Настройки сайта';
+	$robots = 'noindex, nofollow';
+	$descr = 'Настройки сайта';
+	$scriptJScode = '<script src="script.js"></script>';//добавить код JS
+
+	$breadPart1 = '<a href="//'.MAIN_URL.'">Главная страница</a> >> '; //Для хлебных крошек
+	$breadPart2 = '<a href="//'.MAIN_URL.'/admin/pagesettings">Настройка страницы</a> ';//Для хлебных крошек
+
+	/*Данные из формы и загрузка json*/
+
+	$action = 'editform';
+	$errorForm = '';
+	//$blockFolder = $_GET['blockfolder'];
+	$button = "Обновить";
+
+	$json_object = file_get_contents(MAIN_FILE.'/includes/blocksettings/header.json');
+	$data = json_decode($json_object, true);
+				
+	include 'commonsetting.html.php';
+	exit();	
 }
