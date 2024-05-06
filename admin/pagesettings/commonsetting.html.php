@@ -18,12 +18,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	
 	<form action = "?<?php htmlecho($action); ?> " method = "post">
         <div>
-            <input type="checkbox" name = "blogpubs" id = "blogpubs" value = "<?php htmlecho($data['blogpubs']);?>" <?php if ($data['blogpubs'] == "on") echo "checked";?>><label for = "blogpubs">Показывать блок публикаций блога</label>
+            <input type="checkbox" name = "difflinks" id = "difflinks" value = "<?php htmlecho($data['difflinks']);?>" <?php if ($data['difflinks'] == "on") echo "checked";?>><label for = "difflinks">Показывать блок ссылок в шапке сайта</label>
+            <hr/>
+            <input type="checkbox" name = "mainmenu" id = "mainmenu" value = "<?php htmlecho($data['mainmenu']);?>" <?php if ($data['mainmenu'] == "on") echo "checked";?>><label for = "mainmenu">Показывать главное меню в шапке сайта</label>
             <hr/>
         </div>
 
         <div>	
-            <input type = "hidden" name = "blockfolder" value = <?php htmlecho($blockFolder);?>>	
             <input type = "submit" value = "<?php htmlecho($button); ?>" class="btn_2" id="confirm">
         </div> 
     </form>	

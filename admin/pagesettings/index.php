@@ -184,7 +184,7 @@ if (isset ($_GET['common_action']) && $_GET['common_action'] == 'Общие на
 
 	/*Данные из формы и загрузка json*/
 
-	$action = 'editform';
+	$action = 'editform_common';
 	$errorForm = '';
 	//$blockFolder = $_GET['blockfolder'];
 	$button = "Обновить";
@@ -194,4 +194,39 @@ if (isset ($_GET['common_action']) && $_GET['common_action'] == 'Общие на
 				
 	include 'commonsetting.html.php';
 	exit();	
+}
+
+if (isset($_GET['editform_common']))
+{
+	/*Сохранение настроек в файл json */
+	$array = array();
+
+	if (!empty($_POST['difflinks']))
+	{
+		$array["difflinks"] = "on";
+	}
+
+	else
+	{
+		$array["difflinks"] = "off";
+	}
+
+	if (!empty($_POST['mainmenu']))
+	{
+		$array["mainmenu"] = "on";
+	}
+
+	else
+	{
+		$array["mainmenu"] = "off";
+	}
+	
+	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
+
+	$jsonPath = MAIN_FILE .'/includes/blocksettings/header.json';
+
+	file_put_contents($jsonPath, $json);
+
+	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
+	exit();
 }
