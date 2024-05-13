@@ -126,6 +126,13 @@ include_once MAIN_FILE . '/header.inc.php';?>
 		<hr/>
 	</div>	
 	<?php endif; ?>
+
+	<?php if (!empty ($data['mp_difflinks'])):?>
+	<div>
+		<input type="checkbox" name = "mp_difflinks" id = "mp_difflinks" value = "<?php htmlecho($data['mp_difflinks']);?>" <?php if ($data['mp_difflinks'] == "on") echo "checked";?>><label for = "viewabout">Показывать блок разных ссылок</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
 	
 	<?php if (!empty ($data['about'])):?>
 	<div>

@@ -116,7 +116,7 @@
 			
 			<?php if ($data_common['difflinks'] == "on") :?>
 				<?php 
-						/*Загрузка меню авторизации*/
+						/*Загрузка ссылок шапки*/
 						include_once MAIN_FILE . '/includes/diffblocks/difflinksheader.inc.html.php';?>
 			<?php endif;?>
 

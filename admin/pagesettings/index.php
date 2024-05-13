@@ -156,6 +156,18 @@ if (isset($_GET['editform']))
 		{
 			$array["refday"] = "off";
 		}
+
+		/*Боковая панель */
+
+		if (!empty($_POST['mp_difflinks']))
+		{
+			$array["mp_difflinks"] = "on";
+		}
+
+		else
+		{
+			$array["mp_difflinks"] = "off";
+		}
 	}
 
 		

@@ -603,6 +603,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 				</div>	 
 			<?php endforeach; ?>
 		</div>
+		<?php if ($data['mp_difflinks'] == "on") :?>
 			<div class="zen-c-m">
 				<div class = "main-headers">
 					<div class = "main-headers-content">
@@ -664,6 +665,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					})
 				})
 				</script>
+		<?php endif; ?>
 		</div>
 	</div>
 </div>
