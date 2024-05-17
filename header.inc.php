@@ -114,11 +114,10 @@
 				</form>
 			</div>
 			
-			<?php if ($data_common['difflinks'] == "on") :?>
-				<?php 
-						/*Загрузка ссылок шапки*/
-						include_once MAIN_FILE . '/includes/diffblocks/difflinksheader.inc.html.php';?>
-			<?php endif;?>
+			<?php if ($data_common['difflinks'] == "on")
+					/*Загрузка ссылок шапки*/
+					include_once MAIN_FILE . '/includes/diffblocks/difflinksheader.inc.html.php';
+			?>
 
 			<div class="login-logout-btn-pl">
 				<?php if (!isset($_SESSION['loggIn'])):?>

@@ -127,9 +127,16 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>	
 	<?php endif; ?>
 
+	<?php if (!empty ($data['right_side'])):?>
+	<div>
+		<input type="checkbox" name = "right_side" id = "right_side" value = "<?php htmlecho($data['right_side']);?>" <?php if ($data['right_side'] == "on") echo "checked";?>><label for = "right_side">Включить боковую панель</label>
+		<hr/>
+	</div>	
+	<?php endif; ?>
+
 	<?php if (!empty ($data['mp_difflinks'])):?>
 	<div>
-		<input type="checkbox" name = "mp_difflinks" id = "mp_difflinks" value = "<?php htmlecho($data['mp_difflinks']);?>" <?php if ($data['mp_difflinks'] == "on") echo "checked";?>><label for = "viewabout">Показывать блок разных ссылок</label>
+		<input type="checkbox" name = "mp_difflinks" id = "mp_difflinks" value = "<?php htmlecho($data['mp_difflinks']);?>" <?php if ($data['mp_difflinks'] == "on") echo "checked";?>><label for = "mp_difflinks">Показывать блок разных ссылок</label>
 		<hr/>
 	</div>	
 	<?php endif; ?>

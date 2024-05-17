@@ -168,6 +168,16 @@ if (isset($_GET['editform']))
 		{
 			$array["mp_difflinks"] = "off";
 		}
+
+		if (!empty($_POST['right_side']))
+		{
+			$array["right_side"] = "on";
+		}
+
+		else
+		{
+			$array["right_side"] = "off";
+		}
 	}
 
 		

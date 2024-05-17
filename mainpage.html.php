@@ -313,6 +313,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 		</div> -->
 
 	</div>
+	<?php if ($data['right_side'] == "on") :?>
 	<div class="right-side">
 		<div class="last-comments-pl">
 		<div class = "main-headers">
@@ -608,6 +609,7 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 					include_once MAIN_FILE . '/includes/diffblocks/difflinksmpleft.inc.html.php';
 		?>		
 	</div>
+	<?php endif; ?>
 </div>
 
 <?php if ($data['viewabout'] == "on") :?>
