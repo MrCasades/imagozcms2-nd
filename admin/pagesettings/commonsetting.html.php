@@ -22,6 +22,10 @@ include_once MAIN_FILE . '/header.inc.php';?>
             <hr/>
             <input type="checkbox" name = "mainmenu" id = "mainmenu" value = "<?php htmlecho($data['mainmenu']);?>" <?php if ($data['mainmenu'] == "on") echo "checked";?>><label for = "mainmenu">Показывать главное меню в шапке сайта</label>
             <hr/>
+            <input type="checkbox" name = "mainmenu_foot" id = "mainmenu_foot" value = "<?php htmlecho($data['mainmenu_foot']);?>" <?php if ($data['mainmenu_foot'] == "on") echo "checked";?>><label for = "mainmenu_foot">Показывать главное меню в подвале сайта</label>
+            <hr/>
+            <input type="checkbox" name = "difflinks_foot" id = "difflinks_foot" value = "<?php htmlecho($data['difflinks_foot']);?>" <?php if ($data['difflinks_foot'] == "on") echo "checked";?>><label for = "difflinks_foot">Показывать блок ссылок в подвале сайта</label>
+            <hr/>
         </div>
 
         <div>	

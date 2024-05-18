@@ -242,6 +242,26 @@ if (isset($_GET['editform_common']))
 	{
 		$array["mainmenu"] = "off";
 	}
+
+	if (!empty($_POST['mainmenu_foot']))
+	{
+		$array["mainmenu_foot"] = "on";
+	}
+
+	else
+	{
+		$array["difflinks_foot"] = "off";
+	}
+
+	if (!empty($_POST['difflinks_foot']))
+	{
+		$array["difflinks_foot"] = "on";
+	}
+
+	else
+	{
+		$array["difflinks_foot"] = "off";
+	}
 	
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 
