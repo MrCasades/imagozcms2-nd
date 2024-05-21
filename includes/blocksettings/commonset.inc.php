@@ -13,3 +13,6 @@ if (loggedIn() && userRole('Администратор'))
 
 $json_object_common = file_get_contents(MAIN_FILE.'/includes/blocksettings/header.json');
 $data_common = json_decode($json_object_common, true);
+
+if (!empty($data_common['difflinks_foot_cont'])) 
+    $diffLinksFooter = $data_common['difflinks_foot_cont'];

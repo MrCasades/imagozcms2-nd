@@ -26,6 +26,8 @@ include_once MAIN_FILE . '/header.inc.php';?>
             <hr/>
             <input type="checkbox" name = "difflinks_foot" id = "difflinks_foot" value = "<?php htmlecho($data['difflinks_foot']);?>" <?php if ($data['difflinks_foot'] == "on") echo "checked";?>><label for = "difflinks_foot">Показывать блок ссылок в подвале сайта</label>
             <hr/>
+            <label for = "about">Добавьте данные в блок ссылок footer</label><br>
+		    <textarea class = "mark-textarea-adm" id = "difflinks_foot_cont" name = "difflinks_foot_cont" rows="10"><?php htmlecho($data['difflinks_foot_cont']);?></textarea>
         </div>
 
         <div>	

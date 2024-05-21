@@ -262,6 +262,9 @@ if (isset($_GET['editform_common']))
 	{
 		$array["difflinks_foot"] = "off";
 	}
+
+	if (!empty($_POST['difflinks_foot_cont']))
+		$array["difflinks_foot_cont"] = $_POST['difflinks_foot_cont'];
 	
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 
