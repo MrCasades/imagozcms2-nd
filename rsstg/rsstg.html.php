@@ -4,25 +4,13 @@
 
 <channel>
 
-<title>Hi-Tech новости, игры, наука, интернет в отражении на imagoz.ru</title>
-
-<link>https://<?php echo MAIN_URL; ?>/</link>
-
-<description>
-
-Портал IMAGOZ. Место где мы рассматриваем мир Hi-Tech, игровую индустрию, науку и технику в оригинальном авторском отражении!
-
-</description>
-<image>
-     <url>https://<?php echo MAIN_URL; ?>/logomain.jpg</url>
-</image>
-
 <language>ru</language>
 
 <?php foreach ($newsMain as $newsMain_3): ?>
 
 <?php 
-	$img = '<br><figure><img src="//'.MAIN_URL.'/images/'.$newsMain_3['imghead'].'"/></figure><br>';
+	//$img = '<br><figure><img src="//'.MAIN_URL.'/images/'.$newsMain_3['imghead'].'"/></figure><br>';
+	$header = '<h3>'.$newsMain_3['newstitle'].'</h3>';
 	$video = $newsMain_3['videoyoutube'] != '' ? '<br><br><figure><iframe width="560" height="315" src="'.$newsMain_3['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : '';
     $articleNews = markdown2html_pub($newsMain_3['textnews']);
 	$link = '<br><a href="https://'.MAIN_URL.'/viewnews/?id='.$newsMain_3['id'].'">Ссылка на публикацию</a>';
@@ -30,11 +18,9 @@
 
 <item>
 
-<title><strong><?php echo $newsMain_3['newstitle']; ?></strong></title>
-
-<guid isPermaLink="false">newsid=<?php echo $newsMain_3['id']; ?></guid>
-
-<link>https://<?php echo MAIN_URL; ?>/viewnews/?id=<?php echo $newsMain_3['id']; ?></link>
+<image>
+     https://<?php echo MAIN_URL; ?>/images/<?php echo $newsMain_3['imghead']; ?>
+</image>
 
 <pubDate><?php echo date("D, j M Y G:i:s", strtotime($newsMain_3['newsdate'])); ?> +0300</pubDate>
 
@@ -42,52 +28,11 @@
 
 <category><?php echo $newsMain_3['categoryname']; ?></category>
 
-<enclosure url="https://<?php echo MAIN_URL; ?>/images/<?php echo $newsMain_3['imghead']; ?>" type= "image/jpeg"/>
-
 <description>
 
 <![CDATA[
 
-	<?php echo $img.delDetails(isertTagFigure($articleNews)).$video.$link; ?>
-
-]]>
-
-</description>
-
-</item>
-
-<?php endforeach; ?>
-
-<?php foreach ($posts as $post): ?>
-
-<?php 
-	  $img = '<br><figure><img src="//'.MAIN_URL.'/images/'.$post['imghead'].'"/></figure><br>';
-	  $video = $post['videoyoutube'] != '' ? '<br><br><figure><iframe width="560" height="315" src="'.$post['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : ''; 
-      $articlePost = markdown2html_pub($post['text']);
-	  $link = '<br><a href="https://'.MAIN_URL.'/viewpost/?id='.$post['id'].'">Ссылка на публикацию</a>';
-?> 
-
-<item>
-
-<title><strong><?php echo $post['posttitle']; ?></strong></title>
-
-<guid isPermaLink="false">postid=<?php echo $post['id']; ?></guid>
-
-<link>https://<?php echo MAIN_URL; ?>/viewpost/?id=<?php echo $post['id']; ?></link>
-
-<pubDate><?php echo date("D, j M Y G:i:s", strtotime($post['postdate'])); ?> +0300</pubDate>
-
-<author><?php echo $post['authorname']; ?></author>
-
-<category><?php echo $post['categoryname']; ?></category>
-
-<enclosure url="https://<?php echo MAIN_URL; ?>/images/<?php echo $post['imghead']; ?>" type= "image/jpeg"/>
-
-<description>
-
-<![CDATA[
-	
-	<?php echo $img.delDetails(isertTagFigure($articlePost)).$video.$link; ?>
+	<?php echo $header.delDetails(isertTagFigure($articleNews)).$video.$link; ?>
 
 ]]>
 
