@@ -3,22 +3,29 @@
 
   <footer>
   	<div class="header-line"></div>
-	  	<?php if ($data_common['mainmenu_foot'] == "on"):?>
-			<div class="foot-menu">
-				<?php 
-					/*Загрузка главного меню*/
+	<?php if ($data_common['mainmenu_foot'] == "on"):?>
+		<div class="foot-menu">
+			<?php 
+				/*Загрузка главного меню*/
 					include MAIN_FILE . '/mainmenu/mainmenu.inc.php'; ?>
-			</div>
-		<?php endif;?>
+		</div>
+	<?php endif;?>
 
-		<?php if ($data_common['difflinks_foot'] == "on")
-			/*Загрузка ссылок шапки*/
-			include_once MAIN_FILE . '/includes/diffblocks/difflinksfooter.inc.html.php';
-		?>
-		<p>Copyright © 2019-2021 MrCasades. All rights reserved.</p>
-	<div class="counts">
-		  
-	</div>
+	<?php 
+		if ($data_common['difflinks_foot'] == "on")
+		/*Загрузка ссылок шапки*/
+		echo $diffLinksFooter;
+
+		if ($data_common['copyright_foot'] == "on")
+		/*Загрузка копирайта*/
+		echo $copyrightFooter;
+	?>
+	<?php if ($data_common['counts_foot'] == "on"):?>
+		<div class="counts">
+			<?php
+				include_once MAIN_FILE . '/includes/diffblocks/countsfooter.inc.html.php';?>
+		</div>
+	<?php endif;?>
   </footer>	
 			
     <script src="<?php echo '//'.MAIN_URL.'/anime.min.js';?>"></script>

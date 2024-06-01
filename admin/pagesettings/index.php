@@ -265,7 +265,30 @@ if (isset($_GET['editform_common']))
 
 	if (!empty($_POST['difflinks_foot_cont']))
 		$array["difflinks_foot_cont"] = $_POST['difflinks_foot_cont'];
+
+	if (!empty($_POST['copyright_foot']))
+	{
+		$array["copyright_foot"] = "on";
+	}
 	
+	else
+	{
+		$array["copyright_foot"] = "off";
+	}
+
+	if (!empty($_POST['copyright_foot_cont']))
+		$array["copyright_foot_cont"] = $_POST['copyright_foot_cont'];
+	
+	if (!empty($_POST['counts_foot']))
+	{
+		$array["counts_foot"] = "on";
+	}
+		
+	else
+	{
+		$array["counts_foot"] = "off";
+	}
+
 	$json = json_encode($array, JSON_UNESCAPED_UNICODE);
 
 	$jsonPath = MAIN_FILE .'/includes/blocksettings/header.json';

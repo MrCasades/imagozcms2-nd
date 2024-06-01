@@ -28,6 +28,14 @@ include_once MAIN_FILE . '/header.inc.php';?>
             <hr/>
             <label for = "about">Добавьте данные в блок ссылок footer</label><br>
 		    <textarea class = "mark-textarea-adm" id = "difflinks_foot_cont" name = "difflinks_foot_cont" rows="10"><?php htmlecho($data['difflinks_foot_cont']);?></textarea>
+            <hr/>
+            <input type="checkbox" name = "copyright_foot" id = "copyright_foot" value = "<?php htmlecho($data['copyright_foot']);?>" <?php if ($data['copyright_foot'] == "on") echo "checked";?>><label for = "copyright_foot">Показывать блок копирайта</label>
+            <hr/>
+            <label for = "about">Добавьте данные в блок копирайта</label><br>
+		    <textarea class = "mark-textarea-adm" id = "copyright_foot_cont" name = "copyright_foot_cont" rows="10"><?php htmlecho($data['copyright_foot_cont']);?></textarea>
+            <hr/>
+            <input type="checkbox" name = "counts_foot" id = "counts_foot" value = "<?php htmlecho($data['counts_foot']);?>" <?php if ($data['counts_foot'] == "on") echo "checked";?>><label for = "counts_foot">Показывать блок счётчиков</label>
+            <hr/>
         </div>
 
         <div>	
