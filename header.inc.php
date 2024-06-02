@@ -1,6 +1,7 @@
 <!DOCTYPE html> 
 
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns# 
+			  video: http://ogp.me/ns/video#">
 <head>
 	<?php 
 		/*Загрузка общих настроек*/
