@@ -2,15 +2,13 @@
 
 <html lang="en">
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167532503-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'UA-167532503-1');
-    </script>
+	<?php 
+		/*Загрузка общих настроек*/
+		include MAIN_FILE . '/includes/blocksettings/commonset.inc.php'; 
+
+		/*Загрузка блока кода шапки 1*/
+		include MAIN_FILE . '/includes/diffblocks/codeblockheader1.inc.html.php';
+	?>
 
 	<?php 
 			//канонический адрес
@@ -26,8 +24,10 @@
 	<meta name="11e66bf0747b49e92165b564157d94b9" content="">
 	<meta name="pmail-verification" content="ddfba33030d7dda60e94c41aadfd4340">
 
-
-
+	<?php 
+		/*Загрузка блока кода шапки 2*/
+		include MAIN_FILE . '/includes/diffblocks/codeblockheader2.inc.html.php';
+	?>
 	
     <link href="<?php echo '//'.MAIN_URL.'/styles/menu.css';?>" rel= "stylesheet" type="text/css">
     <link href="<?php echo '//'.MAIN_URL.'/styles/styles-mdr.css';?>" rel= "stylesheet" type="text/css">
@@ -77,11 +77,7 @@
 
 <html>
 <body>
-    <header>
-		<?php 
-				/*Загрузка общих настроек*/
-				include MAIN_FILE . '/includes/blocksettings/commonset.inc.php'; ?>
-
+    <header>		
 		<?php if (empty($itIsBlog)) :?>
 			<?php 
 						/*Загрузка логотипов*/
@@ -183,10 +179,13 @@
 	</div>
 	<main>
 
-	<!-- <div class="m-content">
-				Место для рекламы
-		</div> -->
-  
+	<!--Место для рекламы-->
+	
+	<?php 
+		/*Загрузка блока кода шапки 3 / Место для рекламы*/
+		include MAIN_FILE . '/includes/diffblocks/codeblockheader3.inc.html.php';
+	?>
+
 	<div class="m-content">
 		<div class="gallery hidden"></div> <!--Тестовый код-->
 		<div class="wrap hidden">
