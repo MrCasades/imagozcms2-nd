@@ -1,3 +1,4 @@
-<!-- <div class="m-content">
-				Место для рекламы
-		</div> -->
+<div class="m-content">
+    No code. Edit here: site\includes\diffblocks\codeblockheader3.inc.html.php
+</div>
+
