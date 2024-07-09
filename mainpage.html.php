@@ -248,18 +248,12 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 			</div>
 		<?php endif; ?>
 
-		<div class="m-content">
-			<!--Место для рекламы-->
-			<!-- Yandex.RTB R-A-448222-17 -->
-			<div id="yandex_rtb_R-A-448222-17"></div>
-			<script>window.yaContextCb.push(()=>{
-				Ya.Context.AdvManager.render({
-					"blockId": "R-A-448222-17",
-					"renderTo": "yandex_rtb_R-A-448222-17"
-				})
-			})
-			</script>
-		</div>
+		<!--Место для рекламы-->
+
+		<?php 
+			/*Загрузка блока кода главной страницы 2*/
+			include MAIN_FILE . '/includes/diffblocks/codeblockmp2.inc.html.php';
+		?>
 
 		<?php if ($data['promotion'] == "on") :?>
 			<div class = "main-headers">
@@ -426,6 +420,13 @@ include_once __DIR__ . '/admin/adminnews/adminnews.inc.php';
 
 		<!-- <div class="pulse-widget" data-sid="partners_widget_imagozru_1" style="height: 650px"></div>
 		<script async src="https://static.pulse.mail.ru/pulse-widget.js"></script> -->
+
+		<!--Место для рекламы-->
+
+		<?php 
+			/*Загрузка блока кода главной страницы слева 1*/
+			include MAIN_FILE . '/includes/diffblocks/codeblockmpleft1.inc.html.php';
+		?>
 		
 		<div class="article-top">
 			<div class = "main-headers">

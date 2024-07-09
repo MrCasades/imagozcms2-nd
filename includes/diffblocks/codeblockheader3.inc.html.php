@@ -1,4 +1,13 @@
 <div class="m-content">
-    No code. Edit here: site\includes\diffblocks\codeblockheader3.inc.html.php
+    <!-- Yandex.RTB R-A-448222-14 -->
+    <div id="yandex_rtb_R-A-448222-14"></div>
+    <script>
+    window.yaContextCb.push(()=>{
+        Ya.Context.AdvManager.render({
+            "blockId": "R-A-448222-14",
+            "renderTo": "yandex_rtb_R-A-448222-14"
+        })
+    })
+    </script>
 </div>
 
