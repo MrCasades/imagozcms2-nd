@@ -64,3 +64,15 @@
     " посетителей за 24 часа' "+
     "border='0' width='88' height='31'><\/a>")
     </script><!--/LiveInternet-->
+
+
+   <!-- Yandex.RTB R-A-448222-22 -->
+    <script>
+    window.yaContextCb.push(() => {
+        Ya.Context.AdvManager.render({
+            "blockId": "R-A-448222-22",
+        "type": "floorAd",
+        "platform": "desktop"
+        })
+    })
+    </script>

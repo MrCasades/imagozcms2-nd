@@ -311,7 +311,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 				<?php endforeach; ?>
 			</div>
 			<?php endif;?>
-			<?php if ($pubFolder == 'viewpost'):?>
+			<?php if ($pubFolder == 'viewpost' || $pubFolder == 'viewnews'):?>
 			<!-- Yandex.RTB R-A-448222-19 -->
 			<div id="yandex_rtb_R-A-448222-19"></div>
 			<script>window.yaContextCb.push(()=>{
