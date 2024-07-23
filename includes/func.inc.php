@@ -242,7 +242,27 @@ function delDetails($text)
     $text = str_replace('<iframe src="https://store.steampowered.com/widget', '<a href="https://store.steampowered.com/app', $text);
 	$text = str_replace('/" frameborder="0" width="85%" height="190"></iframe>', '"> Страница игры в Steam</a>', $text);
 			
-return $text;
+	return $text;
+}
+
+/*Добавление галереи для psspulse и замена виджета Steam на ссылку TEST для ТГ-бота*/
+function delDetails2($text)
+{
+	$element_1 = '|<details>(.+)</details>|isU';//искомый элемент
+	$element_2 = '|<summary>(.+)</summary>|isU';//искомый элемент
+
+	$replace_1 = '<br>${1}<br>'; //на что меняем
+	$replace_2 = '<h4>${1}</h4>'; //на что меняем
+
+	$text = preg_replace($element_1, $replace_1, $text);
+	$text = preg_replace($element_2, $replace_2, $text);
+
+
+	//Замена виджета Steam на ссылку	                 
+    $text = str_replace('<iframe src="https://store.steampowered.com/widget', '<a href="https://store.steampowered.com/app', $text);
+	$text = str_replace('/" frameborder="0" width="85%" height="190"></iframe>', '"> Страница игры в Steam</a>', $text);
+			
+	return $text;
 }
 
 /*markdown2html в одобренных публикациях*/

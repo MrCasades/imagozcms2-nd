@@ -10,8 +10,8 @@
 
 <?php 
 	//$img = '<br><figure><img src="//'.MAIN_URL.'/images/'.$newsMain_3['imghead'].'"/></figure><br>';
-	$header = '<h3>'.$newsMain_3['newstitle'].'</h3>';
-	$video = $newsMain_3['videoyoutube'] != '' ? '<br><br><figure><iframe width="560" height="315" src="'.$newsMain_3['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>' : '';
+	$header = '<strong>'.$newsMain_3['newstitle'].'</strong><br><br>';
+	$video = $newsMain_3['videoyoutube'] != '' ? '<br><iframe width="560" height="315" src="'.$newsMain_3['videoyoutube'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' : '';
     $articleNews = markdown2html_pub($newsMain_3['textnews']);
 	$link = '<br><a href="https://'.MAIN_URL.'/viewnews/?id='.$newsMain_3['id'].'">Ссылка на публикацию</a>';
 ?>  
@@ -32,7 +32,7 @@
 
 <![CDATA[
 
-	<?php echo $header.delDetails(isertTagFigure($articleNews)).$video.$link; ?>
+	<?php echo $header.delDetails2($articleNews).$video.$link; ?>
 
 ]]>
 
