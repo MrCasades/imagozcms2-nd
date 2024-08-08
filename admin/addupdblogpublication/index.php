@@ -570,8 +570,10 @@ if (isset ($_GET['topremod']))
 
 	toEmail_1($titleMessage, $mailMessage);//отправка письма
 
-	header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
-	exit();
+	include '../commonfiles/successfulpub.html.php';
+
+	// header ('Location: //'.MAIN_URL);//перенаправление обратно в контроллер index.php
+	// exit();
 }
 
 /*DELETE - удаление материала*/
