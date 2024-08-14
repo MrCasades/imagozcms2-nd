@@ -91,7 +91,7 @@ if (isset ($_GET['id']))
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
 	{
-		$video = '<iframe width="85%" height="320px" src="'.$row['videoyoutube'].'" frameborder="0" allowfullscreen></iframe>';
+		$video = codeInFrameVideo($row['videoyoutube']);
 	}
 	
 	else

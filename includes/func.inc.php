@@ -710,10 +710,19 @@ function toEmbedInVideo($video)
 
 	$element_3 = 'shorts'; //искомый элемент
 	$replace_3 = 'embed'; //на что меняем
+
+	$element_4 = 'rutube.ru/video/'; //искомый элемент
+	$replace_4 = 'rutube.ru/play/embed/'; //на что меняем
+
+	$element_5 = 'vk.com'; //искомый элемент
+	//$replace_5 = '<iframe src="https://vk.com/video_ext.php?oid=-'; //на что меняем
+
 	
 	$findStWatch = strpos ($video, $element_1);
 	$findStYoutube = strpos ($video, $element_2);
 	$findStShort = strpos ($video, $element_3);
+	$findStRuTube = strpos ($video, $element_4);
+	$findStVk = strpos ($video, $element_5);
 	
 	if ($findStWatch != '')
 	{
@@ -728,6 +737,21 @@ function toEmbedInVideo($video)
 	elseif ($findStShort != '')
 	{
 		$video = str_replace($element_3, $replace_3, $video);
+	}
+
+	elseif ($findStRuTube != '')
+	{
+		$video = str_replace($element_4, $replace_4, $video);
+	}
+
+	elseif ($findStVk != '')
+	{
+		preg_match('/([0-9])\w+/', $video, $matches);
+
+		$element_5 = $matches[0];
+		$video = 'https://vk.com/video_ext.php?oid=-'.str_replace('_', '&id=', $element_5).'&hd=2&autoplay=0';
+
+
 	}
 	
 	else
@@ -759,6 +783,19 @@ function viewVideoInArticle ($text)
 
 	return $text;
 	
+}
+
+/*Ссылки на видео для статей*/
+function codeInFrameVideo ($video)
+{
+	if (strpos ($video, 'youtube') != '')
+		$video = '<iframe width="85%" height="320px" src="'.$video.'" frameborder="0" allowfullscreen></iframe>';
+	elseif (strpos ($video, 'rutube') != '')
+		$video = '<iframe width="85%" height="320px" src="'.$video.'" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+	elseif (strpos ($video, 'vk.com') != '')
+		$video = '<iframe width="85%" height="320px" src="'.$video.'" width="85%" height="320" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" frameborder="0" allowfullscreen></iframe>';
+
+	return $video;
 }
 
 /*Предварительенй просмотр*/
@@ -843,8 +880,8 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 
 	/*Вывод видео в статью*/
 	if ((isset($row['videoyoutube'])) && ($row['videoyoutube'] != ''))
-	{
-		$GLOBALS['video'] = '<iframe width="85%" height="320px" src="'.$row['videoyoutube'].'" frameborder="0" allowfullscreen></iframe>';
+	{		
+		$GLOBALS['video'] = codeInFrameVideo($row['videoyoutube']);
 	}
 
 	else

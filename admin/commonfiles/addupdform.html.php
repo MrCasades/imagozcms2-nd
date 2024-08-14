@@ -99,7 +99,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
 	</div>
 	<?php endif;?>	
 	<div>
-		<h3>Ссылка на видео Youtube</h3>
+		<h3>Ссылка на видео Youtube, Vk, RuTube</h3>
 		<input type = "videoyoutube" name = "videoyoutube" id = "videoyoutube" value = "<?php htmlecho($videoyoutube);?>">
 	</div>
 	<hr/>
