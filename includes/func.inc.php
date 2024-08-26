@@ -772,14 +772,17 @@ function viewVideoInArticle ($text)
 	$element_2 = "#(https?)://www\.youtube\.com\/watch\?v=([-_a-z0-9]{11})#i"; //искомый элемент
 	$element_3 = "#(https?)://www\.youtube\.com\/shorts\/([A-Za-z0-9_-]{11})#i"; //искомый элемент
 	$element_4 = 'width="646"';//для виджета Steam
+	$element_5 = "#(https?)://rutube\.ru\/video\/([A-Za-z0-9_-]{32})\/?#i"; //искомый элемент rutube
 
 	$replace_1 = '<iframe width="85%" height="400" src="https://www.youtube.com/embed/${2}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'; //на что меняем
 	$replace_2 = 'width="85%"';
+	$replace_3 = '<iframe width="85%" height="400" src="https://rutube.ru/play/embed/${2}" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 
 	$text = preg_replace($element_1, $replace_1, $text);
 	$text = preg_replace($element_2, $replace_1, $text);
 	$text = preg_replace($element_3, $replace_1, $text);
 	$text = str_replace($element_4, $replace_2, $text);
+	$text = preg_replace($element_5, $replace_3, $text);
 
 	return $text;
 	
