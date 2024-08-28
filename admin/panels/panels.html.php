@@ -46,6 +46,7 @@ include_once MAIN_FILE . '/header.inc.php';?>
         <a href="//<?php echo MAIN_URL;?>/admin/addupdvideo/?add"><button class="btn_2">Добавить видео</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/addupdpost/?add"><button class="btn_2">Добавить статью</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/addupdnews/?add"><button class="btn_2">Добавить новость</button></a>
+        <a href="//<?php echo MAIN_URL;?>/admin/addupdtestpub/?add"><button class="btn_4">Добавить тестовую публикацию</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/addtask/?add"><button class="btn_2">Добавить задание</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/viewalltask/"><button class="btn_2">Получить задание (для теста)</button></a>
         <a href="//<?php echo MAIN_URL;?>/admin/editlists/"><button class="btn_4">Редактирование списков</button></a>
