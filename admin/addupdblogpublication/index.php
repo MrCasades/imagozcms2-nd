@@ -429,6 +429,8 @@ if (isset($_GET['editform']))//Если есть переменная editform �
 			$error = 'Ошибка возврата материала в черновик';
 			include MAIN_FILE . '/includes/error.inc.php';
 		}
+
+		$_SESSION['rewrite'] = false;
 	}
 	
 	$idpost_ind = $_POST['id'];//id материала
@@ -569,6 +571,11 @@ if (isset ($_GET['topremod']))
 	$mailMessage = 'Вами был отправлен в премодерацию материал "'. $_POST['posttitle'].'". После успешной проверки он будет опубликован';
 
 	toEmail_1($titleMessage, $mailMessage);//отправка письма
+
+	$title = 'Материал в премодерации';//Данные тега <title>
+	$headMain = 'Материал в премодерации';
+	$robots = 'noindex, nofollow';
+	$descr = '';
 
 	include '../commonfiles/successfulpub.html.php';
 

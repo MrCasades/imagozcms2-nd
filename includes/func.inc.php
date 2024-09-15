@@ -807,7 +807,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 {
 	if ($type == 'newsblock')
 	{
-		$select = 'SELECT newsblock.id AS articleid, author.id AS idauthor, news AS articledata, newstitle AS title, imghead, imgalt, videoyoutube, newsdate AS articledate, authorname, category.id AS categoryid, categoryname FROM newsblock 
+		$select = 'SELECT newsblock.id AS articleid, author.id AS idauthor, news AS articledata, newstitle AS title, imghead, imgalt, videoyoutube, newsdate AS articledate, authorname, category.id AS categoryid, categoryname, draft FROM newsblock 
 				INNER JOIN author ON idauthor = author.id 
 				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND newsblock.id = ';
 
@@ -816,7 +816,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 	
 	elseif ($type == 'posts')
 	{
-		$select = 'SELECT posts.id AS articleid, author.id AS idauthor, post AS articledata, posttitle AS title, imghead, imgalt, videoyoutube, postdate AS articledate, authorname, category.id AS categoryid, categoryname FROM posts 
+		$select = 'SELECT posts.id AS articleid, author.id AS idauthor, post AS articledata, posttitle AS title, imghead, imgalt, videoyoutube, postdate AS articledate, authorname, category.id AS categoryid, categoryname, draft FROM posts 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND posts.id = ';
 
@@ -825,7 +825,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 
 	elseif ($type == 'promotion')
 	{
-		$select = 'SELECT promotion.id AS articleid, author.id AS idauthor, promotion AS articledata, promotiontitle AS title, imghead, imgalt, videoyoutube, promotiondate AS articledate, authorname, category.id AS categoryid, categoryname FROM promotion 
+		$select = 'SELECT promotion.id AS articleid, author.id AS idauthor, promotion AS articledata, promotiontitle AS title, imghead, imgalt, videoyoutube, promotiondate AS articledate, authorname, category.id AS categoryid, categoryname, draft FROM promotion 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
 
@@ -834,7 +834,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 
 	elseif ($type == 'video')
 	{
-		$select = 'SELECT video.id AS articleid, author.id AS idauthor, post AS articledata, videotitle AS title, imghead, imgalt, videoyoutube, videofile, videodate AS articledate, authorname, category.id AS categoryid, categoryname FROM video 
+		$select = 'SELECT video.id AS articleid, author.id AS idauthor, post AS articledata, videotitle AS title, imghead, imgalt, videoyoutube, videofile, videodate AS articledate, authorname, category.id AS categoryid, categoryname, draft FROM video 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND video.id = ';
 
@@ -843,7 +843,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 
 	elseif ($type == 'publication')
 	{
-		$select = 'SELECT publication.id AS articleid, author.id AS idauthor, text AS articledata, title, imghead, imgalt, idblog, videoyoutube, date AS articledate, authorname, category.id AS categoryid, categoryname FROM publication 
+		$select = 'SELECT publication.id AS articleid, author.id AS idauthor, text AS articledata, title, imghead, imgalt, idblog, videoyoutube, date AS articledate, authorname, category.id AS categoryid, categoryname, draft FROM publication 
 			   INNER JOIN author ON idauthor = author.id 
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND publication.id = ';
 
@@ -898,6 +898,14 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 								<input type = 'hidden' name = 'id' value = '".$idArticle."'>
 								<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
 							</form>";
+
+	$GLOBALS['premoderation'] = ($row['draft'] == 'NO') ? "<form action = '../../admin/premoderation/newspremoderationstatus/' method = 'post'>
+			
+						Статус публикации:
+						<input type = 'hidden' name = 'id' value = '".$idArticle."'>
+						<input type = 'submit' name = 'action' value = 'Опубликовать' class='btn_1 addit-btn'>
+						<input type = 'submit' name = 'action' value = 'Отклонить' class='btn_2 addit-btn'>
+					  </form>" : '';
 
 	$GLOBALS['title'] = 'Материал сохранён в черновике';//Данные тега <title>
 	$GLOBALS['headMain'] = 'Материал сохранён в черновике';
