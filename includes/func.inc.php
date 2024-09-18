@@ -812,6 +812,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 				INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND newsblock.id = ';
 
 		$forDelUpd = 'addupdnews';
+		$forPremod = 'newspremoderationstatus';
 	}
 	
 	elseif ($type == 'posts')
@@ -821,6 +822,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND posts.id = ';
 
 		$forDelUpd = 'addupdpost';
+		$forPremod = 'postpremoderationstatus';
 	}
 
 	elseif ($type == 'promotion')
@@ -830,6 +832,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND promotion.id = ';
 
 		$forDelUpd = 'addupdpromotion';
+		$forPremod = 'promotionpremoderationstatus';
 	}
 
 	elseif ($type == 'video')
@@ -839,6 +842,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 			   INNER JOIN category ON idcategory = category.id INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND video.id = ';
 
 		$forDelUpd = 'addupdvideo';
+		$forPremod = 'videopremoderationstatus';
 	}
 
 	elseif ($type == 'publication')
@@ -848,6 +852,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "NO" AND publication.id = ';
 
 		$forDelUpd = 'addupdblogpublication';
+		$forPremod = 'blogpubpremoderationstatus';
 	}
 
 	include MAIN_FILE . '/includes/db.inc.php';
@@ -899,7 +904,7 @@ function preview($type, $idArticle)//$type - newsblock, posts, promotion
 								<input type = 'submit' name = 'action' value = 'Upd' class='btn_2'>
 							</form>";
 
-	$GLOBALS['premoderation'] = ($row['draft'] == 'NO') ? "<form action = '../../admin/premoderation/newspremoderationstatus/' method = 'post'>
+	$GLOBALS['premoderation'] = ($row['draft'] == 'NO') ? "<form action = '../../admin/premoderation/".$forPremod."/' method = 'post'>
 			
 						Статус публикации:
 						<input type = 'hidden' name = 'id' value = '".$idArticle."'>
