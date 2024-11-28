@@ -120,10 +120,9 @@ if (isset ($_GET['id']))
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT meta.id, metaname FROM promotion 
-				INNER JOIN metapost ON promotion.id = idpromotion 
-				INNER JOIN meta ON meta.id = idmeta 
-				WHERE promotion.id = '.$idPublication;//Вверху самое последнее значение
+		$sql = 'SELECT m.id, m.metaname FROM meta m
+				INNER JOIN metapost mp ON m.id = mp.idmeta 
+				WHERE mp.idpromotion = '.$idPublication;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	

@@ -170,10 +170,9 @@ if (isset ($_GET['id']))
 	
 	try
 	{
-		$sql = 'SELECT meta.id, metaname FROM newsblock 
-				INNER JOIN metapost ON newsblock.id = idnews 
-				INNER JOIN meta ON meta.id = idmeta 
-				WHERE newsblock.id = '.$idPublication;//Вверху самое последнее значение
+		$sql = 'SELECT m.id, m.metaname FROM meta m
+				INNER JOIN metapost mp ON m.id = mp.idmeta 
+				WHERE mp.idnews = '.$idPublication;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	

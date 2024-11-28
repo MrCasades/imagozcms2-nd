@@ -186,13 +186,9 @@ if (isset ($_GET['id']))
 	/*Команда SELECT*/
 	try
 	{
-		$sql = 'SELECT 
-					m.id, 
-					m.metaname 
-				FROM video v 
-				INNER JOIN metapost mp ON v.id = mp.idvideo 
-				INNER JOIN meta m ON m.id = mp.idmeta 
-				WHERE v.id = '.$idPublication;//Вверху самое последнее значение
+		$sql = 'SELECT m.id, m.metaname FROM meta m
+				INNER JOIN metapost mp ON m.id = mp.idmeta 
+				WHERE mp.idpromotion = '.$idPublication;//Вверху самое последнее значение
 		$result = $pdo->query($sql);
 	}
 	
