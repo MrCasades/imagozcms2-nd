@@ -48,10 +48,7 @@ if (isset ($_GET['id']))
 				WHERE p.premoderation = "YES" AND p.id = ';
 	
 	/*Канонический адрес*/
-	if(!empty($_GET['utm_referrer']) || !empty($_GET['page']))
-	{
-		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/blog/publication?id='.$idPublication.'"/>';
-	}
+	$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/blog/publication?id='.$idPublication.'"/>';
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';

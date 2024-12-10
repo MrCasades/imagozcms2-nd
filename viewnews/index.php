@@ -26,10 +26,8 @@ if (isset ($_GET['id']))
 			   INNER JOIN category ON idcategory = category.id WHERE premoderation = "YES" AND newsblock.id = ';
 	
 	/*Канонический адрес*/
-	if(!empty($_GET['utm_referrer']) || !empty($_GET['page']))
-	{
-		$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewnews/?id='.$idPublication.'"/>';
-	}
+	
+	$canonicalURL = '<link rel="canonical" href="//'.MAIN_URL.'/viewnews/?id='.$idPublication.'"/>';
 
 	/*Подключение к базе данных*/
 	include MAIN_FILE . '/includes/db.inc.php';
