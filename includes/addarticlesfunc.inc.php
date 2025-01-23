@@ -272,6 +272,21 @@ function convertToPostOrNews($inData, $idData)
 		$error = 'Ошибка добавления информации при конвертации' . $e -> getMessage();// вывод сообщения об ошибке в переменой $e
 		include 'error.inc.php';
 	}
+
+	/*Обновление изображение в старой статье*/
+	
+	try
+	{
+		$sql = 'UPDATE '.$inData.' SET imghead = "111" WHERE id = '.(int)$idData;
+		$s = $pdo->prepare($sql);// подготавливает запрос для отправки в бд и возвр объект запроса присвоенный переменной
+		$s -> execute();// метод дает инструкцию PDO отправить запрос MySQL
+	}
+	
+	catch (PDOException $e)
+	{
+		$error = 'Ошибка обновления изображения';
+		include MAIN_FILE . '/includes/error.inc.php';
+	}
 }
 
 /*Получение атрибутов блога */
